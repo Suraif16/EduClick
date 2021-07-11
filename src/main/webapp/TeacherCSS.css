@@ -4,23 +4,118 @@ body{
 
 }
 
-
-
-
 header{
 
     position: fixed;
-    width: 100%;
+    width: 98.5%;
     height: 75px;
     background-color: #4775c4;
 
 }
 
+img#profileIcon{
+
+    position: relative;
+    left: 92%;
+    top: 20%;
+    width: 40px;
+
+}
+
+
+div#classroomsList{
+
+    position: fixed;
+    margin-left: 0.5%;
+    left: 0px;
+    top: 100px;
+    width: 17%;
+    height: 80%;
+    background-color: rgba(100, 149, 237, 0.34);
+    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
+    overflow-y: scroll;
+
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background-color: crimson;
+    border-radius: 10px;
+
+}
+
+
+h4#classroomHeadingWithAddClassroomFunction{
+
+    box-shadow:   4px 4px 2px #a7a7a7;
+    position: relative;
+    left: 4%;
+    padding: 5px;
+    width: 85%;
+    margin-top: 5%;
+    background-color: rgba(14, 52, 111,1);
+    color: white;
+    text-align: left;
+
+}
+
+h4#classroomHeadingWithAddClassroomFunction > a{
+
+    position: relative;
+    left: 30%;
+    color: white;
+    text-decoration: none;
+
+}
+
+h4#classroomHeadingWithAddClassroomFunction > a > img{
+
+    width: 7%;
+    height: 7%;
+    float: none;
+    vertical-align: middle;
+
+}
+
+a.classRooms{
+
+    box-shadow:   4px 4px 2px #a7a7a7 , inset 2px 2px 7px white , inset -2px -2px 7px white;
+    position: relative;
+    left: 4%;
+    display: block;
+    padding: 5px;
+    width: 85%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+
+div#postsFromAdmin{
+
+    position: fixed;
+    margin-left: 3%;
+    left: 17%;
+    top: 100px;
+    width: 77%;
+    height: 80%;
+    background-color: rgba(100, 149, 237, 0.34);
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
+    /*overflow: scroll;*/
+
+}
+
+
+
 footer{
 
     position: fixed;
     bottom: 5px;
-    width: 100%;
+    width: 98.5%;
     height: 25px;
     background-color: #4775c4;
 
