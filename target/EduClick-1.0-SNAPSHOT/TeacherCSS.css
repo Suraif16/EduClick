@@ -1,6 +1,7 @@
 body{
 
     background-color: whitesmoke;
+    /*overflow-y: scroll;*/
 
 }
 
@@ -10,6 +11,7 @@ header{
     width: 98.5%;
     height: 75px;
     background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
 
 }
 
@@ -32,7 +34,7 @@ div#classroomsList{
     width: 17%;
     height: 80%;
     background-color: rgba(100, 149, 237, 0.34);
-    box-shadow:  inset -1px -0px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
+    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
     overflow-y: scroll;
 
 
@@ -118,5 +120,6 @@ footer{
     width: 98.5%;
     height: 25px;
     background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
 
 }
