@@ -8,9 +8,10 @@ body{
 header{
 
     position: fixed;
-    width: 100%;
+    width: 98.5%;
     height: 75px;
     background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
 
 }
 
@@ -21,7 +22,7 @@ header{
 
 }
 
-div{
+div#Content{
 
     position: fixed;
     top: 25%;
@@ -29,7 +30,8 @@ div{
     background-color: rgba(100, 149, 237, 0.34);
     width: 35%;
     height: 40%;
-    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4;
+    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 ,     8px 8px 2px #a7a7a7
+;
 
 }
 
@@ -95,9 +97,10 @@ footer{
 
     position: fixed;
     bottom: 5px;
-    width: 100%;
+    width: 98.5%;
     height: 25px;
     background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
 
 }
 
