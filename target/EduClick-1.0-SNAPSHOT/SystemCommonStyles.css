@@ -1,0 +1,63 @@
+*{
+    font-family: "Roboto Thin", sans-serif ;
+    letter-spacing: 0.03em;
+}
+
+body{
+
+    background-color: whitesmoke;
+    overflow-y: hidden ;
+
+}
+
+header{
+
+    position: fixed;
+    width: 98.5%;
+    height: 75px;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    z-index: 10;
+    top: 0px;
+
+}
+
+img#logo {
+
+    position: relative;
+    left: 1%;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 75px;
+    height: 75px;
+    display: inline;
+
+}
+
+footer{
+
+    position: fixed;
+    bottom: 5px;
+    width: 98.5%;
+    height: 25px;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+
+}
+
+::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
