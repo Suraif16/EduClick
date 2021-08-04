@@ -1,0 +1,158 @@
+*{
+    font-family: "Roboto Thin", sans-serif ;
+    letter-spacing: 0.03em;
+}
+
+body{
+
+    background-color: whitesmoke;
+    overflow-y: hidden ;
+
+}
+
+header{
+
+    position: fixed;
+    width: 98.5%;
+    height: 75px;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    z-index: 10;
+    top: 0px;
+
+}
+
+img#logo {
+
+    position: relative;
+    left: 1%;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 75px;
+    height: 75px;
+    display: inline;
+
+}
+
+input#menuPanel{
+
+    position: relative;
+    top: 5%;
+    left: 1%;
+    width: 60px;
+    height: 60px;
+    display: block;
+    float: left;
+    background: url("Icons/menu_white_24dp.svg") no-repeat center rgba(14, 52, 111,1) ;
+    background-size: contain;
+    box-shadow:   inset 1px 1px 4px white , inset -1px -1px 4px white;
+
+}
+
+
+
+div#classroomsList{
+
+    position: fixed;
+    margin-left: 0.5%;
+    left: 0px;
+    top: 100px;
+    width: 17%;
+    height: 80%;
+    background-color: rgba(100, 149, 237, 0.34);
+    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
+    overflow-y: scroll;
+
+
+}
+
+div#content{
+
+    position: fixed;
+    top: 100px;
+    left: 20%;
+    height: 85%;
+    overflow-y: scroll !important;
+    width: 80%;
+    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
+
+}
+
+
+
+
+h4#classroomHeadingWithAddClassroomFunction{
+
+    box-shadow:   4px 4px 2px #a7a7a7;
+    position: relative;
+    left: 4%;
+    padding: 5px;
+    width: 85%;
+    margin-top: 5%;
+    background-color: rgba(14, 52, 111,1);
+    color: white;
+    text-align: left;
+
+}
+
+h4#classroomHeadingWithAddClassroomFunction > a{
+
+    position: relative;
+    left: 30%;
+    color: white;
+    text-decoration: none;
+
+}
+
+h4#classroomHeadingWithAddClassroomFunction > a > img{
+
+    width: 7%;
+    height: 7%;
+    float: none;
+    vertical-align: middle;
+
+}
+
+a.classRooms{
+
+    box-shadow:   4px 4px 2px #a7a7a7 , inset 2px 2px 7px white , inset -2px -2px 7px white;
+    position: relative;
+    left: 4%;
+    display: block;
+    padding: 5px;
+    width: 85%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+footer{
+
+    position: fixed;
+    bottom: 5px;
+    width: 98.5%;
+    height: 25px;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+
+}
+
+::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
