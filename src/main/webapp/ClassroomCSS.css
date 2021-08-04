@@ -1,5 +1,9 @@
 
 
+
+
+
+
 input#menuPanel{
 
     position: relative;
@@ -15,14 +19,6 @@ input#menuPanel{
 
 }
 
-img#profileIcon{
-
-    position: fixed;
-    left: 90%;
-    top: 2.5%;
-    width: 40px;
-
-}
 
 
 div#classroomsList{
@@ -51,6 +47,8 @@ div#content{
     box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
 
 }
+
+
 
 
 h4#classroomHeadingWithAddClassroomFunction{
@@ -102,16 +100,4 @@ a.classRooms{
 }
 
 
-/*div#postsFromAdmin{
 
-    position: fixed;
-    margin-left: 3%;
-    left: 17%;
-    top: 100px;
-    width: 77%;
-    height: 80%;
-    background-color: rgba(100, 149, 237, 0.34);
-    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
-    !*overflow: scroll;*!
-
-}*/

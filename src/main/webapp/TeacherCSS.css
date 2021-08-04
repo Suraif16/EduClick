@@ -1,25 +1,25 @@
-body{
 
-    background-color: whitesmoke;
-    /*overflow-y: scroll;*/
 
-}
+input#menuPanel{
 
-header{
-
-    position: fixed;
-    width: 98.5%;
-    height: 75px;
-    background-color: #4775c4;
-    box-shadow: 8px 8px 2px #a7a7a7;
+    position: relative;
+    top: 5%;
+    left: 1%;
+    width: 60px;
+    height: 60px;
+    display: block;
+    float: left;
+    background: url("Icons/menu_white_24dp.svg") no-repeat center rgba(14, 52, 111,1) ;
+    background-size: contain;
+    box-shadow:   inset 1px 1px 4px white , inset -1px -1px 4px white;
 
 }
 
 img#profileIcon{
 
-    position: relative;
-    left: 92%;
-    top: 20%;
+    position: fixed;
+    left: 90%;
+    top: 2.5%;
     width: 40px;
 
 }
@@ -40,10 +40,15 @@ div#classroomsList{
 
 }
 
-::-webkit-scrollbar-thumb {
+div#content{
 
-    background-color: crimson;
-    border-radius: 10px;
+    position: fixed;
+    top: 100px;
+    left: 20%;
+    height: 85%;
+    overflow-y: scroll !important;
+    width: 80%;
+    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
 
 }
 
@@ -97,7 +102,7 @@ a.classRooms{
 }
 
 
-div#postsFromAdmin{
+/*div#postsFromAdmin{
 
     position: fixed;
     margin-left: 3%;
@@ -107,19 +112,6 @@ div#postsFromAdmin{
     height: 80%;
     background-color: rgba(100, 149, 237, 0.34);
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
-    /*overflow: scroll;*/
+    !*overflow: scroll;*!
 
-}
-
-
-
-footer{
-
-    position: fixed;
-    bottom: 5px;
-    width: 98.5%;
-    height: 25px;
-    background-color: #4775c4;
-    box-shadow: 8px 8px 2px #a7a7a7;
-
-}
+}*/
