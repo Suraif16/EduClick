@@ -149,8 +149,13 @@ div.singleAnswer{
 
 div.profileOfStudentsAtAnswerSection{
 
+    background-color: rgba(14, 52, 111,1);
+    color: white;
+    padding: 0.5%;
 
 }
+
+
 
 div.answerText{
 
