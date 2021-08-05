@@ -47,8 +47,9 @@ div.post{
 
     margin: 5%  auto;
     width: 50%;
-    height: fit-content;
+    /*height: fit-content;*/
     background-color: rgba(100, 149, 237, 0.34);
+    /*background-color: rgba(85, 85, 85, 0.81);*/ /*Just testing need to check after exams*/
     box-shadow: 4px 4px 2px #a7a7a7;
 
 }
@@ -83,20 +84,107 @@ div.post > h4 > a
 }
 
 div.messageOfPost {
-    position: relative;
-    top: 0px;
+    /*position: relative;*/
+    /*top: 0;*/
     width: 100%;
     min-height: fit-content;
     max-height: 81%;
-    /*box-shadow:    inset 1px 1px 3px white , inset -1px -1px 3px white;*/
+    box-shadow:    inset 1px 1px 3px black , inset -1px -1px 3px black;
 
 
 }
 
 div.messageOfPost > p {
     padding: 4%;
-    height: fit-content;
 }
+
+img.imageOfThePostThatTheTeacherPostAsAQuestion{
+
+    width: 100%;
+    height: 100%;
+    /*margin: 1% 0%;*/
+
+}
+
+div.postAnswerButton{
+
+    width: 100%;
+    height: 30px;
+    background-color: rgba(14, 52, 111,1);
+
+
+}
+
+input.answerButton{
+
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+    padding: 1%;
+    display: block;
+    background-color: rgba(100, 149, 237, 0.34);
+    border-color: transparent;
+
+
+}
+
+div.answersSection{
+
+    height: 300px;
+    overflow-y: scroll;
+
+}
+
+div.singleAnswer{
+
+    padding: 1.5%;
+    width: 90%;
+    /*height: fit-content;*/
+    margin: 2% auto;
+    box-shadow:   4px 4px 2px #a7a7a7 , inset 2px 2px 7px white , inset -2px -2px 7px white;
+
+
+
+}
+
+div.profileOfStudentsAtAnswerSection{
+
+
+}
+
+div.answerText{
+
+    vertical-align: middle;
+    padding: 2% 0 2% 2%;
+    /*margin: 1%;*/
+    width: 100%;
+    height: 100%;
+
+
+
+
+}
+
+div.rangeForMarksSection{
+
+    padding: 2% 0 2% 2%;
+    width: 100%;
+    height: 100%;
+
+
+}
+
+input.rangeForMarks{
+
+    position: relative;
+    right: 0;
+    vertical-align: middle;
+    padding: 2%;
+    display: inline;
+
+}
+
+
 
 h4#classroomHeadingWithAddClassroomFunction{
 
@@ -145,6 +233,8 @@ a.classRooms{
     text-align: center;
 
 }
+
+
 
 
 
