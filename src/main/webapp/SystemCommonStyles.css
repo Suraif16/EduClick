@@ -22,6 +22,63 @@ header{
 
 }
 
+div.post{
+
+    margin: 5%  auto;
+    width: 50%;
+    /*height: fit-content;*/
+    background-color: rgba(100, 149, 237, 0.34);
+    /*background-color: rgba(85, 85, 85, 0.81);*/ /*Just testing need to check after exams*/
+    box-shadow: 4px 4px 2px #a7a7a7;
+
+}
+
+h4.postHeader {
+    background-color: rgba(14, 52, 111,1);
+    color: white;
+    height: 15%;
+    padding: 1%;
+    margin: 0%;
+
+}
+
+
+a.postHeader{
+
+    vertical-align: middle;
+
+}
+
+a.postHeader > img {
+
+    float: left;
+
+}
+
+div.post > h4 > a
+{
+
+    text-decoration: none !important; /* Not working how to find a fix*/
+
+}
+
+div.messageOfPost {
+    /*position: relative;*/
+    /*top: 0;*/
+    width: 100%;
+    min-height: fit-content;
+    max-height: 81%;
+    box-shadow:    inset 1px 1px 3px black , inset -1px -1px 3px black;
+
+
+}
+
+div.messageOfPost > p {
+    padding: 4%;
+}
+
+
+
 img#logo {
 
     position: relative;
