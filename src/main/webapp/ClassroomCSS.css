@@ -1,9 +1,4 @@
 
-
-
-
-
-
 input#menuPanel{
 
     position: relative;
@@ -48,8 +43,60 @@ div#content{
 
 }
 
+div.post{
+
+    margin: 5%  auto;
+    width: 50%;
+    height: fit-content;
+    background-color: rgba(100, 149, 237, 0.34);
+    box-shadow: 4px 4px 2px #a7a7a7;
+
+}
+
+h4.postHeader {
+    background-color: rgba(14, 52, 111,1);
+    color: white;
+    height: 15%;
+    padding: 1%;
+    margin: 0%;
+
+}
 
 
+a.postHeader{
+
+    vertical-align: middle;
+
+}
+
+a.postHeader > img {
+
+    float: left;
+
+}
+
+div.post > h4 > a
+{
+
+    text-decoration: none !important; /* Not working how to find a fix*/
+
+}
+
+div.messageOfPost {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    min-height: fit-content;
+    max-height: 81%;
+    /*box-shadow:    inset 1px 1px 3px white , inset -1px -1px 3px white;*/
+
+
+}
+
+div.messageOfPost > p {
+    padding: 4%;
+    height: fit-content;
+}
 
 h4#classroomHeadingWithAddClassroomFunction{
 
@@ -70,7 +117,7 @@ h4#classroomHeadingWithAddClassroomFunction > a{
     position: relative;
     left: 30%;
     color: white;
-    text-decoration: none;
+    text-decoration: none; /* To remove the underline in the link*/
 
 }
 
