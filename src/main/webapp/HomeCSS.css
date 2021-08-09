@@ -41,12 +41,74 @@ input[type=text]{
     font-size: 15px;
 }
 
-button{
-    font-size: 12px;
+.searchButton{
+    font-size: 14px;
+    font-weight: bold;
+    border-color: black;
+    opacity: 0.6;
     float: right;
     width : 100px;
     height : 37px;
     margin-right: 20px;
     margin-top : 20px;
     cursor : pointer;
+}
+.registerTeacher{
+    font-size: 14px;
+    font-weight: bold;
+    border-color: black;
+    opacity: 0.6;
+    float: left;
+    width : 15%;
+    height : 37px;
+    margin-left: 10%;
+    margin-top : 10px;
+    cursor : pointer;
+}
+.registerStudent{
+    font-size: 14px;
+    font-weight: bold;
+    border-color: black;
+    opacity: 0.6;
+    float: left;
+    width : 15%;
+    height : 37px;
+    margin-left: 6%;
+    margin-top : 10px;
+    cursor : pointer;
+}
+.loginTeacher{
+    font-size: 14px;
+    font-weight: bold;
+    border-color: black;
+    opacity: 0.6;
+    float: left;
+    width : 15%;
+    height : 37px;
+    margin-left: 6%;
+    margin-top : 10px;
+    cursor : pointer;
+}
+.loginStudent{
+    font-size: 14px;
+    font-weight: bold;
+    border-color: black;
+    opacity: 0.6;
+    float: left;
+    width : 15%;
+    height : 37px;
+    margin-left: 6%;
+    margin-top : 10px;
+    cursor : pointer;
+}
+button:hover {
+    opacity: 1.5;
+}
+footer{
+    position: fixed;
+    background-color: #4775c4;
+    width: 98.5%;
+    box-shadow : 8px 8px 2px #a7a7a7;
+    height: 75px;
+    bottom: 0px;
 }
