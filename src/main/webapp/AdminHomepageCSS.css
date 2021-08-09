@@ -19,7 +19,7 @@ body{
     left: 0;
     height: 100%;
     width: 240px;
-    background: #11101d;
+    background: rgba(14, 52, 111,1);
     padding: 6px 14px;
 }
 
@@ -74,7 +74,7 @@ body{
     border-radius: 12px;
     outline: none;
     border: none;
-    background: #1d1b31;
+    background: rgba(100, 149, 237, 0.34);
     padding-left: 50px;
     font-size: 18px;
     color: #fff;
