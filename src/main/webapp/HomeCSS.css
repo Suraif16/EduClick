@@ -23,6 +23,20 @@ header{
     top : 0px;
 
 }
+.topnav{
+    overflow : hidden;
+    margin-top: 0px;
+    margin-left: 20%;
+}
+.topnav a{
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    margin-top: 1px;
+    text-decoration: none;
+    font-size: 17px;
+}
 div#content{
     position: absolute;
     top: 100px;
@@ -61,7 +75,7 @@ input[type=text]{
     float: left;
     width : 15%;
     height : 37px;
-    margin-left: 10%;
+    margin-left: 11%;
     margin-top : 10px;
     cursor : pointer;
 }
@@ -73,33 +87,32 @@ input[type=text]{
     float: left;
     width : 15%;
     height : 37px;
-    margin-left: 6%;
+    margin-left: 16%;
     margin-top : 10px;
     cursor : pointer;
 }
-.loginTeacher{
+.login{
     font-size: 14px;
     font-weight: bold;
     border-color: black;
     opacity: 0.6;
-    float: left;
+    float: right;
     width : 15%;
     height : 37px;
-    margin-left: 6%;
+    margin-right: 11%;
     margin-top : 10px;
     cursor : pointer;
 }
-.loginStudent{
-    font-size: 14px;
-    font-weight: bold;
-    border-color: black;
-    opacity: 0.6;
-    float: left;
-    width : 15%;
-    height : 37px;
-    margin-left: 6%;
-    margin-top : 10px;
-    cursor : pointer;
+img#thumbnail{
+    position : absolute;
+    bottom: 80px;
+    right: 5px;
+    height: 300px;
+    width : 500px;
+    align : right;
+}
+#thumbnail:hover{
+    cursor: pointer;
 }
 button:hover {
     opacity: 1.5;
