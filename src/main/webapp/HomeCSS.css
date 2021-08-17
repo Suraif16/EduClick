@@ -24,18 +24,27 @@ header{
 
 }
 .topnav{
-    overflow : hidden;
-    margin-top: 0px;
-    margin-left: 20%;
+    overflow: hidden;
+    position: absolute;
+    top: 9px;
+    margin-left: 10%;
+    width: 40%;
+
 }
 .topnav a{
     float: left;
-    color: black;
+    color: whitesmoke;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 30px;
     margin-top: 1px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.9;
+    cursor: pointer;
+}
+.topnav a:hover{
+    opacity: 1;
 }
 div#content{
     position: absolute;
@@ -115,7 +124,7 @@ img#thumbnail{
     cursor: pointer;
 }
 button:hover {
-    opacity: 1.5;
+    opacity: 1;
 }
 footer{
     position: fixed;
@@ -124,4 +133,11 @@ footer{
     box-shadow : 8px 8px 2px #a7a7a7;
     height: 75px;
     bottom: 0px;
+}
+footer p{
+    font-weight: lighter;
+    color: whitesmoke;
+    margin-left: 45%;
+    margin-top: 30px;
+    font-size: 16px;
 }
