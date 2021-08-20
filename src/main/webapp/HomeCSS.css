@@ -112,16 +112,39 @@ input[type=text]{
     margin-top : 10px;
     cursor : pointer;
 }
-img#thumbnail{
+div#firstthumbnail img#thumbnail1{
     position : absolute;
-    bottom: 80px;
-    right: 5px;
-    height: 300px;
-    width : 500px;
+    top : 15%;
+    right: 15%;
+    height: 250px;
+    width : 370px;
     align : right;
 }
-#thumbnail:hover{
+div#secondthumbnail img#thumbnail2{
+    position : absolute;
+    top : 55%;
+    left: 15%;
+    height: 250px;
+    width : 370px;
+    align : left;
+}
+#thumbnail1:hover{
     cursor: pointer;
+}
+#thumbnail2:hover{
+    cursor: pointer;
+}
+div#firstthumbnail p{
+    font-weight: bold;
+    font-size: 30px;
+    margin-top :12.5%;
+    margin-left: 10%;
+}
+div#secondthumbnail p{
+    font-weight: bold;
+    font-size: 30px;
+    margin-top :16.5%;
+    margin-left: 50%;
 }
 button:hover {
     opacity: 1;
