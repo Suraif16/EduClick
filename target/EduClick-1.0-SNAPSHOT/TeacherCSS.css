@@ -1,3 +1,4 @@
+/*
 
 
 input#menuPanel{
@@ -105,11 +106,11 @@ img.newsFeedImage {
 
     width: 100%;
     height: 100%;
-    /*box-shadow: 7px 7px 15px black;*/ /*have to discuss later*/
+    !*box-shadow: 7px 7px 15px black;*! !*have to discuss later*!
 }
 
 
-/*div#postsFromAdmin{
+!*div#postsFromAdmin{
 
     position: fixed;
     margin-left: 3%;
@@ -121,4 +122,197 @@ img.newsFeedImage {
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
     !*overflow: scroll;*!
 
-}*/
+}*!
+*/
+
+
+
+
+body{
+
+    /*This is the main container for footer , header , and div#content*/
+
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+
+    /*child of the body*/
+
+    color: whitesmoke;
+    padding: 0.5%;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    flex: 1;
+    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    display: flex; /*this is a container now*/
+
+}
+
+header > a {
+
+    /*child of header , to both the anchor<a> children*/
+
+    text-decoration: none;
+    color: whitesmoke;
+    flex: 1;
+    margin: auto;
+    padding: 0.2%;
+
+}
+
+header > h1{
+
+    /*child of header*/
+
+    flex: 8;
+    margin: auto;
+    padding: 0.2%;
+
+}
+
+.logo{
+
+    width: 70%;
+    height: 70%;
+
+}
+
+a#profile{
+
+    /*for the profile part this is the container*/
+    display: flex;
+
+}
+
+a#profile > div{
+
+    /*child of a#profile*/
+
+    flex: 2;
+    margin: auto;
+
+
+}
+
+a#profile > img{
+
+    /*child of a#profile*/
+
+    flex: 1;
+    margin: auto;
+
+}
+
+footer{
+
+    /*child of body*/
+
+    flex: 1;
+    order: 3;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+}
+
+div#content{
+
+    /*child of body*/
+
+    flex: 2;
+    order: 2;
+    margin: 1% 0;
+    display: flex; /*this becomes the container for classRoomsLists and postContents*/
+    flex-wrap: wrap;
+
+
+}
+
+
+div#content > div#classroomsList {
+
+    /*child of div#classroomsList*/
+
+    flex-basis: 20%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 0 auto 0 0;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+    padding: 1%;
+
+    display: flex; /* making this a container to options and classroomsListLinks */
+    flex-direction: column;
+}
+
+div#content > div#postContents {
+
+    /*child of div#postContents*/
+
+    flex-basis: 78%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 0 0 0 auto;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+    padding: 1%;
+
+
+}
+
+#options{
+
+    /*becomes a container for postButton and classroomAddButton*/
+    /*background-color: hotpink;*/
+    display: flex;
+    flex-direction: column;
+    border: black solid 2px;
+    margin: 0 0 2% 0;
+    padding: 2%;
+}
+
+#postButton{
+
+    flex: 1;
+    margin: 0 auto 2% auto;
+
+
+}
+
+#postButtonInput{
+
+    color: whitesmoke;
+    background-color: #4775c4;
+
+}
+
+#classroomAddButtonInput{
+
+    color: whitesmoke;
+    background-color: #4775c4;
+
+}
+
+input{
+    /*all input values will have these properties*/
+    border-radius: 5px;
+    border: #6a6a6a solid 1px;
+    cursor: pointer;
+}
+
+
+#classroomAddButton{
+
+    flex: 1;
+    margin: 0 auto 2% auto;
+
+}
+
+
+
+
+#classroomsListLinks{
+
+    background-color: tomato;
+
+}
+
+
