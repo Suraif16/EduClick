@@ -196,13 +196,20 @@ a#profile > div{
 
 }
 
-a#profile > img{
+a#profile > div#profileImage{
 
     /*child of a#profile*/
 
     flex: 1;
     margin: auto;
 
+}
+
+#profileIcon{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
 }
 
 footer{
@@ -264,15 +271,17 @@ div#content > div#postContents {
     /*background-color: hotpink;*/
     display: flex;
     flex-direction: column;
-    border: black solid 2px;
+    border-bottom: black solid 2px;
     margin: 0 0 2% 0;
     padding: 2%;
+    flex-wrap: wrap;
+
 }
 
-#postButton{
+.optionButtonContainers{
 
-    flex: 1;
     margin: 0 auto 2% auto;
+    flex-wrap: wrap;
 
 
 }
@@ -281,6 +290,14 @@ div#content > div#postContents {
 
     color: whitesmoke;
     background-color: #4775c4;
+    width: 170px;
+    height: 25px;
+    /*background-position-x: 5px;
+    background-position-y: 5px;
+    background-image: url("Icons/account_circle_black_24dp.svg");
+    background-repeat: no-repeat;*/
+    /*child of postButton*/
+    flex: 5;
 
 }
 
@@ -288,6 +305,8 @@ div#content > div#postContents {
 
     color: whitesmoke;
     background-color: #4775c4;
+    width: 200px;
+    height: 25px;
 
 }
 
@@ -298,20 +317,52 @@ input{
     cursor: pointer;
 }
 
+#postButton{
 
-#classroomAddButton{
+    /*this becomes the container for profileIconPost and postButtonInput*/
+    display: flex;
+    flex-wrap: wrap;
 
+}
+
+#profileIconPost{
+
+    /*child of postButton*/
     flex: 1;
-    margin: 0 auto 2% auto;
 
+}
+
+a#profileIconPost > img{
+    width: 25px;
+    height: 25px;
+    border-radius: 12.5px;
+    padding-right: 5px;
 }
 
 
 
-
 #classroomsListLinks{
+    /*child of classroomsList*/
+    display: flex; /*container for classroomsListLinksItems */
+    flex-direction: column;
+    margin-top: 1%;
+}
 
-    background-color: tomato;
+.classroomsListLinksItems{
+
+    /*child of classroomsListLinks*/
+    background-color: #4775c4;
+    text-align: center;
+    margin: 1.5% 0;
+    padding: 1%;
+
+
+}
+
+a{
+
+    text-decoration: none;
+    color: whitesmoke;
 
 }
 
