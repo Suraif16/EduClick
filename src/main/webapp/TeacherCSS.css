@@ -231,7 +231,7 @@ div#content{
     margin: 1% 0;
     display: flex; /*this becomes the container for classRoomsLists and postContents*/
     flex-wrap: wrap;
-
+    align-items: flex-start;
 
 }
 
@@ -251,19 +251,7 @@ div#content > div#classroomsList {
     flex-direction: column;
 }
 
-div#content > div#postContents {
 
-    /*child of div#postContents*/
-
-    flex-basis: 78%;
-    box-sizing: border-box;
-    justify-content: space-between;
-    margin: 0 0 0 auto;
-    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
-    padding: 1%;
-
-
-}
 
 #options{
 
@@ -367,3 +355,65 @@ a{
 }
 
 
+
+/* styles of posts */
+
+div#content > div#postContents {
+
+    /*child of div#postContents*/
+
+    flex-basis: 78%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 0 0 0 auto;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+    padding: 1%;
+
+    /*making this a container for post class*/
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.post{
+
+    /*child of postContents*/
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto 2% auto;
+
+    /*becomes a container for postProfileSection , postData , and postLikeShareButtons*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.postContentContainer{
+
+    /*child of post*/
+    margin: 1.5%;
+    padding: 0.5%;
+
+}
+
+.postProfileSection{
+
+    background-color: hotpink;
+
+}
+
+.postData{
+
+    background-color: gold;
+
+
+}
+
+.postLikeShareButtons{
+
+    background-color: crimson;
+
+
+}
