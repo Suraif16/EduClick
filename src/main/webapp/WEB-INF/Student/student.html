@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>Student</title>
+
+    <link rel="stylesheet" href="../../Resources/CSS/SystemCommonStyles.css" type="text/css">
+
+    <link rel="stylesheet" href="../../Resources/CSS/Student.css" type="text/css">
+
+    <link rel="stylesheet" href="../../Resources/CSS/like.css" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <input type="button" id="menuPanel">
+
+
+    <img id="logo" src="Icons/Logo.png">
+
+    <a href="#">
+
+        <img id="profileIcon" src="Icons/account_circle_black_24dp.svg">
+
+    </a>
+</header>
+
+<div id="classroomsList">
+
+    <h4 id="classroomHeadingWithAddClassroomFunction">
+
+        Classrooms
+
+        <a href="">
+
+            <img src="Icons/add_white_24dp.svg"> add
+
+        </a>
+
+    </h4>
+
+    <a href=""  class="classRooms">
+
+        classroom1
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom2
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom3
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom4
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom5
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom6
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom7
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom8
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom9
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom10
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom11
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom12
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom13
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom14
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom15
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom16
+
+    </a>
+
+    <a href=""  class="classRooms">
+
+        classroom17
+
+    </a>
+
+</div>
+
+<div id="content">
+
+    <div class="post newsFeeds">
+
+        <h4 class="postHeader">
+
+            <a> <!--href="#"-->
+
+                <img src="Icons/account_circle_white_24dp.svg" class="postProfilePicture" alt="Teacher Profile Picture"> Teacher Profile
+
+            </a>
+
+        </h4>
+
+        <div class="messageOfPost">
+            <p>
+
+                Happy new year to all my students. Have a blessed year. See you all after 5th of Jan 2022.
+
+
+        </div>
+
+
+
+    </div>
+    <div id="like">
+        <div class="box">
+
+            <button class="like__btn">
+                <span id="icon"><i class="fa fa-thumbs-up"></i></span>
+                <span id="count">0</span> Like
+            </button>
+
+            <button id="share" onclick="shared()" class="far fa-share-square">
+            </button>
+
+            <input id="comment" type="text" placeholder="   comments...">
+
+            <script>
+                const likeBtn = document.querySelector(".like__btn");
+                let likeIcon = document.querySelector("#icon"),
+                    count = document.querySelector("#count");
+
+                let clicked = false;
+
+
+                likeBtn.addEventListener("click", () => {
+                    if (!clicked) {
+                        clicked = true;
+                        likeIcon.innerHTML = `<i class="fa fa-thumbs-up"></i>`;
+                        count.textContent++;
+                    } else {
+                        clicked = false;
+                        likeIcon.innerHTML = `<i class="far fa-thumbs-up"></i>`;
+                        count.textContent--;
+                    }
+                });
+
+            </script>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="post newsFeedsWithPictures">
+
+        <h4 class="postHeader">
+
+            <a> <!--href="#"-->
+
+                <img src="Icons/account_circle_white_24dp.svg" class="postProfilePicture" alt="Teacher Profile Picture"> Teacher Profile
+
+            </a>
+
+        </h4>
+
+        <div class="messageOfPost">
+            <p>
+
+                Hi all, here we are again with a seminar for all ordinary level students. reserve your seats. Come on!!! Start dialing...
+
+            </p>
+
+        </div>
+
+        <img src="Icons/seminar-text.jpg" class="newsFeedImage" alt="Questions">
+
+
+
+    </div>
+
+    <div id="like">
+        <div class="box">
+
+            <button class="like__btn">
+                <span id="icon"><i class="fa fa-thumbs-up"></i></span>
+                <span id="count">0</span> Like
+            </button>
+
+            <button id="share" onclick="shared()" class="far fa-share-square">
+            </button>
+
+            <input id="comment" type="text" placeholder="   comments...">
+
+            <script>
+                const likeBtn = document.querySelector(".like__btn");
+                let likeIcon = document.querySelector("#icon"),
+                    count = document.querySelector("#count");
+
+                let clicked = false;
+
+
+                likeBtn.addEventListener("click", () => {
+                    if (!clicked) {
+                        clicked = true;
+                        likeIcon.innerHTML = `<i class="fa fa-thumbs-up"></i>`;
+                        count.textContent++;
+                    } else {
+                        clicked = false;
+                        likeIcon.innerHTML = `<i class="far fa-thumbs-up"></i>`;
+                        count.textContent--;
+                    }
+                });
+
+            </script>
+
+        </div>
+
+
+    </div>
+
+
+
+    <footer>
+
+    </footer>
+
+    <script src="JS/ClassroomJS.js"></script>
+
+</body>
+
+</html>
