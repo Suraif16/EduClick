@@ -14,31 +14,62 @@
 
 <body>
 
-<header>
 
-  <h1 id="headerHeading">EduClick</h1>
+    <div id="content">
 
-</header>
+        <div id="contentFlex"> <!--act as the container for the whole form and its heading tag as a single element tag for using flexbox -->
 
-<div id="Content">
+            <h1 id="loginFormHeading" class="formElement">Login</h1>
 
-  <h1 id="loginFormHeading">Login As Teacher</h1>
+            <form name="teacherLoginPage" action="" method="post">
 
-  <form name="teacherLoginPage" action="" method="post">
+                <div class="formRow formElement"> <!--act as the container for the label and input tag as a single element tag for using flexbox -->
 
-      <input id="email" type="email" placeholder="Enter Email">
-      <br>
-      <input id="password" type="password" placeholder="Enter Password">
-      <br>
-      <input class="button" type="submit" name="Login" value="LogIn">
+                    <label for="email">Enter Email :</label>
+                    <input id="email" type="email" placeholder="Educlick@mail.com">
 
-  </form>
+                </div>
 
-</div>
+                <div class="formRow formElement"> <!--act as the container for the label and input tag as a single element tag for using flexbox -->
 
-<footer>
+                    <label for="password">Enter Password :</label>
+                    <input id="password" type="password" placeholder="Enter Password">
 
-</footer>
+                </div>
+
+                <div class="formElementButton"> <!--act as the container for the input button tag for using flexbox -->
+
+                    <input class="button" type="submit" name="Login" value="LogIn">
+
+                </div>
+
+
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <header>
+
+        <a href="TeacherLogin.html"> <!--act as the container for the img tag for using flexbox -->
+
+            <img src="Icons/Logo.png" class="logo">
+
+        </a>
+
+
+        <h1 id="headerHeading">EduClick</h1>
+
+
+    </header>
+
+    <footer>
+        &nbsp;
+    </footer>
 
 
 </body>
