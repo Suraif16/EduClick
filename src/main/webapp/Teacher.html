@@ -8,205 +8,285 @@
 
     <title>Teacher</title>
 
-    <link rel="stylesheet" href="SystemCommonStyles.css" type="text/css">
-
     <link rel="stylesheet" href="TeacherCSS.css" type="text/css">
 
 </head>
 
 <body>
 
-    <header>
-
-        <input type="button" id="menuPanel">
-
-
-        <img id="logo" src="Icons/Logo.png">
-
-        <a href="#">
-
-            <img id="profileIcon" src="Icons/account_circle_black_24dp.svg">
-
-        </a>
-    </header>
-
-    <div id="classroomsList">
-
-        <h4 id="classroomHeadingWithAddClassroomFunction">
-
-            Classrooms
-            
-            <a href="">
-
-                <img src="Icons/add_white_24dp.svg"> add
-
-            </a>
-
-        </h4>
-
-        <a href=""  class="classRooms">
-
-            classroom1
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom2
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom3
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom4
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom5
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom6
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom7
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom8
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom9
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom10
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom11
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom12
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom13
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom14
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom15
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom16
-
-        </a>
-
-        <a href=""  class="classRooms">
-
-            classroom17
-
-        </a>
-
-    </div>
-
     <div id="content">
 
-        <div class="post newsFeeds">
+        <div id="classroomsList" >
 
-            <h4 class="postHeader">
+            <div id="options">
 
-                <a> <!--href="#"-->
+                <div id="postButton" class="optionButtonContainers">
 
-                    <img src="Icons/account_circle_white_24dp.svg" class="postProfilePicture" alt="Teacher Profile Picture"> Teacher Profile
+                    <a id="profileIconPost" href=""> <!--In the class room container-->
 
-                </a>
+                        <img  src="Icons/account_circle_black_24dp.svg">
 
-            </h4>
+                    </a>
 
-            <div class="messageOfPost">
-                <p>
+                    <input type="button" value="what's on your mind?" id="postButtonInput">
 
-                    Happy new year to all my students. Have a blessed year. See you all after 5th of Jan 2022.
+                </div>
 
-                </p>
+                <div id="classroomAddButton" class="optionButtonContainers">
+
+                    <input id="classroomAddButtonInput" type="button" value=" + add Classroom">
+
+                </div>
+
 
             </div>
+
+            <div id="classroomsListLinks">
+
+                <div class="classroomsListLinksItems">
+
+                    <a href=""  class="classRooms">
+
+                        classroom1
+
+                    </a>
+
+                </div>
+
+                <div class="classroomsListLinksItems"> <!--this where the classroom link begins-->
+
+                    <a href=""  class="classRooms">
+
+                        classroom2
+
+                    </a>
+
+                </div>
+
+                <div class="classroomsListLinksItems">
+
+                    <a href=""  class="classRooms">
+
+                        classroom2
+
+                    </a>
+
+                </div>
+
+            </div>
+
 
         </div>
 
 
-        <div class="post newsFeedsWithPictures">
 
-            <h4 class="postHeader">
 
-                <a> <!--href="#"-->
+        <div id="postContents" >
 
-                    <img src="Icons/account_circle_white_24dp.svg" class="postProfilePicture" alt="Teacher Profile Picture"> Teacher Profile
 
-                </a>
+            <div class="post">
 
-            </h4>
+                <div class="postContentContainer">
 
-            <div class="messageOfPost">
-                <p>
+                    <div class="postProfileSection">
 
-                    Hi all, here we are again with a seminar for all ordinary level students. reserve your seats. Come on!!! Start dialing...
+                        <a href="#" class="postProfile">
 
-                </p>
+
+                            <div class="postProfileImage">
+
+                                <img class="postProfileIcon" src="Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div class="postProfileName" >User Name</div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="postContentContainer">
+
+                    <div class="postData">
+
+                        <div class="postMessage">
+
+                            <!--<div>-->
+
+                                Book your seats NOW!!!
+
+                            <!--</div>-->
+
+                        </div>
+
+                        <div class="postPicture">
+
+                            <div class="postPictureImageContainer">
+                                <!--To only present the message without the picture, keep this value as null / empty-->
+                                <img class="postPictureImage" src="Icons/seminar-text.jpg">
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="postContentContainer">
+
+                    <div class="postLikeShareButtons">
+
+                        <div class="likeShareButtons" >
+
+                            <input type="button" value="Like" class="like">
+
+                        </div>
+
+                        <div class="emptySpaceLikeShare" >
+                            &nbsp;
+                        </div>
+
+                        <div class="likeShareButtons" >
+
+                            <input type="button" value="Share" class="share">
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <img src="Icons/seminar-text.jpg" class="newsFeedImage" alt="Questions">
+            <!--a another post-->
+
+            <div class="post">
+
+                <div class="postContentContainer">
+
+                    <div class="postProfileSection">
+
+                        <a href="#" class="postProfile">
+
+
+                            <div class="postProfileImage">
+
+                                <img class="postProfileIcon" src="Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div class="postProfileName" >User Name</div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="postContentContainer">
+
+                    <div class="postData">
+
+                        <div class="postMessage">
+
+                            <!--<div>-->
+
+                            Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                            <!--</div>-->
+
+                        </div>
+
+                        <div class="postPicture">
+
+                            <!--To only present the message without the picture, comment the part below-->
+
+                            <!--<div class="postPictureImageContainer">
+                                <img class="postPictureImage" src="Icons/seminar-text.jpg">
+
+
+                            </div>-->
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="postContentContainer">
+
+                    <div class="postLikeShareButtons">
+
+                        <div class="likeShareButtons" >
+
+                            <input type="button" value="Like" class="like">
+
+                        </div>
+
+                        <div class="emptySpaceLikeShare" >
+                            &nbsp;
+                        </div>
+
+                        <div class="likeShareButtons" >
+
+                            <input type="button" value="Share" class="share">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+            </div>
+
+
 
 
 
         </div>
-
 
     </div>
 
-    <footer>
 
-    </footer>
+    <header>
+
+        <a href="TeacherLogin.html"> <!--act as the container for the img tag for using flexbox -->
+
+            <img src="Icons/Logo.png" class="logo">
+
+        </a>
+
+
+        <h1 id="headerHeading">EduClick</h1>
+
+        <a href="#" id="profile">
+
+            <div>User Name</div>
+            <div id="profileImage">
+
+                <img id="profileIcon" src="Icons/account_circle_white_24dp.svg">
+
+            </div>
+
+        </a>
+
+
+    </header>
+
+
+
+    <!--<footer>
+        &nbsp;
+    </footer>-->
 
     <script src="JS/ClassroomJS.js"></script>
 
