@@ -178,7 +178,7 @@ header > div#logout{
     flex: 0.5;
     margin: auto;
     border-left: whitesmoke solid 2px;
-    padding-left: 0.3%;
+    padding: 0 0.3%;
 
 }
 
@@ -250,7 +250,6 @@ div#content > div#classroomsList {
 
     /*child of div#classroomsList*/
 
-    flex-basis: 20%;
     box-sizing: border-box;
     justify-content: space-between;
     margin: 0 auto 0 0;
@@ -539,49 +538,24 @@ input[type="button"]:hover{
 
 @media(max-width: 1100px) {
 
-    div#content{
-
-        /*child of body*/
-
-        flex: 2;
-        order: 2;
-        margin: 1% 0;
-        display: flex; /*this becomes the container for classRoomsLists and postContents*/
-        flex-direction: column;
-    }
-
-    /*need to edit more here*/
     div#content > div#classroomsList {
 
         /*child of div#classroomsList*/
 
-        flex-basis: 100%;
-        margin: 1% auto;
-        justify-content: space-between; /*given to a container*/
-
-        /*box-sizing: border-box;
-        box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
-        padding: 1%;*/
+        box-sizing: border-box;
+        justify-content: space-between;
+        margin: 0 auto 0 0;
+        box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+        padding: 1%;
+        position: fixed;
+        top: 10%;
+        width: 100%;
+        flex-direction: column;
+        background-color: #4775c4;
+    }
+    #classroomsListContainer{
 
         display: flex; /* making this a container to options and classroomsListLinks */
-        flex-direction: column;
-    }
-
-    div#content > div#postContents {
-
-        /*child of div#postContents*/
-
-        flex-basis: 100%;
-        margin: auto;
-        justify-content: space-between;
-
-        /*box-sizing: border-box;
-        box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
-        padding: 1%;
-
-        !*making this a container for post class*!
-        display: flex;
-        flex-direction: column;*/
 
 
     }
@@ -590,9 +564,11 @@ input[type="button"]:hover{
 
         /*becomes a container for postButton and classroomAddButton*/
         /*background-color: hotpink;*/
+        flex: 1;
         display: flex;
         /*flex-direction: column;*/
-        border-bottom: black solid 2px;
+        border-right: black solid 2px;
+        border-bottom: none;
         margin: 0 0 2% 0;
         padding: 2%;
         /*flex-wrap: wrap;*/
@@ -600,11 +576,35 @@ input[type="button"]:hover{
     }
 
     #classroomsListLinks{
+        flex: 3;
         /*child of classroomsList*/
-        display: flex; /*container for classroomsListLinksItems */
+        display: flex; /*container for classroomsListLinksItems*/
         /*flex-direction: column;*/
         margin-top: 1%;
+        /*flex-wrap: wrap;*/
+
     }
+
+
+
+    div#content > div#postContents {
+
+        /*child of div#postContents*/
+
+        flex-basis: 100%;
+        box-sizing: border-box;
+        justify-content: space-between;
+        margin: 50% 0 0 auto;
+        box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+        padding: 1%;
+        /*background-color: tomato;*/
+        /*making this a container for post class*/
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
 
 }
 
