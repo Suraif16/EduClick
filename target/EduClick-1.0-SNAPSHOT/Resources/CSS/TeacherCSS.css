@@ -144,9 +144,10 @@ header{
     padding: 0.5%;
     background-color: #4775c4;
     box-shadow: 8px 8px 2px #a7a7a7;
-    flex: 1;
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     display: flex; /*this is a container now*/
+    position: fixed;
+    width: 100%;
 
 }
 
@@ -169,6 +170,15 @@ header > h1{
     flex: 8;
     margin: auto;
     padding: 0.2%;
+
+}
+
+header > div#logout{
+
+    flex: 0.5;
+    margin: auto;
+    border-left: whitesmoke solid 2px;
+    padding-left: 0.3%;
 
 }
 
@@ -244,9 +254,11 @@ div#content > div#classroomsList {
     box-sizing: border-box;
     justify-content: space-between;
     margin: 0 auto 0 0;
-    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     padding: 1%;
-
+    position: fixed;
+    top: 150px;
+    width: 20%;
     display: flex; /* making this a container to options and classroomsListLinks */
     flex-direction: column;
 }
@@ -364,10 +376,10 @@ div#content > div#postContents {
     flex-basis: 78%;
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 0 0 0 auto;
+    margin: 8.6% 0 0 auto;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
     padding: 1%;
-
+    /*background-color: tomato;*/
     /*making this a container for post class*/
     display: flex;
     flex-direction: column;
