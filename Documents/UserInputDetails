@@ -1,1 +1,16 @@
 #User Input character limits
+
+First name : 20 STRING
+Last name :20 STRING
+email :50 STRING
+mobile number :10 INT
+date of birth :10 DATE AND TIME
+country :20 STRING
+location :50 STRING
+subject :20 STRING
+marks :03 INT
+teach at :50 STRING
+grade :02 INT
+school:50 STRING
+year :04 INT
+password :64 STRING
