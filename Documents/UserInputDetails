@@ -14,3 +14,8 @@ grade :02 INT
 school:50 STRING
 year :04 INT
 password :64 STRING
+
+
+**LONGTEXT SIZE = 4,294,967,295
+
+**TEXT SIZE = 65,535

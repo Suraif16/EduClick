@@ -5,109 +5,108 @@ CREATE DATABASE EduClickDB;
 USE EduClickDB;
 
 CREATE TABLE Users(
-    UserID BIGINT,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
+    UserID BIGINT NOT NULL,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
     ProfilePic BIGINT,
-    DOB DATE,
+    DOB DATE NOT NULL,
     MobileNum INT,
-    UserType VARCHAR(20),
+    UserType ENUM('Student','Teacher') NOT NULL,
+    Country VARCHAR(50),
     PRIMARY KEY(UserID)
     );
 
 CREATE TABLE Student(
-    UserID BIGINT,
+    UserID BIGINT UNIQUE NOT NULL,
     School VARCHAR(200),
-    GRADE INT,
-    PRIMARY KEY(UserID)
+    GRADE INT NOT NULL,
     );
 
 CREATE TABLE Teacher(
-    UserID BIGINT,
+    UserID BIGINT UNIQUE NOT NULL,
     CurrentWorkingPlace VARCHAR(300),
-    PRIMARY KEY(UserID)
     );
 
 CREATE TABLE Classroom_has_EPost(
-    ClassroomID BIGINT,
-    EPostID BIGINT,
-    PRIMARY KEY(ClassroomID)
+    ClassroomID BIGINT NOT NULL,
+    EPostID BIGINT NOT NULL,
+    CONSTRAINT PK_Classroom_has_EPost PRIMARY KEY(ClassroomID,EPostID)**
     );
 
 CREATE TABLE Classroom(
-    ClassroomID BIGINT,
-    CR_Name VARCHAR(100),
-    CR_Code VARCHAR(30),
+    ClassroomID BIGINT NOT NULL,
+    CR_Name VARCHAR(100) NOT NULL,
+    CR_Code VARCHAR(30) UNIQUE NOT NULL,
     Year YEAR,
     Grade INT,
     Subject VARCHAR(100),
-    UserID BIGINT,
+    UserID BIGINT NOT NULL,
     PRIMARY KEY(ClassroomID)
     );
 
 CREATE TABLE Login(
-    EmailID BIGINT,
-    Password VARCHAR(50),
-    LoginTime TIME,
-    UserID BIGINT,
+    EmailID BIGINT NOT NULL,
+    Password CHAR(64) NOT NULL,
+    LoginTime TIME NOT NULL,
+    UserID BIGINT NOT NULL,
     PRIMARY KEY(EmailID)
     );
 
 CREATE TABLE Enroll(
-    UserID BIGINT,
-    CR_ID BIGINT,
-    Status VARCHAR(40),
-    CONSTRAINT PK_Enroll PRIMARY KEY(UserID,CR_ID)
+    UserID BIGINT NOT NULL,
+    ClassroomID BIGINT NOT NULL,
+    Status ENUM('Enable','Disable') NOT NULL,
+    CONSTRAINT PK_Enroll PRIMARY KEY(UserID,ClassroomID)**
     );
 
 CREATE TABLE Answer_Student_Post_Relationship(
-    St_UserID BIGINT,
-    AnswerID BIGINT,
-    EPostID BIGINT,
-    CONSTRAINT PK_Ans_Stu_Post PRIMARY KEY(St_UserID,AnswerID,EPostID)
+    St_UserID BIGINT NOT NULL,
+    AnswerID BIGINT NOT NULL,
+    EPostID BIGINT NOT NULL,
+    CONSTRAINT PK_Ans_Stu_Post PRIMARY KEY(St_UserID,AnswerID,EPostID)**
     );
 
 CREATE TABLE Answer(
-    AnswerID BIGINT,
-    Date DATE,
-    Time TIME,
+    AnswerID BIGINT NOT NULL,
+    Date DATE NOT NULL,
+    Time TIME NOT NULL,
     Marks INT,
     PRIMARY KEY(AnswerID)
     );
 
 CREATE TABLE EDW_Answers(
-    AnswerID BIGINT,
-    Content LONGTEXT,
+    AnswerID BIGINT NOT NULL,
+    Content TEXT,
     ImagePath BIGINT,
     PRIMARY KEY(AnswerID)
     );
 
 CREATE TABLE Question(
-	QuestionID BIGINT,
-	Correct_answers LONGTEXT,
-	EPostID BIGINT,
+	QuestionID BIGINT NOT NULL,
+	Correct_answers TEXT,
+	EPostID BIGINT NOT NULL,
 	PRIMARY KEY(QuestionID)
 	);
 
 CREATE TABLE Question_answer_value(
-	QuestionID BIGINT,
-	Answer_no INT,
-	Answer LONGTEXT,
+	QuestionID BIGINT NOT NULL,
+	Answer_no ENUM('1','2','3','4') NOT NULL,
+	Answer TEXT NOT NULL,
 	CONSTRAINT PK_Question_answer_value PRIMARY KEY(QuestionID,Answer_no)
 	);
 
 
-CREATE TABLE Delete(
-	ReportID BIGINT,
-	EmailID BIGINT,
+CREATE TABLE RemoveEntity(
+	ReportID BIGINT NOT NULL,
+	EmailID BIGINT NOT NULL,
 	PRIMARY KEY(ReportID)
 	);
 
 
 CREATE TABLE Report(
-	ReportID BIGINT,
-	Count INT,
-	Report_delete_flag BOOLEAN,
+	ReportID BIGINT NOT NULL,
+	Count INT NOT NULL,
+	Report_delete_flag BOOLEAN NOT NULL,
 	UserID BIGINT,
 	AnswerID BIGINT,
 	NF_postID BIGINT,
@@ -115,96 +114,94 @@ CREATE TABLE Report(
 	PRIMARY KEY(ReportID)
 	);
 
-CREATE TABLE User_marks_report(
-	UserID BIGINT,
-	ReportID BIGINT,
+CREATE TABLE User_makes_report(
+	UserID BIGINT NOT NULL,
+	ReportID BIGINT NOT NULL,
 	PRIMARY KEY(UserID)
 	);
 
 CREATE TABLE Qualifications(
-	UserID BIGINT,
-	Qualification_form LONGTEXT,
-	CONSTRAINT PK_Qualifications PRIMARY KEY(UserID,Qualification_form)
+	UserID BIGINT NOT NULL,
+	Qualification VARCHAR(200),
+	CONSTRAINT PK_Qualifications PRIMARY KEY(UserID,Qualification)**
 	);
 
-CREATE TABLE Add_friens(
-	UserID BIGINT,
-	Friend_UserID BIGINT,
-	CONSTRAINT PK_Add_frineds KEY(UserID, Friend_UserID)
+CREATE TABLE Add_friends(
+	UserID BIGINT NOT NULL,
+	Friend_UserID BIGINT NOT NULL,
+	CONSTRAINT PK_Add_friends KEY(UserID, Friend_UserID)**
 	);
 
 CREATE TABLE Follows(
-	S_UserID BIGINT,
-	T_UserID BIGINT,
-	CONSTRAINT PK_Follows KEY(S_UserID, T_UserID)
+	S_UserID BIGINT NOT NULL,
+	T_UserID BIGINT NOT NULL,
+	CONSTRAINT PK_Follows KEY(S_UserID, T_UserID)**
 	);
 
 CREATE TABLE News_feed_image(
-	NFPostID BIGINT,
-	ImagePath BIGINT,
+	NFPostID BIGINT NOT NULL,
+	ImagePath BIGINT NOT NULL,
 	CONSTRAINT PK_News_feed_image KEY(NFPostID,ImagePath)
 	);
 
 CREATE TABLE Admin(
-	EmailID BIGINT,
-	Password VARCHAR(40),
-	AdminName VARCHAR(50),
+	EmailID BIGINT NOT NULL,
+	Password CHAR(64) NOT NULL,
+	AdminName VARCHAR(50), NOT NULL
 	PRIMARY KEY(EmailID)
 	);
 
 CREATE TABLE educationalpost(
-	EPostID BIGINT,
-	Date DATE,
-	Time TIME,
-	EPtype VARCHAR(40),
+	EPostID BIGINT NOT NULL,
+	Date DATE NOT NULL,
+	Time TIME NOT NULL,
+	EPtype ENUM('EducationalWork','MCQ') NOT NULL,
 	PRIMARY KEY(EPostID)
 	);
 
 CREATE TABLE educationalWork(
-	EPostID BIGINT,
+	EPostID BIGINT UNIQUE NOT NULL,
 	ImagePath BIGINT,
-	Caption VARCHAR(40),
-	PRIMARY KEY(EPostID)
+	Caption TEXT
 	);
 
 CREATE TABLE likes(
-	St_UserID BIGINT,
-	NFPostID BIGINT,
+	St_UserID BIGINT NOT NULL,
+	NFPostID BIGINT NOT NULL,
 	CONSTRAINT PK_likes PRIMARY KEY(St_UserID,NFPostID)
 	);
 
 CREATE TABLE mcq(
-	EPostID BIGINT,
-	Caption VARCHAR(40),
-	PRIMARY KEY(EPostID)
+	EPostID BIGINT UNIQUE NOT NULL,
+	Caption TEXT
 	);
 
 CREATE TABLE mcq_answers(
-	AnswerID BIGINT,
-	Choise VARCHAR(50),
-	QuestionID BIGINT,
+	AnswerID BIGINT NOT NULL,
+	Choice ENUM('1','2','3','4') NOT NULL,
+	QuestionID BIGINT NOT NULL,
 	PRIMARY KEY(AnswerID)
 	);
 
 CREATE TABLE newsfeeds(
-	EPostID BIGINT,
-	Date DATE,
-	Time TIME,
-	Caption VARCHAR(50),
+	EPostID BIGINT NOT NULL,
+	Date DATE NOT NULL,
+	Time TIME NOT NULL,
+	Caption TEXT,
 	PRIMARY KEY(EPostID)
 	);
 
 CREATE TABLE posts(
-	T_UserID BIGINT,
-	St_UserID BIGINT,
-	NFPostID BIGINT,
-	CONSTRAINT PK_posts PRIMARY KEY(T_UserID,St_UserID,NFPostID)
+	T_UserID BIGINT NOT NULL,
+	St_UserID BIGINT NOT NULL,
+	NFPostID BIGINT NOT NULL,
+	CONSTRAINT PK_posts PRIMARY KEY(T_UserID,St_UserID,NFPostID)**
 	);
 
 CREATE TABLE subject(
-	UserID BIGINT,
+	UserID BIGINT NOT NULL,
 	Subject VARCHAR(40),
-	CONSTRAINT PK_subject PRIMARY KEY(UserID,Subject)
+	CONSTRAINT PK_subject PRIMARY KEY(UserID,Subject)**
 	);
 
 
@@ -224,11 +221,11 @@ ALTER TABLE Login
    ADD FOREIGN KEY(UserID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE Classroom
-   ADD FOREIGN KEY(UserID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE;
+   ADD FOREIGN KEY(UserID) REFERENCES Teacher(UserID) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE Enroll
    ADD FOREIGN KEY(UserID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE,
-   ADD FOREIGN KEY(CR_ID) REFERENCES Classroom(ClassroomID) ON UPDATE CASCADE ON DELETE CASCADE;
+   ADD FOREIGN KEY(ClassroomID) REFERENCES Classroom(ClassroomID) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE answer_student_post_relationship
    ADD FOREIGN KEY(St_UserID) REFERENCES Student(UserID) ON UPDATE CASCADE ON DELETE CASCADE,
