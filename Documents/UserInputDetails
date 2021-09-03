@@ -5,7 +5,7 @@ Last name :20 STRING
 email :50 STRING
 mobile number :10 INT
 date of birth :10 DATE AND TIME
-country :20 STRING
+country :30 STRING
 location :50 STRING
 subject :20 STRING
 marks :03 INT
