@@ -145,3 +145,63 @@ CREATE TABLE News_feed_image(
 	CONSTRAINT PK_News_feed_image KEY(NFPostID,ImagePath)
 	);
 
+CREATE TABLE Admin(
+	EmailID BIGINT,
+	Password VARCHAR(40),
+	AdminName VARCHAR(50),
+	PRIMARY KEY(EmailID)
+	);
+
+CREATE TABLE educationalpost(
+	EPostID BIGINT,
+	Date DATE,
+	Time TIME,
+	EPtype VARCHAR(40),
+	PRIMARY KEY(EPostID)
+	);
+
+CREATE TABLE educationalWork(
+	EPostID BIGINT,
+	ImagePath BIGINT,
+	Caption VARCHAR(40),
+	PRIMARY KEY(EPostID)
+	);
+
+CREATE TABLE likes(
+	St_UserID BIGINT,
+	NFPostID BIGINT,
+	CONSTRAINT PK_likes PRIMARY KEY(St_UserID,NFPostID)
+	);
+
+CREATE TABLE mcq(
+	EPostID BIGINT,
+	Caption VARCHAR(40),
+	PRIMARY KEY(EPostID)
+	);
+
+CREATE TABLE mcq_answers(
+	AnswerID BIGINT,
+	Choise VARCHAR(50),
+	QuestionID BIGINT,
+	PRIMARY KEY(AnswerID)
+	);
+
+CREATE TABLE newsfeeds(
+	EPostID BIGINT,
+	Date DATE,
+	Time TIME,
+	Caption VARCHAR(50),
+	PRIMARY KEY(EPostID)
+	);
+
+CREATE TABLE posts(
+	T_UserID BIGINT,
+	St_UserID BIGINT,
+	NFPostID BIGINT,
+	);
+
+CREATE TABLE subject(
+	UserID BIGINT,
+	Subject VARCHAR(40),
+	CONSTRAINT PK_subject PRIMARY KEY(UserID)
+	);
