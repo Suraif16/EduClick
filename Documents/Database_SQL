@@ -82,3 +82,66 @@ CREATE TABLE EDW_Answers(
     PRIMARY KEY(AnswerID)
     );
 
+CREATE TABLE Question(
+	QuestionID BIGINT,
+	Correct_answers LONGTEXT,
+	EPostID BIGINT,
+	PRIMARY KEY(QuestionID)
+	);
+
+CREATE TABLE Question_answer_value(
+	QuestionID BIGINT,
+	Answer_no INT,
+	Answer LONGTEXT,
+	CONSTRAINT PK_Question_answer_value PRIMARY KEY(QuestionID,Answer_no)
+	);
+
+
+CREATE TABLE Delete(
+	ReportID BIGINT,
+	EmailID BIGINT,
+	PRIMARY KEY(ReportID)
+	);
+
+
+CREATE TABLE Report(
+	ReportID BIGINT,
+	Count INT,
+	Report_delete_flag BOOLEAN,
+	UserID BIGINT,
+	AnswerID BIGINT,
+	NF_postID BIGINT,
+	EpostID BIGINT,
+	PRIMARY KEY(ReportID)
+	);
+
+CREATE TABLE User_marks_report(
+	UserID BIGINT,
+	ReportID BIGINT,
+	PRIMARY KEY(UserID)
+	);
+
+CREATE TABLE Qualifications(
+	UserID BIGINT,
+	Qualification_form LONGTEXT,
+	CONSTRAINT PK_Qualifications PRIMARY KEY(UserID,Qualification_form)
+	);
+
+CREATE TABLE Add_friens(
+	UserID BIGINT,
+	Friend_UserID BIGINT,
+	CONSTRAINT PK_Add_frineds KEY(UserID, Friend_UserID)
+	);
+
+CREATE TABLE Follows(
+	S_UserID BIGINT,
+	T_UserID BIGINT,
+	CONSTRAINT PK_Follows KEY(S_UserID, T_UserID)
+	);
+
+CREATE TABLE News_feed_image(
+	NFPostID BIGINT,
+	ImagePath BIGINT,
+	CONSTRAINT PK_News_feed_image KEY(NFPostID,ImagePath)
+	);
+
