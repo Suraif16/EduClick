@@ -2,3 +2,83 @@
 
 CREATE DATABASE EduClickDB;
 
+USE EduclickDB;
+
+CREATE TABLE Users(
+    UserID BIGINT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    ProfilePic BIGINT,
+    DOB DATE,
+    MobileNum INT,
+    UserType VARCHAR(20),
+    PRIMARY KEY(UserID)
+    );
+
+CREATE TABLE Student(
+    UserID BIGINT,
+    School VARCHAR(200),
+    GRADE INT,
+    PRIMARY KEY(UserID)
+    );
+
+CREATE TABLE Teacher(
+    UserID BIGINT,
+    CurrentWorkingPlace VARCHAR(300),
+    PRIMARY KEY(UserID)
+    );
+
+CREATE TABLE Class_has_EPost(
+    ClassroomID BIGINT,
+    EPostID BIGINT,
+    PRIMARY KEY(ClassroomID)
+    );
+
+CREATE TABLE Classroom(
+    ClassroomID BIGINT,
+    CR_Name VARCHAR(100),
+    CR_Code VARCHAR(30),
+    Year YEAR,
+    Grade INT,
+    Subject VARCHAR(100),
+    UserID BIGINT,
+    PRIMARY KEY(ClassroomID)
+    );
+
+CREATE TABLE Login(
+    EmailID BIGINT,
+    Password VARCHAR(50),
+    LoginTime TIME,
+    UserID BIGINT,
+    PRIMARY KEY(EmailID)
+    );
+
+CREATE TABLE Enroll(
+    UserID BIGINT,
+    CR_ID BIGINT,
+    Status VARCHAR(40),
+    CONSTRAINT PK_Enroll PRIMARY KEY(UserID,CR_ID)
+    );
+
+CREATE TABLE Answer_Student_Post_Relationship(
+    St_UserID BIGINT,
+    AnswerID BIGINT,
+    EPostID BIGINT,
+    CONSTRAINT PK_Ans_Stu_Post PRIMARY KEY(St_UserID,AnswerID,EPostID)
+    );
+
+CREATE TABLE Answer(
+    AnswerID BIGINT,
+    Date DATE,
+    Time TIME,
+    Marks INT,
+    PRIMARY KEY(AnswerID)
+    );
+
+CREATE TABLE EDW_Answers(
+    AnswerID BIGINT,
+    Content LONGTEXT,
+    ImagePath BIGINT,
+    PRIMARY KEY(AnswerID)
+    );
+
