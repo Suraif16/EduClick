@@ -6,7 +6,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-  <title>LogIn As Teacher</title>
+  <title>LogIn to EduClick</title>
 
   <link href="Resources/CSS/LoginCSS.css" type="text/css" rel="stylesheet"/>
 
@@ -26,20 +26,20 @@
                 <div class="formRow formElement"> <!--act as the container for the label and input tag as a single element tag for using flexbox -->
 
                     <label for="email">Enter Email :</label>
-                    <input id="email" type="email" placeholder="Educlick@mail.com">
+                    <input id="email" type="email" placeholder="Educlick@mail.com" name="Email">
 
                 </div>
 
                 <div class="formRow formElement"> <!--act as the container for the label and input tag as a single element tag for using flexbox -->
 
                     <label for="password">Enter Password :</label>
-                    <input id="password" type="password" placeholder="Enter Password">
+                    <input id="password" type="password" placeholder="Enter Password" name="Password">
 
                 </div>
 
                 <div class="formElementButton"> <!--act as the container for the input button tag for using flexbox -->
 
-                    <input class="button" type="submit" name="Login" value="LogIn">
+                    <input  id="loginButton" type="button" name="Login" value="LogIn">
 
                 </div>
 
@@ -81,7 +81,7 @@
         &nbsp;
     </footer>
 
-
+    <script src="Resources/JS/Login.js"></script>
 </body>
 
 </html>
