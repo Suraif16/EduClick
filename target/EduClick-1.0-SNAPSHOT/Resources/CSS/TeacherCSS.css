@@ -1,131 +1,3 @@
-/*
-
-
-input#menuPanel{
-
-    position: relative;
-    top: 5%;
-    left: 1%;
-    width: 60px;
-    height: 60px;
-    display: block;
-    float: left;
-    background: url("Icons/menu_white_24dp.svg") no-repeat center rgba(14, 52, 111,1) ;
-    background-size: contain;
-    box-shadow:   inset 1px 1px 4px white , inset -1px -1px 4px white;
-
-}
-
-img#profileIcon{
-
-    position: fixed;
-    left: 90%;
-    top: 2.5%;
-    width: 40px;
-
-}
-
-
-div#classroomsList{
-
-    position: fixed;
-    margin-left: 0.5%;
-    left: 0px;
-    top: 100px;
-    width: 17%;
-    height: 80%;
-    background-color: rgba(100, 149, 237, 0.34);
-    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
-    overflow-y: scroll;
-
-
-}
-
-div#content{
-
-    position: fixed;
-    top: 100px;
-    left: 20%;
-    height: 85%;
-    overflow-y: scroll !important;
-    width: 80%;
-    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
-
-}
-
-
-h4#classroomHeadingWithAddClassroomFunction{
-
-    box-shadow:   4px 4px 2px #a7a7a7;
-    position: relative;
-    left: 4%;
-    padding: 5px;
-    width: 85%;
-    margin-top: 5%;
-    background-color: rgba(14, 52, 111,1);
-    color: white;
-    text-align: left;
-
-}
-
-h4#classroomHeadingWithAddClassroomFunction > a{
-
-    position: relative;
-    left: 30%;
-    color: white;
-    text-decoration: none;
-
-}
-
-h4#classroomHeadingWithAddClassroomFunction > a > img{
-
-    width: 7%;
-    height: 7%;
-    float: none;
-    vertical-align: middle;
-
-}
-
-a.classRooms{
-
-    box-shadow:   4px 4px 2px #a7a7a7 , inset 2px 2px 7px white , inset -2px -2px 7px white;
-    position: relative;
-    left: 4%;
-    display: block;
-    padding: 5px;
-    width: 85%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    color: black;
-    text-decoration: none;
-    text-align: center;
-
-}
-
-img.newsFeedImage {
-
-    width: 100%;
-    height: 100%;
-    !*box-shadow: 7px 7px 15px black;*! !*have to discuss later*!
-}
-
-
-!*div#postsFromAdmin{
-
-    position: fixed;
-    margin-left: 3%;
-    left: 17%;
-    top: 100px;
-    width: 77%;
-    height: 80%;
-    background-color: rgba(100, 149, 237, 0.34);
-    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 8px 8px 2px #a7a7a7;
-    !*overflow: scroll;*!
-
-}*!
-*/
-
-
 
 
 body{
@@ -151,6 +23,7 @@ header{
 
 }
 
+
 header > a {
 
     /*child of header , to both the anchor<a> children*/
@@ -163,13 +36,46 @@ header > a {
 
 }
 
-header > h1{
+header > div#headingSearch {
 
     /*child of header*/
 
     flex: 8;
-    margin: auto;
+    display: flex;
+
+
+}
+
+header > div#headingSearch > h1{
+
     padding: 0.2%;
+    flex: 1;
+    margin: auto;
+
+}
+
+header > div#headingSearch > div#searchBar {
+
+    flex: 7;
+    margin: auto;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header > div#headingSearch > div#searchBar > input[type="text"] {
+
+    padding: 1%;
+    margin: 1% 0.5% 1% 1%;
+    flex: 2;
+
+}
+
+header > div#headingSearch > div#searchBar > input[type="button"] {
+
+    padding: 1%;
+    margin: 1% 1% 1% 0.5%;
+    flex: 1;
 
 }
 
@@ -260,8 +166,8 @@ div#content > div#classroomsList {
     width: 20%;
     display: flex; /* making this a container to options and classroomsListLinks */
     flex-direction: column;
-}
 
+}
 
 
 #options{
@@ -280,6 +186,7 @@ div#content > div#classroomsList {
 .optionButtonContainers{
 
     margin: 0 auto 2% auto;
+    display: flex;
     flex-wrap: wrap;
 
 
@@ -297,6 +204,12 @@ div#content > div#classroomsList {
     background-repeat: no-repeat;*/
     /*child of postButton*/
     flex: 5;
+
+}
+
+#classroomAddButton{
+
+    flex: 1;
 
 }
 
@@ -463,7 +376,6 @@ div#content > div#postContents {
     background-color: #4775c4;
     margin-bottom: 1.5%;
     padding: 0.5%;
-    /*width: content-box;*/
     color: whitesmoke;
 
 }
@@ -525,8 +437,8 @@ input[type="button"]{
     color: whitesmoke;
     background-color: #4775c4;
     cursor: pointer;
-    font-weight: bold;
-    /*box-shadow:  inset -1px -1px 2px gray , inset 1px 1px 2px gray !*, 10px 10px 10px #d2d2d2*!;*/
+    border: solid 1px white;
+    box-shadow:  -1px -1px 2px whitesmoke , 1px 1px 2px white ;
 
 }
 
@@ -536,11 +448,18 @@ input[type="button"]:hover{
 
 }
 
-@media(max-width: 1100px) {
+::placeholder{
+
+    padding: 1%;
+    margin: 1%;
+
+}
+
+/*@media(max-width: 1100px) {
 
     div#content > div#classroomsList {
 
-        /*child of div#classroomsList*/
+        !*child of div#classroomsList*!
 
         box-sizing: border-box;
         justify-content: space-between;
@@ -555,33 +474,33 @@ input[type="button"]:hover{
     }
     #classroomsListContainer{
 
-        display: flex; /* making this a container to options and classroomsListLinks */
+        display: flex; !* making this a container to options and classroomsListLinks *!
 
 
     }
 
     #options{
 
-        /*becomes a container for postButton and classroomAddButton*/
-        /*background-color: hotpink;*/
+        !*becomes a container for postButton and classroomAddButton*!
+        !*background-color: hotpink;*!
         flex: 1;
         display: flex;
-        /*flex-direction: column;*/
+        !*flex-direction: column;*!
         border-right: black solid 2px;
         border-bottom: none;
         margin: 0 0 2% 0;
         padding: 2%;
-        /*flex-wrap: wrap;*/
+        !*flex-wrap: wrap;*!
 
     }
 
     #classroomsListLinks{
         flex: 3;
-        /*child of classroomsList*/
-        display: flex; /*container for classroomsListLinksItems*/
-        /*flex-direction: column;*/
+        !*child of classroomsList*!
+        display: flex; !*container for classroomsListLinksItems*!
+        !*flex-direction: column;*!
         margin-top: 1%;
-        /*flex-wrap: wrap;*/
+        !*flex-wrap: wrap;*!
 
     }
 
@@ -589,7 +508,7 @@ input[type="button"]:hover{
 
     div#content > div#postContents {
 
-        /*child of div#postContents*/
+        !*child of div#postContents*!
 
         flex-basis: 100%;
         box-sizing: border-box;
@@ -597,8 +516,8 @@ input[type="button"]:hover{
         margin: 50% 0 0 auto;
         box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
         padding: 1%;
-        /*background-color: tomato;*/
-        /*making this a container for post class*/
+        !*background-color: tomato;*!
+        !*making this a container for post class*!
         display: flex;
         flex-direction: column;
 
@@ -606,5 +525,5 @@ input[type="button"]:hover{
     }
 
 
-}
+}*/
 
