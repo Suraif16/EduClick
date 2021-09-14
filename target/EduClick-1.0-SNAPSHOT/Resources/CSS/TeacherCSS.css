@@ -13,18 +13,43 @@ header{
     /*child of the body*/
 
     color: whitesmoke;
-    padding: 0.5%;
+    /*padding: 0.5%;*/
     background-color: #4775c4;
     box-shadow: 8px 8px 2px #a7a7a7;
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     display: flex; /*this is a container now*/
     position: fixed;
     width: 100%;
+    flex-direction: column;
+
+}
+
+header > div#headerMainBar {
+
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+header > div#headerButtons {
+
+    flex: 1;
+    display: none;
+
+}
+
+header > div#headerButtons > input#classroomListHideButton {
+
+
+    margin: 0.2%  auto 0.2% auto;
+    box-shadow: none;
+
 
 }
 
 
-header > a {
+header > div#headerMainBar > a#profile {
 
     /*child of header , to both the anchor<a> children*/
 
@@ -36,7 +61,17 @@ header > a {
 
 }
 
-header > div#headingSearch {
+header > div#headerMainBar > a#linkLogo {
+
+    /*child of header , to both the anchor<a> children*/
+
+    flex: 1;
+    margin: auto;
+    padding: 0.2%;
+
+}
+
+header > div#headerMainBar > div#headingSearch {
 
     /*child of header*/
 
@@ -46,7 +81,7 @@ header > div#headingSearch {
 
 }
 
-header > div#headingSearch > h1{
+header > div#headerMainBar > div#headingSearch > h1{
 
     padding: 0.2%;
     flex: 1;
@@ -54,7 +89,7 @@ header > div#headingSearch > h1{
 
 }
 
-header > div#headingSearch > div#searchBar {
+header > div#headerMainBar > div#headingSearch > div#searchBar {
 
     flex: 7;
     margin: auto;
@@ -63,7 +98,7 @@ header > div#headingSearch > div#searchBar {
     flex-wrap: wrap;
 }
 
-header > div#headingSearch > div#searchBar > input[type="text"] {
+header > div#headerMainBar > div#headingSearch > div#searchBar > input[type="text"] {
 
     padding: 1%;
     margin: 1% 0.5% 1% 1%;
@@ -71,7 +106,7 @@ header > div#headingSearch > div#searchBar > input[type="text"] {
 
 }
 
-header > div#headingSearch > div#searchBar > input[type="button"] {
+header > div#headerMainBar > div#headingSearch > div#searchBar > input[type="button"] {
 
     padding: 1%;
     margin: 1% 1% 1% 0.5%;
@@ -79,7 +114,7 @@ header > div#headingSearch > div#searchBar > input[type="button"] {
 
 }
 
-header > div#logout{
+header > div#headerMainBar > div#logout{
 
     flex: 0.5;
     margin: auto;
@@ -158,11 +193,10 @@ div#content > div#classroomsList {
 
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 0 auto 0 0;
+    margin: 8.6% auto 0 0;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     padding: 1%;
     position: fixed;
-    top: 150px;
     width: 20%;
     display: flex; /* making this a container to options and classroomsListLinks */
     flex-direction: column;
@@ -173,7 +207,6 @@ div#content > div#classroomsList {
 #options{
 
     /*becomes a container for postButton and classroomAddButton*/
-    /*background-color: hotpink;*/
     display: flex;
     flex-direction: column;
     border-bottom: black solid 2px;
@@ -291,7 +324,6 @@ div#content > div#postContents {
     margin: 8.6% 0 0 auto;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
     padding: 1%;
-    /*background-color: tomato;*/
     /*making this a container for post class*/
     display: flex;
     flex-direction: column;
@@ -304,8 +336,7 @@ div#content > div#postContents {
     /*child of postContents*/
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
     width: 50%;
-    /*height: 50%;*/
-    margin: 0 auto 2% auto;
+    margin: 1% auto 1% auto;
 
     /*becomes a container for postProfileSection , postData , and postLikeShareButtons, where all these contain under postContentContainer*/
     display: flex;
@@ -317,7 +348,6 @@ div#content > div#postContents {
 
     /*child of post*/
     margin: 1.5%;
-    /*padding: 0.5%;*/
 
 }
 
@@ -394,7 +424,6 @@ div#content > div#postContents {
 .postPictureImageContainer{
     /*child for postPicture*/
     flex: 1;
-    /*display: flex;*/
     padding: 2%;
 }
 
@@ -455,75 +484,239 @@ input[type="button"]:hover{
 
 }
 
-/*@media(max-width: 1100px) {
+@media(max-width: 1100px) {
+
+    .post{
+
+        width: 80%;
+
+    }
+
+    .logo{
+
+        min-width: 70%;
+        min-height: 70%;
+
+    }
+
+    header > div#headerMainBar {
+
+        border-bottom: solid 2px black;
+
+    }
+
+    header > div#headerButtons {
+
+        flex: 1;
+        display: flex;
+
+    }
+
+    div#content > div#postContents {
+
+        flex: 1;
+        margin: 12% 0 0 auto;
+
+    }
 
     div#content > div#classroomsList {
 
-        !*child of div#classroomsList*!
+        display: none;
+        margin: 12% auto 0 0;
+        width: 30%;
+        background-color: white;
 
-        box-sizing: border-box;
-        justify-content: space-between;
-        margin: 0 auto 0 0;
-        box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
-        padding: 1%;
-        position: fixed;
-        top: 10%;
-        width: 100%;
-        flex-direction: column;
-        background-color: #4775c4;
-    }
-    #classroomsListContainer{
 
-        display: flex; !* making this a container to options and classroomsListLinks *!
 
 
     }
 
-    #options{
+}
 
-        !*becomes a container for postButton and classroomAddButton*!
-        !*background-color: hotpink;*!
-        flex: 1;
-        display: flex;
-        !*flex-direction: column;*!
-        border-right: black solid 2px;
-        border-bottom: none;
-        margin: 0 0 2% 0;
-        padding: 2%;
-        !*flex-wrap: wrap;*!
-
-    }
-
-    #classroomsListLinks{
-        flex: 3;
-        !*child of classroomsList*!
-        display: flex; !*container for classroomsListLinksItems*!
-        !*flex-direction: column;*!
-        margin-top: 1%;
-        !*flex-wrap: wrap;*!
-
-    }
-
+@media(max-width: 750px) {
 
 
     div#content > div#postContents {
 
-        !*child of div#postContents*!
+        margin: 15% 0 0 auto;
 
-        flex-basis: 100%;
-        box-sizing: border-box;
-        justify-content: space-between;
-        margin: 50% 0 0 auto;
-        box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
-        padding: 1%;
-        !*background-color: tomato;*!
-        !*making this a container for post class*!
-        display: flex;
-        flex-direction: column;
+    }
 
+    div#content > div#classroomsList {
+
+        margin: 15% auto 0 0;
+        width: 40%;
+
+    }
+
+}
+
+@media(max-width: 550px) {
+
+    #headerHeading{
+        display: none;
+    }
+
+    .logo{
+
+        width: 70%;
+        height: 70%;
+
+    }
+
+    header > div#headerMainBar > a#linkLogo {
+
+        flex: 2;
+        padding: 0.2%;
+
+    }
+
+    div#content > div#postContents {
+
+        margin: 19% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 19% auto 0 0;
+        width: 50%;
+
+    }
+
+}
+
+@media(max-width: 440px) {
+
+
+    .logo{
+
+        width: 75%;
+        height: 75%;
 
     }
 
 
-}*/
+    div#content > div#postContents {
 
+        margin: 21% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 21% auto 0 0;
+        width: 57%;
+
+    }
+
+}
+
+@media(max-width: 420px) {
+
+   /* header > div#headerMainBar > a#profile {
+
+        !*child of header , to both the anchor<a> children*!
+
+        !*text-decoration: none;
+        color: whitesmoke;*!
+        flex: 2;
+        !*margin: auto;
+        padding: 0.2%;*!
+        padding: 0.5%;
+
+    }
+
+    header > div#headerMainBar > div#headingSearch {
+
+        !*child of header*!
+
+        flex: 8;
+        !*display: flex;*!
+
+
+    }
+
+    header > div#headerMainBar > a#linkLogo {
+
+        !*child of header , to both the anchor<a> children*!
+
+        flex: 2;
+        !*margin: auto;
+        padding: 0.2%;*!
+
+    }*/
+
+    /*header > div#headerMainBar > div#headingSearch > div#searchBar {
+
+        flex: 7;
+        margin: auto;
+        align-self: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    header > div#headerMainBar > div#headingSearch > div#searchBar > input[type="text"] {
+
+        padding: 1%;
+        margin: 1% 0.5% 1% 1%;
+        flex: 2;
+
+    }
+
+    header > div#headerMainBar > div#headingSearch > div#searchBar > input[type="button"] {
+
+        padding: 1%;
+        margin: 1% 1% 1% 0.5%;
+        flex: 1;
+
+    }*/
+
+    div#content > div#postContents {
+
+        margin: 23% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 23% auto 0 0;
+        width: 60%;
+
+    }
+
+}
+
+@media(max-width: 400px) {
+
+    div#content > div#postContents {
+
+        margin: 25% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 25% auto 0 0;
+        width: 65%;
+
+    }
+
+}
+
+@media(max-width: 340px) {
+
+    div#content > div#postContents {
+
+        margin: 27% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 27% auto 0 0;
+        width: 70%;
+
+    }
+
+}
