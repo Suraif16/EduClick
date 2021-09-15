@@ -6,7 +6,7 @@ header{
     position: fixed;
 
     width: 98.5%;
-    top: 0px;
+
     color: whitesmoke;
     padding: 0.5%;
     background-color: #4775c4;
@@ -42,7 +42,6 @@ header > h1{
 footer{
 
     padding: 0.5%;
-    height: 30px;
     flex: 1;/*child of the body*/
     order: 3;
     background-color: #4775c4;
@@ -80,8 +79,6 @@ div#contentFlex{
 }
 #registrationFormHeading{
 
-
-    margin-top: 10%;
     padding: 0.8% 0.8% 0.8% 1.5%;
     background-color: #4775c4;
     /*box-shadow: 10px 10px 10px #d2d2d2;*/
@@ -116,6 +113,11 @@ input[type = "country"]{
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
 }
+input[type = "city"]{
+
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+}
 input[type = "mobileno"]{
 
     padding: 0.3%;
@@ -126,6 +128,35 @@ input[type = "password"]{
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
 }
-.select{
-    left: 30%;
+
+.formElementButton{
+    /*border: mediumseagreen solid 2px;*/
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1%;
+    margin: 0.5%;
+    justify-content: space-between;
+    display: flex;
+}
+input{
+    /*all input values will have these properties*/
+    border-radius: 5px;
+    border: #6a6a6a solid 1px;
+
+}
+.button{
+
+    /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+    margin: auto;
+    background-color: #4775c4;
+    color: whitesmoke;
+    padding: 1%;
+
+}
+.selectelement{
+    width: 60%;
+    margin-left: 4%;
+}
+.selectclass > label{
+    margin-left: 12px;
 }

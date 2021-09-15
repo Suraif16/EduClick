@@ -6,8 +6,8 @@
     <link href="Resources/CSS/RegistrationNewCSS.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<div class="content">
-    <div class="contentFlex">
+<div id="content">
+    <div id="contentFlex">
         <h1 id="registrationFormHeading" class="formElement">Registration</h1>
 
         <form name="registrationPage" action="" method="post">
@@ -38,14 +38,20 @@
             </div>
             <div class="formRow formElement">
 
-                <label for="mobileno">Mobile Number : </label>
-                <input id="mobileno" type="mobileno">
+                <label for="city">City : </label>
+                <input id="city" type="city">
 
             </div>
             <div class="formRow formElement">
 
+                <label for="mobileno">Mobile Number : </label>
+                <input id="mobileno" type="mobileno">
+
+            </div>
+            <div class="selectclass">
+
                 <label for="gender">Gender : </label>
-                <select name="gender" id="gender">
+                <select class="selectelement" name="gender" id="gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
@@ -62,6 +68,11 @@
 
                 <label for="confirmpassword">Confirm Password : </label>
                 <input type="password" id="confirmpassword" >
+
+            </div>
+            <div class="formElementButton"> <!--act as the container for the input button tag for using flexbox -->
+
+                <input class="button" type="submit" name="submit" value="Submit">
 
             </div>
 
