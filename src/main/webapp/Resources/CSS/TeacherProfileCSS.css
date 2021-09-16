@@ -1,0 +1,85 @@
+header{
+
+    color: whitesmoke;
+    padding: 0.5%;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    flex: 1; /*child of the body*/
+    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    display: flex;
+}
+header > a {
+
+    flex: 1;
+    margin: auto;
+
+}
+
+header > h1{
+
+    flex: 9;
+    margin: auto;
+
+
+}
+.logo{
+    width: 70%;
+    height: 70%;
+
+}
+
+img#profilepic{
+    height: 100px;
+    width: 100px;
+    margin-left: 30%;
+    border-radius: 50%;
+
+    justify-content: center;
+}
+div#propicbar{
+    background-color: #4775c4;
+    display: flex;
+    flex: 1; /*child of the body*/
+    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    box-shadow: 8px 8px 2px #a7a7a7;
+
+}
+div#navbar ul{
+    padding: 0;
+    margin: 0;
+    float: left;
+    margin-left: 30px;
+}
+div#navbar ul li{
+    position: relative;
+    list-style: none;
+    display: inline-block;
+}
+div#navbar ul li a{
+    display: block;
+    padding: 0 15px;
+    color: whitesmoke;
+    text-decoration: none;
+    line-height: 60px;
+    font-size: 20px;
+}
+div#navbar ul li a:hover{
+    background: #0571ed;
+}
+@media(max-width: 1100px) {
+
+    div#content {
+
+        /*child of body*/
+
+        flex: 2;
+        order: 2;
+        margin: 1% 0;
+        display: flex; /*this becomes the container for classRoomsLists and postContents*/
+        flex-direction: column;
+    }
+    div#navbar{
+
+    }
+}
+
