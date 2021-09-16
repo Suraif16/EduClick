@@ -208,12 +208,16 @@ input[type = "email"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
+    cursor: text;
+
 }
 
 input[type = "password"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
+    cursor: text;
+
 }
 
 label{
@@ -232,7 +236,7 @@ label{
     display: flex;
 }
 
-.button{
+#loginButton{
 
     /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
     margin: auto;
@@ -248,6 +252,11 @@ input{
     border-radius: 5px;
     border: #6a6a6a solid 1px;
 
+
+}
+
+input[type = "button"]{
+    cursor: pointer;
 }
 
 a#loginFormForgotPassword {
