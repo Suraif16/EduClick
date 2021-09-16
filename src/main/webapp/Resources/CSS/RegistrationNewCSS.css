@@ -1,117 +1,11 @@
-/*
-body{
-
-    background-color: whitesmoke;
-
-}
-
-
-header{
-
-    position: fixed;
-    width: 98.5%;
-    height: 75px;
-    background-color: #4775c4;
-    box-shadow: 8px 8px 2px #a7a7a7;
-
-}
-
-#headerHeading{
-
-    text-align: center;
-    color: white;
-
-}
-
-div#Content{
-
-    position: fixed;
-    top: 25%;
-    left: 33%;
-    background-color: rgba(100, 149, 237, 0.34);
-    width: 35%;
-    height: 40%;
-    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 ,     8px 8px 2px #a7a7a7;
-
-}
-
-#loginFormHeading{
-
-    background-color: rgba(14, 52, 111,1);
-    height: 45px;
-    top: -15px;
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 10%;
-    color: white;
-    box-shadow:  0px 3px 3px #4775c4;
-
-}
-
-
-
-::placeholder{
-
-    color: black;
-    text-align: center;
-
-}
-
-input{
-
-    padding: 6px;
-    margin-bottom: 15px;
-    margin-left: 23%;
-    width: 50%;
-
-}
-
-input#email{
-
-    background-position-x: 2px;
-    background-position-y: 2px;
-    background-image: url("Icons/mail_black_24dp.svg");
-    background-repeat: no-repeat;
-
-}
-
-input#password{
-
-    background-position-x: 2px;
-    background-position-y: 2px;
-    background-image: url("Icons/password_black_24dp.svg");
-    background-repeat: no-repeat;
-
-}
-
-input.button{
-
-    background-color: rgba(14, 52, 111, 1);
-    height: 32px;
-    width: 100px;
-    color: white;
-
-}
-
-footer{
-
-    position: fixed;
-    bottom: 5px;
-    width: 98.5%;
-    height: 25px;
-    background-color: #4775c4;
-    box-shadow: 8px 8px 2px #a7a7a7;
-
-}
-
-*/
-
 body{
     display: flex; /*This the container body*/
     flex-direction: column;
 }
-
 header{
+    position: fixed;
+
+    width: 98.5%;
 
     color: whitesmoke;
     padding: 0.5%;
@@ -121,7 +15,10 @@ header{
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     display: flex;
 }
-
+body{
+    display: flex; /*This the container body*/
+    flex-direction: column;
+}
 header > a {
 
     flex: 1;
@@ -142,7 +39,6 @@ header > h1{
     height: 70%;
 
 }
-
 footer{
 
     padding: 0.5%;
@@ -152,7 +48,6 @@ footer{
     box-shadow: 8px 8px 2px #a7a7a7;
 
 }
-
 div#content{
 
     flex: 1;/*child of the body*/
@@ -161,7 +56,6 @@ div#content{
     margin: 9.6% 0; /*to position the rooter on the correct place*/
 
 }
-
 div#contentFlex{
 
     max-width: 50%;
@@ -174,8 +68,6 @@ div#contentFlex{
 
 
 }
-
-
 .formElement{
 
     /*each element in the form is considered here so there would be spaces between the elements*/
@@ -185,9 +77,7 @@ div#contentFlex{
     justify-content: space-between;
     flex-wrap: wrap;
 }
-
-
-#loginFormHeading{
+#registrationFormHeading{
 
     padding: 0.8% 0.8% 0.8% 1.5%;
     background-color: #4775c4;
@@ -203,27 +93,40 @@ div.formRow{
     display: flex;
 
 }
-
-input[type = "email"]{
+input[type = "firstname"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
-    cursor: text;
-
 }
+input[type = "lastname"]{
 
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+}
+input[type = "DOB"]{
+
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+}
+input[type = "country"]{
+
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+}
+input[type = "city"]{
+
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+}
+input[type = "mobileno"]{
+
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+}
 input[type = "password"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
-    cursor: text;
-
-}
-
-label{
-
-    padding-right: 10px;
-
 }
 
 .formElementButton{
@@ -235,8 +138,13 @@ label{
     justify-content: space-between;
     display: flex;
 }
+input{
+    /*all input values will have these properties*/
+    border-radius: 5px;
+    border: #6a6a6a solid 1px;
 
-#loginButton{
+}
+.button{
 
     /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
     margin: auto;
@@ -244,24 +152,11 @@ label{
     color: whitesmoke;
     padding: 1%;
 
-
 }
-
-input{
-    /*all input values will have these properties*/
-    border-radius: 5px;
-    border: #6a6a6a solid 1px;
-
-
+.selectelement{
+    width: 60%;
+    margin-left: 4%;
 }
-
-input[type = "button"]{
-    cursor: pointer;
-}
-
-a#loginFormForgotPassword {
-
-    margin: auto;
-    text-decoration: none;
-
+.selectclass > label{
+    margin-left: 12px;
 }

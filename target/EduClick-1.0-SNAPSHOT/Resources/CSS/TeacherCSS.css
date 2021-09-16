@@ -551,17 +551,17 @@ input[type="button"]:active{
 
 }
 
-div#content > div#rightPanel {
+/*div#content > div#rightPanel {
 
-    /*child of div#classroomsList*/
+    !*child of div#classroomsList*!
 
-    /*box-sizing: border-box;
+    !*box-sizing: border-box;
     justify-content: space-between;
     margin: 8.6% auto 0 0;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     position: fixed;
     display: flex; !* making this a container to options and classroomsListLinks *!
-    flex-direction: column;*/
+    flex-direction: column;*!
 
 
     margin: 8.6% auto auto 73%;
@@ -572,7 +572,7 @@ div#content > div#rightPanel {
 
 
 
-}
+}*/
 
 div#content > div#notifications {
 
