@@ -1,3 +1,22 @@
+let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
+const rightPanel = document.getElementById("rightPanel");
+
+function showRightPanel(){
+
+    if(rightPanelStatus){
+
+        rightPanel.style.display = "none";
+        rightPanelStatus = false;
+
+    }else{
+
+        rightPanel.style.display = "flex";
+        rightPanelStatus = true;
+
+    }
+
+}
+
 
 function enableDisableStatus( id ){
 
