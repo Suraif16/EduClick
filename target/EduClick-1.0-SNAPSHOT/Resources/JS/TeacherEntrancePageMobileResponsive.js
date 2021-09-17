@@ -1,8 +1,11 @@
 let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 let notificationStatus = false; /*if it is false the notification is hidden*/
+let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
+
 const classroomListObjection = document.getElementById( "classroomsList" );
 const search = document.getElementById( "searchBarText" );
 const notifications = document.getElementById("notifications");
+const rightPanel = document.getElementById("rightPanel");
 
 search.addEventListener( "keyup" , function ( event ){
 
@@ -25,6 +28,22 @@ function showClassroomList(){
 
         classroomListObjection.style.display = "flex";
         classroomListStatus = true;
+
+    }
+
+}
+
+function showRightPanel(){
+
+    if(rightPanelStatus){
+
+        rightPanel.style.display = "none";
+        rightPanelStatus = false;
+
+    }else{
+
+        rightPanel.style.display = "flex";
+        rightPanelStatus = true;
 
     }
 

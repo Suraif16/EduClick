@@ -39,11 +39,23 @@ header > div#headerButtons {
 
 }
 
+header > div#headerButtons > input {
+
+    flex-basis: 15%;
+    margin: 0.2%  auto;
+    box-shadow: none;
+
+}
+
 header > div#headerButtons > input#classroomListHideButton {
 
+    margin-right: 0.5%;
 
-    margin: 0.2%  auto 0.2% auto;
-    box-shadow: none;
+}
+
+header > div#headerButtons > input#rightPanelHideButton {
+
+    margin-left: 0.5%;
 
 
 }
@@ -778,6 +790,7 @@ input.requestDecline{
 
 @media(max-width: 1100px) {
 
+
     div#content > div#notifications {
 
         margin: 5% auto auto 70%;
@@ -830,6 +843,16 @@ input.requestDecline{
 
     }
 
+    div#content > div#rightPanel {
+
+        margin: 12% auto auto 66%;
+        width: 30%;
+        display: none;
+        max-height: 75%;
+        background-color: white;
+
+    }
+
 }
 
 @media(max-width: 750px) {
@@ -852,6 +875,15 @@ input.requestDecline{
 
         margin: 15% auto 0 0;
         width: 40%;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 15% auto auto 55%;
+        max-height: 75%;
+        width: 40%;
+
 
     }
 
@@ -901,6 +933,13 @@ input.requestDecline{
     div#content > div#classroomsList {
 
         margin: 19% auto 0 0;
+        width: 50%;
+
+    }
+    div#content > div#rightPanel {
+
+        margin: 19% auto auto 45%;
+        max-height: 75%;
         width: 50%;
 
     }
@@ -956,6 +995,13 @@ input.requestDecline{
 
     }
 
+    div#content > div#rightPanel {
+
+        margin: 21% auto auto 35%;
+        width: 57%;
+
+    }
+
 }
 
 @media(max-width: 420px) {
@@ -976,6 +1022,13 @@ input.requestDecline{
     div#content > div#classroomsList {
 
         margin: 23% auto 0 0;
+        width: 60%;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 23% auto auto 32%;
         width: 60%;
 
     }
@@ -1005,6 +1058,29 @@ input.requestDecline{
 
     }
 
+    div#content > div#rightPanel {
+
+        margin: 25% auto auto 28%;
+        width: 65%;
+
+    }
+
+}
+
+@media(max-width: 385px){
+
+    div#content > div#classroomsList {
+
+        margin: 30% auto 0 0;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 30% auto auto 28%;
+
+    }
+
 }
 
 @media(max-width: 340px) {
@@ -1028,6 +1104,8 @@ input.requestDecline{
         width: 70%;
 
     }
+
+
 
 
 

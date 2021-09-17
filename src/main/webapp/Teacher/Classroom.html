@@ -506,52 +506,13 @@
 
             <div>
 
-                <input type="text" value="Search">
+                <input type="text" placeholder="Search">
 
             </div>
 
         </div>
 
         <div id="rightPanelStudentList">
-
-            <div class="rightPanelSingleStudent" >
-
-                <div>
-
-                    <a href="#" class="profile">
-
-                        <div class="profileImage classroomStudentProfilePicture">
-
-                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
-
-
-                        </div>
-
-                        <div class="classroomStudentProfileName">Student Name</div>
-
-                    </a>
-
-                    <div class="lastSeen">
-
-                        <img style="background-color:red;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
-                        Last Seen 3 days ago
-
-                    </div>
-
-                </div>
-
-
-
-                <div>
-
-                    <input style="display:none;" id="enable1" type="button" value="Enable" onclick="enableDisableStatus(1)">
-
-                    <input style="display:block;" id="disable1" type="button" value="Disable" class="studentDisable" onclick="enableDisableStatus(1)">
-
-
-                </div>
-
-            </div>
 
 
             <div class="rightPanelSingleStudent" >
@@ -663,6 +624,45 @@
                     <input style="display:block;" id="enable4" type="button" value="Enable" onclick="enableDisableStatus(4)">
 
                     <input style="display:none;" id="disable4" type="button" value="Disable" class="studentDisable" onclick="enableDisableStatus(4)">
+
+                </div>
+
+            </div>
+
+            <div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:red;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Last Seen 30 days ago
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:none;" id="enable1" type="button" value="Enable" onclick="enableDisableStatus(1)">
+
+                    <input style="display:block;" id="disable1" type="button" value="Disable" class="studentDisable" onclick="enableDisableStatus(1)">
+
 
                 </div>
 
@@ -1198,6 +1198,8 @@
     <div id="headerButtons">
 
         <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+
+        <input id="rightPanelHideButton" type="button" value="Students Enrolled" onclick="showRightPanel()">
 
     </div>
 
