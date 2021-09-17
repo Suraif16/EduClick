@@ -42,6 +42,22 @@ function enableDisableStatus( id ){
 
     }
 
+}
+
+function showAnswers( id ){
+
+    let answerId = "answersInPost" + id;
+    let answerContainer = document.getElementById( answerId );
+
+    if (answerContainer.style.display === "none"){
+
+        answerContainer.style.display = "flex";
+
+    }else{
+
+        answerContainer.style.display = "none";
+
+    }
 
 
 }
