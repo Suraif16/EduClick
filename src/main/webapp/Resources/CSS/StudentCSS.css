@@ -39,23 +39,11 @@ header > div#headerButtons {
 
 }
 
-header > div#headerButtons > input {
-
-    flex-basis: 15%;
-    margin: 0.2%  auto;
-    box-shadow: none;
-
-}
-
 header > div#headerButtons > input#classroomListHideButton {
 
-    margin-right: 0.5%;
 
-}
-
-header > div#headerButtons > input#rightPanelHideButton {
-
-    margin-left: 0.5%;
+    margin: 0.2%  auto 0.2% auto;
+    box-shadow: none;
 
 
 }
@@ -228,7 +216,7 @@ div#content > div#classroomsList {
 
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 8.6% auto 0 0;
+    margin: 8.6% auto 0 8%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     padding: 1%;
     position: fixed;
@@ -238,8 +226,13 @@ div#content > div#classroomsList {
     max-height: 75%;
     overflow-y: auto;
 
-
 }
+
+/*#classroomsListContainer{
+
+    !*display: flex;*!
+    flex: 1;
+}*/
 
 
 #options{
@@ -256,20 +249,27 @@ div#content > div#classroomsList {
 
 .optionButtonContainers{
 
-    /*margin: 0 auto 2% auto;*/
+    margin: 0 auto 2% auto;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+
 
 }
 
-optionButtonContainers > input{
+#postButtonInput{
 
-    flex: 1;
+    color: whitesmoke;
+    background-color: #4775c4;
+    width: 170px;
+    height: 25px;
+    /*background-position-x: 5px;
+    background-position-y: 5px;
+    background-image: url("Icons/account_circle_black_24dp.svg");
+    background-repeat: no-repeat;*/
+    /*child of postButton*/
+    flex: 5;
 
 }
-
-
 
 #classroomAddButton{
 
@@ -277,7 +277,14 @@ optionButtonContainers > input{
 
 }
 
+#classroomAddButtonInput{
 
+    color: whitesmoke;
+    background-color: #4775c4;
+    width: 200px;
+    height: 25px;
+
+}
 
 input{
     /*all input values will have these properties*/
@@ -285,6 +292,30 @@ input{
     border: #6a6a6a solid 1px;
 
 }
+
+#postButton{
+
+    /*this becomes the container for profileIconPost and postButtonInput*/
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+#profileIconPost{
+
+    /*child of postButton*/
+    flex: 1;
+
+}
+
+a#profileIconPost > img{
+    width: 25px; /*In the class room container*/
+    height: 25px;
+    border-radius: 12.5px;
+    padding-right: 5px;
+}
+
+
 
 #classroomsListLinks{
     /*child of classroomsList*/
@@ -326,10 +357,10 @@ div#content > div#postContents {
 
     /*child of div#postContents*/
 
-    flex-basis: 80%;
+    flex-basis: 50%;
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 8.6% 0 0 22%;
+    margin: 8.6% 0 0 30%;
     box-shadow:  inset 1px 0 0 #4775c4 , inset -1px 0 0 #4775c4;
     padding: 1%;
     /*making this a container for post class*/
@@ -346,7 +377,7 @@ div#content > div#postContents {
     width: 75%;
     margin: 1% auto 1% auto;
 
-    /*becomes a container for postProfileSection , postData , and postAnswerButton, where all these contain under postContentContainer*/
+    /*becomes a container for postProfileSection , postData , and postLikeShareButtons, where all these contain under postContentContainer*/
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -443,7 +474,8 @@ div#content > div#postContents {
 }
 
 
-.postAnswerButton{
+
+.postLikeShareButtons{
 
     background-color: #4775c4;
     padding: 1%;
@@ -452,103 +484,42 @@ div#content > div#postContents {
     display: flex;
 
 
+
 }
 
-.answerButton{
+.likeShareButtons{
 
-    /*child of postAnswerButton*/
+    /*child of postLikeShareButtons*/
     flex: 1;
-    margin: auto;
+
+}
+.countOfLikeShare{
+
+    /*child of postLikeShareButtons*/
+    flex: 8;
     display: flex;
 
 
 }
 
-.answerShowButton{
+.likeCount{
 
-    margin: auto;
-
-}
-
-div.answersInPost{
-    /*becomes a container for singleAnswer*/
-    display: flex;
-    flex-direction: column;
-    border: solid 1px #4775c4;
-    padding: 1%;
-    max-height: 250px;
-    overflow-y: auto;
-
-
-
-}
-
-div.singleAnswer{
-    /*child of answersInPost*/
     flex: 1;
-    margin: 1% 0;
-    padding: 1%;
     color: white;
-    display: flex; /* Container of textAnswers , pictureAnswers , marksForAnswers*/
-    flex-direction: column;
-
-
 }
 
-div.textAnswers{
-    /*child of singleAnswer*/
+.shareCount{
+
     flex: 1;
-    background-color: #4775c4;
-    margin-bottom: 1%;
-    padding: 1%;
+    color: white;
 
 }
 
-div.pictureAnswers{
-    /*child of singleAnswer*/
-    flex: 1;
-    margin-bottom: 1%;
-    display: flex;
-    flex-direction: column;
+.emptySpaceLikeShare{
 
-}
-
-div.pictureAnswers > a > img{
-
-    width: 50%;
-    box-shadow:  inset -1px -1px  #4775c4 , inset 1px 1px  #4775c4 ;
-
-    padding: 1%;
-
-
-}
-
-div.marksForAnswers{
-
-    /*child of singleAnswer*/
-    flex: 1;
-    background-color: #4775c4;
-    padding: 1.5%;
-    display: flex;/*becomes a container for marksForAnswersRange and marksForAnswersRangeValue */
-
-}
-
-.marksForAnswersRange{
-    /*child of marksForAnswers*/
     flex: 2;
 
 }
-
-.marksForAnswersRangeValue{
-    /*child of marksForAnswers*/
-
-    flex: 1;
-    box-shadow:  inset -1px -1px  white , inset 1px 1px  white ;
-    text-align: center;
-
-}
-
-
 
 input[type="button"]{
     padding: 5px;
@@ -579,9 +550,17 @@ input[type="button"]:active{
 
 }
 
-/*right panel begins here*/
+/*div#content > div#rightPanel {
 
-div#content > div#rightPanel {
+    !*child of div#classroomsList*!
+
+    !*box-sizing: border-box;
+    justify-content: space-between;
+    margin: 8.6% auto 0 0;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: fixed;
+    display: flex; !* making this a container to options and classroomsListLinks *!
+    flex-direction: column;*!
 
 
     margin: 8.6% auto auto 73%;
@@ -589,139 +568,23 @@ div#content > div#rightPanel {
     position: fixed;
     width: 24%;
     padding: 1%;
-    display: flex;  /*making this a container to rightPanelTopic and rightPanelStudentList*/
-    flex-direction: column;
-    max-height: 76%;
-
-
-}
-
-div#content > div#rightPanel > div#rightPanelTopic {
-    /*child of rightpanel*/
-    background-color: #4775c4;
-    flex: 1;
-    padding: 1%;
-    box-shadow: 8px 8px 2px #a7a7a7;
-    color: white;
-    margin-bottom: 3%;
-    display: flex; /*becomes a container to two div class*/
-    flex-direction: column;
-}
-
-div#content > div#rightPanel > div#rightPanelTopic > div {
-    /*child of rightPanelTopic*/
-    flex: 1;
-    margin: 1% 3%;
-}
-
-div#content > div#rightPanel > div#rightPanelStudentList {
-    /*child of rightpanel*/
-    flex: 1;
-    padding: 1%;
-    display: flex; /*becomes a container for all rightPanelSignleStudent*/
-    flex-direction: column;
-    box-sizing: border-box;
-    justify-content: space-between;
-    overflow-y: auto; /*to make overflow work in flex there should be a maximum height to the container*/
-}
 
 
 
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent{
-    /*child of rightPanelStudnetList*/
-    flex-basis: 15%;
-    margin: 1% auto;
-    display: flex;/*becone a contanier for all div class in it*/
-    flex-direction: column;
-    width: 100%;
-    background-color: #4775c4;
-
-
-
-}
-
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div{
-    /* child of rightPanelSingleStudent*/
-    padding: 1%;
-    margin: 0 1%;
-    display: flex;
-    color: white;
-
-}
-
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div >  div.lastSeen{
-    /*child of */
-    padding: 0 1%;
-    margin: auto 1%;
-    display: flex;
-    color: white;
-
-}
-
-.onlineStatus{
-
-    border-radius: 50%;
-    width: 10%;
-    height: 10%;
-    align-self: center;
-    margin: auto 2%;
-
-}
-
-
-
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > input{
-
-    flex: 1;
-    margin: 1%;
-    text-align: center;
-
-}
-
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a {
-
-    flex: 1;
-
-}
-
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > div {
-
-    flex: 1;
-    display: flex;
-
-}
-
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div{
-
-    margin: 1%;
-
-}
-
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div.classroomStudentProfilePicture{
-
-    flex: 1;
-
-}
-
-div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div.classroomStudentProfileName{
-
-    flex: 5;
-    margin: auto;
-
-}
-
-input.studentDisable{
-
-    background-color: #403434;
-
-}
-
-
-
-/*right panel ends here*/
-
+}*/
 
 div#content > div#notifications {
+
+    /*child of div#classroomsList*/
+
+    /*box-sizing: border-box;
+    justify-content: space-between;
+    margin: 8.6% auto 0 0;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: fixed;
+    display: flex; !* making this a container to options and classroomsListLinks *!
+    flex-direction: column;*/
+
 
     margin: 5% auto auto 77%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
@@ -806,7 +669,6 @@ input.requestDecline{
 
 @media(max-width: 1100px) {
 
-
     div#content > div#notifications {
 
         margin: 5% auto auto 70%;
@@ -859,16 +721,6 @@ input.requestDecline{
 
     }
 
-    div#content > div#rightPanel {
-
-        margin: 12% auto auto 66%;
-        width: 30%;
-        display: none;
-        max-height: 75%;
-        background-color: white;
-
-    }
-
 }
 
 @media(max-width: 750px) {
@@ -891,15 +743,6 @@ input.requestDecline{
 
         margin: 15% auto 0 0;
         width: 40%;
-
-    }
-
-    div#content > div#rightPanel {
-
-        margin: 15% auto auto 55%;
-        max-height: 75%;
-        width: 40%;
-
 
     }
 
@@ -949,13 +792,6 @@ input.requestDecline{
     div#content > div#classroomsList {
 
         margin: 19% auto 0 0;
-        width: 50%;
-
-    }
-    div#content > div#rightPanel {
-
-        margin: 19% auto auto 45%;
-        max-height: 75%;
         width: 50%;
 
     }
@@ -1011,13 +847,6 @@ input.requestDecline{
 
     }
 
-    div#content > div#rightPanel {
-
-        margin: 21% auto auto 35%;
-        width: 57%;
-
-    }
-
 }
 
 @media(max-width: 420px) {
@@ -1038,13 +867,6 @@ input.requestDecline{
     div#content > div#classroomsList {
 
         margin: 23% auto 0 0;
-        width: 60%;
-
-    }
-
-    div#content > div#rightPanel {
-
-        margin: 23% auto auto 32%;
         width: 60%;
 
     }
@@ -1074,29 +896,6 @@ input.requestDecline{
 
     }
 
-    div#content > div#rightPanel {
-
-        margin: 25% auto auto 28%;
-        width: 65%;
-
-    }
-
-}
-
-@media(max-width: 385px){
-
-    div#content > div#classroomsList {
-
-        margin: 30% auto 0 0;
-
-    }
-
-    div#content > div#rightPanel {
-
-        margin: 30% auto auto 28%;
-
-    }
-
 }
 
 @media(max-width: 340px) {
@@ -1123,100 +922,4 @@ input.requestDecline{
 
 
 
-
-
 }
-
-/*input range*/
-
-
-input[type=range] {
-    -webkit-appearance: none;
-    margin: auto 1%;
-    width: 100%;
-    height: 0;
-}
-input[type=range]:focus {
-    outline: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 5px;
-    cursor: pointer;
-    /*animate: 0.2s;*/
-    box-shadow: 0px 0px 0px #000000;
-    background: #2497E3;
-    border-radius: 1px;
-    border: 0px solid #000000;
-}
-input[type=range]::-webkit-slider-thumb {
-    box-shadow: 0px 0px 0px #000000;
-    border: 1px solid #2497E3;
-    height: 18px;
-    width: 18px;
-    border-radius: 25px;
-    background: #A1D0FF;
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -7px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #2497E3;
-}
-/*
-input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 5px;
-    cursor: pointer;
-    animate: 0.2s;
-    box-shadow: 0px 0px 0px #000000;
-    background: #2497E3;
-    border-radius: 1px;
-    border: 0px solid #000000;
-}
-input[type=range]::-moz-range-thumb {
-    box-shadow: 0px 0px 0px #000000;
-    border: 1px solid #2497E3;
-    height: 18px;
-    width: 18px;
-    border-radius: 25px;
-    background: #A1D0FF;
-    cursor: pointer;
-}
-input[type=range]::-ms-track {
-    width: 100%;
-    height: 5px;
-    cursor: pointer;
-    animate: 0.2s;
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-    background: #2497E3;
-    border: 0px solid #000000;
-    border-radius: 2px;
-    box-shadow: 0px 0px 0px #000000;
-}
-input[type=range]::-ms-fill-upper {
-    background: #2497E3;
-    border: 0px solid #000000;
-    border-radius: 2px;
-    box-shadow: 0px 0px 0px #000000;
-}
-input[type=range]::-ms-thumb {
-    margin-top: 1px;
-    box-shadow: 0px 0px 0px #000000;
-    border: 1px solid #2497E3;
-    height: 18px;
-    width: 18px;
-    border-radius: 25px;
-    background: #A1D0FF;
-    cursor: pointer;
-}
-input[type=range]:focus::-ms-fill-lower {
-    background: #2497E3;
-}
-input[type=range]:focus::-ms-fill-upper {
-    background: #2497E3;
-}*/

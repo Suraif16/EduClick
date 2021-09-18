@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <title>classroom for students</title>
+    <title>stu-Classroom</title>
 
     <link rel="stylesheet" href="../Resources/CSS/Student-classroomCSS.css" type="text/css">
 
@@ -18,58 +18,60 @@
 
     <div id="classroomsList" >
 
-        <div id="options">
+        <div id="classroomsListContainer">
 
-            <div id="postButton" class="optionButtonContainers">
+            <div id="options">
 
-                <a id="profileIconPost" href=""> <!--In the class room container-->
+                <div class="optionButtonContainers">
 
-                    <img  src="../Resources/Icons/account_circle_black_24dp.svg">
+                    <input type="button" value="+add classrooms">
+<!--                    <input type="button" value="Post Question">-->
 
-                </a>
-
-                <input type="button" value="what's on your mind?" id="postButtonInput">
-
-            </div>
-
-            <div id="classroomAddButton" class="optionButtonContainers">
-
-                <input id="classroomAddButtonInput" type="button" value=" + add Classroom">
+                </div>
 
             </div>
 
+            <div id="classroomsListLinks">
 
-        </div>
+                <div class="classroomsListLinksItems">
 
-        <div id="classroomsListLinks">
+                    <a href=""  class="classRooms">
 
-            <div class="classroomsListLinksItems">
+                        classroom 1
+                    </a>
 
-                <a href=""  class="classRooms">
+                </div>
 
-                    classroom1
+                <div class="classroomsListLinksItems">
 
-                </a>
+                    <a href=""  class="classRooms">
 
-            </div>
+                        classroom 2
 
-            <div class="classroomsListLinksItems"> <!--this where the classroom link begins-->
+                    </a>
 
-                <a href=""  class="classRooms">
+                </div>
 
-                    classroom2
+                <div class="classroomsListLinksItems">
 
-                </a>
+                    <a href=""  class="classRooms">
 
-            </div>
+                        classroom 3
 
-            <div class="classroomsListLinksItems">
+                    </a>
 
-                <a href=""  class="classRooms">
+                </div>
 
-                    classroom2
+                <div class="classroomsListLinksItems">
 
-                </a>
+                    <a href=""  class="classRooms">
+
+                        classroom 4
+
+                    </a>
+
+                </div>
+
 
             </div>
 
@@ -111,14 +113,9 @@
 
                 <div class="postData">
 
-
                     <div class="postMessage">
 
-                        <!--<div>-->
-
-                        Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
-
-                        <!--</div>-->
+                        To answer these questions refer tutorial 9
 
                     </div>
 
@@ -139,19 +136,87 @@
 
             <div class="postContentContainer">
 
-                <div class="postLikeShareButtons">
+                <div class="postAnswerButton">
 
-                    <input id="comment" type="text" placeholder="   comments...">
+                    <div class="answerButton" >
 
-                    <div class="emptySpaceLikeShare" >
-                        &nbsp;
-                    </div>
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(1)">
 
-                    <div class="likeShareButtons" >
-
-                        <input type="button" value="Marks" class="share">
+                        <input type="button" value="Marks" class="answerShowButton" onclick="showAnswers(1)">
 
                     </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost1" >
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/images.jfif">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer1.value = this.value" class="marksForAnswersRange">
+                            <output id="answer1" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer2.value = this.value" class="marksForAnswersRange">
+                            <output id="answer2" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
@@ -188,13 +253,296 @@
 
                 <div class="postData">
 
+                    <div class="postMessage">
 
+
+                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <!--To only present the message without the picture, comment the part below-->
+
+                        <!--<div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="Icons/seminar-text.jpg">
+
+
+                        </div>-->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(2)">
+
+                        <input type="button" value="Marks" class="answerShowButton" onclick="showAnswers(2)">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost2" >
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer3.value = this.value" class="marksForAnswersRange">
+                            <output id="answer3" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer4.value = this.value" class="marksForAnswersRange">
+                            <output id="answer4" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        To answer these questions refer tutorial 9
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <div class="postPictureImageContainer">
+                            <!--To only present the message without the picture, keep this value as null / empty-->
+                            <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(3)">
+
+                        <input type="button" value="Marks" class="answerShowButton" onclick="showAnswers(3)">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost3" >
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer5.value = this.value" class="marksForAnswersRange">
+                            <output id="answer5" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <!-- To add only picture answers comment this-->
+                        <!--<div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>-->
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer6.value = this.value" class="marksForAnswersRange">
+                            <output id="answer6" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--a another post-->
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
 
                     <div class="postMessage">
 
                         <!--<div>-->
 
-                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
 
                         <!--</div>-->
 
@@ -218,25 +566,88 @@
 
             <div class="postContentContainer">
 
-                <div class="postLikeShareButtons">
+                <div class="postAnswerButton">
 
-                    <input id="comment" type="text" placeholder="   comments...">
+                    <div class="answerButton" >
 
-<!--                    <div class="likeShareButtons" >-->
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(4)">
 
-<!--                        <input type="button" value="Like" class="like">-->
+                        <input type="button" value="Marks" class="answerShowButton" onclick="showAnswers(4)">
 
-<!--                    </div>-->
-
-                    <div class="emptySpaceLikeShare" >
-                        &nbsp;
                     </div>
 
-<!--                    <div class="likeShareButtons" >-->
+                </div>
 
-<!--                        <input type="button" value="Marks" class="share">-->
+            </div>
 
-<!--                    </div>-->
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost4" >
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer7.value = this.value" class="marksForAnswersRange">
+                            <output id="answer7" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <!-- To add a only text answers comment this-->
+<!--                        &lt;!&ndash;<div class="pictureAnswers">-->
+
+<!--                            <a href="#">-->
+
+<!--                                <img src="../Resources/Images/answers2.jpg">-->
+
+<!--                            </a>-->
+
+<!--                        </div>&ndash;&gt;-->
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer8.value = this.value" class="marksForAnswersRange">
+                            <output id="answer8" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
@@ -244,46 +655,186 @@
 
         </div>
 
-    </div>
+        <!--        Just a message-->
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
 
 
-</div>
+                        <div class="postProfileImage">
 
-</div>
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        <!--<div>-->
+
+                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                        <!--</div>-->
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <!--To only present the message without the picture, comment the part below-->
+
+                        <!--<div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="Icons/seminar-text.jpg">
 
 
-<header>
+                        </div>-->
 
-    <a href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+                    </div>
 
-        <img src="../Resources/Icons/Logo.png" class="logo">
+                </div>
 
-    </a>
+            </div>
 
-
-    <h1 id="headerHeading">EduClick</h1>
-
-    <a href="#" id="profile">
-
-        <div>User Name</div>
-        <div id="profileImage">
-
-            <img id="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
 
         </div>
 
-    </a>
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        <!--<div>-->
+
+                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                        <!--</div>-->
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <!--                        To only present the message without the picture, comment the part below-->
+
+                        <div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+<header >
+
+    <div id="headerMainBar">
+
+        <a id="linkLogo" href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+
+            <img src="../Resources/Icons/Logo.png" class="logo">
+
+        </a>
+
+
+        <div id="headingSearch">
+
+
+            <div id="searchBar">
+
+
+                <input id="searchBarText" type="text" placeholder="Search">
+
+
+
+            </div>
+
+        </div>
+
+        <a href="#" class="profile">
+
+            <div>User Name</div>
+
+            <div class="profileImage">
+
+                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+            </div>
+
+        </a>
+
+        <div id="headerNotification" >
+
+            <input type="button" value="    "  id="notificationSettings">
+
+
+        </div>
+
+        <div id="logout">
+
+            <a href="#">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
 
 
 </header>
 
 
+<script src="../Resources/JS/StudentEntrancePageMobileResponsive.js"></script>
+<script src="../Resources/JS/ClassroomJS.js"></script>
 
-<!--<footer>
-    &nbsp;
-</footer>-->
-
-<script src="JS/ClassroomJS.js"></script>
 
 </body>
 
