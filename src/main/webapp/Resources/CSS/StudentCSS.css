@@ -357,7 +357,7 @@ div#content > div#postContents {
 
     /*child of div#postContents*/
 
-    flex-basis: 50%;
+    flex-basis: 60%;
     box-sizing: border-box;
     justify-content: space-between;
     margin: 8.6% 0 0 30%;
