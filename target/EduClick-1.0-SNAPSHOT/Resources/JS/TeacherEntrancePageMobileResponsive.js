@@ -1,5 +1,6 @@
 let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 let notificationStatus = false; /*if it is false the notification is hidden*/
+
 const classroomListObjection = document.getElementById( "classroomsList" );
 const search = document.getElementById( "searchBarText" );
 const notifications = document.getElementById("notifications");
@@ -29,6 +30,7 @@ function showClassroomList(){
     }
 
 }
+
 
 function showNotification(){
 
