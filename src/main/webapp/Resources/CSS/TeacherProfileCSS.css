@@ -44,7 +44,7 @@ div#propicbar{
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     box-shadow: 8px 8px 2px #a7a7a7;
     margin-top: 0;
-    
+
 
 }
 div#navbar ul{
