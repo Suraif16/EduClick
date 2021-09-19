@@ -31,7 +31,7 @@ header > h1{
 img#profilepic{
     height: 100px;
     width: 100px;
-    margin-left: 35%;
+    margin-left: 33%;
     border-radius: 50%;
 
     justify-content: center;
@@ -98,20 +98,19 @@ div#content{
 
 /* styles of posts */
 
-div#content > div#postContents {
+ div#postContents {
 
     /*child of div#postContents*/
 
     flex-basis: 50%;
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 8.6% 0 0 30%;
+    margin: 5.6% 25% 0 25%;
     box-shadow:  inset 1px 0 0 #4775c4 , inset -1px 0 0 #4775c4;
     padding: 1%;
     /*making this a container for post class*/
     display: flex;
     flex-direction: column;
-
 
 }
 
@@ -163,6 +162,7 @@ div#content > div#postContents {
     /* child of postProfile*/
     margin: auto auto auto 3px;
     flex-basis: 90%;
+    color: whitesmoke;
 
 
 }
@@ -332,7 +332,7 @@ input[type="button"]:active{
 
 
 
-    div#content > div#postContents {
+    div#postContents {
 
         flex: 1;
         margin: 12% 0 0 auto;
@@ -394,7 +394,7 @@ input[type="button"]:active{
 
     }
 
-    div#content > div#postContents {
+     div#postContents {
 
         flex: 1;
         margin: 12% 0 0 auto;
@@ -409,7 +409,7 @@ input[type="button"]:active{
 
 
 
-    div#content > div#postContents {
+    div#postContents {
 
         margin: 15% 0 0 auto;
 
@@ -425,7 +425,7 @@ input[type="button"]:active{
 
 
 
-    div#content > div#postContents {
+    div#postContents {
 
         margin: 19% 0 0 auto;
 
@@ -442,7 +442,7 @@ input[type="button"]:active{
 
 
 
-    div#content > div#postContents {
+    div#postContents {
 
         margin: 21% 0 0 auto;
 
@@ -456,7 +456,7 @@ input[type="button"]:active{
 
 
 
-    div#content > div#postContents {
+    div#postContents {
 
         margin: 23% 0 0 auto;
 
@@ -471,7 +471,7 @@ input[type="button"]:active{
 
 
 
-    div#content > div#postContents {
+    div#postContents {
 
         margin: 25% 0 0 auto;
 
@@ -485,14 +485,11 @@ input[type="button"]:active{
 
 
 
-    div#content > div#postContents {
+    div#postContents {
 
         margin: 30% 0 0 auto;
 
     }
-
-
-
 
 
 }
