@@ -62,3 +62,21 @@ function showAnswers( id ){
 
 }
 
+function showMcqResult( id ){
+
+    let mcqResultsInPostId = "mcqResultsInPost" + id;
+    let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
+
+    if (mcqResultsInPost.style.display === "none"){
+
+        mcqResultsInPost.style.display = "flex";
+
+    }else{
+
+        mcqResultsInPost.style.display = "none";
+
+    }
+
+
+}
+
