@@ -326,7 +326,7 @@ div#content > div#postContents {
 
     /*child of div#postContents*/
 
-    flex-basis: 70%;
+    flex-basis: 75%;
     box-sizing: border-box;
     justify-content: space-between;
     margin: 8.6% 0 0 22%;
@@ -504,6 +504,15 @@ div.textAnswers{
 
 }
 
+div.Marks{
+    /*child of singleAnswer*/
+    flex: 1;
+    background-color: #4775c4;
+    margin-bottom: 1%;
+    padding: 1%;
+
+}
+
 div.pictureAnswers{
     /*child of singleAnswer*/
     flex: 1;
@@ -596,12 +605,34 @@ div.mcqAnswerContainer{
 div.mcqSingleAnswer{
     /*child of mcqAnswerContainer*/
     background-color: #4775c4;
-    margin: 1%;
-    padding: 4%;
-    
+    margin: 0.5%;
+    padding: 3%;
 
 
 }
+input#comment{
+    border-radius: 10px;
+    margin-left: 5cm;
+    width:10cm;
+    height: 0.5cm;
+
+}
+
+
+div.mcqSingleAnswer:before{
+    content: "";
+    border-radius:8px;
+    cursor: pointer;
+}
+
+
+
+input[type="radio"]{
+    width:18px;
+    height:18px;
+
+}
+
 
 div.correctMcqSingleAnswer{
     /*additional class to distinquish  correct answers*/
