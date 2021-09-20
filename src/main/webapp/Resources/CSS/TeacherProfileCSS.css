@@ -1,12 +1,162 @@
+div#profileInfo {
+
+    /*child of div#classroomsList*/
+
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 4.6% 0% 0% 2.2%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    padding: 1%;
+    position: absolute;
+    width: 20%;
+    display: flex; /* making this a container to options and classroomsListLinks */
+    flex-direction: column;
+    max-height: 75%;
+    overflow-y: auto;
+
+
+}
+p{
+    font-weight: bold;
+    font-size: 20px;
+}
+div#buttonContainer{
+    flex: 1;
+    display: flex;
+}
+div#buttonContainer button{
+    background-color: #4775c4;
+    color: whitesmoke;
+    alignment: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+div#detailsContainer{
+    display: flex;
+    flex-direction: column;
+    border-bottom:  black solid 2px;
+    margin: 0 0 2% 0;
+    padding: 2%;
+    flex-wrap: wrap;
+}
+div#buttonContainer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1%;
+}
+
+
 header{
 
+    /*child of the body*/
+
     color: whitesmoke;
-    padding: 0.5%;
+    /*padding: 0.5%;*/
     background-color: #4775c4;
     box-shadow: 8px 8px 2px #a7a7a7;
-    flex: 1; /*child of the body*/
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    display: flex; /*this is a container now for headerMainBar and headerButtons*/
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+
+}
+
+header > div#headerMainBar {
+    /*child of header*/
+    flex: 1;
     display: flex;
+    flex-wrap: wrap;
+
+}
+
+header > div#headerButtons {
+    /*child of header*/
+    /*Button that displays in smaller screen size to make the page mobile responsive*/
+    flex: 1;
+    display: none;
+
+}
+
+header > div#headerButtons > input {
+
+    flex-basis: 15%;
+    margin: 0.2%  auto;
+    box-shadow: none;
+
+}
+
+header > div#headerButtons > input#classroomListHideButton {
+
+    margin-right: 0.5%;
+
+}
+
+header > div#headerButtons > input#rightPanelHideButton {
+
+    margin-left: 0.5%;
+
+
+}
+
+
+header > div#headerMainBar > a.profile {
+
+    /*child of header , to both the anchor<a> children*/
+
+    text-decoration: none;
+    color: whitesmoke;
+    flex: 1;
+    margin: auto;
+    padding: 0.2%;
+
+}
+
+header > div#headerMainBar > a#linkLogo {
+
+    /*child of header , to both the anchor<a> children*/
+
+    flex: 1;
+    margin: auto;
+    padding: 0.2%;
+
+}
+
+header > div#headerMainBar > div#headingSearch {
+
+    /*child of header*/
+
+    flex: 7;
+    display: flex;
+    margin: auto 0.8%;
+
+
+}
+
+
+header > div#headerMainBar > div#headingSearch > div#searchBar {
+
+    flex: 1;
+    margin: auto;
+    align-self: center;
+    display: flex;
+}
+
+header > div#headerMainBar > div#headingSearch > div#searchBar > input[type="text"] {
+
+    padding: 1%;
+    margin: 1% 0.5% 1% 1%;
+    flex-basis: 50%;
+
+}
+
+
+header > div#headerMainBar > div#logout{
+
+    flex: 1;
+    margin: auto auto auto 1%;
+    border-left: whitesmoke solid 2px;
+    padding: 0 1%;
 
 }
 header > a {
@@ -23,9 +173,81 @@ header > h1{
 
 
 }
+a.profile{
+
+    /*for the profile part this is the container*/
+    display: flex;
+
+}
+
+a.profile > div{
+
+    /*child of a#profile*/
+
+    flex: 2;
+    margin: auto;
+
+
+}
+
+a.profile > div.profileImage{
+
+    /*child of a#profile*/
+
+    flex: 1;
+    margin: auto;
+
+}
+
+.profileIcon{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+header > div#headerMainBar > div#headerNotification {
+
+    /*child of headerMain bar*/
+
+    flex-basis: 2%;
+    align-self: center;
+    margin: auto 3% auto 1%;
+    display: flex;
+
+
+}
+
+header > div#headerMainBar > div#headerNotification > input#notificationRequest{
+
+    flex: 1;
+    background-image: url("../Icons/notifications_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: auto;
+    background-position: center;
+    /*background-color: #403434;*/
+}
+
+header > div#headerMainBar > div#headerNotification > input#notificationSettings{
+
+    flex: 1;
+    background-image: url("../Icons/settings_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: auto 25%;
+    background-position: center;
+    /*background-color: #403434;*/
+}
 .logo{
     width: 70%;
     height: 70%;
+
+}
+a{
+
+    text-decoration: none;
+    color: white;
 
 }
 
@@ -43,7 +265,7 @@ div#propicbar{
     flex: 1; /*child of the body*/
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     box-shadow: 8px 8px 2px #a7a7a7;
-    margin-top: 0;
+    margin-top: -2px;
 
 
 }
@@ -310,6 +532,14 @@ input[type="button"]:active{
         display: flex; /*this becomes the container for classRoomsLists and postContents*/
         flex-direction: column;
     }
+    div#profileInfo{
+        position: relative;
+        display: flex;
+        width: 80%;
+        margin-left: 10%;
+        
+    }
+
 
 }
 
@@ -327,6 +557,7 @@ input[type="button"]:active{
         width: 80%;
 
     }
+
 
 
 
@@ -519,8 +750,9 @@ input[type="button"]:active{
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
-        width: 70%;
-        height: 70%;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
 
     }
 

@@ -7,13 +7,72 @@
 </head>
 <body>
 
-<header>
+<header >
 
-    <a href="TeacherProfile.html"> <!--act as the container for the img tag for using flexbox -->
-        <img src="../Resources/Icons/Logo.png" class="logo" alt="EduClick Logo">
-    </a>
+    <div id="headerMainBar">
 
-    <h1 id="headerHeading">EduClick</h1>
+        <a id="linkLogo" href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+
+            <img src="../Resources/Icons/Logo.png" class="logo">
+
+        </a>
+
+
+        <div id="headingSearch">
+
+
+            <div id="searchBar">
+
+
+                <input id="searchBarText" type="text" placeholder="Search">
+
+
+
+            </div>
+
+        </div>
+
+        <a href="#" class="profile">
+
+            <div>User Name</div>
+
+            <div class="profileImage">
+
+                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+            </div>
+
+        </a>
+
+        <div id="headerNotification" >
+
+            <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
+
+            <input type="button" value="    "  id="notificationSettings">
+
+
+        </div>
+
+        <div id="logout">
+
+            <a href="#">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div id="headerButtons">
+
+        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+
+        <input id="rightPanelHideButton" type="button" value="Students Enrolled" onclick="showRightPanel()">
+
+    </div>
+
 
 </header>
 <div id="content">
@@ -30,6 +89,20 @@
             </div>
             <div id="image-container">
                 <img id="profilepic" src="../Resources/Icons/ProfileImage.png">
+            </div>
+
+        </div>
+        <div id="profileInfo">
+            <div id="profileInfoContainer">
+                <div id="detailsContainer">
+                    <p>Name : Johanne Narco</p>
+                    <p>Country : Australia</p>
+                    <p>City : Melbourne</p>
+
+                </div>
+                <div id="buttonContainer">
+                    <button type="button">Edit Details</button>
+                </div>
             </div>
 
         </div>
