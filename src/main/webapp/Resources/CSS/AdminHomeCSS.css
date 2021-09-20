@@ -198,28 +198,23 @@ div#content > div#postContents {
     /*making this a container for post class*/
     display: flex;
     flex-direction: column;
-    background-color:#4775c4;
 }
 
 .post{
     /*child of postContents*/
-
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
     width: 50%;
     /*height: 50%;*/
     margin: 0 auto 2% auto;
     /*becomes a container for postProfileSection , postData , and postLikeShareButtons, where all these contain under postContentContainer*/
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0%;
-
 }
 
 .postContentContainer{
     /*child of post*/
     margin: 1.5%;
-
     /*padding: 0.5%;*/
 }
 
@@ -254,7 +249,7 @@ div#content > div#postContents {
 .postData{
     /* Container for postMessage and post picture*/
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .postMessage{
@@ -265,19 +260,6 @@ div#content > div#postContents {
     padding: 0.5%;
     /*width: content-box;*/
     color: whitesmoke;
-}
-
-.settingsname{
-flex:2;
-    padding: 5px;
-}
-.settingsvalue{
-flex:4;
-    padding: 0;
-}
-.settingsedit{
-flex:1;
-    padding: 0;
 }
 
 .postPicture{
@@ -322,7 +304,7 @@ input[type="button"]{
     background-color: #4775c4;
     cursor: pointer;
     font-weight: bold;
-    border-color:whitesmoke ;
+    border-color: whitesmoke;
     /*box-shadow:  inset -1px -1px 2px gray , inset 1px 1px 2px gray !*, 10px 10px 10px #d2d2d2*!;*/
 }
 
