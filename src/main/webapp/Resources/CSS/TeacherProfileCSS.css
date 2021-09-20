@@ -813,16 +813,6 @@ input[type="button"]:active{
         margin-right: 5%;
 
     }
-    div#propicbar > div#image-container p {
-
-        color: whitesmoke;
-        font-size: 25px;
-        margin-left: 76.5%;
-        display: inline-flex;
-
-
-
-    }
 
 
 
@@ -841,16 +831,6 @@ input[type="button"]:active{
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
-
-    }
-    div#propicbar > div#image-container p {
-
-        color: whitesmoke;
-        font-size: 25px;
-        margin-left: 76.5%;
-        display: inline-flex;
-
-
 
     }
 
@@ -873,16 +853,6 @@ input[type="button"]:active{
         width: 40px;
         height: 40px;
         border-radius: 50%;
-
-    }
-    div#propicbar > div#image-container p {
-
-        color: whitesmoke;
-        font-size: 25px;
-        margin-left: 76.5%;
-        display: inline-flex;
-
-
 
     }
 
