@@ -292,6 +292,9 @@ div#propicbar{
 
 
 }
+div#navbar{
+    padding-top: 3%;
+}
 div#navbar ul{
     padding: 0;
     margin: 0;
@@ -317,8 +320,9 @@ div#navbar ul li a:hover{
 
 div#propicbar > div#image-container{
     flex: 1;
-    margin: auto;
+    margin-top: 10px;
     padding: 4px 4px;
+    flex-wrap: wrap;
 
 }
 div#propicbar > div#image-container p {
@@ -683,6 +687,7 @@ input[type="button"]:active{
         margin: 12% 0 0 auto;
 
     }
+
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
@@ -694,6 +699,7 @@ input[type="button"]:active{
         font-size: 25px;
         margin-left: 76.5%;
         display: inline-flex;
+
 
 
     }
@@ -716,6 +722,16 @@ input[type="button"]:active{
         margin-right: 5%;
 
     }
+    div#propicbar > div#image-container p {
+
+        color: whitesmoke;
+        font-size: 25px;
+        margin-left: 76.5%;
+        display: inline-flex;
+
+
+
+    }
 
 
 
@@ -735,6 +751,16 @@ input[type="button"]:active{
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
+
+    }
+    div#propicbar > div#image-container p {
+
+        color: whitesmoke;
+        font-size: 25px;
+        margin-left: 76.5%;
+        display: inline-flex;
+
+
 
     }
 
@@ -759,6 +785,16 @@ input[type="button"]:active{
         margin-right: 5%;
 
     }
+    div#propicbar > div#image-container p {
+
+        color: whitesmoke;
+        font-size: 25px;
+        margin-left: 76.5%;
+        display: inline-flex;
+
+
+
+    }
 
 
 }
@@ -775,6 +811,16 @@ input[type="button"]:active{
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
+
+    }
+    div#propicbar > div#image-container p {
+
+        color: whitesmoke;
+        font-size: 25px;
+        margin-left: 76.5%;
+        display: inline-flex;
+
+
 
     }
 
@@ -797,6 +843,16 @@ input[type="button"]:active{
         margin-right: 5%;
 
     }
+    div#propicbar > div#image-container p {
+
+        color: whitesmoke;
+        font-size: 25px;
+        margin-left: 76.5%;
+        display: inline-flex;
+
+
+
+    }
 
 
 
@@ -817,6 +873,16 @@ input[type="button"]:active{
         width: 40px;
         height: 40px;
         border-radius: 50%;
+
+    }
+    div#propicbar > div#image-container p {
+
+        color: whitesmoke;
+        font-size: 25px;
+        margin-left: 76.5%;
+        display: inline-flex;
+
+
 
     }
 
