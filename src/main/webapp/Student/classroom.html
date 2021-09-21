@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <title>classroom for students</title>
+    <title>Classroom</title>
 
     <link rel="stylesheet" href="../Resources/CSS/Student-classroomCSS.css" type="text/css">
 
@@ -18,58 +18,59 @@
 
     <div id="classroomsList" >
 
-        <div id="options">
+        <div id="classroomsListContainer">
 
-            <div id="postButton" class="optionButtonContainers">
+            <div id="options">
 
-                <a id="profileIconPost" href=""> <!--In the class room container-->
+                <div class="optionButtonContainers">
 
-                    <img  src="../Resources/Icons/account_circle_black_24dp.svg">
+                    <input type="button" value="+add classroom">
 
-                </a>
-
-<!--                <input type="button" value="what's on your mind?" id="postButtonInput">-->
+                </div>
 
             </div>
 
-            <div id="classroomAddButton" class="optionButtonContainers">
+            <div id="classroomsListLinks">
 
-                <input id="classroomAddButtonInput" type="button" value=" + add Classroom">
+                <div class="classroomsListLinksItems">
 
-            </div>
+                    <a href=""  class="classRooms">
 
+                        classroom 1
+                    </a>
 
-        </div>
+                </div>
 
-        <div id="classroomsListLinks">
+                <div class="classroomsListLinksItems">
 
-            <div class="classroomsListLinksItems">
+                    <a href=""  class="classRooms">
 
-                <a href=""  class="classRooms">
+                        classroom 2
 
-                    classroom1
+                    </a>
 
-                </a>
+                </div>
 
-            </div>
+                <div class="classroomsListLinksItems">
 
-            <div class="classroomsListLinksItems"> <!--this where the classroom link begins-->
+                    <a href=""  class="classRooms">
 
-                <a href=""  class="classRooms">
+                        classroom 3
 
-                    classroom2
+                    </a>
 
-                </a>
+                </div>
 
-            </div>
+                <div class="classroomsListLinksItems">
 
-            <div class="classroomsListLinksItems">
+                    <a href=""  class="classRooms">
 
-                <a href=""  class="classRooms">
+                        classroom 4
 
-                    classroom2
+                    </a>
 
-                </a>
+                </div>
+
 
             </div>
 
@@ -111,14 +112,9 @@
 
                 <div class="postData">
 
-
                     <div class="postMessage">
 
-                        <!--<div>-->
-
-                        Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
-
-                        <!--</div>-->
+                        To answer these questions refer tutorial 9
 
                     </div>
 
@@ -139,19 +135,1087 @@
 
             <div class="postContentContainer">
 
-                <div class="postLikeShareButtons">
+                <div class="postAnswerButton">
 
-                    <input id="comment" type="text" placeholder="   answers...">
+                    <div class="answerButton" >
 
-                    <div class="emptySpaceLikeShare" >
-                        &nbsp;
-                    </div>
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(1)">
 
-                    <div class="likeShareButtons" >
-
-                        <input type="button" value="Marks" class="share">
 
                     </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost1" >
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/images.jfif">
+
+                            </a>
+
+                        </div>
+
+                        <div class="Marks">
+
+                            Your marks is 90%
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="Marks">
+
+                            Your marks is 80%
+
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <!--a another post-->
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+
+                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <!--To only present the message without the picture, comment the part below-->
+
+                        <!--<div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="Icons/seminar-text.jpg">
+
+
+                        </div>-->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(2)">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost2" >
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="Marks">
+
+                            Your marks is 50%
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="Marks">
+
+                            Your marks is 70%
+
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage mcq">
+
+                        Question 1
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ1">
+
+                                 <label for="MCQ Answer 1">
+
+                                MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ1">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ1">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ1">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+<!--                            <div class="mcqSingleAnswer">-->
+
+<!--                                MCQ Answer 2-->
+
+<!--                            </div>-->
+
+<!--                            <div class="mcqSingleAnswer">-->
+
+<!--                                MCQ Answer 3-->
+
+<!--                            </div>-->
+
+<!--                            <div class="mcqSingleAnswer">-->
+
+<!--                                MCQ Answer 4-->
+
+<!--                            </div>-->
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 2
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ2">
+
+                                <label for="MCQ Answer 1">
+
+                                    MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ2">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ2">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ2">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+                    </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 3
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ3">
+
+                                <label for="MCQ Answer 1">
+
+                                    MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ3">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ3">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ3">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 4
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ4">
+
+                                <label for="MCQ Answer 1">
+
+                                    MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ4">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ4">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ4">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 5
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ5">
+
+                                <label for="MCQ Answer 1">
+
+                                    MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ5">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ5">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ5">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 6
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ6">
+
+                                <label for="MCQ Answer 1">
+
+                                    MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ6">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ6">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ6">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 7
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ7">
+
+                                <label for="MCQ Answer 1">
+
+                                    MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ7">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ7">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ7">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 8
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ8">
+
+                                <label for="MCQ Answer 1">
+
+                                    MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ8">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ8">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ8">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 9
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer" >
+
+                                <input type="radio" id="MCQ Answer 1" name="MCQ9">
+
+                                <label for="MCQ Answer 1">
+
+                                    MCQ Answer 1
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 2" name="MCQ9">
+
+                                <label for="MCQ Answer 2">
+
+                                    MCQ Answer 2
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 3" name="MCQ9">
+
+                                <label for="MCQ Answer 3">
+
+                                    MCQ Answer 3
+
+                                </label>
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                <input type="radio" id="MCQ Answer 4" name="MCQ9">
+
+                                <label for="MCQ Answer 4">
+
+                                    MCQ Answer 4
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Show Marks" class="mcqResultShowButton">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost1" >
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            25%
+
+                        </div>
+
+                    </div>
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            55%
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            25%
+
+                        </div>
+
+                    </div>
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            85%
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            99%
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        To answer these questions refer tutorial 9
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <div class="postPictureImageContainer">
+                            <!--To only present the message without the picture, keep this value as null / empty-->
+                            <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input id="comment" type="text" placeholder="   comments...">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost3" >
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer5.value = this.value" class="marksForAnswersRange">
+                            <output id="answer5" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <!-- To add only picture answers comment this-->
+                        <!--<div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>-->
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer6.value = this.value" class="marksForAnswersRange">
+                            <output id="answer6" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
@@ -188,13 +1252,11 @@
 
                 <div class="postData">
 
-
-
                     <div class="postMessage">
 
                         <!--<div>-->
 
-                        Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
 
                         <!--</div>-->
 
@@ -218,25 +1280,86 @@
 
             <div class="postContentContainer">
 
-                <div class="postLikeShareButtons">
+                <div class="postAnswerButton">
 
-                    <input id="comment" type="text" placeholder="   comments...">
+                    <div class="answerButton" >
 
-<!--                    <div class="likeShareButtons" >-->
+                        <input id="comment" type="text" placeholder="   comments...">
 
-<!--                        <input type="button" value="Like" class="like">-->
-
-<!--                    </div>-->
-
-                    <div class="emptySpaceLikeShare" >
-                        &nbsp;
                     </div>
 
-<!--                    <div class="likeShareButtons" >-->
+                </div>
 
-<!--                        <input type="button" value="Marks" class="share">-->
+            </div>
 
-<!--                    </div>-->
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost4" >
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer7.value = this.value" class="marksForAnswersRange">
+                            <output id="answer7" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <!-- To add a only text answers comment this-->
+                        <!--<div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>-->
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer8.value = this.value" class="marksForAnswersRange">
+                            <output id="answer8" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
@@ -244,35 +1367,529 @@
 
         </div>
 
-    </div>
+        <!--        Just a message-->
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
 
 
-</div>
+                        <div class="postProfileImage">
 
-</div>
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        <!--<div>-->
+
+                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                        <!--</div>-->
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <!--To only present the message without the picture, comment the part below-->
+
+                        <!--<div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="Icons/seminar-text.jpg">
 
 
-<header>
+                        </div>-->
 
-    <a href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+                    </div>
 
-        <img src="../Resources/Icons/Logo.png" class="logo">
+                    <div class="postContentContainer">
 
-    </a>
+                        <div class="postAnswerButton">
 
+                            <div class="answerButton" >
 
-    <h1 id="headerHeading">EduClick</h1>
+                                <input id="comment" type="text" placeholder="   comments...">
 
-    <a href="#" id="profile">
+                            </div>
 
-        <div>User Name</div>
-        <div id="profileImage">
+                        </div>
 
-            <img id="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                    </div>
+
+                </div>
+
+            </div>
+
 
         </div>
 
-    </a>
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="#" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        <!--<div>-->
+
+                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                        <!--</div>-->
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <!--                        To only present the message without the picture, comment the part below-->
+
+                        <div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="postContentContainer">
+
+                        <div class="postAnswerButton">
+
+                            <div class="answerButton" >
+
+                                <input id="comment" type="text" placeholder="   comments...">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div id="notifications">
+
+        <div id="request">
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<header >
+
+    <div id="headerMainBar">
+
+        <a id="linkLogo" href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+
+            <img src="../Resources/Icons/Logo.png" class="logo">
+
+        </a>
+
+
+        <div id="headingSearch">
+
+
+            <div id="searchBar">
+
+
+                <input id="searchBarText" type="text" placeholder="Search">
+
+
+
+            </div>
+
+        </div>
+
+        <a href="#" class="profile">
+
+            <div>User Name</div>
+
+            <div class="profileImage">
+
+                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+            </div>
+
+        </a>
+
+        <div id="headerNotification" >
+
+            <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
+
+            <input type="button" value="    "  id="notificationSettings">
+
+
+        </div>
+
+        <div id="logout">
+
+            <a href="#">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div id="headerButtons">
+
+        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+
+        <input id="rightPanelHideButton" type="button" value="Students Enrolled" onclick="showRightPanel()">
+
+    </div>
 
 
 </header>
@@ -283,6 +1900,7 @@
     &nbsp;
 </footer>-->
 
+<script src="../Resources/JS/StudentEntrancePageMobileResponsive.js"></script>
 <script src="../Resources/JS/ClassroomJS.js"></script>
 
 </body>

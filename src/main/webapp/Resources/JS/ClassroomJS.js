@@ -62,6 +62,7 @@ function showAnswers( id ){
 
 }
 
+
 function showMcqResult( id ){
 
     let mcqResultsInPostId = "mcqResultsInPost" + id;
