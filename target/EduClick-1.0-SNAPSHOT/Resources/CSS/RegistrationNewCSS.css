@@ -93,6 +93,13 @@ div.formRow{
     display: flex;
 
 }
+div.formRow > div#gender{
+
+    flex: 2;/*a child of containerflex*/
+    display: flex;
+    margin-left: 5%;
+
+}
 input[type = "firstname"]{
 
     padding: 0.3%;
@@ -128,6 +135,9 @@ input[type = "password"]{
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
 }
+input[type = "radio"]{
+    margin-right: 30px;
+}
 
 .formElementButton{
     /*border: mediumseagreen solid 2px;*/
@@ -153,10 +163,4 @@ input{
     padding: 1%;
 
 }
-.selectelement{
-    width: 60%;
-    margin-left: 4%;
-}
-.selectclass > label{
-    margin-left: 12px;
-}
+
