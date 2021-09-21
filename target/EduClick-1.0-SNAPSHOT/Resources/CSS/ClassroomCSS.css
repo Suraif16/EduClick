@@ -579,6 +579,111 @@ input[type="button"]:active{
 
 }
 
+/*MCQ POST RELATED STYLES STARTS HERE*/
+
+div.mcqAnswerContainer{
+
+    display: flex; /*become a container for mcqsingleanswer*/
+    background-color: white;
+    /*border: solid 2px black;*/
+    padding: 1%;
+    flex-wrap: wrap;
+    margin: 1%;
+    box-shadow:  inset -1px -1px 0 #4775c4 , inset 1px 1px 0 #4775c4;
+
+}
+
+div.mcqSingleAnswer{
+    /*child of mcqAnswerContainer*/
+    background-color: #4775c4;
+    margin: 1%;
+    padding: 1%;
+
+
+}
+
+div.correctMcqSingleAnswer{
+    /*additional class to distinquish  correct answers*/
+    background-color: #403434;
+    padding: 1%;
+
+}
+
+
+div.mcqResultsInPost{
+
+    /*becomes a container for mcqSingleStudentResult*/
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #4775c4;
+    padding: 1%;
+    max-height: 250px;
+    overflow-y: auto;
+
+}
+
+div.mcqSingleStudentResult{
+    /*child of mcqResultInPost*/
+    background-color: #4775c4;
+    flex: 1;
+    display: flex; /*container for <a> and div.mcqSingleStudentResultMarks*/
+    flex-wrap: wrap;
+    width: 75%;
+    margin: 1%;
+    padding: 2%;
+
+}
+
+div.mcqSingleStudentResultMarks{
+    /*child of mcqSingleStudentResult*/
+    flex: 1;
+    color: white;
+    margin: auto;
+}
+
+a.mcqProfile{
+
+    flex: 5;
+    /*for the profile part this is the container*/
+    display: flex;
+
+}
+
+a.mcqProfile > div{
+
+    /*child of a#profile*/
+
+    flex: 8;
+    margin: auto;
+
+
+}
+
+a.mcqProfile > div.mcqProfileImage{
+
+    /*child of a#profile*/
+
+    flex: 1;
+    margin: auto;
+
+}
+
+.mcqProfileIcon{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+
+}
+
+.mcqResultShowButton{
+
+    margin: auto;
+
+}
+
+/*MCQ POST RELATED STYLES ENDS HERE*/
+
 /*right panel begins here*/
 
 div#content > div#rightPanel {
