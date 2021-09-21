@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>classroom for students</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../Resources/CSS/AdminHomeCSS.css" type="text/css">
+    <link rel="stylesheet" href="../Resources/CSS/AdminHome-DashBoardCSS.css" type="text/css">
 
 </head>
 
@@ -72,50 +72,71 @@
 
     <div id="postContents" >
 
+      <div class="overview-boxes">
+          <div class="box">
+              <div class="right-side">
+                  <div class="box-topic">Total No of Teachers</div>
+                  <div class="number">40,876</div>
+                  <div class="indicator">
+                      <i class='bx bx-up-arrow-alt'></i>
+                  </div>
+              </div>
+          </div>
 
-        <div class="post">
-            <div class="postContentContainer">
-                <div class="postProfileSection">
-                    <a href="#" class="postProfile">
-                        <div class="postProfileImage">
-                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
-                        </div>
+          <div class="box">
+              <div class="right-side">
+                  <div class="box-topic">Today Reg Teachers</div>
+                  <div class="number">38,876</div>
+                  <div class="indicator">
+                      <i class='bx bx-up-arrow-alt'></i>
+                  </div>
+              </div>
+          </div>
 
-                        <div class="postProfileName" >User Name</div><!-- name-->
-                    </a>
-                </div>
-            </div>
-<!-- data-->
-            <div class="postContentContainer">
-                <div class="postData">
-                    <div class="postMessage">
-                        <!--<div>-->
-                        Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
-                        <!--</div>-->
-                    </div>
-<!-- picture-->
-                    <div class="postPicture">
-                        <div class="postPictureImageContainer">
-                            <!--To only present the message without the picture, keep this value as null / empty-->
-                            <img class="postPictureImage" src="../Resources/Images/Finding-the-Correct-Question-Words3.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-  <!-- search box-->
-            <div class="postContentContainer">
-                <div class="postLikeShareButtons">
-                    <input id="comment" type="text" placeholder="   comments...">
-                    <div class="emptySpaceLikeShare" >
-                        &nbsp;
-                    </div>
-                    <div class="likeShareButtons" >
-                        <input type="button" value="Marks" class="share"><!-- button -->
-                    </div>
-                </div>
-            </div>
+          <div class="box">
+              <div class="right-side">
+                  <div class="box-topic">Total No of Students</div>
+                  <div class="number">12,876</div>
+                  <div class="indicator">
+                      <i class='bx bx-up-arrow-alt'></i>
+                  </div>
+              </div>
+          </div>
 
+          <div class="box">
+              <div class="right-side">
+                  <div class="box-topic">Today Reg Students</div>
+                  <div class="number">11,086</div>
+                  <div class="indicator">
+                      <i class='bx bx-down-arrow-alt down'></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="main-overview">
+        <div id="classroomAddButton" class="optionButtonContainers">
+            <input id="classroomAddButtonInput1" type="button" value="User">
         </div>
+        <div id="classroomAddButton" class="optionButtonContainers">
+            <input id="classroomAddButtonInput1" type="button" value="Comment">
+        </div>
+        <div id="classroomAddButton" class="optionButtonContainers">
+            <input id="classroomAddButtonInput1" type="button" value="Post">
+        </div>
+        <div id="classroomAddButton" class="optionButtonContainers">
+            <input id="classroomAddButtonInput1" type="button" value="Teacher">
+        </div>
+        <div id="classroomAddButton" class="optionButtonContainers">
+            <input id="classroomAddButtonInput1" type="button" value="Student">
+        </div>
+        <div id="classroomAddButton" class="optionButtonContainers">
+            <input id="classroomAddButtonInput1" type="button" value="Analytics">
+        </div>
+        <div id="classroomAddButton" class="optionButtonContainers">
+            <input id="classroomAddButtonInput1" type="button" value="Settings">
+        </div>
+      </div>
+
 
     </div>
 </div>
