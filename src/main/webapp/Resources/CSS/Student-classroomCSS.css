@@ -326,7 +326,7 @@ div#content > div#postContents {
 
     /*child of div#postContents*/
 
-    flex-basis: 75%;
+    flex-basis: 80%;
     box-sizing: border-box;
     justify-content: space-between;
     margin: 8.6% 0 0 22%;
@@ -606,7 +606,7 @@ div.mcqSingleAnswer{
     /*child of mcqAnswerContainer*/
     background-color: #4775c4;
     margin: 0.5%;
-    padding: 3%;
+    padding: 2%;
 
 
 }
