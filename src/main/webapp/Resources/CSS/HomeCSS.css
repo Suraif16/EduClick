@@ -150,12 +150,12 @@ button:hover {
     opacity: 1;
 }
 footer{
-    position: fixed;
+    position: absolute;
     background-color: #4775c4;
     width: 98.5%;
     box-shadow : 8px 8px 2px #a7a7a7;
     height: 75px;
-    bottom: 0px;
+    top: 230%;
 }
 footer p{
     font-weight: lighter;
@@ -163,4 +163,56 @@ footer p{
     margin-left: 45%;
     margin-top: 30px;
     font-size: 16px;
+}
+
+#gif1{
+    height: 40%;
+    width: 40%;
+    margin-left: 2%;
+    margin-top: 5%;
+
+}
+
+#gif2{
+    height: 40%;
+    width: 40%;
+    margin-left: 50%;
+    margin-top: 14%;
+
+
+}
+#gif3{
+    height: 40%;
+    width: 40%;
+    margin-top: 14%;
+    margin-left: 2%;
+
+}
+#gif4{
+    height: 40%;
+    width: 40%;
+    margin-top: 14%;
+    margin-left: 50%;
+
+}
+#gif1p{
+    margin-top: -12%;
+    margin-left: 60%;
+}
+#gif2p{
+    margin-top: -12%;
+    margin-left: 10%;
+}
+
+#gif3p{
+    margin-top: -12%;
+    margin-left: 60%;
+}
+
+#gif4p{
+    margin-top: -10%;
+    margin-left: 10%;
+}
+div#gif-container p {
+    font-size: 25px;
 }
