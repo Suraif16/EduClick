@@ -3,8 +3,8 @@ package Model;
 public class NewsFeeds extends Post{
 
     private String imagePath;
-    private Int likeCount;
-    private Int likeShare;
+    private int likeCount;
+    private int likeShare;
 
     public String getImagePath() {
         return imagePath;
@@ -14,19 +14,19 @@ public class NewsFeeds extends Post{
         this.imagePath = imagePath;
     }
 
-    public Int getLikeCount() {
+    public int getLikeCount() {
         return likeCount;
     }
 
-    public void setLikeCount(Int likeCount) {
+    public void setLikeCount(int likeCount) {
         this.likeCount = likeCount;
     }
 
-    public Int getLikeShare() {
+    public int getLikeShare() {
         return likeShare;
     }
 
-    public void setLikeShare(Int likeShare) {
+    public void setLikeShare(int likeShare) {
         this.likeShare = likeShare;
     }
 }
