@@ -4,22 +4,11 @@ import java.util.List;
 
 public class Teacher extends User{
 
-    private String UserId;
     private String currentWorkingPlace;
     private List<String> subjects;
     private List<String> Qualifications;
 
     /*Getters and setters begins here*/
-
-    @Override
-    public String getUserId() {
-        return UserId;
-    }
-
-    @Override
-    public void setUserId(String userId) {
-        UserId = userId;
-    }
 
     public String getCurrentWorkingPlace() {
         return currentWorkingPlace;

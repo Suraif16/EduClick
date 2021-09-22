@@ -1,11 +1,13 @@
 package Model;
 
 
+import java.time.LocalDate;
+
 public class Post {
 
     private String postID;
     private String postName;
-    private Date date;
+    private LocalDate date;
     private String time;
     private String caption;
 
@@ -25,11 +27,11 @@ public class Post {
         this.postName = postName;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

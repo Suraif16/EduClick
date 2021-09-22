@@ -2,22 +2,11 @@ package Model;
 
 public class Student extends User{
 
-    private String userId;
     private String school;
     private String grade;
 
 
     /*Getters and setters begins here*/
-
-    @Override
-    public String getUserId() {
-        return userId;
-    }
-
-    @Override
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getSchool() {
         return school;
