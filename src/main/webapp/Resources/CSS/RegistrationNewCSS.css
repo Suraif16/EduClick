@@ -148,6 +148,9 @@ input[type = "radio"]{
     justify-content: space-between;
     display: flex;
 }
+select{
+    width: 90%;
+}
 input{
     /*all input values will have these properties*/
     border-radius: 5px;
