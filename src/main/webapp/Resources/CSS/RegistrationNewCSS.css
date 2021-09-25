@@ -119,6 +119,7 @@ input[type = "lastname"]{
 }
 input[type = "email"]{
 
+
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
 }
@@ -171,7 +172,7 @@ input{
     border: #6a6a6a solid 1px;
 
 }
-.button{
+#button{
 
     /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
     margin: auto;
