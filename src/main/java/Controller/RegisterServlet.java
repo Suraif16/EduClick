@@ -42,6 +42,8 @@ public class RegisterServlet {
         User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
         Login login = new Login( email , password , loginDate , loginTime);
 
+
+
         out.write(jsonObject.toString());
         out.close();
 
