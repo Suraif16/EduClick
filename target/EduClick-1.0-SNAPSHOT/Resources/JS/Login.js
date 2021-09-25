@@ -19,15 +19,22 @@ loginButton.onclick = function (){
     httpreq.send("Email=" + email + "&Password=" + password );
 
     function completeLogin( httpreq ){
-        let loginResponse = httpreq.responseText.toString();
-        console.log(loginResponse);
-        /*if ( loginResponse === "true"){
-            console.log("in if");*/
+
+        let jsonLoginResponse = JSON.parse(httpreq.responseText); /*here when we receive the response
+        from the server, we convert it to JSON as it will be sent as JSON from the servlet.
+        Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
+        in the JSON object specified by the servlet*/
+        console.log(jsonLoginResponse.User);
+        if ( jsonLoginResponse.User === "Admin"){
+            console.log("in if");
             window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
-        /*}
+        }
         else{
+            console.log("out if");
             alert("sorry");
-        }*/
+
+        }
+
     }
 
 

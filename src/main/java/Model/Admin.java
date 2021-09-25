@@ -28,4 +28,11 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /*constructor*/
+
+    public Admin(String adminName , String email){
+        this.adminName = adminName;
+        this.email = email;
+    }
 }

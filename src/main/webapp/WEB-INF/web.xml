@@ -24,4 +24,11 @@
         <url-pattern>/Login</url-pattern>
     </filter-mapping>
 
+    <session-config>
+
+        <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
+        if the user doesn't come back. if we set the value to zero then the session will not expire-->
+
+    </session-config>
+
 </web-app>

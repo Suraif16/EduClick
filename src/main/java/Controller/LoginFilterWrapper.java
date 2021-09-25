@@ -10,9 +10,7 @@ public class LoginFilterWrapper extends HttpServletRequestWrapper {
     public LoginFilterWrapper(HttpServletRequest request) { super( request ); }
 
     public void setHashPassword( String password ){
-        System.out.println("set hash");
         hashedPassword = DigestUtils.sha256Hex( password );
-        System.out.println(hashedPassword);
 
     }
 
