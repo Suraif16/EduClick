@@ -16,6 +16,31 @@ public class User {
     private LocalTime registrationTime;
     private LocalDate registrationDate;
     private String gender;
+    private String userType;
+
+    public User(String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber,  String country, String city, LocalTime registrationTime, LocalDate registrationDate, String gender, String userType) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.mobileNumber = mobileNumber;
+        this.country = country;
+        this.city = city;
+        this.registrationTime = registrationTime;
+        this.registrationDate = registrationDate;
+        this.gender = gender;
+        this.userType = userType;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+
 
 
     /*Getters and setters begins here*/
