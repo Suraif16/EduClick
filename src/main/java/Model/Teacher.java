@@ -2,7 +2,7 @@ package Model;
 
 import java.util.List;
 
-public class Teacher extends User{
+public class Teacher /*extends User*/{
 
     private String currentWorkingPlace;
     private List<String> subjects;
