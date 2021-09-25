@@ -2,17 +2,17 @@ const submitButton = document.getElementById("submitButton");
 
 const sendServerData = function (){
 
-    let firstName = document.getElementByName("firstName").value;
-    let lastName = document.getElementByName("lastName").value;
-    let email = document.getElementByName("email").value;
-    let dateOfBirth = document.getElementByName("dateOfBirth").value;
-    let userType = document.getElementByName("userType").value;
-    let country = document.getElementByName("country").value;
-    let city = document.getElementByName("city").value;
-    let mobileNumber = document.getElementByName("mobileNumber").value;
-    let gender = document.getElementByName("gender").value;
-    let password = document.getElementByName("password").value;
-    let confirmPassword = document.getElementByName("confirmPassword").value;
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let email = document.getElementById("email").value;
+    let dateOfBirth = document.getElementById("dateOfBirth").value;
+    let userType = document.getElementById("userType").value;
+    let country = document.getElementById("country").value;
+    let city = document.getElementById("city").value;
+    let mobileNumber = document.getElementById("mobileNumber").value;
+    let gender = document.getElementById("gender").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
