@@ -1,5 +1,7 @@
 package Model;
 
+import DAO.UserDAO;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -134,4 +136,9 @@ public class User {
     }
 
     /*Getters and setters ends here*/
+
+    public void userRegistered(){
+        UserDAO userDAO = new UserDAO();
+        userDAO.insert(this);
+    }
 }
