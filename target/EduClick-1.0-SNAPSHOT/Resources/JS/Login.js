@@ -30,9 +30,7 @@ loginButton.onclick = function (){
             window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
         }
         else{
-            console.log("out if");
             alert("sorry");
-
         }
 
     }
