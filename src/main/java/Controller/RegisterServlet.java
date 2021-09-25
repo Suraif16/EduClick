@@ -1,7 +1,8 @@
 package Controller;
 
 
-import DAO.RegisterDAO;
+
+import Model.Login;
 import Model.User;
 
 import javax.servlet.ServletException;
@@ -25,26 +26,24 @@ public class RegisterServlet {
         String firstname = request.getParameter("Firstname");
         String lastname = request.getParameter("Lastname");
         LocalDate dateofBirth = LocalDate.now();
-        String mobileNo = request.getParameter("MobileNo");
+        String mobileNum = request.getParameter("MobileNo");
         String country = request.getParameter("Country");
         String city = request.getParameter("City");
         LocalDate registrationDate = LocalDate.now();
         LocalTime registrationTime = LocalTime.now();
         String gender = request.getParameter("Gender");
+        String userType = request.getParameter("UserType");
 
-        System.out.println(firstname);
+        String email = request.getParameter("Email");
+        String password = request.getParameter("Password");
+        LocalDate loginDate = LocalDate.now();
+        LocalTime loginTime = LocalTime.now();
 
-        User user = new User();
+        User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
+        Login login = new Login( email , password , loginDate , loginTime);
 
-        user.setFirstName(firstname);
-        user.setLastName(lastname);
-        user.setDateOfBirth(dateofBirth);
-        user.setMobileNumber(mobileNo);
-        user.setCountry(country);
-        user.setCity(city);
-        user.setRegistrationDate(registrationDate);
-        user.setRegistrationTime(registrationTime);
-        user.setGender(gender);
+        out.write(jsonObject.toString());
+        out.close();
 
 
 

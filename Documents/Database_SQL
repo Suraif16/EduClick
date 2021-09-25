@@ -12,7 +12,10 @@ CREATE TABLE Users(
     DOB DATE NOT NULL,
     MobileNum INT,
     UserType ENUM('Student','Teacher') NOT NULL,
-    Country VARCHAR(30),
+    Country VARCHAR(50),
+    City VARCHAR(50),
+    RegistrationDate DATE NOT NULL,
+    RegistrationTime TIME NOT NULL,
     PRIMARY KEY(UserID)
     )ENGINE = INNODB;
 
