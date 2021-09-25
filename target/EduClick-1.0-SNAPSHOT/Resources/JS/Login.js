@@ -1,7 +1,10 @@
 const loginButton = document.getElementById("loginButton");
 const passwordInput = document.getElementById("password");
+const inCorrectPassword = document.getElementById("incorrectPassword");
+let passwordIncorrectCount = 0;
 
 const sendServerData = function (){
+    inCorrectPassword.style.display = "none";
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let httpreq = new XMLHttpRequest();
@@ -29,7 +32,18 @@ const sendServerData = function (){
             // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
         }
         else{
-            alert("sorry");
+
+            inCorrectPassword.style.display = "flex";
+
+            passwordIncorrectCount += 1;
+
+            if (passwordIncorrectCount >= 3){
+
+                // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+                /*here if the password is incorrect the user will be sent to a different page to handle it*/
+            }
+            console.log( passwordIncorrectCount );
+
         }
 
     }

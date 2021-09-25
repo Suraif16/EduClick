@@ -255,6 +255,15 @@ label{
     padding: 0.3%;
 }
 
+div#incorrectPassword{
+
+    color: red;
+    margin: 0 auto 0.3% auto;
+    display: none;
+
+
+}
+
 input{
     /*all input values will have these properties*/
     border-radius: 5px;
