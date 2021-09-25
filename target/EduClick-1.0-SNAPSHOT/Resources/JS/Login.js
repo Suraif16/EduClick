@@ -1,8 +1,7 @@
 const loginButton = document.getElementById("loginButton");
+const passwordInput = document.getElementById("password");
 
-
-loginButton.onclick = function (){
-
+const sendServerData = function (){
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let httpreq = new XMLHttpRequest();
@@ -27,7 +26,7 @@ loginButton.onclick = function (){
         console.log(jsonLoginResponse.User);
         if ( jsonLoginResponse.User === "Admin"){
             console.log("in if");
-            window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+            // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
         }
         else{
             alert("sorry");
@@ -37,3 +36,15 @@ loginButton.onclick = function (){
 
 
 }
+
+loginButton.onclick = function (){
+    sendServerData();
+}
+
+passwordInput.addEventListener( "keyup" , function (event){
+
+    if(event.key === "Enter"){
+        sendServerData();
+    }
+
+});

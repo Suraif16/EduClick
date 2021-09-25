@@ -234,6 +234,7 @@ label{
     margin: 0.5%;
     justify-content: space-between;
     display: flex;
+    flex-direction: column;
 }
 
 #loginButton{
@@ -245,6 +246,13 @@ label{
     padding: 1%;
 
 
+}
+
+.formElementButton > div{
+    /*child of formElementButton, this is for, forgot password and cookies must be enabled your browser*/
+    flex: 1;
+    margin: 1% auto;
+    padding: 0.3%;
 }
 
 input{
