@@ -17,7 +17,7 @@ public class UserDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Country,City,registrationDate,registrationTime) VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Country,City,RegistrationDate,RegistrationTime) VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,user.getFirstName());
             preparedStatement.setString(2,user.getLastName());
