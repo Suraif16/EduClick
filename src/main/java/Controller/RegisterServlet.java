@@ -6,6 +6,7 @@ import Model.Login;
 import Model.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,36 +16,53 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import org.json.JSONObject;
 
-public class RegisterServlet {
+public class RegisterServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
-        HttpSession session = request.getSession();
-        JSONObject jsonObject = new JSONObject();
+        /*HttpSession session = request.getSession();
+        JSONObject jsonObject = new JSONObject();*/
 
-        String firstname = request.getParameter("Firstname");
-        String lastname = request.getParameter("Lastname");
-        LocalDate dateofBirth = LocalDate.now();
-        String mobileNum = request.getParameter("MobileNo");
-        String country = request.getParameter("Country");
-        String city = request.getParameter("City");
+        String firstname = request.getParameter("firstName");
+        String lastname = request.getParameter("lastName");
+        LocalDate dateofBirth = LocalDate.parse(request.getParameter("dateOfBirth"));
+        String mobileNum = request.getParameter("mobileNumber");
+        String country = request.getParameter("country");
+        String city = request.getParameter("city");
         LocalDate registrationDate = LocalDate.now();
         LocalTime registrationTime = LocalTime.now();
-        String gender = request.getParameter("Gender");
-        String userType = request.getParameter("UserType");
+        String gender = request.getParameter("gender");
+        String userType = request.getParameter("userType");
 
-        String email = request.getParameter("Email");
-        String password = request.getParameter("Password");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
         LocalDate loginDate = LocalDate.now();
         LocalTime loginTime = LocalTime.now();
 
-        User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
+        System.out.println(firstname);
+        System.out.println(lastname);
+        System.out.println(dateofBirth);
+        System.out.println(mobileNum);
+        System.out.println(country);
+        System.out.println(city);
+        System.out.println(registrationDate);
+        System.out.println(registrationTime);
+        System.out.println(gender);
+        System.out.println(userType);
+        System.out.println(email);
+        System.out.println(password);
+        System.out.println(loginDate);
+        System.out.println(loginTime);
+
+
+
+        /*User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
         Login login = new Login( email , password , loginDate , loginTime);
 
 
 
-        out.write(jsonObject.toString());
+        out.write(jsonObject.toString());*/
         out.close();
 
 

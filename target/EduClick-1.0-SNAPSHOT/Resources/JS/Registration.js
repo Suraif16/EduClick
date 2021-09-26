@@ -33,39 +33,37 @@ const sendServerData = function () {
     let confirmPassword = document.getElementById("confirmPassword").value;
 
 
-  /* if(firstName==''){
+    /*if(firstName==''){
         alert("First Name field cannot be empty!");
-        return false;
     }
     if(lastName==''){
         alert("Last Name field cannot be empty!");
-        return false;
     }
     if(email==''){
         alert("Email field cannot be empty!");
-        return false;
+    }
+    if(dateOfBirth==''){
+        alert("Date of Birth field cannot be empty!");
     }
 
-
-
+    if(userType==''){
+        alert("Select an option for user type!");
+    }
     if(country==''){
         alert("Country field cannot be empty!");
-        return false;
     }
     if(city==''){
         alert("City field cannot be empty!");
-        return false;
     }
     if(mobileNumber==''){
         alert("Mobile Number field cannot be empty!");
-        return false;
     }
     if(mobileNumber.length>10){
         alert("Mobile Number cannot be more than 10 numbers!");
-        return false;
+    }
+    if(gender==''){
+        alert("Select an option for gender!");
     }*/
-
-
 
 
 
@@ -94,7 +92,7 @@ const sendServerData = function () {
 
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userType=" + userType + "&country=" + country + "&city=" + city + "&mobileNumber=" + mobileNumber + "&gender=" + gender + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userType=" + userType + "&country=" + country + "&city=" + city + "&mobileNumber=" + mobileNumber + "&gender=" + gender + "&password=" + password + "&confirmPassword=" + confirmPassword);
 
     function completeRegistration(httpreq) {
 
