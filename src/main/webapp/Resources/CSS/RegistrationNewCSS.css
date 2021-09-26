@@ -107,12 +107,12 @@ div.formRow > div#usertype{
     margin-left: 5%;
 
 }
-input[type = "firstname"]{
+input[type = "firstName"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
 }
-input[type = "lastname"]{
+input[type = "lastName"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
@@ -123,7 +123,7 @@ input[type = "email"]{
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
 }
-input[type = "DOB"]{
+input[type = "date"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
@@ -138,7 +138,7 @@ input[type = "city"]{
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
 }
-input[type = "mobileno"]{
+input[type = "mobileNo"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
@@ -181,5 +181,9 @@ input{
     padding: 1%;
     cursor: pointer;
 
+}
+input#DOB{
+    width: 70%;
+    font-size: 14px;
 }
 

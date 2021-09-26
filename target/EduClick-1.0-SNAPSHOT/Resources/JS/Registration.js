@@ -9,13 +9,26 @@ const sendServerData = function () {
     let lastName = document.getElementById("lastName").value;
     let email = document.getElementById("email").value;
     let dateOfBirth = document.getElementById("DOB").value;
-    let userTypeTeacher = document.getElementById("teacher").value;
-    let userTypeStudent = document.getElementById("student").value;
+    //let userTypeTeacher = document.getElementById("teacher").value;
+    //let userTypeStudent = document.getElementById("student").value;
+
+    var ele1=document.getElementsByName("userType");
+    for(i = 0;i<ele1.length;i++){
+        if(ele1[i].checked){
+            console.log(ele1[i].value);
+        }
+    }
     let country = document.getElementById("country").value;
     let city = document.getElementById("city").value;
-    let mobileNumber = document.getElementById("mobileno").value;
-    let genderMale = document.getElementById("male").value;
-    let genderFemale = document.getElementById("female").value;
+    let mobileNumber = document.getElementById("mobileNo").value;
+    var ele2=document.getElementsByName("gender");
+    for(i = 0;i<ele2.length;i++){
+        if(ele2[i].checked){
+            console.log(ele2[i].value);
+        }
+    }
+    //let genderMale = document.getElementById("male").value;
+    //let genderFemale = document.getElementById("female").value;
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
 
@@ -23,13 +36,13 @@ const sendServerData = function () {
     console.log(lastName);
     console.log(email);
     console.log(dateOfBirth);
-    console.log(userTypeTeacher);
-    console.log(userTypeStudent);
+    //console.log(userTypeTeacher);
+    //console.log(userTypeStudent);
     console.log(country);
     console.log(city);
     console.log(mobileNumber);
-    console.log(genderMale);
-    console.log(genderFeale);
+    //console.log(genderMale);
+    //console.log(genderFeale);
     console.log(password);
     console.log(confirmPassword);
 
