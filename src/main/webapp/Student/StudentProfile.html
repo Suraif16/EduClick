@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Profile Page</title>
+    <link href="../Resources/CSS/StudentProfileCSS.css" type="text/css" rel="stylesheet"/>
+    <link href="../Resources/CSS/Font.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+<header >
+
+    <div id="headerMainBar">
+
+        <a id="linkLogo" href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+            <img src="../Resources/Icons/Logo.png" class="logo">
+        </a>
+
+
+        <div id="headingSearch">
+            <div id="searchBar">
+                <input id="searchBarText" type="text" placeholder="Search">
+            </div>
+        </div>
+
+
+
+        <div id="headerNotification" >
+            <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
+            <input type="button" value="    "  id="notificationSettings">
+        </div>
+
+        <div id="logout">
+            <a href="#">
+                Logout
+            </a>
+        </div>
+
+    </div>
+
+    <div id="headerButtons">
+        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+        <input id="rightPanelHideButton" type="button" value="Students Enrolled" onclick="showRightPanel()">
+    </div>
+
+
+</header>
+<div class="emptySpaceLikeShare">
+    &nbsp;
+</div>
+<div id="propicbar">
+    <div id="navbar">
+        <ul>
+            <li><a href="#">Posts</a></li>
+            <li><a href="#">Friends</a></li>
+            <li><a href="#">Followers</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </div>
+    <div id="image-container">
+        <p>Johanne Williams</p>
+        <img id="profilepic" src="../Resources/Icons/ProfileImage.png">
+
+    </div>
+</div>
+
+<div id="content">
+
+    <div id="contentFlex">
+        <div id="profileInfo">
+            <div id="profileInfoContainer">
+                <div id="detailsContainer">
+                  <p>Country : Sri Lanka</p>
+                  <p>City : Colombo</p>
+                  <p>MoblieNum : 0123456789</p>
+                  <p>School : Colombo Central College</p>
+                  <p>Grade : 11</p>
+                </div>
+                <div id="buttonContainer">
+                    <button type="button">Edit Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="postContents" >
+
+            <div class="post">
+
+                <div class="postContentContainer">
+                    <div class="postProfileSection">
+                        <a href="#" class="postProfile">
+                            <div class="postProfileImage">
+                                <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                            </div>
+                            <div class="postProfileName" >User Name</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="postContentContainer">
+                    <div class="postData">
+                        <div class="postMessage">
+                            <!--<div>-->
+                            Book your seats NOW!!!
+                            <!--</div>-->
+                        </div>
+                        <div class="postPicture">
+                            <div class="postPictureImageContainer">
+                                <!--To only present the message without the picture, keep this value as null / empty-->
+                                <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="postContentContainer">
+                    <div class="postLikeShareButtons">
+                        <div class="likeShareButtons" >
+                            <input type="button" value="Like" class="like">
+                        </div>
+                        <div class="countOfLikeShare" >
+                            &nbsp;
+                            <div class="likeCount">
+                                2793 Likes
+                            </div >
+                            <div class="emptySpaceLikeShare">
+                                &nbsp;
+                            </div>
+                            <div class="shareCount">
+                                18198 Shares
+                            </div>
+                        </div>
+                        <div class="likeShareButtons" >
+                            <input type="button" value="Share" class="share">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--a another post-->
+
+            <div class="post">
+
+                <div class="postContentContainer">
+                    <div class="postProfileSection">
+                        <a href="#" class="postProfile">
+                            <div class="postProfileImage">
+                                <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                            </div>
+                            <div class="postProfileName" >User Name</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="postContentContainer">
+                    <div class="postData">
+                        <div class="postMessage">
+                            Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                            Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                            Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                            Due to the pandamic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                        </div>
+                        <div class="postPicture">
+                            <!--To only present the message without the picture, comment the part below-->
+                            <!--<div class="postPictureImageContainer">
+                                <img class="postPictureImage" src="Icons/seminar-text.jpg">
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="postContentContainer">
+                    <div class="postLikeShareButtons">
+                        <div class="likeShareButtons" >
+                            <input type="button" value="Like" class="like">
+                        </div>
+                        <div class="countOfLikeShare" >
+                            &nbsp;
+                            <div class="likeCount">
+                                2793 Likes
+                            </div >
+                            <div class="emptySpaceLikeShare">
+                                &nbsp;
+                            </div>
+                            <div class="shareCount">
+                                18198 Shares
+                            </div>
+                        </div>
+                        <div class="likeShareButtons" >
+                            <input type="button" value="Share" class="share">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="post">
+
+                <div class="postContentContainer">
+                    <div class="postProfileSection">
+                        <a href="#" class="postProfile">
+                            <div class="postProfileImage">
+                                <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                            </div>
+                            <div class="postProfileName" >User Name</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="postContentContainer">
+                    <div class="postData">
+                        <div class="postMessage">
+                            <!--<div>-->
+                            Book your seats NOW!!!
+                            <!--</div>-->
+                        </div>
+                        <div class="postPicture">
+                            <div class="postPictureImageContainer">
+                                <!--To only present the message without the picture, keep this value as null / empty-->
+                                <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="postContentContainer">
+                    <div class="postLikeShareButtons">
+                        <div class="likeShareButtons" >
+                            <input type="button" value="Like" class="like">
+                        </div>
+                        <div class="countOfLikeShare" >
+                            &nbsp;
+                            <div class="likeCount">
+                                2793 Likes
+                            </div >
+                            <div class="emptySpaceLikeShare">
+                                &nbsp;
+                            </div>
+                            <div class="shareCount">
+                                18198 Shares
+                            </div>
+                        </div>
+                        <div class="likeShareButtons" >
+                            <input type="button" value="Share" class="share">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--a another post-->
+
+            <div class="post">
+
+                <div class="postContentContainer">
+                    <div class="postProfileSection">
+                        <a href="#" class="postProfile">
+                            <div class="postProfileImage">
+                                <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                            </div>
+                            <div class="postProfileName" >User Name</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="postContentContainer">
+                    <div class="postData">
+                        <div class="postMessage">
+                            <!--<div>-->
+                            Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+                            <!--</div>-->
+                        </div>
+                        <div class="postPicture">
+                            <!--To only present the message without the picture, comment the part below-->
+                            <!--<div class="postPictureImageContainer">
+                                <img class="postPictureImage" src="Icons/seminar-text.jpg">
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="postContentContainer">
+                    <div class="postLikeShareButtons">
+                        <div class="likeShareButtons" >
+                            <input type="button" value="Like" class="like">
+                        </div>
+
+                        <div class="countOfLikeShare" >
+                            &nbsp;
+                            <div class="likeCount">
+                                2793 Likes
+                            </div >
+                            <div class="emptySpaceLikeShare">
+                                &nbsp;
+                            </div>
+                            <div class="shareCount">
+                                18198 Shares
+                            </div>
+                        </div>
+                        <div class="likeShareButtons" >
+                            <input type="button" value="Share" class="share">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<footer>
+</footer>
+</body>
+</html>
