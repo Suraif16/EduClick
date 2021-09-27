@@ -6,8 +6,8 @@ USE EduClickDB;
 
 CREATE TABLE Users(
     UserID BIGINT NOT NULL AUTO_INCREMENT,
-    FirstName VARCHAR(50) NOT NULL,
-    LastName VARCHAR(50) NOT NULL,
+    FirstName VARCHAR(20) NOT NULL,
+    LastName VARCHAR(20) NOT NULL,
     ProfilePic BIGINT,
     DOB DATE NOT NULL,
     MobileNum INT,
@@ -332,7 +332,4 @@ ALTER TABLE Share
     ADD FOREIGN KEY(NFPostID) REFERENCES EducationalPost(EPostID) ON UPDATE CASCADE ON DELETE CASCADE;
 
 INSERT INTO Admin (EmailID, Password, AdminName)
-VALUES('farzanroxz123@gmail.com','a5252e680a4009804b846592c8d514c5faf29c99bfe02147039a2cf0e50638d3','frosty'),
-('venushkachstc@gmail.com','68a89da22265e09b38a11232f21947a78f71f28fb05b61a82149aea4bdccac8e','Venushka'),
-('jeewanthi.ch98@gmail.com','22f85309804be81bc7c5e7e1cb100c82ca366344387284d56394a1bb03cfb8fe','Jeewanthi'),
-('rahuram666@gmail.com','dfe338b7c702ebc9fac2339f130510539ee7049d7106c612bba48e5ef7d9d4e7','Rahuram');
+VALUES('rahuram666@gmail.com','dfe338b7c702ebc9fac2339f130510539ee7049d7106c612bba48e5ef7d9d4e7','Rahuram');
