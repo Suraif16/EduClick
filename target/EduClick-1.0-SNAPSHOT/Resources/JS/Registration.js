@@ -29,7 +29,7 @@ const sendServerData = function () {
     }
     //let genderMale = document.getElementById("male").value;
     //let genderFemale = document.getElementById("female").value;
-    let password = document.getElementById("password").value;
+    let password = document.getElementById("Password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
 
 
@@ -92,7 +92,7 @@ const sendServerData = function () {
 
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userType=" + userType + "&country=" + country + "&city=" + city + "&mobileNumber=" + mobileNumber + "&gender=" + gender + "&password=" + password + "&confirmPassword=" + confirmPassword);
+    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userType=" + userType + "&country=" + country + "&city=" + city + "&mobileNumber=" + mobileNumber + "&gender=" + gender + "&Password=" + password + "&confirmPassword=" + confirmPassword);
 
     function completeRegistration(httpreq) {
 

@@ -80,6 +80,10 @@ public class Login {
 
 
     }
+    public void insertRecord(){
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.enter(this);
+    }
 
 
 }

@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
         String userType = request.getParameter("userType");
 
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String password = request.getParameter("Password");
         LocalDate loginDate = LocalDate.now();
         LocalTime loginTime = LocalTime.now();
 
@@ -57,12 +57,15 @@ public class RegisterServlet extends HttpServlet {
 
 
 
-        /*User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
-        Login login = new Login( email , password , loginDate , loginTime);
+       User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
+
+       user.userRegistered();
+       Login login = new Login( email , password , loginDate , loginTime);
+       login.insertRecord();
 
 
 
-        out.write(jsonObject.toString());*/
+        /*out.write(jsonObject.toString());*/
         out.close();
 
 

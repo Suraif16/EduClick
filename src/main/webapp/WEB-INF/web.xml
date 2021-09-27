@@ -36,6 +36,16 @@
         <url-pattern>/Registration</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>registrationPasswordHashing</filter-name>
+        <filter-class>Controller.LoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>registrationPasswordHashing</filter-name>
+        <url-pattern>/Registration</url-pattern>
+    </filter-mapping>
+
     <!--End of login servlet and filter-->
 
     <session-config>

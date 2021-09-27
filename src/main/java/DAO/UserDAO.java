@@ -2,6 +2,7 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.User;
+import Model.Login;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -9,7 +10,11 @@ import java.time.LocalTime;
 
 public class UserDAO {
 
-    String generatedUserId;
+    public String generatedUserId;
+
+    public void setGeneratedUserId(String generatedUserId) {
+        this.generatedUserId = generatedUserId;
+    }
 
     public void insert(User user){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -17,17 +22,17 @@ public class UserDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Country,City,registrationDate,registrationTime) VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,Country,City,RegistrationDate,RegistrationTime) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,user.getFirstName());
             preparedStatement.setString(2,user.getLastName());
             preparedStatement.setString(3, String.valueOf(user.getDateOfBirth()));
             preparedStatement.setString(4,user.getMobileNumber());
-            preparedStatement.setString(5,user.getUserType());
-            preparedStatement.setString(6,user.getCountry());
-            preparedStatement.setString(7,user.getCity());
-            preparedStatement.setString(8, String.valueOf(user.getRegistrationDate()));
-            preparedStatement.setString(9, String.valueOf(user.getRegistrationTime()));
+
+            preparedStatement.setString(5,user.getCountry());
+            preparedStatement.setString(6,user.getCity());
+            preparedStatement.setString(7, String.valueOf(user.getRegistrationDate()));
+            preparedStatement.setString(8, String.valueOf(user.getRegistrationTime()));
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -46,4 +51,5 @@ public class UserDAO {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
     }
+
 }
