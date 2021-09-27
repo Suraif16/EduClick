@@ -34,8 +34,8 @@ public class RegisterServlet extends HttpServlet {
         String city = request.getParameter("city");
         LocalDate registrationDate = LocalDate.now();
         LocalTime registrationTime = LocalTime.now();
-        String gender = request.getParameter("gender");
-        String userType = request.getParameter("userType");
+        String gender = request.getParameter("genderSelect");
+        String userType = request.getParameter("userTypeSelect");
 
         String email = request.getParameter("email");
         String password = request.getParameter("Password");
