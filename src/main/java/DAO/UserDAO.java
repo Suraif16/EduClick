@@ -12,11 +12,15 @@ public class UserDAO {
 
     public String generatedUserId;
 
+    public String getGeneratedUserId() {
+        return generatedUserId;
+    }
+
     public void setGeneratedUserId(String generatedUserId) {
         this.generatedUserId = generatedUserId;
     }
 
-    public void insert(User user){
+    public String insert(User user){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
@@ -39,6 +43,7 @@ public class UserDAO {
 
             if (resultSet.next()){
                 generatedUserId = resultSet.getString(1);
+
             }
             //returns userID
             resultSet.close();
@@ -50,6 +55,7 @@ public class UserDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
+        return generatedUserId;
     }
 
 }

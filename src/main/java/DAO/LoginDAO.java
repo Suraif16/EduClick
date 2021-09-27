@@ -55,7 +55,12 @@ public class LoginDAO {
             preparedStatement.setString(2,login.getPassword());
             preparedStatement.setString(3, String.valueOf(login.getLoginDate()));
             preparedStatement.setString(4, String.valueOf(login.getLoginTime()));
-            ResultSet resultSet = preparedStatement.executeQuery();
+            preparedStatement.setString(5, login.getUserID());
+            preparedStatement.executeUpdate();
+
+
+            preparedStatement.close();
+
 
             
 
