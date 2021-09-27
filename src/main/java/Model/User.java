@@ -140,5 +140,6 @@ public class User {
     public void userRegistered(){
         UserDAO userDAO = new UserDAO();
         userDAO.insert(this);
+        userId=userDAO.getGeneratedUserId();
     }
 }

@@ -17,6 +17,8 @@ import java.time.LocalTime;
 import org.json.JSONObject;
 
 public class RegisterServlet extends HttpServlet {
+    public String generatedUserID;
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
@@ -32,8 +34,8 @@ public class RegisterServlet extends HttpServlet {
         String city = request.getParameter("city");
         LocalDate registrationDate = LocalDate.now();
         LocalTime registrationTime = LocalTime.now();
-        String gender = request.getParameter("gender");
-        String userType = request.getParameter("userType");
+        String gender = request.getParameter("genderSelect");
+        String userType = request.getParameter("userTypeSelect");
 
         String email = request.getParameter("email");
         String password = request.getParameter("Password");
@@ -60,7 +62,10 @@ public class RegisterServlet extends HttpServlet {
        User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
 
        user.userRegistered();
-       Login login = new Login( email , password , loginDate , loginTime);
+
+       generatedUserID = user.getUserId();
+
+       Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
        login.insertRecord();
 
 

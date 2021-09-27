@@ -12,6 +12,16 @@ public class Login {
     private LocalDate loginDate;
     private LocalTime loginTime;
 
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    private String userID;
+
     /*Getters and setters begins here*/
 
     public String getEmail() {
@@ -54,6 +64,14 @@ public class Login {
         this.password = password;
         this.loginDate = loginDate;
         this.loginTime = loginTime;
+    }
+
+    public Login(String email , String password , LocalDate loginDate , LocalTime loginTime,String userID){
+        this.email = email;
+        this.password = password;
+        this.loginDate = loginDate;
+        this.loginTime = loginTime;
+        this.userID = userID;
     }
 
     /*other functions*/
