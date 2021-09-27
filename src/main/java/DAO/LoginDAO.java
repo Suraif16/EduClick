@@ -4,10 +4,14 @@ import Database.DBConnectionPool;
 
 import java.sql.*;
 
+import Model.Login;
+import DAO.UserDAO;
+
 public class LoginDAO {
 
     private String pswd;
     private String userid;
+
 
     public void select(String email) {
         /*Here the login table from the database is accessed to check if the password is correct,
@@ -36,6 +40,32 @@ public class LoginDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
+
+    }
+
+    public static void enter(Login login){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try {
+            connection =dbConnectionPool.dataSource.getConnection();
+            String sql = "INSERT INTO Login(EmailID,Password,LoginDate,LoginTime,UserID) VALUES (?,?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString(1,login.getEmail());
+            preparedStatement.setString(2,login.getPassword());
+            preparedStatement.setString(3, String.valueOf(login.getLoginDate()));
+            preparedStatement.setString(4, String.valueOf(login.getLoginTime()));
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            
+
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

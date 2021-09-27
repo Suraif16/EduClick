@@ -57,12 +57,15 @@ public class RegisterServlet extends HttpServlet {
 
 
 
-        /*User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
-        Login login = new Login( email , password , loginDate , loginTime);
+       User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
+
+       user.userRegistered();
+       Login login = new Login( email , password , loginDate , loginTime);
+       login.insertRecord();
 
 
 
-        out.write(jsonObject.toString());*/
+        /*out.write(jsonObject.toString());*/
         out.close();
 
 
