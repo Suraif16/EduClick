@@ -14,7 +14,7 @@ teacher - creating a class -> insert
 	    - select post admin post -> select
 	    - add a friend -> insert
 
-student - showing the class -> select 
+student - showing the class -> select
 	    - enrol to class -> insert
 
 admin - display the user count -> select
