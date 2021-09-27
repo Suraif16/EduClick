@@ -26,17 +26,18 @@ public class UserDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,Country,City,RegistrationDate,RegistrationTime) VALUES (?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Gender,Country,City,RegistrationDate,RegistrationTime) VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,user.getFirstName());
             preparedStatement.setString(2,user.getLastName());
             preparedStatement.setString(3, String.valueOf(user.getDateOfBirth()));
             preparedStatement.setString(4,user.getMobileNumber());
-
-            preparedStatement.setString(5,user.getCountry());
-            preparedStatement.setString(6,user.getCity());
-            preparedStatement.setString(7, String.valueOf(user.getRegistrationDate()));
-            preparedStatement.setString(8, String.valueOf(user.getRegistrationTime()));
+            preparedStatement.setString(5,user.getUserType());
+            preparedStatement.setString(6,user.getGender());
+            preparedStatement.setString(7,user.getCountry());
+            preparedStatement.setString(8,user.getCity());
+            preparedStatement.setString(9, String.valueOf(user.getRegistrationDate()));
+            preparedStatement.setString(10, String.valueOf(user.getRegistrationTime()));
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
