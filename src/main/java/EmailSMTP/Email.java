@@ -1,7 +1,6 @@
 package EmailSMTP;
 
 import javax.mail.*;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
@@ -10,8 +9,8 @@ public class Email {
 
     public static void main(String[] args){
 
-        final String username = "farzanroxz123@gmail.com";
-        final String password = "farzanbigbang1@3";
+        final String username = "educlickorg@gmail.com";
+        final String password = "hckujhhwzxqijdsd";
 
         Properties properties = new Properties();
         properties.put("mail.smtp.host" , "smtp.gmail.com");
@@ -29,21 +28,26 @@ public class Email {
 
         try{
             Message message = new MimeMessage( session );
-            message.setFrom( new InternetAddress("farzanroxz123@gamil.com"));
-            message.setRecipient(
+            message.setFrom( new InternetAddress("EduClick") );
+            message.setRecipients(
                     Message.RecipientType.TO,
-                    InternetAddress.parse("m.farzan.rizwan@gmail.com , farzanroxz123@gmail.com")
+                    InternetAddress.parse("farzanroxz123@gmail.com")
             );
 
-            message.getSubject("Testing Gmail TLS");
+            message.setSubject("Testing");
             message.setText("Dear me" +
-                    "\n\n please wait...");
+                    "\n\n please wait... frosty");
 
             Transport.send(message);
+
+            System.out.println("Done");
+
         } catch (MessagingException e) {
             e.printStackTrace();
+            System.out.println("error");
         }
 
+        System.out.println("complete");
 
     }
 }
