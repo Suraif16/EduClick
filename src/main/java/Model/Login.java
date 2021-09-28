@@ -84,6 +84,7 @@ public class Login {
         if(loginDAO.getPswd().equals(this.password)){
 
             if ( !loginDAO.getUserid().equals("") ){
+                loginDAO.update(this.email,this.loginDate,this.loginTime);
                 return loginDAO.getUserid();
             }
             return "";
