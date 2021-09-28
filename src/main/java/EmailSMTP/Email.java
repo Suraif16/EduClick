@@ -31,7 +31,7 @@ public class Email {
 
     }
 
-    public void sendMail(){
+    public void sendMail( String toEmail , String subject , String textMessage ){
 
 
         try{
@@ -39,12 +39,11 @@ public class Email {
             message.setFrom( new InternetAddress("EduClick") );
             message.setRecipients(
                     Message.RecipientType.TO,
-                    InternetAddress.parse("venushkachstc@gmail.com,rahuram66@gmail.com,jeewanthi.ch98@gmail.com")
+                    InternetAddress.parse(toEmail)
             );
 
-            message.setSubject("Testing Gmail TLS");
-            message.setText("Dear Group" +
-                    "\n\n please complete everything required before the interim\n\nthank you  ");
+            message.setSubject(subject);
+            message.setText( textMessage );
 
             Transport.send(message);
 
