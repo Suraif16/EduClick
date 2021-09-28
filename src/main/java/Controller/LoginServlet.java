@@ -33,7 +33,9 @@ public class LoginServlet extends HttpServlet {
 
         Login login = new Login( email , password , loginDate , loginTime);
         String loginStatus = login.checkPassword();/*here we check for the password
-        depending on the return value we make the decisions as below*/
+        depending on the return value we make the decisions as below
+        if loginStatus has an empty string then it is an admin ,
+        if loginStatus has an id then it is an user*/
 
         if(loginStatus.equals("password incorrect")){
             jsonObject.put("User" , "incorrect password");

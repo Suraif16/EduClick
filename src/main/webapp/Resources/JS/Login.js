@@ -29,14 +29,14 @@ const sendServerData = function (){
         console.log(jsonLoginResponse.User);
         if ( jsonLoginResponse.User === "Admin"){
             console.log("in if");
-            // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+            window.location.replace("/EduClick_war_exploded/Admin/Admin-DashBoard.html");
         }
         else if ( jsonLoginResponse.User === "User"){
             console.log("in else if");
             // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
         }
         else if( jsonLoginResponse.User === "incorrect password"){
-            console.log("else");
+            console.log("in else if 2");
             inCorrectPassword.style.display = "flex";
 
             passwordIncorrectCount += 1;
@@ -48,11 +48,11 @@ const sendServerData = function (){
             }
             console.log( passwordIncorrectCount );
         }
-        else if(){
-
+        else if( jsonLoginResponse.User === "User does not exist"){
+            console.log("in else if 3");
         }
         else{
-            
+            alert(" Something went wrong!");
         }
     }
 
