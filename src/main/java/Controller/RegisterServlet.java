@@ -23,8 +23,8 @@ public class RegisterServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
-        /*HttpSession session = request.getSession();
-        JSONObject jsonObject = new JSONObject();*/
+        HttpSession session = request.getSession();
+        JSONObject jsonObject = new JSONObject();
 
         String firstname = request.getParameter("firstName");
         String lastname = request.getParameter("lastName");
@@ -58,15 +58,25 @@ public class RegisterServlet extends HttpServlet {
         System.out.println(loginTime);
 
 
+        Login loginemail = new Login(email);
 
-       User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
 
-       user.userRegistered();
+       String emailStatus = loginemail.checkEmail();
+       if(emailStatus.equals("Invalid")){
+           System.out.println("Enter another email");
+           //session.invalidate();
+       }
+       else if(emailStatus.equals("Valid")){
+           User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
+           user.userRegistered();
+           generatedUserID = user.getUserId();
+           Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
+           login.insertRecord();
 
-       generatedUserID = user.getUserId();
+       }
 
-       Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
-       login.insertRecord();
+
+
 
 
 

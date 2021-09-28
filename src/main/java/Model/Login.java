@@ -73,6 +73,9 @@ public class Login {
         this.loginTime = loginTime;
         this.userID = userID;
     }
+    public Login(String email ){
+        this.email = email;
+    }
 
     /*other functions*/
 
@@ -97,6 +100,15 @@ public class Login {
         }
 
 
+    }
+
+    public String checkEmail(){
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.validateEmail(this.email);
+        if(loginDAO.getEmailDAO().equals(this.email)){
+            return "Invalid";
+        }
+        return "Valid";
     }
     public void insertRecord(){
         LoginDAO loginDAO = new LoginDAO();
