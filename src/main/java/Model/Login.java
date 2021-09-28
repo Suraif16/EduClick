@@ -83,7 +83,7 @@ public class Login {
         loginDAO.select(this.email);
         if(loginDAO.getPswd().equals(this.password)){
 
-            if (!loginDAO.getUserid().equals("")){
+            if ( !loginDAO.getUserid().equals("") ){
                 return loginDAO.getUserid();
             }
             return "";

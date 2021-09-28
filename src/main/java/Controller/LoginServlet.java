@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
         }else{
             /*for users*/
             System.out.println("user");
+            jsonObject.put("User" , "User");
         }
         System.out.println("farzan");
 

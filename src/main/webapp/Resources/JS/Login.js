@@ -31,8 +31,12 @@ const sendServerData = function (){
             console.log("in if");
             // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
         }
+        else if ( jsonLoginResponse.User === "User"){
+            console.log("in else if");
+            // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+        }
         else{
-
+            console.log("else");
             inCorrectPassword.style.display = "flex";
 
             passwordIncorrectCount += 1;

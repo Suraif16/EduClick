@@ -40,7 +40,32 @@ public class LoginDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
+        System.out.println("first");
+        if (pswd == null){
+            System.out.println("userlogin");
+            try {
+                connection = dbConnectionPool.dataSource.getConnection();
+                String sql = "select Password,UserID from Login where EmailID = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement( sql );
+                preparedStatement.setString(1 , email);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    pswd = resultSet.getString("Password");
+                    userid = resultSet.getString("UserID");;
+                    System.out.println(" A " + pswd +"id:" + userid + " B ");
+                }
+                resultSet.close();
+                preparedStatement.close();
 
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            finally {
+                if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+            }
+        }
+        System.out.println("last");
     }
 
     public static void enter(Login login){

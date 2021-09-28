@@ -274,26 +274,25 @@ a{
 
 }
 
-img#profilepic{
-    height: 100px;
-    width: 100px;
-    margin-left: 33%;
-    border-radius: 50%;
 
-    justify-content: center;
-}
 div#propicbar{
     background-color: #4775c4;
     display: flex;
     flex: 1; /*child of the body*/
-    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+ /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     box-shadow: 8px 8px 2px #a7a7a7;
     margin-top: -2px;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
 
 
 }
 div#navbar{
+  display: flex;
     padding-top: 3%;
+    order:1;
+
 }
 div#navbar ul{
     padding: 0;
@@ -318,18 +317,59 @@ div#navbar ul li a:hover{
     background: #0571ed;
 }
 
-div#propicbar > div#image-container{
+ div#image-container1{
+    order: 2;
     flex: 1;
     margin-top: 10px;
     padding: 4px 4px;
     flex-wrap: wrap;
+    display: flex;
+justify-content: center;
 
 }
-div#propicbar > div#image-container p {
-    margin-left: 30%;
-    color: whitesmoke;
-    font-size: 25px;
 
+img#profilepic1{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+
+}
+.postProfileUserName {
+display: flex;
+
+justify-content: center;
+flex-basis: 90%;
+color: whitesmoke;
+  flex-wrap: wrap;
+
+}
+
+div#navbar2{
+  display: flex;
+    padding-top: 3%;
+    order:3;
+}
+div#navbar2 ul{
+    padding: 0;
+    margin: 0;
+    float: left;
+    margin-left: 30px;
+}
+div#navbar2 ul li{
+    position: relative;
+    list-style: none;
+    display: inline-block;
+}
+div#navbar2 ul li a{
+    display: block;
+    padding: 0 15px;
+    color: whitesmoke;
+    text-decoration: none;
+    line-height: 60px;
+    font-size: 20px;
+}
+div#navbar2 ul li a:hover{
+    background: #0571ed;
 }
 
 footer{
@@ -352,6 +392,7 @@ div#content{
     display: flex; /*this becomes the container for classRoomsLists and postContents*/
     flex-wrap: wrap;
     align-items: flex-start;
+
 
 }
 
@@ -555,36 +596,7 @@ input[type="button"]:active{
 
 }
 
-@media(max-width: 1100px) {
 
-    div#content {
-
-        /*child of body*/
-
-        flex: 2;
-        order: 2;
-        margin: 1% 0;
-        display: flex; /*this becomes the container for classRoomsLists and postContents*/
-        flex-direction: column;
-    }
-    div#profileInfo{
-        position: relative;
-        display: flex;
-        width: 80%;
-        margin-left: 10%;
-
-    }
-    div#propicbar > div#image-container p {
-
-        color: whitesmoke;
-        font-size: 25px;
-        margin-right: 10%;
-
-
-    }
-
-
-}
 
 @media(max-width: 1100px) {
 
@@ -602,21 +614,12 @@ input[type="button"]:active{
     }
 
 
-
-
-
-
-
-
-
     div#postContents {
 
         flex: 1;
         margin: 12% 0 0 auto;
 
     }
-
-
 
 }
 @media(max-width: 952px){
@@ -891,4 +894,3 @@ input[type=range]::-webkit-slider-thumb {
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #2497E3;
 }
-
