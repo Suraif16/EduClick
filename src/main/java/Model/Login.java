@@ -105,10 +105,10 @@ public class Login {
     public String checkEmail(){
         LoginDAO loginDAO = new LoginDAO();
         loginDAO.validateEmail(this.email);
-        if(loginDAO.getEmailDAO().equals(this.email)){
-            return "Invalid";
+        if(loginDAO.getEmailDAO()==null){
+            return "Email doesn't exsist";
         }
-        return "Valid";
+        return "Email exsist";
     }
     public void insertRecord(){
         LoginDAO loginDAO = new LoginDAO();

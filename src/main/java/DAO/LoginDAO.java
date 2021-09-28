@@ -78,15 +78,20 @@ public class LoginDAO {
 
         try {
             connection =dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT EmailID FROM Login WHERE EmailID = ?";
+            String sql = "SELECT userID FROM Login WHERE EmailID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,email);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
-                emaildao = resultSet.getString("EmailID");
+                emaildao = resultSet.getString("userID");
+                System.out.println("Email DAO printed" + emaildao);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
 
     }

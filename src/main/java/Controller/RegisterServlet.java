@@ -62,11 +62,11 @@ public class RegisterServlet extends HttpServlet {
 
 
        String emailStatus = loginemail.checkEmail();
-       if(emailStatus.equals("Invalid")){
+       if(emailStatus.equals("Email exsist")){
            System.out.println("Enter another email");
            //session.invalidate();
        }
-       else if(emailStatus.equals("Valid")){
+       else if(emailStatus.equals("Email doesn't exsist")){
            User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
            user.userRegistered();
            generatedUserID = user.getUserId();
