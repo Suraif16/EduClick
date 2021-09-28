@@ -81,15 +81,19 @@ public class Login {
         * its a user. If the password is incorrect then it returns as password incorrect*/
         LoginDAO loginDAO = new LoginDAO();
         loginDAO.select(this.email);
-        if(loginDAO.getPswd().equals(this.password)){
+        if(loginDAO.getPswd()==null && loginDAO.getUserid()==null){
+            return "User does not exist";
 
+
+
+        }else if(loginDAO.getPswd().equals(this.password)){
             if ( !loginDAO.getUserid().equals("") ){
                 loginDAO.update(this.email,this.loginDate,this.loginTime);
                 return loginDAO.getUserid();
             }
             return "";
-
         }
+
         else {
 
             System.out.println("password incorrect");

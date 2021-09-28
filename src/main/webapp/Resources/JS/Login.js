@@ -35,7 +35,7 @@ const sendServerData = function (){
             console.log("in else if");
             // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
         }
-        else{
+        else if( jsonLoginResponse.User === "incorrect password"){
             console.log("else");
             inCorrectPassword.style.display = "flex";
 
@@ -47,9 +47,13 @@ const sendServerData = function (){
                 /*here if the password is incorrect the user will be sent to a different page to handle it*/
             }
             console.log( passwordIncorrectCount );
+        }
+        else if(){
 
         }
-
+        else{
+            
+        }
     }
 
 

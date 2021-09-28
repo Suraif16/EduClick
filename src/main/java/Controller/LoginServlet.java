@@ -36,9 +36,13 @@ public class LoginServlet extends HttpServlet {
         depending on the return value we make the decisions as below*/
 
         if(loginStatus.equals("password incorrect")){
-            System.out.println("incorrect password");
+            jsonObject.put("User" , "incorrect password");
             session.invalidate();
-        }else if(loginStatus.equals("")){
+        }else if(loginStatus.equals("User does not exist")){
+            jsonObject.put("User" , "User does not exist");
+            session.invalidate();
+        }
+        else if(loginStatus.equals("")){
             /*admin*/
             System.out.println("admin");
             Admin admin = new Admin( "Admin" , email );
@@ -50,7 +54,6 @@ public class LoginServlet extends HttpServlet {
             System.out.println("user");
             jsonObject.put("User" , "User");
         }
-        System.out.println("farzan");
 
         out.write(jsonObject.toString());
         out.close();
