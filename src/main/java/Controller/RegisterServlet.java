@@ -64,6 +64,7 @@ public class RegisterServlet extends HttpServlet {
        String emailStatus = loginemail.checkEmail();
        if(emailStatus.equals("Email exsist")){
            System.out.println("Enter another email");
+           jsonObject.put("EmailStatus" , "InvalidEmail");
            //session.invalidate();
        }
        else if(emailStatus.equals("Email doesn't exsist")){
@@ -72,6 +73,7 @@ public class RegisterServlet extends HttpServlet {
            generatedUserID = user.getUserId();
            Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
            login.insertRecord();
+           jsonObject.put("EmailStatus" , "ValidEmail");
 
        }
 
@@ -80,7 +82,7 @@ public class RegisterServlet extends HttpServlet {
 
 
 
-        /*out.write(jsonObject.toString());*/
+        out.write(jsonObject.toString());
         out.close();
 
 
