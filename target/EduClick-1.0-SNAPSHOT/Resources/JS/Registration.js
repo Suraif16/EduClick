@@ -69,6 +69,23 @@ const sendServerData = function () {
         Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
         in the JSON object specified by the servlet*/
         console.log(jsonRegistrationResponse.User);
+
+        console.log(jsonRegistrationResponse.EmailStatus);
+
+        if (jsonRegistrationResponse.EmailStatus === "InvalidEmail") {
+            console.log("Invalid Email");
+        }
+        else {
+            (jsonRegistrationResponse.EmailStatus === "ValidEmail")
+            {
+                console.log("Valid Email");
+                // window.location.replace("/EduClick_war_exploded/Student/Student.html");
+
+
+            }
+
+        }
+
         if (jsonRegistrationResponse.User === "Teacher") {
             console.log("in if");
             // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");

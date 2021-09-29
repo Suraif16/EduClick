@@ -223,6 +223,13 @@ CREATE TABLE Share(
     PRIMARY KEY(ShareID)
     )ENGINE = INNODB;
 
+CREATE TABLE Admin_Post_System_Updates(
+    SysPostID BIGINT AUTO_INCREMENT,
+    TextMsg VARCHAR(8000),
+    Photo BIGINT NOT NULL,
+    Flag ENUM('TRUE','FALSE'),
+    PRIMARY KEY(SysPostID)
+    )ENGINE = INNODB;
 
 
 ALTER TABLE Student

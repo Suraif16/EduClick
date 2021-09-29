@@ -11,6 +11,7 @@ public class LoginDAO {
 
     private String pswd;
     private String userid;
+    private String emaildao;
 
 
     public void select(String email) {
@@ -61,16 +62,37 @@ public class LoginDAO {
 
             preparedStatement.close();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
 
-            
 
+    }
 
+    public void validateEmail(String email){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
 
+        try {
+            connection =dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT userID FROM Login WHERE EmailID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                emaildao = resultSet.getString("userID");
+                System.out.println("Email DAO printed" + emaildao);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
 
     }
 
@@ -80,6 +102,10 @@ public class LoginDAO {
 
     public String getUserid() {
         return userid;
+    }
+
+    public String getEmailDAO() {
+        return emaildao;
     }
 
 }
