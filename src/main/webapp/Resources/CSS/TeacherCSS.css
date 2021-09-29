@@ -669,7 +669,7 @@ div#content > div#addClassroomForm{
     width: 40%;
     padding: 1%;
     height: 23%;
-    display: flex; /*become a container for classroomFormRow*/
+    display: none; /*become a container for classroomFormRow*/
     flex-direction: column;
 
 }
