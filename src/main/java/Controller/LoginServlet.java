@@ -1,8 +1,10 @@
 package Controller;
 
 import DAO.LoginDAO;
+import DAO.UserDAO;
 import Model.Admin;
 import Model.Login;
+import Model.User;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
@@ -30,15 +32,20 @@ public class LoginServlet extends HttpServlet {
         LocalDate loginDate = LocalDate.now();
         LocalTime loginTime = LocalTime.now();
 
-
         Login login = new Login( email , password , loginDate , loginTime);
         String loginStatus = login.checkPassword();/*here we check for the password
-        depending on the return value we make the decisions as below*/
+        depending on the return value we make the decisions as below
+        if loginStatus has an empty string then it is an admin ,
+        if loginStatus has an id then it is an user*/
 
         if(loginStatus.equals("password incorrect")){
-            System.out.println("incorrect password");
+            jsonObject.put("User" , "incorrect password");
             session.invalidate();
-        }else if(loginStatus.equals("")){
+        }else if(loginStatus.equals("User does not exist")){
+            jsonObject.put("User" , "User does not exist");
+            session.invalidate();
+        }
+        else if(loginStatus.equals("")){
             /*admin*/
             System.out.println("admin");
             Admin admin = new Admin( "Admin" , email );
@@ -47,10 +54,20 @@ public class LoginServlet extends HttpServlet {
 
         }else{
             /*for users*/
-            System.out.println("user");
-        }
-        System.out.println("farzan");
+            /*loginStatus = UserID*/
+            jsonObject.put("User" , "User");
+            User user = new User ( loginStatus );
+            String userStatus = user.checkUsertype();
+            /*if(userStatus.equals("Teacher")){
+                jsonObject.put("Usertype" , "Teacher");
+            }else if(userStatus.equals("Student")){
+                jsonObject.put("Usertype" , "Student");
+            }*/
+            jsonObject.put("Usertype" ,userStatus );
+            System.out.println("Usertype");
 
+        }
+        System.out.println(jsonObject);
         out.write(jsonObject.toString());
         out.close();
 
