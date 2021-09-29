@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
         LocalDate loginDate = LocalDate.now();
         LocalTime loginTime = LocalTime.now();
 
-
         Login login = new Login( email , password , loginDate , loginTime);
         String loginStatus = login.checkPassword();/*here we check for the password
         depending on the return value we make the decisions as below
@@ -55,12 +54,20 @@ public class LoginServlet extends HttpServlet {
 
         }else{
             /*for users*/
-            System.out.println("user");
-            jsonObject.put("Usertype" , "Teacher");
-            jsonObject.put("Usertype" , "Student");
+            /*loginStatus = UserID*/
+            jsonObject.put("User" , "User");
+            User user = new User ( loginStatus );
+            String userStatus = user.checkUsertype();
+            if(userStatus.equals("Teacher")){
+                jsonObject.put("Usertype" , "Teacher");
+            }else if(userStatus.equals("Student")){
+                jsonObject.put("Usertype" , "Student");
+            }
+
+            System.out.println("Usertype");
 
         }
-
+        System.out.println(jsonObject);
         out.write(jsonObject.toString());
         out.close();
 

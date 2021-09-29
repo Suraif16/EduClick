@@ -35,23 +35,15 @@ public class User {
         this.userType = userType;
     }
 
-    public User(String userId, String userType) {
+    public User(String userId) {
         this.userId = userId;
-        this.userType = userType;
     }
-
-    public String getUserType() {
+    public String checkUsertype(){
         UserDAO userDAO = new UserDAO();
-        userDAO.select(this.userId);
-        userDAO.select(this.userType);
-        LoginDAO loginDAO = new LoginDAO();
-        loginDAO.select(this.userId);
-
-        if(userDAO.getUserid() == loginDAO.getUserid()){
-            return userDAO.getUserType();
-        }
-
-           return null;
+        return userDAO.select(this.userType);
+    }
+    public String getUserType() {
+           return userType;
     }
 
     public void setUserType(String userType) {
