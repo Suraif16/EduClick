@@ -40,7 +40,7 @@ public class User {
     }
     public String checkUsertype(){
         UserDAO userDAO = new UserDAO();
-        return userDAO.select(this.userType);
+        return userDAO.select(this.userId);
     }
     public String getUserType() {
            return userType;

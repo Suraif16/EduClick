@@ -64,7 +64,7 @@ public class UserDAO {
         String userType = "";
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select UserType from users where UserID = ?";
+            String sql = "select UserType from Users where UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, userid);
             ResultSet resultSet = preparedStatement.executeQuery();

@@ -58,12 +58,12 @@ public class LoginServlet extends HttpServlet {
             jsonObject.put("User" , "User");
             User user = new User ( loginStatus );
             String userStatus = user.checkUsertype();
-            if(userStatus.equals("Teacher")){
+            /*if(userStatus.equals("Teacher")){
                 jsonObject.put("Usertype" , "Teacher");
             }else if(userStatus.equals("Student")){
                 jsonObject.put("Usertype" , "Student");
-            }
-
+            }*/
+            jsonObject.put("Usertype" ,userStatus );
             System.out.println("Usertype");
 
         }
