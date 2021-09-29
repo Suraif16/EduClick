@@ -67,3 +67,32 @@ function showAddClassroomFrom(){
     }
 
 }
+
+function createClassroom(){
+
+    const classroomsListLinks = document.getElementById("classroomsListLinks");
+    let classroomName = document.getElementById("classroomName");
+    let yearOfExamination = document.getElementById("classroomYearOfExamination");
+    let gradeClass = document.getElementById("classroomClassGrade");
+    let subject = document.getElementById("classroomSubject");
+
+    console.log( classroomName.value , yearOfExamination.value , gradeClass.value , subject.value );
+
+    classroomsListLinks.innerHTML += '<div className="classroomsListLinksItems"' +
+        ' style="flex: 1;\n' +
+        '    background-color: #4775c4;\n' +
+        '    text-align: center;\n' +
+        '    margin: 1.5% 0;\n' +
+        '    padding: 1%;"> ' +
+        '<a href="" className="classRooms"> ' +
+        classroomName.value + ' : ' + subject.value + ' : Grade ' + gradeClass.value + ' : ' + subject.value +
+        '</a>' +
+        '</div>';
+
+
+    classroomName.value = "";
+    yearOfExamination.value = "";
+    gradeClass.value = "";
+    subject.value = "";
+    showAddClassroomFrom();
+}
