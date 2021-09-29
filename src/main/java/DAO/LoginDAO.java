@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import Model.Login;
+import Model.User;
 import DAO.UserDAO;
 
 public class LoginDAO {
@@ -132,4 +133,5 @@ public class LoginDAO {
         }
 
     }
+
 }

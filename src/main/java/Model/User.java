@@ -1,5 +1,6 @@
 package Model;
 
+import DAO.LoginDAO;
 import DAO.UserDAO;
 
 import java.time.LocalDate;
@@ -34,8 +35,23 @@ public class User {
         this.userType = userType;
     }
 
+    public User(String userId, String userType) {
+        this.userId = userId;
+        this.userType = userType;
+    }
+
     public String getUserType() {
-        return userType;
+        UserDAO userDAO = new UserDAO();
+        userDAO.select(this.userId);
+        userDAO.select(this.userType);
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.select(this.userId);
+
+        if(userDAO.getUserid() == loginDAO.getUserid()){
+            return userDAO.getUserType();
+        }
+
+           return null;
     }
 
     public void setUserType(String userType) {

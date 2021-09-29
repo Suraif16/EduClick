@@ -84,8 +84,6 @@ public class Login {
         if(loginDAO.getPswd()==null && loginDAO.getUserid()==null){
             return "User does not exist";
 
-
-
         }else if(loginDAO.getPswd().equals(this.password)){
             if ( !loginDAO.getUserid().equals("") ){
                 loginDAO.update(this.email,this.loginDate,this.loginTime);
@@ -93,20 +91,13 @@ public class Login {
             }
             return "";
         }
-
         else {
-
             System.out.println("password incorrect");
             return "password incorrect";
-
         }
-
-
     }
     public void insertRecord(){
         LoginDAO loginDAO = new LoginDAO();
         loginDAO.enter(this);
     }
-
-
 }

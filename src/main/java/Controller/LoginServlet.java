@@ -1,8 +1,10 @@
 package Controller;
 
 import DAO.LoginDAO;
+import DAO.UserDAO;
 import Model.Admin;
 import Model.Login;
+import Model.User;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;

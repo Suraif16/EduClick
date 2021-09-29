@@ -2,11 +2,8 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.User;
-import Model.Login;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class UserDAO {
 
@@ -58,5 +55,41 @@ public class UserDAO {
         }
         return generatedUserId;
     }
+    private String userType;
+    private String userid;
+    public void select(String userType) {
+        /*Here the login table from the database is accessed to check if the password is correct,
+         * if the admin logs in then the userid is set to "", otherwise to a user id*/
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "select UserType from Users where UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userid);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                userid = resultSet.getString("Userid");
+                userType = resultSet.getString("UserType");
+                System.out.println("hi" + userType + "id:" + userid + " nothing");
+            }
+            resultSet.close();
+            preparedStatement.close();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            if (connection != null) try { connection.close(); } catch (Exception ignore) {
+            }
+        }
+    }
+
+    public String getUserType(){
+        return userType;
+    }
+
+    public String getUserid() { return userid;  }
 
 }
