@@ -23,8 +23,8 @@ public class RegisterServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
-        /*HttpSession session = request.getSession();
-        JSONObject jsonObject = new JSONObject();*/
+        HttpSession session = request.getSession();
+        JSONObject jsonObject = new JSONObject();
 
         String firstname = request.getParameter("firstName");
         String lastname = request.getParameter("lastName");
@@ -58,19 +58,31 @@ public class RegisterServlet extends HttpServlet {
         System.out.println(loginTime);
 
 
-
-       User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
-
-       user.userRegistered();
-
-       generatedUserID = user.getUserId();
-
-       Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
-       login.insertRecord();
+        Login loginemail = new Login(email);
 
 
+       String emailStatus = loginemail.checkEmail();
+       if(emailStatus.equals("Email exsist")){
+           System.out.println("Enter another email");
+           jsonObject.put("EmailStatus" , "InvalidEmail");
+           //session.invalidate();
+       }
+       else if(emailStatus.equals("Email doesn't exsist")){
+           User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
+           user.userRegistered();
+           generatedUserID = user.getUserId();
+           Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
+           login.insertRecord();
+           jsonObject.put("EmailStatus" , "ValidEmail");
 
-        /*out.write(jsonObject.toString());*/
+       }
+
+
+
+
+
+
+        out.write(jsonObject.toString());
         out.close();
 
 

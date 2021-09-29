@@ -73,6 +73,9 @@ public class Login {
         this.loginTime = loginTime;
         this.userID = userID;
     }
+    public Login(String email ){
+        this.email = email;
+    }
 
     /*other functions*/
 
@@ -95,6 +98,15 @@ public class Login {
             System.out.println("password incorrect");
             return "password incorrect";
         }
+    }
+
+    public String checkEmail(){
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.validateEmail(this.email);
+        if(loginDAO.getEmailDAO()==null){
+            return "Email doesn't exsist";
+        }
+        return "Email exsist";
     }
     public void insertRecord(){
         LoginDAO loginDAO = new LoginDAO();
