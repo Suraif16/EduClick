@@ -33,11 +33,11 @@ const sendServerData = function (){
         }
         else if ( jsonLoginResponse.User === "User"){
             console.log("in else if");
-            /*if ( jsonLoginResponse.Usertype === "Teacher"){
+            if ( jsonLoginResponse.Usertype === "Teacher"){
                 window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
             }
              else( jsonLoginResponse.Usertype === "Student"){
-                 window.location.replace("/EduClick_war_exploded/Student/classroom.html");}*/
+                 window.location.replace("/EduClick_war_exploded/Student/classroom.html");}
         }
         else if( jsonLoginResponse.User === "incorrect password"){
             console.log("in else if 2");
