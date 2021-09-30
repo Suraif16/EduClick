@@ -3,7 +3,7 @@
 document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
-
+        /* when the document is loaded and complete this function will run*/
         console.log("page loaded");
         sendServerData();
         console.log("page complete");
@@ -24,7 +24,6 @@ const sendServerData = function (){
     }
 
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherNewsFeedLoaded" , true);
-    // httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send();
 
     function completeLogin( httpreq ){
@@ -34,6 +33,7 @@ const sendServerData = function (){
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
+            /* This is where I need work everytime as per the authentication filter*/
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
             console.log( jsonLoginResponse.firstName , jsonLoginResponse.lastName)

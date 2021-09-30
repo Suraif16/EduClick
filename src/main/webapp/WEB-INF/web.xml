@@ -73,6 +73,20 @@
 
     <!--End of teacher newsfeed loaded-->
 
+    <!--Beginning of teacher create classroom-->
+
+    <servlet>
+        <servlet-name>teacherCreateClassroom</servlet-name>
+        <servlet-class>Controller.TeacherCreateClassroomServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherCreateClassroom</servlet-name>
+        <url-pattern>/teacher/teacherCreateClassroom</url-pattern>
+    </servlet-mapping>
+
+    <!--end of teacher create classroom-->
+
 
     <session-config>
 
