@@ -1,7 +1,9 @@
 package DAO;
 
 import Database.DBConnectionPool;
+
 import Model.User;
+
 
 import java.sql.*;
 
@@ -82,6 +84,30 @@ public class UserDAO {
             if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
         }
         return userType;
+    }
+    public PreparedStatement count(String Teacher) {
+        /*Here the login table from the database is accessed to check if the password is correct,
+         * if the admin logs in then the userid is set to "", otherwise to a user id*/
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String userType = "";
+        String count = "";
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "select count(*) from Users where UserType = 'Teacher' ";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            return preparedStatement;
+
+
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+        }
+        return null;
     }
 
 }
