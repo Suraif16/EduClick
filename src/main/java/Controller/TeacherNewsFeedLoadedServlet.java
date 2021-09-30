@@ -20,7 +20,7 @@ public class TeacherNewsFeedLoadedServlet extends HttpServlet {
 
         System.out.println("servlet reached");
 
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession( false );
 
         User user = (User) session.getAttribute("User");
 
@@ -28,7 +28,6 @@ public class TeacherNewsFeedLoadedServlet extends HttpServlet {
 
         jsonObject.put( "serverResponse" , "Allowed" );
         jsonObject.put( "firstName" , user.getFirstName() );
-        System.out.println(user.getFirstName() + " hi hi " + user.getLastName());
 
         out.write(jsonObject.toString());
         out.close();

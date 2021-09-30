@@ -29,15 +29,14 @@ public class TeacherAuthenticationFilter implements Filter {
 
         if (session == null){
             /* there is no session */
-            System.out.println("session is null");
-//            response.sendRedirect("../Login.html");
             jsonObject.put("serverResponse" , "null Session");
             out.write(jsonObject.toString());
 
         }else {
 
             if ( session.getAttribute("Admin") == null ){
-
+                /* if the admin does not exist in the session then it is a USER (a teacher or a student)
+                * trying to login*/
                 User user = (User) session.getAttribute("User" );
 
                 if ( user.getUserType().equals("Teacher") ){
@@ -46,7 +45,6 @@ public class TeacherAuthenticationFilter implements Filter {
 
                 }else{
 
-                    System.out.println("not a Teacher");
                     jsonObject.put( "serverResponse" , "Not Allowed" );
                     out.write(jsonObject.toString());
 
@@ -55,15 +53,12 @@ public class TeacherAuthenticationFilter implements Filter {
 
             }else {
                 jsonObject.put( "serverResponse" , "Not Allowed" );
-                System.out.println("Admin");
                 out.write(jsonObject.toString());
 
             }
 
         }
-        System.out.println("before close");
         out.close();
-        System.out.println("after close");
 
     }
 
