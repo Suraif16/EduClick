@@ -52,7 +52,7 @@
 
     <servlet>
         <servlet-name>teacherNewsFeedLoaded</servlet-name>
-        <servlet-class>Controller.TeacherNewsFeedLoaded</servlet-class>
+        <servlet-class>Controller.TeacherNewsFeedLoadedServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
