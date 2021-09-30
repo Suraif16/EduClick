@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
         String firstname = request.getParameter("firstName");
         String lastname = request.getParameter("lastName");
         LocalDate dateofBirth = LocalDate.parse(request.getParameter("dateOfBirth"));
-        String mobileNum = request.getParameter("mobileNumber");
+        String mobileNum = request.getParameter("newNumber");
         String country = request.getParameter("country");
         String city = request.getParameter("city");
         LocalDate registrationDate = LocalDate.now();

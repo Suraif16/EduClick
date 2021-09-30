@@ -10,7 +10,7 @@ CREATE TABLE Users(
     LastName VARCHAR(20) NOT NULL,
     ProfilePic BIGINT,
     DOB DATE NOT NULL,
-    MobileNum INT,
+    MobileNum VARCHAR(20),
     UserType ENUM('Student','Teacher') NOT NULL,
     Gender ENUM('Male','Female') NOT NULL,
     Country VARCHAR(50),
@@ -44,7 +44,7 @@ CREATE TABLE Classroom(
     CR_Name VARCHAR(50) NOT NULL,
     CR_Code VARCHAR(30) UNIQUE NOT NULL,
     Year YEAR,
-    Grade INT,
+    Grade VARCHAR(20),
     Subject VARCHAR(20),
     UserID BIGINT NOT NULL,
     PRIMARY KEY(ClassroomID)
@@ -148,7 +148,7 @@ CREATE TABLE Follows(
 CREATE TABLE News_Feed_Image(
 	ImagePath BIGINT NOT NULL AUTO_INCREMENT,
 	NFPostID BIGINT NOT NULL,
-	CONSTRAINT PK_News_Feed_Image PRIMARY KEY(NFPostID,ImagePath)
+	CONSTRAINT PK_News_Feed_Image PRIMARY KEY(ImagePath)
 	)ENGINE = INNODB;
 
 CREATE TABLE Admin(

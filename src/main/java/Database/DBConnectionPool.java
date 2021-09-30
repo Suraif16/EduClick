@@ -15,7 +15,7 @@ public class DBConnectionPool {
         p.setUrl("jdbc:mysql://localhost:3306/EduClickDB");
         p.setDriverClassName("com.mysql.cj.jdbc.Driver");
         p.setUsername("root");
-        p.setPassword("root");
+        p.setPassword("");
         p.setJmxEnabled(true);
         p.setTestWhileIdle(false);
         p.setTestOnBorrow(true);
