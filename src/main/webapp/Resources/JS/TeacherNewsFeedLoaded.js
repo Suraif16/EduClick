@@ -33,6 +33,7 @@ const sendServerData = function (){
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
+            /* This is where I need work everytime as per the authentication filter*/
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
             console.log( jsonLoginResponse.firstName , jsonLoginResponse.lastName)
