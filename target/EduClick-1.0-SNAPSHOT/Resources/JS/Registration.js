@@ -25,6 +25,8 @@ const sendServerData = function () {
 
     let mobileNumber = document.getElementById("mobileNo").value;
 
+    let countrCode = document.getElementById("countryCode").value;
+
     var genderSelect;
     var gender=document.getElementsByName("gender");
     for(i = 0;i<gender.length;i++){
@@ -38,6 +40,8 @@ const sendServerData = function () {
 
     let confirmPassword = document.getElementById("confirmPassword").value;
 
+    let newNumber = countrCode.concat(mobileNumber);
+
 
     console.log(firstName);
     console.log(lastName);
@@ -45,7 +49,9 @@ const sendServerData = function () {
     console.log(dateOfBirth);
     console.log(country);
     console.log(city);
+    console.log(countrCode);
     console.log(mobileNumber);
+    console.log(newNumber);
     console.log(password);
     console.log(confirmPassword);
 
@@ -60,7 +66,7 @@ const sendServerData = function () {
 
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&mobileNumber=" + mobileNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
 
     function completeRegistration(httpreq) {
 
