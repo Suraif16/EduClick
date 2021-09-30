@@ -107,7 +107,7 @@ div.formRow > div#usertype{
     margin-left: 5%;
 
 }
-input[type = "firstName"]{
+input[type = "text"]{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
