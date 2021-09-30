@@ -9,6 +9,7 @@ public class Classroom {
     private String Subject;
     private int grade;
     private Date year;
+    private String userId;
 
     public String getClassroomID() {
         return classroomID;
@@ -58,4 +59,25 @@ public class Classroom {
         this.year = year;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    /* Constructor */
+
+    public Classroom(String classroomName, String subject, int grade, Date year , String userId) {
+        this.classroomName = classroomName;
+        this.Subject = subject;
+        this.grade = grade;
+        this.year = year;
+        this.userId = userId;
+    }
+
+    public void createClassroom(){
+
+    }
 }

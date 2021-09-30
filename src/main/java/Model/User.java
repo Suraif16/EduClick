@@ -35,12 +35,27 @@ public class User {
         this.userType = userType;
     }
 
+    public User(String userId, String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber, String profilePicture, String country, String city, String gender, String userType) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.mobileNumber = mobileNumber;
+        this.profilePicture = profilePicture;
+        this.country = country;
+        this.city = city;
+        this.gender = gender;
+        this.userType = userType;
+    }
+
     public User(String userId) {
         this.userId = userId;
     }
-    public String checkUsertype(){
+
+
+    public User checkUsertype(){
         UserDAO userDAO = new UserDAO();
-        return userDAO.select(this.userId);
+        return userDAO.select(this);
     }
     public String getUserType() {
            return userType;

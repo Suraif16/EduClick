@@ -78,17 +78,62 @@ function createClassroom(){
 
     console.log( classroomName.value , yearOfExamination.value , gradeClass.value , subject.value );
 
-    classroomsListLinks.innerHTML += '<div className="classroomsListLinksItems"' +
-        ' style="flex: 1;\n' +
-        '    background-color: #4775c4;\n' +
-        '    text-align: center;\n' +
-        '    margin: 1.5% 0;\n' +
-        '    padding: 1%;"> ' +
-        '<a href="" className="classRooms"> ' +
-        classroomName.value + ' : ' + subject.value + ' : Grade ' + gradeClass.value + ' : ' + subject.value +
-        '</a>' +
-        '</div>';
+    const createClassroomHtml = function (){
 
+        console.log("2");
+
+        classroomsListLinks.innerHTML += '<div className="classroomsListLinksItems"' +
+            ' style="flex: 1;\n' +
+            '    background-color: #4775c4;\n' +
+            '    text-align: center;\n' +
+            '    margin: 1.5% 0;\n' +
+            '    padding: 1%;"> ' +
+            '<a href="" className="classRooms"> ' +
+            classroomName.value + ' : ' + subject.value + ' : Grade ' + gradeClass.value + ' : ' + yearOfExamination.value +
+            '</a>' +
+            '</div>';
+
+    }
+
+    const sendServerData = function (){
+
+        let httpreq = new XMLHttpRequest();
+        httpreq.onreadystatechange = function (){
+
+            if (this.readyState === 4 && this.status === 200){
+                completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            }
+
+        }
+
+        httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherCreateClassroom" , true);
+        httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+        httpreq.send("classroomName=" + classroomName.value + "&subject=" + subject.value + "&grade=" + gradeClass.value + "&yearOfExamination=" + yearOfExamination.value );
+
+        function completeLogin( httpreq ){
+
+            let jsonLoginResponse = JSON.parse(httpreq.responseText);
+
+            if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonLoginResponse.serverResponse === "Allowed") {
+                /* This is where I need work everytime as per the authentication filter*/
+                console.log("1");
+                createClassroomHtml();
+
+
+            }else{
+                alert("something went wrong!!!");
+            }
+
+        }
+
+
+    }
+
+
+
+    sendServerData();
 
     classroomName.value = "";
     yearOfExamination.value = "";

@@ -48,6 +48,46 @@
 
     <!--End of login servlet and filter-->
 
+    <!--Beginning of teacher newsfeed loaded-->
+
+    <servlet>
+        <servlet-name>teacherNewsFeedLoaded</servlet-name>
+        <servlet-class>Controller.TeacherNewsFeedLoadedServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherNewsFeedLoaded</servlet-name>
+        <url-pattern>/teacher/teacherNewsFeedLoaded</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>teacherAuthentication</filter-name>
+        <filter-class>Controller.Authentication.TeacherAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>teacherAuthentication</filter-name>
+        <url-pattern>/teacher/*</url-pattern>
+    </filter-mapping>
+    <!-- here the asterisk matches any characters, therefore any teacher page should link should start with /teacher -->
+
+    <!--End of teacher newsfeed loaded-->
+
+    <!--Beginning of teacher create classroom-->
+
+    <servlet>
+        <servlet-name>teacherCreateClassroom</servlet-name>
+        <servlet-class>Controller.TeacherCreateClassroomServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherCreateClassroom</servlet-name>
+        <url-pattern>/teacher/teacherCreateClassroom</url-pattern>
+    </servlet-mapping>
+
+    <!--end of teacher create classroom-->
+
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
