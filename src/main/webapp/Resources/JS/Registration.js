@@ -1,8 +1,10 @@
 const submitButton = document.getElementById("button");
 
-const sendServerData = function () {
+
 
     let firstName = document.getElementById("firstName").value;
+
+    let firstNameError = document.getElementById("firstnameError");   //add for user input validation
 
     let lastName = document.getElementById("lastName").value;
 
@@ -42,7 +44,7 @@ const sendServerData = function () {
 
     let newNumber = countrCode.concat(mobileNumber);
 
-
+    const sendServerData = function () {
     console.log(firstName);
     console.log(lastName);
     console.log(email);
@@ -55,62 +57,70 @@ const sendServerData = function () {
     console.log(password);
     console.log(confirmPassword);
 
-    let httpReq = new XMLHttpRequest();
-    httpReq.onreadystatechange = function () {
-
-        if (this.readyState === 4 && this.status === 200) {
-            completeRegistration(this) /*This is where we get the response when the request was successfully sent and a successfully response is received */
-        }
-
-    }
-
-    httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
-    httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
-
-    function completeRegistration(httpreq) {
-
-        let jsonRegistrationResponse = JSON.parse(httpreq.responseText); /*here when we receive the response
-        from the server, we convert it to JSON as it will be sent as JSON from the servlet.
-        Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
-        in the JSON object specified by the servlet*/
-        console.log(jsonRegistrationResponse.User);
-
-        console.log(jsonRegistrationResponse.EmailStatus);
-
-        if (jsonRegistrationResponse.EmailStatus === "InvalidEmail") {
-            console.log("Invalid Email");
-        }
-        else {
-            (jsonRegistrationResponse.EmailStatus === "ValidEmail")
-            {
-                console.log("Valid Email");
-                // window.location.replace("/EduClick_war_exploded/Student/Student.html");
-
-
-            }
-
-        }
-
-        if (jsonRegistrationResponse.User === "Teacher") {
-            console.log("in if");
-            // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
-        } else {
-            (jsonRegistrationResponse.User === "Student")
-            {
-                console.log("in if");
-                // window.location.replace("/EduClick_war_exploded/Student/Student.html");
-
-
-            }
-
-        }
-
-
-    }
+    // let httpReq = new XMLHttpRequest();
+    // httpReq.onreadystatechange = function () {
+    //
+    //     if (this.readyState === 4 && this.status === 200) {
+    //         completeRegistration(this) /!*This is where we get the response when the request was successfully sent and a successfully response is received *!/
+    //     }
+    //
+    // }
+    //
+    // httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
+    // httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+    //
+    // function completeRegistration(httpreq) {
+    //
+    //     let jsonRegistrationResponse = JSON.parse(httpreq.responseText); /!*here when we receive the response
+    //     from the server, we convert it to JSON as it will be sent as JSON from the servlet.
+    //     Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
+    //     in the JSON object specified by the servlet*!/
+    //     console.log(jsonRegistrationResponse.User);
+    //
+    //     console.log(jsonRegistrationResponse.EmailStatus);
+    //
+    //     if (jsonRegistrationResponse.EmailStatus === "InvalidEmail") {
+    //         console.log("Invalid Email");
+    //     }
+    //     else {
+    //         (jsonRegistrationResponse.EmailStatus === "ValidEmail")
+    //         {
+    //             console.log("Valid Email");
+    //             // window.location.replace("/EduClick_war_exploded/Student/Student.html");
+    //
+    //
+    //         }
+    //
+    //     }
+    //
+    //     if (jsonRegistrationResponse.User === "Teacher") {
+    //         console.log("in if");
+    //         // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+    //     } else {
+    //         (jsonRegistrationResponse.User === "Student")
+    //         {
+    //             console.log("in if");
+    //             // window.location.replace("/EduClick_war_exploded/Student/Student.html");
+    //
+    //
+    //         }
+    //
+    //     }
+    //
+    //
+    // }
 }
 
 submitButton.onclick = function (){
+    checkInputs();
     sendServerData();
 }
+//user input validation start here
+function checkInputs() {
+    const firstNameValue = firstName.trim();
 
+    if (firstNameValue === '') {
+        firstNameError.innerText = 'Enter your first name';
+    }
+}

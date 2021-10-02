@@ -200,6 +200,28 @@ input#DOB{
     width: 70%;
     font-size: 14px;
 }
+
+.formElement.error small {
+    visibility: visible;
+}
+.formElement.success input {
+    border-color: #2ecc71;
+}
+
+.formElement.error input {
+    border-color: #e74c3c;
+}
+.formElement small{
+    color: #e74c3c;
+    visibility: visible;
+}
+.firstnameError{
+
+    font-size: 15px;
+    visibility: visible;
+    color: #e74c3c;
+}
+
 @media (max-width: 1200px) {
 
     div#mobileno-container{
