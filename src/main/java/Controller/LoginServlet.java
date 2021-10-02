@@ -63,6 +63,8 @@ public class LoginServlet extends HttpServlet {
             }else if(userStatus.equals("Student")){
                 jsonObject.put("Usertype" , "Student");
             }*/
+            UserDAO userDAO = new UserDAO();
+            int count= userDAO.countTeacher();
             jsonObject.put("Usertype" ,userStatus );
             System.out.println("Usertype");
 

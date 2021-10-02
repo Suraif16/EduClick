@@ -85,29 +85,27 @@ public class UserDAO {
         }
         return userType;
     }
-    public PreparedStatement count(String Teacher) {
+
+    public int countTeacher() {
         /*Here the login table from the database is accessed to check if the password is correct,
          * if the admin logs in then the userid is set to "", otherwise to a user id*/
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        String userType = "";
-        String count = "";
+        int count=0;
         try {
             connection = dbConnectionPool.dataSource.getConnection();
             String sql = "select count(*) from Users where UserType = 'Teacher' ";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-            return preparedStatement;
-
-
-
-
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+             count = resultSet.getInt(1);
+            System.out.println( count);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
             if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
         }
-        return null;
+        return count;
     }
 
 }

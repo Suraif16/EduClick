@@ -1,5 +1,5 @@
 package Model;
-
+import DAO.UserDAO;
 
 
 public class Admin {
@@ -37,4 +37,6 @@ public class Admin {
         this.adminName = adminName;
         this.email = email;
     }
+
+
 }
