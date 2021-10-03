@@ -26,7 +26,7 @@ public class AdminServlet extends HttpServlet {
         /*loginStatus = UserID*/
         UserDAO userDAO = new UserDAO();
         int count= userDAO.countTeacher();
-        jsonObject.put("Teacher" ,5 );
+        jsonObject.put("Teacher" ,count );
 
         System.out.println(jsonObject);
         out.write(jsonObject.toString());
