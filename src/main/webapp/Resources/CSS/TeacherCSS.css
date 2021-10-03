@@ -668,7 +668,7 @@ div#content > div#addClassroomForm{
     position: fixed;
     width: 40%;
     padding: 1%;
-    height: 23%;
+    height: fit-content;
     display: none; /*become a container for classroomFormRow*/
     flex-direction: column;
 
@@ -678,7 +678,6 @@ div#content > div#addClassroomForm > div.classroomFormRow{
 
     /*child of addclassroomForm*/
     flex: 1;
-    /*background-color: #4775c4;*/
     margin: 1%;
     display: flex; /*becomes a container for the input elements*/
     flex-direction: row;
@@ -691,6 +690,16 @@ div#content > div#addClassroomForm > div.classroomFormRow{
 div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     flex: 1;
+
+}
+
+#classroomFormRowErrorMessage{
+
+    flex: 1;
+    margin: 1%;
+    flex-direction: row;
+    color: red;
+    display: none ;
 
 }
 
