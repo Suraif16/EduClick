@@ -75,12 +75,10 @@ function createClassroom(){
     let yearOfExamination = document.getElementById("classroomYearOfExamination");
     let gradeClass = document.getElementById("classroomClassGrade");
     let subject = document.getElementById("classroomSubject");
-
-    console.log( classroomName.value , yearOfExamination.value , gradeClass.value , subject.value );
+    
 
     const createClassroomHtml = function (){
 
-        console.log("2");
 
         classroomsListLinks.innerHTML += '<div className="classroomsListLinksItems"' +
             ' style="flex: 1;\n' +
@@ -92,6 +90,13 @@ function createClassroom(){
             classroomName.value + ' : ' + subject.value + ' : Grade ' + gradeClass.value + ' : ' + yearOfExamination.value +
             '</a>' +
             '</div>';
+
+
+        classroomName.value = "";
+        yearOfExamination.value = "";
+        gradeClass.value = "";
+        subject.value = "";
+        showAddClassroomFrom();
 
     }
 
@@ -135,9 +140,5 @@ function createClassroom(){
 
     sendServerData();
 
-    classroomName.value = "";
-    yearOfExamination.value = "";
-    gradeClass.value = "";
-    subject.value = "";
-    showAddClassroomFrom();
+
 }
