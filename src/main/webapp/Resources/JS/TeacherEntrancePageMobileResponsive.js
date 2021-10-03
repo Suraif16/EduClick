@@ -1,11 +1,13 @@
 let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 let notificationStatus = false; /*if it is false the notification is hidden*/
-let addClassroomFormStatus = false /*if it is false the addClassroomForm is hidden*/
+let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hidden*/
+let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
 
 const classroomListObjection = document.getElementById( "classroomsList" );
 const search = document.getElementById( "searchBarText" );
 const notifications = document.getElementById("notifications");
 const addClassroomForm = document.getElementById("addClassroomForm");
+const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
 
 search.addEventListener( "keyup" , function ( event ){
 
@@ -68,6 +70,23 @@ function showAddClassroomFrom(){
 
 }
 
+function showClassroomFormRowErrorMessage( message ){
+
+    if(addClassroomFormErrorStatus){
+
+        classroomFormRowErrorMessage.style.display = "none";
+        addClassroomFormErrorStatus = false;
+
+    }else {
+
+        classroomFormRowErrorMessage.style.display = "flex";
+        classroomFormRowErrorMessage.innerHTML = message;
+        addClassroomFormErrorStatus = true;
+
+    }
+
+}
+
 function createClassroom(){
 
     const classroomsListLinks = document.getElementById("classroomsListLinks");
@@ -75,9 +94,9 @@ function createClassroom(){
     let yearOfExamination = document.getElementById("classroomYearOfExamination");
     let gradeClass = document.getElementById("classroomClassGrade");
     let subject = document.getElementById("classroomSubject");
-    
 
-    const createClassroomHtml = function (){
+
+    const createClassroomHtml = function ( classroomId ){
 
 
         classroomsListLinks.innerHTML += '<div className="classroomsListLinksItems"' +
@@ -86,7 +105,7 @@ function createClassroom(){
             '    text-align: center;\n' +
             '    margin: 1.5% 0;\n' +
             '    padding: 1%;"> ' +
-            '<a href="" className="classRooms"> ' +
+            '<a href="/EduClick_war_exploded/Teacher/Classroom.html?id=' + classroomId +'"' +'className="classRooms"> ' +
             classroomName.value + ' : ' + subject.value + ' : Grade ' + gradeClass.value + ' : ' + yearOfExamination.value +
             '</a>' +
             '</div>';
@@ -96,6 +115,7 @@ function createClassroom(){
         yearOfExamination.value = "";
         gradeClass.value = "";
         subject.value = "";
+        console.log(classroomId);
         showAddClassroomFrom();
 
     }
@@ -117,14 +137,23 @@ function createClassroom(){
 
         function completeLogin( httpreq ){
 
-            let jsonLoginResponse = JSON.parse(httpreq.responseText);
+            let jsonResponse = JSON.parse(httpreq.responseText);
 
-            if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
                 window.location.replace("/EduClick_war_exploded/Login.html");
-            }else if(jsonLoginResponse.serverResponse === "Allowed") {
+            }else if(jsonResponse.serverResponse === "Allowed") {
                 /* This is where I need work everytime as per the authentication filter*/
-                console.log("1");
-                createClassroomHtml();
+
+                if( jsonResponse.classroomId == "Classroom not created" ){
+
+                    showClassroomFormRowErrorMessage( "Classroom creation was unsuccessful. Please try again later..." );
+
+                }else {
+
+                    createClassroomHtml( jsonResponse.classroomId );
+                    showClassroomFormRowErrorMessage();
+
+                }
 
 
             }else{
@@ -137,8 +166,16 @@ function createClassroom(){
     }
 
 
+    if( classroomName.value === "" || yearOfExamination.value === "" || gradeClass.value === "" || subject.value === "" ){
 
-    sendServerData();
+        showClassroomFormRowErrorMessage( "Please fill all input fields..." );
+
+
+    }else {
+
+        sendServerData();
+
+    }
 
 
 }

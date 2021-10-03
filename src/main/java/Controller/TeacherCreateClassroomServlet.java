@@ -33,7 +33,20 @@ public class TeacherCreateClassroomServlet extends HttpServlet {
 
         System.out.println( classroomName + subject + grade + yearOfExamination + user.getUserId());
 
-//        Classroom classroom = new Classroom( classroomName , subject , grade , yearOfExamination , user.getUserId() )
+        Classroom classroom = new Classroom( classroomName , subject , grade , yearOfExamination , user.getUserId() );
+
+        classroom.createClassroom();
+
+        if ( classroom.getClassroomID() == null){
+            /* this means that the classroom wasn't created */
+            jsonObject.put( "classroomId" , "Classroom not created" );
+
+        }else{
+            /* this means that the classroom was created and the classroomStatus has the
+             * id of the created classroom*/
+            jsonObject.put( "classroomId" , classroom.getClassroomID() );
+
+        }
 
         out.write(jsonObject.toString());
         out.close();

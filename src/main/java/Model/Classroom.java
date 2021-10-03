@@ -1,6 +1,8 @@
 package Model;
 
 
+import DAO.ClassroomDAO;
+
 public class Classroom {
     private String classroomID;
     private String classroomName;
@@ -77,6 +79,10 @@ public class Classroom {
     }
 
     public void createClassroom(){
+
+        ClassroomDAO classroomDAO = new ClassroomDAO();
+        String classroomStatus = classroomDAO.insert( this );
+        this.classroomID = classroomStatus;
 
     }
 }
