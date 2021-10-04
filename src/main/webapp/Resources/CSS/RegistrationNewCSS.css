@@ -259,7 +259,20 @@ div#DOBError{
     margin-left: 65px;
 
 }
+div#PasswordError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+    display: none;
 
+}
+
+div#PError{
+
+    padding: 0.3%;
+    margin-left: 65px;
+
+}
 
 
 
