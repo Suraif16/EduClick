@@ -1,7 +1,5 @@
 package Controller;
 
-import DAO.LoginDAO;
-import DAO.UserDAO;
 import Model.Admin;
 import Model.Login;
 import Model.User;
@@ -60,6 +58,7 @@ public class LoginServlet extends HttpServlet {
             user = user.checkUsertype();
             session.setAttribute("User" , user);
             jsonObject.put("Usertype" ,user.getUserType() );
+
             System.out.println("Usertype");
 
         }
