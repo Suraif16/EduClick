@@ -201,26 +201,24 @@ input#DOB{
     font-size: 14px;
 }
 
-.formElement.error small {
-    visibility: visible;
-}
-.formElement.success input {
-    border-color: #2ecc71;
+/* begin of validation*/
+div#FirstNameError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+    display: none;
+
 }
 
-.formElement.error input {
-    border-color: #e74c3c;
-}
-.formElement small{
-    color: #e74c3c;
-    visibility: visible;
-}
-.firstnameError{
+div#FNError{
 
-    font-size: 15px;
-    visibility: visible;
-    color: #e74c3c;
+    padding: 0.3%;
+    margin-left: 100px;
+
+
 }
+
+
 
 
 
