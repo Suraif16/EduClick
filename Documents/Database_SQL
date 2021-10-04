@@ -42,7 +42,6 @@ CREATE TABLE Classroom_Has_EPost(
 CREATE TABLE Classroom(
     ClassroomID BIGINT NOT NULL AUTO_INCREMENT,
     CR_Name VARCHAR(50) NOT NULL,
-    CR_Code VARCHAR(30) UNIQUE NOT NULL,
     Year YEAR,
     Grade VARCHAR(20),
     Subject VARCHAR(20),
