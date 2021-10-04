@@ -1,12 +1,8 @@
 const submitButton = document.getElementById("button");
 
-
+const sendServerData = function () {
 
     let firstName = document.getElementById("firstName").value;
-
-
-
-   // let firstNameError = document.getElementById("firstnameError");   //add for user input validation
 
     let lastName = document.getElementById("lastName").value;
 
@@ -29,7 +25,7 @@ const submitButton = document.getElementById("button");
 
     let mobileNumber = document.getElementById("mobileNo").value;
 
-    let countrCode = document.getElementById("countryCode").value;
+    let countryCode = document.getElementById("countryCode").value;
 
     var genderSelect;
     var gender=document.getElementsByName("gender");
@@ -44,10 +40,7 @@ const submitButton = document.getElementById("button");
 
     let confirmPassword = document.getElementById("confirmPassword").value;
 
-    let newNumber = countrCode.concat(mobileNumber);
-
-    const sendServerData = function () {
-
+    let newNumber = countryCode.concat(mobileNumber);
 
 
     console.log(firstName);
@@ -56,76 +49,63 @@ const submitButton = document.getElementById("button");
     console.log(dateOfBirth);
     console.log(country);
     console.log(city);
-    console.log(countrCode);
+    console.log(countryCode);
     console.log(mobileNumber);
     console.log(newNumber);
     console.log(password);
     console.log(confirmPassword);
 
-    // let httpReq = new XMLHttpRequest();
-    // httpReq.onreadystatechange = function () {
-    //
-    //     if (this.readyState === 4 && this.status === 200) {
-    //         completeRegistration(this) /!*This is where we get the response when the request was successfully sent and a successfully response is received *!/
-    //     }
-    //
-    // }
-    //
-    // httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
-    // httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
-    //
-    // function completeRegistration(httpreq) {
-    //
-    //     let jsonRegistrationResponse = JSON.parse(httpreq.responseText); /!*here when we receive the response
-    //     from the server, we convert it to JSON as it will be sent as JSON from the servlet.
-    //     Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
-    //     in the JSON object specified by the servlet*!/
-    //     console.log(jsonRegistrationResponse.User);
-    //
-    //     console.log(jsonRegistrationResponse.EmailStatus);
-    //
-    //     if (jsonRegistrationResponse.EmailStatus === "InvalidEmail") {
-    //         console.log("Invalid Email");
-    //     }
-    //     else {
-    //         (jsonRegistrationResponse.EmailStatus === "ValidEmail")
-    //         {
-    //             console.log("Valid Email");
-    //             // window.location.replace("/EduClick_war_exploded/Student/Student.html");
-    //
-    //
-    //         }
-    //
-    //     }
-    //
-    //     if (jsonRegistrationResponse.User === "Teacher") {
-    //         console.log("in if");
-    //         // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
-    //     } else {
-    //         (jsonRegistrationResponse.User === "Student")
-    //         {
-    //             console.log("in if");
-    //             // window.location.replace("/EduClick_war_exploded/Student/Student.html");
-    //
-    //
-    //         }
-    //
-    //     }
-    //
-    //
-    // }
-}
+    let httpReq = new XMLHttpRequest();
+    httpReq.onreadystatechange = function () {
 
-submitButton.onclick = function (){
-    checkInputs();
-    sendServerData();
-}
-//user input validation start here
-function checkInputs() {
-    const firstNameValue = firstName.trim();
+        if (this.readyState === 4 && this.status === 200) {
+            completeRegistration(this) /*This is where we get the response when the request was successfully sent and a successfully response is received */
+        }
 
-    if (firstNameValue === '') {
-        firstNameError.innerText = 'Enter your first name';
+    }
+
+    httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
+    httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+
+    function completeRegistration(httpreq) {
+
+        let jsonRegistrationResponse = JSON.parse(httpreq.responseText); /*here when we receive the response
+        from the server, we convert it to JSON as it will be sent as JSON from the servlet.
+        Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
+        in the JSON object specified by the servlet*/
+        console.log(jsonRegistrationResponse.User);
+
+        console.log(jsonRegistrationResponse.EmailStatus);
+
+        if (jsonRegistrationResponse.EmailStatus === "InvalidEmail") {
+            console.log("Invalid Email");
+        }
+        else {
+            (jsonRegistrationResponse.EmailStatus === "ValidEmail")
+            {
+                console.log("Valid Email");
+                // window.location.replace("/EduClick_war_exploded/Student/Student.html");
+
+
+            }
+
+        }
+
+        if (jsonRegistrationResponse.User === "Teacher") {
+            console.log("in if");
+            // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+        } else {
+            (jsonRegistrationResponse.User === "Student")
+            {
+                console.log("in if");
+                // window.location.replace("/EduClick_war_exploded/Student/Student.html");
+
+
+            }
+
+        }
+
+
     }
 }
