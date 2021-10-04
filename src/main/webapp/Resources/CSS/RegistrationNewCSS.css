@@ -217,7 +217,20 @@ div#FNError{
 
 
 }
+div#LastNameError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+    display: none;
 
+}
+
+div#LNError{
+
+    padding: 0.3%;
+    margin-left: 100px;
+
+}
 
 
 
