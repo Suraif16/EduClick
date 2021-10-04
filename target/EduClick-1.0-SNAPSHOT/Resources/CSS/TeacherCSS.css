@@ -668,9 +668,10 @@ div#content > div#addClassroomForm{
     position: fixed;
     width: 40%;
     padding: 1%;
-    height: 23%;
+    height: fit-content;
     display: none; /*become a container for classroomFormRow*/
     flex-direction: column;
+    flex-wrap: wrap;
 
 }
 
@@ -678,12 +679,13 @@ div#content > div#addClassroomForm > div.classroomFormRow{
 
     /*child of addclassroomForm*/
     flex: 1;
-    /*background-color: #4775c4;*/
     margin: 1%;
     display: flex; /*becomes a container for the input elements*/
     flex-direction: row;
     /*padding: 1% 1%;*/
     color: black;
+    flex-wrap: wrap;
+
 
 
 }
@@ -691,6 +693,18 @@ div#content > div#addClassroomForm > div.classroomFormRow{
 div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     flex: 1;
+
+}
+
+#classroomFormRowErrorMessage{
+
+    flex: 1;
+    margin: 1%;
+    flex-direction: row;
+    color: red;
+    display: none ;
+    flex-wrap: wrap;
+
 
 }
 
@@ -748,6 +762,12 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     }
 
+    div#content > div#addClassroomForm{
+
+        margin: 12% auto auto 30%;
+
+    }
+
 }
 
 @media(max-width: 750px) {
@@ -770,6 +790,12 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
         margin: 15% auto 0 0;
         width: 40%;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 15% auto auto 30%;
 
     }
 
@@ -823,6 +849,13 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     }
 
+    div#content > div#addClassroomForm{
+
+        margin: 19% auto auto 30%;
+        width: 50%;
+
+    }
+
 }
 
 @media(max-width: 440px) {
@@ -869,7 +902,14 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#classroomsList {
 
-        margin: 21% auto 0 0;
+        margin: 25% auto 0 0;
+        width: 57%;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 25% auto auto 30%;
         width: 57%;
 
     }
@@ -893,7 +933,14 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#classroomsList {
 
-        margin: 23% auto 0 0;
+        margin: 27% auto 0 0;
+        width: 60%;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 27% auto auto 30%;
         width: 60%;
 
     }
@@ -918,7 +965,14 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#classroomsList {
 
-        margin: 25% auto 0 0;
+        margin: 29% auto 0 0;
+        width: 65%;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 29% auto auto 30%;
         width: 65%;
 
     }
@@ -942,11 +996,17 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#classroomsList {
 
-        margin: 32% auto 0 0;
+        margin: 34% auto 0 0;
         width: 70%;
 
     }
 
+    div#content > div#addClassroomForm{
+
+        margin: 34% auto auto 22%;
+        width: 70%;
+
+    }
 
 
 }
