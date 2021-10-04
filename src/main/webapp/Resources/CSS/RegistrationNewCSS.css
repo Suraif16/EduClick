@@ -273,8 +273,22 @@ div#PError{
     margin-left: 65px;
 
 }
+div#ConfirmPasswordError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+    display: none;
 
+}
 
+div#ConPError{
+
+    padding: 0.3%;
+    margin-left: 65px;
+
+}
+
+/*end of validation*/
 
 
 @media (max-width: 1200px) {
