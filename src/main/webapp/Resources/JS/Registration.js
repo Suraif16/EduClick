@@ -4,7 +4,9 @@ const submitButton = document.getElementById("button");
 
     let firstName = document.getElementById("firstName").value;
 
-    let firstNameError = document.getElementById("firstnameError");   //add for user input validation
+
+
+   // let firstNameError = document.getElementById("firstnameError");   //add for user input validation
 
     let lastName = document.getElementById("lastName").value;
 
@@ -45,6 +47,9 @@ const submitButton = document.getElementById("button");
     let newNumber = countrCode.concat(mobileNumber);
 
     const sendServerData = function () {
+
+
+
     console.log(firstName);
     console.log(lastName);
     console.log(email);
