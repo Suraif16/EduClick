@@ -75,6 +75,16 @@
 
     <!--Beginning of student newsfeed loaded-->
 
+    <servlet>
+        <servlet-name>studentNewsFeedLoaded</servlet-name>
+        <servlet-class>Controller.StudentNewsFeedLoadedServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentNewsFeedLoaded</servlet-name>
+        <url-pattern>/student/studentNewsFeedLoaded</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>studentAuthentication</filter-name>
         <filter-class>Controller.Authentication.StudentAuthenticationFilter</filter-class>
