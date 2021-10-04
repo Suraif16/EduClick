@@ -1,14 +1,16 @@
 package Model;
 
-import java.sql.Date;
+
+import DAO.ClassroomDAO;
 
 public class Classroom {
     private String classroomID;
     private String classroomName;
     private String classroomCode;
     private String Subject;
-    private int grade;
-    private Date year;
+    private String grade;
+    private String year;
+    private String userId;
 
     public String getClassroomID() {
         return classroomID;
@@ -42,20 +44,45 @@ public class Classroom {
         Subject = subject;
     }
 
-    public int getGrade() {
+    public String getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(String grade) {
         this.grade = grade;
     }
 
-    public Date getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    /* Constructor */
+
+    public Classroom(String classroomName, String subject, String grade, String year , String userId) {
+        this.classroomName = classroomName;
+        this.Subject = subject;
+        this.grade = grade;
+        this.year = year;
+        this.userId = userId;
+    }
+
+    public void createClassroom(){
+
+        ClassroomDAO classroomDAO = new ClassroomDAO();
+        String classroomStatus = classroomDAO.insert( this );
+        this.classroomID = classroomStatus;
+
+    }
 }
