@@ -1,4 +1,6 @@
 package Model;
+import DAO.UserDAO;
+
 
 public class Admin {
     private String adminName;
@@ -35,4 +37,6 @@ public class Admin {
         this.adminName = adminName;
         this.email = email;
     }
+
+
 }

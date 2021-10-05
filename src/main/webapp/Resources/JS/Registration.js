@@ -25,7 +25,7 @@ const sendServerData = function () {
 
     let mobileNumber = document.getElementById("mobileNo").value;
 
-    let countrCode = document.getElementById("countryCode").value;
+    let countryCode = document.getElementById("countryCode").value;
 
     var genderSelect;
     var gender=document.getElementsByName("gender");
@@ -40,7 +40,7 @@ const sendServerData = function () {
 
     let confirmPassword = document.getElementById("confirmPassword").value;
 
-    let newNumber = countrCode.concat(mobileNumber);
+    let newNumber = countryCode.concat(mobileNumber);
 
 
     console.log(firstName);
@@ -49,7 +49,7 @@ const sendServerData = function () {
     console.log(dateOfBirth);
     console.log(country);
     console.log(city);
-    console.log(countrCode);
+    console.log(countryCode);
     console.log(mobileNumber);
     console.log(newNumber);
     console.log(password);
@@ -109,8 +109,94 @@ const sendServerData = function () {
 
     }
 }
+function checkInputs() {
+    const firstName = document.getElementById("firstName").value;
+    const firstNameError = document.getElementById("FirstNameError");
 
-submitButton.onclick = function (){
-    sendServerData();
+    const lastName = document.getElementById("lastName").value;
+    const lastNameError = document.getElementById("LastNameError");
+
+    const email = document.getElementById("email").value;
+    const emailError = document.getElementById("EmailError");
+
+    const DOB = document.getElementById("DOB").value;
+    const DateOfBirthError = document.getElementById("DateOfBirthError");
+
+    const password = document.getElementById("Password").value;
+    const passwordError = document.getElementById("PasswordError");
+
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const confirmPasswordError = document.getElementById("ConfirmPasswordError");
+
+
+
+    const firstNameValue = firstName.trim();
+    const lastNameValue = lastName.trim();
+    const emailValue = email.trim();
+    const DOBValue=DOB.trim();
+    const passwordValue=password.trim();
+    const confirmPasswordValue=confirmPassword.trim();
+
+
+
+    if (firstNameValue === '') {
+        firstNameError.style.display = "contents";
+    }else {
+        firstNameError.style.display = "none";
+    }
+
+    if (lastNameValue === '') {
+        lastNameError.style.display = "contents";
+    }else{
+        lastNameError.style.display = "none";
+    }
+
+    if(emailValue === '') {
+        emailError.innerHTML= "Enter your Email";
+        emailError.style.display = "contents";
+
+    } else if (!isEmail(emailValue)) {
+        emailError.innerHTML= "Invalid Email";
+        emailError.style.display = "contents";
+    }else{
+        emailError.style.display = "none";
+    }
+
+    if (DOBValue === '') {
+        DateOfBirthError.style.display = "contents";
+    }else {
+        DateOfBirthError.style.display = "none";
+    }
+
+    if (passwordValue === '') {
+        passwordError.style.display = "contents";
+    }else if(passwordValue.length<8){
+        passwordError.innerHTML= "Enter more than 8 characters";
+        passwordError.style.display = "contents";
+    }
+    else {
+        passwordError.style.display = "none";
+    }
+
+    if (confirmPasswordValue === '') {
+        confirmPasswordError.style.display = "contents";
+    }else if(confirmPasswordValue!==passwordValue){
+        confirmPasswordError.innerHTML= "Does not match with password";
+        confirmPasswordError.style.display = "contents";
+    } else {
+        confirmPasswordError.style.display = "none";
+    }
+
+
 }
 
+
+function isEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
+
+submitButton.onclick = function (){
+    checkInputs();
+    sendServerData();
+}
