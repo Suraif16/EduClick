@@ -13,6 +13,7 @@ header{
     flex: 1;
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     display: flex; /*this is a container now*/
+    position: fixed;
 }
 
 header > a {
