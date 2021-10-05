@@ -4,8 +4,11 @@ import Database.DBConnectionPool;
 import Model.Classroom;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ClassroomDAO {
+
+    ArrayList<String> classDetails = new ArrayList<String>();
 
     public String insert( Classroom classroom ){
 
@@ -45,6 +48,37 @@ public class ClassroomDAO {
         }
 
         return generatedKey;
+    }
+
+    public void selectClassDetails(ArrayList<String> arrayList){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            for(int i=0;i<arrayList.size();i++){
+                String sql = "SELECT CR_Name,Year,Grade,Subject FROM Classroom WHERE ClassroomID = ? ";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, arrayList.get(i));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while(resultSet.next()){
+                    //THINK OF A METHOD TO RETRIEVE DATA 
+                }
+
+
+
+            }
+            System.out.println(classDetails);
+
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
