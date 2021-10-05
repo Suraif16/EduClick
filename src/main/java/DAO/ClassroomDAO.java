@@ -8,9 +8,13 @@ import java.util.ArrayList;
 
 public class ClassroomDAO {
 
-    ArrayList<String> classDetails = new ArrayList<String>();
+    ArrayList<Classroom> classDetails = new ArrayList<Classroom>();
 
-    public String insert( Classroom classroom ){
+    public ArrayList<Classroom> getClassDetails() {
+        return classDetails;
+    }
+
+    public String insert(Classroom classroom ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -64,13 +68,20 @@ public class ClassroomDAO {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while(resultSet.next()){
-                    //THINK OF A METHOD TO RETRIEVE DATA 
+                    //THINK OF A METHOD TO RETRIEVE DATA
+                    Classroom classroom = new Classroom();
+                    classroom.setClassroomName(resultSet.getString("CR_Name"));
+                    classroom.setYear(resultSet.getString("Year"));
+                    classroom.setGrade(resultSet.getString("Grade"));
+                    classroom.setSubject(resultSet.getString("Subject"));
+                    classDetails.add(classroom);
                 }
 
 
 
+
             }
-            System.out.println(classDetails);
+            //System.out.println(classDetails.get(1).getClassroomName());
 
 
 

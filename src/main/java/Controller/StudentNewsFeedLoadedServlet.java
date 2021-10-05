@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class StudentNewsFeedLoadedServlet extends HttpServlet {
 
     ArrayList<String> arrayList = new ArrayList<String>();
+    ArrayList<Classroom> classDetails = new ArrayList<Classroom>();
 
     public String id;
 
@@ -36,7 +37,19 @@ public class StudentNewsFeedLoadedServlet extends HttpServlet {
 
         Classroom classroom = new Classroom();
 
-        classroom.getClassDetails(arrayList);
+        classDetails = classroom.getClassDetails(arrayList);
+
+        for(int i=0;i<classDetails.size();i++){
+
+            System.out.println(classDetails.get(i).getClassroomName());
+            System.out.println(classDetails.get(i).getGrade());
+            System.out.println(classDetails.get(i).getSubject());
+            System.out.println(classDetails.get(i).getYear());
+        }
+
+
+
+
 
 
         jsonObject.put( "serverResponse" , "Allowed" );

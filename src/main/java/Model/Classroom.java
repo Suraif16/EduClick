@@ -14,6 +14,9 @@ public class Classroom {
     private String year;
     private String userId;
 
+
+    ArrayList<Classroom> classDetails = new ArrayList<Classroom>();
+
     public String getClassroomID() {
         return classroomID;
     }
@@ -81,6 +84,7 @@ public class Classroom {
     }
 
     public Classroom() {
+
     }
 
     public void createClassroom(){
@@ -91,9 +95,12 @@ public class Classroom {
 
     }
 
-    public void getClassDetails(ArrayList<String> arrayList){
+    public ArrayList<Classroom> getClassDetails(ArrayList<String> arrayList){
         ClassroomDAO classroomDAO =  new ClassroomDAO();
         classroomDAO.selectClassDetails(arrayList);
+        classDetails = classroomDAO.getClassDetails();
+        return classDetails;
+
     }
 
 
