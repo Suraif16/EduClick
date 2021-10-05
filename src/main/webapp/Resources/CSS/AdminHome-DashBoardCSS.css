@@ -14,6 +14,7 @@ header{
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     display: flex; /*this is a container now*/
     position: fixed;
+    margin-top: 0%;
 }
 
 header > a {
@@ -77,6 +78,7 @@ div#content{
     display: flex; /*this becomes the container for classRoomsLists and postContents*/
     flex-wrap: wrap;
     align-items: flex-start;
+    position: fixed;
 }
 
 div#content > div#classroomsList {
