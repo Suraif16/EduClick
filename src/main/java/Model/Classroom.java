@@ -3,6 +3,8 @@ package Model;
 
 import DAO.ClassroomDAO;
 
+import java.util.ArrayList;
+
 public class Classroom {
     private String classroomID;
     private String classroomName;
@@ -11,6 +13,9 @@ public class Classroom {
     private String grade;
     private String year;
     private String userId;
+
+
+    ArrayList<Classroom> classDetails = new ArrayList<Classroom>();
 
     public String getClassroomID() {
         return classroomID;
@@ -78,6 +83,10 @@ public class Classroom {
         this.userId = userId;
     }
 
+    public Classroom() {
+
+    }
+
     public void createClassroom(){
 
         ClassroomDAO classroomDAO = new ClassroomDAO();
@@ -85,4 +94,14 @@ public class Classroom {
         this.classroomID = classroomStatus;
 
     }
+
+    public ArrayList<Classroom> getClassDetails(ArrayList<String> arrayList){
+        ClassroomDAO classroomDAO =  new ClassroomDAO();
+        classroomDAO.selectClassDetails(arrayList);
+        classDetails = classroomDAO.getClassDetails();
+        return classDetails;
+
+    }
+
+
 }
