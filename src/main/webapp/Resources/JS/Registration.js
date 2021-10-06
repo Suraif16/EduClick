@@ -110,6 +110,7 @@ const sendServerData = function () {
     }
 }
 function checkInputs() {
+
     const firstName = document.getElementById("firstName").value;
     const firstNameError = document.getElementById("FirstNameError");
 
@@ -122,11 +123,34 @@ function checkInputs() {
     const DOB = document.getElementById("DOB").value;
     const DateOfBirthError = document.getElementById("DateOfBirthError");
 
+    const city = document.getElementById("city").value;
+    const cityError = document.getElementById("CityError");
+
     const password = document.getElementById("Password").value;
     const passwordError = document.getElementById("PasswordError");
 
     const confirmPassword = document.getElementById("confirmPassword").value;
     const confirmPasswordError = document.getElementById("ConfirmPasswordError");
+
+/*    let genderSelect;
+    const gender=document.getElementsByName("gender");
+    const genderError = document.getElementsByName("GenderError");
+    for(let i = 0;i<gender.length;i++){
+        if(gender[i].checked){
+            console.log(gender[i].value);
+            genderSelect = gender[i].value;
+
+        }
+
+    }
+
+ */
+
+
+
+    let mobileNumber = document.getElementById("mobileNo").value;
+
+
 
 
 
@@ -136,8 +160,21 @@ function checkInputs() {
     const DOBValue=DOB.trim();
     const passwordValue=password.trim();
     const confirmPasswordValue=confirmPassword.trim();
+ //   const mobileNumberValue = /^\d{15}$/;
+    const cityValue = city.trim();
 
 
+    //count age start here
+    //get current year
+    let today = new Date();
+    let date = today.getFullYear();
+
+    //get birth year
+    let birthYear = DOB.substr(0,4);
+
+    const age = date-birthYear;
+
+    //end of count age
 
     if (firstNameValue === '') {
         firstNameError.style.display = "contents";
@@ -164,19 +201,48 @@ function checkInputs() {
 
     if (DOBValue === '') {
         DateOfBirthError.style.display = "contents";
-    }else {
+    }else if(age<13){
+        DateOfBirthError.innerHTML= "Enter valid Birthday";
+        DateOfBirthError.style.display = "contents";
+    }
+    else {
         DateOfBirthError.style.display = "none";
     }
 
+    if (cityValue === '') {
+        cityError.style.display = "contents";
+    }else {
+        cityError.style.display = "none";
+    }
+
+
+     //consider                                         *********************************
+  /*  if(genderSelect.value === null){
+        genderError.style.display = "contents";
+    }else{
+        genderError.style.display = "none";
+
+   */
+
+    if (mobileNumber === ''){
+        document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
+        return false;
+
+    }else if(isNaN(mobileNumber)){
+        document.getElementById("MobileNumberError").innerHTML="Your Mobile Number is Invalid";
+        return false;
+    }
+    else {
+        document.getElementById("MobileNumberError").style.display = "none";
+    }
+
     if (passwordValue === '') {
-        passwordError.style.display = "contents";
-    }else if(passwordValue.length<8){
-        passwordError.innerHTML= "Enter more than 8 characters";
         passwordError.style.display = "contents";
     }
     else {
         passwordError.style.display = "none";
     }
+    
 
     if (confirmPasswordValue === '') {
         confirmPasswordError.style.display = "contents";
@@ -190,13 +256,14 @@ function checkInputs() {
 
 }
 
-
 function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
 
+
+
 submitButton.onclick = function (){
     checkInputs();
-    sendServerData();
+  //  sendServerData();
 }
