@@ -75,20 +75,33 @@ const sendServerData = function (){
 
     function completeLogin( httpreq ){
 
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
 
-        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+        let jsonResponse = JSON.parse(httpreq.responseText);
+        let arr = new Array();
+        arr = jsonResponse;
+
+
+        /*if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonLoginResponse.serverResponse === "Allowed") {
-            /* This is where I need work everytime as per the authentication filter*/
+        } if(jsonLoginResponse.serverResponse === "Allowed") {
+            /!* This is where I need work everytime as per the authentication filter*!/
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
-            console.log( jsonLoginResponse.firstName , jsonLoginResponse.lastName)
+            console.log( jsonLoginResponse.firstName , jsonLoginResponse.lastName);
         }else{
             alert("something went wrong!!!");
-        }
+        }*/
+
+
+            /*console.log(arr[0].values().value())*/
+
+
+
+
 
     }
+
+
 
 
 }

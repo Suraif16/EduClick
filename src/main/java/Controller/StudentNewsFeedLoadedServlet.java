@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Classroom;
 import Model.User;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
@@ -46,14 +47,19 @@ public class StudentNewsFeedLoadedServlet extends HttpServlet {
             System.out.println(classDetails.get(i).getSubject());
             System.out.println(classDetails.get(i).getYear());
         }
+        JSONArray ja = new JSONArray(classDetails);
+
+        System.out.println(ja);
+        jsonObject.put("array",ja);
 
 
 
 
 
 
-        jsonObject.put( "serverResponse" , "Allowed" );
-        jsonObject.put( "firstName" , user.getFirstName() );
+
+       /* jsonObject.put( "serverResponse" , "Allowed" );
+        jsonObject.put( "firstName" , user.getFirstName() );*/
 
         out.write(jsonObject.toString());
         out.close();
