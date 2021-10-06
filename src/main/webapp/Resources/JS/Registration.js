@@ -132,35 +132,43 @@ function checkInputs() {
     const confirmPassword = document.getElementById("confirmPassword").value;
     const confirmPasswordError = document.getElementById("ConfirmPasswordError");
 
-/*    let genderSelect;
+    let mobileNumber = document.getElementById("mobileNo").value;
+
+    let genderSelect;
     const gender=document.getElementsByName("gender");
-    const genderError = document.getElementsByName("GenderError");
     for(let i = 0;i<gender.length;i++){
-        if(gender[i].checked){
+        if(gender[i].checked ){
             console.log(gender[i].value);
             genderSelect = gender[i].value;
-
+            document.getElementById("GenderError").style.display="none";
+        }
+        else if(gender[i].checked===false){
+            document.getElementById("GenderError").innerHTML="**Please select your gender";
         }
 
     }
 
- */
+    let userTypeSelect;
+    let userType=document.getElementsByName("userType");
+    for(let i = 0;i<userType.length;i++){
+        if(userType[i].checked){
+            console.log(userType[i].value);
+            userTypeSelect = userType[i].value;
+            document.getElementById("UserTypeError").style.display="none";
+        }
+        else if(userType[i].checked===false){
+            document.getElementById("UserTypeError").innerHTML="**Please select who are you";
+        }
 
 
-
-    let mobileNumber = document.getElementById("mobileNo").value;
-
-
-
-
-
+    }
+    
     const firstNameValue = firstName.trim();
     const lastNameValue = lastName.trim();
     const emailValue = email.trim();
     const DOBValue=DOB.trim();
     const passwordValue=password.trim();
     const confirmPasswordValue=confirmPassword.trim();
- //   const mobileNumberValue = /^\d{15}$/;
     const cityValue = city.trim();
 
 
@@ -179,7 +187,7 @@ function checkInputs() {
     if (firstNameValue === '') {
         firstNameError.style.display = "contents";
     }else {
-        firstNameError.style.display = "none";
+       firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
@@ -216,17 +224,8 @@ function checkInputs() {
     }
 
 
-     //consider                                         *********************************
-  /*  if(genderSelect.value === null){
-        genderError.style.display = "contents";
-    }else{
-        genderError.style.display = "none";
-
-   */
-
     if (mobileNumber === ''){
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
-        return false;
 
     }else if(isNaN(mobileNumber)){
         document.getElementById("MobileNumberError").innerHTML="Your Mobile Number is Invalid";
@@ -259,8 +258,6 @@ function checkInputs() {
 function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
-
-
 
 
 submitButton.onclick = function (){
