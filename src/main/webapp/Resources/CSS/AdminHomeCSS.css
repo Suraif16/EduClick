@@ -34,6 +34,37 @@ header > h1{
     padding: 0.2%;
 }
 
+
+header > div#headerButtons {
+    /*child of header*/
+    /*Button that displays in smaller screen size to make the page mobile responsive*/
+    flex: 1;
+    display: none;
+
+}
+
+header > div#headerButtons > input {
+
+    flex-basis: 15%;
+    margin: 0.2%  auto;
+    box-shadow: none;
+
+}
+
+header > div#headerButtons > input#classroomListHideButton {
+
+    margin-right: 0.5%;
+
+}
+
+
+
+
+
+
+
+
+
 .logo{
     width: 70%;
     height: 70%;
