@@ -1,4 +1,5 @@
 const submitButton = document.getElementById("button");
+const passwordInput = document.getElementById("Password");
 
 const sendServerData = function () {
 
@@ -160,9 +161,8 @@ function checkInputs() {
             document.getElementById("UserTypeError").innerHTML="**Please select who are you";
         }
 
-
     }
-    
+
     const firstNameValue = firstName.trim();
     const lastNameValue = lastName.trim();
     const emailValue = email.trim();
@@ -171,18 +171,12 @@ function checkInputs() {
     const confirmPasswordValue=confirmPassword.trim();
     const cityValue = city.trim();
 
-
-    //count age start here
-    //get current year
     let today = new Date();
     let date = today.getFullYear();
 
-    //get birth year
     let birthYear = DOB.substr(0,4);
 
     const age = date-birthYear;
-
-    //end of count age
 
     if (firstNameValue === '') {
         firstNameError.style.display = "contents";
@@ -210,7 +204,7 @@ function checkInputs() {
     if (DOBValue === '') {
         DateOfBirthError.style.display = "contents";
     }else if(age<13){
-        DateOfBirthError.innerHTML= "Enter valid Birthday";
+        DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
         DateOfBirthError.style.display = "contents";
     }
     else {
@@ -222,7 +216,6 @@ function checkInputs() {
     }else {
         cityError.style.display = "none";
     }
-
 
     if (mobileNumber === ''){
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
@@ -236,12 +229,12 @@ function checkInputs() {
     }
 
     if (passwordValue === '') {
-        passwordError.style.display = "contents";
+        document.getElementById("PasswordError").innerHTML="**Enter a password";
+       // passwordError.style.display = "contents";
     }
     else {
         passwordError.style.display = "none";
     }
-    
 
     if (confirmPasswordValue === '') {
         confirmPasswordError.style.display = "contents";
@@ -252,15 +245,29 @@ function checkInputs() {
         confirmPasswordError.style.display = "none";
     }
 
-
 }
 
 function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
-
 submitButton.onclick = function (){
     checkInputs();
-  //  sendServerData();
+    sendServerData();
 }
+passwordInput.addEventListener( "keyup" , function (event){
+
+    const passwordIn = document.getElementById("Password").value;
+
+    const x = passwordIn.length;
+
+    if(x>=8){
+        document.getElementById("PasswordError").style.visibility="hidden";
+    }
+
+    else{
+        document.getElementById("PasswordError").style.visibility="visible";
+        document.getElementById("PasswordError").innerHTML="Your Password must contain 8 characters";
+    }
+
+});
