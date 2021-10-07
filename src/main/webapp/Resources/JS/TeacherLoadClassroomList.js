@@ -2,14 +2,14 @@
 document.onreadystatechange = function(){
 
     if(document.readyState === 'complete'){
-
-        sendServerData();
+        console.log("ClassroomListLoad");
+        getClassroomList();
 
     }
 
 }
 
-const sendServerData = function (){
+const getClassroomList = function (){
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -25,14 +25,15 @@ const sendServerData = function (){
 
     function complete( httpreq ){
 
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
+        let jsonResponse = JSON.parse(httpreq.responseText);
 
-        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonLoginResponse.serverResponse === "Allowed") {
+        }else if(jsonResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
 
-
+            console.log(jsonResponse.UserObject);
+            console.log(jsonResponse.UserObject.city);
 
         }else{
             alert("something went wrong!!!");
