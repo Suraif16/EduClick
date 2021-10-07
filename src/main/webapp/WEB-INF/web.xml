@@ -147,6 +147,20 @@
 
     <!-- end of logout -->
 
+    <!-- beginning of the TeacherClassroomListServlet-->
+    <servlet>
+        <servlet-name>TeacherLoadClassroomList</servlet-name>
+        <servlet-class>Controller.TeacherLoadClassroomListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherLoadClassroomList</servlet-name>
+        <url-pattern>/teacher/teacherLoadClassroomList</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of the TeacherClassroomListServlet-->
+
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
