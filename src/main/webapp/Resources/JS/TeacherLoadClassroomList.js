@@ -34,6 +34,14 @@ const getClassroomList = function (){
 
             console.log(jsonResponse.UserObject);
             console.log(jsonResponse.UserObject.city);
+            console.log(jsonResponse.ArrayValues);
+            console.log(jsonResponse.ArrayValues.length)
+            let count = jsonResponse.ArrayValues.length - 1;
+             while( count > 0 ){
+
+                 console.log(jsonResponse.ArrayValues[count]);
+                 count --;
+             }
 
         }else{
             alert("something went wrong!!!");
