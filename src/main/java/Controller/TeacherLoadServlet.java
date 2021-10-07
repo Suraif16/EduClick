@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class TeacherNewsFeedLoadedServlet extends HttpServlet {
+public class TeacherLoadServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request , HttpServletResponse response) throws IOException {

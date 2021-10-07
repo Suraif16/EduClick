@@ -61,13 +61,13 @@
     <!--Beginning of teacher newsfeed loaded-->
 
     <servlet>
-        <servlet-name>teacherNewsFeedLoaded</servlet-name>
-        <servlet-class>Controller.TeacherNewsFeedLoadedServlet</servlet-class>
+        <servlet-name>teacherLoad</servlet-name>
+        <servlet-class>Controller.TeacherLoadServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>teacherNewsFeedLoaded</servlet-name>
-        <url-pattern>/teacher/teacherNewsFeedLoaded</url-pattern>
+        <servlet-name>teacherLoad</servlet-name>
+        <url-pattern>/teacher/teacherLoad</url-pattern>
     </servlet-mapping>
 
     <filter>
