@@ -83,6 +83,32 @@
 
     <!--End of teacher newsfeed loaded-->
 
+    <!--Beginning of student newsfeed loaded-->
+
+    <servlet>
+        <servlet-name>studentNewsFeedLoaded</servlet-name>
+        <servlet-class>Controller.StudentNewsFeedLoadedServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentNewsFeedLoaded</servlet-name>
+        <url-pattern>/student/studentNewsFeedLoaded</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>studentAuthentication</filter-name>
+        <filter-class>Controller.Authentication.StudentAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>studentAuthentication</filter-name>
+        <url-pattern>/student/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--End of student newsfeed loaded-->
+
+
     <!--Beginning of teacher create classroom-->
 
     <servlet>
@@ -97,7 +123,15 @@
 
     <!--end of teacher create classroom-->
 
+    <filter>
+        <filter-name>adminAuthentication</filter-name>
+        <filter-class>Controller.Authentication.AdminAuthenticationFilter</filter-class>
+    </filter>
 
+    <filter-mapping>
+        <filter-name>adminAuthentication</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes

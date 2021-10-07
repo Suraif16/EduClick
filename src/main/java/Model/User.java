@@ -1,10 +1,10 @@
 package Model;
 
-import DAO.LoginDAO;
 import DAO.UserDAO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class User {
 
@@ -20,6 +20,9 @@ public class User {
     private LocalDate registrationDate;
     private String gender;
     private String userType;
+
+
+    ArrayList<String> arrayList = new ArrayList<String>();
 
     public User(String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber,  String country, String city, LocalTime registrationTime, LocalDate registrationDate, String gender, String userType) {
 
@@ -164,5 +167,16 @@ public class User {
         UserDAO userDAO = new UserDAO();
         userDAO.insert(this);
         userId=userDAO.getGeneratedUserId();
+    }
+
+    /*to check the enroll table and get records*/
+
+    public ArrayList<String> checkEnroll(String id){
+        System.out.println("checkEnroll reached");
+        String studentId = id;
+        UserDAO userDAO =  new UserDAO();
+        userDAO.checkEnrollment(studentId);
+        arrayList = userDAO.getArrayList();
+        return arrayList;
     }
 }
