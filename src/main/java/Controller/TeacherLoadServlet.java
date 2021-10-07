@@ -17,9 +17,7 @@ public class TeacherLoadServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
-
-        System.out.println("servlet reached");
-
+        
         HttpSession session = request.getSession( false );
 
         User user = (User) session.getAttribute("User");
