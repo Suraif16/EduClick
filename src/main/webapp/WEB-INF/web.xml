@@ -132,6 +132,21 @@
         <filter-name>adminAuthentication</filter-name>
         <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
+
+    <!-- beginning of logout-->
+
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of logout -->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
