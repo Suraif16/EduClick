@@ -1,4 +1,5 @@
 const submitButton = document.getElementById("button");
+const passwordInput = document.getElementById("Password");
 
 const sendServerData = function () {
 
@@ -110,6 +111,7 @@ const sendServerData = function () {
     }
 }
 function checkInputs() {
+
     const firstName = document.getElementById("firstName").value;
     const firstNameError = document.getElementById("FirstNameError");
 
@@ -122,13 +124,44 @@ function checkInputs() {
     const DOB = document.getElementById("DOB").value;
     const DateOfBirthError = document.getElementById("DateOfBirthError");
 
+    const city = document.getElementById("city").value;
+    const cityError = document.getElementById("CityError");
+
     const password = document.getElementById("Password").value;
     const passwordError = document.getElementById("PasswordError");
 
     const confirmPassword = document.getElementById("confirmPassword").value;
     const confirmPasswordError = document.getElementById("ConfirmPasswordError");
 
+    let mobileNumber = document.getElementById("mobileNo").value;
 
+    let genderSelect;
+    const gender=document.getElementsByName("gender");
+    for(let i = 0;i<gender.length;i++){
+        if(gender[i].checked ){
+            console.log(gender[i].value);
+            genderSelect = gender[i].value;
+            document.getElementById("GenderError").style.display="none";
+        }
+        else if(gender[i].checked===false){
+            document.getElementById("GenderError").innerHTML="**Please select your gender";
+        }
+
+    }
+
+    let userTypeSelect;
+    let userType=document.getElementsByName("userType");
+    for(let i = 0;i<userType.length;i++){
+        if(userType[i].checked){
+            console.log(userType[i].value);
+            userTypeSelect = userType[i].value;
+            document.getElementById("UserTypeError").style.display="none";
+        }
+        else if(userType[i].checked===false){
+            document.getElementById("UserTypeError").innerHTML="**Please select who are you";
+        }
+
+    }
 
     const firstNameValue = firstName.trim();
     const lastNameValue = lastName.trim();
@@ -136,13 +169,19 @@ function checkInputs() {
     const DOBValue=DOB.trim();
     const passwordValue=password.trim();
     const confirmPasswordValue=confirmPassword.trim();
+    const cityValue = city.trim();
 
+    let today = new Date();
+    let date = today.getFullYear();
 
+    let birthYear = DOB.substr(0,4);
+
+    const age = date-birthYear;
 
     if (firstNameValue === '') {
         firstNameError.style.display = "contents";
     }else {
-        firstNameError.style.display = "none";
+       firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
@@ -164,15 +203,34 @@ function checkInputs() {
 
     if (DOBValue === '') {
         DateOfBirthError.style.display = "contents";
-    }else {
+    }else if(age<13){
+        DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
+        DateOfBirthError.style.display = "contents";
+    }
+    else {
         DateOfBirthError.style.display = "none";
     }
 
+    if (cityValue === '') {
+        cityError.style.display = "contents";
+    }else {
+        cityError.style.display = "none";
+    }
+
+    if (mobileNumber === ''){
+        document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
+
+    }else if(isNaN(mobileNumber)){
+        document.getElementById("MobileNumberError").innerHTML="Your Mobile Number is Invalid";
+        return false;
+    }
+    else {
+        document.getElementById("MobileNumberError").style.display = "none";
+    }
+
     if (passwordValue === '') {
-        passwordError.style.display = "contents";
-    }else if(passwordValue.length<8){
-        passwordError.innerHTML= "Enter more than 8 characters";
-        passwordError.style.display = "contents";
+        document.getElementById("PasswordError").innerHTML="**Enter a password";
+       // passwordError.style.display = "contents";
     }
     else {
         passwordError.style.display = "none";
@@ -187,16 +245,29 @@ function checkInputs() {
         confirmPasswordError.style.display = "none";
     }
 
-
 }
-
 
 function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
-
 submitButton.onclick = function (){
     checkInputs();
     sendServerData();
 }
+passwordInput.addEventListener( "keyup" , function (event){
+
+    const passwordIn = document.getElementById("Password").value;
+
+    const x = passwordIn.length;
+
+    if(x>=8){
+        document.getElementById("PasswordError").style.visibility="hidden";
+    }
+
+    else{
+        document.getElementById("PasswordError").style.visibility="visible";
+        document.getElementById("PasswordError").innerHTML="Your Password must contain 8 characters";
+    }
+
+});

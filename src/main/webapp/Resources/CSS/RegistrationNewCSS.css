@@ -263,7 +263,7 @@ div#PasswordError{
     color: red;
     margin: 0 auto 0.3% auto;
     font-size: x-small;
-    display: none;
+
 
 }
 
@@ -287,6 +287,66 @@ div#ConPError{
     margin-left: 65px;
 
 }
+div#GenderError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+
+
+}
+
+div#GError{
+
+    padding: 0.3%;
+    margin-left: 65px;
+
+}
+
+div#UserTypeError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+
+
+}
+
+div#UTError{
+
+    padding: 0.3%;
+    margin-left: 65px;
+
+}
+
+div#MobileNumberError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+
+
+}
+
+div#MobError{
+
+    padding: 0.3%;
+    margin-left: 65px;
+
+}
+
+div#CityError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+    display: none;
+
+}
+
+div#CError{
+
+    padding: 0.3%;
+    margin-left: 65px;
+
+}
+
 
 /*end of validation*/
 
