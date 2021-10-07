@@ -36,7 +36,7 @@ public class AdminAuthenticationFilter implements Filter {
 
         }else {
 
-            if ( (session.getAttribute("User") == null)) && (session.getAttribute("Admin")){
+            if ( (session.getAttribute("User") == null) &&(session.getAttribute("Admin")!=null)) {
                     filterChain.doFilter( request , response );
             }else {
                 jsonObject.put( "serverResponse" , "Not Allowed" );
