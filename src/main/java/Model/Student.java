@@ -1,6 +1,6 @@
 package Model;
 
-public class Student /*extends User*/{
+public class Student extends User{
 
     private String school;
     private String grade;
@@ -25,5 +25,13 @@ public class Student /*extends User*/{
     }
 
     /*Getters and setters ends here*/
+
+    public Student(User user , String school , String grade ){
+
+        super(user);
+        this.school = school;
+        this.grade = grade;
+
+    }
 
 }
