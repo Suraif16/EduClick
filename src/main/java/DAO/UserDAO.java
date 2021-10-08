@@ -3,7 +3,7 @@ package DAO;
 import Database.DBConnectionPool;
 
 import Model.User;
-
+import Model.Admin;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -128,4 +128,48 @@ public class UserDAO {
         return count;
     }
 
+    public int count ( ){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        int todaycountTeacher=0;
+        int countTeacher=0;
+        int countStudent=0;
+        int todaycountStudent=0;
+        try {
+            connection =dbConnectionPool.dataSource.getConnection();
+            String sql = "select UserType,RegistrationDate FROM Users";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String UT = resultSet.getString("UserType");
+                String RD = resultSet.getString("RegistrationDate");
+                if (UT.equals("Teacher") ) {
+                    countTeacher++;
+                    if (java.time.LocalTime.now().equals(RD)) {
+                        todaycountTeacher++;
+                    }
+                } else {
+                    countStudent++;
+                    if (java.time.LocalTime.now().equals(RD)) {
+                        todaycountStudent++;
+                    }
+                }
+            }
+            Admin.getcountteacher(countTeacher);
+            Admin.gettodaycountteacher(todaycountTeacher);
+            Admin.getcountstudent(countStudent);
+            Admin.gettodaycountstudent(todaycountStudent);
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+
+
+        return 0;
+    }
 }
