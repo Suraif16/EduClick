@@ -1,5 +1,6 @@
 const submitButton = document.getElementById("button");
 const passwordInput = document.getElementById("Password");
+const passwordConfirmInput = document.getElementById("confirmPassword");
 
 const sendServerData = function () {
 
@@ -191,11 +192,11 @@ function checkInputs() {
     }
 
     if(emailValue === '') {
-        emailError.innerHTML= "Enter your Email";
+        emailError.innerHTML= "**Enter your Email";
         emailError.style.display = "contents";
 
     } else if (!isEmail(emailValue)) {
-        emailError.innerHTML= "Invalid Email";
+        emailError.innerHTML= "**Invalid Email";
         emailError.style.display = "contents";
     }else{
         emailError.style.display = "none";
@@ -221,7 +222,7 @@ function checkInputs() {
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
 
     }else if(isNaN(mobileNumber)){
-        document.getElementById("MobileNumberError").innerHTML="Your Mobile Number is Invalid";
+        document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
         return false;
     }
     else {
@@ -237,9 +238,7 @@ function checkInputs() {
     }
 
     if (confirmPasswordValue === '') {
-        confirmPasswordError.style.display = "contents";
-    }else if(confirmPasswordValue!==passwordValue){
-        confirmPasswordError.innerHTML= "Does not match with password";
+        confirmPasswordError.innerHTML = "**Re-enter your password here";
         confirmPasswordError.style.display = "contents";
     } else {
         confirmPasswordError.style.display = "none";
@@ -258,16 +257,30 @@ submitButton.onclick = function (){
 passwordInput.addEventListener( "keyup" , function (event){
 
     const passwordIn = document.getElementById("Password").value;
-
     const x = passwordIn.length;
 
     if(x>=8){
         document.getElementById("PasswordError").style.visibility="hidden";
     }
-
     else{
         document.getElementById("PasswordError").style.visibility="visible";
         document.getElementById("PasswordError").innerHTML="Your Password must contain 8 characters";
     }
 
 });
+passwordConfirmInput.addEventListener( "keyup" , function (event){
+
+    const password = document.getElementById("Password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const confirmPasswordError = document.getElementById("ConfirmPasswordError");
+
+    if(password!==confirmPassword){
+        confirmPasswordError.innerHTML = "**Re-here";
+        confirmPasswordError.style.display = "contents";
+
+    }else{
+        confirmPasswordError.innerHTML = "**re";
+        confirmPasswordError.style.display = "contents";
+    }
+    }
+);
