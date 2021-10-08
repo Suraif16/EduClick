@@ -18,7 +18,6 @@ header{
     box-shadow: 8px 8px 2px #a7a7a7;
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     display: flex; /*this is a container now for headerMainBar and headerButtons*/
-    position: fixed;
     width: 99%;
     flex-direction: column;
     position: absolute;
@@ -143,6 +142,19 @@ header > div#headerMainBar > div#headingSearch > div#searchBar > input[type="tex
 
 }
 
+footer{
+    color: whitesmoke;
+    /*padding: 0.5%;*/
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    display: flex; /*this is a container now for headerMainBar and headerButtons*/
+
+    width: 99%;
+    flex-direction: column;
+    position: absolute;
+}
+
 
 input{
     /*all input values will have these properties*/
@@ -187,110 +199,300 @@ input{
     margin-top : 70px;
     cursor : pointer;
 }
-div#firstthumbnail img#thumbnail1{
-    position : absolute;
-    top : 15%;
-    right: 15%;
-    height: 250px;
-    width : 370px;
-    align : right;
-}
-div#secondthumbnail img#thumbnail2{
-    position : absolute;
-    top : 55%;
-    left: 15%;
-    height: 250px;
-    width : 370px;
-    align : left;
-}
-#thumbnail1:hover{
-    cursor: pointer;
-}
-#thumbnail2:hover{
-    cursor: pointer;
-}
-div#firstthumbnail p{
-    font-weight: bold;
-    font-size: 30px;
-    margin-top :12.5%;
-    margin-left: 10%;
-}
-div#secondthumbnail p{
-    font-weight: bold;
-    font-size: 30px;
-    margin-top :16.5%;
-    margin-left: 50%;
-}
+
 button:hover {
     opacity: 1;
 }
-footer{
-    position: absolute;
-    background-color: #4775c4;
-    width: 98.5%;
-    box-shadow : 8px 8px 2px #a7a7a7;
-    height: 100px;
-    top: 230%;
-}
-footer p{
-    font-weight: lighter;
-    color: whitesmoke;
-    margin-left: 45%;
-    margin-top: 30px;
-    font-size: 16px;
-}
 
-#gif1{
-    height: 40%;
-    width: 40%;
-    margin-left: 2%;
+
+
+img#gif1{
+    height: 50%;
+    width: 50%;
+    position: center;
+    margin: auto;
+    display: flex;
+}
+#gif-container #gif1-container p {
+    position: center;
+   margin-left: 42%;
     margin-top: 5%;
-
-}
-
-#gif2{
-    height: 40%;
-    width: 40%;
-    margin-left: 50%;
-    margin-top: 14%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
 
 
 }
-#gif3{
-    height: 40%;
-    width: 40%;
-    margin-top: 14%;
-    margin-left: 2%;
+
+img#gif2{
+    height: 50%;
+    width: 50%;
+    position: center;
+    margin: auto;
+    display: flex;
+}
+#gif-container #gif2-container p {
+    position: center;
+    margin-left: 35%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
+
 
 }
-#gif4{
-    height: 40%;
-    width: 40%;
-    margin-top: 14%;
-    margin-left: 50%;
+
+
+img#gif3{
+    height: 50%;
+    width: 50%;
+    position: center;
+    margin: auto;
+    display: flex;
+}
+#gif-container #gif3-container p {
+    position: center;
+    margin-left: 35%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
+
 
 }
-#gif1p{
-    margin-top: -12%;
-    margin-left: 60%;
+
+img#gif4{
+    height: 50%;
+    width: 50%;
+    position: center;
+    margin: auto;
+    display: flex;
 }
-#gif2p{
-    margin-top: -12%;
-    margin-left: 10%;
+#gif-container #gif4-container p {
+    position: center;
+    margin-left: 42%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
+
+
 }
 
-#gif3p{
-    margin-top: -12%;
-    margin-left: 60%;
+
+@media (max-width: 1110px) {
+    #gif-container #gif1-container p {
+        position: center;
+        margin-left: 40%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif2-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: bold;
+
+
+    }
+
+    #gif-container #gif3-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif4-container p {
+        position: center;
+        margin-left: 34%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: bold;
+
+
+    }
+
 }
 
-#gif4p{
-    margin-top: -10%;
-    margin-left: 10%;
+
+
+
+@media (max-width: 920px) {
+    #gif-container #gif1-container p {
+        position: center;
+        margin-left: 40%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif2-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+
+
+    }
+
+    #gif-container #gif3-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif4-container p {
+        position: center;
+        margin-left: 34%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+
+
+    }
+
 }
-div#gif-container p {
-    font-size: 25px;
+
+
+
+
+
+@media (max-width: 650px) {
+    #gif-container #gif1-container p {
+        position: center;
+        margin-left: 40%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size:15px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif2-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 15px;
+        font-weight: bold;
+
+
+    }
+
+    #gif-container #gif3-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 15px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif4-container p {
+        position: center;
+        margin-left: 34%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 15px;
+        font-weight: bold;
+
+
+    }
+
 }
+
+
+
+@media (max-width: 500px) {
+    #gif-container #gif1-container p {
+        position: center;
+        margin-left: 35%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 10px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif2-container p {
+        position: center;
+        margin-left: 26%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 10px;
+        font-weight: bold;
+
+
+    }
+
+    #gif-container #gif3-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 10px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif4-container p {
+        position: center;
+        margin-left: 34%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 10px;
+        font-weight: bold;
+
+
+    }
+
+}
+
+
+
+
+
 
 @media (max-width: 1110px) {
     #nav-bar-container a{
@@ -314,6 +516,26 @@ div#gif-container p {
         padding: 10px 15px;
 
     }
+    #content #btns .login{
+
+        /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+
+        font-size: 20px;
+
+
+
+    }
+
+    #content #btns .register{
+
+        /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+
+        font-size: 20px;
+
+
+
+    }
+
 
 
 }
