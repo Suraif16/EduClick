@@ -2,7 +2,7 @@ package Model;
 
 import java.util.List;
 
-public class Teacher /*extends User*/{
+public class Teacher extends User{
 
     private String currentWorkingPlace;
     private List<String> subjects;
@@ -36,6 +36,14 @@ public class Teacher /*extends User*/{
 
     /*Getters and setters ends here*/
 
+    public Teacher( User user , String currentWorkingPlace , List<String> subjects , List<String> Qualifications){
+
+        super( user );
+        this.currentWorkingPlace = currentWorkingPlace;
+        this.subjects = subjects;
+        this.Qualifications = Qualifications;
+
+    }
 
 
 }

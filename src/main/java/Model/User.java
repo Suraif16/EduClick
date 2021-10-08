@@ -55,6 +55,20 @@ public class User {
         this.userId = userId;
     }
 
+    public User( User user ){
+
+        this.userId = user.getUserId();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.dateOfBirth = user.getDateOfBirth();
+        this.mobileNumber = user.getMobileNumber();
+        this.profilePicture = user.getProfilePicture();
+        this.country = user.getCountry();
+        this.city = user.getCity();
+        this.gender = user.getGender();
+        this.userType = user.getUserType();
+
+    }
 
     public User checkUsertype(){
         UserDAO userDAO = new UserDAO();
