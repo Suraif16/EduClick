@@ -4,7 +4,6 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
-        console.log("teacherload");
         sendServerData();
         getClassroomList();
 
@@ -71,17 +70,7 @@ const getClassroomList = function (){
 
             let count = jsonResponse.classroomList.length - 1;
 
-            for(i = 0 ; i < count ; i++){
-
-                console.log("Start");
-                console.log(jsonResponse.classroomList[i]);
-                console.log(jsonResponse.classroomList[i].classroomID);
-                console.log(jsonResponse.classroomList[i].classroomName);
-                console.log(jsonResponse.classroomList[i].subject);
-                console.log(jsonResponse.classroomList[i].grade);
-                console.log(jsonResponse.classroomList[i].year);
-
-                console.log("End");
+            for(i = 0 ; i <= count ; i++){
 
                 classroomHtmlOutput( jsonResponse.classroomList[i].classroomID ,
                     jsonResponse.classroomList[i].classroomName , jsonResponse.classroomList[i].subject ,

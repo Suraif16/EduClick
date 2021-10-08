@@ -117,19 +117,16 @@ public class ClassroomDAO {
                 Classroom classroom = new Classroom( CR_Name , subject , grade , year , null );
                 classroom.setClassroomID( classroomID );
                 classroomList.add(classroom);
-                System.out.println(year + "year ");
 
             }
 
         }catch (SQLException throwables) {
-            System.out.println("hi error!");
             throwables.printStackTrace();
         }
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
 
-        System.out.println("done");
         return classroomList;
 
     }

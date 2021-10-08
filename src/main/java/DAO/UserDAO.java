@@ -98,8 +98,7 @@ public class UserDAO {
                 user.setCity(city);
                 user.setGender(gender);
                 user.setUserType(userType);
-
-                System.out.println("hi" + userType + "id:dfgsfd645");
+                
             }
             resultSet.close();
             preparedStatement.close();
