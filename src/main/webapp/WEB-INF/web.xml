@@ -61,13 +61,13 @@
     <!--Beginning of teacher newsfeed loaded-->
 
     <servlet>
-        <servlet-name>teacherNewsFeedLoaded</servlet-name>
-        <servlet-class>Controller.TeacherNewsFeedLoadedServlet</servlet-class>
+        <servlet-name>teacherLoad</servlet-name>
+        <servlet-class>Controller.TeacherLoadServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>teacherNewsFeedLoaded</servlet-name>
-        <url-pattern>/teacher/teacherNewsFeedLoaded</url-pattern>
+        <servlet-name>teacherLoad</servlet-name>
+        <url-pattern>/teacher/teacherLoad</url-pattern>
     </servlet-mapping>
 
     <filter>
@@ -132,6 +132,35 @@
         <filter-name>adminAuthentication</filter-name>
         <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
+
+    <!-- beginning of logout-->
+
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of logout -->
+
+    <!-- beginning of the TeacherClassroomListServlet-->
+    <servlet>
+        <servlet-name>TeacherLoadClassroomList</servlet-name>
+        <servlet-class>Controller.TeacherLoadClassroomListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherLoadClassroomList</servlet-name>
+        <url-pattern>/teacher/teacherLoadClassroomList</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of the TeacherClassroomListServlet-->
+
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
