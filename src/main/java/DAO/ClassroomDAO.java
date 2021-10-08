@@ -24,7 +24,7 @@ public class ClassroomDAO {
         try {
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Classroom(CR_Name , Year , Grade , Subject , UserID) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO Classroom(CR_Name , YearOfExamination , Grade , Subject , UserID) VALUES (?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString( 1 , classroom.getClassroomName() );
             preparedStatement.setString( 2 , classroom.getYear() );
@@ -62,7 +62,7 @@ public class ClassroomDAO {
             connection = dbConnectionPool.dataSource.getConnection();
 
             for(int i=0;i<arrayList.size();i++){
-                String sql = "SELECT CR_Name,Year,Grade,Subject FROM Classroom WHERE ClassroomID = ? ";
+                String sql = "SELECT CR_Name,YearOfExamination,Grade,Subject FROM Classroom WHERE ClassroomID = ? ";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, arrayList.get(i));
 
@@ -71,7 +71,7 @@ public class ClassroomDAO {
                     //THINK OF A METHOD TO RETRIEVE DATA
                     Classroom classroom = new Classroom();
                     classroom.setClassroomName(resultSet.getString("CR_Name"));
-                    classroom.setYear(resultSet.getString("Year"));
+                    classroom.setYear(resultSet.getString("YearOfExamination"));
                     classroom.setGrade(resultSet.getString("Grade"));
                     classroom.setSubject(resultSet.getString("Subject"));
                     classDetails.add(classroom);
@@ -102,7 +102,7 @@ public class ClassroomDAO {
         try{
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select CLassroomID, CR_Name , Year , Grade , Subject from Classroom where UserID = ?" ;
+            String sql = "select CLassroomID, CR_Name , YearOfExamination , Grade , Subject from Classroom where UserID = ?" ;
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString( 1, userId );
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -111,10 +111,10 @@ public class ClassroomDAO {
 
                 String classroomID = resultSet.getString( "ClassroomID" );
                 String CR_Name = resultSet.getString( "CR_Name" );
-                String year = resultSet.getString( "Year" );
+                String YearOfExamination = resultSet.getString( "YearOfExamination" );
                 String grade = resultSet.getString( "Grade" );
                 String subject = resultSet.getString( "Subject" );
-                Classroom classroom = new Classroom( CR_Name , subject , grade , year , null );
+                Classroom classroom = new Classroom( CR_Name , subject , grade , YearOfExamination , null );
                 classroom.setClassroomID( classroomID );
                 classroomList.add(classroom);
 
