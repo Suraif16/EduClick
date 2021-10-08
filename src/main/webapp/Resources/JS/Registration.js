@@ -168,8 +168,7 @@ function checkInputs() {
     const lastNameValue = lastName.trim();
     const emailValue = email.trim();
     const DOBValue=DOB.trim();
-    const passwordValue=password.trim();
-    const confirmPasswordValue=confirmPassword.trim();
+
     const cityValue = city.trim();
 
     let today = new Date();
@@ -229,7 +228,7 @@ function checkInputs() {
         document.getElementById("MobileNumberError").style.display = "none";
     }
 
-    if (passwordValue === '') {
+    if (password === '') {
         document.getElementById("PasswordError").innerHTML="**Enter a password";
        // passwordError.style.display = "contents";
     }
@@ -237,7 +236,7 @@ function checkInputs() {
         passwordError.style.display = "none";
     }
 
-    if (confirmPasswordValue === '') {
+    if (confirmPassword === '') {
         confirmPasswordError.innerHTML = "**Re-enter your password here";
         confirmPasswordError.style.display = "contents";
     } else {
@@ -275,12 +274,13 @@ passwordConfirmInput.addEventListener( "keyup" , function (event){
     const confirmPasswordError = document.getElementById("ConfirmPasswordError");
 
     if(password!==confirmPassword){
-        confirmPasswordError.innerHTML = "**Re-here";
+        confirmPasswordError.innerHTML = "**Does not match with above password";
         confirmPasswordError.style.display = "contents";
 
     }else{
-        confirmPasswordError.innerHTML = "**re";
+        confirmPasswordError.innerHTML = "**You have successfully enter the password";
         confirmPasswordError.style.display = "contents";
+        confirmPasswordError.style.color="blue";
     }
     }
 );
