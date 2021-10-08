@@ -47,7 +47,7 @@ const sendServerData = function (){
 
 const getClassroomList = function (){
     /* This function gets the Lists of classrooms from the server*/
-
+    const classroomsListLinksSelect = document.getElementById("classroomsListLinks");
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
@@ -69,20 +69,46 @@ const getClassroomList = function (){
         }else if(jsonResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
 
-            console.log(jsonResponse.UserObject);
-            console.log(jsonResponse.UserObject.city);
-            console.log(jsonResponse.ArrayValues);
-            console.log(jsonResponse.ArrayValues.length)
-            let count = jsonResponse.ArrayValues.length - 1;
-            while( count > 0 ){
+            let count = jsonResponse.classroomList.length - 1;
 
-                console.log(jsonResponse.ArrayValues[count]);
-                count --;
+            for(i = 0 ; i < count ; i++){
+
+                console.log("Start");
+                console.log(jsonResponse.classroomList[i]);
+                console.log(jsonResponse.classroomList[i].classroomID);
+                console.log(jsonResponse.classroomList[i].classroomName);
+                console.log(jsonResponse.classroomList[i].subject);
+                console.log(jsonResponse.classroomList[i].grade);
+                console.log(jsonResponse.classroomList[i].year);
+
+                console.log("End");
+
+                classroomHtmlOutput( jsonResponse.classroomList[i].classroomID ,
+                    jsonResponse.classroomList[i].classroomName , jsonResponse.classroomList[i].subject ,
+                    jsonResponse.classroomList[i].grade , jsonResponse.classroomList[i].year);
+
             }
 
         }else{
             alert("something went wrong!!!");
         }
+
+    }
+
+
+    function classroomHtmlOutput( classroomId , classroomName , subject , gradeClass , yearOfExamination ){
+
+        classroomsListLinksSelect.innerHTML += '<div className="classroomsListLinksItems"' +
+            ' style="flex: 1;\n' +
+            '    background-color: #4775c4;\n' +
+            '    text-align: center;\n' +
+            '    margin: 1.5% 0;\n' +
+            '    padding: 1%;"> ' +
+            '<a href="/EduClick_war_exploded/Teacher/Classroom.html?id=' + classroomId +'"' +' className="classRooms"> ' +
+            classroomName + ' : ' + subject + ' : Grade ' + gradeClass + ' : ' + yearOfExamination +
+            '</a>' +
+            '</div>';
+
 
     }
 

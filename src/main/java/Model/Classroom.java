@@ -8,10 +8,9 @@ import java.util.ArrayList;
 public class Classroom {
     private String classroomID;
     private String classroomName;
-    private String classroomCode;
     private String Subject;
     private String grade;
-    private String year;
+    private String Year;
     private String userId;
 
 
@@ -33,13 +32,6 @@ public class Classroom {
         this.classroomName = classroomName;
     }
 
-    public String getClassroomCode() {
-        return classroomCode;
-    }
-
-    public void setClassroomCode(String classroomCode) {
-        this.classroomCode = classroomCode;
-    }
 
     public String getSubject() {
         return Subject;
@@ -58,11 +50,11 @@ public class Classroom {
     }
 
     public String getYear() {
-        return year;
+        return Year;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setYear(String Year) {
+        this.Year = Year;
     }
 
     public String getUserId() {
@@ -75,17 +67,24 @@ public class Classroom {
 
     /* Constructor */
 
-    public Classroom(String classroomName, String subject, String grade, String year , String userId) {
+    public Classroom(String classroomName, String subject, String grade, String Year , String userId) {
         this.classroomName = classroomName;
         this.Subject = subject;
         this.grade = grade;
-        this.year = year;
+        this.Year = Year;
         this.userId = userId;
     }
 
     public Classroom() {
 
     }
+
+    public Classroom(String userId){
+
+        this.userId = userId;
+
+    }
+
 
     public void createClassroom(){
 
@@ -100,6 +99,13 @@ public class Classroom {
         classroomDAO.selectClassDetails(arrayList);
         classDetails = classroomDAO.getClassDetails();
         return classDetails;
+
+    }
+
+    public  ArrayList<Classroom> getListOfCLassRooms(){
+
+        ClassroomDAO classroomDAO = new ClassroomDAO();
+        return classroomDAO.selectAll( this.userId );
 
     }
 

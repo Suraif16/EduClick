@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Classroom;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,21 +30,39 @@ public class TeacherLoadClassroomListServlet extends HttpServlet {
 
         jsonObject.put("serverResponse" , "Allowed");
 
-        JSONObject userJsonObject = new JSONObject(user);
+        System.out.println(user.getUserId() + " bigbang");
+
+        Classroom classroom = new Classroom( user.getUserId() );
+
+        List<Classroom> classroomList = classroom.getListOfCLassRooms();
+
+        if( classroomList == null){
+
+            jsonObject.put( "classroomList" , "No classrooms");
+            System.out.println("no classrooms");
+
+        }else {
+
+            JSONArray jsonArray = new JSONArray( classroomList );
+            jsonObject.put( "classroomList" , jsonArray);
+            System.out.println("have classrooms");
+
+        }
+
+
+
+
+        /*JSONObject userJsonObject = new JSONObject(user);
 
         jsonObject.put("UserObject" , userJsonObject);
         System.out.println(userJsonObject);
         System.out.println(jsonObject);
 
-        List<String> list = new ArrayList<>();
-        list.add("Farzan");
-        list.add("Frosty");
-        list.add("PrimeThinker");
-        list.add("Phoenix");
-        list.add("Blaze");
+        List<User> list = new ArrayList<>();
+        list.add(user);
 
         JSONArray jsonArray = new JSONArray(list);
-        jsonObject.put("ArrayValues" , jsonArray);
+        jsonObject.put("ArrayValues" , jsonArray);*/
 
         out.write(jsonObject.toString());
         out.close();

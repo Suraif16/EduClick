@@ -92,4 +92,46 @@ public class ClassroomDAO {
 
     }
 
+    public ArrayList<Classroom> selectAll( String userId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        ArrayList<Classroom> classroomList = new ArrayList<>();
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "select CLassroomID, CR_Name , Year , Grade , Subject from Classroom where UserID = ?" ;
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1, userId );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while( resultSet.next() ){
+
+                String classroomID = resultSet.getString( "ClassroomID" );
+                String CR_Name = resultSet.getString( "CR_Name" );
+                String year = resultSet.getString( "Year" );
+                String grade = resultSet.getString( "Grade" );
+                String subject = resultSet.getString( "Subject" );
+                Classroom classroom = new Classroom( CR_Name , subject , grade , year , null );
+                classroom.setClassroomID( classroomID );
+                classroomList.add(classroom);
+                System.out.println(year + "year ");
+
+            }
+
+        }catch (SQLException throwables) {
+            System.out.println("hi error!");
+            throwables.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+
+        System.out.println("done");
+        return classroomList;
+
+    }
+
 }
