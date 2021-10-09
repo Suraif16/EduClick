@@ -3,7 +3,6 @@ package DAO;
 import Database.DBConnectionPool;
 
 import Model.User;
-import Model.Admin;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -15,6 +14,7 @@ public class UserDAO {
     public String getGeneratedUserId() {
         return generatedUserId;
     }
+
 
     public void setGeneratedUserId(String generatedUserId) {
         this.generatedUserId = generatedUserId;
@@ -142,24 +142,26 @@ public class UserDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                String UT = resultSet.getString("UserType");
-                String RD = resultSet.getString("RegistrationDate");
-                if (UT.equals("Teacher") ) {
+                String Usertype = resultSet.getString("UserType");
+                String Registrationdate = resultSet.getString("RegistrationDate");
+                if (Usertype.equals("Teacher") ) {
                     countTeacher++;
-                    if (java.time.LocalTime.now().equals(RD)) {
+                    if (java.time.LocalDate.now().equals(Registrationdate)) {
                         todaycountTeacher++;
                     }
                 } else {
                     countStudent++;
-                    if (java.time.LocalTime.now().equals(RD)) {
+                    if (java.time.LocalDate.now().equals(Registrationdate)) {
                         todaycountStudent++;
                     }
                 }
             }
-            Admin.getcountteacher(countTeacher);
-            Admin.gettodaycountteacher(todaycountTeacher);
-            Admin.getcountstudent(countStudent);
-            Admin.gettodaycountstudent(todaycountStudent);
+            System.out.println( countTeacher);
+            System.out.println( todaycountTeacher);
+            System.out.println( countStudent);
+            System.out.println( todaycountStudent);
+
+
             preparedStatement.close();
 
         } catch (SQLException e) {

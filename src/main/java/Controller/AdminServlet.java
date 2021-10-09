@@ -26,14 +26,18 @@ public class AdminServlet extends HttpServlet {
 
         /*for users*/
         /*loginStatus = UserID*/
-        UserDAO userDAO = new UserDAO();
+       /* UserDAO userDAO = new UserDAO();
         int count= userDAO.countTeacher();
-        jsonObject.put("Teacher" ,count );
-        Admin admin = new Admin();
-        int count1= admin.getcountteacher();
-        int count2= admin.gettodaycountteacher();
-        int count3= admin.getcountstudent();
-        int count4= admin.gettodaycountstudent();
+        jsonObject.put("Teacher" ,count );*/
+        UserDAO userDAO = new UserDAO();
+
+        //jsonObject.put("Teacher" ,);
+
+        //jsonObject.put("TeacherReg" ,);
+
+        //jsonObject.put("Student" ,);
+
+        //jsonObject.put("StudentReg" ,);
 
         System.out.println(jsonObject);
         out.write(jsonObject.toString());

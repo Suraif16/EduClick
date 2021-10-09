@@ -1,15 +1,11 @@
 package Model;
 
+import DAO.UserDAO;
 
 public class Admin {
     private String adminName;
     private String email;
     private String password;
-
-    public Admin(int a,int b,int c,int d) {
-        this.
-    }
-
 
     public String getAdminName() {
         return adminName;
@@ -43,19 +39,4 @@ public class Admin {
     }
 
 
-    public static int getcountteacher(int a) {
-        return a;
-    }
-
-    public static int gettodaycountteacher(int b) {
-        return b;
-    }
-
-    public static int getcountstudent(int c) {
-        return c;
-    }
-
-    public static int gettodaycountstudent(int d) {
-        return d;
-    }
 }
