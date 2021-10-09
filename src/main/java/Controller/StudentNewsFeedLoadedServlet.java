@@ -30,7 +30,13 @@ public class StudentNewsFeedLoadedServlet extends HttpServlet {
         User user = (User) session.getAttribute("User");
 
         JSONObject jsonObject = new JSONObject();
-        System.out.println("UserID is : "+user.getUserId());
+
+        jsonObject.put("serverResponse" , "Allowed");
+
+
+        //System.out.println("UserID is : "+user.getUserId());
+
+
 
         id = user.getUserId();
         arrayList = user.checkEnroll(id);
@@ -40,26 +46,10 @@ public class StudentNewsFeedLoadedServlet extends HttpServlet {
 
         classDetails = classroom.getClassDetails(arrayList);
 
-        for(int i=0;i<classDetails.size();i++){
+        JSONArray jsonArray = new JSONArray( classDetails );
 
-            System.out.println(classDetails.get(i).getClassroomName());
-            System.out.println(classDetails.get(i).getGrade());
-            System.out.println(classDetails.get(i).getSubject());
-            System.out.println(classDetails.get(i).getYear());
-        }
-        JSONArray ja = new JSONArray(classDetails);
+        jsonObject.put( "classroomList" , jsonArray);
 
-        System.out.println(ja);
-        jsonObject.put("array",ja);
-
-
-
-
-
-
-
-       /* jsonObject.put( "serverResponse" , "Allowed" );
-        jsonObject.put( "firstName" , user.getFirstName() );*/
 
         out.write(jsonObject.toString());
         out.close();

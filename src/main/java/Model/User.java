@@ -1,5 +1,6 @@
 package Model;
 
+import DAO.EnrollDAO;
 import DAO.UserDAO;
 
 import java.time.LocalDate;
@@ -188,9 +189,8 @@ public class User {
     public ArrayList<String> checkEnroll(String id){
         System.out.println("checkEnroll reached");
         String studentId = id;
-        UserDAO userDAO =  new UserDAO();
-        userDAO.checkEnrollment(studentId);
-        arrayList = userDAO.getArrayList();
+        EnrollDAO enrollDAO =  new EnrollDAO();
+        arrayList =  enrollDAO.checkEnrollment(studentId);
         return arrayList;
     }
 }

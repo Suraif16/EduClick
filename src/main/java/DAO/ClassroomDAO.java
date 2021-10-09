@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public class ClassroomDAO {
 
-    ArrayList<Classroom> classDetails = new ArrayList<Classroom>();
+    /*ArrayList<Classroom> classDetails = new ArrayList<Classroom>();
 
     public ArrayList<Classroom> getClassDetails() {
         return classDetails;
-    }
+    }*/
 
     public String insert(Classroom classroom ){
 
@@ -54,26 +54,31 @@ public class ClassroomDAO {
         return generatedKey;
     }
 
-    public void selectClassDetails(ArrayList<String> arrayList){
+    public ArrayList<Classroom> selectClassDetails(ArrayList<String> arrayList){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
+
+        ArrayList<Classroom> classDetails = new ArrayList<Classroom>();
+
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
             for(int i=0;i<arrayList.size();i++){
-                String sql = "SELECT CR_Name,YearOfExamination,Grade,Subject FROM Classroom WHERE ClassroomID = ? ";
+                String sql = "SELECT ClassroomID,CR_Name,YearOfExamination,Grade,Subject FROM Classroom WHERE ClassroomID = ? ";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, arrayList.get(i));
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while(resultSet.next()){
                     //THINK OF A METHOD TO RETRIEVE DATA
-                    Classroom classroom = new Classroom();
-                    classroom.setClassroomName(resultSet.getString("CR_Name"));
-                    classroom.setYear(resultSet.getString("YearOfExamination"));
-                    classroom.setGrade(resultSet.getString("Grade"));
-                    classroom.setSubject(resultSet.getString("Subject"));
+                    String classroomID = resultSet.getString( "ClassroomID" );
+                    String CR_Name = resultSet.getString( "CR_Name" );
+                    String YearOfExamination = resultSet.getString( "YearOfExamination" );
+                    String grade = resultSet.getString( "Grade" );
+                    String subject = resultSet.getString( "Subject" );
+                    Classroom classroom = new Classroom( CR_Name , subject , grade , YearOfExamination , null );
+                    classroom.setClassroomID( classroomID );
                     classDetails.add(classroom);
                 }
 
@@ -89,6 +94,10 @@ public class ClassroomDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        return classDetails ;
 
     }
 
