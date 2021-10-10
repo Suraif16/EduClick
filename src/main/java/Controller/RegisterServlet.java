@@ -3,6 +3,7 @@ package Controller;
 
 
 import Model.Login;
+import Model.Student;
 import Model.User;
 
 import javax.servlet.ServletException;
@@ -70,6 +71,16 @@ public class RegisterServlet extends HttpServlet {
        else if(emailStatus.equals("Email doesn't exsist")){
            User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
            user.userRegistered();
+
+           if(userType.equals("Student")){
+               System.out.println("I am a Student!!");
+               Student student =  new Student(user);
+               student.enterStudent();
+           }
+           else if(userType.equals("Teacher")){
+               System.out.println("I am a Teacher!!");
+           }
+
            generatedUserID = user.getUserId();
            Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
            login.insertRecord();
