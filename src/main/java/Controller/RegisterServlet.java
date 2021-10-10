@@ -4,6 +4,7 @@ package Controller;
 
 import Model.Login;
 import Model.Student;
+import Model.Teacher;
 import Model.User;
 
 import javax.servlet.ServletException;
@@ -79,6 +80,8 @@ public class RegisterServlet extends HttpServlet {
            }
            else if(userType.equals("Teacher")){
                System.out.println("I am a Teacher!!");
+               Teacher teacher =  new Teacher(user);
+               teacher.enterTeacher();
            }
 
            generatedUserID = user.getUserId();
