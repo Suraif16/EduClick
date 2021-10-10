@@ -48,10 +48,11 @@ function showNotification(){
 }
 
 }
+/*
 document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
-        /* when the document is loaded and complete this function will run*/
+        /!* when the document is loaded and complete this function will run*!/
         console.log("page loaded");
         sendServerData();
         console.log("page complete");
@@ -65,7 +66,7 @@ const sendServerData = function (){
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            completeLogin( this ); /!*This is where we get the response when the request was successfully sent and a successfully response is received *!/
         }
 
     }
@@ -81,7 +82,7 @@ const sendServerData = function (){
         arr = jsonResponse;
 
 
-        /*if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+        /!*if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         } if(jsonLoginResponse.serverResponse === "Allowed") {
             /!* This is where I need work everytime as per the authentication filter*!/
@@ -90,10 +91,10 @@ const sendServerData = function (){
             console.log( jsonLoginResponse.firstName , jsonLoginResponse.lastName);
         }else{
             alert("something went wrong!!!");
-        }*/
+        }*!/
 
 
-            /*console.log(arr[0].values().value())*/
+            /!*console.log(arr[0].values().value())*!/
 
 
 
@@ -104,4 +105,4 @@ const sendServerData = function (){
 
 
 
-}
+}*/

@@ -96,8 +96,8 @@ public class Classroom {
 
     public ArrayList<Classroom> getClassDetails(ArrayList<String> arrayList){
         ClassroomDAO classroomDAO =  new ClassroomDAO();
-        classroomDAO.selectClassDetails(arrayList);
-        classDetails = classroomDAO.getClassDetails();
+        classDetails =classroomDAO.selectClassDetails(arrayList);
+
         return classDetails;
 
     }
