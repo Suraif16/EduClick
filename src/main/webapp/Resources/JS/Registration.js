@@ -116,6 +116,9 @@ const sendServerData = function () {
             }
 
         }
+        if(jsonRegistrationResponse.Reg === "Done"){
+            window.location.replace("/EduClick_war_exploded/OtpPage.html");
+        }
 
 
     }
