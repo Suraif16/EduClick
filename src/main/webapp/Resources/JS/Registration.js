@@ -57,6 +57,8 @@ const sendServerData = function () {
     console.log(password);
     console.log(confirmPassword);
 
+
+
     let httpReq = new XMLHttpRequest();
     httpReq.onreadystatechange = function () {
 
@@ -68,7 +70,14 @@ const sendServerData = function () {
 
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+
+    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword){
+        httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+    }
+    else {
+        alert("You have empty fields");
+    }
+
 
     function completeRegistration(httpreq) {
 
