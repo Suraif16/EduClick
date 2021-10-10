@@ -1,5 +1,10 @@
 package Model;
 
+import DAO.EnrollDAO;
+import DAO.StudentDAO;
+
+import java.util.ArrayList;
+
 public class Student extends User{
 
     private String school;
@@ -26,12 +31,24 @@ public class Student extends User{
 
     /*Getters and setters ends here*/
 
-    public Student(User user , String school , String grade ){
+    public Student(User user  ){
 
         super(user);
-        this.school = school;
-        this.grade = grade;
 
+    }
+
+
+    public ArrayList<String> checkEnroll(String id){
+        System.out.println("checkEnroll reached");
+        String studentId = id;
+        EnrollDAO enrollDAO =  new EnrollDAO();
+        arrayList =  enrollDAO.checkEnrollment(studentId);
+        return arrayList;
+    }
+
+    public void enterStudent(){
+        StudentDAO studentDAO = new StudentDAO();
+        studentDAO.enterStudent(this);
     }
 
 }

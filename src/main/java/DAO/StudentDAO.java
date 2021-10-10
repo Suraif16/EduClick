@@ -1,23 +1,23 @@
 package DAO;
 
 import Database.DBConnectionPool;
-import Model.Teacher;
+import Model.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class TeacherDAO {
+public class StudentDAO {
 
-    public void enterTeacher(Teacher teacher){
+    public void enterStudent(Student student){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Teacher (UserID) VALUES (?)";
+            String sql = "INSERT INTO Student (UserID) VALUES (?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, teacher.getUserId());
+            preparedStatement.setString(1, student.getUserId());
             preparedStatement.execute();
 
         } catch (SQLException e) {
@@ -28,5 +28,6 @@ public class TeacherDAO {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
     }
+
 
 }

@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Classroom;
+import Model.Student;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,6 +30,8 @@ public class StudentNewsFeedLoadedServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("User");
 
+        Student student = new Student(user);
+
         JSONObject jsonObject = new JSONObject();
 
         jsonObject.put("serverResponse" , "Allowed");
@@ -39,7 +42,7 @@ public class StudentNewsFeedLoadedServlet extends HttpServlet {
 
 
         id = user.getUserId();
-        arrayList = user.checkEnroll(id);
+        arrayList = student.checkEnroll(id);
         System.out.println(arrayList);
 
         Classroom classroom = new Classroom();
