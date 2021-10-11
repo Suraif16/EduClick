@@ -1,10 +1,11 @@
 package Model;
 
-import DAO.LoginDAO;
+import DAO.EnrollDAO;
 import DAO.UserDAO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class User {
 
@@ -20,6 +21,9 @@ public class User {
     private LocalDate registrationDate;
     private String gender;
     private String userType;
+
+
+    ArrayList<String> arrayList = new ArrayList<String>();
 
     public User(String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber,  String country, String city, LocalTime registrationTime, LocalDate registrationDate, String gender, String userType) {
 
@@ -52,6 +56,20 @@ public class User {
         this.userId = userId;
     }
 
+    public User( User user ){
+
+        this.userId = user.getUserId();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.dateOfBirth = user.getDateOfBirth();
+        this.mobileNumber = user.getMobileNumber();
+        this.profilePicture = user.getProfilePicture();
+        this.country = user.getCountry();
+        this.city = user.getCity();
+        this.gender = user.getGender();
+        this.userType = user.getUserType();
+
+    }
 
     public User checkUsertype(){
         UserDAO userDAO = new UserDAO();
@@ -165,4 +183,14 @@ public class User {
         userDAO.insert(this);
         userId=userDAO.getGeneratedUserId();
     }
+
+    /*to check the enroll table and get records*/
+
+    /*public ArrayList<String> checkEnroll(String id){
+        System.out.println("checkEnroll reached");
+        String studentId = id;
+        EnrollDAO enrollDAO =  new EnrollDAO();
+        arrayList =  enrollDAO.checkEnrollment(studentId);
+        return arrayList;
+    }*/
 }

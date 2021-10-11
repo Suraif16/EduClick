@@ -32,7 +32,6 @@ public class LoginDAO {
             while (resultSet.next()){
                 pswd = resultSet.getString("Password");
                 userid = "";
-                System.out.println("hi" + pswd +"id:" + userid + " nothing");
             }
             resultSet.close();
             preparedStatement.close();
@@ -44,9 +43,9 @@ public class LoginDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
-        System.out.println("first");
+
         if (pswd == null){
-            System.out.println("userlogin");
+
             try {
                 connection = dbConnectionPool.dataSource.getConnection();
                 String sql = "select Password,UserID from Login where EmailID = ?";
@@ -54,9 +53,10 @@ public class LoginDAO {
                 preparedStatement.setString(1 , email);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()){
+
                     pswd = resultSet.getString("Password");
-                    userid = resultSet.getString("UserID");;
-                    System.out.println(" A " + pswd +"id:" + userid + " B ");
+                    userid = resultSet.getString("UserID");
+
                 }
                 resultSet.close();
                 preparedStatement.close();
@@ -69,7 +69,7 @@ public class LoginDAO {
                 if (connection != null) try { connection.close(); }catch (Exception ignore) {}
             }
         }
-        System.out.println("last");
+
     }
 
     public static void enter(Login login){
@@ -112,8 +112,9 @@ public class LoginDAO {
             preparedStatement.setString(1,email);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
+
                 emaildao = resultSet.getString("userID");
-                System.out.println("Email DAO printed" + emaildao);
+
             }
 
 
@@ -149,7 +150,6 @@ public class LoginDAO {
             preparedStatement.setTime(2 , Time.valueOf(loginTime));
             preparedStatement.setString(3 , email);
             int rowAffected = preparedStatement.executeUpdate();
-            System.out.println(rowAffected);
             preparedStatement.close();
 
 

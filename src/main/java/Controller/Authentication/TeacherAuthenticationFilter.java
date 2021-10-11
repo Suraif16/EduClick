@@ -44,7 +44,7 @@ public class TeacherAuthenticationFilter implements Filter {
                     filterChain.doFilter( request , response );
 
                 }else{
-
+                    session.invalidate();
                     jsonObject.put( "serverResponse" , "Not Allowed" );
                     out.write(jsonObject.toString());
 
@@ -52,6 +52,7 @@ public class TeacherAuthenticationFilter implements Filter {
                 }
 
             }else {
+                session.invalidate();
                 jsonObject.put( "serverResponse" , "Not Allowed" );
                 out.write(jsonObject.toString());
 

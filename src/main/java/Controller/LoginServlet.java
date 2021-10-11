@@ -45,7 +45,6 @@ public class LoginServlet extends HttpServlet {
         }
         else if(loginStatus.equals("")){
             /*admin*/
-            System.out.println("admin");
             Admin admin = new Admin( "Admin" , email );
             session.setAttribute("Admin" , admin);
             jsonObject.put("User" , "Admin");
@@ -59,10 +58,8 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("User" , user);
             jsonObject.put("Usertype" ,user.getUserType() );
 
-            System.out.println("Usertype");
 
         }
-        System.out.println(jsonObject);
         out.write(jsonObject.toString());
         out.close();
 

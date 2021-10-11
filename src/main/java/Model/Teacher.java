@@ -1,8 +1,11 @@
 package Model;
 
+import DAO.StudentDAO;
+import DAO.TeacherDAO;
+
 import java.util.List;
 
-public class Teacher /*extends User*/{
+public class Teacher extends User{
 
     private String currentWorkingPlace;
     private List<String> subjects;
@@ -36,6 +39,17 @@ public class Teacher /*extends User*/{
 
     /*Getters and setters ends here*/
 
+    public Teacher( User user){
+
+        super( user );
+
+
+    }
+
+    public void enterTeacher(){
+        TeacherDAO teacherDAO = new TeacherDAO();
+        teacherDAO.enterTeacher(this);
+    }
 
 
 }

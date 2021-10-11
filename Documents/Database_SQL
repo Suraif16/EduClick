@@ -23,7 +23,7 @@ CREATE TABLE Users(
 CREATE TABLE Student(
     UserID BIGINT NOT NULL,
     School VARCHAR(50),
-    GRADE INT NOT NULL,
+    GRADE INT,
     PRIMARY KEY(UserID)
     )ENGINE = INNODB;
 
@@ -42,7 +42,7 @@ CREATE TABLE Classroom_Has_EPost(
 CREATE TABLE Classroom(
     ClassroomID BIGINT NOT NULL AUTO_INCREMENT,
     CR_Name VARCHAR(50) NOT NULL,
-    Year YEAR,
+    YearOfExamination VARCHAR(4),
     Grade VARCHAR(20),
     Subject VARCHAR(20),
     UserID BIGINT NOT NULL,

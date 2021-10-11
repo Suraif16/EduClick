@@ -17,16 +17,43 @@
 <body>
 
     <header>
+        <div id="headerMainBar">
 
-        <img id="logo" src="Resources/Icons/Logo.png" alt="EduClick">
-        <div class="topnav">
-            <a href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#aboutus">About Us</a>
+            <a id="linkLogo" href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+
+                <img src="/Resources/Icons/Logo.png" class="logo">
+
+            </a>
+
+
+            <div id="headingSearch">
+
+
+                <div id="searchBar">
+
+
+                    <input id="searchBarText" type="text" placeholder="Search">
+
+
+
+                </div>
+
+            </div>
+
+            <div id="nav-bar-container">
+                <a href="#home" class="active">Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+            </div>
+
+
+
+
+
         </div>
 
-        <input type="text" placeholder="Search for Teachers">
+
 
     </header>
 
@@ -36,17 +63,36 @@
             <button type="submit" class="login">Login</button>
         </div>
 
-        <!--<div id="firstthumbnail">
-            <p>Not familiar with how to Register? Watch this</p>
-            <img id="thumbnail1" src="Resources/Gifs/slide%201.gif" alt="Thumbnail">
-        </div>
-        <div id="secondthumbnail">
-            <p>Not familiar with how to Login? Watch this</p>
-            <img id="thumbnail2" src="Resources/Gifs/slide2.gif" alt="Thumbnail">
-        </div>-->
+
 
         <div id="gif-container">
-            <img id="gif1" src="Resources/Gifs/slide%201.gif" alt="gif1">
+
+            <div id="gif1-container">
+                <img id="gif1" src="Resources/Gifs/slide%201.gif" alt="gif1">
+                <p id="gif1p">Friends and Followers!</p>
+
+            </div>
+
+            <div id="gif2-container">
+                <img id="gif2" src="Resources/Gifs/slide2.gif" alt="gif2">
+                <p id="gif2p">Post Educational Contents in classrooms!</p>
+
+            </div>
+
+            <div id="gif3-container">
+                <img id="gif3" src="Resources/Gifs/slide3.gif" alt="gif2">
+                <p id="gif3p">Teachers Post and Share Newsfeed!</p>
+
+            </div>
+
+            <div id="gif4-container">
+                <img id="gif4" src="Resources/Gifs/slide%204.gif" alt="gif2">
+                <p id="gif4p">Students share Newsfeed!</p>
+
+            </div>
+
+
+            <!--<img id="gif1" src="Resources/Gifs/slide%201.gif" alt="gif1">
             <p id="gif1p">Friends and Followers!</p>
 
 
@@ -56,7 +102,7 @@
             <img id="gif3" src="Resources/Gifs/slide3.gif" alt="gif3">
             <p id="gif3p">Teachers Post and Share Newsfeed!</p>
             <img id="gif4" src="Resources/Gifs/slide%204.gif" alt="gif4">
-            <p id="gif4p">Students share Newsfeed!</p>
+            <p id="gif4p">Students share Newsfeed!</p>-->
         </div>
 
 

@@ -7,8 +7,15 @@ import Model.Admin;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class UserDAO {
+
+    /*ArrayList<String> arrayList = new ArrayList<String>();
+
+    public ArrayList<String> getArrayList() {
+        return arrayList;
+    }*/
 
     public String generatedUserId;
 
@@ -127,8 +134,7 @@ public class UserDAO {
                 user.setCity(city);
                 user.setGender(gender);
                 user.setUserType(userType);
-
-                System.out.println("hi" + userType + "id:dfgsfd645");
+                
             }
             resultSet.close();
             preparedStatement.close();
@@ -163,6 +169,7 @@ public class UserDAO {
         }
         return count;
     }
+
 
     public void count ( ){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -216,4 +223,31 @@ public class UserDAO {
 
 
     }
+
+    /*public ArrayList<String> checkEnrollment(String studentId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT ClassroomID FROM Enroll WHERE UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, studentId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                arrayList.add(resultSet.getString("ClassroomID"));
+            }
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+        if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+        }
+        return arrayList;
+    }*/
+
+
 }
