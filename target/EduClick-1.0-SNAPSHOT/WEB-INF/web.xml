@@ -129,7 +129,7 @@
 
     <!--end of teacher create classroom-->
 
-    <!--<filter>
+    <filter>
         <filter-name>adminAuthentication</filter-name>
         <filter-class>Controller.Authentication.AdminAuthenticationFilter</filter-class>
     </filter>
@@ -137,7 +137,7 @@
     <filter-mapping>
         <filter-name>adminAuthentication</filter-name>
         <url-pattern>/admin/*</url-pattern>
-    </filter-mapping>-->
+    </filter-mapping>
 
     <!-- beginning of logout-->
 
