@@ -1,20 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-<<<<<<< HEAD
 Built-By: acer
 Build-Jdk: Amazon Corretto version 15.0.2
-=======
-<<<<<<< HEAD
-Built-By: Venushka
-Build-Jdk: 1.8.0_221
-=======
-<<<<<<< HEAD
-Built-By: HP
-Build-Jdk: 15.0.2
-=======
-Built-By: acer
-Build-Jdk: Amazon Corretto version 15.0.2
->>>>>>> main
->>>>>>> 069fe437be54c38e3e0273aa14ab37d5e94e3e7e
->>>>>>> 3126841970f2870718dcdd0af035f8fbc82e19b4
 

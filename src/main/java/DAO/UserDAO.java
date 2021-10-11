@@ -11,11 +11,11 @@ import java.util.ArrayList;
 
 public class UserDAO {
 
-    ArrayList<String> arrayList = new ArrayList<String>();
+    /*ArrayList<String> arrayList = new ArrayList<String>();
 
     public ArrayList<String> getArrayList() {
         return arrayList;
-    }
+    }*/
 
     public String generatedUserId;
 
@@ -134,7 +134,7 @@ public class UserDAO {
         return count;
     }
 
-    public ArrayList<String> checkEnrollment(String studentId){
+    /*public ArrayList<String> checkEnrollment(String studentId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
@@ -157,6 +157,6 @@ public class UserDAO {
         if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
         }
         return arrayList;
-    }
+    }*/
 
 }

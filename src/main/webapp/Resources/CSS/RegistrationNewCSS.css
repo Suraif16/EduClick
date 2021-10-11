@@ -3,7 +3,7 @@ body{
     flex-direction: column;
 }
 header{
-    position: fixed;
+    position: relative;
 
     width: 98.5%;
 
@@ -39,15 +39,15 @@ header > h1{
     height: 70%;
 
 }
-footer{
+/*footer{
 
     padding: 0.5%;
-    flex: 1;/*child of the body*/
+    flex: 1;!*child of the body*!
     order: 3;
     background-color: #4775c4;
     box-shadow: 8px 8px 2px #a7a7a7;
 
-}
+}*/
 div#content{
 
     flex: 1;/*child of the body*/

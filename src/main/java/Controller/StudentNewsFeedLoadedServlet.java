@@ -1,7 +1,8 @@
-/*
+
 package Controller;
 
 import Model.Classroom;
+import Model.Student;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,42 +31,31 @@ public class StudentNewsFeedLoadedServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("User");
 
+        Student student = new Student(user);
+
         JSONObject jsonObject = new JSONObject();
-        System.out.println("UserID is : "+user.getUserId());
+
+        jsonObject.put("serverResponse" , "Allowed");
+
+
+        //System.out.println("UserID is : "+user.getUserId());
+
+
 
         id = user.getUserId();
-        arrayList = user.checkEnroll(id);
+        arrayList = student.checkEnroll(id);
         System.out.println(arrayList);
 
         Classroom classroom = new Classroom();
 
         classDetails = classroom.getClassDetails(arrayList);
 
-        for(int i=0;i<classDetails.size();i++){
+        JSONArray jsonArray = new JSONArray( classDetails );
 
-            System.out.println(classDetails.get(i).getClassroomName());
-            System.out.println(classDetails.get(i).getGrade());
-            System.out.println(classDetails.get(i).getSubject());
-            System.out.println(classDetails.get(i).getYear());
-        }
-        JSONArray ja = new JSONArray(classDetails);
-
-        System.out.println(ja);
-        jsonObject.put("array",ja);
-
-
-
-
-
-
-
-       */
-/* jsonObject.put( "serverResponse" , "Allowed" );
-        jsonObject.put( "firstName" , user.getFirstName() );*//*
+        jsonObject.put( "classroomList" , jsonArray);
 
 
         out.write(jsonObject.toString());
         out.close();
     }
 }
-*/
