@@ -14,6 +14,14 @@ const sendServerData = function () {
 
     let dateOfBirth = document.getElementById("DOB").value;
 
+    let today = new Date();
+    let date = today.getFullYear();
+
+    let birthYear = dateOfBirth.substr(0,4);
+
+    const age = date-birthYear;
+
+
     var userTypeSelect;
     var userType=document.getElementsByName("userType");
     for(i = 0;i<userType.length;i++){
@@ -73,10 +81,7 @@ const sendServerData = function () {
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword){
-
-        if(errorFlag==0){
-
+    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword && age>13){
 
         if(password.length == confirmPassword.length  && password == confirmPassword && password.length>=8) {
 
@@ -84,9 +89,7 @@ const sendServerData = function () {
         }else {
             alert("Password issue!!")
         }
-        }else {
-            alert("Invalid fields");
-        }
+
     }
     else {
         alert("You have empty fields");
