@@ -7,6 +7,7 @@
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>Controller.LoginServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
     
     <servlet-mapping>
@@ -17,6 +18,7 @@
     <servlet>
         <servlet-name>admin</servlet-name>
         <servlet-class>Controller.AdminServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -39,6 +41,7 @@
     <servlet>
         <servlet-name>registration</servlet-name>
         <servlet-class>Controller.RegisterServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -61,13 +64,14 @@
     <!--Beginning of teacher newsfeed loaded-->
 
     <servlet>
-        <servlet-name>teacherNewsFeedLoaded</servlet-name>
-        <servlet-class>Controller.TeacherNewsFeedLoadedServlet</servlet-class>
+        <servlet-name>teacherLoad</servlet-name>
+        <servlet-class>Controller.TeacherLoadServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>teacherNewsFeedLoaded</servlet-name>
-        <url-pattern>/teacher/teacherNewsFeedLoaded</url-pattern>
+        <servlet-name>teacherLoad</servlet-name>
+        <url-pattern>/teacher/teacherLoad</url-pattern>
     </servlet-mapping>
 
     <filter>
@@ -88,6 +92,7 @@
     <servlet>
         <servlet-name>studentNewsFeedLoaded</servlet-name>
         <servlet-class>Controller.StudentNewsFeedLoadedServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -114,6 +119,7 @@
     <servlet>
         <servlet-name>teacherCreateClassroom</servlet-name>
         <servlet-class>Controller.TeacherCreateClassroomServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -122,6 +128,45 @@
     </servlet-mapping>
 
     <!--end of teacher create classroom-->
+
+    <!--<filter>
+        <filter-name>adminAuthentication</filter-name>
+        <filter-class>Controller.Authentication.AdminAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>adminAuthentication</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>-->
+
+    <!-- beginning of logout-->
+
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.LogoutServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of logout -->
+
+    <!-- beginning of the TeacherClassroomListServlet-->
+    <servlet>
+        <servlet-name>TeacherLoadClassroomList</servlet-name>
+        <servlet-class>Controller.TeacherLoadClassroomListServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherLoadClassroomList</servlet-name>
+        <url-pattern>/teacher/teacherLoadClassroomList</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of the TeacherClassroomListServlet-->
 
 
     <session-config>
