@@ -1,6 +1,8 @@
 const submitButton = document.getElementById("button");
 const passwordInput = document.getElementById("Password");
 const passwordConfirmInput = document.getElementById("confirmPassword");
+let errorFlag = 0;
+
 
 const sendServerData = function () {
 
@@ -11,6 +13,14 @@ const sendServerData = function () {
     let email = document.getElementById("email").value;
 
     let dateOfBirth = document.getElementById("DOB").value;
+
+    let today = new Date();
+    let date = today.getFullYear();
+
+    let birthYear = dateOfBirth.substr(0,4);
+
+    const age = date-birthYear;
+
 
     var userTypeSelect;
     var userType=document.getElementsByName("userType");
@@ -71,12 +81,14 @@ const sendServerData = function () {
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword){
-        httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword && age>13){
+
+        if(password.length == confirmPassword.length  && password == confirmPassword && password.length>=8) {
+
+            httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+        }
     }
-    else {
-        alert("You have empty fields");
-    }
+
 
 
     function completeRegistration(httpreq) {
@@ -158,6 +170,7 @@ function checkInputs() {
         }
         else if(gender[i].checked===false){
             document.getElementById("GenderError").innerHTML="**Please select your gender";
+
         }
 
     }
@@ -172,6 +185,7 @@ function checkInputs() {
         }
         else if(userType[i].checked===false){
             document.getElementById("UserTypeError").innerHTML="**Please select who are you";
+
         }
 
     }
@@ -192,12 +206,14 @@ function checkInputs() {
 
     if (firstNameValue === '') {
         firstNameError.style.display = "contents";
+
     }else {
        firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
         lastNameError.style.display = "contents";
+
     }else{
         lastNameError.style.display = "none";
     }
@@ -206,18 +222,23 @@ function checkInputs() {
         emailError.innerHTML= "**Enter your Email";
         emailError.style.display = "contents";
 
+
     } else if (!isEmail(emailValue)) {
         emailError.innerHTML= "**Invalid Email";
         emailError.style.display = "contents";
+
     }else{
         emailError.style.display = "none";
     }
 
     if (DOBValue === '') {
         DateOfBirthError.style.display = "contents";
+
     }else if(age<13){
         DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
         DateOfBirthError.style.display = "contents";
+        errorFlag = 1;
+
     }
     else {
         DateOfBirthError.style.display = "none";
@@ -225,6 +246,7 @@ function checkInputs() {
 
     if (cityValue === '') {
         cityError.style.display = "contents";
+
     }else {
         cityError.style.display = "none";
     }
@@ -232,8 +254,10 @@ function checkInputs() {
     if (mobileNumber === ''){
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
 
+
     }else if(isNaN(mobileNumber)){
         document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
+
         return false;
     }
     else {
@@ -243,6 +267,7 @@ function checkInputs() {
     if (password === '') {
         document.getElementById("PasswordError").innerHTML="**Enter a password";
        // passwordError.style.display = "contents";
+        errorFlag = 1;
     }
     else {
         passwordError.style.display = "none";
