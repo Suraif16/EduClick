@@ -1,67 +1,166 @@
+
 body{
 
-    background-color: white;
+    /*This is the main container for footer , header , and div#content*/
 
+    background-color: white;
+    display: flex;
+    flex-direction: column;
 }
-img#logo{
-    position : relative;
-    left : 1%;
-    margin-top : 5px;
-    margin-left : 5px;
-    width : 75px;
-    height : 75px;
-    display : inline;
-}
+
 header{
 
-    position: fixed;
-    width: 98.5%;
-    height: 95px;
+    /*child of the body*/
+
+    color: whitesmoke;
+    /*padding: 0.5%;*/
     background-color: #4775c4;
-    box-shadow : 8px 8px 2px #a7a7a7;
-    z-index : 10;
-    top : 0px;
-
-}
-.topnav{
-    overflow: hidden;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    display: flex; /*this is a container now for headerMainBar and headerButtons*/
+    width: 99%;
+    flex-direction: column;
     position: absolute;
-    top: 9px;
-    margin-left: 10%;
-    width: 40%;
 
 }
-.topnav a{
-    float: left;
+
+header > div#headerMainBar {
+    /*child of header*/
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+
+header > div#headerMainBar > a#linkLogo {
+
+    /*child of header , to both the anchor<a> children*/
+
+    flex: 1;
+    margin: auto;
+    padding: 0.2%;
+
+}
+
+header > div#headerMainBar > div#headingSearch {
+
+    /*child of header*/
+
+    flex: 7;
+    display: flex;
+    margin: auto 0.8%;
+
+
+}
+
+
+header > div#headerMainBar > div#headingSearch > div#searchBar {
+
+    flex: 1;
+    margin: auto;
+    align-self: center;
+    display: flex;
+}
+
+header > div#headerMainBar > div#headingSearch > div#searchBar > input[type="text"] {
+
+    padding: 1%;
+    margin: 1% 0.5% 1% 1%;
+    flex-basis: 50%;
+
+}
+
+
+.logo{
+
+    width: 70%;
+    height: 70%;
+
+}
+
+
+#nav-bar-container{
+    display: flex;
+    flex-basis: 2%;
+    justify-content: space-between;
+    flex: 1;
+
+}
+#nav-bar-container a {
+    float: right;
     color: whitesmoke;
     text-align: center;
-    padding: 20px 30px;
-    margin-top: 1px;
+    padding: 20px 50px;
+    margin: auto;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
     opacity: 0.9;
     cursor: pointer;
 }
-.topnav a:hover{
-    opacity: 1;
+
+
+
+#content #btns{
+    /*border: mediumseagreen solid 2px;*/
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1%;
+    margin-top: 10%;
+    justify-content: center;
+    display: inline-block;
+    flex-direction: column;
 }
-div#content{
+#content #btns .register{
+
+    /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+    margin:auto;
+    width: 40%;
+    height: auto;
+    background-color: #4775c4;
+    color: whitesmoke;
+    position: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+
+}
+#content #btns .login{
+
+    /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+    margin:auto;
+    width: 40%;
+    height: auto;
+    background-color: #4775c4;
+    color: whitesmoke;
+    position: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+
+}
+
+footer{
+    color: whitesmoke;
+    /*padding: 0.5%;*/
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    display: flex; /*this is a container now for headerMainBar and headerButtons*/
+
+    width: 99%;
+    flex-direction: column;
     position: absolute;
-    top: 100px;
-    left: 2%;
-    height: 87%;
-    width: 95%;
 }
-input[type=text]{
-    float : right;
-    width : 35%;
-    padding : 9px;
-    margin-top: 20px;
-    margin-right : 10px;
-}
-::placeholder{
-    font-size: 15px;
+
+
+input{
+    /*all input values will have these properties*/
+    border-radius: 5px;
+    border: #6a6a6a solid 1px;
+
 }
 
 .searchButton{
@@ -85,7 +184,7 @@ input[type=text]{
     width : 15%;
     height : 37px;
     margin-left: 25%;
-    margin-top : 20px;
+    margin-top : 70px;
     cursor : pointer;
 }
 .login{
@@ -97,110 +196,372 @@ input[type=text]{
     width : 15%;
     height : 37px;
     margin-right: 25%;
-    margin-top : 20px;
+    margin-top : 70px;
     cursor : pointer;
 }
-div#firstthumbnail img#thumbnail1{
-    position : absolute;
-    top : 15%;
-    right: 15%;
-    height: 250px;
-    width : 370px;
-    align : right;
-}
-div#secondthumbnail img#thumbnail2{
-    position : absolute;
-    top : 55%;
-    left: 15%;
-    height: 250px;
-    width : 370px;
-    align : left;
-}
-#thumbnail1:hover{
-    cursor: pointer;
-}
-#thumbnail2:hover{
-    cursor: pointer;
-}
-div#firstthumbnail p{
-    font-weight: bold;
-    font-size: 30px;
-    margin-top :12.5%;
-    margin-left: 10%;
-}
-div#secondthumbnail p{
-    font-weight: bold;
-    font-size: 30px;
-    margin-top :16.5%;
-    margin-left: 50%;
-}
+
 button:hover {
     opacity: 1;
 }
-footer{
-    position: absolute;
-    background-color: #4775c4;
-    width: 98.5%;
-    box-shadow : 8px 8px 2px #a7a7a7;
-    height: 100px;
-    top: 230%;
-}
-footer p{
-    font-weight: lighter;
-    color: whitesmoke;
-    margin-left: 45%;
-    margin-top: 30px;
-    font-size: 16px;
-}
 
-#gif1{
-    height: 40%;
-    width: 40%;
-    margin-left: 2%;
+
+
+img#gif1{
+    height: 50%;
+    width: 50%;
+    position: center;
+    margin: auto;
+    display: flex;
+}
+#gif-container #gif1-container p {
+    position: center;
+   margin-left: 42%;
     margin-top: 5%;
-
-}
-
-#gif2{
-    height: 40%;
-    width: 40%;
-    margin-left: 50%;
-    margin-top: 14%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
 
 
 }
-#gif3{
-    height: 40%;
-    width: 40%;
-    margin-top: 14%;
-    margin-left: 2%;
+
+img#gif2{
+    height: 50%;
+    width: 50%;
+    position: center;
+    margin: auto;
+    display: flex;
+}
+#gif-container #gif2-container p {
+    position: center;
+    margin-left: 35%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
+
 
 }
-#gif4{
-    height: 40%;
-    width: 40%;
-    margin-top: 14%;
-    margin-left: 50%;
+
+
+img#gif3{
+    height: 50%;
+    width: 50%;
+    position: center;
+    margin: auto;
+    display: flex;
+}
+#gif-container #gif3-container p {
+    position: center;
+    margin-left: 35%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
+
 
 }
-#gif1p{
-    margin-top: -12%;
-    margin-left: 60%;
+
+img#gif4{
+    height: 50%;
+    width: 50%;
+    position: center;
+    margin: auto;
+    display: flex;
 }
-#gif2p{
-    margin-top: -12%;
-    margin-left: 10%;
+#gif-container #gif4-container p {
+    position: center;
+    margin-left: 42%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
+
+
 }
 
-#gif3p{
-    margin-top: -12%;
-    margin-left: 60%;
+
+@media (max-width: 1110px) {
+    #gif-container #gif1-container p {
+        position: center;
+        margin-left: 40%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif2-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: bold;
+
+
+    }
+
+    #gif-container #gif3-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif4-container p {
+        position: center;
+        margin-left: 34%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 25px;
+        font-weight: bold;
+
+
+    }
+
 }
 
-#gif4p{
-    margin-top: -10%;
-    margin-left: 10%;
+
+
+
+@media (max-width: 920px) {
+    #gif-container #gif1-container p {
+        position: center;
+        margin-left: 40%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif2-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+
+
+    }
+
+    #gif-container #gif3-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif4-container p {
+        position: center;
+        margin-left: 34%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: bold;
+
+
+    }
+
 }
-div#gif-container p {
-    font-size: 25px;
+
+
+
+
+
+@media (max-width: 650px) {
+    #gif-container #gif1-container p {
+        position: center;
+        margin-left: 40%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size:15px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif2-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 15px;
+        font-weight: bold;
+
+
+    }
+
+    #gif-container #gif3-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 15px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif4-container p {
+        position: center;
+        margin-left: 34%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 15px;
+        font-weight: bold;
+
+
+    }
+
+}
+
+
+
+@media (max-width: 500px) {
+    #gif-container #gif1-container p {
+        position: center;
+        margin-left: 35%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 10px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif2-container p {
+        position: center;
+        margin-left: 26%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 10px;
+        font-weight: bold;
+
+
+    }
+
+    #gif-container #gif3-container p {
+        position: center;
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 10px;
+        font-weight: bold;
+
+
+    }
+    #gif-container #gif4-container p {
+        position: center;
+        margin-left: 34%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        flex-direction: column;
+        font-size: 10px;
+        font-weight: bold;
+
+
+    }
+
+}
+
+
+
+
+
+
+@media (max-width: 1110px) {
+    #nav-bar-container a{
+        font-size: 15px;
+
+    }
+
+}
+
+@media (max-width: 850px) {
+    #nav-bar-container a{
+        font-size: 12px;
+        padding: 15px 25px;
+    }
+    
+}
+
+@media (max-width: 570px) {
+    #nav-bar-container a{
+        font-size: 10px;
+        padding: 10px 15px;
+
+    }
+    #content #btns .login{
+
+        /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+
+        font-size: 20px;
+
+
+
+    }
+
+    #content #btns .register{
+
+        /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+
+        font-size: 20px;
+
+
+
+    }
+
+
+
+}
+@media (max-width: 420px) {
+    #content #btns .register{
+
+        /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+
+        font-size: 15px;
+
+
+
+    }
+    #content #btns .login{
+
+        /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+
+        font-size: 15px;
+
+
+
+    }
+    #nav-bar-container a{
+        font-size: 10px;
+        padding: 10px 5px;
+
+    }
+
 }
