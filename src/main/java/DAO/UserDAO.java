@@ -3,6 +3,7 @@ package DAO;
 import Database.DBConnectionPool;
 
 import Model.User;
+import Model.Admin;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -14,10 +15,45 @@ public class UserDAO {
     public String getGeneratedUserId() {
         return generatedUserId;
     }
-
-
     public void setGeneratedUserId(String generatedUserId) {
         this.generatedUserId = generatedUserId;
+    }
+
+    private int countTeacher;
+    private int todaycountTeacher;
+    private int countStudent;
+    private int todaycountStudent;
+
+    public int getCountTeacher() {
+        return countTeacher;
+    }
+
+    public void setCountTeacher(int countTeacher) {
+        this.countTeacher = countTeacher;
+    }
+
+    public int getTodaycountTeacher() {
+        return todaycountTeacher;
+    }
+
+    public void setTodaycountTeacher(int todaycountTeacher) {
+        this.todaycountTeacher = todaycountTeacher;
+    }
+
+    public int getCountStudent() {
+        return countStudent;
+    }
+
+    public void setCountStudent(int countStudent) {
+        this.countStudent = countStudent;
+    }
+
+    public int getTodaycountStudent() {
+        return todaycountStudent;
+    }
+
+    public void setTodaycountStudent(int todaycountStudent) {
+        this.todaycountStudent = todaycountStudent;
     }
 
     public String insert(User user){
@@ -128,7 +164,7 @@ public class UserDAO {
         return count;
     }
 
-    public int count ( ){
+    public void count ( ){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         int todaycountTeacher=0;
@@ -156,10 +192,17 @@ public class UserDAO {
                     }
                 }
             }
-            System.out.println( countTeacher);
-            System.out.println( todaycountTeacher);
-            System.out.println( countStudent);
-            System.out.println( todaycountStudent);
+
+            //Admin admin = new Admin(countTeacher,todaycountTeacher,countStudent,todaycountStudent);
+            //admin.setCountStudent(countTeacher);
+            setCountTeacher(countTeacher);
+            System.out.println(countTeacher);
+            setTodaycountTeacher(todaycountTeacher);
+            System.out.println(todaycountTeacher);
+            setCountStudent(countStudent);
+            System.out.println(countStudent);
+            setTodaycountStudent(todaycountStudent);
+            System.out.println(todaycountStudent);
 
 
             preparedStatement.close();
@@ -172,6 +215,5 @@ public class UserDAO {
         }
 
 
-        return 0;
     }
 }

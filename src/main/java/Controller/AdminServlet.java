@@ -30,19 +30,23 @@ public class AdminServlet extends HttpServlet {
         int count= userDAO.countTeacher();
         jsonObject.put("Teacher" ,count );*/
         UserDAO userDAO = new UserDAO();
+        userDAO.count();
+        //Admin admin = new Admin();
 
-        //jsonObject.put("Teacher" ,);
+        jsonObject.put("Teacher" ,userDAO.getCountTeacher());
 
-        //jsonObject.put("TeacherReg" ,);
+        jsonObject.put("TeacherReg" ,userDAO.getTodaycountTeacher());
 
-        //jsonObject.put("Student" ,);
+        jsonObject.put("Student" ,userDAO.getCountStudent());
 
-        //jsonObject.put("StudentReg" ,);
+        jsonObject.put("StudentReg" ,userDAO.getTodaycountStudent());
 
         System.out.println(jsonObject);
         out.write(jsonObject.toString());
         out.close();
     }
+
+
 
 
 }
