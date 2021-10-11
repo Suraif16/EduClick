@@ -3,6 +3,7 @@ const passwordInput = document.getElementById("Password");
 const passwordConfirmInput = document.getElementById("confirmPassword");
 let errorFlag = 0;
 
+
 const sendServerData = function () {
 
     let firstName = document.getElementById("firstName").value;
@@ -74,11 +75,17 @@ const sendServerData = function () {
 
     if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword){
 
+        if(errorFlag==0){
+
+
         if(password.length == confirmPassword.length  && password == confirmPassword && password.length>=8) {
 
             httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
         }else {
             alert("Password issue!!")
+        }
+        }else {
+            alert("Invalid fields");
         }
     }
     else {
@@ -165,7 +172,7 @@ function checkInputs() {
         }
         else if(gender[i].checked===false){
             document.getElementById("GenderError").innerHTML="**Please select your gender";
-            errorFlag = 1;
+
         }
 
     }
@@ -180,7 +187,7 @@ function checkInputs() {
         }
         else if(userType[i].checked===false){
             document.getElementById("UserTypeError").innerHTML="**Please select who are you";
-            errorFlag = 1;
+
         }
 
     }
@@ -201,14 +208,14 @@ function checkInputs() {
 
     if (firstNameValue === '') {
         firstNameError.style.display = "contents";
-        errorFlag = 1;
+
     }else {
        firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
         lastNameError.style.display = "contents";
-        errorFlag = 1;
+
     }else{
         lastNameError.style.display = "none";
     }
@@ -216,23 +223,24 @@ function checkInputs() {
     if(emailValue === '') {
         emailError.innerHTML= "**Enter your Email";
         emailError.style.display = "contents";
-        errorFlag = 1;
+
 
     } else if (!isEmail(emailValue)) {
         emailError.innerHTML= "**Invalid Email";
         emailError.style.display = "contents";
-        errorFlag = 1;
+
     }else{
         emailError.style.display = "none";
     }
 
     if (DOBValue === '') {
         DateOfBirthError.style.display = "contents";
-        errorFlag = 1;
+
     }else if(age<13){
         DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
         DateOfBirthError.style.display = "contents";
         errorFlag = 1;
+
     }
     else {
         DateOfBirthError.style.display = "none";
@@ -240,18 +248,18 @@ function checkInputs() {
 
     if (cityValue === '') {
         cityError.style.display = "contents";
-        errorFlag = 1;
+
     }else {
         cityError.style.display = "none";
     }
 
     if (mobileNumber === ''){
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
-        errorFlag = 1;
+
 
     }else if(isNaN(mobileNumber)){
         document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
-        errorFlag = 1;
+
         return false;
     }
     else {
@@ -261,6 +269,7 @@ function checkInputs() {
     if (password === '') {
         document.getElementById("PasswordError").innerHTML="**Enter a password";
        // passwordError.style.display = "contents";
+        errorFlag = 1;
     }
     else {
         passwordError.style.display = "none";
