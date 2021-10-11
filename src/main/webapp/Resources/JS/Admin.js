@@ -26,6 +26,8 @@ const sendServerData = function (){
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
 
         //document.getElementById("demo").innerHTML = jsonLoginResponse.Teacher;
+        document.getElementById("countTotal").innerHTML = jsonLoginResponse.counttotal;
+        console.log(jsonLoginResponse.counttotal);
         document.getElementById("count1").innerHTML = jsonLoginResponse.Teacher;
         console.log(jsonLoginResponse.Teacher);
         document.getElementById("count2").innerHTML = jsonLoginResponse.TeacherReg;
