@@ -1,6 +1,7 @@
 const submitButton = document.getElementById("button");
 const passwordInput = document.getElementById("Password");
 const passwordConfirmInput = document.getElementById("confirmPassword");
+let errorFlag = 0;
 
 const sendServerData = function () {
 
@@ -72,7 +73,13 @@ const sendServerData = function () {
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword){
-        httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+
+        if(password.length == confirmPassword.length  && password == confirmPassword && password.length>=8) {
+
+            httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+        }else {
+            alert("Password issue!!")
+        }
     }
     else {
         alert("You have empty fields");
@@ -158,6 +165,7 @@ function checkInputs() {
         }
         else if(gender[i].checked===false){
             document.getElementById("GenderError").innerHTML="**Please select your gender";
+            errorFlag = 1;
         }
 
     }
@@ -172,6 +180,7 @@ function checkInputs() {
         }
         else if(userType[i].checked===false){
             document.getElementById("UserTypeError").innerHTML="**Please select who are you";
+            errorFlag = 1;
         }
 
     }
@@ -192,12 +201,14 @@ function checkInputs() {
 
     if (firstNameValue === '') {
         firstNameError.style.display = "contents";
+        errorFlag = 1;
     }else {
        firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
         lastNameError.style.display = "contents";
+        errorFlag = 1;
     }else{
         lastNameError.style.display = "none";
     }
@@ -205,19 +216,23 @@ function checkInputs() {
     if(emailValue === '') {
         emailError.innerHTML= "**Enter your Email";
         emailError.style.display = "contents";
+        errorFlag = 1;
 
     } else if (!isEmail(emailValue)) {
         emailError.innerHTML= "**Invalid Email";
         emailError.style.display = "contents";
+        errorFlag = 1;
     }else{
         emailError.style.display = "none";
     }
 
     if (DOBValue === '') {
         DateOfBirthError.style.display = "contents";
+        errorFlag = 1;
     }else if(age<13){
         DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
         DateOfBirthError.style.display = "contents";
+        errorFlag = 1;
     }
     else {
         DateOfBirthError.style.display = "none";
@@ -225,15 +240,18 @@ function checkInputs() {
 
     if (cityValue === '') {
         cityError.style.display = "contents";
+        errorFlag = 1;
     }else {
         cityError.style.display = "none";
     }
 
     if (mobileNumber === ''){
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
+        errorFlag = 1;
 
     }else if(isNaN(mobileNumber)){
         document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
+        errorFlag = 1;
         return false;
     }
     else {
