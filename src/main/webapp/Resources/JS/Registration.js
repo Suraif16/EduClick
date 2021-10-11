@@ -86,14 +86,9 @@ const sendServerData = function () {
         if(password.length == confirmPassword.length  && password == confirmPassword && password.length>=8) {
 
             httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
-        }else {
-            alert("Password issue!!")
         }
+    }
 
-    }
-    else {
-        alert("You have empty fields");
-    }
 
 
     function completeRegistration(httpreq) {
