@@ -1,3 +1,4 @@
+/*
 package Controller;
 
 import Model.Classroom;
@@ -58,10 +59,13 @@ public class StudentNewsFeedLoadedServlet extends HttpServlet {
 
 
 
-       /* jsonObject.put( "serverResponse" , "Allowed" );
-        jsonObject.put( "firstName" , user.getFirstName() );*/
+       */
+/* jsonObject.put( "serverResponse" , "Allowed" );
+        jsonObject.put( "firstName" , user.getFirstName() );*//*
+
 
         out.write(jsonObject.toString());
         out.close();
     }
 }
+*/

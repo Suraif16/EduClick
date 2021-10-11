@@ -185,12 +185,12 @@ public class User {
 
     /*to check the enroll table and get records*/
 
-    public ArrayList<String> checkEnroll(String id){
+    /*public ArrayList<String> checkEnroll(String id){
         System.out.println("checkEnroll reached");
         String studentId = id;
         UserDAO userDAO =  new UserDAO();
         userDAO.checkEnrollment(studentId);
         arrayList = userDAO.getArrayList();
         return arrayList;
-    }
+    }*/
 }

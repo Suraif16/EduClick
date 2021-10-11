@@ -54,7 +54,7 @@ public class ClassroomDAO {
         return generatedKey;
     }
 
-    public void selectClassDetails(ArrayList<String> arrayList){
+    /*public void selectClassDetails(ArrayList<String> arrayList){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
@@ -90,7 +90,7 @@ public class ClassroomDAO {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     public ArrayList<Classroom> selectAll( String userId ){
 

@@ -75,9 +75,9 @@ public class Classroom {
         this.userId = userId;
     }
 
-    public Classroom() {
+    /*public Classroom() {
 
-    }
+    }*/
 
     public Classroom(String userId){
 
@@ -94,13 +94,13 @@ public class Classroom {
 
     }
 
-    public ArrayList<Classroom> getClassDetails(ArrayList<String> arrayList){
+    /*public ArrayList<Classroom> getClassDetails(ArrayList<String> arrayList){
         ClassroomDAO classroomDAO =  new ClassroomDAO();
         classroomDAO.selectClassDetails(arrayList);
         classDetails = classroomDAO.getClassDetails();
         return classDetails;
 
-    }
+    }*/
 
     public  ArrayList<Classroom> getListOfCLassRooms(){
 
