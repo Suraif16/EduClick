@@ -197,6 +197,9 @@ function checkInputs() {
     }else if((firstNameValue.match(/\d+/)!==null)){
         firstNameError.innerHTML="**Please enter valid data";
         firstNameError.style.display = "contents";
+    }else if(firstName.length>20){
+        firstNameError.innerHTML="**Do not enter more than 20 characters";
+        firstNameError.style.display = "contents";
     }
     else {
         firstNameError.style.display = "none";
@@ -207,6 +210,9 @@ function checkInputs() {
         lastNameError.style.display = "contents";
     }else if((lastNameValue.match(/\d+/)!==null)){
         lastNameError.innerHTML="**Please enter valid data";
+        lastNameError.style.display = "contents";
+    }else if(lastName.length>20){
+        lastNameError.innerHTML="**Do not enter more than 20 character";
         lastNameError.style.display = "contents";
     }
     else{
@@ -220,7 +226,14 @@ function checkInputs() {
     } else if (!isEmail(emailValue)) {
         emailError.innerHTML= "**Invalid Email";
         emailError.style.display = "contents";
-    }else{
+    }else if((emailValue.match(/\d+/)!==null)) {
+        emailError.innerHTML = "**Please enter valid data";
+        emailError.style.display = "contents";
+    }else if(emailValue.length>50){
+        emailError.innerHTML = "**Do not enter more than 50 characters";
+        emailError.style.display = "contents";
+    }
+    else{
         emailError.style.display = "none";
     }
 
@@ -238,7 +251,11 @@ function checkInputs() {
     if (cityValue === '') {
         cityError.innerHTML= "**Please enter your city";
         cityError.style.display = "content";
-    }else {
+    }else if(cityValue.length>20){
+        cityError.innerHTML= "**Do not enter more than 20 characters";
+        cityError.style.display = "content";
+    }
+    else {
         cityError.style.display = "none";
     }
 
@@ -248,6 +265,8 @@ function checkInputs() {
     }else if(isNaN(mobileNumber)){
         document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
         return false;
+    }else if(mobileNumber.length>15){
+        document.getElementById("MobileNumberError").innerHTML="**Do not enter more than 15 numbers";
     }
     else {
         document.getElementById("MobileNumberError").style.display = "none";
