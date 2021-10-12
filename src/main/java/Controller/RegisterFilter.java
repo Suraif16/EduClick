@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.time.YearMonth;
 
 public class RegisterFilter implements Filter {
     @Override
@@ -28,8 +29,6 @@ public class RegisterFilter implements Filter {
         String genderSelect= servletRequest.getParameter("genderSelect");
 
 
-        checkAge(dateOfBirth);
-
         /*System.out.println("Filter Details : "+firstName);
         System.out.println("Filter Details : "+lastName);
         System.out.println("Filter Details : "+email);
@@ -42,9 +41,9 @@ public class RegisterFilter implements Filter {
 
         JSONObject jsonObject = new JSONObject();
 
-        if((firstName!=null && firstName.length()<20 && isValidName(firstName)) && (lastName!=null && lastName.length()<20 && isValidName(lastName)) && (email!=null && isValid(email)==true) && (dateOfBirth!=null) && (userTypeSelect!=null) && (country!=null) &&(city!=null) && (newNumber!=null && isValidMobileNo(newNumber)==true  && newNumber.length()<=15) && (genderSelect!=null)){
+        if((firstName!=null && firstName.length()<20 && isValidName(firstName)) && (lastName!=null && lastName.length()<20 && isValidName(lastName)) && (email!=null && isValid(email)==true && email.length()<320) && (dateOfBirth!=null && checkAge(dateOfBirth)) && (userTypeSelect!=null) && (country!=null) &&(city!=null) && (newNumber!=null && isValidMobileNo(newNumber)==true  && newNumber.length()<=15) && (genderSelect!=null)){
             System.out.println("Everything is good kid!!! :)");
-            //filterChain.doFilter(servletRequest,servletResponse);
+            filterChain.doFilter(servletRequest,servletResponse);
             jsonObject.put("Filter","Success");
         }
         else{
@@ -89,13 +88,16 @@ public class RegisterFilter implements Filter {
 
     }
 
-    public void checkAge(String dateOfBirth){
-        Date date = new Date();
+    public boolean checkAge(String dateOfBirth){
         int birthYear = Integer.parseInt(dateOfBirth.substring(0,4));
-        int thisYear = date.getYear();
-
-
-
+        int thisYear = YearMonth.now().getYear();
+        int age = thisYear - birthYear;
+        if(age>13){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
