@@ -293,7 +293,7 @@ function isEmail(email) {
 
 submitButton.onclick = function (){
     checkInputs();
-   // sendServerData();
+    sendServerData();
 }
 
 passwordInput.addEventListener( "keyup" , function (event){
