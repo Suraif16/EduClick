@@ -8,17 +8,9 @@ document.onreadystatechange = function (){
 }
 
 const generateOTP = function (){
-    /* calls a servlet to generate an OTP */
-    console.log("OTP GENERATED");
+    /* calls a servlet to generate an OTP , Here I only send a resquest I don't wait for any responses*/
+
     let httpreq = new XMLHttpRequest();
-    httpreq.onreadystatechange = function (){
-
-        if (httpreq.readyState === 200 && httpreq.status ===4 ){
-            console.log("server response 1");
-        }
-
-    }
-
     httpreq.open("POST" ,"/EduClick_war_exploded/otpGenerate" , true);
     httpreq.send()
 
@@ -27,15 +19,13 @@ const generateOTP = function (){
 verifyOTPButton.onclick = function (){
     /* again send user input to server and checks otp correction */
     const otpValue = document.getElementById("otp").value;
-    console.log("value of otp" , otpValue);
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function (){
 
-        if ( httpreq.readyState === 200 && httpreq.status === 4){
+        if ( this.readyState === 4 && this.status === 200){
 
-            console.log("server response 2");
-
+             responseComplete( this )
         }
 
     }
@@ -43,6 +33,35 @@ verifyOTPButton.onclick = function (){
     httpreq.open( "POST" , "/EduClick_war_exploded/otpValidate" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("OPTUserValue=" + otpValue );
+
+    const responseComplete = function ( httpreq ){
+
+        let jsonObject = JSON.parse( httpreq.responseText )
+
+        if ( jsonObject.OTPStatus === "valid"){
+
+            if ( jsonObject.UserType === "Teacher" ){
+
+                window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+
+            }else if (jsonObject.UserType === "Student"){
+
+                window.location.replace("/EduClick_war_exploded/Student/student.html");
+
+            }
+
+        }else if (jsonObject.OTPStatus === "invalid"){
+
+            alert("Invalid OTP!!!");
+
+        }else{
+
+            alert("Something went wrong!!!");
+
+        }
+
+    }
+
 }
 
 resendOTPButton.onclick = function (){
