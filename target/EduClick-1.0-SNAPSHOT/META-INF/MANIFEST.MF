@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-<<<<<<< HEAD
-Built-By: jeewa
-Build-Jdk: 1.8.0_291
-=======
 Built-By: acer
 Build-Jdk: Amazon Corretto version 15.0.2
->>>>>>> main
 
