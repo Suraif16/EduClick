@@ -59,7 +59,17 @@
         <url-pattern>/Registration</url-pattern>
     </filter-mapping>
 
-    <!--End of login servlet and filter-->
+    <filter>
+        <filter-name>registrationFilter</filter-name>
+        <filter-class>Controller.RegisterFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>registrationFilter</filter-name>
+        <url-pattern>/Registration</url-pattern>
+    </filter-mapping>
+
+    <!--End of registration servlet and filter-->
 
     <!--Beginning of teacher newsfeed loaded-->
 
@@ -167,6 +177,31 @@
     </servlet-mapping>
 
     <!-- end of the TeacherClassroomListServlet-->
+    
+    <!-- beginning of OTPGenerateServlet-->
+    <servlet>
+        <servlet-name>OPTGenerate</servlet-name>
+        <servlet-class>Controller.OTPGenerateServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>OPTGenerate</servlet-name>
+        <url-pattern>/otpGenerate</url-pattern>
+    </servlet-mapping>    
+    <!-- end of OTPValidateServlet-->
+
+    <!-- beginning of OTPValidateServlet-->
+    <servlet>
+        <servlet-name>OTPValidate</servlet-name>
+        <servlet-class>Controller.OTPValidateServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>OTPValidate</servlet-name>
+        <url-pattern>/otpValidate</url-pattern>
+    </servlet-mapping>
+    <!-- end of OTPGenerateServlet-->
+
 
 
     <session-config>

@@ -49,7 +49,7 @@ function timer(remaining) {
     //alert('Timeout for OTP');
 }
 
-    timer(120);
+    timer(5);
 
 
 
