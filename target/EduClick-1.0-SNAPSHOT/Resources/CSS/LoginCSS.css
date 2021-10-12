@@ -1,0 +1,284 @@
+/*
+body{
+
+    background-color: whitesmoke;
+
+}
+
+
+header{
+
+    position: fixed;
+    width: 98.5%;
+    height: 75px;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+
+}
+
+#headerHeading{
+
+    text-align: center;
+    color: white;
+
+}
+
+div#Content{
+
+    position: fixed;
+    top: 25%;
+    left: 33%;
+    background-color: rgba(100, 149, 237, 0.34);
+    width: 35%;
+    height: 40%;
+    box-shadow:  inset -1px -11px 5px #4775c4 , inset 1px 1px 5px #4775c4 ,     8px 8px 2px #a7a7a7;
+
+}
+
+#loginFormHeading{
+
+    background-color: rgba(14, 52, 111,1);
+    height: 45px;
+    top: -15px;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10%;
+    color: white;
+    box-shadow:  0px 3px 3px #4775c4;
+
+}
+
+
+
+::placeholder{
+
+    color: black;
+    text-align: center;
+
+}
+
+input{
+
+    padding: 6px;
+    margin-bottom: 15px;
+    margin-left: 23%;
+    width: 50%;
+
+}
+
+input#email{
+
+    background-position-x: 2px;
+    background-position-y: 2px;
+    background-image: url("Icons/mail_black_24dp.svg");
+    background-repeat: no-repeat;
+
+}
+
+input#password{
+
+    background-position-x: 2px;
+    background-position-y: 2px;
+    background-image: url("Icons/password_black_24dp.svg");
+    background-repeat: no-repeat;
+
+}
+
+input.button{
+
+    background-color: rgba(14, 52, 111, 1);
+    height: 32px;
+    width: 100px;
+    color: white;
+
+}
+
+footer{
+
+    position: fixed;
+    bottom: 5px;
+    width: 98.5%;
+    height: 25px;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+
+}
+
+*/
+
+body{
+    display: flex; /*This the container body*/
+    flex-direction: column;
+}
+
+header{
+
+    color: whitesmoke;
+    padding: 0.5%;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    flex: 1; /*child of the body*/
+    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    display: flex;
+}
+
+header > a {
+
+    flex: 1;
+    margin: auto;
+
+}
+
+header > h1{
+
+    flex: 9;
+    margin: auto;
+
+
+}
+
+.logo{
+    width: 70%;
+    height: 70%;
+
+}
+
+footer{
+
+    padding: 0.5%;
+    flex: 1;/*child of the body*/
+    order: 3;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+
+}
+
+div#content{
+
+    flex: 1;/*child of the body*/
+    order: 2;
+    padding: 2%;
+    margin: 9.6% 0; /*to position the rooter on the correct place*/
+
+}
+
+div#contentFlex{
+
+    max-width: 50%;
+    min-width: 30% ;
+    padding: 0.5%;
+    display: flex;
+    flex-direction: column; /*default is row , in which flew sets the items in a single row, to make it in a single column we have to do this*/
+    margin: auto; /*since this is the element, and it is in a container*/
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+
+
+}
+
+
+.formElement{
+
+    /*each element in the form is considered here so there would be spaces between the elements*/
+    box-sizing: border-box;
+    padding: 1%;
+    margin: 0.5%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+#loginFormHeading{
+
+    padding: 0.8% 0.8% 0.8% 1.5%;
+    background-color: #4775c4;
+    /*box-shadow: 10px 10px 10px #d2d2d2;*/
+    color: whitesmoke;
+    flex: 1; /*a child of containerflex*/
+
+}
+
+div.formRow{
+
+    flex: 1;/*a child of containerflex*/
+    display: flex;
+
+}
+
+input[type = "email"]{
+
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+    cursor: text;
+
+}
+
+input[type = "password"]{
+
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+    cursor: text;
+
+}
+
+label{
+
+    padding-right: 10px;
+
+}
+
+.formElementButton{
+    /*border: mediumseagreen solid 2px;*/
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1%;
+    margin: 0.5%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+#loginButton{
+
+    /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
+    margin: auto;
+    background-color: #4775c4;
+    color: whitesmoke;
+    padding: 1%;
+
+
+}
+
+.formElementButton > div{
+    /*child of formElementButton, this is for, forgot password and cookies must be enabled your browser*/
+    flex: 1;
+    margin: 1% auto;
+    padding: 0.3%;
+}
+
+div#incorrectPassword{
+
+    color: red;
+    margin: 0 auto 0.3% auto;
+    display: none;
+
+
+}
+
+input{
+    /*all input values will have these properties*/
+    border-radius: 5px;
+    border: #6a6a6a solid 1px;
+
+
+}
+
+input[type = "button"]{
+    cursor: pointer;
+}
+
+a#loginFormForgotPassword {
+
+    margin: auto;
+    text-decoration: none;
+
+}
