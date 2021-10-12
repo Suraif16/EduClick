@@ -242,7 +242,7 @@ function checkInputs() {
 
     if (password === '') {
         document.getElementById("PasswordError").innerHTML="**Enter a password";
-       // passwordError.style.display = "contents";
+      
     }
     else {
         passwordError.style.display = "none";
