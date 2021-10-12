@@ -186,7 +186,7 @@
     
     <servlet-mapping>
         <servlet-name>OPTGenerate</servlet-name>
-        <url-pattern>/otpgenerate</url-pattern>
+        <url-pattern>/otpGenerate</url-pattern>
     </servlet-mapping>    
     <!-- end of OTPValidateServlet-->
 

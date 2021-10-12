@@ -9,7 +9,7 @@ public class OTPValidateServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request , HttpServletResponse response ){
 
-
+        System.out.println("optValidate");
 
     }
 
