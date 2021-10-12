@@ -52,6 +52,7 @@ CREATE TABLE Classroom(
 CREATE TABLE Login(
     EmailID VARCHAR(400) NOT NULL,
     Password CHAR(64) NOT NULL,
+    SaltingKey VARCHAR(20) NOT NULL,
     LoginDate DATE NOT NULL,
     LoginTime TIME NOT NULL,
     UserID BIGINT NOT NULL,
