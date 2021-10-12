@@ -14,16 +14,15 @@ public class OTPGenerateServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request , HttpServletResponse response ){
 
-        System.out.println("optGenerate 1");
         HttpSession session = request.getSession( false );
 
         OTPGeneration otpGeneration = new OTPGeneration();
 
         String OTPCode = otpGeneration.generateOTP( 8 );
 
-        session.setAttribute("OPT Code" , OTPCode );
+        System.out.println("OTP : " + OTPCode);
 
-        System.out.println(OTPCode);
+        session.setAttribute("OPT Code" , OTPCode );
 
         Email email = new Email();
 
