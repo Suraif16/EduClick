@@ -177,7 +177,6 @@ function checkInputs() {
         }
 
     }
-
     const firstNameValue = firstName.trim();
     const lastNameValue = lastName.trim();
     const emailValue = email.trim();
@@ -191,17 +190,26 @@ function checkInputs() {
 
     const age = date-birthYear;
 
-    if (firstNameValue === '') {
-        firstNameError.innerHTML="**Please enter your first Name";
+
+    if (firstNameValue === '' ) {
+       firstNameError.innerHTML="**Please enter your first Name";
+       firstNameError.style.display = "contents";
+    }else if((firstNameValue.match(/\d+/)!==null)){
+        firstNameError.innerHTML="**Please enter valid data";
         firstNameError.style.display = "contents";
-    }else {
-       firstNameError.style.display = "none";
+    }
+    else {
+        firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
         lastNameError.innerHTML="**Please enter your last Name";
         lastNameError.style.display = "contents";
-    }else{
+    }else if((lastNameValue.match(/\d+/)!==null)){
+        lastNameError.innerHTML="**Please enter valid data";
+        lastNameError.style.display = "contents";
+    }
+    else{
         lastNameError.style.display = "none";
     }
 
