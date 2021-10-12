@@ -59,7 +59,17 @@
         <url-pattern>/Registration</url-pattern>
     </filter-mapping>
 
-    <!--End of login servlet and filter-->
+    <filter>
+        <filter-name>registrationFilter</filter-name>
+        <filter-class>Controller.RegisterFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>registrationFilter</filter-name>
+        <url-pattern>/Registration</url-pattern>
+    </filter-mapping>
+
+    <!--End of registration servlet and filter-->
 
     <!--Beginning of teacher newsfeed loaded-->
 
