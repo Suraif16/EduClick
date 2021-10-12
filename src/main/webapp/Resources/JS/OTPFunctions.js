@@ -35,7 +35,7 @@ verifyOTPButton.onclick = function (){
     httpreq.send("OPTUserValue=" + otpValue );
 
     const responseComplete = function ( httpreq ){
-
+        /* Here if the otp is valid then the user is sent to the relavent page*/
         let jsonObject = JSON.parse( httpreq.responseText )
 
         if ( jsonObject.OTPStatus === "valid"){

@@ -13,7 +13,8 @@ public class OTPGenerateServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request , HttpServletResponse response ){
-
+        /* Here we generate an otp code and add it to session, also we get the email using the user object in the session
+        * and then we send this generated otp to the users via email */
         HttpSession session = request.getSession( false );
 
         OTPGeneration otpGeneration = new OTPGeneration();
@@ -32,8 +33,6 @@ public class OTPGenerateServlet extends HttpServlet {
                 "\n\nThank you - EduClick.";
 
         email.sendMail( (String) session.getAttribute( "Email") , subject, message);
-
-
 
     }
 

@@ -14,7 +14,8 @@ public class OTPValidateServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request , HttpServletResponse response ) throws IOException {
-
+        /* Here we get the otp value given by the user and the otp value in the session, we compare then, and if they are equal we allow
+        * user to continue, else the user has to retry */
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         JSONObject jsonObject = new JSONObject();
