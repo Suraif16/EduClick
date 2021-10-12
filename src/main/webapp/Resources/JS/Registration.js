@@ -1,7 +1,7 @@
 const submitButton = document.getElementById("button");
 const passwordInput = document.getElementById("Password");
 const passwordConfirmInput = document.getElementById("confirmPassword");
-let errorFlag = 0;
+
 
 
 const sendServerData = function () {
@@ -288,8 +288,9 @@ function checkInputs() {
     }
 
     if (password === '') {
+
         document.getElementById("PasswordError").innerHTML="**Please enter a password";
-        errorFlag = 1;
+
     }
     else {
         passwordError.style.display = "none";
@@ -302,6 +303,7 @@ function checkInputs() {
     }
 
 }
+
 
 function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
