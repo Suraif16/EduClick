@@ -8,18 +8,9 @@ document.onreadystatechange = function (){
 }
 
 const generateOTP = function (){
-    /* calls a servlet to generate an OTP */
+    /* calls a servlet to generate an OTP , Here I only send a resquest I don't wait for any responses*/
+
     let httpreq = new XMLHttpRequest();
-    /*httpreq.onreadystatechange = function (){
-
-        if (httpreq.readyState === 200 && httpreq.status ===4 ){
-
-
-
-        }
-
-    }*/
-
     httpreq.open("POST" ,"/EduClick_war_exploded/otpGenerate" , true);
     httpreq.send()
 
@@ -44,7 +35,7 @@ verifyOTPButton.onclick = function (){
     httpreq.send("OPTUserValue=" + otpValue );
 
     const responseComplete = function ( httpreq ){
-
+        /* Here if the otp is valid then the user is sent to the relavent page*/
         let jsonObject = JSON.parse( httpreq.responseText )
 
         if ( jsonObject.OTPStatus === "valid"){
