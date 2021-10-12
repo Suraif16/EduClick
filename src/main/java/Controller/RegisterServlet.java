@@ -87,12 +87,13 @@ public class RegisterServlet extends HttpServlet {
            generatedUserID = user.getUserId();
            Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
            login.insertRecord();
+           user.setRegistrationDate(null);
+           user.setRegistrationTime(null);
+           session.setAttribute("User" , user );
+           session.setAttribute("Email" , email);
            jsonObject.put("EmailStatus" , "ValidEmail");
 
        }
-
-
-
 
 
 
