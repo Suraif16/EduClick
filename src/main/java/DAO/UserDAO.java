@@ -3,7 +3,7 @@ package DAO;
 import Database.DBConnectionPool;
 
 import Model.User;
-
+import Model.Admin;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -22,9 +22,45 @@ public class UserDAO {
     public String getGeneratedUserId() {
         return generatedUserId;
     }
-
     public void setGeneratedUserId(String generatedUserId) {
         this.generatedUserId = generatedUserId;
+    }
+
+    private int countTeacher;
+    private int todaycountTeacher;
+    private int countStudent;
+    private int todaycountStudent;
+
+    public int getCountTeacher() {
+        return countTeacher;
+    }
+
+    public void setCountTeacher(int countTeacher) {
+        this.countTeacher = countTeacher;
+    }
+
+    public int getTodaycountTeacher() {
+        return todaycountTeacher;
+    }
+
+    public void setTodaycountTeacher(int todaycountTeacher) {
+        this.todaycountTeacher = todaycountTeacher;
+    }
+
+    public int getCountStudent() {
+        return countStudent;
+    }
+
+    public void setCountStudent(int countStudent) {
+        this.countStudent = countStudent;
+    }
+
+    public int getTodaycountStudent() {
+        return todaycountStudent;
+    }
+
+    public void setTodaycountStudent(int todaycountStudent) {
+        this.todaycountStudent = todaycountStudent;
     }
 
     public String insert(User user){
@@ -134,6 +170,60 @@ public class UserDAO {
         return count;
     }
 
+
+    public void count ( ){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        int todaycountTeacher=0;
+        int countTeacher=0;
+        int countStudent=0;
+        int todaycountStudent=0;
+        try {
+            connection =dbConnectionPool.dataSource.getConnection();
+            String sql = "select UserType,RegistrationDate FROM Users";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String Usertype = resultSet.getString("UserType");
+                String Registrationdate = resultSet.getString("RegistrationDate");
+                if (Usertype.equals("Teacher") ) {
+                    countTeacher++;
+                    if (java.time.LocalDate.now().equals(Registrationdate)) {
+                        todaycountTeacher++;
+                    }
+                } else {
+                    countStudent++;
+                    if (java.time.LocalDate.now().equals(Registrationdate)) {
+                        todaycountStudent++;
+                    }
+                }
+            }
+
+            //Admin admin = new Admin(countTeacher,todaycountTeacher,countStudent,todaycountStudent);
+            //admin.setCountStudent(countTeacher);
+            setCountTeacher(countTeacher);
+            System.out.println(countTeacher);
+            setTodaycountTeacher(todaycountTeacher);
+            System.out.println(todaycountTeacher);
+            setCountStudent(countStudent);
+            System.out.println(countStudent);
+            setTodaycountStudent(todaycountStudent);
+            System.out.println(todaycountStudent);
+
+
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+
+
+    }
+
     /*public ArrayList<String> checkEnrollment(String studentId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -158,5 +248,6 @@ public class UserDAO {
         }
         return arrayList;
     }*/
+
 
 }

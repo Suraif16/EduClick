@@ -1,11 +1,16 @@
 package Model;
-import DAO.UserDAO;
 
+import DAO.UserDAO;
 
 public class Admin {
     private String adminName;
     private String email;
     private String password;
+    private int todaycountTeacher;
+    private int countTeacher;
+    private int countStudent;
+    private int todaycountStudent;
+
 
     public String getAdminName() {
         return adminName;

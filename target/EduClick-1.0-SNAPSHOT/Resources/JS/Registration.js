@@ -1,6 +1,11 @@
 const submitButton = document.getElementById("button");
 const passwordInput = document.getElementById("Password");
 const passwordConfirmInput = document.getElementById("confirmPassword");
+<<<<<<< HEAD
+=======
+let errorFlag = 0;
+
+>>>>>>> main
 
 const sendServerData = function () {
 
@@ -11,6 +16,14 @@ const sendServerData = function () {
     let email = document.getElementById("email").value;
 
     let dateOfBirth = document.getElementById("DOB").value;
+
+    let today = new Date();
+    let date = today.getFullYear();
+
+    let birthYear = dateOfBirth.substr(0,4);
+
+    const age = date-birthYear;
+
 
     var userTypeSelect;
     var userType=document.getElementsByName("userType");
@@ -71,6 +84,7 @@ const sendServerData = function () {
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
+<<<<<<< HEAD
     if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword){
         httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
     }
@@ -78,6 +92,17 @@ const sendServerData = function () {
         alert("You have empty fields");
     }
 
+=======
+    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword && age>13){
+
+        if(password.length == confirmPassword.length  && password == confirmPassword && password.length>=8) {
+
+            httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+        }
+    }
+
+
+>>>>>>> main
 
     function completeRegistration(httpreq) {
 
@@ -147,6 +172,7 @@ function checkInputs() {
     const confirmPasswordError = document.getElementById("ConfirmPasswordError");
 
     let mobileNumber = document.getElementById("mobileNo").value;
+<<<<<<< HEAD
 
     let genderSelect;
     const gender=document.getElementsByName("gender");
@@ -162,6 +188,24 @@ function checkInputs() {
 
     }
 
+=======
+
+    let genderSelect;
+    const gender=document.getElementsByName("gender");
+    for(let i = 0;i<gender.length;i++){
+        if(gender[i].checked ){
+            console.log(gender[i].value);
+            genderSelect = gender[i].value;
+            document.getElementById("GenderError").style.display="none";
+        }
+        else if(gender[i].checked===false){
+            document.getElementById("GenderError").innerHTML="**Please select your gender";
+
+        }
+
+    }
+
+>>>>>>> main
     let userTypeSelect;
     let userType=document.getElementsByName("userType");
     for(let i = 0;i<userType.length;i++){
@@ -172,6 +216,10 @@ function checkInputs() {
         }
         else if(userType[i].checked===false){
             document.getElementById("UserTypeError").innerHTML="**Please select who are you";
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
         }
 
     }
@@ -185,19 +233,27 @@ function checkInputs() {
 
     let today = new Date();
     let date = today.getFullYear();
+<<<<<<< HEAD
 
     let birthYear = DOB.substr(0,4);
 
+=======
+
+    let birthYear = DOB.substr(0,4);
+
+>>>>>>> main
     const age = date-birthYear;
 
     if (firstNameValue === '') {
         firstNameError.style.display = "contents";
+
     }else {
        firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
         lastNameError.style.display = "contents";
+
     }else{
         lastNameError.style.display = "none";
     }
@@ -206,18 +262,29 @@ function checkInputs() {
         emailError.innerHTML= "**Enter your Email";
         emailError.style.display = "contents";
 
+
     } else if (!isEmail(emailValue)) {
         emailError.innerHTML= "**Invalid Email";
         emailError.style.display = "contents";
+
     }else{
         emailError.style.display = "none";
     }
 
     if (DOBValue === '') {
         DateOfBirthError.style.display = "contents";
+<<<<<<< HEAD
     }else if(age<13){
         DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
         DateOfBirthError.style.display = "contents";
+=======
+
+    }else if(age<13){
+        DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
+        DateOfBirthError.style.display = "contents";
+        errorFlag = 1;
+
+>>>>>>> main
     }
     else {
         DateOfBirthError.style.display = "none";
@@ -225,6 +292,10 @@ function checkInputs() {
 
     if (cityValue === '') {
         cityError.style.display = "contents";
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     }else {
         cityError.style.display = "none";
     }
@@ -232,8 +303,15 @@ function checkInputs() {
     if (mobileNumber === ''){
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
 
+<<<<<<< HEAD
     }else if(isNaN(mobileNumber)){
         document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
+=======
+
+    }else if(isNaN(mobileNumber)){
+        document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
+
+>>>>>>> main
         return false;
     }
     else {
@@ -243,6 +321,10 @@ function checkInputs() {
     if (password === '') {
         document.getElementById("PasswordError").innerHTML="**Enter a password";
        // passwordError.style.display = "contents";
+<<<<<<< HEAD
+=======
+        errorFlag = 1;
+>>>>>>> main
     }
     else {
         passwordError.style.display = "none";
@@ -265,7 +347,10 @@ submitButton.onclick = function (){
     checkInputs();
     sendServerData();
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 passwordInput.addEventListener( "keyup" , function (event){
 
     const passwordIn = document.getElementById("Password").value;

@@ -7,6 +7,7 @@
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>Controller.LoginServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
     
     <servlet-mapping>
@@ -17,6 +18,7 @@
     <servlet>
         <servlet-name>admin</servlet-name>
         <servlet-class>Controller.AdminServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -39,6 +41,7 @@
     <servlet>
         <servlet-name>registration</servlet-name>
         <servlet-class>Controller.RegisterServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -63,6 +66,10 @@
     <servlet>
         <servlet-name>teacherLoad</servlet-name>
         <servlet-class>Controller.TeacherLoadServlet</servlet-class>
+<<<<<<< HEAD
+=======
+        <load-on-startup>0</load-on-startup>
+>>>>>>> main
     </servlet>
 
     <servlet-mapping>
@@ -88,6 +95,7 @@
     <servlet>
         <servlet-name>studentNewsFeedLoaded</servlet-name>
         <servlet-class>Controller.StudentNewsFeedLoadedServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -114,6 +122,7 @@
     <servlet>
         <servlet-name>teacherCreateClassroom</servlet-name>
         <servlet-class>Controller.TeacherCreateClassroomServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
 
     <servlet-mapping>
@@ -138,6 +147,10 @@
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>Controller.LogoutServlet</servlet-class>
+<<<<<<< HEAD
+=======
+        <load-on-startup>0</load-on-startup>
+>>>>>>> main
     </servlet>
 
     <servlet-mapping>
@@ -151,6 +164,10 @@
     <servlet>
         <servlet-name>TeacherLoadClassroomList</servlet-name>
         <servlet-class>Controller.TeacherLoadClassroomListServlet</servlet-class>
+<<<<<<< HEAD
+=======
+        <load-on-startup>0</load-on-startup>
+>>>>>>> main
     </servlet>
 
     <servlet-mapping>
