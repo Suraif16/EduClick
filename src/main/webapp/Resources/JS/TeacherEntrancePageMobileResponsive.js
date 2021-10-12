@@ -179,3 +179,40 @@ function createClassroom(){
 
 
 }
+
+/* Search for Teachers start here  */
+search.addEventListener( "keyup" , function (event){
+
+    const searchName = document.getElementById("searchBarText").value;
+
+    console.log(searchName);
+    searchTeacher();
+
+});
+
+function searchTeacher(){
+
+    const searchName = document.getElementById("searchBarText").value;
+
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function (){
+
+        if (this.readyState === 4 && this.status === 200){
+            completeSearch( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+        }
+    }
+    /* ************************ */
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherCreateClassroom" , true);
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send("searchBarText=" + searchName);
+
+    function completeSearch(httpreq){
+
+        console.log(httpreq.responseText);
+        let jsonSearchResponse = JSON.parse(httpreq.responseText);
+
+    }
+
+    console.log("kkk");
+
+}

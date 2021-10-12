@@ -24,11 +24,18 @@ const sendServerData = function (){
 
     function completecount( httpreq ) {
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
-        console.log(jsonLoginResponse.Teacher);
-        //document.getElementById("demo").innerHTML = jsonLoginResponse.Teacher;
 
-        let count = jsonLoginResponse.Teacher;
-        document.getElementById("demo").innerHTML = count;
+        //document.getElementById("demo").innerHTML = jsonLoginResponse.Teacher;
+        document.getElementById("countTotal").innerHTML = jsonLoginResponse.counttotal;
+        console.log(jsonLoginResponse.counttotal);
+        document.getElementById("count1").innerHTML = jsonLoginResponse.Teacher;
+        console.log(jsonLoginResponse.Teacher);
+        document.getElementById("count2").innerHTML = jsonLoginResponse.TeacherReg;
+        console.log(jsonLoginResponse.TeacherReg);
+        document.getElementById("count3").innerHTML = jsonLoginResponse.Student;
+        console.log(jsonLoginResponse.Student);
+        document.getElementById("count4").innerHTML = jsonLoginResponse.StudentReg;
+        console.log(jsonLoginResponse.StudentReg);
     }
 
 }

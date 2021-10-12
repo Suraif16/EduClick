@@ -13,6 +13,9 @@ header{
     flex: 1;
     order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     display: flex; /*this is a container now*/
+    position: fixed;
+    margin-top: 0%;
+    width: 99%;
 }
 
 header > a {
@@ -76,6 +79,8 @@ div#content{
     display: flex; /*this becomes the container for classRoomsLists and postContents*/
     flex-wrap: wrap;
     align-items: flex-start;
+
+
 }
 
 div#content > div#classroomsList {
@@ -83,11 +88,12 @@ div#content > div#classroomsList {
     flex-basis: 20%;
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 0 auto 0 0;
+
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
     padding: 1%;
     display: flex; /* making this a container to options and classroomsListLinks */
     flex-direction: column;
+    margin: 8.6% auto 0 0;
 }
 
 #options{
@@ -96,7 +102,7 @@ div#content > div#classroomsList {
     display: flex;
     flex-direction: column;
     border-bottom: black solid 2px;
-    margin: 0 0 2% 0;
+    margin: 8.6% auto 0 0;
     padding: 2%;
     flex-wrap: wrap;
 
@@ -198,7 +204,7 @@ div#content > div#postContents {
     flex-basis: 78%;
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 0 0 0 auto;
+    margin: 8.6% auto 0 0;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
     padding: 1%;
     /*making this a container for post class*/
@@ -332,13 +338,14 @@ input[type="button"]:hover{
     div#content > div#classroomsList {
         /*child of div#classroomsList*/
         flex-basis: 100%;
-        margin: 1% auto;
+        margin: 10% auto 0 0 ;
         justify-content: space-between; /*given to a container*/
         /*box-sizing: border-box;
         box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
         padding: 1%;*/
         display: flex; /* making this a container to options and classroomsListLinks */
         flex-direction: column;
+        position: fixed;
     }
 
     div#content > div#postContents {
@@ -360,7 +367,7 @@ input[type="button"]:hover{
         display: flex;
         /*flex-direction: column;*/
         border-bottom: black solid 2px;
-        margin: 0 0 2% 0;
+        margin: 8.6% auto 0 0;
         padding: 2%;
         /*flex-wrap: wrap;*/
     }

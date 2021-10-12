@@ -3,7 +3,7 @@ body{
     flex-direction: column;
 }
 header{
-    position: fixed;
+    position: relative;
 
     width: 98.5%;
 
@@ -39,15 +39,15 @@ header > h1{
     height: 70%;
 
 }
-footer{
+/*footer{
 
     padding: 0.5%;
-    flex: 1;/*child of the body*/
+    flex: 1;!*child of the body*!
     order: 3;
     background-color: #4775c4;
     box-shadow: 8px 8px 2px #a7a7a7;
 
-}
+}*/
 div#content{
 
     flex: 1;/*child of the body*/
@@ -206,14 +206,14 @@ div#FirstNameError{
     color: red;
     margin: 0 auto 0.3% auto;
     font-size: x-small;
-    display: none;
+
 
 }
 
 div#FNError{
 
     padding: 0.3%;
-    margin-left: 100px;
+    margin-left: 65px;
 
 
 }
@@ -221,21 +221,21 @@ div#LastNameError{
     color: red;
     margin: 0 auto 0.3% auto;
     font-size: x-small;
-    display: none;
+    display: flex;
 
 }
 
 div#LNError{
 
     padding: 0.3%;
-    margin-left: 100px;
+    margin-left: 65px;
 
 }
 div#EmailError{
     color: red;
     margin: 0 auto 0.3% auto;
     font-size: x-small;
-    display: none;
+
 
 }
 
@@ -249,7 +249,7 @@ div#DateOfBirthError{
     color: red;
     margin: 0 auto 0.3% auto;
     font-size: x-small;
-    display: none;
+
 
 }
 
@@ -263,7 +263,7 @@ div#PasswordError{
     color: red;
     margin: 0 auto 0.3% auto;
     font-size: x-small;
-    display: none;
+
 
 }
 
@@ -277,7 +277,6 @@ div#ConfirmPasswordError{
     color: red;
     margin: 0 auto 0.3% auto;
     font-size: x-small;
-    display: none;
 
 }
 
@@ -287,6 +286,66 @@ div#ConPError{
     margin-left: 65px;
 
 }
+div#GenderError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+
+
+}
+
+div#GError{
+
+    padding: 0.3%;
+    margin-left: 6px;
+
+}
+
+div#UserTypeError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+
+
+}
+
+div#UTError{
+
+    padding: 0.3%;
+    margin-left: 6px;
+
+}
+
+div#MobileNumberError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+
+
+}
+
+div#MobError{
+
+    padding: 0.3%;
+    margin-left: 65px;
+
+}
+
+div#CityError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+
+
+}
+
+div#CError{
+
+    padding: 0.3%;
+    margin-left: 65px;
+
+}
+
 
 /*end of validation*/
 

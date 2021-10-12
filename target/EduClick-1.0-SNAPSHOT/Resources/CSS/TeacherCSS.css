@@ -619,6 +619,7 @@ div#content > div#notifications > div#request > div.singleNotification > div{
     padding: 1%;
     margin: 1%;
     display: flex;
+    color: white;
 
 }
 

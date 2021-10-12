@@ -2,6 +2,8 @@ const submitButton = document.getElementById("button");
 const passwordInput = document.getElementById("Password");
 const passwordConfirmInput = document.getElementById("confirmPassword");
 
+
+
 const sendServerData = function () {
 
     let firstName = document.getElementById("firstName").value;
@@ -11,6 +13,14 @@ const sendServerData = function () {
     let email = document.getElementById("email").value;
 
     let dateOfBirth = document.getElementById("DOB").value;
+
+    let today = new Date();
+    let date = today.getFullYear();
+
+    let birthYear = dateOfBirth.substr(0,4);
+
+    const age = date-birthYear;
+
 
     var userTypeSelect;
     var userType=document.getElementsByName("userType");
@@ -71,12 +81,14 @@ const sendServerData = function () {
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword){
-        httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword && age>13){
+
+        if(password.length == confirmPassword.length  && password == confirmPassword && password.length>=8) {
+
+            httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+        }
     }
-    else {
-        alert("You have empty fields");
-    }
+
 
 
     function completeRegistration(httpreq) {
@@ -158,6 +170,7 @@ function checkInputs() {
         }
         else if(gender[i].checked===false){
             document.getElementById("GenderError").innerHTML="**Please select your gender";
+
         }
 
     }
@@ -172,15 +185,14 @@ function checkInputs() {
         }
         else if(userType[i].checked===false){
             document.getElementById("UserTypeError").innerHTML="**Please select who are you";
+
         }
 
     }
-
     const firstNameValue = firstName.trim();
     const lastNameValue = lastName.trim();
     const emailValue = email.trim();
     const DOBValue=DOB.trim();
-
     const cityValue = city.trim();
 
     let today = new Date();
@@ -190,41 +202,72 @@ function checkInputs() {
 
     const age = date-birthYear;
 
-    if (firstNameValue === '') {
+
+    if (firstNameValue === '' ) {
+       firstNameError.innerHTML="**Please enter your first Name";
+       firstNameError.style.display = "contents";
+    }else if((firstNameValue.match(/\d+/)!==null)){
+        firstNameError.innerHTML="**Please enter valid data";
         firstNameError.style.display = "contents";
-    }else {
-       firstNameError.style.display = "none";
+    }else if(firstName.length>20){
+        firstNameError.innerHTML="**Do not enter more than 20 characters";
+        firstNameError.style.display = "contents";
+    }
+    else {
+        firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
+        lastNameError.innerHTML="**Please enter your last Name";
+        lastNameError.style.display = "contents";
+    }else if((lastNameValue.match(/\d+/)!==null)){
+        lastNameError.innerHTML="**Please enter valid data";
+        lastNameError.style.display = "contents";
+    }else if(lastName.length>20){
+        lastNameError.innerHTML="**Do not enter more than 20 character";
         lastNameError.style.display = "contents";
     }else{
         lastNameError.style.display = "none";
     }
 
     if(emailValue === '') {
-        emailError.innerHTML= "**Enter your Email";
+        emailError.innerHTML= "**Please enter your Email";
         emailError.style.display = "contents";
+
 
     } else if (!isEmail(emailValue)) {
         emailError.innerHTML= "**Invalid Email";
+        emailError.style.display = "contents";
+    }else if((emailValue.match(/\d+/)!==null)) {
+        emailError.innerHTML = "**Please enter valid data";
+        emailError.style.display = "contents";
+    }else if(emailValue.length>50){
+        emailError.innerHTML = "**Do not enter more than 50 characters";
         emailError.style.display = "contents";
     }else{
         emailError.style.display = "none";
     }
 
     if (DOBValue === '') {
+        DateOfBirthError.innerHTML= "**Please enter your Birthday";
         DateOfBirthError.style.display = "contents";
+
     }else if(age<13){
         DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
         DateOfBirthError.style.display = "contents";
+        errorFlag = 1;
+
     }
     else {
         DateOfBirthError.style.display = "none";
     }
 
     if (cityValue === '') {
-        cityError.style.display = "contents";
+        cityError.innerHTML= "**Please enter your city";
+        cityError.style.display = "content";
+    }else if(cityValue.length>20){
+        cityError.innerHTML= "**Do not enter more than 20 characters";
+        cityError.style.display = "content";
     }else {
         cityError.style.display = "none";
     }
@@ -232,25 +275,29 @@ function checkInputs() {
     if (mobileNumber === ''){
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
 
+
     }else if(isNaN(mobileNumber)){
         document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
+
         return false;
+    }else if(mobileNumber.length>15){
+        document.getElementById("MobileNumberError").innerHTML="**Do not enter more than 15 numbers";
     }
     else {
         document.getElementById("MobileNumberError").style.display = "none";
     }
 
     if (password === '') {
-        document.getElementById("PasswordError").innerHTML="**Enter a password";
-      
+
+        document.getElementById("PasswordError").innerHTML="**Please enter a password";
+
     }
     else {
         passwordError.style.display = "none";
     }
 
     if (confirmPassword === '') {
-        confirmPasswordError.innerHTML = "**Re-enter your password here";
-        confirmPasswordError.style.display = "contents";
+        confirmPasswordError.innerHTML = "**Please re-enter your password here";
     } else {
         confirmPasswordError.style.display = "none";
     }
@@ -266,6 +313,7 @@ submitButton.onclick = function (){
     checkInputs();
     sendServerData();
 }
+
 passwordInput.addEventListener( "keyup" , function (event){
 
     const passwordIn = document.getElementById("Password").value;
@@ -288,11 +336,9 @@ passwordConfirmInput.addEventListener( "keyup" , function (event){
 
     if(password!==confirmPassword){
         confirmPasswordError.innerHTML = "**Does not match with above password";
-        confirmPasswordError.style.display = "contents";
 
     }else{
         confirmPasswordError.innerHTML = "**You have successfully enter the password";
-        confirmPasswordError.style.display = "contents";
         confirmPasswordError.style.color="blue";
     }
     }
