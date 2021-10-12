@@ -90,6 +90,7 @@ public class RegisterServlet extends HttpServlet {
            user.setRegistrationDate(null);
            user.setRegistrationTime(null);
            session.setAttribute("User" , user );
+           session.setAttribute("Email" , email);
            jsonObject.put("EmailStatus" , "ValidEmail");
 
        }
