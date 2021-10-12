@@ -1,8 +1,20 @@
 const submitButton = document.getElementById("button");
 const passwordInput = document.getElementById("Password");
 const passwordConfirmInput = document.getElementById("confirmPassword");
-let errorFlag = 0;
 
+/*If there is an error in any of these then, these status are true*/
+
+let firstNameErrorStatus = true;
+let lastNameErrorStatus = true;
+let emailErrorStatus = true;
+let dobErrorStatus = true;
+let userTypeErrorStatus = true;
+let countryErrorStatus = true;
+let cityErrorStatus = true;
+let mobileNumberErrorStatus = true;
+let genderErrorStatus = true;
+let passwordErrorStatus = true;
+let confirmPasswordErrorStatus = true;
 
 const sendServerData = function () {
 
@@ -26,8 +38,9 @@ const sendServerData = function () {
     var userType=document.getElementsByName("userType");
     for(i = 0;i<userType.length;i++){
         if(userType[i].checked){
-            console.log(userType[i].value);
+
             userTypeSelect = userType[i].value;
+
         }
     }
 
@@ -43,8 +56,9 @@ const sendServerData = function () {
     var gender=document.getElementsByName("gender");
     for(i = 0;i<gender.length;i++){
         if(gender[i].checked){
-            console.log(gender[i].value);
+
             genderSelect = gender[i].value;
+
         }
     }
 
@@ -53,21 +67,6 @@ const sendServerData = function () {
     let confirmPassword = document.getElementById("confirmPassword").value;
 
     let newNumber = countryCode.concat(mobileNumber);
-
-
-    console.log(firstName);
-    console.log(lastName);
-    console.log(email);
-    console.log(dateOfBirth);
-    console.log(country);
-    console.log(city);
-    console.log(countryCode);
-    console.log(mobileNumber);
-    console.log(newNumber);
-    console.log(password);
-    console.log(confirmPassword);
-
-
 
     let httpReq = new XMLHttpRequest();
     httpReq.onreadystatechange = function () {
@@ -80,15 +79,7 @@ const sendServerData = function () {
 
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    if(firstName && lastName && email && dateOfBirth && country && city && newNumber &&  password && confirmPassword && age>13){
-
-        if(password.length == confirmPassword.length  && password == confirmPassword && password.length>=8) {
-
-            httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
-        }
-    }
-
+    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
 
 
     function completeRegistration(httpreq) {
@@ -97,41 +88,21 @@ const sendServerData = function () {
         from the server, we convert it to JSON as it will be sent as JSON from the servlet.
         Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
         in the JSON object specified by the servlet*/
-        console.log(jsonRegistrationResponse.User);
-
-        console.log(jsonRegistrationResponse.EmailStatus);
 
         if (jsonRegistrationResponse.EmailStatus === "InvalidEmail") {
-            console.log("Invalid Email");
-        }
-        else {
-            (jsonRegistrationResponse.EmailStatus === "ValidEmail")
-            {
-                console.log("Valid Email");
-                // window.location.replace("/EduClick_war_exploded/Student/Student.html");
 
-
-            }
+            alert("Email alread exist!!!");
 
         }
+        else if (jsonRegistrationResponse.EmailStatus === "ValidEmail"){
 
-        if (jsonRegistrationResponse.User === "Teacher") {
-            console.log("in if");
-            // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
-        } else {
-            (jsonRegistrationResponse.User === "Student")
-            {
-                console.log("in if");
-                // window.location.replace("/EduClick_war_exploded/Student/Student.html");
-
-
-            }
-
-        }
-        if(jsonRegistrationResponse.Reg === "Done"){
             window.location.replace("/EduClick_war_exploded/OtpPage.html");
-        }
 
+        }else {
+
+            alert("Something went wrong");
+
+        }
 
     }
 }
@@ -158,37 +129,69 @@ function checkInputs() {
     const confirmPassword = document.getElementById("confirmPassword").value;
     const confirmPasswordError = document.getElementById("ConfirmPasswordError");
 
+    const country = document.getElementById("country").value
+
+    if (country != null){
+
+        countryErrorStatus = false;
+
+    }else{
+
+        countryErrorStatus = false;
+
+    }
+
+
     let mobileNumber = document.getElementById("mobileNo").value;
 
-    let genderSelect;
+    let genderSelect = null;
     const gender=document.getElementsByName("gender");
     for(let i = 0;i<gender.length;i++){
+
         if(gender[i].checked ){
-            console.log(gender[i].value);
+
             genderSelect = gender[i].value;
-            document.getElementById("GenderError").style.display="none";
-        }
-        else if(gender[i].checked===false){
-            document.getElementById("GenderError").innerHTML="**Please select your gender";
 
         }
 
     }
 
-    let userTypeSelect;
+    if(genderSelect == null){
+
+        genderErrorStatus = true;
+        document.getElementById("GenderError").innerHTML="**Please select your gender";
+
+    }else{
+
+        genderErrorStatus = false;
+        document.getElementById("GenderError").style.display="none";
+
+    }
+
+    let userTypeSelect = null;
     let userType=document.getElementsByName("userType");
+
     for(let i = 0;i<userType.length;i++){
+
         if(userType[i].checked){
-            console.log(userType[i].value);
+
             userTypeSelect = userType[i].value;
-            document.getElementById("UserTypeError").style.display="none";
-        }
-        else if(userType[i].checked===false){
-            document.getElementById("UserTypeError").innerHTML="**Please select who are you";
 
         }
 
     }
+
+    if (userTypeSelect == null){
+
+        userTypeErrorStatus = true;
+        document.getElementById("UserTypeError").innerHTML="**Please select who are you";
+
+    }else{
+
+        userTypeErrorStatus = false;
+        document.getElementById("UserTypeError").style.display="none";
+    }
+
     const firstNameValue = firstName.trim();
     const lastNameValue = lastName.trim();
     const emailValue = email.trim();
@@ -204,112 +207,140 @@ function checkInputs() {
 
 
     if (firstNameValue === '' ) {
-       firstNameError.innerHTML="**Please enter your first Name";
-       firstNameError.style.display = "contents";
+        firstNameErrorStatus = true;
+        firstNameError.innerHTML="**Please enter your first Name";
+        firstNameError.style.display = "contents";
     }else if((firstNameValue.match(/\d+/)!==null)){
+        firstNameErrorStatus = true;
         firstNameError.innerHTML="**Please enter valid data";
         firstNameError.style.display = "contents";
     }else if(firstName.length>20){
+        firstNameErrorStatus = true;
         firstNameError.innerHTML="**Do not enter more than 20 characters";
         firstNameError.style.display = "contents";
     }
     else {
+        firstNameErrorStatus = false;
         firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
+        lastNameErrorStatus = true;
         lastNameError.innerHTML="**Please enter your last Name";
         lastNameError.style.display = "contents";
     }else if((lastNameValue.match(/\d+/)!==null)){
+        lastNameErrorStatus = true;
         lastNameError.innerHTML="**Please enter valid data";
         lastNameError.style.display = "contents";
     }else if(lastName.length>20){
+        lastNameErrorStatus = true;
         lastNameError.innerHTML="**Do not enter more than 20 character";
         lastNameError.style.display = "contents";
     }else{
+        lastNameErrorStatus = false;
         lastNameError.style.display = "none";
     }
 
     if(emailValue === '') {
+        emailErrorStatus = true;
         emailError.innerHTML= "**Please enter your Email";
         emailError.style.display = "contents";
 
 
-    } else if (!isEmail(emailValue)) {
+    }else if (!isEmail(emailValue)) {
+        emailErrorStatus = true;
         emailError.innerHTML= "**Invalid Email";
         emailError.style.display = "contents";
-    }else if((emailValue.match(/\d+/)!==null)) {
-        emailError.innerHTML = "**Please enter valid data";
-        emailError.style.display = "contents";
-    }else if(emailValue.length>50){
-        emailError.innerHTML = "**Do not enter more than 50 characters";
+    }else if(emailValue.length>320){
+        emailErrorStatus = true;
+        emailError.innerHTML = "**Do not enter more than 320 characters";
         emailError.style.display = "contents";
     }else{
+        emailErrorStatus = false;
         emailError.style.display = "none";
     }
 
     if (DOBValue === '') {
+        dobErrorStatus = true;
         DateOfBirthError.innerHTML= "**Please enter your Birthday";
         DateOfBirthError.style.display = "contents";
 
     }else if(age<13){
+        dobErrorStatus = true;
         DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
         DateOfBirthError.style.display = "contents";
         errorFlag = 1;
 
     }
     else {
+        dobErrorStatus = false;
         DateOfBirthError.style.display = "none";
     }
 
     if (cityValue === '') {
+        cityErrorStatus = true;
         cityError.innerHTML= "**Please enter your city";
         cityError.style.display = "content";
     }else if(cityValue.length>20){
+        cityErrorStatus = true;
         cityError.innerHTML= "**Do not enter more than 20 characters";
         cityError.style.display = "content";
     }else {
+        cityErrorStatus = false;
         cityError.style.display = "none";
     }
 
     if (mobileNumber === ''){
+        mobileNumberErrorStatus = true;
         document.getElementById("MobileNumberError").innerHTML="**Please enter Mobile Number";
 
 
     }else if(isNaN(mobileNumber)){
+        mobileNumberErrorStatus = true;
         document.getElementById("MobileNumberError").innerHTML="**Your Mobile Number is Invalid";
-
-        return false;
     }else if(mobileNumber.length>15){
+        mobileNumberErrorStatus = true;
         document.getElementById("MobileNumberError").innerHTML="**Do not enter more than 15 numbers";
     }
     else {
+        mobileNumberErrorStatus = false;
         document.getElementById("MobileNumberError").style.display = "none";
     }
 
     if (password === '') {
+        passwordErrorStatus = true;
         document.getElementById("PasswordError").innerHTML="**Please enter a password";
-        errorFlag = 1;
+
     }
     else {
+        mobileNumberErrorStatus = false;
         passwordError.style.display = "none";
     }
 
     if (confirmPassword === '') {
+        confirmPasswordErrorStatus = true;
         confirmPasswordError.innerHTML = "**Please re-enter your password here";
     } else {
+        confirmPasswordErrorStatus = false;
         confirmPasswordError.style.display = "none";
     }
 
 }
+
 
 function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
 submitButton.onclick = function (){
+
     checkInputs();
-    sendServerData();
+
+    if( !( firstNameErrorStatus || lastNameErrorStatus || emailErrorStatus || dobErrorStatus || userTypeErrorStatus || countryErrorStatus || cityErrorStatus || mobileNumberErrorStatus || genderErrorStatus || passwordErrorStatus || confirmPasswordErrorStatus) ) {
+
+        sendServerData();
+
+    }
 }
 
 passwordInput.addEventListener( "keyup" , function (event){
@@ -318,9 +349,11 @@ passwordInput.addEventListener( "keyup" , function (event){
     const x = passwordIn.length;
 
     if(x>=8){
+        passwordErrorStatus = false;
         document.getElementById("PasswordError").style.visibility="hidden";
     }
     else{
+        passwordErrorStatus = true;
         document.getElementById("PasswordError").style.visibility="visible";
         document.getElementById("PasswordError").innerHTML="Your Password must contain 8 characters";
     }
@@ -332,12 +365,14 @@ passwordConfirmInput.addEventListener( "keyup" , function (event){
     const confirmPassword = document.getElementById("confirmPassword").value;
     const confirmPasswordError = document.getElementById("ConfirmPasswordError");
 
-    if(password!==confirmPassword){
+    if( password !== confirmPassword || passwordErrorStatus ){
+        confirmPasswordErrorStatus = true;
         confirmPasswordError.innerHTML = "**Does not match with above password";
 
     }else{
+        confirmPasswordErrorStatus = false;
         confirmPasswordError.innerHTML = "**You have successfully enter the password";
         confirmPasswordError.style.color="blue";
     }
-    }
-);
+
+});

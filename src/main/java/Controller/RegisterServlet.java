@@ -88,7 +88,6 @@ public class RegisterServlet extends HttpServlet {
            Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
            login.insertRecord();
            jsonObject.put("EmailStatus" , "ValidEmail");
-           jsonObject.put("Reg","Done");
 
        }
 
