@@ -1,6 +1,8 @@
 const submitButton = document.getElementById("button");
 const passwordInput = document.getElementById("Password");
 const passwordConfirmInput = document.getElementById("confirmPassword");
+const firstNameInput = document.getElementById("firstName").value;
+//const lastNameInput = document.getElementById("lastName").value;
 
 const sendServerData = function () {
 
@@ -180,7 +182,6 @@ function checkInputs() {
     const lastNameValue = lastName.trim();
     const emailValue = email.trim();
     const DOBValue=DOB.trim();
-
     const cityValue = city.trim();
 
     let today = new Date();
@@ -191,19 +192,21 @@ function checkInputs() {
     const age = date-birthYear;
 
     if (firstNameValue === '') {
+        firstNameError.innerHTML="**Please enter your first Name";
         firstNameError.style.display = "contents";
     }else {
        firstNameError.style.display = "none";
     }
 
     if (lastNameValue === '') {
+        lastNameError.innerHTML="**Please enter your last Name";
         lastNameError.style.display = "contents";
     }else{
         lastNameError.style.display = "none";
     }
 
     if(emailValue === '') {
-        emailError.innerHTML= "**Enter your Email";
+        emailError.innerHTML= "**Please enter your Email";
         emailError.style.display = "contents";
 
     } else if (!isEmail(emailValue)) {
@@ -214,6 +217,7 @@ function checkInputs() {
     }
 
     if (DOBValue === '') {
+        DateOfBirthError.innerHTML= "**Please enter your Birthday";
         DateOfBirthError.style.display = "contents";
     }else if(age<13){
         DateOfBirthError.innerHTML= "**Your age is not qualified for registration";
@@ -224,7 +228,8 @@ function checkInputs() {
     }
 
     if (cityValue === '') {
-        cityError.style.display = "contents";
+        cityError.innerHTML= "**Please enter your city";
+        cityError.style.display = "content";
     }else {
         cityError.style.display = "none";
     }
@@ -241,16 +246,14 @@ function checkInputs() {
     }
 
     if (password === '') {
-        document.getElementById("PasswordError").innerHTML="**Enter a password";
-       // passwordError.style.display = "contents";
+        document.getElementById("PasswordError").innerHTML="**Please enter a password";
     }
     else {
         passwordError.style.display = "none";
     }
 
     if (confirmPassword === '') {
-        confirmPasswordError.innerHTML = "**Re-enter your password here";
-        confirmPasswordError.style.display = "contents";
+        confirmPasswordError.innerHTML = "**Please re-enter your password here";
     } else {
         confirmPasswordError.style.display = "none";
     }
@@ -263,8 +266,9 @@ function isEmail(email) {
 
 submitButton.onclick = function (){
     checkInputs();
-    sendServerData();
+   // sendServerData();
 }
+
 passwordInput.addEventListener( "keyup" , function (event){
 
     const passwordIn = document.getElementById("Password").value;
@@ -287,11 +291,9 @@ passwordConfirmInput.addEventListener( "keyup" , function (event){
 
     if(password!==confirmPassword){
         confirmPasswordError.innerHTML = "**Does not match with above password";
-        confirmPasswordError.style.display = "contents";
 
     }else{
         confirmPasswordError.innerHTML = "**You have successfully enter the password";
-        confirmPasswordError.style.display = "contents";
         confirmPasswordError.style.color="blue";
     }
     }
