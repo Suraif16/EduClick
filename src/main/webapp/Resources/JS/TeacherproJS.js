@@ -28,9 +28,17 @@ function enableDisableStatus( id ){
 
     let disableButton = document.getElementById(disableStringValue);
 
+
+    
     if (disableButton.style.display === "none"){
 
         /*defaultView.getComputedStyle(enableButton)*/
+
+        let httpreq = new XMLHttpRequest();
+        httpreq.open("POST" ,"/EduClick_war_exploded/student/enrollRequest" , true);
+        httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+        httpreq.send("id=" + id);
+        console.log(id);
         disableButton.style.display = "block";
         enableButton.style.display = "none";
 
@@ -40,7 +48,22 @@ function enableDisableStatus( id ){
         disableButton.style.display = "none";
         enableButton.style.display = "block";
 
+        console.log("Deleting!!!!")
     }
 
 }
+
+/*let sendInsertData = function (id){
+    let httpreq = new XMLHttpRequest();
+    httpreq.open("POST" ,"/EduClick_war_exploded/student/enrollRequest" , true);
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send("id=" + id);
+    console.log(id);
+}
+
+let sendDeleteData = function (id){
+    console.log("Deleting!!!!")
+}*/
+
+
 
