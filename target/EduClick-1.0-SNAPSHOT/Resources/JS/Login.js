@@ -46,6 +46,7 @@ const sendServerData = function (){
         }
         else if( jsonLoginResponse.User === "incorrect password"){
             console.log("in else if 2");
+            inCorrectPassword.innerHTML = "Incorrect Password";
             inCorrectPassword.style.display = "flex";
 
             passwordIncorrectCount += 1;
@@ -58,7 +59,11 @@ const sendServerData = function (){
             console.log( passwordIncorrectCount );
         }
         else if( jsonLoginResponse.User === "User does not exist"){
-            console.log("in else if 3");
+            console.log("in else if 13");
+            inCorrectPassword.innerHTML = "Email doesn't exist. Register before login.";
+            inCorrectPassword.style.display = "flex";
+
+
         }
         else{
             alert(" Something went wrong!");
