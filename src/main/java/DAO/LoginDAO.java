@@ -78,13 +78,14 @@ public class LoginDAO {
 
         try {
             connection =dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Login(EmailID,Password,LoginDate,LoginTime,UserID) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO Login(EmailID,Password,SaltingKey,LoginDate,LoginTime,UserID) VALUES (?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString(1,login.getEmail());
             preparedStatement.setString(2,login.getPassword());
-            preparedStatement.setString(3, String.valueOf(login.getLoginDate()));
-            preparedStatement.setString(4, String.valueOf(login.getLoginTime()));
-            preparedStatement.setString(5, login.getUserID());
+            preparedStatement.setString( 3 , login.getSaltingKey() );
+            preparedStatement.setString(4, String.valueOf(login.getLoginDate()));
+            preparedStatement.setString(5, String.valueOf(login.getLoginTime()));
+            preparedStatement.setString(6, login.getUserID());
             preparedStatement.executeUpdate();
 
 

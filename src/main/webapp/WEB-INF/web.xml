@@ -51,7 +51,7 @@
 
     <filter>
         <filter-name>registrationPasswordHashing</filter-name>
-        <filter-class>Controller.LoginFilter</filter-class>
+        <filter-class>Controller.RegistrationSaltingKeyFilter</filter-class>
     </filter>
 
     <filter-mapping>

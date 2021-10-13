@@ -9,6 +9,7 @@ public class Login {
 
     private String email;
     private String password;
+    private String saltingKey;
     private LocalDate loginDate;
     private LocalTime loginTime;
 
@@ -56,6 +57,14 @@ public class Login {
         this.loginTime = loginTime;
     }
 
+    public String getSaltingKey() {
+        return saltingKey;
+    }
+
+    public void setSaltingKey(String saltingKey) {
+        this.saltingKey = saltingKey;
+    }
+
     /*Getters and setters ends here*/
 
     /*Constructor*/
@@ -66,9 +75,10 @@ public class Login {
         this.loginTime = loginTime;
     }
 
-    public Login(String email , String password , LocalDate loginDate , LocalTime loginTime,String userID){
+    public Login(String email , String password , String saltingKey, LocalDate loginDate , LocalTime loginTime,String userID){
         this.email = email;
         this.password = password;
+        this.saltingKey = saltingKey;
         this.loginDate = loginDate;
         this.loginTime = loginTime;
         this.userID = userID;
