@@ -29,15 +29,16 @@ function enableDisableStatus( id ){
     let disableButton = document.getElementById(disableStringValue);
 
 
-    
+
     if (disableButton.style.display === "none"){
 
         /*defaultView.getComputedStyle(enableButton)*/
 
+        let action = "request"
         let httpreq = new XMLHttpRequest();
         httpreq.open("POST" ,"/EduClick_war_exploded/student/enrollRequest" , true);
         httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-        httpreq.send("id=" + id);
+        httpreq.send("id=" + id +"&action=" + action);
         console.log(id);
         disableButton.style.display = "block";
         enableButton.style.display = "none";

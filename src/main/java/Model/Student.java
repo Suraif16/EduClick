@@ -1,6 +1,7 @@
 package Model;
 
 import DAO.EnrollDAO;
+import DAO.EnrollRequestDAO;
 import DAO.StudentDAO;
 
 import java.util.ArrayList;
@@ -49,6 +50,14 @@ public class Student extends User{
     public void enterStudent(){
         StudentDAO studentDAO = new StudentDAO();
         studentDAO.enterStudent(this);
+    }
+
+    public void requestEnroll(String classroomId,String userId){
+        System.out.println(classroomId);
+        System.out.println(userId);
+        System.out.println("Student erquest enroll reached");
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        enrollRequestDAO.insertRecord(classroomId,userId);
     }
 
 }
