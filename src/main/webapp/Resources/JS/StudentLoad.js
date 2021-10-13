@@ -29,12 +29,15 @@ const sendServerData = function (){
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
 
-        console.log(jsonLoginResponse);
+
 
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
+
+            console.log(jsonLoginResponse);
             /* This is where I need work everytime as per the authentication filter*/
+            console.log(jsonLoginResponse.firstName);
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
         }else{
