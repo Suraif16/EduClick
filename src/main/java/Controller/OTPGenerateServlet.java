@@ -1,8 +1,7 @@
 package Controller;
 
 import EmailSMTP.Email;
-import Model.GenerateOTP.OTPGeneration;
-import Model.User;
+import Model.GenerateRandomNumbers.OTPGeneration;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

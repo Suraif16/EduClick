@@ -78,13 +78,14 @@ public class LoginDAO {
 
         try {
             connection =dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Login(EmailID,Password,LoginDate,LoginTime,UserID) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO Login(EmailID,Password,SaltingKey,LoginDate,LoginTime,UserID) VALUES (?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString(1,login.getEmail());
             preparedStatement.setString(2,login.getPassword());
-            preparedStatement.setString(3, String.valueOf(login.getLoginDate()));
-            preparedStatement.setString(4, String.valueOf(login.getLoginTime()));
-            preparedStatement.setString(5, login.getUserID());
+            preparedStatement.setString( 3 , login.getSaltingKey() );
+            preparedStatement.setString(4, String.valueOf(login.getLoginDate()));
+            preparedStatement.setString(5, String.valueOf(login.getLoginTime()));
+            preparedStatement.setString(6, login.getUserID());
             preparedStatement.executeUpdate();
 
 
@@ -164,6 +165,37 @@ public class LoginDAO {
 
     public String getEmailDAO() {
         return emaildao;
+    }
+
+    public String selectSaltingKey( String email ){
+        /* Here we extract the salting key from the database and return it, if the email is not found then "" will be returned as a sign of
+        * no result found*/
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String saltingKey = "";
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT SaltingKey FROM Login WHERE EmailId = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , email );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if ( resultSet.next() ){
+
+                saltingKey = resultSet.getString( "SaltingKey" );
+
+            }
+
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+        }
+
+        return saltingKey;
+
     }
 
 }

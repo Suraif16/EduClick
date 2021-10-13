@@ -1,4 +1,4 @@
-package Model.GenerateOTP;
+package Model.GenerateRandomNumbers;
 
 import java.util.Random;
 
