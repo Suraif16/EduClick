@@ -4,7 +4,7 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
-        //sendServerData();
+        sendServerData();
         getClassroomList();
 
     }
@@ -22,12 +22,14 @@ const sendServerData = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherLoad" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentLoad" , true);
     httpreq.send();
 
     function completeLogin( httpreq ){
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
+
+        console.log(jsonLoginResponse);
 
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
