@@ -227,7 +227,7 @@ div#image-container1{
     display: flex;
     justify-content: center;
     background: #4775c4;
-    width: 100%;
+
 
 }
 
@@ -235,7 +235,9 @@ img#profilepic1{
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    position: center;
+    display: flex;
+    justify-content: center;
+    flex-basis: 13%;
 
 }
 .postProfileUserName {
