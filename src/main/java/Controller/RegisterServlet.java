@@ -41,6 +41,7 @@ public class RegisterServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("Password");
+        String saltingKey = request.getParameter("saltingKey");
         LocalDate loginDate = LocalDate.now();
         LocalTime loginTime = LocalTime.now();
 
@@ -85,14 +86,15 @@ public class RegisterServlet extends HttpServlet {
            }
 
            generatedUserID = user.getUserId();
-           Login login = new Login( email , password , loginDate , loginTime, generatedUserID);
+           Login login = new Login( email , password , saltingKey , loginDate , loginTime, generatedUserID);
            login.insertRecord();
+           user.setRegistrationDate(null);
+           user.setRegistrationTime(null);
+           session.setAttribute("User" , user );
+           session.setAttribute("Email" , email);
            jsonObject.put("EmailStatus" , "ValidEmail");
 
        }
-
-
-
 
 
 

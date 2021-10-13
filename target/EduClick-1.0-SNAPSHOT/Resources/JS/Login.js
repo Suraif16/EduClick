@@ -21,18 +21,18 @@ const sendServerData = function (){
     httpreq.send("Email=" + email + "&Password=" + password );
 
     function completeLogin( httpreq ){
-        console.log(httpreq.responseText);
+
         let jsonLoginResponse = JSON.parse(httpreq.responseText); /*here when we receive the response
         from the server, we convert it to JSON as it will be sent as JSON from the servlet.
         Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
         in the JSON object specified by the servlet*/
-        console.log(jsonLoginResponse.User);
+
         if ( jsonLoginResponse.User === "Admin"){
-            console.log("in if");
+
             window.location.replace("/EduClick_war_exploded/Admin/AdminHome-DashBoard.html");
         }
         else if ( jsonLoginResponse.User === "User"){
-            console.log("in else if");
+
             if ( jsonLoginResponse.Usertype === "Teacher"){
                 window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
             }
@@ -45,7 +45,8 @@ const sendServerData = function (){
             }
         }
         else if( jsonLoginResponse.User === "incorrect password"){
-            console.log("in else if 2");
+
+            inCorrectPassword.innerHTML = "Incorrect Password";
             inCorrectPassword.style.display = "flex";
 
             passwordIncorrectCount += 1;
@@ -55,10 +56,14 @@ const sendServerData = function (){
                 // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
                 /*here if the password is incorrect the user will be sent to a different page to handle it*/
             }
-            console.log( passwordIncorrectCount );
+
         }
         else if( jsonLoginResponse.User === "User does not exist"){
-            console.log("in else if 3");
+
+            inCorrectPassword.innerHTML = "Email doesn't exist. Register before login.";
+            inCorrectPassword.style.display = "flex";
+
+
         }
         else{
             alert(" Something went wrong!");

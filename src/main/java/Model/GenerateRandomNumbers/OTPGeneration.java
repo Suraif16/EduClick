@@ -1,4 +1,4 @@
-package Model.GenerateOTP;
+package Model.GenerateRandomNumbers;
 
 import java.util.Random;
 
@@ -15,9 +15,8 @@ public class OTPGeneration {
         String capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String simpleLetters = "abcdefghijklmnopqrstuvwxyz";
         String numbers = "0123456789";
-        String symbols = "!@#$%^&*_-=+/.?<>";
 
-        String possibleCharacters = capitalLetters + simpleLetters + numbers + symbols;
+        String possibleCharacters = capitalLetters + simpleLetters + numbers ;
 
         Random random = new Random();
 

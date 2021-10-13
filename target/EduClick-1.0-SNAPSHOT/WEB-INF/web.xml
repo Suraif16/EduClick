@@ -51,7 +51,7 @@
 
     <filter>
         <filter-name>registrationPasswordHashing</filter-name>
-        <filter-class>Controller.LoginFilter</filter-class>
+        <filter-class>Controller.RegistrationSaltingKeyFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -177,6 +177,31 @@
     </servlet-mapping>
 
     <!-- end of the TeacherClassroomListServlet-->
+    
+    <!-- beginning of OTPGenerateServlet-->
+    <servlet>
+        <servlet-name>OPTGenerate</servlet-name>
+        <servlet-class>Controller.OTPGenerateServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>OPTGenerate</servlet-name>
+        <url-pattern>/otpGenerate</url-pattern>
+    </servlet-mapping>    
+    <!-- end of OTPValidateServlet-->
+
+    <!-- beginning of OTPValidateServlet-->
+    <servlet>
+        <servlet-name>OTPValidate</servlet-name>
+        <servlet-class>Controller.OTPValidateServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>OTPValidate</servlet-name>
+        <url-pattern>/otpValidate</url-pattern>
+    </servlet-mapping>
+    <!-- end of OTPGenerateServlet-->
+
 
 
     <session-config>
