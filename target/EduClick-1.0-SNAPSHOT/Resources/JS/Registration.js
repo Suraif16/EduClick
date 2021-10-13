@@ -313,7 +313,7 @@ function checkInputs() {
 
     }
     else {
-        mobileNumberErrorStatus = false;
+        passwordErrorStatus = false;
         passwordError.style.display = "none";
     }
 
