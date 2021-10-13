@@ -167,4 +167,35 @@ public class LoginDAO {
         return emaildao;
     }
 
+    public String selectSaltingKey( String email ){
+        /* Here we extract the salting key from the database and return it, if the email is not found then "" will be returned as a sign of
+        * no result found*/
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String saltingKey = "";
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT SaltingKey FROM Login WHERE EmailId = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , email );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if ( resultSet.next() ){
+
+                saltingKey = resultSet.getString( "SaltingKey" );
+
+            }
+
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+        }
+
+        return saltingKey;
+
+    }
+
 }
