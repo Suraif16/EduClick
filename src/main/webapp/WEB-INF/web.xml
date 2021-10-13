@@ -123,6 +123,21 @@
 
     <!--End of student newsfeed loaded-->
 
+    <!--Start of student student enroll request-->
+
+    <servlet>
+        <servlet-name>enrollRequest</servlet-name>
+        <servlet-class>Controller.EnrollRequestServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>enrollRequest</servlet-name>
+        <url-pattern>/student/enrollRequest</url-pattern>
+    </servlet-mapping>
+
+    <!--End of student student enroll request-->
+
 
 
     <!--Beginning of student username loaded-->
