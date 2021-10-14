@@ -27,11 +27,13 @@ public class EnrollRequestServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         System.out.println(action);
-
-        
-            System.out.println("I reached servel action cer!!!");
+        if(action.equals("request")){
             Student student = new Student(user);
             student.requestEnroll(ClassroomId,user.getUserId());
+        }else if(action.equals("delete")){
+            Student student = new Student(user);
+            student.deleteEnroll(ClassroomId,user.getUserId());
+        }
 
 
 

@@ -8,8 +8,7 @@ import java.sql.SQLException;
 
 public class EnrollRequestDAO {
     public void insertRecord(String classrooomId,String userId){
-        System.out.println(classrooomId);
-        System.out.println(userId);
+
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
@@ -29,6 +28,26 @@ public class EnrollRequestDAO {
         }
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+    }
+
+    public void deleteRecord(String classrooomId,String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "DELETE FROM Enroll_Request WHERE From_UserID = ? AND To_ClassroomID = ? ";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString(1,userId);
+            preparedStatement.setString(2,classrooomId);
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

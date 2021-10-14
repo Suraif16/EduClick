@@ -53,11 +53,13 @@ public class Student extends User{
     }
 
     public void requestEnroll(String classroomId,String userId){
-        System.out.println(classroomId);
-        System.out.println(userId);
-        System.out.println("Student erquest enroll reached");
         EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
         enrollRequestDAO.insertRecord(classroomId,userId);
+    }
+
+    public void deleteEnroll(String classroomId,String userId){
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        enrollRequestDAO.deleteRecord(classroomId,userId);
     }
 
 }
