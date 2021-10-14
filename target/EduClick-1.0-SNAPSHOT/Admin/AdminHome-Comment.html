@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>classroom for students</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../Resources/CSS/AdminHomeCSS.css" type="text/css">
+    <link rel="stylesheet" href="../Resources/CSS/Font.css" type="text/css">
+
+</head>
+
+<body>
+
+<div id="content">
+    <div id="classroomsList" >
+        <div id="options">
+            <div id="classroomAddButton" class="optionButtonContainers">
+                <input id="classroomAddButtonInput" type="button" value="DashBoard">
+            </div>
+        </div>
+
+        <div id="classroomsListLinks">
+
+            <!--<div class="classroomsListLinksItems">
+                <a href=""  class="classRooms">
+                  <i class='bx bx-user-circle' ></i>
+                    User
+                </a>
+            </div>-->
+            <div class="classroomsListLinksItems"> <!--this where the classroom link begins-->
+                <a href=""  class="classRooms">
+                  <i class='bx bx-comment' ></i>
+                    Comment
+                </a>
+            </div>
+            <div class="classroomsListLinksItems">
+                <a href=""  class="classRooms">
+                <i class='bx bx-mail-send'></i>
+                    Post
+                </a>
+            </div>
+            <div class="classroomsListLinksItems">
+                <a href=""  class="classRooms">
+                  <i class='bx bxs-pencil' ></i>
+                    Teacher
+                </a>
+            </div>
+            <div class="classroomsListLinksItems">
+                <a href=""  class="classRooms">
+                  <i class='bx bx-pencil' ></i>
+                    Student
+                </a>
+            </div>
+            <div class="classroomsListLinksItems">
+                <a href=""  class="classRooms">
+                  <i class='bx bx-bell'></i>
+                    Analytics
+                </a>
+            </div>
+            <div class="classroomsListLinksItems">
+                <a href=""  class="classRooms">
+                  <i class='bx bx-cog' ></i>
+                    Settings
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="postContents" >
+      <div class="postContentContainer">
+          <div class="postLikeShareButtons">
+          <!--  <input id="comment" type="text" placeholder="    TeacherId... ">-->
+              <input type="button" value="Account" class="share"><!-- button -->
+              <div class="emptySpaceLikeShare" ></div>
+              <input type="button" value="Post" class="share"><!-- button -->
+              <div class="emptySpaceLikeShare" ></div>
+              <input type="button" value="Comments" class="share"><!-- button -->
+              </div>
+      </div>
+
+        <div class="post">
+            <div class="postContentContainer">
+                <div class="postProfileSection">
+                    <a href="#" class="postProfile">
+                        <div class="postProfileImage">
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                        </div>
+
+                        <div class="postProfileName" >User Name</div><!-- name-->
+                    </a>
+                </div>
+            </div>
+<!-- data-->
+            <div class="postContentContainer">
+                <div class="postData">
+                    <div class="postMessage">
+                        <!--<div>-->
+                        Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
+                        <!--</div>-->
+                    </div>
+<!-- picture-->
+                    <div class="postPicture">
+                        <div class="postPictureImageContainer">
+                            <!--To only present the message without the picture, keep this value as null / empty-->
+                            <img class="postPictureImage" src="../Resources/Images/Finding-the-Correct-Question-Words3.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+  <!-- search box-->
+            <div class="postContentContainer">
+                <div class="postLikeShareButtons">
+                  <a href="#" class="postProfile">
+                      <div class="postProfileName" >Count of the report : 100</div><!-- name-->
+                  </a>
+                    <div class="emptySpaceLikeShare" ></div>
+                    <div class="likeShareButtons" >
+                        <input type="button" value="Remove" class="share"><!-- button -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<header>
+
+    <a href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+        <img src="../Resources/Icons/Logo.png" class="logo">
+    </a>
+    <h1 id="headerHeading">EduClick</h1>
+    <a href="#" id="profile">
+        <div>User Name</div>
+        <div id="profileImage">
+            <img id="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+        </div>
+    </a>
+
+</header>
+
+<!--<footer>
+    &nbsp;
+</footer>-->
+
+<script src="JS/Settings.js"></script>
+
+</body>
+
+</html>
