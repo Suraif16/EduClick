@@ -1,9 +1,11 @@
 let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
+let notificationStatus = false; /*if it is false the notification is hidden*/
 let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hidden*/
 let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
 
 const classroomListObjection = document.getElementById( "classroomsList" );
 const search = document.getElementById( "searchBarText" );
+const notifications = document.getElementById("notifications");
 const addClassroomForm = document.getElementById("addClassroomForm");
 const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
 
@@ -33,6 +35,24 @@ function showClassroomList(){
 
 }
 
+
+function showNotification(){
+
+    console.log("hi")
+
+    if(notificationStatus){
+
+        notifications.style.display = "none";
+        notificationStatus = false;
+
+    }else{
+
+        notifications.style.display = "flex";
+        notificationStatus = true;
+
+    }
+
+}
 
 function showAddClassroomFrom(){
 
@@ -85,7 +105,7 @@ function createClassroom(){
             '    text-align: center;\n' +
             '    margin: 1.5% 0;\n' +
             '    padding: 1%;"> ' +
-            '<a href="/EduClick_war_exploded/Teacher/Classroom.html?id=' + classroomId +'"' +' className="classRooms"> ' +
+            '<a href="/EduClick_war_exploded/Teacher/Classroom.html?id=' + classroomId +'"' +'className="classRooms"> ' +
             classroomName.value + ' : ' + subject.value + ' : Grade ' + gradeClass.value + ' : ' + yearOfExamination.value +
             '</a>' +
             '</div>';
