@@ -36,14 +36,12 @@ function enableDisableStatus( id ){
 
         sendInsertData(id);
 
-        disableButton.style.display = "block";
-        enableButton.style.display = "none";
+
 
 
     }else if(enableButton.style.display == "none"){
 
-        disableButton.style.display = "none";
-        enableButton.style.display = "block";
+
 
         sendDeleteData(id);
 
@@ -87,6 +85,20 @@ let sendData = function (id,action){
     httpreq.open("POST" ,"/EduClick_war_exploded/student/enrollRequest" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("id=" + id +"&action=" + action);
+
+    let jsonnResponse = JSON.parse(httpreq.responseText);
+
+    if(jsonResponse.Enroll === "Requested"){
+        disableButton.style.display = "block";
+        enableButton.style.display = "none";
+    }
+    else if(jsonResponse.Enroll === "Deleted"){
+        disableButton.style.display = "none";
+        enableButton.style.display = "block";
+    }
+    else{
+        console.log("Something went wrong!!");
+    }
 }
 
 
