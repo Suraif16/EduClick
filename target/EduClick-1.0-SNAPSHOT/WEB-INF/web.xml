@@ -244,6 +244,19 @@
     </servlet-mapping>
     <!-- end of OTPGenerateServlet-->
 
+    <!-- beginning of DisplayRequestServlet-->
+        
+    <servlet>
+        <servlet-name>DisplayRequest</servlet-name>
+        <servlet-class>Controller.DisplayRequestServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>DisplayRequest</servlet-name>
+        <url-pattern>/teacher/displayRequest</url-pattern>
+    </servlet-mapping>
+    
+    <!-- end of DisplayRequestServlet-->
 
 
     <session-config>

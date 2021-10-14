@@ -86,18 +86,14 @@ const getClassroomList = function (){
 
 
     function classroomHtmlOutput( classroomId , classroomName , subject , gradeClass , yearOfExamination ){
+        classroomsListLinksSelect.innerHTML += '<div class="classroomsListLinksItems">'+
 
-        classroomsListLinksSelect.innerHTML += '<div className="classroomsListLinksItems"' +
-            ' style="flex: 1;\n' +
-            '    background-color: #4775c4;\n' +
-            '    text-align: center;\n' +
-            '    margin: 1.5% 0;\n' +
-            '    padding: 1%;"> ' +
-            '<a href="/EduClick_war_exploded/Teacher/Classroom.html?id=' + classroomId +'"' +' className="classRooms"> ' +
+            '<a href="Classroom.html" class="classRooms">'+
+
             classroomName + ' : ' + subject + ' : Grade ' + gradeClass + ' : ' + yearOfExamination +
-            '</a>' +
-            '</div>';
+            '</a>'+
 
+        '</div>';
 
     }
 
