@@ -75,6 +75,8 @@ function createClassroom(){
     let subject = document.getElementById("classroomSubject");
 
 
+
+
     const createClassroomHtml = function ( classroomId ){
 
 
@@ -84,7 +86,7 @@ function createClassroom(){
             '    text-align: center;\n' +
             '    margin: 1.5% 0;\n' +
             '    padding: 1%;"> ' +
-            '<a href="/EduClick_war_exploded/Teacher/Classroom.html?id=' + classroomId +'"' +'className="classRooms"> ' +
+            '<a href="/EduClick_war_exploded/Teacher/Classroom.html?id=' + classroomId +'"' +' className="classRooms"> ' +
             classroomName.value + ' : ' + subject.value + ' : Grade ' + gradeClass.value + ' : ' + yearOfExamination.value +
             '</a>' +
             '</div>';
@@ -192,6 +194,5 @@ function searchTeacher(){
 
     }
 
-    console.log("kkk");
 
 }
