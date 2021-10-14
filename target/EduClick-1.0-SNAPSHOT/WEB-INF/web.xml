@@ -123,6 +123,48 @@
 
     <!--End of student newsfeed loaded-->
 
+    <!--Start of student student enroll request-->
+
+    <servlet>
+        <servlet-name>enrollRequest</servlet-name>
+        <servlet-class>Controller.EnrollRequestServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>enrollRequest</servlet-name>
+        <url-pattern>/student/enrollRequest</url-pattern>
+    </servlet-mapping>
+
+    <!--End of student student enroll request-->
+
+
+
+    <!--Beginning of student username loaded-->
+
+    <servlet>
+        <servlet-name>studentLoad</servlet-name>
+        <servlet-class>Controller.StudentLoadServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentLoad</servlet-name>
+        <url-pattern>/student/studentLoad</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>studentNameAuthentication</filter-name>
+        <filter-class>Controller.Authentication.StudentAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>studentNameAuthentication</filter-name>
+        <url-pattern>/student/*</url-pattern>
+    </filter-mapping>
+    <!-- here the asterisk matches any characters, therefore any teacher page should link should start with /teacher -->
+
+    <!--End of student username loaded-->
 
     <!--Beginning of teacher create classroom-->
 
