@@ -44,7 +44,7 @@ function enableDisableStatus( id ){
 
         disableButton.style.display = "none";
         enableButton.style.display = "block";
-        
+
         sendDeleteData(id);
 
 
