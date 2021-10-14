@@ -4,9 +4,7 @@ const notificationRequestButton = document.getElementById( "notificationRequest"
 let initialRequestCount = 0;
 
 function showNotification(){
-
-    console.log("hi bro how are you")
-
+    /* when clicked on the notification button this function will hide and show the notification pannel*/
     if(notificationStatus){
 
         notifications.style.display = "none";
@@ -22,7 +20,7 @@ function showNotification(){
 }
 
 const getRequestData = function(){
-
+    /*Gets the set of requests from the server*/
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function (){
@@ -41,7 +39,7 @@ const getRequestData = function(){
 
 
         let jsonResponse = JSON.parse( httpreq.responseText);
-        console.log("a;dlskjf;a");
+
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
@@ -64,20 +62,21 @@ const getRequestData = function(){
 const displayRequest = function ( jsonResponse ){
 
     const request = document.getElementById("request");
-    console.log("hi hi hi farzan")
+
     let count = jsonResponse.requestList.length;
-
+    /* this checks are there any request?*/
     if( count > 0 ){
-
+        /* this checks are there any new requests? , if so prints*/
         if( initialRequestCount < count ){
             initialRequestCount = count;
             notificationRequestButton.style.backgroundColor = "red";
-            console.log("everytime")
+
             for(i = 0 ; i < count ; i++ ){
 
                 let acceptFunction;
                 let declineFunction;
-
+                /* according to the type of the request when user clicks on accept or decline buttons the relavent function should run ,
+                * here this creates the acceptFucntion and decline function accrodingly*/
                 if(jsonResponse.requestList[i].type === "Enroll"){
 
                     acceptFunction = "EnrollRequestAccept" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
@@ -90,7 +89,7 @@ const displayRequest = function ( jsonResponse ){
 
                 }
 
-                console.log(jsonResponse.requestList[i])
+                /* This is where the each request element is created*/
 
                 request.innerHTML += '<div class="singleNotification">' +
 
@@ -158,6 +157,6 @@ function EnrollRequestDecline(fromId , toId ){
     console.log( "Enroll request Decline" , fromId , toId );
 
 }
-
+/*every function seconds the getRequestData function is called*/
 setInterval( getRequestData , 5000);
 
