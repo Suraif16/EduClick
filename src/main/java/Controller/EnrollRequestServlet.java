@@ -38,22 +38,28 @@ public class EnrollRequestServlet extends HttpServlet {
         if(action.equals("request")){
             Requests requests = new Requests();
             String status = requests.alreadyEnrolledCheck(ClassroomId,user.getUserId());
-            System.out.println("notEnrolled : "+status);
+            System.out.println("Status : "+status);
             if(status == "Not Enrolled"){
                 requests.requestEnroll(ClassroomId,user.getUserId());
                 jsonObject.put("Enroll","Requested");
             }else{
-                System.out.println("Enroll wela inne cer");
                 jsonObject.put("Enroll","Already Enrolled");
 
             }
 
         }else if(action.equals("delete")){
             Requests requests = new Requests();
-            requests.deleteEnroll(ClassroomId,user.getUserId());
-            jsonObject.put("Enroll","Deleted");
+            String status = requests.alreadyEnrolledCheck(ClassroomId,user.getUserId());
+            System.out.println("Status : "+status);
+
+            if(status=="Enrolled"){
+                requests.deleteEnroll(ClassroomId,user.getUserId());
+                jsonObject.put("Enroll","Deleted");
+            }else{
+                jsonObject.put("Enroll","No Enrollment");
+            }
+
         }
-        System.out.println(jsonObject);
         out.write(jsonObject.toString());
         out.close();
 

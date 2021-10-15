@@ -129,6 +129,12 @@ let sendData = function (id,action){
 
                     alert("Already Enrolled")
                 }
+                else if(jsonResponse.Enroll === "No Enrollment"){
+                    /*disableButton.style.display = "none";
+                    enableButton.style.display = "block";*/
+
+                    alert("No Enrollment found in the database");
+                }
 
                 else{
                     console.log("Something went wrong!!");
