@@ -52,14 +52,5 @@ public class Student extends User{
         studentDAO.enterStudent(this);
     }
 
-    public void requestEnroll(String classroomId,String userId){
-        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
-        enrollRequestDAO.insertRecord(classroomId,userId);
-    }
-
-    public void deleteEnroll(String classroomId,String userId){
-        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
-        enrollRequestDAO.deleteRecord(classroomId,userId);
-    }
 
 }

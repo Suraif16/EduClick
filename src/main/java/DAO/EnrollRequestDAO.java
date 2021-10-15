@@ -49,18 +49,13 @@ public class EnrollRequestDAO {
             preparedStatement.setString(1,userId);
             preparedStatement.setString(2,classrooomId);
 
-            int result=preparedStatement.executeUpdate();
-            if(result==0){
-                deleteRecord(classrooomId,userId);
-            }
-            System.out.println("Successfully deleted");
+            preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
-
 
     }
 
@@ -97,6 +92,40 @@ public class EnrollRequestDAO {
         }
 
         return requestsList;
+
+
+    }
+
+    public String checkEnrollment(String classroomId, String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String records = null;
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT From_UserID FROM Enroll_Request WHERE From_UserID = ? AND To_ClassroomID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString(1,userId);
+            preparedStatement.setString(2,classroomId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while ( resultSet.next() ){
+                String fromId = resultSet.getString( "From_UserID" );
+                System.out.println(fromId);
+                records = fromId;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        return records;
 
 
     }
