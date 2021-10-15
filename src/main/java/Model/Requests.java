@@ -100,6 +100,23 @@ public class Requests {
 
     }
 
+    public void requestEnroll(String classroomId,String userId){
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        enrollRequestDAO.insertRecord(classroomId,userId);
+    }
+
+
+    public void deleteEnroll(String classroomId,String userId){
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        enrollRequestDAO.deleteRecord(classroomId,userId);
+    }
+
+    public boolean alreadyEnrolledCheck(String classroomId,String userId){
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        boolean status = enrollRequestDAO.checkEnrollment(classroomId,userId);
+        return status;
+    }
+
 
 
 }

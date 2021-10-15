@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Requests;
 import Model.Student;
 import Model.User;
 import org.json.JSONObject;
@@ -30,12 +31,15 @@ public class EnrollRequestServlet extends HttpServlet {
         String action = request.getParameter("action");
         System.out.println(action);
         if(action.equals("request")){
-            Student student = new Student(user);
-            student.requestEnroll(ClassroomId,user.getUserId());
-            jsonObject.put("Enroll","Requested");
+            Requests requests = new Requests();
+            //boolean notEnrolled = requests.alreadyEnrolledCheck(ClassroomId,user.getUserId());
+                requests.requestEnroll(ClassroomId,user.getUserId());
+                jsonObject.put("Enroll","Requested");
+
+
         }else if(action.equals("delete")){
-            Student student = new Student(user);
-            student.deleteEnroll(ClassroomId,user.getUserId());
+            Requests requests = new Requests();
+            requests.deleteEnroll(ClassroomId,user.getUserId());
             jsonObject.put("Enroll","Deleted");
         }
         out.write(jsonObject.toString());
