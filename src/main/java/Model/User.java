@@ -71,7 +71,7 @@ public class User {
 
     }
 
-    public User checkUsertype(){
+    public User getUser(){
         UserDAO userDAO = new UserDAO();
         return userDAO.select(this);
     }

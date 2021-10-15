@@ -52,7 +52,7 @@
 
                     <div class="classroomsListLinksItems">
 
-                        <a href=""  class="classRooms">
+                        <a href="Classroom.html"  class="classRooms">
 
                             classroom 1 : science : Grade 11 : 2022
                         </a>
@@ -61,7 +61,7 @@
 
                     <div class="classroomsListLinksItems">
 
-                        <a href=""  class="classRooms">
+                        <a href="Classroom.html"  class="classRooms">
 
                             classroom 2 : science : Grade 11 : 2022
 
@@ -71,7 +71,7 @@
 
                     <div class="classroomsListLinksItems">
 
-                        <a href=""  class="classRooms">
+                        <a href="Classroom.html"  class="classRooms">
 
                             classroom 3 : science : Grade 11 : 2022
 
@@ -81,7 +81,7 @@
 
                     <div class="classroomsListLinksItems">
 
-                        <a href=""  class="classRooms">
+                        <a href="Classroom.html"  class="classRooms">
 
                             classroom 4 : science : Grade 11 : 2022
 
@@ -109,7 +109,7 @@
 
                     <div class="postProfileSection">
 
-                        <a href="#" class="postProfile">
+                        <a href="TeacherProfile.html" class="postProfile">
 
 
                             <div class="postProfileImage">
@@ -209,7 +209,7 @@
 
                     <div class="postProfileSection">
 
-                        <a href="#" class="postProfile">
+                        <a href="TeacherProfile.html" class="postProfile">
 
 
                             <div class="postProfileImage">
@@ -307,7 +307,7 @@
 
                     <div class="postProfileSection">
 
-                        <a href="#" class="postProfile">
+                        <a href="TeacherProfile.html" class="postProfile">
 
 
                             <div class="postProfileImage">
@@ -405,7 +405,7 @@
 
                     <div class="postProfileSection">
 
-                        <a href="#" class="postProfile">
+                        <a href="TeacherProfile.html" class="postProfile">
 
 
                             <div class="postProfileImage">
@@ -536,9 +536,9 @@
 
                     <div>
 
-                        <input type="button" value="Accept">
+                        <input type="button" value="Accept" onclick="FriendRequestAccept(-1)">
 
-                        <input type="button" value="Decline" class="requestDecline">
+                        <input type="button" value="Decline" class="requestDecline" onclick="FriendRequestDecline(-1)">
 
 
                     </div>
@@ -572,81 +572,9 @@
 
                     <div>
 
-                        <input type="button" value="Accept">
+                        <input type="button" value="Accept" onclick="EnrollRequestAccept(-1)">
 
-                        <input type="button" value="Decline" class="requestDecline">
-
-
-                    </div>
-
-                </div>
-
-                <div class="singleNotification" >
-
-                    <div>
-
-                        <a href="#" class="profile">
-
-                            <div class="profileImage requestProfilePicture">
-
-                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
-
-
-                            </div>
-
-                            <div class="requestProfileName">User Name</div>
-
-                        </a>
-
-                    </div>
-
-                    <div>
-
-                        want to be your friend
-
-                    </div>
-
-                    <div>
-
-                        <input type="button" value="Accept">
-
-                        <input type="button" value="Decline" class="requestDecline">
-
-
-                    </div>
-
-                </div>
-
-                <div class="singleNotification" >
-
-                    <div>
-
-                        <a href="#" class="profile">
-
-                            <div class="profileImage requestProfilePicture">
-
-                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
-
-
-                            </div>
-
-                            <div class="requestProfileName">User Name</div>
-
-                        </a>
-
-                    </div>
-
-                    <div>
-
-                        wants to join to classroom 2 : science : grade 11 : 2022
-
-                    </div>
-
-                    <div>
-
-                        <input type="button" value="Accept">
-
-                        <input type="button" value="Decline" class="requestDecline">
+                        <input type="button" value="Decline" class="requestDecline" onclick="EnrollRequestDecline(-1)">
 
 
                     </div>
@@ -680,9 +608,9 @@
 
                     <div>
 
-                        <input type="button" value="Accept">
+                        <input type="button" value="Accept" onclick="FriendRequestAccept(-1)">
 
-                        <input type="button" value="Decline" class="requestDecline">
+                        <input type="button" value="Decline" class="requestDecline" onclick="FriendRequestDecline(-1)">
 
 
                     </div>
@@ -716,9 +644,81 @@
 
                     <div>
 
-                        <input type="button" value="Accept">
+                        <input type="button" value="Accept" onclick="EnrollRequestAccept(-1)">
 
-                        <input type="button" value="Decline" class="requestDecline">
+                        <input type="button" value="Decline" class="requestDecline" onclick="EnrollRequestDecline(-1)">
+
+
+                    </div>
+
+                </div>
+
+                <div class="singleNotification" >
+
+                    <div>
+
+                        <a href="#" class="profile">
+
+                            <div class="profileImage requestProfilePicture">
+
+                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                            </div>
+
+                            <div class="requestProfileName">User Name</div>
+
+                        </a>
+
+                    </div>
+
+                    <div>
+
+                        want to be your friend
+
+                    </div>
+
+                    <div>
+
+                        <input type="button" value="Accept" onclick="FriendRequestAccept(-1)">
+
+                        <input type="button" value="Decline" class="requestDecline" onclick="FriendRequestDecline(-1)">
+
+
+                    </div>
+
+                </div>
+
+                <div class="singleNotification" >
+
+                    <div>
+
+                        <a href="#" class="profile">
+
+                            <div class="profileImage requestProfilePicture">
+
+                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                            </div>
+
+                            <div class="requestProfileName">User Name</div>
+
+                        </a>
+
+                    </div>
+
+                    <div>
+
+                        wants to join to classroom 2 : science : grade 11 : 2022
+
+                    </div>
+
+                    <div>
+
+                        <input type="button" value="Accept" onclick="EnrollRequestAccept(-1)">
+
+                        <input type="button" value="Decline" class="requestDecline" onclick="EnrollRequestDecline(-1)">
 
 
                     </div>
@@ -753,9 +753,9 @@
 
                     <div>
 
-                        <input type="button" value="Accept">
+                        <input type="button" value="Accept" onclick="EnrollRequestAccept(-1)">
 
-                        <input type="button" value="Decline" class="requestDecline">
+                        <input type="button" value="Decline" class="requestDecline" onclick="EnrollRequestDecline(-1)">
 
 
                     </div>
@@ -790,9 +790,9 @@
 
                     <div>
 
-                        <input type="button" value="Accept">
+                        <input type="button" value="Accept" onclick="FriendRequestAccept(-1)">
 
-                        <input type="button" value="Decline" class="requestDecline">
+                        <input type="button" value="Decline" class="requestDecline" onclick="FriendRequestDecline(-1)">
 
 
                     </div>
@@ -826,9 +826,9 @@
 
                     <div>
 
-                        <input type="button" value="Accept">
+                        <input type="button" value="Accept" onclick="EnrollRequestAccept(-1)">
 
-                        <input type="button" value="Decline" class="requestDecline">
+                        <input type="button" value="Decline" class="requestDecline" onclick="EnrollRequestDecline(-1)">
 
 
                     </div>
@@ -863,9 +863,9 @@
 
                     <div>
 
-                        <input type="button" value="Accept">
+                        <input type="button" value="Accept" onclick="FriendRequestAccept(-1)">
 
-                        <input type="button" value="Decline" class="requestDecline">
+                        <input type="button" value="Decline" class="requestDecline" onclick="FriendRequestDecline(-1)">
 
 
                     </div>
@@ -929,7 +929,7 @@
 
         <div id="headerMainBar">
 
-            <a id="linkLogo" href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+            <a id="linkLogo" href="../Home.html"> <!--act as the container for the img tag for using flexbox -->
 
                 <img src="../Resources/Icons/Logo.png" class="logo">
 
@@ -950,7 +950,7 @@
 
             </div>
 
-            <a href="#" class="profile">
+            <a href="TeacherProfile.html" class="profile">
 
                 <div id="headerUserName">User Name</div>
 
@@ -1000,6 +1000,7 @@
 
     <script src="../Resources/JS/TeacherLoad.js" defer></script>
     <script src="../Resources/JS/TeacherEntrancePageMobileResponsive.js" defer></script>
+    <script src="../Resources/JS/Notification.js" defer></script>
 
 </body>
 

@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
             /*loginStatus = UserID*/
             jsonObject.put("User" , "User");
             User user = new User ( loginStatus );
-            user = user.checkUsertype();
+            user = user.getUser();
             session.setAttribute("User" , user);
             jsonObject.put("Usertype" ,user.getUserType() );
 
