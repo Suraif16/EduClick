@@ -1,5 +1,7 @@
 package Controller;
 
+import DAO.EnrollDAO;
+import DAO.EnrollRequestDAO;
 import Model.Requests;
 import Model.Student;
 import Model.User;
@@ -18,7 +20,7 @@ public class EnrollRequestServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
-        JSONObject jsonObject = new JSONObject();
+
 
         HttpSession session = request.getSession( false );
 
@@ -30,18 +32,27 @@ public class EnrollRequestServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         System.out.println(action);
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put( "serverResponse" , "Allowed" );
         if(action.equals("request")){
             Requests requests = new Requests();
-            //boolean notEnrolled = requests.alreadyEnrolledCheck(ClassroomId,user.getUserId());
+            String status = requests.alreadyEnrolledCheck(ClassroomId,user.getUserId());
+            System.out.println("notEnrolled : "+status);
+            if(status == "Not Enrolled"){
                 requests.requestEnroll(ClassroomId,user.getUserId());
                 jsonObject.put("Enroll","Requested");
+            }else{
+                System.out.println("Enroll wela inne cer");
 
+            }
 
         }else if(action.equals("delete")){
             Requests requests = new Requests();
             requests.deleteEnroll(ClassroomId,user.getUserId());
             jsonObject.put("Enroll","Deleted");
         }
+        System.out.println(jsonObject);
         out.write(jsonObject.toString());
         out.close();
 

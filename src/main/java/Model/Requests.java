@@ -111,9 +111,10 @@ public class Requests {
         enrollRequestDAO.deleteRecord(classroomId,userId);
     }
 
-    public boolean alreadyEnrolledCheck(String classroomId,String userId){
+    public String alreadyEnrolledCheck(String classroomId,String userId){
         EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
-        boolean status = enrollRequestDAO.checkEnrollment(classroomId,userId);
+        String status = enrollRequestDAO.checkEnrollment(classroomId,userId);
+        System.out.println(status);
         return status;
     }
 

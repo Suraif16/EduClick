@@ -49,10 +49,8 @@ public class EnrollRequestDAO {
             preparedStatement.setString(1,userId);
             preparedStatement.setString(2,classrooomId);
 
-            int result=preparedStatement.executeUpdate();
-            if(result==0){
-                deleteRecord(classrooomId,userId);
-            }
+            preparedStatement.executeUpdate();
+
             System.out.println("Successfully deleted");
             preparedStatement.close();
         } catch (SQLException e) {
@@ -102,7 +100,7 @@ public class EnrollRequestDAO {
 
     }
 
-    public boolean checkEnrollment(String classroomId, String userId){
+    public String checkEnrollment(String classroomId, String userId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         String records = null;
@@ -123,16 +121,22 @@ public class EnrollRequestDAO {
                 System.out.println(fromId);
                 records = fromId;
             }
+            System.out.println("Records DAO : "+records);
 
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(records.equals(null)){
-            return true;
+
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        if(records == null){
+            System.out.println("NOT ALLOWED DAO HEHEHEHE");
+            return "Not Enrolled";
         }
         else{
-            return false;
+            return "Enrolled";
         }
 
 
