@@ -61,10 +61,6 @@ public class EnrollRequestDAO {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
 
-        finally {
-            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
-        }
-
 
     }
 
