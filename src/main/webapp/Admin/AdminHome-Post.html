@@ -74,14 +74,14 @@
     <div id="postContents" >
       <div class="postContentContainer">
           <div class="postLikeShareButtons">
-            <input type="button" value="+Addpost" class="share"><!-- button -->
+            <input type="button" value="+Addpost" onclick="showAddClassroomFrom()" ><!-- button -->
               <div class="emptySpaceLikeShare" ></div>
               <input type="button" value="-Delete" class="share"><!-- button -->
 
           </div>
       </div>
-<!-- header-->
-        <div class="post">
+
+        <!--<div class="post">
             <div class="postContentContainer">
                 <div class="postProfileSection">
                     <a href="#" class="postProfile">
@@ -93,38 +93,60 @@
                     </a>
                 </div>
             </div>
-<!-- data-->
+
             <div class="postContentContainer">
                 <div class="postData">
                     <div class="postMessage">
-                        <!--<div>-->
+
                         Our new features will release soon.
-                        <!--</div>-->
+
                     </div>
-<!-- picture-->
+
                     <div class="postPicture">
                         <div class="postPictureImageContainer">
-                            <!--To only present the message without the picture, keep this value as null / empty-->
                             <img class="postPictureImage" src="../Resources/Images/new.png">
                         </div>
                     </div>
                 </div>
             </div>
-  <!-- search box-->
+
             <div class="postContentContainer">
                 <div class="postLikeShareButtons">
-                  <input type="button" value="Comments" class="share"><!-- button -->
+                  <input type="button" value="Comments" class="share">
                     <div class="emptySpaceLikeShare" >
                         &nbsp;
                     </div>
                     <div class="likeShareButtons" >
-                        <input type="button" value="Post" class="share"><!-- button -->
+                        <input type="button" value="Post" class="share">
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div>
+
+    <div id="addClassroomForm">
+        <div class="classroomFormRow">
+            <label >Heading :&nbsp; </label>
+            <input type="text" id="classroomName">
+        </div>
+        <div class="classroomFormRow">
+            <label >Message :&nbsp; </label>
+            <input type="text" id="classroomYearOfExamination">
+        </div>
+
+        <div class="classroomFormRow">
+            <label >Subject :&nbsp; </label>
+            <input type="text" id="classroomSubject">
+        </div>
+        <div id="classroomFormRowErrorMessage">
+            <!-- The error message will be shown here -->
+        </div>
+        <div class="classroomFormRow">
+            <input type="button" value="Post" onclick="createClassroom()">
+        </div>
+    </div>
+
 </div>
 
 
@@ -151,7 +173,8 @@
     &nbsp;
 </footer>-->
 
-<script src="JS/Settings.js"></script>
+
+<script src="../Resources/JS/AdminHomePost.js" defer></script>
 
 </body>
 
