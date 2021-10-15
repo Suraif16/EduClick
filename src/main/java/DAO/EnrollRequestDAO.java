@@ -50,8 +50,6 @@ public class EnrollRequestDAO {
             preparedStatement.setString(2,classrooomId);
 
             preparedStatement.executeUpdate();
-
-            System.out.println("Successfully deleted");
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,8 +119,6 @@ public class EnrollRequestDAO {
                 System.out.println(fromId);
                 records = fromId;
             }
-            System.out.println("Records DAO : "+records);
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -131,13 +127,7 @@ public class EnrollRequestDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
-        if(records == null){
-            System.out.println("NOT ALLOWED DAO HEHEHEHE");
-            return "Not Enrolled";
-        }
-        else{
-            return "Enrolled";
-        }
+        return records;
 
 
     }

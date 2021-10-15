@@ -114,8 +114,13 @@ public class Requests {
     public String alreadyEnrolledCheck(String classroomId,String userId){
         EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
         String status = enrollRequestDAO.checkEnrollment(classroomId,userId);
-        System.out.println(status);
-        return status;
+        if(status == null){
+            return "Not Enrolled";
+        }
+        else{
+            return "Enrolled";
+        }
+
     }
 
 
