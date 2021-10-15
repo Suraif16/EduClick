@@ -57,8 +57,6 @@ public class EnrollRequestDAO {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
 
-
-
     }
 
     public ArrayList< Requests > selectAll( Classroom classroom ){

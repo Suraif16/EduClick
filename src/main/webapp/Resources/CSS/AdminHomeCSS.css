@@ -57,14 +57,6 @@ header > div#headerButtons > input#classroomListHideButton {
 
 }
 
-
-
-
-
-
-
-
-
 .logo{
     width: 70%;
     height: 70%;
@@ -338,6 +330,44 @@ div#content > div#postContents {
 .emptySpaceLikeShare{
     /*child of postLikeShareButtons*/
     flex: 8;
+}
+
+div#content > div#addClassroomForm{
+
+    background-color: white;
+    margin: 8% auto auto 23%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: fixed;
+    width: 40%;
+    padding: 1%;
+    height: fit-content;
+    display: none; /*become a container for classroomFormRow*/
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+div#content > div#addClassroomForm > div.classroomFormRow{
+    /*child of addclassroomForm*/
+    flex: 1;
+    margin: 1%;
+    display: flex; /*becomes a container for the input elements*/
+    flex-direction: row;
+    /*padding: 1% 1%;*/
+    color: black;
+    flex-wrap: wrap;
+}
+
+div#content > div#addClassroomForm > div.classroomFormRow > input{
+    flex: 1;
+}
+
+#classroomFormRowErrorMessage{
+    flex: 1;
+    margin: 1%;
+    flex-direction: row;
+    color: red;
+    display: none ;
+    flex-wrap: wrap;
 }
 
 input[type="button"]{
