@@ -1,5 +1,8 @@
 package Controller;
 
+import DAO.EnrollDAO;
+import DAO.EnrollRequestDAO;
+import Model.Requests;
 import Model.Student;
 import Model.User;
 import org.json.JSONObject;
@@ -17,7 +20,7 @@ public class EnrollRequestServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
-        JSONObject jsonObject = new JSONObject();
+
 
         HttpSession session = request.getSession( false );
 
@@ -29,14 +32,33 @@ public class EnrollRequestServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         System.out.println(action);
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put( "serverResponse" , "Allowed" );
         if(action.equals("request")){
-            Student student = new Student(user);
-            student.requestEnroll(ClassroomId,user.getUserId());
-            jsonObject.put("Enroll","Requested");
+            Requests requests = new Requests();
+            String status = requests.alreadyEnrolledCheck(ClassroomId,user.getUserId());
+            System.out.println("Status : "+status);
+            if(status == "Not Enrolled"){
+                requests.requestEnroll(ClassroomId,user.getUserId());
+                jsonObject.put("Enroll","Requested");
+            }else{
+                jsonObject.put("Enroll","Already Enrolled");
+
+            }
+
         }else if(action.equals("delete")){
-            Student student = new Student(user);
-            student.deleteEnroll(ClassroomId,user.getUserId());
-            jsonObject.put("Enroll","Deleted");
+            Requests requests = new Requests();
+            String status = requests.alreadyEnrolledCheck(ClassroomId,user.getUserId());
+            System.out.println("Status : "+status);
+
+            if(status=="Enrolled"){
+                requests.deleteEnroll(ClassroomId,user.getUserId());
+                jsonObject.put("Enroll","Deleted");
+            }else{
+                jsonObject.put("Enroll","No Enrollment");
+            }
+
         }
         out.write(jsonObject.toString());
         out.close();
