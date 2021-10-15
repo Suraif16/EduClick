@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Student;
 import Model.User;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ public class EnrollRequestServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
+        JSONObject jsonObject = new JSONObject();
 
         HttpSession session = request.getSession( false );
 
@@ -30,10 +32,14 @@ public class EnrollRequestServlet extends HttpServlet {
         if(action.equals("request")){
             Student student = new Student(user);
             student.requestEnroll(ClassroomId,user.getUserId());
+            jsonObject.put("Enroll","Requested");
         }else if(action.equals("delete")){
             Student student = new Student(user);
             student.deleteEnroll(ClassroomId,user.getUserId());
+            jsonObject.put("Enroll","Deleted");
         }
+        out.write(jsonObject.toString());
+        out.close();
 
 
 

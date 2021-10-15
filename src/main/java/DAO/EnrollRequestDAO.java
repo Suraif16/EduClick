@@ -49,13 +49,22 @@ public class EnrollRequestDAO {
             preparedStatement.setString(1,userId);
             preparedStatement.setString(2,classrooomId);
 
-            preparedStatement.executeUpdate();
+            int result=preparedStatement.executeUpdate();
+            if(result==0){
+                deleteRecord(classrooomId,userId);
+            }
+            System.out.println("Successfully deleted");
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
+
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+
 
     }
 
@@ -92,6 +101,7 @@ public class EnrollRequestDAO {
         }
 
         return requestsList;
+
 
     }
 }
