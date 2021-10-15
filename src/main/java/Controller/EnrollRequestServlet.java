@@ -44,6 +44,7 @@ public class EnrollRequestServlet extends HttpServlet {
                 jsonObject.put("Enroll","Requested");
             }else{
                 System.out.println("Enroll wela inne cer");
+                jsonObject.put("Enroll","Already Enrolled");
 
             }
 
