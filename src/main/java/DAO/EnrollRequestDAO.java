@@ -53,5 +53,8 @@ public class EnrollRequestDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
     }
 }
