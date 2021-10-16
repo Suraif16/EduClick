@@ -148,9 +148,8 @@ public class UserDAO {
         return user;
     }
 
-    public int countTeacher() {
-        /*Here the login table from the database is accessed to check if the password is correct,
-         * if the admin logs in then the userid is set to "", otherwise to a user id*/
+    /*public int countTeacher() {
+
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         int count=0;
@@ -168,7 +167,7 @@ public class UserDAO {
             if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
         }
         return count;
-    }
+    }*/
 
 
     public void count ( ){
