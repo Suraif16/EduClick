@@ -23,7 +23,7 @@ function searchForTeacher() {
     }
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/searchTeacher" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-    httpreq.send("searchBarText=" + searchBarValue);
+    httpreq.send("searchBarValue=" + searchBarValue);
     console.log("bbb");
 
 }
