@@ -22,7 +22,7 @@ public class SearchTeacherServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        String teacherName = request.getParameter("searchBarValue");
+        String teacherName = request.getParameter("searchValue");
 
         System.out.println(teacherName);
 
