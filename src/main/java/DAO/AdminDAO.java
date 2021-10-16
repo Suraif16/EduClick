@@ -1,54 +1,42 @@
 package DAO;
 
 import Database.DBConnectionPool;
-import Model.User;
+import Model.AdminPost;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class AdminDAO {
 
-    /*ArrayList<String> arrayList = new ArrayList<String>();
 
-    public ArrayList<String> getArrayList() {
-        return arrayList;
-    }*/
+    public String generatedSysPostUserId;
 
-    public String generatedUserId;
-
-    public String getGeneratedUserId() {
-        return generatedUserId;
-    }
-    public void setGeneratedUserId(String generatedUserId) {
-        this.generatedUserId = generatedUserId;
+    public String getGeneratedSysPostUserId() {
+        return generatedSysPostUserId;
     }
 
+    public void setGeneratedSysPostUserId(String generatedSysPostUserId) {
+        this.generatedSysPostUserId = generatedSysPostUserId;
+    }
 
-
-    public String insert(User user){
+    public String insert(AdminPost adminPost){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Gender,Country,City,RegistrationDate,RegistrationTime) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Admin_Post_System_Updates (APTextMsg,APDate,APTime) VALUES (?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1,user.getFirstName());
-            preparedStatement.setString(2,user.getLastName());
-            preparedStatement.setString(3, String.valueOf(user.getDateOfBirth()));
-            preparedStatement.setString(4,user.getMobileNumber());
-            preparedStatement.setString(5,user.getUserType());
-            preparedStatement.setString(6,user.getGender());
-            preparedStatement.setString(7,user.getCountry());
-            preparedStatement.setString(8,user.getCity());
-            preparedStatement.setString(9, String.valueOf(user.getRegistrationDate()));
-            preparedStatement.setString(10, String.valueOf(user.getRegistrationTime()));
+            preparedStatement.setString(1, adminPost.getTextMsg());
+            preparedStatement.setString(2, String.valueOf(adminPost.getDate()));
+            preparedStatement.setString(3, String.valueOf(adminPost.getTime()));
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             if (resultSet.next()){
-                generatedUserId = resultSet.getString(1);
+                generatedSysPostUserId = resultSet.getString(1);
 
             }
             //returns userID
@@ -61,41 +49,30 @@ public class AdminDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
-        return generatedUserId;
+        return generatedSysPostUserId;
     }
 
-    public User select(User user) {
-        /*Here the login table from the database is accessed to check if the password is correct,
-         * if the admin logs in then the userid is set to "", otherwise to a user id*/
+    public AdminPost select(AdminPost adminPost) {
+
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        String userType = "";
+
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City from Users where UserID = ?";
+            String sql = "select APTextMsg, APPhoto, APTime, APDate from Admin_Post_System_Updates where SysPostID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, user.getUserId());
+            preparedStatement.setString(1, adminPost.getSysPostID());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                String firstName = resultSet.getString("FirstName");
-                String lastName = resultSet.getString("LastName");
-                String dataOfBirth = resultSet.getString("DOB");
-                String mobileNumber = resultSet.getString("MobileNum");
-                String profilePicture = resultSet.getString("ProfilePic");
-                String country = resultSet.getString("Country");
-                String city = resultSet.getString("City");
-                String gender = resultSet.getString("Gender");
-                userType = resultSet.getString("UserType");
+                String textmsg = resultSet.getString("APTextMsg");
+                String photo = resultSet.getString("APPhoto");
+                String time = resultSet.getString("APTime");
+                String date = resultSet.getString("APDate");
 
-                user.setFirstName(firstName);
-                user.setLastName(lastName);
-                user.setDateOfBirth(LocalDate.parse(dataOfBirth));
-                user.setMobileNumber(mobileNumber);
-                user.setProfilePicture(profilePicture);
-                user.setCountry(country);
-                user.setCity(city);
-                user.setGender(gender);
-                user.setUserType(userType);
+                adminPost.setTextMsg(textmsg);
+                adminPost.setPhoto(photo);
+                adminPost.setDate(LocalDate.parse(time));
+                adminPost.setTime(LocalTime.parse(date));
 
             }
             resultSet.close();
@@ -107,8 +84,7 @@ public class AdminDAO {
         } finally {
             if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
         }
-        return user;
+        return adminPost;
     }
 
-    
 }
