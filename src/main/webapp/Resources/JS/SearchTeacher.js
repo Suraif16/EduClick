@@ -1,34 +1,36 @@
-const searchValue = document.getElementById("searchBarText");
+const searchValue = document.getElementById("searchBarText").value;
 
 searchValue.addEventListener( "keyup" , function (event){
 
-    const searchBarValue = document.getElementById("searchBarText").value;
-    console.log(searchBarValue);
-    searchForTeacher();
+   // const searchBarValue = document.getElementById("searchBarText").value;
+   // console.log(searchBarValue);
+    if(event.key === "Enter"){
+        searchForTeacher(searchValue);
+    }
 
 });
 
-function searchForTeacher() {
+function searchForTeacher(searchValue) {
 
-    const searchBarValue = document.getElementById("searchBarText").value;
-    console.log(searchBarValue);
+   // let searchBarValue = document.getElementById("searchBarText").value;
+
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            console.log("hh");
+
             completeSearch( this );
         }
     }
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/searchTeacher" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-    httpreq.send("searchBarValue=" + searchBarValue);
-    console.log("bbb");
+    httpreq.send("searchValue=" + searchValue);
+
 
 }
 const completeSearch = function( httpreq ){
-
+    console.log("b123bb");
 
     let jsonResponse = JSON.parse( httpreq.responseText);
 
