@@ -1,4 +1,4 @@
-const searchValue = document.getElementById("searchBarText").value;
+const searchValue = document.getElementById("searchBarText");
 
 searchValue.addEventListener( "keyup" , function (event){
 
@@ -39,7 +39,8 @@ const completeSearch = function( httpreq ){
     }else if(jsonResponse.serverResponse === "Allowed") {
         /* This is where I need work everytime as per the authentication filter*/
 
-        displayRequest( jsonResponse );
+      //  displayRequest( jsonResponse );
+        console.log("jsonResponse");
 
     }else{
         alert("something went wrong!!!");
