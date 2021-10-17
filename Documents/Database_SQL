@@ -227,9 +227,10 @@ CREATE TABLE Share(
 
 CREATE TABLE Admin_Post_System_Updates(
     SysPostID BIGINT AUTO_INCREMENT,
-    TextMsg VARCHAR(8000),
-    Photo BIGINT NOT NULL,
-    Flag ENUM('TRUE','FALSE'),
+    APTextMsg VARCHAR(8000),
+    APPhoto BIGINT,
+    APTime TIME NOT NULL,
+    APDate DATE NOT NULL,
     PRIMARY KEY(SysPostID)
     )ENGINE = INNODB;
 
