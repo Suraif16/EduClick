@@ -32,7 +32,7 @@ public class OTPValidateServlet extends HttpServlet {
         String email = ( String ) session.getAttribute( "Email" );
 
         Login login = new Login( email );
-
+        System.out.println( OTPValue + " : " + email + " : " + user.getUserType() + " : " + (String) session.getAttribute("optStatus"));
         if(OPTUserValue.equals(OTPValue)){
 
             jsonObject.put( "OTPStatus" , "valid" );
@@ -56,7 +56,7 @@ public class OTPValidateServlet extends HttpServlet {
 
             }else if( otpStatus.equals("Login") ){
 
-                login.setPasswordIncorrect( "false" );
+                login.setPasswordIncorrect( "False" );
                 login.updatePasswordIncorrect();
 
             }

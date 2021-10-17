@@ -32,8 +32,12 @@ const sendServerData = function (){
             window.location.replace("/EduClick_war_exploded/Admin/AdminHome-DashBoard.html");
         }
         else if ( jsonLoginResponse.User === "User"){
+            if( jsonLoginResponse.otpSend === "True"){
 
-            if ( jsonLoginResponse.Usertype === "Teacher"){
+                window.location.replace( "/EduClick_war_exploded/OtpPage.html");
+
+            }
+            else if ( jsonLoginResponse.Usertype === "Teacher"){
                 window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
             }
              else if ( jsonLoginResponse.Usertype === "Student")

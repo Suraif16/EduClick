@@ -29,7 +29,7 @@ public class LoginDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select Password,UserID from Login where EmailID = ?";
+            String sql = "select Password,UserID,EmailConfirmation,PasswordIncorrect from Login where EmailID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString(1 , email);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -37,9 +37,12 @@ public class LoginDAO {
 
                 String pswd = resultSet.getString("Password");
                 String userid = resultSet.getString("UserID");
-
+                String emailConfirmation = resultSet.getString("EmailConfirmation");
+                String passwordIncorrect = resultSet.getString( "PasswordIncorrect" );
                 jsonObject.put( "pswd" , pswd );
                 jsonObject.put( "userid" , userid );
+                jsonObject.put( "emailConfirmation" , emailConfirmation );
+                jsonObject.put( "passwordIncorrect" , passwordIncorrect );
 
             }
             resultSet.close();

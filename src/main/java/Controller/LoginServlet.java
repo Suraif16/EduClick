@@ -31,33 +31,55 @@ public class LoginServlet extends HttpServlet {
         LocalTime loginTime = LocalTime.now();
 
         Login login = new Login( email , password , loginDate , loginTime);
-        String loginStatus = login.checkPassword();/*here we check for the password
+        JSONObject jsonObjectLoginStatus = login.checkPassword();/*here we check for the password
         depending on the return value we make the decisions as below
         if loginStatus has an empty string then it is an admin ,
         if loginStatus has an id then it is an user*/
 
-        if(loginStatus.equals("password incorrect")){
-            jsonObject.put("User" , "incorrect password");
+
+
+        if ( jsonObjectLoginStatus.get( "pswd" ).equals( "" ) && jsonObjectLoginStatus.get( "userid" ).equals( "" )){
+
             session.invalidate();
-        }else if(loginStatus.equals("User does not exist")){
-            jsonObject.put("User" , "User does not exist");
-            session.invalidate();
-        }
-        else if(loginStatus.equals("")){
-            /*admin*/
-            Admin admin = new Admin( "Admin" , email );
-            session.setAttribute("Admin" , admin);
-            jsonObject.put("User" , "Admin");
+            jsonObject.put( "User" , "User does not exist");
+
+        }else if( jsonObjectLoginStatus.get("pswd").equals( password ) ){
+
+            if( jsonObjectLoginStatus.get( "userid" ).equals("") ){
+
+                Admin admin = new Admin( "Admin" , email );
+                session.setAttribute( "Admin" , admin );
+                jsonObject.put( "User" , "Admin");
+
+            }else{
+
+                jsonObject.put( "User" , "User");
+                User user = new User( (String) jsonObjectLoginStatus.get("userid") );
+                user = user.getUser();
+                session.setAttribute("User" , user);
+                jsonObject.put("Usertype" ,user.getUserType() );
+                session.setAttribute("Email" , email);
+                if( jsonObjectLoginStatus.get("emailConfirmation").equals("False") ||  jsonObjectLoginStatus.get("passwordIncorrect").equals("True") ) {
+
+                    jsonObject.put("otpSend", "True");
+                    if (jsonObjectLoginStatus.get("emailConfirmation").equals("False")){
+
+                        session.setAttribute( "optStatus" , "Registration");
+
+                    }else {
+
+                        session.setAttribute( "optStatus" , "Login");
+
+                    }
+
+                }
+
+            }
 
         }else{
-            /*for users*/
-            /*loginStatus = UserID*/
-            jsonObject.put("User" , "User");
-            User user = new User ( loginStatus );
-            user = user.getUser();
-            session.setAttribute("User" , user);
-            jsonObject.put("Usertype" ,user.getUserType() );
-            session.setAttribute("Email" , email);
+
+            session.invalidate();
+            jsonObject.put( "User" , "incorrect password" );
 
         }
 

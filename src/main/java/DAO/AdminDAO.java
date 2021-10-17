@@ -19,6 +19,8 @@ public class AdminDAO {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "pswd" , "" );
         jsonObject.put( "userid" , "" );
+        jsonObject.put( "emailConfirmation" , "" );
+        jsonObject.put( "passwordIncorrect" , "" );
 
         try {
 
