@@ -7,7 +7,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class AdminDAO {
+public class AdminPostDAO {
 
 
     public String generatedSysPostUserId;
