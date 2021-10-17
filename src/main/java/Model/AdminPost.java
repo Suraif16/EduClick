@@ -1,5 +1,7 @@
 package Model;
 
+import DAO.AdminDAO;
+import DAO.UserDAO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -50,5 +52,19 @@ public class AdminPost {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    public AdminPost(String sysPostID, String textMsg, LocalDate date, LocalTime time) {
+        this.sysPostID = sysPostID;
+        this.textMsg = textMsg;
+        this.date = date;
+        this.time = time;
+    }
+    public void adminPost(){
+        AdminDAO adminDAO = new AdminDAO();
+        adminDAO.insert(this);
+        //UserDAO userDAO = new UserDAO();
+        //userDAO.insert(this);
+        //userId=userDAO.getGeneratedUserId();
     }
 }
