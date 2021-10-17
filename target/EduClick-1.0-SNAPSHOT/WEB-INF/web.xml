@@ -258,6 +258,18 @@
     
     <!-- end of DisplayRequestServlet-->
 
+    <!-- beginning of incorrectPassword -->
+    <servlet>
+        <servlet-name>IncorrectPassword</servlet-name>
+        <servlet-class>Controller.IncorrectPassword</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>IncorrectPassword</servlet-name>
+        <url-pattern>/incorrectPassword</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of incorrectPassword -->
 
     <session-config>
 
