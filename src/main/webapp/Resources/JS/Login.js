@@ -56,7 +56,7 @@ const sendServerData = function (){
             passwordIncorrectCount += 1;
 
             if (passwordIncorrectCount >= 3){
-
+                /* if password is wrong more than or equal to 3 times the database is updated and the page is forwarded to otp*/
                 let httpReq = new XMLHttpRequest();
 
                 httpReq.onreadystatechange = function (){

@@ -18,7 +18,7 @@ public class IncorrectPasswordServlet extends HttpServlet {
         Login login = new Login( email );
 
         login.setPasswordIncorrect( "True" );
-        login.updatePasswordIncorrect();
+        login.updatePasswordIncorrect(); /* updates the database with incorrect password as true*/
         session.setAttribute( "optStatus" , "Login");
     }
 

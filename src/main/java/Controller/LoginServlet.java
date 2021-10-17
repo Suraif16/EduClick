@@ -77,6 +77,7 @@ public class LoginServlet extends HttpServlet {
             }
 
         }else{
+            /* this is required when the password is wrong three times, the incorrectPasswordServlet needs this session object*/
             User user = new User( (String) jsonObjectLoginStatus.get("userid") );
             user = user.getUser();
             session.setAttribute("User" , user);

@@ -49,12 +49,12 @@ public class OTPValidateServlet extends HttpServlet {
             String otpStatus = (String) session.getAttribute("optStatus");
 
             if ( otpStatus.equals("Registration") ){
-
+                /* if it was a registration verification then emailconfirmation is updated to true in the database*/
                 login.setEmailConfirmation("True");
                 login.updateEmailConfirmation();
 
             }else if( otpStatus.equals("Login") ){
-
+                /* if it was a login password incorrect verification then passwordincorrect is updated to true in the database*/
                 login.setPasswordIncorrect( "False" );
                 login.updatePasswordIncorrect();
 
