@@ -57,10 +57,10 @@ public class LoginServlet extends HttpServlet {
             user = user.getUser();
             session.setAttribute("User" , user);
             jsonObject.put("Usertype" ,user.getUserType() );
-
+            session.setAttribute("Email" , email);
 
         }
-        session.setAttribute("Email" , email);
+
         out.write(jsonObject.toString());
         out.close();
 

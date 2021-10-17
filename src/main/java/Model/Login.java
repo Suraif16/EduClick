@@ -1,6 +1,8 @@
 package Model;
 
+import DAO.AdminDAO;
 import DAO.LoginDAO;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -112,22 +114,35 @@ public class Login {
     public String checkPassword(){
         /*here the loginDao is called and it it return null for userid then it is the admin otherwise
         * its a user. If the password is incorrect then it returns as password incorrect*/
-        LoginDAO loginDAO = new LoginDAO();
-        loginDAO.select(this.email);
-        if(loginDAO.getPswd()==null && loginDAO.getUserid()==null){
-            return "User does not exist";
 
-        }else if(loginDAO.getPswd().equals(this.password)){
-            if ( !loginDAO.getUserid().equals("") ){
+        AdminDAO adminDAO = new AdminDAO();
+        JSONObject jsonObject = adminDAO.select( this.email );
+
+        if ( !( jsonObject.get( "pswd" ).equals("") ) ){
+            /* if pswd is not "" then it is an admin */
+            return ( String )jsonObject.get("userid"); /* here the return values is always ""*/
+        }else{
+            /* else it is a user */
+            LoginDAO loginDAO = new LoginDAO();
+            jsonObject = loginDAO.select(this.email);
+
+            if ( jsonObject.get("pswd").equals( "" ) && jsonObject.get("userid").equals( "" ) ){
+
+                return "User does not exist";
+
+            }else if( jsonObject.get( "pswd" ).equals( this.password ) ){
+
                 loginDAO.update(this.email,this.loginDate,this.loginTime);
-                return loginDAO.getUserid();
+                return (String) jsonObject.get( "userid" );
+
+            }else{
+                
+                return "password incorrect";
+
             }
-            return "";
+
         }
-        else {
-            System.out.println("password incorrect");
-            return "password incorrect";
-        }
+
     }
 
     public String checkEmail(){

@@ -127,23 +127,15 @@
 
     <div id="addClassroomForm">
         <div class="classroomFormRow">
-            <label >Heading :&nbsp; </label>
+            <label >Message :&nbsp; </label>
             <input type="text" id="classroomName">
         </div>
-        <div class="classroomFormRow">
-            <label >Message :&nbsp; </label>
-            <input type="text" id="classroomYearOfExamination">
-        </div>
 
-        <div class="classroomFormRow">
-            <label >Subject :&nbsp; </label>
-            <input type="text" id="classroomSubject">
-        </div>
         <div id="classroomFormRowErrorMessage">
             <!-- The error message will be shown here -->
         </div>
         <div class="classroomFormRow">
-            <input type="button" value="Post" onclick="createClassroom()">
+            <input id="postButton" type="button" name="post" value="Post" >
         </div>
     </div>
 
