@@ -111,37 +111,22 @@ public class Login {
 
     /*other functions*/
 
-    public String checkPassword(){
+    public JSONObject checkPassword(){
         /*here the loginDao is called and it it return null for userid then it is the admin otherwise
         * its a user. If the password is incorrect then it returns as password incorrect*/
 
         AdminDAO adminDAO = new AdminDAO();
         JSONObject jsonObject = adminDAO.select( this.email );
 
-        if ( !( jsonObject.get( "pswd" ).equals("") ) ){
-            /* if pswd is not "" then it is an admin */
-            return ( String )jsonObject.get("userid"); /* here the return values is always ""*/
-        }else{
-            /* else it is a user */
+        if ( ( jsonObject.get( "pswd" ).equals("") ) ){
+
+            /* if pswd is "" then it is a user */
             LoginDAO loginDAO = new LoginDAO();
             jsonObject = loginDAO.select(this.email);
 
-            if ( jsonObject.get("pswd").equals( "" ) && jsonObject.get("userid").equals( "" ) ){
-
-                return "User does not exist";
-
-            }else if( jsonObject.get( "pswd" ).equals( this.password ) ){
-
-                loginDAO.update(this.email,this.loginDate,this.loginTime);
-                return (String) jsonObject.get( "userid" );
-
-            }else{
-                
-                return "password incorrect";
-
-            }
-
         }
+
+        return jsonObject;
 
     }
 

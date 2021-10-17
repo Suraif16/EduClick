@@ -86,7 +86,7 @@ public class RegisterServlet extends HttpServlet {
            }
 
            generatedUserID = user.getUserId();
-           Login login = new Login( email , password , saltingKey , loginDate , loginTime, generatedUserID , "false" , "false");
+           Login login = new Login( email , password , saltingKey , loginDate , loginTime, generatedUserID , "False" , "False");
            /* Here since the email confirmation is not done yet (which is done through the otp) it is false.
            * since the password is correct, passwordIncorrect is false.*/
            login.insertRecord();
