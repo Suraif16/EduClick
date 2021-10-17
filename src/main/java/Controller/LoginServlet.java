@@ -77,8 +77,11 @@ public class LoginServlet extends HttpServlet {
             }
 
         }else{
-
-            session.invalidate();
+            User user = new User( (String) jsonObjectLoginStatus.get("userid") );
+            user = user.getUser();
+            session.setAttribute("User" , user);
+            session.setAttribute("Email" , email);
+//            session.invalidate();
             jsonObject.put( "User" , "incorrect password" );
 
         }

@@ -57,7 +57,21 @@ const sendServerData = function (){
 
             if (passwordIncorrectCount >= 3){
 
-                // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+                let httpReq = new XMLHttpRequest();
+
+                httpReq.onreadystatechange = function (){
+
+                    if ( httpReq.readyState === 4 && httpReq.status === 200 ){
+
+                        window.location.replace( "/EduClick_war_exploded/OtpPage.html");
+
+                    }
+
+                }
+
+                httpReq.open( "POST" , "/EduClick_war_exploded/incorrectPassword" , true );
+                httpReq.send();
+
                 /*here if the password is incorrect the user will be sent to a different page to handle it*/
             }
 
