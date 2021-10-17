@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.UserDAO;
+import Model.AdminPost;
 import Model.*;
 import org.json.JSONObject;
 
@@ -28,7 +29,7 @@ public class AdminServlet extends HttpServlet {
 
         /*for users*/
         /*loginStatus = UserID*/
-       /* UserDAO userDAO = new UserDAO();
+        /* UserDAO userDAO = new UserDAO();
         int count= userDAO.countTeacher();
         jsonObject.put("Teacher" ,count );*/
         UserDAO userDAO = new UserDAO();
@@ -60,7 +61,8 @@ public class AdminServlet extends HttpServlet {
         System.out.println(textMsg);
         System.out.println(date);
         System.out.println(time);
-
+        AdminPost adminpost = new AdminPost(generatedUserID,textMsg,date,time);
+        adminpost.adminPost();
        /* Login loginemail = new Login(email);
 
 
