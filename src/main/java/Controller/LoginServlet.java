@@ -60,6 +60,7 @@ public class LoginServlet extends HttpServlet {
 
 
         }
+        session.setAttribute("Email" , email);
         out.write(jsonObject.toString());
         out.close();
 

@@ -56,6 +56,8 @@ CREATE TABLE Login(
     LoginDate DATE NOT NULL,
     LoginTime TIME NOT NULL,
     UserID BIGINT NOT NULL,
+    EmailConfirmation ENUM('True','False'),
+    PasswordIncorrect ENUM('True','False'),
     PRIMARY KEY(EmailID)
     )ENGINE = INNODB;
 
