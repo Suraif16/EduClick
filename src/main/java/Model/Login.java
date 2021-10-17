@@ -12,6 +12,8 @@ public class Login {
     private String saltingKey;
     private LocalDate loginDate;
     private LocalTime loginTime;
+    private String emailConfirmation;
+    private String passwordIncorrect;
 
     public String getUserID() {
         return userID;
@@ -65,6 +67,22 @@ public class Login {
         this.saltingKey = saltingKey;
     }
 
+    public String getEmailConfirmation() {
+        return emailConfirmation;
+    }
+
+    public void setEmailConfirmation(String emailConfirmation) {
+        this.emailConfirmation = emailConfirmation;
+    }
+
+    public String getPasswordIncorrect() {
+        return passwordIncorrect;
+    }
+
+    public void setPasswordIncorrect(String passwordIncorrect) {
+        this.passwordIncorrect = passwordIncorrect;
+    }
+
     /*Getters and setters ends here*/
 
     /*Constructor*/
@@ -75,13 +93,15 @@ public class Login {
         this.loginTime = loginTime;
     }
 
-    public Login(String email , String password , String saltingKey, LocalDate loginDate , LocalTime loginTime,String userID){
+    public Login(String email , String password , String saltingKey, LocalDate loginDate , LocalTime loginTime,String userID, String emailConfirmation , String passwordIncorrect){
         this.email = email;
         this.password = password;
         this.saltingKey = saltingKey;
         this.loginDate = loginDate;
         this.loginTime = loginTime;
         this.userID = userID;
+        this.emailConfirmation = emailConfirmation;
+        this.passwordIncorrect = passwordIncorrect;
     }
     public Login(String email ){
         this.email = email;
@@ -121,5 +141,19 @@ public class Login {
     public void insertRecord(){
         LoginDAO loginDAO = new LoginDAO();
         loginDAO.enter(this);
+    }
+
+    public void updateEmailConfirmation(){
+
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.updateValueStatus( this , "EmailConfirmation");
+
+    }
+
+    public void updatePasswordIncorrect(){
+
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.updateValueStatus( this , "PasswordIncorrect");
+
     }
 }
