@@ -53,7 +53,7 @@ div#content{
     flex: 1;/*child of the body*/
     order: 2;
     padding: 2%;
-    margin: 9.6% 0; /*to position the rooter on the correct place*/
+    margin: 0% 0; /*to position the rooter on the correct place*/
 
 }
 div#contentFlex{
@@ -138,6 +138,7 @@ input[type = "city"]{
 div#mobileno-container{
     padding: 0.3%;
     flex: 5;
+    flex-wrap: nowrap;
 
 
 }
@@ -145,7 +146,7 @@ input#mobileNo{
 
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
-    width: 70%;
+    width: 77%;
     display: inline-flex;
 
 }
@@ -154,6 +155,7 @@ select#countryCode{
     padding: 0.3%;
     flex: 5;/*a child of formRow*/
     width: 20%;
+    display: inline-flex;
 
 }
 
@@ -178,6 +180,10 @@ input[type = "radio"]{
 select{
     width: 85%;
     margin: auto;
+    padding: 0.3%;
+    flex: 5;/*a child of formRow*/
+
+
 
 }
 input{
@@ -380,4 +386,6 @@ div#CError{
 
 
 }
+
+
 
