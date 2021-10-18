@@ -91,7 +91,10 @@ const sendServerData = function () {
 
         if (jsonRegistrationResponse.EmailStatus === "InvalidEmail") {
 
-            alert("Email alread exist!!!");
+            const emailExistError = document.getElementById("EmailExistError");
+            emailErrorStatus = true;
+            emailExistError.innerHTML = "**Email already exists.Please enter another email";
+            emailExistErrorError.style.display = "contents";
 
         }
         else if (jsonRegistrationResponse.EmailStatus === "ValidEmail"){

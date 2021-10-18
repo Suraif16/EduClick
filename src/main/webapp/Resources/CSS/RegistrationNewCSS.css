@@ -244,6 +244,13 @@ div#EmailError{
 
 
 }
+div#EmailExistError{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: x-small;
+
+
+}
 
 div#EError{
 
