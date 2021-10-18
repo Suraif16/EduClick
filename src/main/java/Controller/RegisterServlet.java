@@ -86,12 +86,15 @@ public class RegisterServlet extends HttpServlet {
            }
 
            generatedUserID = user.getUserId();
-           Login login = new Login( email , password , saltingKey , loginDate , loginTime, generatedUserID);
+           Login login = new Login( email , password , saltingKey , loginDate , loginTime, generatedUserID , "False" , "False");
+           /* Here since the email confirmation is not done yet (which is done through the otp) it is false.
+           * since the password is correct, passwordIncorrect is false.*/
            login.insertRecord();
            user.setRegistrationDate(null);
            user.setRegistrationTime(null);
            session.setAttribute("User" , user );
-           session.setAttribute("Email" , email);
+           session.setAttribute("Email" , email); /* this is for the use of otp */
+           session.setAttribute( "optStatus" , "Registration");
            jsonObject.put("EmailStatus" , "ValidEmail");
 
        }

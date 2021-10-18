@@ -1,6 +1,8 @@
 package Model;
 
+import DAO.AdminDAO;
 import DAO.LoginDAO;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,6 +14,8 @@ public class Login {
     private String saltingKey;
     private LocalDate loginDate;
     private LocalTime loginTime;
+    private String emailConfirmation;
+    private String passwordIncorrect;
 
     public String getUserID() {
         return userID;
@@ -65,6 +69,22 @@ public class Login {
         this.saltingKey = saltingKey;
     }
 
+    public String getEmailConfirmation() {
+        return emailConfirmation;
+    }
+
+    public void setEmailConfirmation(String emailConfirmation) {
+        this.emailConfirmation = emailConfirmation;
+    }
+
+    public String getPasswordIncorrect() {
+        return passwordIncorrect;
+    }
+
+    public void setPasswordIncorrect(String passwordIncorrect) {
+        this.passwordIncorrect = passwordIncorrect;
+    }
+
     /*Getters and setters ends here*/
 
     /*Constructor*/
@@ -75,13 +95,15 @@ public class Login {
         this.loginTime = loginTime;
     }
 
-    public Login(String email , String password , String saltingKey, LocalDate loginDate , LocalTime loginTime,String userID){
+    public Login(String email , String password , String saltingKey, LocalDate loginDate , LocalTime loginTime,String userID, String emailConfirmation , String passwordIncorrect){
         this.email = email;
         this.password = password;
         this.saltingKey = saltingKey;
         this.loginDate = loginDate;
         this.loginTime = loginTime;
         this.userID = userID;
+        this.emailConfirmation = emailConfirmation;
+        this.passwordIncorrect = passwordIncorrect;
     }
     public Login(String email ){
         this.email = email;
@@ -89,25 +111,23 @@ public class Login {
 
     /*other functions*/
 
-    public String checkPassword(){
+    public JSONObject checkPassword(){
         /*here the loginDao is called and it it return null for userid then it is the admin otherwise
         * its a user. If the password is incorrect then it returns as password incorrect*/
-        LoginDAO loginDAO = new LoginDAO();
-        loginDAO.select(this.email);
-        if(loginDAO.getPswd()==null && loginDAO.getUserid()==null){
-            return "User does not exist";
 
-        }else if(loginDAO.getPswd().equals(this.password)){
-            if ( !loginDAO.getUserid().equals("") ){
-                loginDAO.update(this.email,this.loginDate,this.loginTime);
-                return loginDAO.getUserid();
-            }
-            return "";
+        AdminDAO adminDAO = new AdminDAO();
+        JSONObject jsonObject = adminDAO.select( this.email );
+
+        if ( ( jsonObject.get( "pswd" ).equals("") ) ){
+
+            /* if pswd is "" then it is a user */
+            LoginDAO loginDAO = new LoginDAO();
+            jsonObject = loginDAO.select(this.email);
+
         }
-        else {
-            System.out.println("password incorrect");
-            return "password incorrect";
-        }
+
+        return jsonObject;
+
     }
 
     public String checkEmail(){
@@ -121,5 +141,19 @@ public class Login {
     public void insertRecord(){
         LoginDAO loginDAO = new LoginDAO();
         loginDAO.enter(this);
+    }
+
+    public void updateEmailConfirmation(){
+
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.updateValueStatus( this , "EmailConfirmation");
+
+    }
+
+    public void updatePasswordIncorrect(){
+
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.updateValueStatus( this , "PasswordIncorrect");
+
     }
 }

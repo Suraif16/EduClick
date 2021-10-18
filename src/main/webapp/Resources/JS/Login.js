@@ -32,8 +32,12 @@ const sendServerData = function (){
             window.location.replace("/EduClick_war_exploded/Admin/AdminHome-DashBoard.html");
         }
         else if ( jsonLoginResponse.User === "User"){
+            if( jsonLoginResponse.otpSend === "True"){
 
-            if ( jsonLoginResponse.Usertype === "Teacher"){
+                window.location.replace( "/EduClick_war_exploded/OtpPage.html");
+
+            }
+            else if ( jsonLoginResponse.Usertype === "Teacher"){
                 window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
             }
              else if ( jsonLoginResponse.Usertype === "Student")
@@ -52,8 +56,22 @@ const sendServerData = function (){
             passwordIncorrectCount += 1;
 
             if (passwordIncorrectCount >= 3){
+                /* if password is wrong more than or equal to 3 times the database is updated and the page is forwarded to otp*/
+                let httpReq = new XMLHttpRequest();
 
-                // window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+                httpReq.onreadystatechange = function (){
+
+                    if ( httpReq.readyState === 4 && httpReq.status === 200 ){
+
+                        window.location.replace( "/EduClick_war_exploded/OtpPage.html");
+
+                    }
+
+                }
+
+                httpReq.open( "POST" , "/EduClick_war_exploded/incorrectPassword" , true );
+                httpReq.send();
+
                 /*here if the password is incorrect the user will be sent to a different page to handle it*/
             }
 
