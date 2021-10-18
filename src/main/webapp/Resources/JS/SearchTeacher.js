@@ -2,35 +2,46 @@ const searchValue = document.getElementById("searchBarText");
 
 searchValue.addEventListener( "keyup" , function (event){
 
-    const searchBarValue = document.getElementById("searchBarText").value;
-    console.log(searchBarValue);
-    searchForTeacher();
+    if(event.key === "Enter"){
+        searchForTeacher(searchValue);
+    }
 
 });
 
-function searchForTeacher(){
-
-    const searchBarValue = document.getElementById("searchBarText").value;
-
+function searchForTeacher(value) {
+    console.log(value);
+    console.log("ggg");
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            completeSearch( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+
+            completeSearch( this );
         }
     }
-    /* ************************ */
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacher" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/searchTeacher" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-    httpreq.send("searchBarText=" + searchBarValue);
+    httpreq.send("value=" + value);
+    console.log("ggghh" + value);
 
-    function completeSearch(httpreq){
 
-        console.log(httpreq.responseText);
-        let jsonSearchResponse = JSON.parse(httpreq.responseText);
+}
+const completeSearch = function( httpreq ){
 
+    let jsonResponse = JSON.parse( httpreq.responseText);
+
+    if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+        window.location.replace("/EduClick_war_exploded/Login.html");
+    }else if(jsonResponse.serverResponse === "Allowed") {
+        /* This is where I need work everytime as per the authentication filter*/
+
+        console.log("jsonResponse");
+
+    }else{
+        alert("something went wrong!!!");
     }
 
 
 
 }
+
