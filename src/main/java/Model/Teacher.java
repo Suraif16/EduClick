@@ -11,6 +11,7 @@ public class Teacher extends User{
     private List<String> subjects;
     private List<String> Qualifications;
 
+
     /*Getters and setters begins here*/
 
     public String getCurrentWorkingPlace() {
@@ -39,16 +40,27 @@ public class Teacher extends User{
 
     /*Getters and setters ends here*/
 
-    public Teacher( User user){
+    public Teacher( User user , String currentWorkingPlace , List<String> subjects , List<String> Qualifications){
 
         super( user );
+        this.currentWorkingPlace = currentWorkingPlace;
+        this.subjects = subjects;
+        this.Qualifications = Qualifications;
 
+    }
 
+    public Teacher( User user){
+        super( user );
     }
 
     public void enterTeacher(){
         TeacherDAO teacherDAO = new TeacherDAO();
         teacherDAO.enterTeacher(this);
+    }
+
+    public void searchTeacher(String teacherName){
+        TeacherDAO teacherDAO = new TeacherDAO();
+        teacherDAO.searchTeacher(teacherName);
     }
 
 
