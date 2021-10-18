@@ -34,7 +34,7 @@ function timer(remaining) {
     
 }
 
-    timer(300);
+timer(300);
 
 
 
