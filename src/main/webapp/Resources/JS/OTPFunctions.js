@@ -67,5 +67,5 @@ verifyOTPButton.onclick = function (){
 resendOTPButton.onclick = function (){
     /* to regenerate a new OTP */
     generateOTP();
-
+    timer(300);
 }
