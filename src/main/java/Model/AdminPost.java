@@ -66,4 +66,14 @@ public class AdminPost {
         //userDAO.insert(this);
         //userId=userDAO.getGeneratedUserId();
     }
+    public AdminPost(AdminPost adminPost){
+        this.sysPostID = adminPost.getSysPostID();
+        this.textMsg = adminPost.getTextMsg();
+        this.date = adminPost.getDate();
+        this.time = adminPost.getTime();
+    }
+    public AdminPost getAdminPost(){
+        AdminPostDAO adminPostDAO = new AdminPostDAO();
+        return adminPostDAO.select(this);
+    }
 }
