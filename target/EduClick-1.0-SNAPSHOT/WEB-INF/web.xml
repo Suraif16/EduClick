@@ -140,6 +140,17 @@
 
 
 
+    <servlet>
+        <servlet-name>searchTeacher</servlet-name>
+        <servlet-class>Controller.SearchTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>searchTeacher</servlet-name>
+        <url-pattern>/teacher/searchTeacher</url-pattern>
+    </servlet-mapping>
+
+
     <!--Beginning of student username loaded-->
 
     <servlet>
@@ -182,7 +193,7 @@
     <!--end of teacher create classroom-->
 
     <filter>
-        <filter-name>adminAuthentication</filter-name>
+        <filter-name>adminAuthentication</filter-name>-
         <filter-class>Controller.Authentication.AdminAuthenticationFilter</filter-class>
     </filter>
 
@@ -261,7 +272,7 @@
     <!-- beginning of incorrectPassword -->
     <servlet>
         <servlet-name>IncorrectPassword</servlet-name>
-        <servlet-class>Controller.IncorrectPassword</servlet-class>
+        <servlet-class>Controller.IncorrectPasswordServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
