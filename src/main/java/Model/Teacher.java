@@ -2,6 +2,7 @@ package Model;
 
 import DAO.StudentDAO;
 import DAO.TeacherDAO;
+import DAO.UserDAO;
 
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class Teacher extends User{
 
     }
 
-    public Teacher( User user){
+    public Teacher(){
         super( user );
     }
 
@@ -59,8 +60,8 @@ public class Teacher extends User{
     }
 
     public void searchTeacher(String teacherName){
-        TeacherDAO teacherDAO = new TeacherDAO();
-        teacherDAO.searchTeacher(teacherName);
+        UserDAO userDAO = new UserDAO();
+        userDAO.searchTeacher(teacherName);
     }
 
 
