@@ -271,6 +271,22 @@
 
     <!-- end of incorrectPassword -->
 
+    <!-- start search for teacher  -->
+
+    <servlet>
+        <servlet-name>SearchTeacher</servlet-name>
+        <servlet-class>Controller.SearchTeacherServlet</servlet-class>
+        <load-on-startup>13</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchTeacher</servlet-name>
+        <url-pattern>/teacher/searchTeacher</url-pattern>
+    </servlet-mapping>
+
+    <!-- start search for teacher -->
+
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
