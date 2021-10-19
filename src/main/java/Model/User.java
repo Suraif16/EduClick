@@ -1,6 +1,5 @@
 package Model;
 
-import DAO.EnrollDAO;
 import DAO.UserDAO;
 
 import java.time.LocalDate;
@@ -68,6 +67,10 @@ public class User {
         this.city = user.getCity();
         this.gender = user.getGender();
         this.userType = user.getUserType();
+
+    }
+
+    public User() {
 
     }
 
@@ -184,8 +187,17 @@ public class User {
         userId=userDAO.getGeneratedUserId();
     }
 
-    public ArrayList<User> getClassDetails(ArrayList<User> teacherNameList) {
+    public void getTeacherDetails(ArrayList<User> teacherNameList) {
     }
+
+    public void searchTeacher(String teacherName){
+        UserDAO userDAO = new UserDAO();
+        userDAO.searchTeacher(teacherName);
+        System.out.println(teacherName + " ACCESS TEACHER CLASS");
+    }
+
+
+
 
     /*to check the enroll table and get records*/
 
