@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Classroom;
+import Model.Requests;
 import Model.Teacher;
 import Model.User;
 import org.json.JSONArray;
@@ -14,28 +14,33 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchTeacherServlet extends HttpServlet {
-
-    ArrayList<User> TeacherNameList = new ArrayList<User>();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         JSONObject jsonObject = new JSONObject();
+
+        System.out.println("Servlet reached");
+
         jsonObject.put("serverResponse" , "Allowed");
 
-        String teacherName = request.getParameter("searchValue");
+        HttpSession session = request.getSession(false);
+        User user = (User) session.getAttribute("User");
 
-          Teacher teacher = new Teacher();
-          teacher.searchTeacher(teacherName);
+        List<String> teacherList = new ArrayList<>();
 
-        TeacherNameList = teacher.getClassDetails(TeacherNameList);
+        String teacherName = request.getParameter("value");
 
-        JSONArray jsonArray = new JSONArray( TeacherNameList );
 
-        jsonObject.put( "TeacherNameList" , jsonArray);
+        System.out.println(teacherName);
+
+        JSONArray jsonArray = new JSONArray( teacherList );
+
+        jsonObject.put("teacherList" , jsonArray);
 
         out.write(jsonObject.toString());
         out.close();
