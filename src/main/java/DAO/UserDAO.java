@@ -3,7 +3,6 @@ package DAO;
 import Database.DBConnectionPool;
 
 import Model.User;
-import Model.Admin;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -223,6 +222,45 @@ public class UserDAO {
 
     }
 
+    public ArrayList<User> searchTeacher(String teacherName){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        ArrayList<User> TeacherNameList = new ArrayList<User>();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            for(int i=0;i<TeacherNameList.size();i++) {
+                String sql = "SELECT firstName, lastName FROM User WHERE FROM LIKE ? AND userType = Teacher ";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, String.valueOf(TeacherNameList.get(i)));
+
+                preparedStatement.execute();
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    TeacherNameList.add(resultSet.getString("UserID"));
+                }
+
+
+        finally{
+                    if (connection != null) try {
+                        connection.close();
+                    } catch (Exception ignore) {
+                    }
+                }
+        catch(SQLException Throwable throwables;
+                throwables){
+                    throwables.printStackTrace();
+                }
+
+                return TeacherNameList;
+
+            }
+
+
     /*public ArrayList<String> checkEnrollment(String studentId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -248,5 +286,3 @@ public class UserDAO {
         return arrayList;
     }*/
 
-
-}
