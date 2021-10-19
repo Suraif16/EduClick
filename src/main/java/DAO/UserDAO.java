@@ -222,17 +222,17 @@ public class UserDAO {
 
     }
 
-    public ArrayList<User> searchTeacher(String teacherName){
+    public ArrayList<String> searchTeacher(String teacherName) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
-        ArrayList<User> TeacherNameList = new ArrayList<User>();
+        ArrayList<String> TeacherNameList = new ArrayList<>();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            for(int i=0;i<TeacherNameList.size();i++) {
-                String sql = "SELECT firstName, lastName FROM User WHERE FROM LIKE ? AND userType = Teacher ";
+            for (int i = 0; i < TeacherNameList.size(); i++) {
+                String sql = "SELECT firstName, lastName, UserID FROM User WHERE FROM LIKE ? AND userType = Teacher ";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, String.valueOf(TeacherNameList.get(i)));
 
@@ -241,24 +241,21 @@ public class UserDAO {
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()) {
-                    TeacherNameList.add(resultSet.getString("UserID"));
+                    boolean userID = TeacherNameList.add(resultSet.getString("UserID"));
                 }
-
-
-        finally{
-                    if (connection != null) try {
-                        connection.close();
-                    } catch (Exception ignore) {
-                    }
-                }
-        catch(SQLException Throwable throwables;
-                throwables){
-                    throwables.printStackTrace();
-                }
-
-                return TeacherNameList;
 
             }
+            } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally{
+                if (connection != null) try {
+                    connection.close();
+                } catch (Exception ignore) {
+                }
+            }
+            return TeacherNameList;
+        }
+    }
 
 
     /*public ArrayList<String> checkEnrollment(String studentId){
