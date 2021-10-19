@@ -3,7 +3,7 @@ const searchValue = document.getElementById("searchBarText");
 searchValue.addEventListener( "keyup" , function (event){
 
     if(event.key === "Enter"){
-        searchForTeacher(searchValue);
+        searchForTeacher(searchValue.value);
     }
 
 });
