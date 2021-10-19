@@ -35,8 +35,10 @@ public class SearchTeacherServlet extends HttpServlet {
 
         String teacherName = request.getParameter("value");
 
+        System.out.println(teacherName + " ACCESS SERVLET");
 
-        System.out.println(teacherName);
+        Teacher teacher = new Teacher();
+        teacher.searchTeacher(teacherName);
 
         JSONArray jsonArray = new JSONArray( teacherList );
 
