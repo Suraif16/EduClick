@@ -184,6 +184,9 @@ public class User {
         userId=userDAO.getGeneratedUserId();
     }
 
+    public ArrayList<User> getClassDetails(ArrayList<User> teacherNameList) {
+    }
+
     /*to check the enroll table and get records*/
 
     /*public ArrayList<String> checkEnroll(String id){
