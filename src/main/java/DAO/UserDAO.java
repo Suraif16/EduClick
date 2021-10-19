@@ -222,39 +222,42 @@ public class UserDAO {
 
     }
 
-    public ArrayList<String> searchTeacher(String teacherName) {
+    public void searchTeacher(String teacherName){
+
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-
-        ArrayList<String> TeacherNameList = new ArrayList<>();
+        ArrayList<User> userArrayList = new ArrayList<>();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "select FirstName, LastName,UserID from Users where FirstName = '" + teacherName + "'";
 
-            for (int i = 0; i < TeacherNameList.size(); i++) {
-                String sql = "SELECT firstName, lastName, UserID FROM User WHERE FROM LIKE ? AND userType = Teacher ";
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, String.valueOf(TeacherNameList.get(i)));
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String userId = resultSet.getString("UserID");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
 
-                preparedStatement.execute();
-
-                ResultSet resultSet = preparedStatement.executeQuery();
-
-                while (resultSet.next()) {
-                    boolean userID = TeacherNameList.add(resultSet.getString("UserID"));
-                }
-
+                User user = new User(userId,firstName,lastName);
+                userArrayList.add(user);
             }
-            } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally{
-                if (connection != null) try {
-                    connection.close();
-                } catch (Exception ignore) {
-                }
+            int len = userArrayList.size();
+            for (int i =0; i<len;i++){
+                System.out.println(userArrayList.get(i).getUserId());
+                System.out.println(userArrayList.get(i).getFirstName());
+                System.out.println(userArrayList.get(i).getLastName());
             }
-            return TeacherNameList;
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+
     }
 
 
