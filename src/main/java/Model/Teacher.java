@@ -66,10 +66,6 @@ public class Teacher extends User{
         teacherDAO.enterTeacher(this);
     }
 
-    public void searchTeacher(String teacherName){
-        UserDAO userDAO = new UserDAO();
-        userDAO.searchTeacher(teacherName);
-    }
 
 
 }
