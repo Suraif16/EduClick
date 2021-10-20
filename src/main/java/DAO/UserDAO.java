@@ -8,7 +8,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class UserDAO {
+public class UserDAO<teacherArrayList> {
 
     /*ArrayList<String> arrayList = new ArrayList<String>();
 
@@ -21,6 +21,7 @@ public class UserDAO {
     public String getGeneratedUserId() {
         return generatedUserId;
     }
+
     public void setGeneratedUserId(String generatedUserId) {
         this.generatedUserId = generatedUserId;
     }
@@ -62,7 +63,7 @@ public class UserDAO {
         this.todaycountStudent = todaycountStudent;
     }
 
-    public String insert(User user){
+    public String insert(User user) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
@@ -70,21 +71,21 @@ public class UserDAO {
             connection = dbConnectionPool.dataSource.getConnection();
             String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Gender,Country,City,RegistrationDate,RegistrationTime) VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1,user.getFirstName());
-            preparedStatement.setString(2,user.getLastName());
+            preparedStatement.setString(1, user.getFirstName());
+            preparedStatement.setString(2, user.getLastName());
             preparedStatement.setString(3, String.valueOf(user.getDateOfBirth()));
-            preparedStatement.setString(4,user.getMobileNumber());
-            preparedStatement.setString(5,user.getUserType());
-            preparedStatement.setString(6,user.getGender());
-            preparedStatement.setString(7,user.getCountry());
-            preparedStatement.setString(8,user.getCity());
+            preparedStatement.setString(4, user.getMobileNumber());
+            preparedStatement.setString(5, user.getUserType());
+            preparedStatement.setString(6, user.getGender());
+            preparedStatement.setString(7, user.getCountry());
+            preparedStatement.setString(8, user.getCity());
             preparedStatement.setString(9, String.valueOf(user.getRegistrationDate()));
             preparedStatement.setString(10, String.valueOf(user.getRegistrationTime()));
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 generatedUserId = resultSet.getString(1);
 
             }
@@ -94,9 +95,11 @@ public class UserDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
-            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
         }
         return generatedUserId;
     }
@@ -133,7 +136,7 @@ public class UserDAO {
                 user.setCity(city);
                 user.setGender(gender);
                 user.setUserType(userType);
-                
+
             }
             resultSet.close();
             preparedStatement.close();
@@ -142,7 +145,10 @@ public class UserDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
         }
         return user;
     }
@@ -169,23 +175,23 @@ public class UserDAO {
     }*/
 
 
-    public void count ( ){
+    public void count() {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        int todaycountTeacher=0;
-        int countTeacher=0;
-        int countStudent=0;
-        int todaycountStudent=0;
+        int todaycountTeacher = 0;
+        int countTeacher = 0;
+        int countStudent = 0;
+        int todaycountStudent = 0;
         try {
-            connection =dbConnectionPool.dataSource.getConnection();
+            connection = dbConnectionPool.dataSource.getConnection();
             String sql = "select UserType,RegistrationDate FROM Users";
-            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 String Usertype = resultSet.getString("UserType");
                 String Registrationdate = resultSet.getString("RegistrationDate");
-                if (Usertype.equals("Teacher") ) {
+                if (Usertype.equals("Teacher")) {
                     countTeacher++;
                     if (java.time.LocalDate.now().equals(Registrationdate)) {
                         todaycountTeacher++;
@@ -214,19 +220,21 @@ public class UserDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
-            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
         }
 
 
     }
 
-    public void searchTeacher(String teacherName){
+    public static ArrayList<User> searchTeacher(String teacherName) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> userArrayList = new ArrayList<>();
+        ArrayList<User> teacherArrayList = new ArrayList<>();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
@@ -234,31 +242,36 @@ public class UserDAO {
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String userId = resultSet.getString("UserID");
                 String firstName = resultSet.getString("FirstName");
                 String lastName = resultSet.getString("LastName");
 
-                User user = new User(userId,firstName,lastName);
-                userArrayList.add(user);
+                User user = new User(userId, firstName, lastName);
+                teacherArrayList.add(user);
             }
-            int len = userArrayList.size();
-            for (int i =0; i<len;i++){
-                System.out.println(userArrayList.get(i).getUserId());
-                System.out.println(userArrayList.get(i).getFirstName());
-                System.out.println(userArrayList.get(i).getLastName());
+            int len = teacherArrayList.size();
+            for (int i = 0; i < len; i++) {
+                System.out.println(teacherArrayList.get(i).getUserId());
+                System.out.println(teacherArrayList.get(i).getFirstName());
+                System.out.println(teacherArrayList.get(i).getLastName());
             }
-
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
-            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
         }
 
+        return teacherArrayList;
+
     }
+}
+
 
 
     /*public ArrayList<String> checkEnrollment(String studentId){
