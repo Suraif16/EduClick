@@ -262,23 +262,6 @@
     
     <!-- end of DisplayRequestServlet-->
 
-
-    <!-- beginning of SearchTeacherServlet-->
-
-    <servlet>
-        <servlet-name>SearchTeacher</servlet-name>
-        <servlet-class>Controller.SearchTeacherServlet</servlet-class>
-        <load-on-startup>13</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>SearchTeacher</servlet-name>
-        <url-pattern>/teacher/searchTeacher</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of SearchTeacherServlet-->
-
-
     <!-- beginning of incorrectPassword -->
     <servlet>
         <servlet-name>IncorrectPassword</servlet-name>
@@ -293,7 +276,6 @@
 
     <!-- end of incorrectPassword -->
 
-<<<<<<< HEAD
     <!-- start search for teacher  -->
 
     <servlet>
@@ -309,8 +291,6 @@
 
     <!-- start search for teacher -->
 
-=======
->>>>>>> main
 
     <session-config>
 

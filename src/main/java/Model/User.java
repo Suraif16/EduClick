@@ -51,9 +51,11 @@ public class User {
         this.userType = userType;
     }
 
-    public User() {
+    public User( String userId ) {
         this.userId = userId;
     }
+
+    public  User(){}
 
     public User( User user ){
 
