@@ -51,7 +51,7 @@ public class User {
         this.userType = userType;
     }
 
-    public User(String userId) {
+    public User() {
         this.userId = userId;
     }
 
@@ -70,7 +70,7 @@ public class User {
 
     }
 
-    public User() {
+    public User(String userId, String firstName, String lastName) {
 
     }
 
@@ -187,14 +187,17 @@ public class User {
         userId=userDAO.getGeneratedUserId();
     }
 
-    public void getTeacherDetails(ArrayList<User> teacherNameList) {
+    public ArrayList<User> searchTeacher(String arrayList){
+        
+        UserDAO userDAO =  new UserDAO();
+        ArrayList<User> teacherArrayList = userDAO.searchTeacher(arrayList);
+
+        return teacherArrayList;
+
     }
 
-    public void searchTeacher(String teacherName){
-        UserDAO userDAO = new UserDAO();
-        userDAO.searchTeacher(teacherName);
-        System.out.println(teacherName + " ACCESS TEACHER CLASS");
-    }
+  
+
 
 
 
