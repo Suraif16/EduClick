@@ -132,11 +132,8 @@ public class Login {
 
     public String checkEmail(){
         LoginDAO loginDAO = new LoginDAO();
-        loginDAO.validateEmail(this.email);
-        if(loginDAO.getEmailDAO()==null){
-            return "Email doesn't exsist";
-        }
-        return "Email exsist";
+
+        return loginDAO.validateEmail( this.email );
     }
     public void insertRecord(){
         LoginDAO loginDAO = new LoginDAO();

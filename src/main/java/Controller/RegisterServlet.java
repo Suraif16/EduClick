@@ -65,12 +65,8 @@ public class RegisterServlet extends HttpServlet {
 
 
        String emailStatus = loginemail.checkEmail();
-       if(emailStatus.equals("Email exsist")){
-           System.out.println("Enter another email");
-           jsonObject.put("EmailStatus" , "InvalidEmail");
-           session.invalidate();
-       }
-       else if(emailStatus.equals("Email doesn't exsist")){
+       if(emailStatus.equals("")){
+
            User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
            user.userRegistered();
 
@@ -88,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
            generatedUserID = user.getUserId();
            Login login = new Login( email , password , saltingKey , loginDate , loginTime, generatedUserID , "False" , "False");
            /* Here since the email confirmation is not done yet (which is done through the otp) it is false.
-           * since the password is correct, passwordIncorrect is false.*/
+            * since the password is correct, passwordIncorrect is false.*/
            login.insertRecord();
            user.setRegistrationDate(null);
            user.setRegistrationTime(null);
@@ -96,6 +92,13 @@ public class RegisterServlet extends HttpServlet {
            session.setAttribute("Email" , email); /* this is for the use of otp */
            session.setAttribute( "optStatus" , "Registration");
            jsonObject.put("EmailStatus" , "ValidEmail");
+
+       }
+       else{
+
+           System.out.println("Enter another email");
+           jsonObject.put("EmailStatus" , "InvalidEmail");
+           session.invalidate();
 
        }
 

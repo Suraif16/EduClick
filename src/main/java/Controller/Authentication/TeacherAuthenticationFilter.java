@@ -37,18 +37,27 @@ public class TeacherAuthenticationFilter implements Filter {
             if ( session.getAttribute("Admin") == null ){
                 /* if the admin does not exist in the session then it is a USER (a teacher or a student)
                 * trying to login*/
-                User user = (User) session.getAttribute("User" );
+                if ( session.getAttribute("User" ) == null ){
 
-                if ( user.getUserType().equals("Teacher") ){
-
-                    filterChain.doFilter( request , response );
+                    jsonObject.put( "serverResponse" , "Not Allowed" );
+                    System.out.println("kasd;lfkjas");
+                    session.invalidate();
 
                 }else{
-                    session.invalidate();
-                    jsonObject.put( "serverResponse" , "Not Allowed" );
-                    out.write(jsonObject.toString());
+
+                    User user = (User) session.getAttribute("User" );
+
+                    if ( user.getUserType().equals("Teacher") ){
+
+                        filterChain.doFilter( request , response );
+
+                    }else{
+                        session.invalidate();
+                        jsonObject.put( "serverResponse" , "Not Allowed" );
+                        out.write(jsonObject.toString());
 
 
+                    }
                 }
 
             }else {

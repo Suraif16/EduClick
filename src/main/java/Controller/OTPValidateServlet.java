@@ -27,11 +27,14 @@ public class OTPValidateServlet extends HttpServlet {
 
         String OTPValue = (String) session.getAttribute( "OPT Code" );
 
-        User user = (User) session.getAttribute( "User" );
-
         String email = ( String ) session.getAttribute( "Email" );
 
         Login login = new Login( email );
+
+        User user = new User( login.checkEmail() );
+
+        user = user.getUser();
+
         if(OPTUserValue.equals(OTPValue)){
 
             jsonObject.put( "OTPStatus" , "valid" );
