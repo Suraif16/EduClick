@@ -14,7 +14,6 @@ import org.json.JSONObject;
 public class LoginDAO {
 
 
-    private String emaildao;
 
 
     public JSONObject select(String email) {
@@ -91,9 +90,11 @@ public class LoginDAO {
 
     }
 
-    public void validateEmail(String email){
+    public String validateEmail(String email){
+
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
+        String emailId = "";
 
         try {
             connection =dbConnectionPool.dataSource.getConnection();
@@ -103,7 +104,7 @@ public class LoginDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
 
-                emaildao = resultSet.getString("userID");
+                emailId = resultSet.getString("userID");
 
             }
 
@@ -115,8 +116,7 @@ public class LoginDAO {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
 
-        
-
+        return emailId;
     }
 
     public void update (String email , LocalDate loginDate , LocalTime loginTime) {
@@ -145,9 +145,7 @@ public class LoginDAO {
 
     }
 
-    public String getEmailDAO() {
-        return emaildao;
-    }
+
 
     public String selectSaltingKey( String email ){
         /* Here we extract the salting key from the database and return it, if the email is not found then "" will be returned as a sign of
