@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Requests;
 import Model.Teacher;
 import Model.User;
 import org.json.JSONArray;
@@ -37,7 +36,7 @@ public class SearchTeacherServlet extends HttpServlet {
 
         System.out.println(teacherName + " ACCESS SERVLET");
 
-        Teacher teacher = new Teacher();
+        User teacher = new User();
         teacher.searchTeacher(teacherName);
 
         JSONArray jsonArray = new JSONArray( teacherList );
