@@ -1,5 +1,9 @@
 package Controller;
 
+<<<<<<< HEAD
+=======
+import Model.Requests;
+>>>>>>> main
 import Model.Teacher;
 import Model.User;
 import org.json.JSONArray;
@@ -22,9 +26,12 @@ public class SearchTeacherServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         JSONObject jsonObject = new JSONObject();
+<<<<<<< HEAD
 
         System.out.println("Servlet reached");
 
+=======
+>>>>>>> main
         jsonObject.put("serverResponse" , "Allowed");
 
         HttpSession session = request.getSession(false);
@@ -32,12 +39,21 @@ public class SearchTeacherServlet extends HttpServlet {
 
         List<String> teacherList = new ArrayList<>();
 
+<<<<<<< HEAD
         String teacherName = request.getParameter("value");
 
         System.out.println(teacherName + " ACCESS SERVLET");
 
         User teacher = new User();
         teacher.searchTeacher(teacherName);
+=======
+        String teacherName = request.getParameter("searchValue");
+
+       // Teacher teacherName = new Teacher(user);
+        //teacher.searchTeacher();
+
+        System.out.println(teacherName);
+>>>>>>> main
 
         JSONArray jsonArray = new JSONArray( teacherList );
 

@@ -1,6 +1,5 @@
-const searchValue = document.getElementById("searchBarText");
-
 searchValue.addEventListener( "keyup" , function (event){
+
 
     if(event.key === "Enter"){
         searchForTeacher(searchValue.value);
@@ -8,13 +7,15 @@ searchValue.addEventListener( "keyup" , function (event){
 
 });
 
-function searchForTeacher(value) {
-    console.log(value);
-    console.log("ggg");
+
+
+function searchForTeacher(searchValue) {
+
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
+
             completeSearch( this );
         }
     }
@@ -25,6 +26,8 @@ function searchForTeacher(value) {
 
 
 }
+
+
 const completeSearch = function( httpreq ){
 
     let jsonResponse = JSON.parse( httpreq.responseText);
@@ -34,13 +37,13 @@ const completeSearch = function( httpreq ){
     }else if(jsonResponse.serverResponse === "Allowed") {
         /* This is where I need work everytime as per the authentication filter*/
 
+
         console.log("jsonResponse");
 
     }else{
         alert("something went wrong!!!");
     }
 
-
+    
 
 }
-

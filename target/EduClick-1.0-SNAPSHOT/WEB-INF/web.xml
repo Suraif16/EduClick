@@ -140,6 +140,16 @@
 
 
 
+    <servlet>
+        <servlet-name>searchTeacher</servlet-name>
+        <servlet-class>Controller.SearchTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>searchTeacher</servlet-name>
+        <url-pattern>/teacher/searchTeacher</url-pattern>
+    </servlet-mapping>
+
 
     <!--Beginning of student username loaded-->
 
@@ -283,7 +293,10 @@
     <servlet>
         <servlet-name>IncorrectPassword</servlet-name>
         <servlet-class>Controller.IncorrectPasswordServlet</servlet-class>
+<<<<<<< HEAD
+=======
         <load-on-startup>14</load-on-startup>
+>>>>>>> main
     </servlet>
 
     <servlet-mapping>
@@ -293,24 +306,6 @@
 
     <!-- end of incorrectPassword -->
 
-<<<<<<< HEAD
-    <!-- start search for teacher  -->
-
-    <servlet>
-        <servlet-name>SearchTeacher</servlet-name>
-        <servlet-class>Controller.SearchTeacherServlet</servlet-class>
-        <load-on-startup>13</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>SearchTeacher</servlet-name>
-        <url-pattern>/teacher/searchTeacher</url-pattern>
-    </servlet-mapping>
-
-    <!-- start search for teacher -->
-
-=======
->>>>>>> main
 
     <session-config>
 

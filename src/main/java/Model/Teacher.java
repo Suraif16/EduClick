@@ -10,9 +10,6 @@ public class Teacher extends User{
     private List<String> subjects;
     private List<String> Qualifications;
 
-    public Teacher(User user) {
-    }
-
 
     /*Getters and setters begins here*/
 
@@ -52,12 +49,15 @@ public class Teacher extends User{
     }
 
 
+    public Teacher( User user){
+        super( user );
+    }
+
+
 
     public void enterTeacher(){
         TeacherDAO teacherDAO = new TeacherDAO();
         teacherDAO.enterTeacher(this);
     }
-
-
 
 }
