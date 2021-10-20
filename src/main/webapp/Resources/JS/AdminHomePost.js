@@ -57,20 +57,26 @@ const sendServerData = function (){
 
     function completeLogin( httpreq ){
 
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
-        /*here when we receive the response
-        from the server, we convert it to JSON as it will be sent as JSON from the servlet.
-        Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
-        in the JSON object specified by the servlet*/
-
-        /*if ( jsonLoginResponse.User === "Admin"){
-
-            window.location.replace("/EduClick_war_exploded/Admin/AdminHome-DashBoard.html");
-        }
-        else{
-            alert(" Something went wrong!");
-        }*/console.log(jsonLoginResponse);
+        const request = document.getElementById("request");
+        request.innerHTML += '<div class="post">' +
+        '<div class="postContentContainer">'+
+        '<div class="postProfileSection">'+
+        '<a href="#" class="postProfile">'+
+        '<div class="postProfileImage">'+
+        '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
+        '</div>'+
+        '<div class="postProfileName" >Admin</div>'+
+        '</a>'+
+        '</div>'+
+        '</div>'+
+        '<div class="postContentContainer">'+
+        '<div class="postData">'+
+        '<div class="postMessage">'+
+         textMsg+
+        '</div>'+
+        '</div>'+
+        '</div>'+
+        '</div>';
     }
 }
 
