@@ -40,7 +40,6 @@ public class TeacherAuthenticationFilter implements Filter {
                 if ( session.getAttribute("User" ) == null ){
 
                     jsonObject.put( "serverResponse" , "Not Allowed" );
-                    System.out.println("kasd;lfkjas");
                     session.invalidate();
 
                 }else{
