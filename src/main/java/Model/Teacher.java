@@ -1,8 +1,6 @@
 package Model;
 
-import DAO.StudentDAO;
 import DAO.TeacherDAO;
-import DAO.UserDAO;
 
 import java.util.List;
 
@@ -13,13 +11,7 @@ public class Teacher extends User{
     private List<String> Qualifications;
 
     public Teacher(User user) {
-        super();
     }
-
-    public Teacher() {
-
-    }
-
 
 
     /*Getters and setters begins here*/
