@@ -3,7 +3,11 @@ package Controller;
 import org.json.JSONObject;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,6 +21,11 @@ public class RegisterFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        PrintWriter out = response.getWriter();
+        response.setContentType("text/html");
 
         String firstName = servletRequest.getParameter("firstName");
         String lastName = servletRequest.getParameter("lastName");
@@ -47,10 +56,57 @@ public class RegisterFilter implements Filter {
             jsonObject.put("Filter","Success");
         }
         else{
-            jsonObject.put("Filter","Unsuccess");
+            String str = "";
+            if(firstName==null || firstName.length()>=20){
+                String s="First name is null or character length is greater than 20.";
+                str = str + s;
+            }
+            if(lastName==null || lastName.length()>=20){
+                String s="Last name is null or character length is greater than 20.";
+                str = str + s;
+            }
+            if(!isValidName(firstName)){
+                String s = "First name cannot have numbers.";
+                str = str + s;
+            }
+            if(!isValidName(lastName)){
+                String s = "Last name cannot have numbers.";
+                str = str + s;
+            }
+            if(!isValid(email) || email.length()>320){
+                String s = "Email is not valid or exceeded the length.";
+                str = str + s;
+            }
+            if(dateOfBirth==null && !checkAge(dateOfBirth)){
+                String s = "DOB is null or age limit is not enough to register.";
+                str = str +s;
+            }
+            if(userTypeSelect==null){
+                String s = "UserType is not selected.";
+                str = str + s;
+            }
+            if(country==null){
+                String s = "Country is not selected.";
+                str = str + s;
+            }
+            if(city==null){
+                String s = "City is not entered.";
+                str = str + s;
+            }
+            if(newNumber==null || isValidMobileNo(newNumber)!=true  || newNumber.length()>15){
+                String s = "Number field is empty or number is not valid or length exceeded.";
+                str = str + s;
+            }
+            if(genderSelect==null){
+                String s = "Gender is not selected.";
+                str = str + s;
+            }
+            System.out.println(str);
+            jsonObject.put("Filter",str);
         }
 
-
+        out.write(jsonObject.toString());
+        out.close();
     }
 
     public boolean isValid(String email){
