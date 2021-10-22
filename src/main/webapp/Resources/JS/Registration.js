@@ -89,6 +89,7 @@ const sendServerData = function () {
         Once we parse the response to JSON we use jsonLoginResponse.User to get the value of User member
         in the JSON object specified by the servlet*/
 
+
         if (jsonRegistrationResponse.EmailStatus === "InvalidEmail") {
 
             const emailExistError = document.getElementById("EmailExistError");
@@ -101,8 +102,11 @@ const sendServerData = function () {
 
             window.location.replace("/EduClick_war_exploded/OtpPage.html");
 
-        }else {
-
+        }
+        else if(jsonRegistrationResponse.Filter!="Success"){
+            alert(jsonRegistrationResponse.Filter);
+        }
+        else {
             alert("Something went wrong");
 
         }
