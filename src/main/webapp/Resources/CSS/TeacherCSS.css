@@ -419,7 +419,15 @@ div#content > div#postContents {
 
     /* child of postProfile*/
     margin: auto auto auto 3px;
-    flex-basis: 90%;
+    flex-basis: 45%;
+
+
+}
+
+.postTimeAndDate{
+
+    flex-basis: 45%;
+    margin: auto;
 
 
 }

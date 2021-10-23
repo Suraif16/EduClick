@@ -386,7 +386,15 @@ div#content > div#postContents {
 
     /* child of postProfile*/
     margin: auto auto auto 3px;
-    flex-basis: 90%;
+    flex-basis: 50%;
+
+
+}
+
+.postTimeAndDate{
+
+    flex-basis: 40%;
+    margin: auto;
 
 
 }
@@ -413,7 +421,7 @@ div#content > div#postContents {
     flex: 1;
     background-color: #4775c4;
     margin-bottom: 1.5%;
-    padding: 0.5%;
+    padding: 1%;
     color: whitesmoke;
 
 }
@@ -486,12 +494,53 @@ div.answersInPost{
 div.singleAnswer{
     /*child of answersInPost*/
     flex: 1;
-    margin: 1% 0;
+    margin: 2% 1%;
     padding: 1%;
     color: white;
     display: flex; /* Container of textAnswers , pictureAnswers , marksForAnswers*/
     flex-direction: column;
+    /*border: solid 2px #403434 ;*/
 
+
+}
+
+div.answerUser{
+
+    background-color: #4775c4;
+    padding: 1%;
+    margin-bottom: 1%;
+
+}
+
+.answerProfile{
+
+    /*becomes the container for postProfileImage and postProfileName*/
+    display: flex;
+
+}
+
+.answerProfileImage{
+
+    /* child of postProfile*/
+    flex-basis: 10%;
+    margin: auto auto auto 3px;
+
+}
+
+.answerProfileName{
+
+    /* child of postProfile*/
+    margin: auto auto auto 3px;
+    flex-basis: 90%;
+
+
+}
+
+.answerProfileIcon{
+
+    width: 35px;
+    height: 35px;
+    border-radius: 17.5px;
 
 }
 
