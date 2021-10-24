@@ -1,6 +1,5 @@
 package Controller.Authentication;
 
-
 import Model.User;
 import org.json.JSONObject;
 
@@ -14,12 +13,11 @@ import java.io.PrintWriter;
 public class StudentAuthenticationFilter implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        Filter.super.init(filterConfig);
-    }
+    public void init(FilterConfig filterConfig) throws ServletException{}
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest , ServletResponse servletResponse , FilterChain filterChain) throws ServletException , IOException {
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession( false );
@@ -39,21 +37,30 @@ public class StudentAuthenticationFilter implements Filter {
             if ( session.getAttribute("Admin") == null ){
                 /* if the admin does not exist in the session then it is a USER (a teacher or a student)
                  * trying to login*/
-                User user = (User) session.getAttribute("User" );
+                if ( session.getAttribute("User" ) == null ){
 
-                if ( user.getUserType().equals("Student") ){
-
-                    filterChain.doFilter( request , response );
+                    jsonObject.put( "serverResponse" , "Not Allowed" );
+                    session.invalidate();
 
                 }else{
 
-                    jsonObject.put( "serverResponse" , "Not Allowed" );
-                    out.write(jsonObject.toString());
+                    User user = (User) session.getAttribute("User" );
+
+                    if ( user.getUserType().equals("Student") ){
+
+                        filterChain.doFilter( request , response );
+
+                    }else{
+                        session.invalidate();
+                        jsonObject.put( "serverResponse" , "Not Allowed" );
+                        out.write(jsonObject.toString());
 
 
+                    }
                 }
 
             }else {
+                session.invalidate();
                 jsonObject.put( "serverResponse" , "Not Allowed" );
                 out.write(jsonObject.toString());
 
@@ -61,10 +68,10 @@ public class StudentAuthenticationFilter implements Filter {
 
         }
         out.close();
+
     }
 
     @Override
-    public void destroy() {
-        Filter.super.destroy();
-    }
+    public void destroy(){}
+
 }
