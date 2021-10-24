@@ -314,7 +314,7 @@
 
     <servlet-mapping>
         <servlet-name>SearchTeacher</servlet-name>
-        <url-pattern>/teacher/searchTeacher</url-pattern>
+        <url-pattern>/searchTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- start search for teacher -->

@@ -48,6 +48,8 @@ const searchPageLoad = function (){
 
         }
 
+        searchForTeacher();
+
     }
 }
 
@@ -60,11 +62,11 @@ const searchPageLoad = function (){
         searchForTeacher(searchValue.value);
     }
 
-});
+});*/
 
 
 
-function searchForTeacher(searchValue) {
+function searchForTeacher() {
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -74,10 +76,8 @@ function searchForTeacher(searchValue) {
             completeSearch( this );
         }
     }
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/searchTeacher" , true);
-    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-    httpreq.send("value=" + value);
-    console.log("ggghh" + value);
+    httpreq.open( "GET" , "/EduClick_war_exploded/searchTeacher" , true);
+    httpreq.send();
 
 
 }
@@ -101,4 +101,4 @@ const completeSearch = function( httpreq ){
 
     
 
-}*/
+}

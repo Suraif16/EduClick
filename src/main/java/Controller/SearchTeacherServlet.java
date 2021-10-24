@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SearchTeacherServlet extends HttpServlet {
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
