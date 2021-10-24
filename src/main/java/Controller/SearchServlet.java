@@ -11,7 +11,7 @@ public class SearchServlet extends HttpServlet {
     @Override
     public void doGet( HttpServletRequest request , HttpServletResponse response ) throws IOException {
 
-        HttpSession session = request.getSession( false );
+        HttpSession session = request.getSession();
         String searchValue = request.getParameter( "searchValue" );
         session.setAttribute( "searchValue" , searchValue );
 
