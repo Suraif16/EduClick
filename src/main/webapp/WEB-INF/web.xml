@@ -290,6 +290,20 @@
     
     <!-- End of Search -->
 
+    <!-- beginning of SearchPageOnLoad -->
+
+    <servlet>
+        <servlet-name>SearchPageOnLoad</servlet-name>
+        <servlet-class>Controller.SearchPageOnLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchPageOnLoad</servlet-name>
+        <url-pattern>/searchPageOnLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of SearchPageOnLoad -->
+
     <!-- start search for teacher  -->
 
     <servlet>
