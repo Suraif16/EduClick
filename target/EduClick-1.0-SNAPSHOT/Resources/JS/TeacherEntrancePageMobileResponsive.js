@@ -3,32 +3,9 @@ let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hid
 let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
 
 const classroomListObjection = document.getElementById( "classroomsList" );
-const search = document.getElementById( "searchBarText" );
 const addClassroomForm = document.getElementById("addClassroomForm");
 const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
 
-search.addEventListener( "keyup" , function ( event ){
-
-    if(event.key === "Enter"){
-
-
-        let httpreq = new XMLHttpRequest();
-
-        httpreq.onreadystatechange = function (){
-
-            if ( httpreq.readyState === 4 && httpreq.status === 200){
-
-                window.location.replace("/EduClick_war_exploded/Search.html")
-
-            }
-        }
-        let url = "/EduClick_war_exploded/Search?searchValue="+search.value;
-        httpreq.open( "GET" , url ,true);
-        httpreq.send();
-
-    }
-
-});
 
 function showClassroomList(){
 
