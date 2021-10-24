@@ -2,6 +2,7 @@ package Model;
 
 import DAO.AddFriendsDAO;
 import DAO.FollowsDAO;
+import DAO.FriendRequestDAO;
 import DAO.UserDAO;
 import org.json.JSONObject;
 
@@ -198,8 +199,12 @@ public class User {
     public ArrayList<JSONObject> searchTeacher(String teacherName , User user ){
         
         UserDAO userDAO =  new UserDAO();
-
-        ArrayList< User > teacherArrayList =  userDAO.searchTeacher( teacherName );
+        ArrayList< User > teacherArrayList = new ArrayList<>();
+        if( user!= null){
+             teacherArrayList =  userDAO.searchTeacher( teacherName , user.getUserId() );
+        }else {
+             teacherArrayList =  userDAO.searchTeacher( teacherName , "0" );
+        }
         ArrayList< JSONObject > teacherJsonList = new ArrayList<>();
         /* if it is a guest then the user object in the session will be null */
 
@@ -210,6 +215,7 @@ public class User {
                 if ( user.getUserType().equals("Teacher") ){
 
                     AddFriendsDAO addFriendsDAO = new AddFriendsDAO();
+                    FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
 
                     for ( int i = 0 ; i < teacherArrayList.size() ; i++ ){
                         /* here for each found teacher it checks if the teacher is a friend of the searching user
@@ -219,6 +225,7 @@ public class User {
                         jsonObject.put( "firstName" , teacherArrayList.get(i).getFirstName() );
                         jsonObject.put( "lastName" , teacherArrayList.get(i).getLastName() );
                         jsonObject.put( "friendStatus" , addFriendsDAO.checkIsFriend( user.getUserId() , teacherArrayList.get(i).getUserId() ) );
+                        jsonObject.put( "friendRequestStatus" , friendRequestDAO.checkIsRequested( user.getUserId() , teacherArrayList.get(i).getUserId() ));
                         teacherJsonList.add( jsonObject );
 
                     }

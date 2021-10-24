@@ -240,19 +240,20 @@ public class UserDAO<teacherArrayList> {
 
     }
 
-    public ArrayList< User > searchTeacher(String teacherName) {
+    public ArrayList< User > searchTeacher( String teacherName , String myUserId ) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         ArrayList< User > teacherArrayList = new ArrayList<>();
-
+        System.out.println("useridmine" + myUserId);
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT FirstName, LastName,UserID FROM Users WHERE FirstName LIKE ? OR LastName LIKE ? AND UserType = 'Teacher'";
+            String sql = "SELECT FirstName, LastName,UserID FROM Users WHERE (FirstName LIKE ? OR LastName LIKE ?) AND ( UserType = 'Teacher' AND UserID <> ?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString( 1 , "%" + teacherName + "%" );
             preparedStatement.setString( 2 , "%" + teacherName + "%" );
+            preparedStatement.setString( 3 , myUserId );
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
