@@ -16,5 +16,4 @@ public class SearchServlet extends HttpServlet {
         session.setAttribute( "searchValue" , searchValue );
 
     }
-
 }

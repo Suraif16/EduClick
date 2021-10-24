@@ -8,11 +8,10 @@ const addClassroomForm = document.getElementById("addClassroomForm");
 const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
 
 search.addEventListener( "keyup" , function ( event ){
-    console.log( "farzan" );
+
     if(event.key === "Enter"){
 
-        console.log(search.value);
-        console.log("hi")
+
         let httpreq = new XMLHttpRequest();
 
         httpreq.onreadystatechange = function (){
