@@ -337,6 +337,7 @@ div#MobileNumberError{
 
 }
 
+
 div#MobError{
 
     padding: 0.3%;
@@ -393,6 +394,14 @@ div#CError{
 
 
 }
+
+/*div#MobileNumberComp{
+    color: red;
+    margin: 0 auto 0.3% auto;
+    font-size: 13px;
+
+
+}*/
 
 
 
