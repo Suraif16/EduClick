@@ -77,6 +77,10 @@ const sendServerData = function (){
         '</div>'+
         '</div>'+
         '</div>';
+        classroomName.value = "";
+        addClassroomForm.style.display = "none";
+        addClassroomFormStatus = false;
+
     }
 }
 

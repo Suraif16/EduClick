@@ -4,6 +4,9 @@ import Database.DBConnectionPool;
 
 import Model.User;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -182,6 +185,11 @@ public class UserDAO<teacherArrayList> {
         int countTeacher = 0;
         int countStudent = 0;
         int todaycountStudent = 0;
+
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = formatter.format(date);
+        System.out.println("Date Format with MM/dd/yyyy : "+strDate);
         try {
             connection = dbConnectionPool.dataSource.getConnection();
             String sql = "select UserType,RegistrationDate FROM Users";
@@ -191,14 +199,15 @@ public class UserDAO<teacherArrayList> {
             while (resultSet.next()) {
                 String Usertype = resultSet.getString("UserType");
                 String Registrationdate = resultSet.getString("RegistrationDate");
+
                 if (Usertype.equals("Teacher")) {
                     countTeacher++;
-                    if (java.time.LocalDate.now().equals(Registrationdate)) {
+                    if (strDate.equals(Registrationdate)) {
                         todaycountTeacher++;
                     }
                 } else {
                     countStudent++;
-                    if (java.time.LocalDate.now().equals(Registrationdate)) {
+                    if (strDate.equals(Registrationdate)) {
                         todaycountStudent++;
                     }
                 }
