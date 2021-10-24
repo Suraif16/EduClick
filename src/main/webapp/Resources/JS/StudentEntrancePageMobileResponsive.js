@@ -2,18 +2,9 @@ let classroomListStatus = false; /*if it is false the list is hidden, if it is t
 let notificationStatus = false; /*if it is false the notification is hidden*/
 
 const classroomListObjection = document.getElementById( "classroomsList" );
-const search = document.getElementById( "searchBarText" );
 const notifications = document.getElementById("notifications");
 
-search.addEventListener( "keyup" , function ( event ){
 
-    if(event.key === "Enter"){
-
-        console.log(search.value);
-
-    }
-
-});
 
 function showClassroomList(){
 
