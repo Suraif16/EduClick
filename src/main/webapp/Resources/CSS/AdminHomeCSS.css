@@ -233,7 +233,13 @@ div#content > div#postContents {
     display: flex;
     flex-direction: column;
 }
+.postTimeAndDate{
+    font-size: 10px;
+    flex-basis: 40%;
+    margin: auto;
 
+
+}
 .post{
     /*child of postContents*/
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
