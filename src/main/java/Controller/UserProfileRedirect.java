@@ -15,18 +15,55 @@ public class UserProfileRedirect extends HttpServlet {
 
         HttpSession session = request.getSession( false );
         String userId = request.getParameter("userId");
-        User user = new User( userId );
+        User profileUser = new User( userId );
         session.setAttribute( "profileUserId" , userId );
-        user.getUser();
-        if ( user.getUserType().equals("Teacher") ){
+        profileUser.getUser();
 
-            response.sendRedirect("/EduClick_war_exploded/Teacher/Teacherpro.html");
+        if( session.getAttribute("User") == null ){
 
-        }else if ( user.getUserType().equals("Student") ){
+            if ( profileUser.getUserType().equals("Teacher") ){
 
-            response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html");
+                response.sendRedirect("/EduClick_war_exploded/Teacher/Teacherpro.html");
+
+            }else if ( profileUser.getUserType().equals("Student") ){
+
+                response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html");
+
+            }
+
+        }else{
+
+            User user = ( User ) session.getAttribute( "User" );
+
+            if ( user.getUserType().equals( "Teacher" ) ){
+
+                if ( profileUser.getUserType().equals("Teacher") ){
+
+                    response.sendRedirect("/EduClick_war_exploded/Teacher/TeacherProfile.html");
+
+                }else if ( profileUser.getUserType().equals("Student") ){
+
+                    response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html");
+
+                }
+
+            }else if ( user.getUserType().equals( "Student" ) ){
+
+                if ( profileUser.getUserType().equals("Teacher") ){
+
+                    response.sendRedirect("/EduClick_war_exploded/Teacher/Teacherpro.html");
+
+                }else if ( profileUser.getUserType().equals("Student") ){
+
+                    response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html");
+
+                }
+
+            }
 
         }
+
+
 
 
 
