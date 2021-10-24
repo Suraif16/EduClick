@@ -333,6 +333,20 @@
 
     <!-- End of UserProfile Redirect -->
 
+    <!-- beginning of add friend request -->
+
+    <servlet>
+        <servlet-name>AddFriendRequest</servlet-name>
+        <servlet-class>Controller.AddFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddFriendRequest</servlet-name>
+        <url-pattern>/addFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of add friend request -->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes

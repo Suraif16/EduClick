@@ -1,5 +1,6 @@
 package Model;
 
+import DAO.AddFriendsDAO;
 import DAO.EnrollRequestDAO;
 import DAO.FriendRequestDAO;
 
@@ -33,6 +34,13 @@ public class Requests {
     }
 
     public Requests(){
+
+    }
+
+    public Requests( String fromId , String toId ){
+
+        this.fromId = fromId;
+        this.toId = toId;
 
     }
 
@@ -120,6 +128,14 @@ public class Requests {
         else{
             return "Enrolled";
         }
+
+    }
+
+    public void addRequest(){
+
+        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+        friendRequestDAO.insert( this );
+
 
     }
 

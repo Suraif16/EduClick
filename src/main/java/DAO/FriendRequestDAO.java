@@ -46,4 +46,27 @@ public class FriendRequestDAO {
 
     }
 
+    public void insert( Requests requests ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "INSERT INTO Friend_Request VALUES( ? , ? )";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , requests.getFromId() );
+            preparedStatement.setString( 2 , requests.getToId() );
+            preparedStatement.executeUpdate();
+
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+
+    }
+
 }
