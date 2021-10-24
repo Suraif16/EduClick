@@ -216,7 +216,7 @@ a{
 img#profilepic{
     height: 100px;
     width: 100px;
-    margin-left: 33%;
+    margin-left: 0%;
     border-radius: 50%;
     justify-content: center;
 }
@@ -240,29 +240,31 @@ div#propicbar{
 }
 div#propicbar > div#image-container{
     flex: 1;
-    margin-top: 10px;
+    margin: 10px auto auto auto;
     padding: 4px 4px;
     flex-wrap: wrap;
+
 
 }
 div#propicbar > div#image-container p {
     flex: auto;
-    margin-left: 25%;
+    margin-left: -6%;
     color: whitesmoke;
     font-size: 25px;
 
 }
 div#navbar{
-  flex: 1;
+    flex: 1;
     flex-wrap: wrap;
     padding-top: 3%;
 }
 div#navbar ul{
   flex: 2;
     padding: 0;
-    margin: 0;
+    flex-wrap: wrap;
     float: left;
     margin-left: 30px;
+    display: inline-flex;
 }
 div#navbar ul li{
     position: relative;
