@@ -24,6 +24,7 @@ public class SearchPageOnLoadServlet extends HttpServlet {
         if ( session.getAttribute("User") == null ){
 
             jsonObject.put( "UserName" , "Guest");
+            jsonObject.put( "UserType" , "Guest" );
             jsonObject.put( "Url" , "/EduClick_war_exploded/Home.html");
 
         }else{
@@ -31,13 +32,15 @@ public class SearchPageOnLoadServlet extends HttpServlet {
             User user = ( User ) session.getAttribute("User");
             jsonObject.put( "UserName" , user.getFirstName() );
 
-            if ( user.getUserType() == "Teacher" ){
-
+            if ( user.getUserType().equals("Teacher") ){
+                System.out.println("teacher alsdjf");
                 jsonObject.put( "Url" , "/EduClick_war_exploded/Teacher/Teacher.html");
+                jsonObject.put( "UserType" , "Teacher" );
 
-            }else if (user.getUserType() == "Student"){
+            }else if (user.getUserType().equals("Student")){
 
                 jsonObject.put( "Url" , "/EduClick_war_exploded/Student/student.html");
+                jsonObject.put( "UserType" , "Student" );
 
             }
 

@@ -1,7 +1,6 @@
 package Controller;
 
 
-import Model.Teacher;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,20 +23,13 @@ public class SearchTeacherServlet extends HttpServlet {
         response.setContentType("text/html");
         JSONObject jsonObject = new JSONObject();
 
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession( false );
 
-        List< Teacher > teacherList = new ArrayList<>();
-
-        String teacherName = request.getParameter("value");
-
-        System.out.println(teacherName + " ACCESS SERVLET");
+        String teacherName = (String) session.getAttribute( "searchValue" );
 
         User user = new User();
-        teacherList = user.searchTeacher(teacherName);
-
-
+        List< JSONObject > teacherList =  user.searchTeacher( teacherName , ( User ) session.getAttribute( "User" ));
         JSONArray jsonArray = new JSONArray( teacherList );
-
         jsonObject.put("teacherList" , jsonArray);
 
         out.write(jsonObject.toString());
