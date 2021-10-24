@@ -275,6 +275,20 @@
     </servlet-mapping>
 
     <!-- end of incorrectPassword -->
+    
+    <!-- beginning of Search -->
+    
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>Controller.SearchServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+    
+    <!-- End of Search -->
 
     <!-- start search for teacher  -->
 
