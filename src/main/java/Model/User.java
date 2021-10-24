@@ -2,6 +2,7 @@ package Model;
 
 import DAO.AddFriendsDAO;
 import DAO.FollowsDAO;
+import DAO.FriendRequestDAO;
 import DAO.UserDAO;
 import org.json.JSONObject;
 
@@ -210,6 +211,7 @@ public class User {
                 if ( user.getUserType().equals("Teacher") ){
 
                     AddFriendsDAO addFriendsDAO = new AddFriendsDAO();
+                    FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
 
                     for ( int i = 0 ; i < teacherArrayList.size() ; i++ ){
                         /* here for each found teacher it checks if the teacher is a friend of the searching user
@@ -219,6 +221,7 @@ public class User {
                         jsonObject.put( "firstName" , teacherArrayList.get(i).getFirstName() );
                         jsonObject.put( "lastName" , teacherArrayList.get(i).getLastName() );
                         jsonObject.put( "friendStatus" , addFriendsDAO.checkIsFriend( user.getUserId() , teacherArrayList.get(i).getUserId() ) );
+                        jsonObject.put( "friendRequestStatus" , friendRequestDAO.checkIsRequested( user.getUserId() , teacherArrayList.get(i).getUserId() ));
                         teacherJsonList.add( jsonObject );
 
                     }

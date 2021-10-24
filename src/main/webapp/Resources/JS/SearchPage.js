@@ -102,7 +102,7 @@ function searchForTeacher() {
     const completeSearch = function( httpreq ){
         const searchContent = document.getElementById( "rightPanelStudentList" );
         searchContent.innerHTML = "";
-        let jsonResponse = JSON.parse( httpreq.responseText);
+        let jsonResponse = JSON.parse( httpreq.responseText );
 
         console.log(jsonResponse.teacherList)
         console.log(userTypeValue);
@@ -126,11 +126,34 @@ function searchForTeacher() {
 
                     if (userTypeValue === "Teacher"){ /* here this checks the user type the current logedin user (my). not the
                     user whose profile is checked...*/
+                        console.log(jsonResponse.teacherList[i].friendStatus);
+                        console.log(jsonResponse.teacherList[i].friendRequestStatus);
+                        console.log(typeof jsonResponse.teacherList[i].friendStatus);
+                        console.log(typeof jsonResponse.teacherList[i].friendRequestStatus);
 
-                        htmlString += '                <div>' +
-                            '                    <input style="display:block;" id="addFriend'+ jsonResponse.teacherList[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
-                            '                    <input style="display:none;" id="cancelRequest'+ jsonResponse.teacherList[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
-                            '                </div>';
+
+
+                        if ( jsonResponse.teacherList[i].friendStatus === false && jsonResponse.teacherList[i].friendRequestStatus === false ){
+                            console.log( "false false");
+                            htmlString += '                <div>' +
+                                '                    <input style="display:block;" id="addFriend'+ jsonResponse.teacherList[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
+                                '                    <input style="display:none;" id="cancelRequest'+ jsonResponse.teacherList[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
+                                '                </div>';
+
+                        }else if ( jsonResponse.teacherList[i].friendStatus === true && jsonResponse.teacherList[i].friendRequestStatus === false ) {
+
+                            htmlString += '                <div>' +
+                                'Friend'+
+                                '                </div>';
+
+                        }else if ( jsonResponse.teacherList[i].friendStatus === false && jsonResponse.teacherList[i].friendRequestStatus === true ) {
+
+                            htmlString += '                <div>' +
+                                '                    <input style="display:none;" id="addFriend'+ jsonResponse.teacherList[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
+                                '                    <input style="display:block;" id="cancelRequest'+ jsonResponse.teacherList[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
+                                '                </div>';
+
+                        }
 
                     }else if(userTypeValue === "Student"){
 
