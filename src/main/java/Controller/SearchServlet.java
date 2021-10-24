@@ -14,7 +14,6 @@ public class SearchServlet extends HttpServlet {
         HttpSession session = request.getSession( false );
         String searchValue = request.getParameter( "searchValue" );
         session.setAttribute( "searchValue" , searchValue );
-        response.sendRedirect( "Search.html" );
 
     }
 
