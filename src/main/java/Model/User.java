@@ -1,6 +1,9 @@
 package Model;
 
+import DAO.AddFriendsDAO;
+import DAO.FollowsDAO;
 import DAO.UserDAO;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,6 +23,8 @@ public class User {
     private LocalDate registrationDate;
     private String gender;
     private String userType;
+    private Boolean friendStatus;
+    private Boolean FollowStatus;
 
 
     ArrayList<String> arrayList = new ArrayList<String>();
@@ -49,6 +54,7 @@ public class User {
         this.city = city;
         this.gender = gender;
         this.userType = userType;
+
     }
 
     public User( String userId ) {
@@ -73,7 +79,9 @@ public class User {
     }
 
     public User(String userId, String firstName, String lastName) {
-
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public User getUser(){
@@ -181,6 +189,22 @@ public class User {
         this.gender = gender;
     }
 
+    public Boolean getFriendStatus() {
+        return friendStatus;
+    }
+
+    public void setFriendStatus(Boolean friendStatus) {
+        this.friendStatus = friendStatus;
+    }
+
+    public Boolean getFollowStatus() {
+        return FollowStatus;
+    }
+
+    public void setFollowStatus(Boolean followStatus) {
+        FollowStatus = followStatus;
+    }
+
     /*Getters and setters ends here*/
 
     public void userRegistered(){
@@ -189,13 +213,71 @@ public class User {
         userId=userDAO.getGeneratedUserId();
     }
 
-    public ArrayList<Teacher> searchTeacher(String arrayList){
+    public ArrayList<JSONObject> searchTeacher(String teacherName , User user ){
         
         UserDAO userDAO =  new UserDAO();
-        ArrayList<Teacher> teacherArrayList = userDAO.searchTeacher(arrayList);
 
-        return teacherArrayList;
+        ArrayList< User > teacherArrayList =  userDAO.searchTeacher( teacherName );
+        ArrayList< JSONObject > teacherJsonList = new ArrayList<>();
+        /* if it is a guest then the user object in the session will be null */
 
+        if ( teacherArrayList.size() > 0){
+
+            if ( user != null ){
+
+                if ( user.getUserType().equals("Teacher") ){
+
+                    AddFriendsDAO addFriendsDAO = new AddFriendsDAO();
+
+                    for ( int i = 0 ; i < teacherArrayList.size() ; i++ ){
+                        /* here for each found teacher it checks if the teacher is a friend of the searching user
+                         * if a friend it sets teh friend status to true, else false*/
+                        teacherArrayList.get( i ).setFriendStatus( addFriendsDAO.checkIsFriend( user.getUserId() , teacherArrayList.get(i).getUserId() ) );
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put( "userID" , teacherArrayList.get(i).getUserId() );
+                        jsonObject.put( "firstName" , teacherArrayList.get(i).getFirstName() );
+                        jsonObject.put( "lastName" , teacherArrayList.get(i).getLastName() );
+                        jsonObject.put( "friendStatus" , teacherArrayList.get(i).getFriendStatus() );
+                        teacherJsonList.add( jsonObject );
+
+                    }
+
+                }else {
+
+                    FollowsDAO followsDAO = new FollowsDAO();
+
+                    for ( int i = 0 ; i < teacherArrayList.size() ; i++ ){
+
+                        teacherArrayList.get( i ).setFriendStatus( followsDAO.checkIsFollow( user.getUserId() , teacherArrayList.get(i).getUserId() ) );
+
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put( "userID" , teacherArrayList.get(i).getUserId() );
+                        jsonObject.put( "firstName" , teacherArrayList.get(i).getFirstName() );
+                        jsonObject.put( "lastName" , teacherArrayList.get(i).getLastName() );
+                        jsonObject.put( "followStatus" , teacherArrayList.get(i).getFriendStatus() );
+                        teacherJsonList.add( jsonObject );
+
+                    }
+
+                }
+
+            }else {
+
+                for ( int i = 0 ; i < teacherArrayList.size() ; i++ ){
+
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put( "userID" , teacherArrayList.get(i).getUserId() );
+                    jsonObject.put( "firstName" , teacherArrayList.get(i).getFirstName() );
+                    jsonObject.put( "lastName" , teacherArrayList.get(i).getLastName() );
+                    teacherJsonList.add( jsonObject );
+
+                }
+
+            }
+
+        }
+
+        return  teacherJsonList;
     }
 
   
