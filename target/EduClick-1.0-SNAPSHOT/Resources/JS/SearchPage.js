@@ -124,18 +124,19 @@ function searchForTeacher() {
 
                 if( userTypeValue !== "Guest" ){
 
-                    if (userTypeValue === "Teacher"){
+                    if (userTypeValue === "Teacher"){ /* here this checks the user type the current logedin user (my). not the
+                    user whose profile is checked...*/
 
                         htmlString += '                <div>' +
-                            '                    <input style="display:block;" id="enable2" type="button" value="Add Friend" onclick="enableDisableStatus(' + jsonResponse.teacherList[i].userID +')">' +
-                            '                    <input style="display:none;" id="disable2" type="button" value="Cancel request" class="studentDisable" onclick="enableDisableStatus(' + jsonResponse.teacherList[i].userID +')">' +
+                            '                    <input style="display:block;" id="addFriend'+ jsonResponse.teacherList[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
+                            '                    <input style="display:none;" id="cancelRequest'+ jsonResponse.teacherList[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
                             '                </div>';
 
                     }else if(userTypeValue === "Student"){
 
                         htmlString += '                <div>' +
-                            '                    <input style="display:block;" id="enable2" type="button" value="Follow" onclick="enableDisableStatus(' + jsonResponse.teacherList[i].userID +')">' +
-                            '                    <input style="display:none;" id="disable2" type="button" value="Unfollow" class="studentDisable" onclick="enableDisableStatus(' + jsonResponse.teacherList[i].userID +')">' +
+                            '                    <input style="display:block;" id="follow'+ jsonResponse.teacherList[i].userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + jsonResponse.teacherList[i].userID +')">' +
+                            '                    <input style="display:none;" id="unFollow'+ jsonResponse.teacherList[i].userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' + jsonResponse.teacherList[i].userID +')">' +
                             '                </div>';
 
                     }
@@ -160,5 +161,55 @@ function searchForTeacher() {
 
 }
 
+function addFriendCancel( id ){
 
+    let addFriendStringValue = "addFriend" + id;
+
+    let cancelRequestStringValue = "cancelRequest" + id;
+
+    let addFriendButton = document.getElementById( addFriendStringValue );
+
+    let cancelRequestButton = document.getElementById( cancelRequestStringValue );
+
+    if (cancelRequestButton.style.display === "none"){
+        console.log( "sent request" + id)
+        /*defaultView.getComputedStyle(enableButton)*/
+        cancelRequestButton.style.display = "block";
+        addFriendButton.style.display = "none";
+
+
+    }else{
+        console.log( "cancel request" + id)
+        cancelRequestButton.style.display = "none";
+        addFriendButton.style.display = "block";
+
+    }
+
+}
+
+function followUnfollowTeachers( id ){
+
+    let followTeacherStringValue = "follow" + id;
+
+    let unFollowStringValue = "unFollow" + id;
+
+    let followButton = document.getElementById( followTeacherStringValue );
+
+    let unFollowButton = document.getElementById( unFollowStringValue );
+
+    if (unFollowButton.style.display === "none"){
+        console.log( "follow" + id)
+        /*defaultView.getComputedStyle(enableButton)*/
+        unFollowButton.style.display = "block";
+        followButton.style.display = "none";
+
+
+    }else{
+        console.log( "unfollow" + id)
+        unFollowButton.style.display = "none";
+        followButton.style.display = "block";
+
+    }
+
+}
 
