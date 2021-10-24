@@ -33,7 +33,6 @@ public class SearchPageOnLoadServlet extends HttpServlet {
             jsonObject.put( "UserName" , user.getFirstName() );
 
             if ( user.getUserType().equals("Teacher") ){
-                System.out.println("teacher alsdjf");
                 jsonObject.put( "Url" , "/EduClick_war_exploded/Teacher/Teacher.html");
                 jsonObject.put( "UserType" , "Teacher" );
 
