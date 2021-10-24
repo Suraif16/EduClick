@@ -259,17 +259,18 @@ div#navbar{
     padding-top: 3%;
 }
 div#navbar ul{
-  flex: 2;
+    flex: 1;
     padding: 0;
     flex-wrap: wrap;
     float: left;
-    margin-left: 30px;
-    display: inline-flex;
+    margin: 50px auto auto 30px;
+    display: flex;
 }
 div#navbar ul li{
     position: relative;
     list-style: none;
-    display: inline-block;
+    display: inline-flex;
+    flex-wrap: wrap;
 }
 div#navbar ul li a{
     display: block;
