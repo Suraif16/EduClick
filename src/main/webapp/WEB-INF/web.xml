@@ -323,7 +323,7 @@
 
     <servlet>
         <servlet-name>UserProfileRedirect</servlet-name>
-        <servlet-class>Controller.UserProfileRedirect</servlet-class>
+        <servlet-class>Controller.UserProfileRedirectServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
