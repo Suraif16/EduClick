@@ -174,6 +174,7 @@ function addFriendCancel( id ){
     if (cancelRequestButton.style.display === "none"){
         console.log( "sent request" + id)
         /*defaultView.getComputedStyle(enableButton)*/
+        addFriendRequestServer( id )
         cancelRequestButton.style.display = "block";
         addFriendButton.style.display = "none";
 
@@ -213,3 +214,19 @@ function followUnfollowTeachers( id ){
 
 }
 
+const addFriendRequestServer = function ( toUserId ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status == 200){
+
+        }
+
+    }
+    httpreq.open( "POST" , "/EduClick_war_exploded/addFriendRequest" , true);
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    httpreq.send( "toID=" + toUserId);
+
+}
