@@ -605,7 +605,7 @@ div.mcqAnswerContainer{
 div.mcqSingleAnswer{
     /*child of mcqAnswerContainer*/
     background-color: #4775c4;
-    margin: 0.5%;
+    margin: 1.2%;
     padding: 2%;
 
 
@@ -1154,6 +1154,14 @@ input.requestDecline{
         width: 57%;
 
     }
+
+}
+
+.postTimeAndDate{
+
+    flex-basis: 25%;
+    margin: auto;
+    font-size: x-small;
 
 }
 

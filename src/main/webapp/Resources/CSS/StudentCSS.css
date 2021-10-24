@@ -667,6 +667,15 @@ input.requestDecline{
 
 }
 
+.postTimeAndDate{
+
+    flex-basis: 25%;
+    margin: auto;
+    font-size: x-small;
+
+}
+
+
 @media(max-width: 1100px) {
 
     div#content > div#notifications {
