@@ -189,10 +189,10 @@ public class User {
         userId=userDAO.getGeneratedUserId();
     }
 
-    public ArrayList<User> searchTeacher(String arrayList){
+    public ArrayList<Teacher> searchTeacher(String arrayList){
         
         UserDAO userDAO =  new UserDAO();
-        ArrayList<User> teacherArrayList = userDAO.searchTeacher(arrayList);
+        ArrayList<Teacher> teacherArrayList = userDAO.searchTeacher(arrayList);
 
         return teacherArrayList;
 

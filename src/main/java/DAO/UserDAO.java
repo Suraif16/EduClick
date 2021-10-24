@@ -2,6 +2,7 @@ package DAO;
 
 import Database.DBConnectionPool;
 
+import Model.Teacher;
 import Model.User;
 
 import java.text.SimpleDateFormat;
@@ -239,11 +240,11 @@ public class UserDAO<teacherArrayList> {
 
     }
 
-    public static ArrayList<User> searchTeacher(String teacherName) {
+    public static ArrayList<Teacher> searchTeacher(String teacherName) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> teacherArrayList = new ArrayList<>();
+        ArrayList<Teacher> teacherArrayList = new ArrayList<>();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
@@ -257,7 +258,8 @@ public class UserDAO<teacherArrayList> {
                 String lastName = resultSet.getString("LastName");
 
                 User user = new User(userId, firstName, lastName);
-                teacherArrayList.add(user);
+                Teacher teacher = new Teacher( user );
+                teacherArrayList.add( teacher );
             }
             int len = teacherArrayList.size();
             for (int i = 0; i < len; i++) {
