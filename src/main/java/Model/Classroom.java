@@ -85,6 +85,10 @@ public class Classroom {
 
     }
 
+    public Classroom(String classroomID, String classroomName) {
+        this.classroomID = classroomID;
+        this.classroomName = classroomName;
+    }
 
     public void createClassroom(){
 
@@ -104,8 +108,10 @@ public class Classroom {
 
     public  ArrayList<Classroom> getListOfCLassRooms(){
 
+        ArrayList<Classroom> classroomList = new ArrayList<>();
         ClassroomDAO classroomDAO = new ClassroomDAO();
-        return classroomDAO.selectAll( this.userId );
+        classroomList = classroomDAO.selectAll( this.userId );
+        return classroomList;
 
     }
 

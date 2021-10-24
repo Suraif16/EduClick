@@ -142,4 +142,36 @@ public class ClassroomDAO {
 
     }
 
+    /*public ArrayList<Classroom> TeacherClassrooms(String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        ArrayList<Classroom> classroomList = new ArrayList<>();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT CLassroomID,CR_Name FROM Classroom WHERE UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1, userId );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while( resultSet.next() ){
+
+                String classroomID = resultSet.getString( "ClassroomID" );
+                String CR_Name = resultSet.getString( "CR_Name" );
+                Classroom classroom = new Classroom(classroomID,CR_Name);
+                classroom.setClassroomID( classroomID );
+                classroomList.add(classroom);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        return classroomList;
+    }*/
+
 }

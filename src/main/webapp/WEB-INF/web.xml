@@ -133,11 +133,22 @@
 
     <servlet-mapping>
         <servlet-name>enrollRequest</servlet-name>
-        <url-pattern>/student/enrollRequest</url-pattern>
+        <url-pattern>/enrollRequest</url-pattern>
     </servlet-mapping>
 
     <!--End of student student enroll request-->
 
+
+    <servlet>
+        <servlet-name>teacherClassroomList</servlet-name>
+        <servlet-class>Controller.TeacherClassroomListLoad</servlet-class>
+        <load-on-startup>6</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherClassroomList</servlet-name>
+        <url-pattern>/teacherClassroomList</url-pattern>
+    </servlet-mapping>
 
 
 

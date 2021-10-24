@@ -1,6 +1,7 @@
 package Model;
 
 import DAO.AddFriendsDAO;
+import DAO.ClassroomDAO;
 import DAO.FollowsDAO;
 import DAO.UserDAO;
 import org.json.JSONObject;
@@ -263,6 +264,12 @@ public class User {
 
 
 
+    public ArrayList<Classroom> TeacherClassroomList(String userId){
+        ArrayList<Classroom> classroomList = new ArrayList<>();
+        ClassroomDAO classroomDAO = new ClassroomDAO();
+        classroomList = classroomDAO.selectAll(userId);
+        return classroomList;
+    }
 
 
     /*to check the enroll table and get records*/
