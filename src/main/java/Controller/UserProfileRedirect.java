@@ -20,7 +20,7 @@ public class UserProfileRedirect extends HttpServlet {
         user.getUser();
         if ( user.getUserType().equals("Teacher") ){
 
-            response.sendRedirect("/EduClick_war_exploded/Teacher/TeacherProfile.html");
+            response.sendRedirect("/EduClick_war_exploded/Teacher/Teacherpro.html");
 
         }else if ( user.getUserType().equals("Student") ){
 
