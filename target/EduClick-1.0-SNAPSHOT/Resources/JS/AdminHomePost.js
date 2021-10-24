@@ -66,6 +66,7 @@ const sendServerData = function (){
         '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
         '</div>'+
         '<div class="postProfileName" >Admin</div>'+
+        '<div class="postTimeAndDate">18:32:26 | 03/25/2015</div>'+
         '</a>'+
         '</div>'+
         '</div>'+

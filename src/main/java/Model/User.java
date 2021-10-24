@@ -23,8 +23,6 @@ public class User {
     private LocalDate registrationDate;
     private String gender;
     private String userType;
-    private Boolean friendStatus;
-    private Boolean FollowStatus;
 
 
     ArrayList<String> arrayList = new ArrayList<String>();
@@ -189,22 +187,6 @@ public class User {
         this.gender = gender;
     }
 
-    public Boolean getFriendStatus() {
-        return friendStatus;
-    }
-
-    public void setFriendStatus(Boolean friendStatus) {
-        this.friendStatus = friendStatus;
-    }
-
-    public Boolean getFollowStatus() {
-        return FollowStatus;
-    }
-
-    public void setFollowStatus(Boolean followStatus) {
-        FollowStatus = followStatus;
-    }
-
     /*Getters and setters ends here*/
 
     public void userRegistered(){
@@ -232,12 +214,11 @@ public class User {
                     for ( int i = 0 ; i < teacherArrayList.size() ; i++ ){
                         /* here for each found teacher it checks if the teacher is a friend of the searching user
                          * if a friend it sets teh friend status to true, else false*/
-                        teacherArrayList.get( i ).setFriendStatus( addFriendsDAO.checkIsFriend( user.getUserId() , teacherArrayList.get(i).getUserId() ) );
                         JSONObject jsonObject = new JSONObject();
                         jsonObject.put( "userID" , teacherArrayList.get(i).getUserId() );
                         jsonObject.put( "firstName" , teacherArrayList.get(i).getFirstName() );
                         jsonObject.put( "lastName" , teacherArrayList.get(i).getLastName() );
-                        jsonObject.put( "friendStatus" , teacherArrayList.get(i).getFriendStatus() );
+                        jsonObject.put( "friendStatus" , addFriendsDAO.checkIsFriend( user.getUserId() , teacherArrayList.get(i).getUserId() ) );
                         teacherJsonList.add( jsonObject );
 
                     }
@@ -248,13 +229,11 @@ public class User {
 
                     for ( int i = 0 ; i < teacherArrayList.size() ; i++ ){
 
-                        teacherArrayList.get( i ).setFriendStatus( followsDAO.checkIsFollow( user.getUserId() , teacherArrayList.get(i).getUserId() ) );
-
                         JSONObject jsonObject = new JSONObject();
                         jsonObject.put( "userID" , teacherArrayList.get(i).getUserId() );
                         jsonObject.put( "firstName" , teacherArrayList.get(i).getFirstName() );
                         jsonObject.put( "lastName" , teacherArrayList.get(i).getLastName() );
-                        jsonObject.put( "followStatus" , teacherArrayList.get(i).getFriendStatus() );
+                        jsonObject.put( "followStatus" , followsDAO.checkIsFollow( user.getUserId() , teacherArrayList.get(i).getUserId() ) );
                         teacherJsonList.add( jsonObject );
 
                     }
