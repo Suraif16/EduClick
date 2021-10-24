@@ -3,19 +3,9 @@ let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hid
 let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
 
 const classroomListObjection = document.getElementById( "classroomsList" );
-const search = document.getElementById( "searchBarText" );
 const addClassroomForm = document.getElementById("addClassroomForm");
 const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
 
-search.addEventListener( "keyup" , function ( event ){
-
-    if(event.key === "Enter"){
-
-        console.log(search.value);
-
-    }
-
-});
 
 function showClassroomList(){
 
@@ -155,42 +145,6 @@ function createClassroom(){
     }else {
 
         sendServerData();
-
-    }
-
-
-}
-
-/* Search for Teachers start here  */
-search.addEventListener( "keyup" , function (event){
-
-    const searchName = document.getElementById("searchBarText").value;
-
-    console.log(searchName);
-    searchTeacher();
-
-});
-
-function searchTeacher(){
-
-    const searchName = document.getElementById("searchBarText").value;
-
-    let httpreq = new XMLHttpRequest();
-    httpreq.onreadystatechange = function (){
-
-        if (this.readyState === 4 && this.status === 200){
-            completeSearch( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-        }
-    }
-    /* ************************ */
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherCreateClassroom" , true);
-    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-    httpreq.send("searchBarText=" + searchName);
-
-    function completeSearch(httpreq){
-
-        console.log(httpreq.responseText);
-        let jsonSearchResponse = JSON.parse(httpreq.responseText);
 
     }
 

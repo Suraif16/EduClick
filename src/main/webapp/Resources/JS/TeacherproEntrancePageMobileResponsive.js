@@ -12,8 +12,12 @@ search.addEventListener( "keyup" , function ( event ){
 
     if(event.key === "Enter"){
 
-        console.log(search.value);
+        // console.log(search.value);
+        let httpreq = new XMLHttpRequest();
 
+        httpreq.onreadystatechange = function (){
+
+        }
     }
 
 });

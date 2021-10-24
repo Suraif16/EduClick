@@ -37,6 +37,7 @@ public class Teacher extends User{
         Qualifications = qualifications;
     }
 
+
     /*Getters and setters ends here*/
 
     public Teacher( User user , String currentWorkingPlace , List<String> subjects , List<String> Qualifications){

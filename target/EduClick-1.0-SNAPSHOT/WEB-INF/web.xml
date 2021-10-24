@@ -275,6 +275,34 @@
     </servlet-mapping>
 
     <!-- end of incorrectPassword -->
+    
+    <!-- beginning of Search -->
+    
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>Controller.SearchServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+    
+    <!-- End of Search -->
+
+    <!-- beginning of SearchPageOnLoad -->
+
+    <servlet>
+        <servlet-name>SearchPageOnLoad</servlet-name>
+        <servlet-class>Controller.SearchPageOnLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchPageOnLoad</servlet-name>
+        <url-pattern>/searchPageOnLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of SearchPageOnLoad -->
 
     <!-- start search for teacher  -->
 
@@ -286,11 +314,24 @@
 
     <servlet-mapping>
         <servlet-name>SearchTeacher</servlet-name>
-        <url-pattern>/teacher/searchTeacher</url-pattern>
+        <url-pattern>/searchTeacher</url-pattern>
     </servlet-mapping>
 
-    <!-- start search for teacher -->
+    <!-- end search for teacher -->
 
+    <!-- beginning of UserProfile Redirect -->
+
+    <servlet>
+        <servlet-name>UserProfileRedirect</servlet-name>
+        <servlet-class>Controller.UserProfileRedirect</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserProfileRedirect</servlet-name>
+        <url-pattern>/userProfileRedirect</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of UserProfile Redirect -->
 
     <session-config>
 

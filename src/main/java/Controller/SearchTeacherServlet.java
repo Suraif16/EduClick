@@ -17,29 +17,19 @@ import java.util.List;
 
 public class SearchTeacherServlet extends HttpServlet {
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         JSONObject jsonObject = new JSONObject();
 
-        jsonObject.put("serverResponse" , "Allowed");
+        HttpSession session = request.getSession( false );
 
-        HttpSession session = request.getSession(false);
-        User user = (User) session.getAttribute("User");
+        String teacherName = (String) session.getAttribute( "searchValue" );
 
-        List<String> teacherList = new ArrayList<>();
-
-        String teacherName = request.getParameter("value");
-
-        System.out.println(teacherName + " ACCESS SERVLET");
-
-        User teacher = new User();
-        teacher.searchTeacher(teacherName);
-
-
+        User user = new User();
+        List< JSONObject > teacherList =  user.searchTeacher( teacherName , ( User ) session.getAttribute( "User" ));
         JSONArray jsonArray = new JSONArray( teacherList );
-
         jsonObject.put("teacherList" , jsonArray);
 
         out.write(jsonObject.toString());

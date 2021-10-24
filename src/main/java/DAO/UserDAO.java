@@ -2,6 +2,7 @@ package DAO;
 
 import Database.DBConnectionPool;
 
+import Model.Teacher;
 import Model.User;
 
 import java.text.SimpleDateFormat;
@@ -239,31 +240,30 @@ public class UserDAO<teacherArrayList> {
 
     }
 
-    public static ArrayList<User> searchTeacher(String teacherName) {
+    public ArrayList< User > searchTeacher(String teacherName) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> teacherArrayList = new ArrayList<>();
+        ArrayList< User > teacherArrayList = new ArrayList<>();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select FirstName, LastName,UserID from Users where FirstName = '" + teacherName + "'";
+            String sql = "SELECT FirstName, LastName,UserID FROM Users WHERE FirstName LIKE ? OR LastName LIKE ? AND UserType = 'Teacher'";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString( 1 , "%" + teacherName + "%" );
+            preparedStatement.setString( 2 , "%" + teacherName + "%" );
             ResultSet resultSet = preparedStatement.executeQuery();
+
             while (resultSet.next()) {
+
                 String userId = resultSet.getString("UserID");
                 String firstName = resultSet.getString("FirstName");
                 String lastName = resultSet.getString("LastName");
-
+                System.out.println( userId );
                 User user = new User(userId, firstName, lastName);
-                teacherArrayList.add(user);
-            }
-            int len = teacherArrayList.size();
-            for (int i = 0; i < len; i++) {
-                System.out.println(teacherArrayList.get(i).getUserId());
-                System.out.println(teacherArrayList.get(i).getFirstName());
-                System.out.println(teacherArrayList.get(i).getLastName());
+                teacherArrayList.add( user );
+
             }
 
 
