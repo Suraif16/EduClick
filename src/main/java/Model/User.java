@@ -199,8 +199,12 @@ public class User {
     public ArrayList<JSONObject> searchTeacher(String teacherName , User user ){
         
         UserDAO userDAO =  new UserDAO();
-
-        ArrayList< User > teacherArrayList =  userDAO.searchTeacher( teacherName );
+        ArrayList< User > teacherArrayList = new ArrayList<>();
+        if( user!= null){
+             teacherArrayList =  userDAO.searchTeacher( teacherName , user.getUserId() );
+        }else {
+             teacherArrayList =  userDAO.searchTeacher( teacherName , "0" );
+        }
         ArrayList< JSONObject > teacherJsonList = new ArrayList<>();
         /* if it is a guest then the user object in the session will be null */
 
