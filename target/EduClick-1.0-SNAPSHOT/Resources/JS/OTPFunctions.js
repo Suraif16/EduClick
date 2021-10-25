@@ -17,8 +17,8 @@ const generateOTP = function (){
 }
 
 verifyOTPButton.onclick = function (){
-    /* again send user input to server and checks otp correction */
-    const otpValue = document.getElementById("otp").value;
+    /* again send user input to server and checks OTP correction */
+    const otpValue = document.getElementById("OTP").value;
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function (){
@@ -35,7 +35,7 @@ verifyOTPButton.onclick = function (){
     httpreq.send("OPTUserValue=" + otpValue );
 
     const responseComplete = function ( httpreq ){
-        /* Here if the otp is valid then the user is sent to the relavent page*/
+        /* Here if the OTP is valid then the user is sent to the relavent page*/
         let jsonObject = JSON.parse( httpreq.responseText )
 
         if ( jsonObject.OTPStatus === "valid"){

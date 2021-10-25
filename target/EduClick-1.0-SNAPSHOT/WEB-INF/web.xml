@@ -6,7 +6,7 @@
     <!--Start of login servlet and filter-->
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>Controller.LoginServlet</servlet-class>
+        <servlet-class>Controller.Login.LoginServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
     
@@ -28,7 +28,7 @@
 
     <filter>
         <filter-name>loginPasswordHashing</filter-name>
-        <filter-class>Controller.LoginFilter</filter-class>
+        <filter-class>Controller.Login.LoginFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -40,7 +40,7 @@
     <!--Start of registration servlet and filter-->
     <servlet>
         <servlet-name>registration</servlet-name>
-        <servlet-class>Controller.RegisterServlet</servlet-class>
+        <servlet-class>Controller.Registration.RegisterServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
 
@@ -51,7 +51,7 @@
 
     <filter>
         <filter-name>registrationPasswordHashing</filter-name>
-        <filter-class>Controller.RegistrationSaltingKeyFilter</filter-class>
+        <filter-class>Controller.Registration.RegistrationSaltingKeyFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -61,7 +61,7 @@
 
     <filter>
         <filter-name>registrationFilter</filter-name>
-        <filter-class>Controller.RegisterFilter</filter-class>
+        <filter-class>Controller.Registration.RegisterFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -75,7 +75,7 @@
 
     <servlet>
         <servlet-name>teacherLoad</servlet-name>
-        <servlet-class>Controller.TeacherLoadServlet</servlet-class>
+        <servlet-class>Controller.UserLoad.TeacherLoadServlet</servlet-class>
         <load-on-startup>3</load-on-startup>
     </servlet>
 
@@ -101,7 +101,7 @@
 
     <servlet>
         <servlet-name>studentNewsFeedLoaded</servlet-name>
-        <servlet-class>Controller.StudentNewsFeedLoadedServlet</servlet-class>
+        <servlet-class>Controller.ClassroomList.StudentNewsFeedLoadedServlet</servlet-class>
         <load-on-startup>4</load-on-startup>
     </servlet>
 
@@ -127,7 +127,7 @@
 
     <servlet>
         <servlet-name>enrollRequest</servlet-name>
-        <servlet-class>Controller.EnrollRequestServlet</servlet-class>
+        <servlet-class>Controller.Requests.EnrollRequestServlet</servlet-class>
         <load-on-startup>5</load-on-startup>
     </servlet>
 
@@ -141,7 +141,7 @@
 
     <servlet>
         <servlet-name>teacherClassroomList</servlet-name>
-        <servlet-class>Controller.TeacherClassroomListLoad</servlet-class>
+        <servlet-class>Controller.ClassroomList.TeacherClassroomListLoad</servlet-class>
         <load-on-startup>6</load-on-startup>
     </servlet>
 
@@ -156,7 +156,7 @@
 
     <servlet>
         <servlet-name>studentLoad</servlet-name>
-        <servlet-class>Controller.StudentLoadServlet</servlet-class>
+        <servlet-class>Controller.UserLoad.StudentLoadServlet</servlet-class>
         <load-on-startup>6</load-on-startup>
     </servlet>
 
@@ -182,7 +182,7 @@
 
     <servlet>
         <servlet-name>teacherCreateClassroom</servlet-name>
-        <servlet-class>Controller.TeacherCreateClassroomServlet</servlet-class>
+        <servlet-class>Controller.Classroom.TeacherCreateClassroomServlet</servlet-class>
         <load-on-startup>7</load-on-startup>
     </servlet>
 
@@ -207,7 +207,7 @@
 
     <servlet>
         <servlet-name>Logout</servlet-name>
-        <servlet-class>Controller.LogoutServlet</servlet-class>
+        <servlet-class>Controller.Login.LogoutServlet</servlet-class>
         <load-on-startup>8</load-on-startup>
     </servlet>
 
@@ -221,7 +221,7 @@
     <!-- beginning of the TeacherClassroomListServlet-->
     <servlet>
         <servlet-name>TeacherLoadClassroomList</servlet-name>
-        <servlet-class>Controller.TeacherLoadClassroomListServlet</servlet-class>
+        <servlet-class>Controller.ClassroomList.TeacherLoadClassroomListServlet</servlet-class>
         <load-on-startup>9</load-on-startup>
     </servlet>
 
@@ -235,7 +235,7 @@
     <!-- beginning of OTPGenerateServlet-->
     <servlet>
         <servlet-name>OPTGenerate</servlet-name>
-        <servlet-class>Controller.OTPGenerateServlet</servlet-class>
+        <servlet-class>Controller.OTP.OTPGenerateServlet</servlet-class>
         <load-on-startup>10</load-on-startup>
     </servlet>
     
@@ -248,7 +248,7 @@
     <!-- beginning of OTPValidateServlet-->
     <servlet>
         <servlet-name>OTPValidate</servlet-name>
-        <servlet-class>Controller.OTPValidateServlet</servlet-class>
+        <servlet-class>Controller.OTP.OTPValidateServlet</servlet-class>
         <load-on-startup>11</load-on-startup>
     </servlet>
     
@@ -262,7 +262,7 @@
         
     <servlet>
         <servlet-name>DisplayRequest</servlet-name>
-        <servlet-class>Controller.DisplayRequestServlet</servlet-class>
+        <servlet-class>Controller.Requests.DisplayRequestServlet</servlet-class>
         <load-on-startup>12</load-on-startup>
     </servlet>
     
@@ -276,7 +276,7 @@
     <!-- beginning of incorrectPassword -->
     <servlet>
         <servlet-name>IncorrectPassword</servlet-name>
-        <servlet-class>Controller.IncorrectPasswordServlet</servlet-class>
+        <servlet-class>Controller.Login.IncorrectPasswordServlet</servlet-class>
         <load-on-startup>14</load-on-startup>
     </servlet>
 
@@ -291,7 +291,7 @@
     
     <servlet>
         <servlet-name>Search</servlet-name>
-        <servlet-class>Controller.SearchServlet</servlet-class>
+        <servlet-class>Controller.Search.SearchServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
@@ -305,7 +305,7 @@
 
     <servlet>
         <servlet-name>SearchPageOnLoad</servlet-name>
-        <servlet-class>Controller.SearchPageOnLoadServlet</servlet-class>
+        <servlet-class>Controller.Search.SearchPageOnLoadServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -319,7 +319,7 @@
 
     <servlet>
         <servlet-name>SearchTeacher</servlet-name>
-        <servlet-class>Controller.SearchTeacherServlet</servlet-class>
+        <servlet-class>Controller.Search.SearchTeacherServlet</servlet-class>
         <load-on-startup>13</load-on-startup>
     </servlet>
 
@@ -334,7 +334,7 @@
 
     <servlet>
         <servlet-name>UserProfileRedirect</servlet-name>
-        <servlet-class>Controller.UserProfileRedirectServlet</servlet-class>
+        <servlet-class>Controller.UserProfile.UserProfileRedirectServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -348,7 +348,7 @@
 
     <servlet>
         <servlet-name>AddFriendRequest</servlet-name>
-        <servlet-class>Controller.AddFriendRequestServlet</servlet-class>
+        <servlet-class>Controller.Requests.AddFriendRequestServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
