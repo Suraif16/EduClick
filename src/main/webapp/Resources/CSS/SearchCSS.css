@@ -989,12 +989,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     }
 
-    header > div#headerButtons {
 
-        flex: 1;
-        display: flex;
-
-    }
 
     div#content > div#postContents {
 
@@ -1005,7 +1000,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#classroomsList {
 
-        display: none;
+
         margin: 12% auto 0 0;
         width: 30%;
         background-color: white;
@@ -1019,7 +1014,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
         flex: 1;
         display: flex;
-        margin: 12% 0 0 auto;
+        margin: 12% 0 0 35%;
 
     }
 
@@ -1057,7 +1052,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#rightPanel {
 
-        margin: 15% 0 0 auto;
+        margin: 15% 0 0 43%;
 
 
     }
@@ -1071,12 +1066,27 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 }
 
 @media(max-width: 650px) {
+    div#content > div#classroomsList {
+
+        display: none;
+
+    }
+    div#content > div#rightPanel {
+
+        margin: 15% 0 0 auto;
 
 
+    }
 
     header > div#headerMainBar > div#logout{
 
         margin: auto 1% auto 1%;
+
+    }
+    header > div#headerButtons {
+
+        flex: 1;
+        display: flex;
 
     }
 
