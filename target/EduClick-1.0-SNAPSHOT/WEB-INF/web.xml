@@ -194,7 +194,7 @@
     <!--end of teacher create classroom-->
 
     <filter>
-        <filter-name>adminAuthentication</filter-name>-
+        <filter-name>adminAuthentication</filter-name>
         <filter-class>Controller.Authentication.AdminAuthenticationFilter</filter-class>
     </filter>
 
