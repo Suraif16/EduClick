@@ -1,7 +1,8 @@
 package Controller;
 
-import DAO.UserDAO;
+
 import Model.AdminPost;
+import Model.Admin;
 import Model.*;
 import org.json.JSONObject;
 
@@ -27,20 +28,16 @@ public class AdminServlet extends HttpServlet {
         HttpSession session = request.getSession();
         JSONObject jsonObject = new JSONObject();
 
-        /*for users*/
-        /*loginStatus = UserID*/
-        /* UserDAO userDAO = new UserDAO();
-        int count= userDAO.countTeacher();
-        jsonObject.put("Teacher" ,count );*/
-        UserDAO userDAO = new UserDAO();
-        userDAO.count();
-        //Admin admin = new Admin();
 
-        jsonObject.put("counttotal" ,userDAO.getCountTeacher()+userDAO.getCountStudent());
-        jsonObject.put("Teacher" ,userDAO.getCountTeacher());
-        jsonObject.put("TeacherReg" ,userDAO.getTodaycountTeacher());
-        jsonObject.put("Student" ,userDAO.getCountStudent());
-        jsonObject.put("StudentReg" ,userDAO.getTodaycountStudent());
+        Admin admin = new Admin( );
+        admin = admin.getCount();
+        jsonObject.put("counttotal" ,admin.getCountTeacher()+admin.getCountStudent());
+        jsonObject.put("Teacher" ,admin.getCountTeacher());
+        jsonObject.put("TeacherReg" ,admin.getTodaycountTeacher());
+        jsonObject.put("Student" ,admin.getCountStudent());
+        jsonObject.put("StudentReg" ,admin.getTodaycountStudent());
+
+
 
         System.out.println(jsonObject);
         out.write(jsonObject.toString());
