@@ -2,7 +2,7 @@ package DAO;
 
 import Database.DBConnectionPool;
 
-import Model.Teacher;
+import Model.Admin;
 import Model.User;
 
 import java.text.SimpleDateFormat;
@@ -30,42 +30,7 @@ public class UserDAO<teacherArrayList> {
         this.generatedUserId = generatedUserId;
     }
 
-    private int countTeacher;
-    private int todaycountTeacher;
-    private int countStudent;
-    private int todaycountStudent;
 
-    public int getCountTeacher() {
-        return countTeacher;
-    }
-
-    public void setCountTeacher(int countTeacher) {
-        this.countTeacher = countTeacher;
-    }
-
-    public int getTodaycountTeacher() {
-        return todaycountTeacher;
-    }
-
-    public void setTodaycountTeacher(int todaycountTeacher) {
-        this.todaycountTeacher = todaycountTeacher;
-    }
-
-    public int getCountStudent() {
-        return countStudent;
-    }
-
-    public void setCountStudent(int countStudent) {
-        this.countStudent = countStudent;
-    }
-
-    public int getTodaycountStudent() {
-        return todaycountStudent;
-    }
-
-    public void setTodaycountStudent(int todaycountStudent) {
-        this.todaycountStudent = todaycountStudent;
-    }
 
     public String insert(User user) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -158,7 +123,7 @@ public class UserDAO<teacherArrayList> {
     }
 
 
-    public void count() {
+    public Admin count(Admin admin) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         int todaycountTeacher = 0;
@@ -192,17 +157,14 @@ public class UserDAO<teacherArrayList> {
                     }
                 }
             }
-
-
-            setCountTeacher(countTeacher);
+            admin.setCountTeacher(countTeacher);
             System.out.println(countTeacher);
-            setTodaycountTeacher(todaycountTeacher);
+            admin.setTodaycountTeacher(todaycountTeacher);
             System.out.println(todaycountTeacher);
-            setCountStudent(countStudent);
+            admin.setCountStudent(countStudent);
             System.out.println(countStudent);
-            setTodaycountStudent(todaycountStudent);
+            admin.setTodaycountStudent(todaycountStudent);
             System.out.println(todaycountStudent);
-
 
 
 
@@ -217,7 +179,7 @@ public class UserDAO<teacherArrayList> {
             }
         }
 
-
+        return admin;
     }
 
     public ArrayList< User > searchTeacher( String teacherName , String myUserId ) {
