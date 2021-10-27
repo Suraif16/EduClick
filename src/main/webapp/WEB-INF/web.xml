@@ -358,6 +358,16 @@
 
     <!-- End of add friend request -->
 
+    <servlet>
+        <servlet-name>teacherProfileNameLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.TeacherSearchProfileNameLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherProfileNameLoad</servlet-name>
+        <url-pattern>/student/teacherProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
