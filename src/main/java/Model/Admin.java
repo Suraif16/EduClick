@@ -77,13 +77,12 @@ public class Admin {
     public Admin() {
 
     }
-    public Admin(int countTeacher, int todaycountTeacher, int countStudent, int todaycountStudent) {
+    /*public Admin(int countTeacher, int todaycountTeacher, int countStudent, int todaycountStudent) {
         this.countTeacher = countTeacher;
         this.todaycountTeacher = todaycountTeacher;
         this.countStudent = countStudent;
         this.todaycountStudent = todaycountStudent;
-    }
-
+    }*/
     public Admin getCount(){
         UserDAO admindao = new UserDAO();
         return admindao.count(this);
