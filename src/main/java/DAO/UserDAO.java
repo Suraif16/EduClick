@@ -157,27 +157,6 @@ public class UserDAO<teacherArrayList> {
         return user;
     }
 
-    /*public int countTeacher() {
-
-        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
-        Connection connection = null;
-        int count=0;
-        try {
-            connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select count(*) from Users where UserType = 'Teacher' ";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-             count = resultSet.getInt(1);
-            System.out.println( count);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
-            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
-        }
-        return count;
-    }*/
-
 
     public void count() {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -214,8 +193,7 @@ public class UserDAO<teacherArrayList> {
                 }
             }
 
-            //Admin admin = new Admin(countTeacher,todaycountTeacher,countStudent,todaycountStudent);
-            //admin.setCountStudent(countTeacher);
+
             setCountTeacher(countTeacher);
             System.out.println(countTeacher);
             setTodaycountTeacher(todaycountTeacher);
@@ -224,6 +202,8 @@ public class UserDAO<teacherArrayList> {
             System.out.println(countStudent);
             setTodaycountStudent(todaycountStudent);
             System.out.println(todaycountStudent);
+
+
 
 
             preparedStatement.close();
