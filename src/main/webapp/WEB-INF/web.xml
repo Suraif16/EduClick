@@ -358,6 +358,20 @@
 
     <!-- End of add friend request -->
 
+    <!-- beginning of adminpost -->
+    <servlet>
+        <servlet-name>adminpost</servlet-name>
+        <servlet-class>Controller.AdminPostServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminpost</servlet-name>
+        <url-pattern>/AdminPost</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of adminpost -->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
