@@ -372,6 +372,21 @@
 
     <!-- end of teacher profile name load -->
 
+
+    <!-- beginning of teacher profile name load -->
+
+    <servlet>
+        <servlet-name>studentFollowerListLoad</servlet-name>
+        <servlet-class>Controller.StudentFollowerListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentFollowerListLoad</servlet-name>
+        <url-pattern>/studentFollowerListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teacher profile name load -->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
