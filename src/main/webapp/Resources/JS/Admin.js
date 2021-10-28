@@ -1,4 +1,4 @@
-//document.getElementById("demo").innerHTML = 5;
+
 
 document.onreadystatechange = function (){
     if ( document.readyState === 'complete' ){
