@@ -284,6 +284,12 @@ public class User {
         return fullName;
     }
 
+    public ArrayList< User > getStudentFollowersList(String userId){
+        UserDAO userDAO = new UserDAO();
+        ArrayList< User > studentFollowersList = userDAO.getStudentFollowersList(userId);
+        return studentFollowersList;
+    }
+
 
     /*to check the enroll table and get records*/
 
