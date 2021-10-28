@@ -221,56 +221,43 @@ img#profilepic{
     justify-content: center;
 }
 
+a{
+
+    text-decoration: none;
+    color: white;
+
+}
+
+
 div#propicbar{
-  /*  background-color: #4775c4;
+    background-color: #4775c4;
     display: flex;
     flex: 1; /*child of the body*/
-    /*order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
-    /*box-shadow: 8px 8px 2px #a7a7a7;
-    margin-top: -2px;*/
-    color: whitesmoke;
-    /*padding: 0.5%;*/
-    background-color: #4775c4;
+    /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
     box-shadow: 8px 8px 2px #a7a7a7;
-    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
-    display: flex; /*this is a container now for headerMainBar and headerButtons*/
+    margin-top: -2px;
     position: relative;
-    width: 100%;
     flex-direction: row;
-}
-div#propicbar > div#image-container{
-    flex: 1;
-    margin: 10px auto auto auto;
-    padding: 4px 4px;
     flex-wrap: wrap;
 
-
-}
-div#propicbar > div#image-container p {
-    flex: auto;
-    margin-left: -6%;
-    color: whitesmoke;
-    font-size: 25px;
 
 }
 div#navbar{
-    flex: 1;
-    flex-wrap: wrap;
+    display: flex;
     padding-top: 3%;
+    order:1;
+
 }
 div#navbar ul{
-    flex: 1;
     padding: 0;
-    flex-wrap: wrap;
+    margin: 0;
     float: left;
-    margin: 50px auto auto 30px;
-    display: flex;
+    margin-left: 30px;
 }
 div#navbar ul li{
     position: relative;
     list-style: none;
-    display: inline-flex;
-    flex-wrap: wrap;
+    display: inline-block;
 }
 div#navbar ul li a{
     display: block;
@@ -281,6 +268,64 @@ div#navbar ul li a{
     font-size: 20px;
 }
 div#navbar ul li a:hover{
+    background: #0571ed;
+}
+
+div#image-container1{
+    order: 2;
+    flex: 1;
+    margin-top: 10px;
+    padding: 4px 4px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+
+}
+
+img#profilepic1{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: center;
+    margin-right: 25%;
+
+}
+.postProfileUserName {
+    display: flex;
+    position: center;
+    margin-right: 25%;
+    justify-content: center;
+    flex-basis: 90%;
+    color: whitesmoke;
+    flex-wrap: wrap;
+
+}
+
+div#navbar2{
+    display: flex;
+    padding-top: 3%;
+    order:3;
+}
+div#navbar2 ul{
+    padding: 0;
+    margin: 0;
+    float: left;
+    margin-left: 30px;
+}
+div#navbar2 ul li{
+    position: relative;
+    list-style: none;
+    display: inline-block;
+}
+div#navbar2 ul li a{
+    display: block;
+    padding: 0 15px;
+    color: whitesmoke;
+    text-decoration: none;
+    line-height: 60px;
+    font-size: 20px;
+}
+div#navbar2 ul li a:hover{
     background: #0571ed;
 }
 @media(max-width: 852px){
@@ -557,76 +602,149 @@ input[type="button"]:active{
 }
 @media(max-width: 750px) {
 
+
+
+
     div#postContents {
+
         margin: 15% 0 0 auto;
+
     }
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
+
     }
     div#propicbar > div#image-container p {
+
         color: whitesmoke;
         font-size: 25px;
         margin-left: 76.5%;
         display: inline-flex;
+
+
+
     }
+
+
+
 }
 
+
+
 @media(max-width: 550px) {
+
+
+
     div#postContents {
+
         margin: 19% 0 0 auto;
+
     }
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
+
     }
     div#propicbar > div#image-container p {
+
         color: whitesmoke;
         font-size: 25px;
         margin-left: 76.5%;
         display: inline-flex;
+
+
+
     }
+
+
+
 }
 
 @media(max-width: 440px) {
+
+
+
+
+
+
     div#postContents {
+
         margin: 21% 0 0 auto;
+
     }
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
+
     }
-    div#propicbar > div#image-container p {
-        color: whitesmoke;
-        font-size: 25px;
-        margin-left: 76.5%;
-        display: inline-flex;
+    .postProfileUserName{
+        position: center;
+        margin-right: 40%;
     }
+
+    img#profilepic1{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        position: center;
+        margin-right: 20%;
+
+    }
+    div#navbar{
+        margin-bottom: 0px;
+    }
+
+
 }
 
 @media(max-width: 420px) {
+
+
+
     div#postContents {
+
         margin: 23% 0 0 auto;
+
     }
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
+
     }
+
+
+
 }
 
 @media(max-width: 400px) {
+
+
+
+
     div#postContents {
+
         margin: 25% 0 0 auto;
+
     }
     div#image-container > img#profilepic{
         float: right;
         margin-right: 5%;
+
     }
+
+
+
 }
 
 @media(max-width: 340px) {
+
+
+
     div#postContents {
+
         margin: 30% 0 0 auto;
+
     }
     div#image-container > img#profilepic{
         float: right;
@@ -634,7 +752,10 @@ input[type="button"]:active{
         width: 40px;
         height: 40px;
         border-radius: 50%;
+
     }
+
+
 }
 input[type=range] {
     -webkit-appearance: none;
