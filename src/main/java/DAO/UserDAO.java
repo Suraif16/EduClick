@@ -313,6 +313,45 @@ public class UserDAO<teacherArrayList> {
         return fullName;
     }
 
+    public ArrayList< User > getStudentFollowersList(String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList< User > studentFollowerList = new ArrayList<>();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT UserID,FirstName, LastName FROM Users INNER JOIN Follows ON Users.UserID = Follows.T_UserID WHERE S_UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                String userID = resultSet.getString("UserID");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                User user = new User(userID, firstName, lastName);
+                studentFollowerList.add(user);
+
+            }
+            /*for(int i=0;i<studentFollowerList.size();i++){
+                System.out.println(studentFollowerList.get(i).getUserId());
+                System.out.println(studentFollowerList.get(i).getFirstName());
+                System.out.println(studentFollowerList.get(i).getLastName());
+            }*/
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+        return studentFollowerList;
+
+    }
+
 
 
 
