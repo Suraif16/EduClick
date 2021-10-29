@@ -27,6 +27,8 @@ const sendServerData = function (){
 
     function completeLogin( httpreq ){
 
+        const headerUserProfileIdAchorElement = document.getElementById("headerUserProfileId");
+
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
 
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
@@ -35,6 +37,9 @@ const sendServerData = function (){
             /* This is where I need work everytime as per the authentication filter*/
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
+            let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
+            console.log(url);
+            headerUserProfileIdAchorElement.setAttribute("href" , url);
         }else{
             alert("something went wrong!!!");
         }

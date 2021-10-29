@@ -278,6 +278,12 @@ public class User {
         return classroomList;
     }
 
+    public String getFullName(String userId){
+        UserDAO userDAO = new UserDAO();
+        String fullName = userDAO.getTeacherFullName(userId);
+        return fullName;
+    }
+
 
     /*to check the enroll table and get records*/
 

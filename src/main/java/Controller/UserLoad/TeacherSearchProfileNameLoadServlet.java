@@ -10,27 +10,21 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class TeacherLoadServlet extends HttpServlet {
-
-    @Override
-    public void doPost(HttpServletRequest request , HttpServletResponse response) throws IOException {
-
+public class TeacherSearchProfileNameLoadServlet extends HttpServlet {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("TeacherProName load successfully loaded!!!!");
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
-        
-        HttpSession session = request.getSession( false );
-
-        User user = (User) session.getAttribute("User");
-
         JSONObject jsonObject = new JSONObject();
-
         jsonObject.put( "serverResponse" , "Allowed" );
-        jsonObject.put( "firstName" , user.getFirstName() );
-        jsonObject.put( "userId" , user.getUserId() );
+        HttpSession session = request.getSession( false );
+        String userId = (String) session.getAttribute( "profileUserId");
+        User user = new User();
+        String fullName=user.getFullName(userId);
+        System.out.println("In Servlet = "+fullName);
+        jsonObject.put("FullName",fullName);
         out.write(jsonObject.toString());
         out.close();
-
-
     }
 
 }
