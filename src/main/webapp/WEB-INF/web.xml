@@ -387,6 +387,20 @@
 
     <!-- end of teacher profile name load -->
 
+    <!-- beginning of teachers profile name load -->
+
+    <servlet>
+        <servlet-name>teacherLoadProfileName</servlet-name>
+        <servlet-class>Controller.UserLoad.TeacherProfileNameLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherLoadProfileName</servlet-name>
+        <url-pattern>/teacher/teacherProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teachers profile name load -->
+
 
     <session-config>
 
