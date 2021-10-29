@@ -358,6 +358,21 @@
 
     <!-- End of add friend request -->
 
+
+    <!-- beginning of adminpost -->
+    <servlet>
+        <servlet-name>adminpost</servlet-name>
+        <servlet-class>Controller.AdminPostServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminpost</servlet-name>
+        <url-pattern>/AdminPost</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of adminpost -->
+
     <!-- beginning of teacher profile name load -->
 
     <servlet>
@@ -371,6 +386,7 @@
     </servlet-mapping>
 
     <!-- end of teacher profile name load -->
+
 
     <session-config>
 

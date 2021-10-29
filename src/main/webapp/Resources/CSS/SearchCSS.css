@@ -49,7 +49,7 @@ header > div#headerButtons > input {
 
 header > div#headerButtons > input#classroomListHideButton {
 
-    margin-right: 0.5%;
+    margin-right: 45%;
 
 }
 
@@ -989,12 +989,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     }
 
-    header > div#headerButtons {
 
-        flex: 1;
-        display: flex;
-
-    }
 
     div#content > div#postContents {
 
@@ -1005,7 +1000,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#classroomsList {
 
-        display: none;
+
         margin: 12% auto 0 0;
         width: 30%;
         background-color: white;
@@ -1017,11 +1012,9 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#rightPanel {
 
-        margin: 12% auto auto 66%;
-        width: 30%;
-        display: none;
-        max-height: 75%;
-        background-color: white;
+        flex: 1;
+        display: flex;
+        margin: 12% 0 0 35%;
 
     }
 
@@ -1059,9 +1052,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#rightPanel {
 
-        margin: 15% auto auto 55%;
-        max-height: 75%;
-        width: 40%;
+        margin: 15% 0 0 43%;
 
 
     }
@@ -1075,12 +1066,27 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 }
 
 @media(max-width: 650px) {
+    div#content > div#classroomsList {
+
+        display: none;
+
+    }
+    div#content > div#rightPanel {
+
+        margin: 15% 0 0 auto;
 
 
+    }
 
     header > div#headerMainBar > div#logout{
 
         margin: auto 1% auto 1%;
+
+    }
+    header > div#headerButtons {
+
+        flex: 1;
+        display: flex;
 
     }
 
@@ -1123,9 +1129,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
     }
     div#content > div#rightPanel {
 
-        margin: 19% auto auto 45%;
-        max-height: 75%;
-        width: 50%;
+        margin: 19% 0 0 auto;
 
     }
 
@@ -1189,8 +1193,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#rightPanel {
 
-        margin: 21% auto auto 35%;
-        width: 57%;
+        margin: 21% 0 0 auto;
 
     }
 
@@ -1227,8 +1230,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#rightPanel {
 
-        margin: 23% auto auto 32%;
-        width: 60%;
+        margin: 23% 0 0 auto;
 
     }
 
@@ -1266,8 +1268,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#rightPanel {
 
-        margin: 25% auto auto 28%;
-        width: 65%;
+        margin: 25% 0 0 auto;
 
     }
 
@@ -1288,11 +1289,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     }
 
-    div#content > div#rightPanel {
 
-        margin: 30% auto auto 28%;
-
-    }
 
 }
 
@@ -1320,8 +1317,7 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
     div#content > div#addClassroomForm{
 
-        margin: 34% auto auto 22%;
-        width: 70%;
+        margin: 30% 0 0 auto;
 
     }
 

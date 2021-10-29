@@ -51,7 +51,7 @@ const sendServerData = function (){
         }
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/Admin" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/AdminPost" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("textMsg=" + textMsg );
 
