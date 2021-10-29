@@ -1,17 +1,15 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
-//********************
+
 document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
-        /* when the document is loaded and complete this function will run*/
+
         LoadName();
-        console.log("I'm loaded js");
 
     }
 
 }
-//*********************
 
 function showRightPanel(){
 
@@ -171,12 +169,9 @@ let sendData = function (id,action){
 
 }
 
-//***************
-
 
 const LoadName = function (){
-    console.log("Firstname loaded!!")
-    /* This function gets the username from the server*/
+    
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
@@ -192,10 +187,6 @@ const LoadName = function (){
     function completeLogin( httpreq ){
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
-        console.log("teacher pro name find loaded");
-
-
-
 
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
