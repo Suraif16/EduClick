@@ -415,7 +415,19 @@
 
     <!-- end of follow teachers -->
 
+    <!-- beginning of follow teachers -->
 
+    <servlet>
+        <servlet-name>unfollowTeacher</servlet-name>
+        <servlet-class>Controller.Requests.unFollowTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>unfollowTeacher</servlet-name>
+        <url-pattern>/student/unFollowTeacher</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of follow teachers -->
 
     <session-config>
 
