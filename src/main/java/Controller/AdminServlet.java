@@ -25,10 +25,10 @@ public class AdminServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
         JSONObject jsonObject = new JSONObject();
 
-
+        jsonObject.put( "serverResponse" , "Allowed" );
         Admin admin = new Admin( );
         admin = admin.getCount();
         jsonObject.put("counttotal" ,admin.getCountTeacher()+admin.getCountStudent());
