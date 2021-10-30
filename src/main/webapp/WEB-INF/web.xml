@@ -405,7 +405,7 @@
 
     <servlet>
         <servlet-name>followTeacher</servlet-name>
-        <servlet-class>Controller.Requests.followTeacher</servlet-class>
+        <servlet-class>Controller.Requests.followTeacherServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
