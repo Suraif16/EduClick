@@ -319,7 +319,7 @@
 
     <servlet>
         <servlet-name>SearchTeacher</servlet-name>
-        <servlet-class>Controller.Search.SearchTeacherServlet</servlet-class>
+        <servlet-class>Controller.Search.SearchResultServlet</servlet-class>
         <load-on-startup>13</load-on-startup>
     </servlet>
 
