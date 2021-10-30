@@ -24,9 +24,7 @@ const loadFollowersList = function (){
 
             let count = jsonLoginResponse.List.length - 1;
             for (i = 0 ; i <= count ; i++){
-                console.log(jsonLoginResponse.List[i].firstName);
-                console.log(jsonLoginResponse.List[i].lastName);
-                console.log(jsonLoginResponse.List[i].UserID);
+
 
                 classroomHtmlOutput(jsonLoginResponse.List[i].UserID,jsonLoginResponse.List[i].lastName,jsonLoginResponse.List[i].firstName);
 
@@ -36,9 +34,49 @@ const loadFollowersList = function (){
         }
     }
 
-    function classroomHtmlOutput( userId , firstName , lastName ){
-        postContents = document.getElementById("postContents");
+    function classroomHtmlOutput( userID , firstName , lastName){
+        const postContents = document.getElementById("postContents");
         postContents.innerHTML = "";
+        const searchContent = document.getElementById( "rightPanelStudentList" );
+        const rightPanel = document.getElementById("rightPanel");
+        rightPanel.style.display = "flex";
+
+
+        let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
+            '    margin: 1% auto;' +
+            '    display: flex;' +
+            '    flex-direction: column;' +
+            '    width: 100%;' +
+            '    background-color: #4775c4;">' +
+            '                <div>' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" style="display: flex;">' +
+            '                        <div class="classroomStudentProfileName">' + firstName + " " +lastName + '</div>' +
+            '                    </a>' +
+            '                </div>';
+
+        htmlString += '       <div>' +
+            '                    <input style="display:block;" id="follow'+ userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
+            '                    <input style="display:none;" id="unFollow'+ userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
+            '                </div>';
+
+
+        htmlString += '</div>';
+
+        searchContent.innerHTML += htmlString;
+
+
+
+
+        console.log(firstName);
+        console.log(lastName);
+        console.log(userID);
+
+
+
+
+
+
+
 
 
 
