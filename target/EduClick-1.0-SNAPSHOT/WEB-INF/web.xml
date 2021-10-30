@@ -358,6 +358,7 @@
 
     <!-- End of add friend request -->
 
+
     <!-- beginning of adminpost -->
     <servlet>
         <servlet-name>adminpost</servlet-name>
@@ -371,6 +372,35 @@
     </servlet-mapping>
 
     <!-- End of adminpost -->
+
+    <!-- beginning of teacher profile name load -->
+
+    <servlet>
+        <servlet-name>teacherProfileNameLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.TeacherSearchProfileNameLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherProfileNameLoad</servlet-name>
+        <url-pattern>/student/teacherProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teacher profile name load -->
+
+    <!-- beginning of teachers profile name load -->
+
+    <servlet>
+        <servlet-name>teacherLoadProfileName</servlet-name>
+        <servlet-class>Controller.UserLoad.TeacherProfileNameLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherLoadProfileName</servlet-name>
+        <url-pattern>/teacher/teacherProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teachers profile name load -->
+
 
     <session-config>
 

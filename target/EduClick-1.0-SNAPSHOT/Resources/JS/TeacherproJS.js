@@ -1,6 +1,16 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
 
+document.onreadystatechange = function (){
+
+    if ( document.readyState === 'complete' ){
+
+        LoadName();
+
+    }
+
+}
+
 function showRightPanel(){
 
     if(rightPanelStatus){
@@ -157,15 +167,52 @@ let sendData = function (id,action){
 
 
 
+}
 
+
+const LoadName = function (){
+    
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function (){
+
+        if (this.readyState === 4 && this.status === 200){
+            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherProfileNameLoad" , true);
+    httpreq.send();
+
+    function completeLogin( httpreq ){
+
+        let jsonLoginResponse = JSON.parse(httpreq.responseText);
+
+        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+            window.location.replace("/EduClick_war_exploded/Login.html");
+        }else if(jsonLoginResponse.serverResponse === "Allowed") {
+
+            const name = document.getElementById("teacherUserName");
+            name.innerHTML = jsonLoginResponse.FullName;
+            console.log(name);
+
+            const headerName = document.getElementById("teacherUserNameHeader");
+            headerName.innerHTML = jsonLoginResponse.FullName;
+            console.log(headerName);
+
+        }else{
+            alert("something went wrong!!!");
+        }
+
+    }
 
 
 }
 
-document.onreadystatechange = function (){
+/*document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
-        /* when the document is loaded and complete this function will run*/
+        /!* when the document is loaded and complete this function will run*!/
         sendServerData();
 
 
@@ -174,12 +221,12 @@ document.onreadystatechange = function (){
 }
 
 const sendServerData = function (){
-    /* This function gets the username from the server*/
+    /!* This function gets the username from the server*!/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            completeLogin( this ); /!*This is where we get the response when the request was successfully sent and a successfully response is received *!/
         }
 
     }
@@ -198,7 +245,7 @@ const sendServerData = function (){
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
             console.log(jsonLoginResponse);
-            /* This is where I need work everytime as per the authentication filter*/
+            /!* This is where I need work everytime as per the authentication filter*!/
             console.log(jsonLoginResponse.firstName);
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
@@ -209,7 +256,7 @@ const sendServerData = function (){
     }
 
 
-}
+}*/
 
 
 
