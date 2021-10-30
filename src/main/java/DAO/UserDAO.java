@@ -320,10 +320,8 @@ public class UserDAO<teacherArrayList> {
         Connection connection = null;
         ArrayList< User > studentFollowerList = new ArrayList<>();
         JSONArray jsonArray = new JSONArray();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("UserID","");
-        jsonObject.put("firstName","");
-        jsonObject.put("lastName","");
+
+
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
@@ -334,6 +332,7 @@ public class UserDAO<teacherArrayList> {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
+                JSONObject jsonObject = new JSONObject();
                 String userID = resultSet.getString("UserID");
                 String firstName = resultSet.getString("FirstName");
                 String lastName = resultSet.getString("LastName");
