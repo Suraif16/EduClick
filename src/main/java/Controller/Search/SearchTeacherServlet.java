@@ -27,9 +27,27 @@ public class SearchTeacherServlet extends HttpServlet {
 
         String searchValue = (String) session.getAttribute( "searchValue" );
         String searchType = (String) session.getAttribute( "searchType" );
-        User user = new User();
-        List< JSONObject > teacherList =  user.searchTeacher( searchValue , searchType , ( User ) session.getAttribute( "User" ) );
-        JSONArray jsonArray = new JSONArray( teacherList );
+        System.out.println("Search value " + searchValue);
+        System.out.println("Search type " + searchType);
+        JSONArray jsonArray = new JSONArray();
+
+        if ( searchType.equals( "Teacher" ) || searchType.equals( "Student" ) ){
+
+            User user = new User();
+            List< JSONObject > userList =  user.searchUser( searchValue , searchType , ( User ) session.getAttribute( "User" ) );
+            jsonArray = new JSONArray( userList );
+
+        }else if ( searchType.equals("Post") ){
+
+            jsonArray = new JSONArray(  );
+
+        }else if ( searchType.equals( "Answer" ) ){
+
+            jsonArray = new JSONArray(  );
+
+        }
+
+
         jsonObject.put( "teacherList" , jsonArray );
         jsonObject.put( "searchValue" , searchValue );
         out.write(jsonObject.toString());
