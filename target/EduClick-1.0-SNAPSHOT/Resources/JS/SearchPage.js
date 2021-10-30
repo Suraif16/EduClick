@@ -74,33 +74,40 @@ search.addEventListener( "keyup" , function (event){
 
 const searchFunction = function ( pageLoading ) {
 
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( httpreq.readyState === 4 && httpreq.status === 200){
+
+            searchResult();
+
+        }
+    }
+
+    let searchValue;
+
     if ( pageLoading ){
 
-        searchForTeacher();
+        searchValue = "-999999999999999999999999999999";
 
     }else {
 
-        let httpreq = new XMLHttpRequest();
-
-        httpreq.onreadystatechange = function (){
-
-            if ( httpreq.readyState === 4 && httpreq.status === 200){
-
-                searchForTeacher();
-
-            }
-        }
-        let url = "/EduClick_war_exploded/Search?searchValue=" + search.value + "&searchType=" + searchType;
-        httpreq.open( "GET" , url ,true);
-        httpreq.send();
+        searchValue = search.value;
 
     }
+
+    let url = "/EduClick_war_exploded/Search?searchValue=" + searchValue + "&searchType=" + searchType;
+    httpreq.open( "GET" , url ,true);
+    httpreq.send();
+
+
 
 
 
 }
 
-function searchForTeacher() {
+function searchResult() {
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){

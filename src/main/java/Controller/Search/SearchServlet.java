@@ -14,7 +14,11 @@ public class SearchServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String searchValue = request.getParameter( "searchValue" );
         String searchType = request.getParameter( "searchType" );
-        session.setAttribute( "searchValue" , searchValue );
+        if ( !( searchValue.equals( "-999999999999999999999999999999" ) ) ){
+
+            session.setAttribute( "searchValue" , searchValue );
+
+        }
         session.setAttribute( "searchType" , searchType );
 
     }
