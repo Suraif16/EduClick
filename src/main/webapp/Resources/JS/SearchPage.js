@@ -71,7 +71,7 @@ search.addEventListener( "keyup" , function (event){
         httpreq.onreadystatechange = function (){
 
             if ( httpreq.readyState === 4 && httpreq.status === 200){
-                console
+
                 searchPageLoad();
 
             }
@@ -107,7 +107,9 @@ function searchForTeacher() {
         console.log(jsonResponse.teacherList)
         console.log(userTypeValue);
         console.log(userNameValue)
-        
+
+        search.value = jsonResponse.searchValue;
+
         if( jsonResponse.teacherList.length > 0){
 
             for ( i = 0 ; i < jsonResponse.teacherList.length ; i++ ){

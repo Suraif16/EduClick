@@ -30,8 +30,8 @@ public class SearchTeacherServlet extends HttpServlet {
         User user = new User();
         List< JSONObject > teacherList =  user.searchTeacher( teacherName , ( User ) session.getAttribute( "User" ));
         JSONArray jsonArray = new JSONArray( teacherList );
-        jsonObject.put("teacherList" , jsonArray);
-
+        jsonObject.put( "teacherList" , jsonArray );
+        jsonObject.put( "searchValue" , teacherName );
         out.write(jsonObject.toString());
         out.close();
     }
