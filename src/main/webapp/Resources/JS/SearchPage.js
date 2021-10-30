@@ -327,8 +327,8 @@ function addFriendCancel( id ){
 
     }else{
 
-        cancelRequestButton.style.display = "none";
-        addFriendButton.style.display = "block";
+        cancelFriendRequestServer( id , addFriendButton , cancelRequestButton);
+
 
     }
 
@@ -351,8 +351,8 @@ function followUnfollowTeachers( id ){
 
     }else{
 
-        unFollowButton.style.display = "none";
-        followButton.style.display = "block";
+        unfollowTeacher( id , followButton , unFollowButton );
+
 
     }
 
@@ -394,6 +394,47 @@ const followTeacher = function( T_UserId , followButton , unFollowButton ){
     }
 
     httpreq.open( "POST" , "/EduClick_war_exploded/student/followTeacher" , true );
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send( "teacherId=" + T_UserId );
+
+}
+
+const cancelFriendRequestServer = function ( toUserId , addFriendButton , cancelRequestButton ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status == 200){
+
+            cancelRequestButton.style.display = "none";
+            addFriendButton.style.display = "block";
+
+        }
+
+    }
+    httpreq.open( "POST" , "/EduClick_war_exploded/addFriendRequest" , true );
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send( "toID=" + toUserId);
+
+}
+
+const unfollowTeacher = function( T_UserId , followButton , unFollowButton ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            unFollowButton.style.display = "none";
+            followButton.style.display = "block";
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/unFollowTeacher" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send( "teacherId=" + T_UserId );
 
