@@ -213,16 +213,16 @@ public class User {
 
             if ( user != null ){
 
-                if ( user.getUserType().equals("Teacher") ){
+                AddFriendsDAO addFriendsDAO = new AddFriendsDAO();
+                FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+                FollowsDAO followsDAO = new FollowsDAO();
 
-                    AddFriendsDAO addFriendsDAO = new AddFriendsDAO();
-                    FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+                if ( user.getUserType().equals("Teacher") ){
 
                     for ( int i = 0 ; i < userList.size() ; i++ ){
                         /* here for each found teacher it checks if the teacher is a friend of the searching user
                          * if a friend it sets teh friend status to true, else false*/
                         JSONObject jsonObject = new JSONObject();
-                        FollowsDAO followsDAO = new FollowsDAO();
                         jsonObject.put( "userID" , userList.get(i).getUserId() );
                         jsonObject.put( "firstName" , userList.get(i).getFirstName() );
                         jsonObject.put( "lastName" , userList.get(i).getLastName() );
@@ -235,14 +235,14 @@ public class User {
 
                 }else {
 
-                    FollowsDAO followsDAO = new FollowsDAO();
-
                     for ( int i = 0 ; i < userList.size() ; i++ ){
 
                         JSONObject jsonObject = new JSONObject();
                         jsonObject.put( "userID" , userList.get(i).getUserId() );
                         jsonObject.put( "firstName" , userList.get(i).getFirstName() );
                         jsonObject.put( "lastName" , userList.get(i).getLastName() );
+                        jsonObject.put( "friendStatus" , addFriendsDAO.checkIsFriend( user.getUserId() , userList.get(i).getUserId() ) );
+                        jsonObject.put( "friendRequestStatus" , friendRequestDAO.checkIsRequested( user.getUserId() , userList.get(i).getUserId() ));
                         jsonObject.put( "followStatus" , followsDAO.checkIsFollow( user.getUserId() , userList.get(i).getUserId() ) );
                         teacherJsonList.add( jsonObject );
 
