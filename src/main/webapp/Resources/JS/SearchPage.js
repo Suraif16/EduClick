@@ -201,10 +201,21 @@ const displayTeacher = function ( jsonResponse ){
 
             }else if(userTypeValue === "Student"){
 
-                htmlString += '                <div>' +
-                    '                    <input style="display:block;" id="follow'+ jsonResponse.searchResult[i].userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + jsonResponse.searchResult[i].userID +')">' +
-                    '                    <input style="display:none;" id="unFollow'+ jsonResponse.searchResult[i].userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' + jsonResponse.searchResult[i].userID +')">' +
-                    '                </div>';
+                if ( jsonResponse.searchResult[i].followStatus === true ){
+
+                    htmlString += '                <div>' +
+                        '                    <input style="display:none;" id="follow'+ jsonResponse.searchResult[i].userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                    <input style="display:block;" id="unFollow'+ jsonResponse.searchResult[i].userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                </div>';
+
+                }else {
+
+                    htmlString += '                <div>' +
+                        '                    <input style="display:block;" id="follow'+ jsonResponse.searchResult[i].userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                    <input style="display:none;" id="unFollow'+ jsonResponse.searchResult[i].userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                </div>';
+
+                }
 
             }
 
@@ -336,9 +347,7 @@ function followUnfollowTeachers( id ){
     if (unFollowButton.style.display === "none"){
 
         /*defaultView.getComputedStyle(enableButton)*/
-        unFollowButton.style.display = "block";
-        followButton.style.display = "none";
-
+        followTeacher( id , followButton , unFollowButton );
 
     }else{
 
@@ -363,13 +372,32 @@ const addFriendRequestServer = function ( toUserId , addFriendButton , cancelReq
         }
 
     }
-    httpreq.open( "POST" , "/EduClick_war_exploded/addFriendRequest" , true);
-    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    httpreq.open( "POST" , "/EduClick_war_exploded/addFriendRequest" , true );
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send( "toID=" + toUserId);
 
 }
 
+const followTeacher = function( T_UserId , followButton , unFollowButton ){
 
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            unFollowButton.style.display = "block";
+            followButton.style.display = "none";
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/followTeacher" , true );
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send( "teacherId=" + T_UserId );
+
+}
 
 let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const classroomListObjection = document.getElementById( "classroomsList" );
