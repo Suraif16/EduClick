@@ -139,6 +139,12 @@ public class Requests {
 
     }
 
+    public void cancelRequest(){
 
+        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+        friendRequestDAO.delete( this );
+
+
+    }
 
 }
