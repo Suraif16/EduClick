@@ -401,6 +401,21 @@
 
     <!-- end of teachers profile name load -->
 
+    <!-- beginning of follow teachers -->
+
+    <servlet>
+        <servlet-name>followTeacher</servlet-name>
+        <servlet-class>Controller.Requests.followTeacher</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>followTeacher</servlet-name>
+        <url-pattern>/student/followTeacher</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of follow teachers -->
+
+
 
     <session-config>
 
