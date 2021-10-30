@@ -124,19 +124,19 @@ function searchForTeacher() {
 
             if ( searchType === "Teacher"){
 
-                displayTeacher( jsonResponse )
+                displayTeacher( jsonResponse );
 
             }else if ( searchType === "Student"){
 
-                displayStudent( jsonResponse )
+                displayStudent( jsonResponse );
 
             }else if ( searchType === "Post"){
 
-
+                displayPost( jsonResponse );
 
             }else if ( searchType === "Answer"){
 
-
+                displayAnswer( jsonResponse );
 
             }
 
@@ -276,6 +276,20 @@ const displayStudent = function ( jsonResponse ){
 
     }
 
+
+}
+
+const displayPost = function ( jsonResponse ){
+
+    const searchContent = document.getElementById( "rightPanelStudentList" );
+    searchContent.innerHTML = "No result found...";
+
+}
+
+const displayAnswer = function ( jsonResponse ){
+
+    const searchContent = document.getElementById( "rightPanelStudentList" );
+    searchContent.innerHTML = "No result found...";
 
 }
 
