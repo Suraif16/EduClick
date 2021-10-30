@@ -54,8 +54,7 @@ const searchPageLoad = function (){
 
         userNameValue = jsonResponse.UserName;
         userTypeValue = jsonResponse.UserType;
-
-        searchForTeacher();
+        searchFunction( true );
 
     }
 }
@@ -67,38 +66,36 @@ search.addEventListener( "keyup" , function (event){
 
     if(event.key === "Enter"){
 
-        searchFunction();
+        searchFunction( false );
 
     }
 
 });
 
-const searchFunction = function () {
+const searchFunction = function ( pageLoading ) {
 
-    let httpreq = new XMLHttpRequest();
+    if ( pageLoading ){
 
-    httpreq.onreadystatechange = function (){
+        searchForTeacher();
 
-        if ( httpreq.readyState === 4 && httpreq.status === 200){
+    }else {
 
-            if ( searchType === "Teacher"){
+        let httpreq = new XMLHttpRequest();
+
+        httpreq.onreadystatechange = function (){
+
+            if ( httpreq.readyState === 4 && httpreq.status === 200){
+
                 searchForTeacher();
-            }else if ( searchType === "Student"){
-                console.log("Student")
-                searchForTeacher();
-            }else if ( searchType === "Post"){
-                console.log("Post")
-            }else if ( searchType === "Answer"){
-                console.log("Answer")
-            }else{
-                console.log("Error!!!")
+
             }
-
         }
+        let url = "/EduClick_war_exploded/Search?searchValue=" + search.value + "&searchType=" + searchType;
+        console.log("hi " , search.value , "hi " , searchType )
+        httpreq.open( "GET" , url ,true);
+        httpreq.send();
+
     }
-    let url = "/EduClick_war_exploded/Search?searchValue=" + search.value + "&searchType=" + searchType;
-    httpreq.open( "GET" , url ,true);
-    httpreq.send();
 
 
 
@@ -122,82 +119,177 @@ function searchForTeacher() {
         searchContent.innerHTML = "";
         let jsonResponse = JSON.parse( httpreq.responseText );
 
-        console.log(jsonResponse.teacherList)
+        console.log(jsonResponse.searchResult)
+        console.log(jsonResponse)
         console.log(userTypeValue);
         console.log(userNameValue)
 
         search.value = jsonResponse.searchValue;
 
-        if( jsonResponse.teacherList.length > 0){
+        if( jsonResponse.searchResult.length > 0){
 
-            for ( i = 0 ; i < jsonResponse.teacherList.length ; i++ ){
+            if ( searchType === "Teacher"){
+                displayTeacher( jsonResponse )
+                console.log("Teacher")
+            }else if ( searchType === "Student"){
+                displayStudent( jsonResponse )
+                console.log("Student")
+            }else if ( searchType === "Post"){
+                console.log("Post")
 
-                let htmlString = '<div class="rightPanelSingleStudent" >' +
-                    '                <div>' +
-                    '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ jsonResponse.teacherList[i].userID +'" class="profile">' +
-                    '                        <div class="profileImage classroomStudentProfilePicture">' +
-                    '                            <img class="profileIcon" src="Resources/Icons/account_circle_white_24dp.svg">' +
-                    '                        </div>' +
-                    '                        <div class="classroomStudentProfileName">' + jsonResponse.teacherList[i].firstName + " " +jsonResponse.teacherList[i].lastName + '</div>' +
-                    '                    </a>' +
-                    '                </div>';
+            }else if ( searchType === "Answer"){
+                console.log("Answer")
 
-                if( userTypeValue !== "Guest" ){
-
-                    if (userTypeValue === "Teacher"){ /* here this checks the user type the current logedin user (my). not the
-                    user whose profile is checked...*/
-                        console.log(jsonResponse.teacherList[i].friendStatus);
-                        console.log(jsonResponse.teacherList[i].friendRequestStatus);
-                        console.log(typeof jsonResponse.teacherList[i].friendStatus);
-                        console.log(typeof jsonResponse.teacherList[i].friendRequestStatus);
-
-
-
-                        if ( jsonResponse.teacherList[i].friendStatus === false && jsonResponse.teacherList[i].friendRequestStatus === false ){
-                            console.log( "false false");
-                            htmlString += '                <div>' +
-                                '                    <input style="display:block;" id="addFriend'+ jsonResponse.teacherList[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
-                                '                    <input style="display:none;" id="cancelRequest'+ jsonResponse.teacherList[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
-                                '                </div>';
-
-                        }else if ( jsonResponse.teacherList[i].friendStatus === true && jsonResponse.teacherList[i].friendRequestStatus === false ) {
-
-                            htmlString += '                <div>' +
-                                'Friend'+
-                                '                </div>';
-
-                        }else if ( jsonResponse.teacherList[i].friendStatus === false && jsonResponse.teacherList[i].friendRequestStatus === true ) {
-
-                            htmlString += '                <div>' +
-                                '                    <input style="display:none;" id="addFriend'+ jsonResponse.teacherList[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
-                                '                    <input style="display:block;" id="cancelRequest'+ jsonResponse.teacherList[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.teacherList[i].userID +')">' +
-                                '                </div>';
-
-                        }
-
-                    }else if(userTypeValue === "Student"){
-
-                        htmlString += '                <div>' +
-                            '                    <input style="display:block;" id="follow'+ jsonResponse.teacherList[i].userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + jsonResponse.teacherList[i].userID +')">' +
-                            '                    <input style="display:none;" id="unFollow'+ jsonResponse.teacherList[i].userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' + jsonResponse.teacherList[i].userID +')">' +
-                            '                </div>';
-
-                    }
-
-                }
-
-                htmlString += '</div>';
-
-                searchContent.innerHTML += htmlString;
-
-
+            }else{
+                console.log("Error!!!")
             }
 
         }else {
+
             console.log("no found")
             searchContent.innerHTML = "No result found...";
 
         }
+
+    }
+
+
+}
+
+const displayTeacher = function ( jsonResponse ){
+    const searchContent = document.getElementById( "rightPanelStudentList" );
+    for ( i = 0 ; i < jsonResponse.searchResult.length ; i++ ){
+
+        let htmlString = '<div class="rightPanelSingleStudent" >' +
+            '                <div>' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ jsonResponse.searchResult[i].userID +'" class="profile">' +
+            '                        <div class="profileImage classroomStudentProfilePicture">' +
+            '                            <img class="profileIcon" src="Resources/Icons/account_circle_white_24dp.svg">' +
+            '                        </div>' +
+            '                        <div class="classroomStudentProfileName">' + jsonResponse.searchResult[i].firstName + " " +jsonResponse.searchResult[i].lastName + '</div>' +
+            '                    </a>' +
+            '                </div>';
+
+        if( userTypeValue !== "Guest" ){
+
+            if (userTypeValue === "Teacher"){ /* here this checks the user type the current logedin user (my). not the
+                    user whose profile is checked...*/
+                console.log(jsonResponse.searchResult[i].friendStatus);
+                console.log(jsonResponse.searchResult[i].friendRequestStatus);
+                console.log(typeof jsonResponse.searchResult[i].friendStatus);
+                console.log(typeof jsonResponse.searchResult[i].friendRequestStatus);
+
+
+
+                if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === false ){
+                    console.log( "false false");
+                    htmlString += '                <div>' +
+                        '                    <input style="display:block;" id="addFriend'+ jsonResponse.searchResult[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                    <input style="display:none;" id="cancelRequest'+ jsonResponse.searchResult[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                </div>';
+
+                }else if ( jsonResponse.searchResult[i].friendStatus === true && jsonResponse.searchResult[i].friendRequestStatus === false ) {
+
+                    htmlString += '                <div>' +
+                        'Friend'+
+                        '                </div>';
+
+                }else if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === true ) {
+
+                    htmlString += '                <div>' +
+                        '                    <input style="display:none;" id="addFriend'+ jsonResponse.searchResult[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                    <input style="display:block;" id="cancelRequest'+ jsonResponse.searchResult[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                </div>';
+
+                }
+
+            }else if(userTypeValue === "Student"){
+
+                htmlString += '                <div>' +
+                    '                    <input style="display:block;" id="follow'+ jsonResponse.searchResult[i].userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + jsonResponse.searchResult[i].userID +')">' +
+                    '                    <input style="display:none;" id="unFollow'+ jsonResponse.searchResult[i].userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' + jsonResponse.searchResult[i].userID +')">' +
+                    '                </div>';
+
+            }
+
+        }
+
+        htmlString += '</div>';
+
+        searchContent.innerHTML += htmlString;
+
+
+    }
+
+
+}
+
+const displayStudent = function ( jsonResponse ){
+    const searchContent = document.getElementById( "rightPanelStudentList" );
+    for ( i = 0 ; i < jsonResponse.searchResult.length ; i++ ){
+
+        let htmlString = '<div class="rightPanelSingleStudent" >' +
+            '                <div>' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ jsonResponse.searchResult[i].userID +'" class="profile">' +
+            '                        <div class="profileImage classroomStudentProfilePicture">' +
+            '                            <img class="profileIcon" src="Resources/Icons/account_circle_white_24dp.svg">' +
+            '                        </div>' +
+            '                        <div class="classroomStudentProfileName">' + jsonResponse.searchResult[i].firstName + " " +jsonResponse.searchResult[i].lastName + '</div>' +
+            '                    </a>' +
+            '                </div>';
+        console.log(userTypeValue , " farzan")
+        if( userTypeValue !== "Guest" ){
+
+            if (userTypeValue === "Student"){ /* here this checks the user type the current logedin user (my). not the
+                    user whose profile is checked...*/
+                console.log(jsonResponse.searchResult[i].friendStatus);
+                console.log(jsonResponse.searchResult[i].friendRequestStatus);
+                console.log(typeof jsonResponse.searchResult[i].friendStatus);
+                console.log(typeof jsonResponse.searchResult[i].friendRequestStatus);
+
+
+
+                if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === false ){
+                    console.log( "false false");
+                    htmlString += '                <div>' +
+                        '                    <input style="display:block;" id="addFriend'+ jsonResponse.searchResult[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                    <input style="display:none;" id="cancelRequest'+ jsonResponse.searchResult[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                </div>';
+
+                }else if ( jsonResponse.searchResult[i].friendStatus === true && jsonResponse.searchResult[i].friendRequestStatus === false ) {
+
+                    htmlString += '                <div>' +
+                        'Friend'+
+                        '                </div>';
+
+                }else if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === true ) {
+
+                    htmlString += '                <div>' +
+                        '                    <input style="display:none;" id="addFriend'+ jsonResponse.searchResult[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                    <input style="display:block;" id="cancelRequest'+ jsonResponse.searchResult[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
+                        '                </div>';
+
+                }
+
+            }else if(userTypeValue === "Teacher"){
+
+                if ( jsonResponse.searchResult[i].followStatus === true ){
+
+                    htmlString += '                <div>' +
+                        'Following you'+
+                        '                </div>';
+
+                }
+
+
+            }
+
+        }
+
+        htmlString += '</div>';
+
+        searchContent.innerHTML += htmlString;
+
 
     }
 
@@ -327,6 +419,6 @@ const setSearchType = function( type ){
          console.log("Failed!!!")
      }
 
-     searchFunction();
+     searchFunction( false );
 
 }
