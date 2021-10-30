@@ -15,7 +15,7 @@ search.addEventListener( "keyup" , function ( event ){
 
             }
         }
-        let url = "/EduClick_war_exploded/Search?searchValue="+search.value;
+        let url = "/EduClick_war_exploded/Search?searchValue="+search.value+"&searchType=Teacher";
         httpreq.open( "GET" , url ,true);
         httpreq.send();
 
