@@ -98,4 +98,30 @@ public class FriendRequestDAO {
 
     }
 
+    public void delete( Requests requests ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "DELETE FROM Friend_Request WHERE From_UserID = ? AND To_UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , requests.getFromId() );
+            preparedStatement.setString( 2 , requests.getToId() );
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+
+        }
+
+    }
+
 }
