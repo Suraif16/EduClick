@@ -6,8 +6,9 @@ public class Admin {
     private String adminName;
     private String email;
     private String password;
-    private int todaycountTeacher;
+
     private int countTeacher;
+    private int todaycountTeacher;
     private int countStudent;
     private int todaycountStudent;
 
@@ -36,12 +37,54 @@ public class Admin {
         this.password = password;
     }
 
-    /*constructor*/
-
-    public Admin(String adminName , String email){
-        this.adminName = adminName;
-        this.email = email;
+    public int getTodaycountTeacher() {
+        return todaycountTeacher;
     }
 
+    public void setTodaycountTeacher(int todaycountTeacher) {
+        this.todaycountTeacher = todaycountTeacher;
+    }
 
+    public int getCountTeacher() {
+        return countTeacher;
+    }
+
+    public void setCountTeacher(int countTeacher) {
+        this.countTeacher = countTeacher;
+    }
+
+    public int getCountStudent() {
+        return countStudent;
+    }
+
+    public void setCountStudent(int countStudent) {
+        this.countStudent = countStudent;
+    }
+
+    public int getTodaycountStudent() {
+        return todaycountStudent;
+    }
+
+    public void setTodaycountStudent(int todaycountStudent) {
+        this.todaycountStudent = todaycountStudent;
+    }
+    /*constructor*/
+
+    public Admin(String admin, String email){
+        this.adminName = adminName;
+        this.email = this.email;
+    }
+    public Admin() {
+
+    }
+    /*public Admin(int countTeacher, int todaycountTeacher, int countStudent, int todaycountStudent) {
+        this.countTeacher = countTeacher;
+        this.todaycountTeacher = todaycountTeacher;
+        this.countStudent = countStudent;
+        this.todaycountStudent = todaycountStudent;
+    }*/
+    public Admin getCount(){
+        UserDAO admindao = new UserDAO();
+        return admindao.count(this);
+    }
 }
