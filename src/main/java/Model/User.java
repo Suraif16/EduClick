@@ -222,11 +222,13 @@ public class User {
                         /* here for each found teacher it checks if the teacher is a friend of the searching user
                          * if a friend it sets teh friend status to true, else false*/
                         JSONObject jsonObject = new JSONObject();
+                        FollowsDAO followsDAO = new FollowsDAO();
                         jsonObject.put( "userID" , userList.get(i).getUserId() );
                         jsonObject.put( "firstName" , userList.get(i).getFirstName() );
                         jsonObject.put( "lastName" , userList.get(i).getLastName() );
                         jsonObject.put( "friendStatus" , addFriendsDAO.checkIsFriend( user.getUserId() , userList.get(i).getUserId() ) );
                         jsonObject.put( "friendRequestStatus" , friendRequestDAO.checkIsRequested( user.getUserId() , userList.get(i).getUserId() ));
+                        jsonObject.put( "followStatus" , followsDAO.checkIsFollow( userList.get(i).getUserId() , user.getUserId() ) );
                         teacherJsonList.add( jsonObject );
 
                     }
