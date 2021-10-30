@@ -182,12 +182,11 @@ public class UserDAO<teacherArrayList> {
         return admin;
     }
 
-    public ArrayList< User > searchTeacher( String searchValue , String searchType , String myUserId ) {
+    public ArrayList< User > searchUser( String searchValue , String searchType , String myUserId ) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         ArrayList< User > teacherArrayList = new ArrayList<>();
-        System.out.println("useridmine" + myUserId);
         try {
             connection = dbConnectionPool.dataSource.getConnection();
             String sql = "SELECT FirstName, LastName,UserID FROM Users WHERE (FirstName LIKE ? OR LastName LIKE ?) AND ( UserType = ? AND UserID <> ?)";
