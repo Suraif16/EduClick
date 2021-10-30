@@ -4,6 +4,8 @@ import Database.DBConnectionPool;
 
 import Model.Teacher;
 import Model.User;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -313,10 +315,15 @@ public class UserDAO<teacherArrayList> {
         return fullName;
     }
 
-    public ArrayList< User > getStudentFollowersList(String userId){
+    public JSONArray getStudentFollowersList(String userId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         ArrayList< User > studentFollowerList = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("UserID","");
+        jsonObject.put("firstName","");
+        jsonObject.put("lastName","");
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
@@ -330,10 +337,14 @@ public class UserDAO<teacherArrayList> {
                 String userID = resultSet.getString("UserID");
                 String firstName = resultSet.getString("FirstName");
                 String lastName = resultSet.getString("LastName");
-                User user = new User(userID, firstName, lastName);
-                studentFollowerList.add(user);
+                //User user = new User(userID, firstName, lastName);
+                jsonObject.put("UserID",userID);
+                jsonObject.put("firstName",firstName);
+                jsonObject.put("lastName",lastName);
+                jsonArray.put(jsonObject);
 
             }
+            System.out.println(jsonArray);
             /*for(int i=0;i<studentFollowerList.size();i++){
                 System.out.println(studentFollowerList.get(i).getUserId());
                 System.out.println(studentFollowerList.get(i).getFirstName());
@@ -348,7 +359,7 @@ public class UserDAO<teacherArrayList> {
             } catch (Exception ignore) {
             }
         }
-        return studentFollowerList;
+        return jsonArray;
 
     }
 

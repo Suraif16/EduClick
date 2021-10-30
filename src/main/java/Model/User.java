@@ -5,6 +5,7 @@ import DAO.ClassroomDAO;
 import DAO.FollowsDAO;
 import DAO.FriendRequestDAO;
 import DAO.UserDAO;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.time.LocalDate;
@@ -284,9 +285,9 @@ public class User {
         return fullName;
     }
 
-    public ArrayList< User > getStudentFollowersList(String userId){
+    public JSONArray getStudentFollowersList(String userId){
         UserDAO userDAO = new UserDAO();
-        ArrayList< User > studentFollowersList = userDAO.getStudentFollowersList(userId);
+        JSONArray studentFollowersList = userDAO.getStudentFollowersList(userId);
         return studentFollowersList;
     }
 

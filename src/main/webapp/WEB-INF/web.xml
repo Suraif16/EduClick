@@ -382,7 +382,7 @@
 
     <servlet-mapping>
         <servlet-name>studentFollowerListLoad</servlet-name>
-        <url-pattern>/studentFollowerListLoad</url-pattern>
+        <url-pattern>/student/studentFollowerListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of teacher profile name load -->
