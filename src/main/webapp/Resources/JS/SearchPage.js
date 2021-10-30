@@ -91,7 +91,6 @@ const searchFunction = function ( pageLoading ) {
             }
         }
         let url = "/EduClick_war_exploded/Search?searchValue=" + search.value + "&searchType=" + searchType;
-        console.log("hi " , search.value , "hi " , searchType )
         httpreq.open( "GET" , url ,true);
         httpreq.send();
 
@@ -119,34 +118,30 @@ function searchForTeacher() {
         searchContent.innerHTML = "";
         let jsonResponse = JSON.parse( httpreq.responseText );
 
-        console.log(jsonResponse.searchResult)
-        console.log(jsonResponse)
-        console.log(userTypeValue);
-        console.log(userNameValue)
-
         search.value = jsonResponse.searchValue;
 
         if( jsonResponse.searchResult.length > 0){
 
             if ( searchType === "Teacher"){
+
                 displayTeacher( jsonResponse )
-                console.log("Teacher")
+
             }else if ( searchType === "Student"){
+
                 displayStudent( jsonResponse )
-                console.log("Student")
+
             }else if ( searchType === "Post"){
-                console.log("Post")
+
+
 
             }else if ( searchType === "Answer"){
-                console.log("Answer")
 
-            }else{
-                console.log("Error!!!")
+
+
             }
 
         }else {
 
-            console.log("no found")
             searchContent.innerHTML = "No result found...";
 
         }
@@ -174,15 +169,9 @@ const displayTeacher = function ( jsonResponse ){
 
             if (userTypeValue === "Teacher"){ /* here this checks the user type the current logedin user (my). not the
                     user whose profile is checked...*/
-                console.log(jsonResponse.searchResult[i].friendStatus);
-                console.log(jsonResponse.searchResult[i].friendRequestStatus);
-                console.log(typeof jsonResponse.searchResult[i].friendStatus);
-                console.log(typeof jsonResponse.searchResult[i].friendRequestStatus);
-
-
 
                 if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === false ){
-                    console.log( "false false");
+
                     htmlString += '                <div>' +
                         '                    <input style="display:block;" id="addFriend'+ jsonResponse.searchResult[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
                         '                    <input style="display:none;" id="cancelRequest'+ jsonResponse.searchResult[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
@@ -237,20 +226,14 @@ const displayStudent = function ( jsonResponse ){
             '                        <div class="classroomStudentProfileName">' + jsonResponse.searchResult[i].firstName + " " +jsonResponse.searchResult[i].lastName + '</div>' +
             '                    </a>' +
             '                </div>';
-        console.log(userTypeValue , " farzan")
+
         if( userTypeValue !== "Guest" ){
 
             if (userTypeValue === "Student"){ /* here this checks the user type the current logedin user (my). not the
                     user whose profile is checked...*/
-                console.log(jsonResponse.searchResult[i].friendStatus);
-                console.log(jsonResponse.searchResult[i].friendRequestStatus);
-                console.log(typeof jsonResponse.searchResult[i].friendStatus);
-                console.log(typeof jsonResponse.searchResult[i].friendRequestStatus);
-
-
 
                 if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === false ){
-                    console.log( "false false");
+
                     htmlString += '                <div>' +
                         '                    <input style="display:block;" id="addFriend'+ jsonResponse.searchResult[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
                         '                    <input style="display:none;" id="cancelRequest'+ jsonResponse.searchResult[i].userID +'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
@@ -307,15 +290,11 @@ function addFriendCancel( id ){
     let cancelRequestButton = document.getElementById( cancelRequestStringValue );
 
     if (cancelRequestButton.style.display === "none"){
-        console.log( "sent request" + id)
-        /*defaultView.getComputedStyle(enableButton)*/
-        addFriendRequestServer( id )
-        cancelRequestButton.style.display = "block";
-        addFriendButton.style.display = "none";
 
+        addFriendRequestServer( id , addFriendButton , cancelRequestButton);
 
     }else{
-        console.log( "cancel request" + id)
+
         cancelRequestButton.style.display = "none";
         addFriendButton.style.display = "block";
 
@@ -334,14 +313,14 @@ function followUnfollowTeachers( id ){
     let unFollowButton = document.getElementById( unFollowStringValue );
 
     if (unFollowButton.style.display === "none"){
-        console.log( "follow" + id)
+
         /*defaultView.getComputedStyle(enableButton)*/
         unFollowButton.style.display = "block";
         followButton.style.display = "none";
 
 
     }else{
-        console.log( "unfollow" + id)
+
         unFollowButton.style.display = "none";
         followButton.style.display = "block";
 
@@ -349,13 +328,16 @@ function followUnfollowTeachers( id ){
 
 }
 
-const addFriendRequestServer = function ( toUserId ){
+const addFriendRequestServer = function ( toUserId , addFriendButton , cancelRequestButton ){
 
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function(){
 
         if ( this.readyState === 4 && this.status == 200){
+
+            cancelRequestButton.style.display = "block";
+            addFriendButton.style.display = "none";
 
         }
 
@@ -415,8 +397,6 @@ const setSearchType = function( type ){
          document.getElementById( "inputPosts" ).style.backgroundColor = "#4775c4";
          document.getElementById( "inputAnswers" ).style.backgroundColor = "#403434";
 
-     }else {
-         console.log("Failed!!!")
      }
 
      searchFunction( false );
