@@ -60,5 +60,12 @@ public class Student extends User{
 
     }
 
+    public void unfollowTeacher( String T_UserId ){
+
+        FollowsDAO followsDAO = new FollowsDAO();
+        followsDAO.delete( this.getUserId() , T_UserId );
+
+    }
+
 
 }
