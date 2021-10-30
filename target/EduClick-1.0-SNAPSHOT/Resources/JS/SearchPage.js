@@ -2,12 +2,13 @@ document.onreadystatechange = function (){
 
     if( document.readyState === 'complete' ){
 
+        document.getElementById( "inputTeachers" ).style.backgroundColor = "#403434";
         searchPageLoad();
 
     }
 
 }
-
+let searchType = "Teacher";
 const userName = document.getElementById( "userName" )
 const headerNotification = document.getElementById( "headerNotification" )
 const logout = document.getElementById( "logout" );
@@ -72,11 +73,11 @@ search.addEventListener( "keyup" , function (event){
 
             if ( httpreq.readyState === 4 && httpreq.status === 200){
 
-                searchPageLoad();
+                searchFunction();
 
             }
         }
-        let url = "/EduClick_war_exploded/Search?searchValue="+search.value;
+        let url = "/EduClick_war_exploded/Search?searchValue=" + search.value + "&searchType=" + searchType;
         httpreq.open( "GET" , url ,true);
         httpreq.send();
 
@@ -84,7 +85,21 @@ search.addEventListener( "keyup" , function (event){
 
 });
 
+const searchFunction = function () {
 
+    if ( searchType === "Teacher"){
+        searchForTeacher();
+    }else if ( searchType === "Student"){
+        console.log("Student")
+    }else if ( searchType === "Post"){
+        console.log("Post")
+    }else if ( searchType === "Answer"){
+        console.log("Answer")
+    }else{
+        console.log("Error!!!")
+    }
+
+}
 
 function searchForTeacher() {
 
@@ -269,4 +284,46 @@ function showClassroomList(){
         classroomListObjection.style.display = "flex";
         classroomListStatus = true;
     }
+}
+
+const setSearchType = function( type ){
+
+     if ( type === "Teachers" ){
+
+         searchType = "Teacher";
+         document.getElementById( "inputTeachers" ).style.backgroundColor = "#403434";
+         document.getElementById( "inputStudents" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputPosts" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputAnswers" ).style.backgroundColor = "#4775c4";
+
+     }else if ( type === "Students" ){
+
+         searchType = "Student";
+         document.getElementById( "inputTeachers" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputStudents" ).style.backgroundColor = "#403434";
+         document.getElementById( "inputPosts" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputAnswers" ).style.backgroundColor = "#4775c4";
+
+     }else if ( type === "Posts" ){
+
+         searchType = "Post";
+         document.getElementById( "inputTeachers" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputStudents" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputPosts" ).style.backgroundColor = "#403434";
+         document.getElementById( "inputAnswers" ).style.backgroundColor = "#4775c4";
+
+     }else if ( type === "Answers" ){
+
+         searchType = "Answer";
+         document.getElementById( "inputTeachers" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputStudents" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputPosts" ).style.backgroundColor = "#4775c4";
+         document.getElementById( "inputAnswers" ).style.backgroundColor = "#403434";
+
+     }else {
+         console.log("Failed!!!")
+     }
+
+     searchFunction();
+
 }
