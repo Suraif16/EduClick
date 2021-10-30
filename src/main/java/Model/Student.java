@@ -2,6 +2,7 @@ package Model;
 
 import DAO.EnrollDAO;
 import DAO.EnrollRequestDAO;
+import DAO.FollowsDAO;
 import DAO.StudentDAO;
 
 import java.util.ArrayList;
@@ -50,6 +51,13 @@ public class Student extends User{
     public void enterStudent(){
         StudentDAO studentDAO = new StudentDAO();
         studentDAO.enterStudent(this);
+    }
+
+    public void followTeacher( String T_UserId ){
+
+        FollowsDAO followsDAO = new FollowsDAO();
+        followsDAO.insert( this.getUserId() , T_UserId );
+
     }
 
 
