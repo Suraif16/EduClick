@@ -62,4 +62,30 @@ public class FollowsDAO {
 
     }
 
+    public void delete( String S_UserId , String T_UserId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "DELETE FROM Follows WHERE S_UserID = ? AND T_UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , S_UserId );
+            preparedStatement.setString( 2 , T_UserId );
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+
+        }
+
+    }
+
 }
