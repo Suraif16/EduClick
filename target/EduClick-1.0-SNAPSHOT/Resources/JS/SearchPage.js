@@ -67,19 +67,7 @@ search.addEventListener( "keyup" , function (event){
 
     if(event.key === "Enter"){
 
-        let httpreq = new XMLHttpRequest();
-
-        httpreq.onreadystatechange = function (){
-
-            if ( httpreq.readyState === 4 && httpreq.status === 200){
-
-                searchFunction();
-
-            }
-        }
-        let url = "/EduClick_war_exploded/Search?searchValue=" + search.value + "&searchType=" + searchType;
-        httpreq.open( "GET" , url ,true);
-        httpreq.send();
+        searchFunction();
 
     }
 
@@ -87,17 +75,32 @@ search.addEventListener( "keyup" , function (event){
 
 const searchFunction = function () {
 
-    if ( searchType === "Teacher"){
-        searchForTeacher();
-    }else if ( searchType === "Student"){
-        console.log("Student")
-    }else if ( searchType === "Post"){
-        console.log("Post")
-    }else if ( searchType === "Answer"){
-        console.log("Answer")
-    }else{
-        console.log("Error!!!")
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( httpreq.readyState === 4 && httpreq.status === 200){
+
+            if ( searchType === "Teacher"){
+                searchForTeacher();
+            }else if ( searchType === "Student"){
+                console.log("Student")
+                searchForTeacher();
+            }else if ( searchType === "Post"){
+                console.log("Post")
+            }else if ( searchType === "Answer"){
+                console.log("Answer")
+            }else{
+                console.log("Error!!!")
+            }
+
+        }
     }
+    let url = "/EduClick_war_exploded/Search?searchValue=" + search.value + "&searchType=" + searchType;
+    httpreq.open( "GET" , url ,true);
+    httpreq.send();
+
+
 
 }
 
