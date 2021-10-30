@@ -25,13 +25,13 @@ public class SearchTeacherServlet extends HttpServlet {
 
         HttpSession session = request.getSession( false );
 
-        String teacherName = (String) session.getAttribute( "searchValue" );
-
+        String searchValue = (String) session.getAttribute( "searchValue" );
+        String searchType = (String) session.getAttribute( "searchType" );
         User user = new User();
-        List< JSONObject > teacherList =  user.searchTeacher( teacherName , ( User ) session.getAttribute( "User" ));
+        List< JSONObject > teacherList =  user.searchTeacher( searchValue , searchType , ( User ) session.getAttribute( "User" ) );
         JSONArray jsonArray = new JSONArray( teacherList );
         jsonObject.put( "teacherList" , jsonArray );
-        jsonObject.put( "searchValue" , teacherName );
+        jsonObject.put( "searchValue" , searchValue );
         out.write(jsonObject.toString());
         out.close();
     }

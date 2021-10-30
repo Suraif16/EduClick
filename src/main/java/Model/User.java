@@ -197,14 +197,14 @@ public class User {
         userId=userDAO.getGeneratedUserId();
     }
 
-    public ArrayList<JSONObject> searchTeacher(String teacherName , User user ){
+    public ArrayList<JSONObject> searchTeacher(String searchValue , String searchType , User user ){
         
         UserDAO userDAO =  new UserDAO();
         ArrayList< User > teacherArrayList = new ArrayList<>();
         if( user!= null){
-             teacherArrayList =  userDAO.searchTeacher( teacherName , user.getUserId() );
+             teacherArrayList =  userDAO.searchTeacher( searchValue , searchType , user.getUserId() );
         }else {
-             teacherArrayList =  userDAO.searchTeacher( teacherName , "0" );
+             teacherArrayList =  userDAO.searchTeacher( searchValue , searchType , "0" );
         }
         ArrayList< JSONObject > teacherJsonList = new ArrayList<>();
         /* if it is a guest then the user object in the session will be null */
