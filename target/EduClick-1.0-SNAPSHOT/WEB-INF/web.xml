@@ -358,10 +358,21 @@
 
     <!-- End of add friend request -->
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
+    <!-- beginning of adminpost -->
+    <servlet>
+        <servlet-name>adminpost</servlet-name>
+        <servlet-class>Controller.AdminPostServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminpost</servlet-name>
+        <url-pattern>/AdminPost</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of adminpost -->
+
     <!-- beginning of teacher profile name load -->
 
     <servlet>
@@ -375,6 +386,7 @@
     </servlet-mapping>
 
     <!-- end of teacher profile name load -->
+
 
 
     <!-- beginning of student follow list load -->
@@ -404,36 +416,6 @@
     </servlet-mapping>
 
     <!-- end of student full name load -->
-=======
->>>>>>> main
-    <!-- beginning of adminpost -->
-    <servlet>
-        <servlet-name>adminpost</servlet-name>
-        <servlet-class>Controller.AdminPostServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>adminpost</servlet-name>
-        <url-pattern>/AdminPost</url-pattern>
-    </servlet-mapping>
-
-    <!-- End of adminpost -->
->>>>>>> main
-
-    <!-- beginning of teacher profile name load -->
-
-    <servlet>
-        <servlet-name>teacherProfileNameLoad</servlet-name>
-        <servlet-class>Controller.UserLoad.TeacherSearchProfileNameLoadServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>teacherProfileNameLoad</servlet-name>
-        <url-pattern>/student/teacherProfileNameLoad</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of teacher profile name load -->
 
     <!-- beginning of teachers profile name load -->
 
@@ -448,6 +430,21 @@
     </servlet-mapping>
 
     <!-- end of teachers profile name load -->
+
+    <!-- beginning of teacher follow list load -->
+
+    <servlet>
+        <servlet-name>teacherFollowerListLoad</servlet-name>
+        <servlet-class>Controller.TeacherFollowersListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherFollowerListLoad</servlet-name>
+        <url-pattern>/teacher/teacherFollowerListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
 
 
     <session-config>

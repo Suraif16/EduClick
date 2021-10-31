@@ -1,0 +1,1420 @@
+
+body{
+
+    /*This is the main container for footer , header , and div#content*/
+
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+
+    /*child of the body*/
+
+    color: whitesmoke;
+    /*padding: 0.5%;*/
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    order: 1; /*this specifies the order in which it is to be displayed in the html page even if it has a different order in html*/
+    display: flex; /*this is a container now for headerMainBar and headerButtons*/
+    position: fixed;
+    width: 99%;
+    flex-direction: column;
+
+}
+
+header > div#headerMainBar {
+    /*child of header*/
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+header > div#headerButtons {
+    /*child of header*/
+    /*Button that displays in smaller screen size to make the page mobile responsive*/
+    flex: 1;
+    display: none;
+
+}
+
+header > div#headerButtons > input {
+
+    flex-basis: 15%;
+    margin: 0.2%  auto;
+    box-shadow: none;
+
+}
+
+header > div#headerButtons > input#classroomListHideButton {
+
+    margin-right: 45%;
+
+}
+
+header > div#headerButtons > input#rightPanelHideButton {
+
+    margin-left: 0.5%;
+
+
+}
+
+
+header > div#headerMainBar > a.profile {
+
+    /*child of header , to both the anchor<a> children*/
+
+    text-decoration: none;
+    color: whitesmoke;
+    flex: 1;
+    margin: auto;
+    padding: 0.2%;
+
+}
+
+header > div#headerMainBar > a#linkLogo {
+
+    /*child of header , to both the anchor<a> children*/
+
+    flex: 1;
+    margin: auto;
+    padding: 0.2%;
+
+}
+
+header > div#headerMainBar > div#headingSearch {
+
+    /*child of header*/
+
+    flex: 7;
+    display: flex;
+    margin: auto 0.8%;
+
+
+}
+
+
+header > div#headerMainBar > div#headingSearch > div#searchBar {
+
+    flex: 1;
+    margin: auto;
+    align-self: center;
+    display: flex;
+}
+
+header > div#headerMainBar > div#headingSearch > div#searchBar > input[type="text"] {
+
+    padding: 1%;
+    margin: 1% 0.5% 1% 1%;
+    flex-basis: 50%;
+
+}
+
+
+header > div#headerMainBar > div#logout{
+
+    flex: 1;
+    margin: auto auto auto 1%;
+    border-left: whitesmoke solid 2px;
+    padding: 0 1%;
+
+}
+
+.logo{
+
+    width: 70%;
+    height: 70%;
+
+}
+
+a.profile{
+
+    /*for the profile part this is the container*/
+    display: flex;
+
+}
+
+a.profile > div{
+
+    /*child of a#profile*/
+
+    flex: 2;
+    margin: auto;
+
+
+}
+
+a.profile > div.profileImage{
+
+    /*child of a#profile*/
+
+    flex: 1;
+    margin: auto;
+
+}
+
+.profileIcon{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+header > div#headerMainBar > div#headerNotification {
+
+    /*child of headerMain bar*/
+
+    flex-basis: 2%;
+    align-self: center;
+    margin: auto 3% auto 1%;
+    display: flex;
+
+
+}
+
+header > div#headerMainBar > div#headerNotification > input#notificationRequest{
+
+    flex: 1;
+    background-image: url("../Icons/notifications_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: auto;
+    background-position: center;
+    /*background-color: #403434;*/
+}
+
+header > div#headerMainBar > div#headerNotification > input#notificationSettings{
+
+    flex: 1;
+    background-image: url("../Icons/settings_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: auto 25%;
+    background-position: center;
+    /*background-color: #403434;*/
+}
+
+
+
+
+footer{
+
+    /*child of body*/
+
+    flex: 1;
+    order: 3;
+    background-color: #4775c4;
+    box-shadow: 8px 8px 2px #a7a7a7;
+}
+
+div#content{
+
+    /*child of body*/
+
+    flex: 2;
+    order: 2;
+    margin: 1% 0;
+    display: flex; /*this becomes the container for classRoomsLists and postContents*/
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+}
+
+
+div#content > div#classroomsList {
+
+    /*child of div#classroomsList*/
+
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 8.6% auto 0 0;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    padding: 1%;
+    position: fixed;
+    width: 20%;
+    display: flex; /* making this a container to options and classroomsListLinks */
+    flex-direction: column;
+    max-height: 75%;
+    overflow-y: auto;
+
+
+}
+
+
+#options{
+
+    /*becomes a container for postButton and classroomAddButton*/
+    display: flex;
+    flex-direction: column;
+    border-bottom: black solid 2px;
+    margin: 0 0 2% 0;
+    padding: 2%;
+    flex-wrap: wrap;
+
+}
+
+.optionButtonContainers{
+
+    /*margin: 0 auto 2% auto;*/
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+
+optionButtonContainers > input{
+
+    flex: 1;
+
+}
+
+
+
+#classroomAddButton{
+
+    flex: 1;
+
+}
+
+
+
+input{
+    /*all input values will have these properties*/
+    border-radius: 5px;
+    border: #6a6a6a solid 1px;
+
+}
+
+#classroomsListLinks{
+    /*child of classroomsList*/
+    /*flex: 1;*/
+    display: flex; /*container for classroomsListLinksItems */
+    flex-direction: column;
+    margin-top: 1%;
+    /*flex-wrap: wrap;*/
+}
+
+.classroomsListLinksItems{
+
+    /*child of classroomsListLinks*/
+    flex: 1;
+    background-color: #4775c4;
+    text-align: center;
+    margin: 1.5% 0;
+    padding: 1%;
+    /*display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;*/
+
+
+}
+
+
+a{
+
+    text-decoration: none;
+    color: white;
+
+}
+
+
+
+/* styles of posts */
+
+div#content > div#postContents {
+
+    /*child of div#postContents*/
+
+    flex-basis: 50%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 8.6% 0 0 22%;
+    box-shadow:  inset 1px 0 0 #4775c4 , inset -1px 0 0 #4775c4;
+    padding: 1%;
+    /*making this a container for post class*/
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.post{
+
+    /*child of postContents*/
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+    width: 75%;
+    margin: 1% auto 1% auto;
+
+    /*becomes a container for postProfileSection , postData , and postAnswerButton, where all these contain under postContentContainer*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.postContentContainer{
+
+    /*child of post*/
+    margin: 1.5%;
+
+}
+
+.postProfileSection{
+
+    background-color: #4775c4;
+    padding: 1%;
+
+
+}
+
+.postProfile{
+
+    /*becomes the container for postProfileImage and postProfileName*/
+    display: flex;
+
+}
+
+.postProfileImage{
+
+    /* child of postProfile*/
+    flex-basis: 10%;
+    margin: auto auto auto 3px;
+
+}
+
+.postProfileName{
+
+    /* child of postProfile*/
+    margin: auto auto auto 3px;
+    flex-basis: 90%;
+
+
+}
+
+.postProfileIcon{
+
+    width: 35px;
+    height: 35px;
+    border-radius: 17.5px;
+
+}
+
+.postData{
+
+    /* Container for postMessage and post picture*/
+    display: flex;
+    flex-direction: column;
+
+}
+
+.postMessage{
+
+    /*Child of post Data*/
+    flex: 1;
+    background-color: #4775c4;
+    margin-bottom: 1.5%;
+    padding: 0.5%;
+    color: whitesmoke;
+
+}
+
+
+.postPicture{
+
+    /*Child of post Data*/
+    flex: 1;
+    box-shadow:  inset -1px -1px  #4775c4 , inset 1px 1px  #4775c4 ;
+    display: flex;/*container for postPictureImageContainer*/
+
+
+}
+
+.postPictureImageContainer{
+    /*child for postPicture*/
+    flex: 1;
+    padding: 2%;
+}
+
+.postPictureImage{
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.postAnswerButton{
+
+    background-color: #4775c4;
+    padding: 1%;
+
+    /*container for likeSharButtons and countOfLikeShare*/
+    display: flex;
+
+
+}
+
+.answerButton{
+
+    /*child of postAnswerButton*/
+    flex: 1;
+    margin: auto;
+    display: flex;
+
+
+}
+
+.answerShowButton{
+
+    margin: auto;
+
+}
+
+div.answersInPost{
+    /*becomes a container for singleAnswer*/
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #4775c4;
+    padding: 1%;
+    max-height: 250px;
+    overflow-y: auto;
+
+
+
+}
+
+div.singleAnswer{
+    /*child of answersInPost*/
+    flex: 1;
+    margin: 1% 0;
+    padding: 1%;
+    color: white;
+    display: flex; /* Container of textAnswers , pictureAnswers , marksForAnswers*/
+    flex-direction: column;
+
+
+}
+
+div.textAnswers{
+/*child of singleAnswer*/
+    flex: 1;
+    background-color: #4775c4;
+    margin-bottom: 1%;
+    padding: 1%;
+
+}
+
+div.pictureAnswers{
+    /*child of singleAnswer*/
+    flex: 1;
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+div.pictureAnswers > a > img{
+
+    width: 50%;
+    box-shadow:  inset -1px -1px  #4775c4 , inset 1px 1px  #4775c4 ;
+
+    padding: 1%;
+
+
+}
+
+div.marksForAnswers{
+
+    /*child of singleAnswer*/
+    flex: 1;
+    background-color: #4775c4;
+    padding: 1.5%;
+    display: flex;/*becomes a container for marksForAnswersRange and marksForAnswersRangeValue */
+
+}
+
+.marksForAnswersRange{
+    /*child of marksForAnswers*/
+    flex: 2;
+
+}
+
+.marksForAnswersRangeValue{
+    /*child of marksForAnswers*/
+
+    flex: 1;
+    box-shadow:  inset -1px -1px  white , inset 1px 1px  white ;
+    text-align: center;
+
+}
+
+
+
+input[type="button"]{
+    padding: 5px;
+    color: whitesmoke;
+    background-color: #4775c4;
+    cursor: pointer;
+    border: solid 1px white;
+    box-shadow:  -1px -1px 2px whitesmoke , 1px 1px 2px white ;
+
+}
+
+input[type="button"]:hover{
+
+    box-shadow:  inset -1px -1px 5px whitesmoke , inset 1px 1px 5px whitesmoke , 2px 2px 5px #505050;
+
+}
+
+input[type="button"]:active{
+
+    box-shadow:  inset -1px -1px 5px #403434, inset 1px 1px 5px whitesmoke , 2px 2px 5px #505050;
+
+}
+
+::placeholder{
+
+    padding: 1%;
+    margin: 1%;
+
+}
+
+/*MCQ POST RELATED STYLES STARTS HERE*/
+
+div.mcqAnswerContainer{
+
+    display: flex; /*become a container for mcqsingleanswer*/
+    background-color: white;
+    /*border: solid 2px black;*/
+    padding: 1%;
+    flex-wrap: wrap;
+    margin: 1%;
+    box-shadow:  inset -1px -1px 0 #4775c4 , inset 1px 1px 0 #4775c4;
+
+}
+
+div.mcqSingleAnswer{
+    /*child of mcqAnswerContainer*/
+    background-color: #4775c4;
+    margin: 1%;
+    padding: 1%;
+
+
+}
+
+div.correctMcqSingleAnswer{
+    /*additional class to distinquish  correct answers*/
+    background-color: #403434;
+    padding: 1%;
+
+}
+
+
+div.mcqResultsInPost{
+
+    /*becomes a container for mcqSingleStudentResult*/
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #4775c4;
+    padding: 1%;
+    max-height: 250px;
+    overflow-y: auto;
+
+}
+
+div.mcqSingleStudentResult{
+    /*child of mcqResultInPost*/
+    background-color: #4775c4;
+    flex: 1;
+    display: flex; /*container for <a> and div.mcqSingleStudentResultMarks*/
+    flex-wrap: wrap;
+    width: 75%;
+    margin: 1%;
+    padding: 2%;
+
+}
+
+div.mcqSingleStudentResultMarks{
+    /*child of mcqSingleStudentResult*/
+    flex: 1;
+    color: white;
+    margin: auto;
+}
+
+a.mcqProfile{
+
+    flex: 5;
+    /*for the profile part this is the container*/
+    display: flex;
+
+}
+
+a.mcqProfile > div{
+
+    /*child of a#profile*/
+
+    flex: 8;
+    margin: auto;
+
+
+}
+
+a.mcqProfile > div.mcqProfileImage{
+
+    /*child of a#profile*/
+
+    flex: 1;
+    margin: auto;
+
+}
+
+.mcqProfileIcon{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+
+}
+
+.mcqResultShowButton{
+
+    margin: auto;
+
+}
+
+/*MCQ POST RELATED STYLES ENDS HERE*/
+
+/*right panel begins here*/
+
+div#content > div#rightPanel {
+
+
+    margin: 8.6% auto auto 30%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+
+    width: 45%;
+    padding: 1%;
+    display: flex;  /*making this a container to rightPanelTopic and rightPanelStudentList*/
+    flex-direction: column;
+    max-height: 76%;
+
+
+}
+
+div#content > div#rightPanel > div#rightPanelTopic {
+    /*child of rightpanel*/
+    background-color: #4775c4;
+    flex: 1;
+    padding: 1%;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    color: white;
+    margin-bottom: 3%;
+    display: flex; /*becomes a container to two div class*/
+    flex-direction: column;
+}
+
+div#content > div#rightPanel > div#rightPanelTopic > div {
+    /*child of rightPanelTopic*/
+    flex: 1;
+    margin: 1% 3%;
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList {
+    /*child of rightpanel*/
+    flex: 1;
+    padding: 1%;
+    display: flex; /*becomes a container for all rightPanelSignleStudent*/
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+    overflow-y: auto; /*to make overflow work in flex there should be a maximum height to the container*/
+}
+
+
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent{
+    /*child of rightPanelStudnetList*/
+    flex-basis: 15%;
+    margin: 1% auto;
+    display: flex;/*becone a contanier for all div class in it*/
+    flex-direction: column;
+    width: 100%;
+    background-color: #4775c4;
+
+
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div{
+    /* child of rightPanelSingleStudent*/
+    padding: 1%;
+    margin: 0 1%;
+    display: flex;
+    color: white;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div >  div.lastSeen{
+    /*child of */
+    padding: 0 1%;
+    margin: auto 1%;
+    display: flex;
+    color: white;
+
+}
+
+.onlineStatus{
+
+    border-radius: 50%;
+    width: 10%;
+    height: 10%;
+    align-self: center;
+    margin: auto 2%;
+
+}
+
+
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > input{
+
+    flex: 1;
+    margin: 1%;
+    text-align: center;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a {
+
+    flex: 1;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > div {
+
+    flex: 1;
+    display: flex;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div{
+
+    margin: 1%;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div.classroomStudentProfilePicture{
+
+    flex: 1;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div.classroomStudentProfileName{
+
+    flex: 5;
+    margin: auto;
+
+}
+
+input.studentDisable{
+
+    background-color: #403434;
+
+}
+
+
+
+/*right panel ends here*/
+
+
+div#content > div#notifications {
+
+    margin: 5% auto auto 77%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: fixed;
+    width: 20%;
+    padding: 1%;
+    z-index: 1;
+    background-color: white;
+    height: 80%;
+    display: none; /*becomes a container to the request*/
+    flex-direction: column;
+
+}
+
+div#content > div#notifications > div#request {
+    /*child of notification*/
+    /* flex-basis: 50%;*/ /* DON'T DELETE THIS... This is kept for future modifications*/
+    flex: 1;
+    display: flex; /* container of singleNotification*/
+    flex-direction: column;
+    overflow-y: auto;
+
+
+}
+
+div#content > div#notifications > div#request > div.singleNotification{
+    /*child of request*/
+    flex-basis: 15%;
+    margin: 1% auto;
+    display: flex;
+    flex-direction: column;
+    /*box-shadow:  inset 1px 1px 0 #4775c4 , inset -1px -1px 0 #4775c4;*/
+    width: 100%;
+    background-color: #4775c4;
+}
+
+div#content > div#notifications > div#request > div.singleNotification > div{
+
+    padding: 1%;
+    margin: 1%;
+    display: flex;
+    color: white;
+
+}
+
+div#content > div#notifications > div#request > div.singleNotification > div > input{
+
+    flex: 1;
+    margin: 1%;
+
+}
+
+div#content > div#notifications > div#request > div.singleNotification > div > a {
+
+    flex: 1;
+
+}
+
+div#content > div#notifications > div#request > div.singleNotification > div > a > div{
+
+    margin: 1%;
+
+}
+
+div#content > div#notifications > div#request > div.singleNotification > div > a > div.requestProfilePicture{
+
+    flex: 1;
+
+}
+
+div#content > div#notifications > div#request > div.singleNotification > div > a > div.requestProfileName{
+
+    flex: 5;
+    margin: auto;
+
+}
+
+input.requestDecline{
+
+    background-color: #403434;
+
+}
+
+div#content > div#addClassroomForm{
+
+    background-color: white;
+    margin: 8% auto auto 23%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: fixed;
+    width: 40%;
+    padding: 1%;
+    height: fit-content;
+    display: none; /*become a container for classroomFormRow*/
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+div#content > div#addClassroomForm > div.classroomFormRow{
+
+    /*child of addclassroomForm*/
+    flex: 1;
+    margin: 1%;
+    display: flex; /*becomes a container for the input elements*/
+    flex-direction: row;
+    /*padding: 1% 1%;*/
+    color: black;
+    flex-wrap: wrap;
+
+
+
+}
+
+div#content > div#addClassroomForm > div.classroomFormRow > input{
+
+    flex: 1;
+
+}
+
+#classroomFormRowErrorMessage{
+
+    flex: 1;
+    margin: 1%;
+    flex-direction: row;
+    color: red;
+    display: none ;
+    flex-wrap: wrap;
+
+
+}
+
+
+
+@media(max-width: 1100px) {
+
+
+    div#content > div#notifications {
+
+        margin: 5% auto auto 70%;
+        width: 25%;
+
+    }
+
+    .post{
+
+        width: 80%;
+
+    }
+
+    .logo{
+
+        min-width: 70%;
+        min-height: 70%;
+
+    }
+
+    header > div#headerMainBar {
+
+        border-bottom: solid 2px black;
+
+    }
+
+
+
+    div#content > div#postContents {
+
+        flex: 1;
+        margin: 12% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+
+        margin: 12% auto 0 0;
+        width: 30%;
+        background-color: white;
+
+
+
+
+    }
+
+    div#content > div#rightPanel {
+
+        flex: 1;
+        display: flex;
+        margin: 12% 0 0 35%;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 12% auto auto 33%;
+
+    }
+
+
+}
+
+@media(max-width: 750px) {
+
+
+    div#content > div#notifications {
+
+        margin: 6% auto auto 60%;
+        width: 35%;
+
+    }
+
+    div#content > div#postContents {
+
+        margin: 15% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 15% auto 0 0;
+        width: 40%;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 15% 0 0 43%;
+
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 15% auto auto 41%;
+
+    }
+
+}
+
+@media(max-width: 650px) {
+    div#content > div#classroomsList {
+
+        display: none;
+
+    }
+    div#content > div#rightPanel {
+
+        margin: 15% 0 0 auto;
+
+
+    }
+
+    header > div#headerMainBar > div#logout{
+
+        margin: auto 1% auto 1%;
+
+    }
+    header > div#headerButtons {
+
+        flex: 1;
+        display: flex;
+
+    }
+
+}
+
+@media(max-width: 550px) {
+
+    div#content > div#notifications {
+
+        margin: 9% auto auto 55%;
+        width: 40%;
+
+    }
+
+    .logo{
+
+        width: 70%;
+        height: 70%;
+
+    }
+
+    header > div#headerMainBar > a#linkLogo {
+
+        flex: 2;
+        padding: 0.2%;
+
+    }
+
+    div#content > div#postContents {
+
+        margin: 19% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 19% auto 0 0;
+        width: 50%;
+
+    }
+    div#content > div#rightPanel {
+
+        margin: 19% 0 0 auto;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 19% auto auto 30%;
+        width: 50%;
+
+    }
+
+}
+
+@media(max-width: 440px) {
+
+    div#content > div#notifications {
+
+        margin: 17% auto auto 50%;
+        width: 45%;
+
+    }
+
+    header > div#headerMainBar > div#logout{
+
+        margin: auto 2% auto 1%;
+
+    }
+
+    header > div#headerMainBar > div#headingSearch > div#searchBar {
+
+        flex: 0.5;
+
+    }header > div#headerMainBar > div#headingSearch > div#searchBar {
+
+         flex: 1;
+         margin: auto;
+         align-self: center;
+         display: flex;
+         flex-wrap: wrap;
+     }
+
+    .logo{
+
+        width: 75%;
+        height: 75%;
+
+    }
+
+
+    div#content > div#postContents {
+
+        margin: 21% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 21% auto 0 0;
+        width: 57%;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 21% 0 0 auto;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 25% auto auto 30%;
+        width: 57%;
+
+    }
+
+}
+
+@media(max-width: 420px) {
+
+    div#content > div#notifications {
+
+        margin: 18% auto auto 45%;
+        width: 50%;
+
+    }
+
+    div#content > div#postContents {
+
+        margin: 23% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 23% auto 0 0;
+        width: 60%;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 23% 0 0 auto;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 27% auto auto 30%;
+        width: 60%;
+
+    }
+
+}
+
+@media(max-width: 400px) {
+
+
+
+    div#content > div#notifications {
+
+        margin: 18% auto auto 45%;
+        width: 50%;
+
+    }
+    div#content > div#postContents {
+
+        margin: 25% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 25% auto 0 0;
+        width: 65%;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 25% 0 0 auto;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 29% auto auto 30%;
+        width: 65%;
+
+    }
+
+}
+
+@media(max-width: 385px){
+
+    div#content > div#classroomsList {
+
+        margin: 30% auto 0 0;
+
+    }
+
+
+
+}
+
+@media(max-width: 340px) {
+
+    div#content > div#notifications {
+
+        margin: 27% auto auto 35%;
+        width: 60%;
+
+    }
+
+    div#content > div#postContents {
+
+        margin: 30% 0 0 auto;
+
+    }
+
+    div#content > div#classroomsList {
+
+        margin: 32% auto 0 0;
+        width: 70%;
+
+    }
+
+    div#content > div#addClassroomForm{
+
+        margin: 30% 0 0 auto;
+
+    }
+
+
+
+}
+
+/*input range*/
+
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: auto 1%;
+    width: 100%;
+    height: 0;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    /*animate: 0.2s;*/
+    box-shadow: 0px 0px 0px #000000;
+    background: #2497E3;
+    border-radius: 1px;
+    border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #2497E3;
+}
+/*
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #2497E3;
+    border-radius: 1px;
+    border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #2497E3;
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+    background: #2497E3;
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #2497E3;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #2497E3;
+}*/
