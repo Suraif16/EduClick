@@ -387,6 +387,36 @@
 
     <!-- end of teacher profile name load -->
 
+
+
+    <!-- beginning of student follow list load -->
+
+    <servlet>
+        <servlet-name>studentFollowerListLoad</servlet-name>
+        <servlet-class>Controller.StudentFollowerListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentFollowerListLoad</servlet-name>
+        <url-pattern>/student/studentFollowerListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
+    <!-- beginning of student full name load -->
+
+    <servlet>
+        <servlet-name>studentProfileNameLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.StudentProfileFullNameLoad</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentProfileNameLoad</servlet-name>
+        <url-pattern>/student/studentProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student full name load -->
+
     <!-- beginning of teachers profile name load -->
 
     <servlet>
@@ -400,6 +430,7 @@
     </servlet-mapping>
 
     <!-- end of teachers profile name load -->
+
 
 
     <session-config>

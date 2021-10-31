@@ -25,9 +25,12 @@ const sendServerData = function (){
     httpreq.open( "POST" , "/EduClick_war_exploded/student/studentLoad" , true);
     httpreq.send();
 
+
+
     function completeLogin( httpreq ){
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
+        const headerUserProfileIdAchorElement = document.getElementById("headerUserProfileId");
 
 
 
@@ -40,6 +43,9 @@ const sendServerData = function (){
             console.log(jsonLoginResponse.firstName);
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
+            let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
+            console.log(url);
+            headerUserProfileIdAchorElement.setAttribute("href" , url);
         }else{
             alert("something went wrong!!!");
         }

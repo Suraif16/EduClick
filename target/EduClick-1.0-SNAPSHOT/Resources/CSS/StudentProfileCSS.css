@@ -258,6 +258,7 @@ div#navbar ul li{
     position: relative;
     list-style: none;
     display: inline-block;
+<<<<<<< HEAD
 }
 div#navbar ul li a{
     display: block;
@@ -267,6 +268,17 @@ div#navbar ul li a{
     line-height: 60px;
     font-size: 20px;
 }
+=======
+}
+div#navbar ul li a{
+    display: block;
+    padding: 0 15px;
+    color: whitesmoke;
+    text-decoration: none;
+    line-height: 60px;
+    font-size: 20px;
+}
+>>>>>>> main
 div#navbar ul li a:hover{
     background: #0571ed;
 }
@@ -681,6 +693,7 @@ input[type="button"]:active{
     .postProfileUserName{
         position: center;
         margin-right: 40%;
+<<<<<<< HEAD
     }
 
     img#profilepic1{
@@ -695,6 +708,22 @@ input[type="button"]:active{
         margin-bottom: 0px;
     }
 
+=======
+    }
+
+    img#profilepic1{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        position: center;
+        margin-right: 20%;
+
+    }
+    div#navbar{
+        margin-bottom: 0px;
+    }
+
+>>>>>>> main
 
 }
 
@@ -799,3 +828,144 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 
 }
+/*right panel begins here*/
+
+div#content > div#rightPanel {
+
+
+    margin: 8.6% auto auto 50%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+
+    width: 45%;
+    padding: 1%;
+    display: flex;  /*making this a container to rightPanelTopic and rightPanelStudentList*/
+    flex-direction: column;
+    max-height: 76%;
+
+
+}
+
+div#content > div#rightPanel > div#rightPanelTopic {
+    /*child of rightpanel*/
+    background-color: #4775c4;
+    flex: 1;
+    padding: 1%;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    color: white;
+    margin-bottom: 3%;
+    display: flex; /*becomes a container to two div class*/
+    flex-direction: column;
+}
+
+div#content > div#rightPanel > div#rightPanelTopic > div {
+    /*child of rightPanelTopic*/
+    flex: 1;
+    margin: 1% 3%;
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList {
+    /*child of rightpanel*/
+    flex: 1;
+    padding: 1%;
+    display: flex; /*becomes a container for all rightPanelSignleStudent*/
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+    overflow-y: auto; /*to make overflow work in flex there should be a maximum height to the container*/
+}
+
+
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent{
+    /*child of rightPanelStudnetList*/
+    flex-basis: 15%;
+    margin: 1% auto;
+    display: flex;/*becone a contanier for all div class in it*/
+    flex-direction: column;
+    width: 100%;
+    background-color: #4775c4;
+
+
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div{
+    /* child of rightPanelSingleStudent*/
+    padding: 1%;
+    margin: 0 1%;
+    display: flex;
+    color: white;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div >  div.lastSeen{
+    /*child of */
+    padding: 0 1%;
+    margin: auto 1%;
+    display: flex;
+    color: white;
+
+}
+
+.onlineStatus{
+
+    border-radius: 50%;
+    width: 10%;
+    height: 10%;
+    align-self: center;
+    margin: auto 2%;
+
+}
+
+
+
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > input{
+
+    flex: 1;
+    margin: 1%;
+    text-align: center;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a {
+
+    flex: 1;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > div {
+
+    flex: 1;
+    display: flex;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div{
+
+    margin: 1%;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div.classroomStudentProfilePicture{
+
+    flex: 1;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div > a > div.classroomStudentProfileName{
+
+    flex: 5;
+    margin: auto;
+
+}
+
+input.studentDisable{
+
+    background-color: #403434;
+
+}
+
+
+
+/*right panel ends here*/

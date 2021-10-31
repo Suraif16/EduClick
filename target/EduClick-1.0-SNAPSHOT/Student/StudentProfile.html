@@ -31,7 +31,7 @@
         </div>
 
         <div id="logout">
-            <a href="#">
+            <a href="/EduClick_war_exploded/Logout">
                 Logout
             </a>
         </div>
@@ -54,12 +54,20 @@
             <li><a href="#">Posts</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Friends</a></li>
+<<<<<<< HEAD
             <li><a href="#">Followers</a></li>
+=======
+            <li><a onclick="loadFollowersList()" href="#">Followers</a></li>
+>>>>>>> main
         </ul>
     </div>
     <div id="image-container1">
         <img id="profilepic1" src="../Resources/Icons/account_circle_white_24dp.svg">
+<<<<<<< HEAD
         <div class="postProfileUserName" > User Name</div>
+=======
+        <div id="profileUserName"  class="postProfileUserName" > User Name</div>
+>>>>>>> main
     </div>
 
 
@@ -80,6 +88,21 @@
                 <div id="buttonContainer">
                     <button type="button">Edit Details</button>
                 </div>
+            </div>
+        </div>
+
+        <div id="rightPanel" style="margin: 8.6% auto auto 25%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+
+    width: 50%;
+    padding: 1%;
+    display: none;
+    flex-direction: column;
+    max-height: 76%;">
+
+            <div id="rightPanelStudentList"  >
+
+
             </div>
         </div>
 
@@ -336,7 +359,10 @@
     </div>
 
 </div>
+
+
 <footer>
 </footer>
+<script src="../Resources/JS/StudentFollowersListLoad.js" defer></script>
 </body>
 </html>

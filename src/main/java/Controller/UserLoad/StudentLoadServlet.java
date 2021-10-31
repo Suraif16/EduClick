@@ -25,6 +25,7 @@ public class StudentLoadServlet extends HttpServlet {
 
         jsonObject.put( "serverResponse" , "Allowed" );
         jsonObject.put( "firstName" , user.getFirstName() );
+        jsonObject.put("userId",user.getUserId());
 
         out.write(jsonObject.toString());
         out.close();
