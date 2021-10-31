@@ -95,7 +95,7 @@ function createClassroom(){
             '' +
             '                        </a>' +
             '' +
-            '                    </div>'
+            '                    </div>';
 
 
     }

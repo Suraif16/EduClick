@@ -70,16 +70,18 @@ function createClassroom(){
     const createClassroomHtml = function ( classroomId ){
 
 
-        classroomsListLinks.innerHTML += '<div className="classroomsListLinksItems"' +
-            ' style="flex: 1;\n' +
-            '    background-color: #4775c4;\n' +
-            '    text-align: center;\n' +
-            '    margin: 1.5% 0;\n' +
-            '    padding: 1%;"> ' +
-            '<a href="/EduClick_war_exploded/Teacher/Classroom.html?id=' + classroomId +'"' +' className="classRooms"> ' +
-            classroomName.value + ' : ' + subject.value + ' : Grade ' + gradeClass.value + ' : ' + yearOfExamination.value +
-            '</a>' +
-            '</div>';
+        classroomsListLinks.innerHTML += '<div class="classroomsListLinksItems">' +
+            '' +
+            '                        <a href="/EduClick_war_exploded/Teacher/Classroom.html?id="' + classroomId +  ' class="classRooms">' +
+            '' +
+            '                            <p>Classroom Name : ' + classroomName.value + '</p>' +
+            '                            <p>Subject : ' + subject.value + '</p>' +
+            '                            <p>Grade : ' + gradeClass.value + '</p>' +
+            '                            <p>Year of Examination : ' + yearOfExamination.value + '</p>' +
+            '' +
+            '                        </a>' +
+            '' +
+            '                    </div>';
 
 
         classroomName.value = "";
