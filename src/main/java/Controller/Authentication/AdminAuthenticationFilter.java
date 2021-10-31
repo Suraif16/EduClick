@@ -33,6 +33,7 @@ public class AdminAuthenticationFilter implements Filter {
             /* there is no session */
             jsonObject.put("serverResponse" , "null Session");
             out.write(jsonObject.toString());
+            session.invalidate();
 
         }else {
 

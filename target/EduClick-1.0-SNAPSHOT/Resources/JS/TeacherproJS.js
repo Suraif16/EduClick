@@ -47,10 +47,10 @@ function enableDisableStatus( id ){
 
 
         let status = sendInsertData(id);
-        /*if(status=="Requested"){*/
+        if(status=="Requested"){
             disableButton.style.display = "block";
             enableButton.style.display = "none";
-        /*}*/
+        }
 
 
 
@@ -62,10 +62,10 @@ function enableDisableStatus( id ){
 
 
         let status = sendDeleteData(id);
-        /*if(status=="Deleted"){*/
+        if(status=="Deleted"){
             disableButton.style.display = "none";
             enableButton.style.display = "block";
-        /*}*/
+        }
 
 
 
@@ -122,8 +122,8 @@ let sendData = function (id,action){
                 if(jsonResponse.Enroll === "Requested"){
 
                     console.log("hjksahdiuahdisd")
-                    disableButton.style.display = "block";
-                    enableButton.style.display = "none";
+                    /*disableButton.style.display = "block";
+                    enableButton.style.display = "none";*/
                     /*disableButton.style.display = "block";
                     enableButton.style.display = "none";*/
 
@@ -132,8 +132,8 @@ let sendData = function (id,action){
                 else if(jsonResponse.Enroll === "Deleted"){
                     /*disableButton.style.display = "none";
                     enableButton.style.display = "block";*/
-                    disableButton.style.display = "none";
-                    enableButton.style.display = "block";
+                    /*disableButton.style.display = "none";
+                    enableButton.style.display = "block";*/
 
                     return "Deleted";
                 }
@@ -168,7 +168,46 @@ let sendData = function (id,action){
 
 
 }
+<<<<<<< HEAD
+=======
 
+
+const LoadName = function (){
+    
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function (){
+>>>>>>> main
+
+        if (this.readyState === 4 && this.status === 200){
+            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherProfileNameLoad" , true);
+    httpreq.send();
+
+    function completeLogin( httpreq ){
+
+        let jsonLoginResponse = JSON.parse(httpreq.responseText);
+
+        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+            window.location.replace("/EduClick_war_exploded/Login.html");
+        }else if(jsonLoginResponse.serverResponse === "Allowed") {
+
+            const name = document.getElementById("teacherUserName");
+            name.innerHTML = jsonLoginResponse.FullName;
+            console.log(name);
+
+            const headerName = document.getElementById("teacherUserNameHeader");
+            headerName.innerHTML = jsonLoginResponse.FullName;
+            console.log(headerName);
+
+        }else{
+            alert("something went wrong!!!");
+        }
+
+    }
 
 const LoadName = function (){
     

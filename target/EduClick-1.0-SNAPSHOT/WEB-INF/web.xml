@@ -387,6 +387,7 @@
 
     <!-- end of teacher profile name load -->
 
+<<<<<<< HEAD
     <!-- beginning of teachers profile name load -->
 
     <servlet>
@@ -442,6 +443,67 @@
     </servlet-mapping>
 
     <!-- end of unfollow teachers -->
+=======
+
+
+    <!-- beginning of student follow list load -->
+
+    <servlet>
+        <servlet-name>studentFollowerListLoad</servlet-name>
+        <servlet-class>Controller.StudentFollowerListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentFollowerListLoad</servlet-name>
+        <url-pattern>/student/studentFollowerListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
+    <!-- beginning of student full name load -->
+
+    <servlet>
+        <servlet-name>studentProfileNameLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.StudentProfileFullNameLoad</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentProfileNameLoad</servlet-name>
+        <url-pattern>/student/studentProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student full name load -->
+
+    <!-- beginning of teachers profile name load -->
+
+    <servlet>
+        <servlet-name>teacherLoadProfileName</servlet-name>
+        <servlet-class>Controller.UserLoad.TeacherProfileNameLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherLoadProfileName</servlet-name>
+        <url-pattern>/teacher/teacherProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teachers profile name load -->
+
+    <!-- beginning of teacher follow list load -->
+
+    <servlet>
+        <servlet-name>teacherFollowerListLoad</servlet-name>
+        <servlet-class>Controller.TeacherFollowersListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherFollowerListLoad</servlet-name>
+        <url-pattern>/teacher/teacherFollowerListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
+
+>>>>>>> main
 
     <session-config>
 

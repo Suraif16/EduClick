@@ -153,18 +153,14 @@ header > h1{
     margin: auto;
 }
 
-a.profile{
+profile{
     /*for the profile part this is the container*/
     display: flex;
+    padding: 1%;
+    margin: 0 1%;
 }
 
-a.profile > div{
-    /*child of a#profile*/
-    flex: 2;
-    margin: auto;
-}
-
-a.profile > div.profileImage{
+div.profileImage{
     /*child of a#profile*/
     flex: 1;
     margin: auto;
@@ -799,3 +795,126 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 
 }
+/*right panel begins here*/
+
+/*div#rightPanel {
+
+
+    margin: 8.6% auto auto 60%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+
+    width: 45%;
+    padding: 1%;
+    display: flex;  !*making this a container to rightPanelTopic and rightPanelStudentList*!
+    flex-direction: column;
+    max-height: 76%;
+
+
+}*/
+
+div#rightPanelTopic {
+    /*child of rightpanel*/
+    background-color: #4775c4;
+    flex: 1;
+    padding: 1%;
+    box-shadow: 8px 8px 2px #a7a7a7;
+    color: white;
+    margin-bottom: 3%;
+    display: flex; /*becomes a container to two div class*/
+    flex-direction: column;
+}
+
+
+div#rightPanelStudentList {
+    /*child of rightpanel*/
+    flex: 1;
+    background-color: #4775c4;
+    padding: 1%;
+    display: flex; /*becomes a container for all rightPanelSignleStudent*/
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+    overflow-y: auto; /*to make overflow work in flex there should be a maximum height to the container*/
+}
+
+
+
+div#rightPanelSingleStudent{
+    /*child of rightPanelStudnetList*/
+    flex-basis: 15%;
+    margin: 1% auto;
+    display: flex;/*becone a contanier for all div class in it*/
+    flex-direction: column;
+    width: 100%;
+    background-color: #4775c4;
+
+
+
+}
+
+div#innerDiv{
+    /* child of rightPanelSingleStudent*/
+    padding: 1%;
+    margin: 0 1%;
+    display: flex;
+    color: white;
+
+}
+
+div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleStudent > div >  div.lastSeen{
+    /*child of */
+    padding: 0 1%;
+    margin: auto 1%;
+    display: flex;
+    color: white;
+
+}
+
+.onlineStatus{
+
+    border-radius: 50%;
+    width: 10%;
+    height: 10%;
+    align-self: center;
+    margin: auto 2%;
+
+}
+
+
+
+div#innerA {
+
+    flex: 1;
+
+}
+
+
+
+
+
+div.classroomStudentProfilePicture{
+
+    flex: 1;
+
+}
+
+div.classroomStudentProfileName{
+
+    flex: 5;
+    margin: auto;
+    font-family: 'Strait', sans-serif;
+    letter-spacing: 0.5pt;
+    display: block;
+
+}
+
+input.studentDisable{
+
+    background-color: #403434;
+
+}
+
+
+
+/*right panel ends here*/
+
