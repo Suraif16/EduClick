@@ -387,63 +387,6 @@
 
     <!-- end of teacher profile name load -->
 
-<<<<<<< HEAD
-    <!-- beginning of teachers profile name load -->
-
-    <servlet>
-        <servlet-name>teacherLoadProfileName</servlet-name>
-        <servlet-class>Controller.UserLoad.TeacherProfileNameLoadServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>teacherLoadProfileName</servlet-name>
-        <url-pattern>/teacher/teacherProfileNameLoad</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of teachers profile name load -->
-
-    <!-- beginning of follow teachers -->
-
-    <servlet>
-        <servlet-name>followTeacher</servlet-name>
-        <servlet-class>Controller.Requests.followTeacherServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>followTeacher</servlet-name>
-        <url-pattern>/student/followTeacher</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of follow teachers -->
-
-    <!-- beginning of unfollow teachers -->
-
-    <servlet>
-        <servlet-name>unfollowTeacher</servlet-name>
-        <servlet-class>Controller.Requests.unFollowTeacherServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>unfollowTeacher</servlet-name>
-        <url-pattern>/student/unFollowTeacher</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of unfollow teachers -->
-
-    <!-- beginning of unfollow teachers -->
-
-    <servlet>
-        <servlet-name>cancelFriendRequest</servlet-name>
-        <servlet-class>Controller.Requests.cancelFriendRequestServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>cancelFriendRequest</servlet-name>
-        <url-pattern>/cancelFriendRequest</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of unfollow teachers -->
-=======
 
 
     <!-- beginning of student follow list load -->
@@ -488,6 +431,49 @@
 
     <!-- end of teachers profile name load -->
 
+
+    <!-- beginning of follow teachers -->
+
+    <servlet>
+        <servlet-name>followTeacher</servlet-name>
+        <servlet-class>Controller.Requests.followTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>followTeacher</servlet-name>
+        <url-pattern>/student/followTeacher</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of follow teachers -->
+
+    <!-- beginning of unfollow teachers -->
+
+    <servlet>
+        <servlet-name>unfollowTeacher</servlet-name>
+        <servlet-class>Controller.Requests.unFollowTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>unfollowTeacher</servlet-name>
+        <url-pattern>/student/unFollowTeacher</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of unfollow teachers -->
+
+    <!-- beginning of unfollow teachers -->
+
+    <servlet>
+        <servlet-name>cancelFriendRequest</servlet-name>
+        <servlet-class>Controller.Requests.cancelFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cancelFriendRequest</servlet-name>
+        <url-pattern>/cancelFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of unfollow teachers -->
+
     <!-- beginning of teacher follow list load -->
 
     <servlet>
@@ -503,7 +489,7 @@
     <!-- end of student follow list load -->
 
 
->>>>>>> main
+
 
     <session-config>
 
