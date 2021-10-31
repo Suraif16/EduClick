@@ -91,14 +91,18 @@ const getClassroomList = function (){
 
 
     function classroomHtmlOutput( classroomId , classroomName , subject , gradeClass , yearOfExamination ){
-        classroomsListLinksSelect.innerHTML += '<div class="classroomsListLinksItems">'+
-
-            '<a href="Classroom.html" class="classRooms">'+
-
-            classroomName + ' : ' + subject + ' : Grade ' + gradeClass + ' : ' + yearOfExamination +
-            '</a>'+
-
-        '</div>';
+        classroomsListLinksSelect.innerHTML += '<div class="classroomsListLinksItems">' +
+            '' +
+            '                        <a href="Classroom.html"  class="classRooms">' +
+            '' +
+            '                            <p>Classroom Name : ' + classroomName +'</p>' +
+            '                            <p>Subject : ' + subject + '</p>' +
+            '                            <p>Grade : ' + gradeClass + '</p>' +
+            '                            <p>Year of Examination : ' + yearOfExamination + '</p>' +
+            '' +
+            '                        </a>' +
+            '' +
+            '                    </div>'
 
     }
 
