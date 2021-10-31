@@ -1,16 +1,17 @@
-const loadFollowersList = function (){
+const loadTeacherFollowersList = function (){
+    console.log("HUUU");
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function () {
-
+        console.log("jjjjj");
         if (this.readyState === 4 && this.status === 200) {
-            console.log("I am running")
+            console.log("I am running");
             completeLoad(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
 
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/student/studentFollowerListLoad", true);
+    httpreq.open("POST", "/EduClick_war_exploded/teacher/teacherFollowerListLoad", true);
     httpreq.send();
 
     function completeLoad(httpreq){
@@ -26,7 +27,7 @@ const loadFollowersList = function (){
             for (i = 0 ; i <= count ; i++){
 
 
-                classroomHtmlOutput(jsonLoginResponse.List[i].UserID,jsonLoginResponse.List[i].firstName,jsonLoginResponse.List[i].lastName);
+                classroomHtmlOutput(jsonLoginResponse.List[i].UserID,jsonLoginResponse.List[i].lastName,jsonLoginResponse.List[i].firstName);
 
             }
         }else{
@@ -37,34 +38,9 @@ const loadFollowersList = function (){
     function classroomHtmlOutput( userID , firstName , lastName){
         const postContents = document.getElementById("postContents");
         postContents.innerHTML = "";
-        const searchContent = document.getElementById( "rightPanelStudentList" );
+     //   const searchContent = document.getElementById( "rightPanelStudentList" );
         const rightPanel = document.getElementById("rightPanel");
         rightPanel.style.display = "flex";
-        rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "270%";
-
-
-        /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
-            '    margin: 1% auto;' +
-            '    display: flex;' +
-            '    flex-direction: column;' +
-            '    width: 100%;' +
-            '    background-color: #4775c4;">' +
-            '                <div>' +
-            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" style="display: flex;">' +
-            '                        <div class="classroomStudentProfileName">' + firstName + " " +lastName + '</div>' +
-            '                    </a>' +
-            '                </div>';
-
-        htmlString += '       <div>' +
-            '                    <input style="display:block;" id="follow'+ userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
-            '                    <input style="display:none;" id="unFollow'+ userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
-            '                </div>';
-
-
-        htmlString += '</div>';
-
-        searchContent.innerHTML += htmlString;*/
 
 
         let htmlString = '<div id="rightPanel" style="margin: 5.6% auto 5.6% auto;' +
@@ -105,7 +81,6 @@ const loadFollowersList = function (){
 
 
 
-
     }
 
 
@@ -115,7 +90,7 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
-        sendServerData();
+       // sendServerData();
 
     }
 

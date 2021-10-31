@@ -431,6 +431,20 @@
 
     <!-- end of teachers profile name load -->
 
+    <!-- beginning of teacher follow list load -->
+
+    <servlet>
+        <servlet-name>teacherFollowerListLoad</servlet-name>
+        <servlet-class>Controller.TeacherFollowersListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherFollowerListLoad</servlet-name>
+        <url-pattern>/teacher/teacherFollowerListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
 
 
     <session-config>
