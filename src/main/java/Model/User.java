@@ -290,6 +290,12 @@ public class User {
         JSONArray studentFollowersList = userDAO.getStudentFollowersList(userId);
         return studentFollowersList;
     }
+//*****************
+    public JSONArray getTeacherFollowersList(String userId){
+        UserDAO userDAO = new UserDAO();
+        JSONArray teacherFollowersList = userDAO.getTeacherFollowersList(userId);
+        return teacherFollowersList;
+    }
 
 
     /*to check the enroll table and get records*/
