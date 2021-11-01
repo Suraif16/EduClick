@@ -1,6 +1,6 @@
 let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 let notificationStatus = false; /*if it is false the notification is hidden*/
-let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
+
 
 const classroomListObjection = document.getElementById( "classroomsList" );
 const search = document.getElementById( "searchBarText" );
@@ -37,25 +37,6 @@ function showClassroomList(){
 
 }
 
-
-
-
-function showClassroomFormRowErrorMessage( message ){
-
-    if(addClassroomFormErrorStatus){
-
-        classroomFormRowErrorMessage.style.display = "none";
-        addClassroomFormErrorStatus = false;
-
-    }else {
-
-        classroomFormRowErrorMessage.style.display = "flex";
-        classroomFormRowErrorMessage.innerHTML = message;
-        addClassroomFormErrorStatus = true;
-
-    }
-
-}
 
 function createClassroom(){
 
