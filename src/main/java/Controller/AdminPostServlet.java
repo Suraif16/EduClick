@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import java.util.ArrayList;
 
 public class AdminPostServlet extends HttpServlet {
     public String generatedUserID;
@@ -38,39 +38,7 @@ public class AdminPostServlet extends HttpServlet {
         System.out.println(time);
         AdminPost adminpost = new AdminPost(generatedUserID,textMsg,date,time);
         adminpost.adminPost();
-       /* Login loginemail = new Login(email);
-
-
-        String emailStatus = loginemail.checkEmail();
-        if(emailStatus.equals("Email exsist")){
-            System.out.println("Enter another email");
-            jsonObject.put("EmailStatus" , "InvalidEmail");
-            session.invalidate();
-        }*/
-        /*else if(emailStatus.equals("Email doesn't exsist")){
-            User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
-            user.userRegistered();
-
-            if(userType.equals("Student")){
-                System.out.println("I am a Student!!");
-                Student student =  new Student(user);
-                student.enterStudent();
-            }
-            else if(userType.equals("Teacher")){
-                System.out.println("I am a Teacher!!");
-                Teacher teacher =  new Teacher(user);
-                teacher.enterTeacher();
-            }
-
-            generatedUserID = user.getUserId();
-            Login login = new Login( email , password , saltingKey , loginDate , loginTime, generatedUserID);
-            login.insertRecord();
-            user.setRegistrationDate(null);
-            user.setRegistrationTime(null);
-            session.setAttribute("User" , user );
-            session.setAttribute("Email" , email);
-            jsonObject.put("EmailStatus" , "ValidEmail");
-        }*/
+       
         out.write(jsonObject.toString());
         out.close();
     }
