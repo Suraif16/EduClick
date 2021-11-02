@@ -38,7 +38,7 @@ public class AdminPostServlet extends HttpServlet {
         System.out.println(time);
         AdminPost adminpost = new AdminPost(generatedUserID,textMsg,date,time);
         adminpost.adminPost();
-       
+
         out.write(jsonObject.toString());
         out.close();
     }
