@@ -1,7 +1,7 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
 
-document.onreadystatechange = function (){
+/*document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
 
@@ -9,7 +9,7 @@ document.onreadystatechange = function (){
 
     }
 
-}
+}*/
 
 function showRightPanel(){
 
@@ -169,45 +169,45 @@ let sendData = function (id,action){
 
 }
 
-
-const LoadName = function (){
-    
-    let httpreq = new XMLHttpRequest();
-    httpreq.onreadystatechange = function (){
-
-        if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-        }
-
-    }
-
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherProfileNameLoad" , true);
-    httpreq.send();
-
-    function completeLogin( httpreq ){
-
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
-        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonLoginResponse.serverResponse === "Allowed") {
-
-            const name = document.getElementById("teacherUserName");
-            name.innerHTML = jsonLoginResponse.FullName;
-            console.log(name);
-
-            const headerName = document.getElementById("teacherUserNameHeader");
-            headerName.innerHTML = jsonLoginResponse.FullName;
-            console.log(headerName);
-
-        }else{
-            alert("something went wrong!!!");
-        }
-
-    }
-
-
-}
+//
+// const LoadName = function (){
+//
+//     let httpreq = new XMLHttpRequest();
+//     httpreq.onreadystatechange = function (){
+//
+//         if (this.readyState === 4 && this.status === 200){
+//             completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+//         }
+//
+//     }
+//
+//     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherProfileNameLoad" , true);
+//     httpreq.send();
+//
+//     function completeLogin( httpreq ){
+//
+//         let jsonLoginResponse = JSON.parse(httpreq.responseText);
+//
+//         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+//             window.location.replace("/EduClick_war_exploded/Login.html");
+//         }else if(jsonLoginResponse.serverResponse === "Allowed") {
+//
+//             const name = document.getElementById("teacherUserName");
+//             name.innerHTML = jsonLoginResponse.FullName;
+//             console.log(name);
+//
+//             const headerName = document.getElementById("teacherUserNameHeader");
+//             headerName.innerHTML = jsonLoginResponse.FullName;
+//             console.log(headerName);
+//
+//         }else{
+//             alert("something went wrong!!!");
+//         }
+//
+//     }
+//
+//
+// }
 
 /*document.onreadystatechange = function (){
 
