@@ -33,6 +33,7 @@ public class TeacherFollowersListLoadServlet extends HttpServlet {
         jsonObject.put("serverResponse" , "Allowed");
 
         JSONArray teacherFollowerList = user.getTeacherFollowersList(userId);
+        System.out.println(teacherFollowerList+"*****************");
 
         /*for(int i=0;i<studentFollowerList.size();i++){
             System.out.println(studentFollowerList.get(i).getUserId());
