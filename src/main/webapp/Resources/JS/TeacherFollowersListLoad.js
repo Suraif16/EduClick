@@ -80,7 +80,7 @@ const loadTeacherFollowersList = function (){
 
                 console.log("hiii");
                 classroomHtmlOutput(jsonLoginResponse.List[i].UserID,jsonLoginResponse.List[i].firstName,jsonLoginResponse.List[i].lastName);
-                console.log(jsonLoginResponse.list);
+
             }
         }else{
             alert("something went wrong!!!");
@@ -89,6 +89,9 @@ const loadTeacherFollowersList = function (){
 
     function classroomHtmlOutput( userID , firstName , lastName){
         console.log("very good");
+        console.log(firstName);
+        console.log(lastName);
+        console.log(userID);
 
         const postContents = document.getElementById("postContents");
         postContents.innerHTML = "";
@@ -97,6 +100,8 @@ const loadTeacherFollowersList = function (){
         rightPanel.style.display = "flex";
         rightPanel.style.width = "400%";
         rightPanel.style.marginLeft = "270%";
+
+        console.log("abc-1");
 
 
         /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
@@ -122,7 +127,7 @@ const loadTeacherFollowersList = function (){
         searchContent.innerHTML += htmlString;*/
 
 
-        let htmlString = '<div id="rightPanel" style="margin: 5.6% auto 5.6% auto;' +
+        const htmlString = '<div id="rightPanel" style="margin: 5.6% auto 5.6% auto;' +
             '    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;' +
             'left: 40%;' +
             '    width: 90%;' +
@@ -145,12 +150,13 @@ const loadTeacherFollowersList = function (){
             '                </div>' +
             '            </div>' +
             '        </div>'
+        console.log("ggg");
         rightPanel.innerHTML +=htmlString;
 
 
-        console.log(firstName);
-        console.log(lastName);
-        console.log(userID);
+        console.log(firstName+"^^^^^^^^^^^");
+        console.log(lastName+"^^^^^^^^");
+        console.log(userID+"^^^^^^^^^^^^^^^");
 
 
 
