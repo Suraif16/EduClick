@@ -1,8 +1,7 @@
 document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
-        /* when the document is loaded and complete this function will run*/
-        // sendServerData();
+
         LoadUserName();
 
     }
@@ -32,9 +31,9 @@ const LoadUserName = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
-            const name = document.getElementById("teacherUserName");
-            name.innerHTML = jsonLoginResponse.FullName;
-            console.log(name);
+            // const name = document.getElementById("teacherUserNameHeader");
+            // name.innerHTML = jsonLoginResponse.FullName;
+            // console.log(name);
 
             const headerName = document.getElementById("teacherUserNameHeader");
             headerName.innerHTML = jsonLoginResponse.FullName;
@@ -104,29 +103,6 @@ const loadTeacherFollowersList = function (){
         console.log("abc-1");
 
 
-        /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
-            '    margin: 1% auto;' +
-            '    display: flex;' +
-            '    flex-direction: column;' +
-            '    width: 100%;' +
-            '    background-color: #4775c4;">' +
-            '                <div>' +
-            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" style="display: flex;">' +
-            '                        <div class="classroomStudentProfileName">' + firstName + " " +lastName + '</div>' +
-            '                    </a>' +
-            '                </div>';
-
-        htmlString += '       <div>' +
-            '                    <input style="display:block;" id="follow'+ userID +'" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
-            '                    <input style="display:none;" id="unFollow'+ userID +'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
-            '                </div>';
-
-
-        htmlString += '</div>';
-
-        searchContent.innerHTML += htmlString;*/
-
-
         const htmlString = '<div id="rightPanel" style="margin: 5.6% auto 5.6% auto;' +
             '    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;' +
             'left: 40%;' +
@@ -164,51 +140,3 @@ const loadTeacherFollowersList = function (){
 
 
 }
-
-// document.onreadystatechange = function (){
-//
-//     if ( document.readyState === 'complete' ){
-//         /* when the document is loaded and complete this function will run*/
-//         sendServerData();
-//
-//     }
-//
-// }
-//
-// const sendServerData = function (){
-//     /* This function gets the username from the server*/
-//     let httpreq = new XMLHttpRequest();
-//     httpreq.onreadystatechange = function (){
-//
-//         if (this.readyState === 4 && this.status === 200){
-//             completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-//         }
-//
-//     }
-//
-//     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherProfileNameLoad" , true);
-//     httpreq.send();
-//
-//     function completeLogin( httpreq ){
-//
-//         let jsonLoginResponse = JSON.parse(httpreq.responseText);
-//
-//
-//
-//         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
-//             window.location.replace("/EduClick_war_exploded/Login.html");
-//         }else if(jsonLoginResponse.serverResponse === "Allowed") {
-//
-//             console.log(jsonLoginResponse);
-//             /* This is where I need work everytime as per the authentication filter*/
-//             console.log(jsonLoginResponse.FullName);
-//             const name = document.getElementById("profileUserName");
-//             name.innerHTML = jsonLoginResponse.FullName;
-//         }else{
-//             alert("something went wrong!!!");
-//         }
-//
-//     }
-//
-//
-// }
