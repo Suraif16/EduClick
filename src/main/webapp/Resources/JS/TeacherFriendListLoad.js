@@ -59,7 +59,7 @@ const loadTeacherFriendList = function (){
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/teacher/teacherFollowerListLoad", true);
+    httpreq.open("POST", "/EduClick_war_exploded/teacher/teacherFriendsListLoad", true);
     httpreq.send();
 
     function completeLoad(httpreq){
