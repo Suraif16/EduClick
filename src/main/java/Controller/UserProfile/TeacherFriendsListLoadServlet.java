@@ -30,10 +30,10 @@ public class TeacherFriendsListLoadServlet extends HttpServlet {
 
         jsonObject.put("serverResponse" , "Allowed");
 
-        JSONArray teacherFollowerList = user.getTeacherFollowersList(userId);
-        System.out.println(teacherFollowerList+"*****************");
+        JSONArray teacherFriendsList = user.getTeacherFriendsList(userId);
+        System.out.println(teacherFriendsList+"*****************");
 
-        jsonObject.put("List",teacherFollowerList);
+        jsonObject.put("List",teacherFriendsList);
 
         out.write(jsonObject.toString());
         out.close();
