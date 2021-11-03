@@ -1,5 +1,9 @@
 package Controller.UserProfile;
 
+import Model.User;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +19,25 @@ public class TeacherFriendsListLoadServlet extends HttpServlet {
         response.setContentType("text/html");
 
         HttpSession session = request.getSession( false );
-        
+
+        User user = (User) session.getAttribute("User");
+
+        String userId = user.getUserId();
+
+        System.out.println(userId);
+
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("serverResponse" , "Allowed");
+
+        JSONArray teacherFollowerList = user.getTeacherFollowersList(userId);
+        System.out.println(teacherFollowerList+"*****************");
+
+        jsonObject.put("List",teacherFollowerList);
+
+        out.write(jsonObject.toString());
+        out.close();
+
     }
 
 }
