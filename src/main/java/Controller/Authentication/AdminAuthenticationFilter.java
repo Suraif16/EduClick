@@ -42,6 +42,7 @@ public class AdminAuthenticationFilter implements Filter {
             }else {
                 jsonObject.put( "serverResponse" , "Not Allowed" );
                 out.write(jsonObject.toString());
+                session.invalidate();
             }
 
         }
