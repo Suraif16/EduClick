@@ -365,7 +365,7 @@ public class UserDAO<teacherArrayList> {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT UserID,FirstName, LastName FROM Users INNER JOIN Follows ON Users.UserID = Follows.S_UserID WHERE T_UserID = ?";
+            String sql = "SELECT UserID,FirstName, LastName FROM Users INNER JOIN add_friends ON Users.UserID = add_friends.S_UserID WHERE T_UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,userId);
 
