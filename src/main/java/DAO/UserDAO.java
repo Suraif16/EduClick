@@ -353,6 +353,57 @@ public class UserDAO<teacherArrayList> {
 
     }
 
+    //**************************
+
+    public JSONArray getTeacherFriendsList(String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList< User > teacherFriendsList = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT UserID,FirstName, LastName FROM Users INNER JOIN Follows ON Users.UserID = Follows.S_UserID WHERE T_UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                JSONObject jsonObject = new JSONObject();
+                String userID = resultSet.getString("UserID");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                //User user = new User(userID, firstName, lastName);
+                jsonObject.put("UserID",userID);
+                jsonObject.put("firstName",firstName);
+                jsonObject.put("lastName",lastName);
+                jsonArray.put(jsonObject);
+
+            }
+            System.out.println(jsonArray);
+            for(int i=0;i<teacherFriendsList.size();i++){
+                System.out.println(teacherFriendsList.get(i).getUserId()+"&&&&&&");
+                System.out.println(teacherFriendsList.get(i).getFirstName());
+                System.out.println(teacherFriendsList.get(i).getLastName());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+        return jsonArray;
+
+    }
+
+
+
 
 
 
