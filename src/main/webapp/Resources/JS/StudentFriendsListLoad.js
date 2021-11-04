@@ -5,6 +5,8 @@ let refresh = 0;
 }*/
 const loadFriendsList = function (){
     console.log("Friends called!")
+    let btn = document.getElementById("friends");
+    btn.style.backgroundColor = "#157DEC";
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function () {
@@ -14,9 +16,11 @@ const loadFriendsList = function (){
             if (refresh==0 && refresh1==0){
                 loadFriends(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
             }
+
         else{
                 window.location.reload();
             }
+
         refresh = 1;
 
         }

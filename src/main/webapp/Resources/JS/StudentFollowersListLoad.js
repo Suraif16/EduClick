@@ -4,6 +4,8 @@ let refresh1 = 0;
 
 }*/
 const loadFollowersList = function (){
+    let btn = document.getElementById("followers");
+    btn.style.backgroundColor = "#157DEC";
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function () {
