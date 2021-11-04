@@ -41,7 +41,7 @@ const loadFollowersList = function (){
         const rightPanel = document.getElementById("rightPanel");
         rightPanel.style.display = "flex";
         rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "270%";
+        rightPanel.style.marginLeft = "215%";
 
 
         /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
@@ -67,8 +67,7 @@ const loadFollowersList = function (){
         searchContent.innerHTML += htmlString;*/
 
 
-        let htmlString = '<div id="rightPanel" style="margin: 5.6% auto 5.6% auto;' +
-            '    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;' +
+        let htmlString = '<div id="rightPanel" style="margin: 2% auto 2% auto;' +
             'left: 40%;' +
             '    width: 90%;' +
             '    padding: 1%;' +
@@ -76,12 +75,12 @@ const loadFollowersList = function (){
             '    flex-direction: column;' +
             '    max-height: 76%;">' +
             '            <div id="rightPanelStudentList"  >' +
-            '                    <div id="innerDiv">' +
-            '                        <a id="innerA" href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" class="profile">' +
+            '                    <div id="innerDiv" style="display: inline-flex;">' +
+            '                        <a id="innerA" href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" class="profile" style="flex: 1;display: flex">' +
             '                            <div class="profileImage classroomStudentProfilePicture">' +
             '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                            </div>' +
-            '                            <div class="classroomStudentProfileName">' + firstName + " " +lastName + '</div>' +
+            '                            <div class="classroomStudentProfileName" >' + firstName + " " +lastName + '</div>' +
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
