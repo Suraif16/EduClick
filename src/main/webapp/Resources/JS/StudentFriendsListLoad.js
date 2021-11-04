@@ -96,8 +96,8 @@ const loadFriendsList = function (){
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
-            '                        <input style="display:block; width: 100%;" id="follow" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
-            '                        <input style="display:none;width: 100%;" id="unFollow" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
+            '                        <input style="display:block; width: 100%;" id="addFriend" type="button" value="Add Friend" onclick="addFriendCancel(' + userID +')">' +
+            '                        <input style="display:none;width: 100%;" id="cancelRequest" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' +userID +')">' +
             '                </div>' +
             '            </div>' +
             '        </div>'
