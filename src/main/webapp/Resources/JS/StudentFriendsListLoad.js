@@ -16,11 +16,9 @@ const loadFriendsList = function (){
             if (refresh==0 && refresh1==0){
                 loadFriends(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
             }
-
         else{
                 window.location.reload();
             }
-
         refresh = 1;
 
         }
