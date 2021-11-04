@@ -96,8 +96,8 @@ const loadFollowersList = function (){
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
-            '                        <input style="display:block; width: 100%;" id="follow" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
-            '                        <input style="display:none;width: 100%;" id="unFollow" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
+            '                        <input style="display:none; width: 100%;" id="follow'+userID+'" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
+            '                        <input style="display:block;width: 100%;" id="unFollow'+userID+'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
             '                </div>' +
             '            </div>' +
             '        </div>'
@@ -119,6 +119,72 @@ const loadFollowersList = function (){
 
     }
 
+
+}
+
+function followUnfollowTeachers( id ){
+
+    let followTeacherStringValue = "follow" + id;
+
+    let unFollowStringValue = "unFollow" + id;
+
+    let followButton = document.getElementById( followTeacherStringValue );
+
+    let unFollowButton = document.getElementById( unFollowStringValue );
+
+    if (unFollowButton.style.display === "none"){
+
+        /*defaultView.getComputedStyle(enableButton)*/
+        followTeacher( id , followButton , unFollowButton );
+
+    }else{
+
+        unfollowTeacher( id , followButton , unFollowButton );
+
+
+    }
+
+}
+
+const followTeacher = function( T_UserId , followButton , unFollowButton ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            unFollowButton.style.display = "block";
+            followButton.style.display = "none";
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/followTeacher" , true );
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send( "teacherId=" + T_UserId );
+
+}
+
+const unfollowTeacher = function( T_UserId , followButton , unFollowButton ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            unFollowButton.style.display = "none";
+            followButton.style.display = "block";
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/unFollowTeacher" , true );
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send( "teacherId=" + T_UserId );
 
 }
 
