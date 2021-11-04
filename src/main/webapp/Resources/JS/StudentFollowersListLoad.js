@@ -1,3 +1,8 @@
+let refresh1 = 0;
+/*if(refresh1==1){
+    window.location.reload();
+
+}*/
 const loadFollowersList = function (){
     let httpreq = new XMLHttpRequest();
 
@@ -5,7 +10,14 @@ const loadFollowersList = function (){
 
         if (this.readyState === 4 && this.status === 200) {
             console.log("I am running")
-            completeLoad(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            if(refresh1==0 && refresh==0){
+                completeLoad(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            }
+            else{
+                window.location.reload();
+            }
+        refresh1 = 1;
+
 
         }
     }
