@@ -96,8 +96,8 @@ const loadFriendsList = function (){
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
-            '                        <input style="display:block; width: 100%;" id="addFriend" type="button" value="Add Friend" onclick="addFriendCancel(' + userID +')">' +
-            '                        <input style="display:none;width: 100%;" id="cancelRequest" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' +userID +')">' +
+            '                        <input style="display:none; width: 100%;" id="addFriend'+userID+'" type="button" value="Add Friend" onclick="addFriendCancel(' + userID +')">' +
+            '                        <input style="display:block;width: 100%;" id="cancelRequest'+userID+'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' +userID +')">' +
             '                </div>' +
             '            </div>' +
             '        </div>'
@@ -110,19 +110,69 @@ const loadFriendsList = function (){
 
 
 
-
-
-
-
-
-
-
     }
 
 
 
+}
+function addFriendCancel( id ){
+
+    let addFriendStringValue = "addFriend" + id;
+
+    let cancelRequestStringValue = "cancelRequest" + id;
+
+    let addFriendButton = document.getElementById( addFriendStringValue );
+
+    let cancelRequestButton = document.getElementById( cancelRequestStringValue );
+
+    if (cancelRequestButton.style.display === "none"){
+
+        addFriendRequestServer( id , addFriendButton , cancelRequestButton);
+
+    }else{
+
+        cancelFriendRequestServer( id , addFriendButton , cancelRequestButton);
 
 
+    }
 
+}
+const addFriendRequestServer = function ( toUserId , addFriendButton , cancelRequestButton ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status == 200){
+
+            cancelRequestButton.style.display = "block";
+            addFriendButton.style.display = "none";
+
+        }
+
+    }
+    httpreq.open( "POST" , "/EduClick_war_exploded/addFriendRequest" , true );
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send( "toID=" + toUserId);
+
+}
+
+const cancelFriendRequestServer = function ( toUserId , addFriendButton , cancelRequestButton ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status == 200){
+
+            cancelRequestButton.style.display = "none";
+            addFriendButton.style.display = "block";
+
+        }
+
+    }
+    httpreq.open( "POST" , "/EduClick_war_exploded/cancelFriendRequest" , true );
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send( "toID=" + toUserId);
 
 }
