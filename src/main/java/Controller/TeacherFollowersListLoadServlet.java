@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Requests;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,7 +33,12 @@ public class TeacherFollowersListLoadServlet extends HttpServlet {
 
         jsonObject.put("serverResponse" , "Allowed");
 
-        JSONArray teacherFollowerList = user.getTeacherFollowersList(userId);
+        Requests requests = new Requests();
+
+        ArrayList<String> followersList = requests.getTeacherFollowers(userId);
+        System.out.println("In servlet for followers : "+followersList);
+
+        JSONArray teacherFollowerList = user.getTeacherFollowersList(followersList);
         System.out.println(teacherFollowerList+"*****************");
 
         /*for(int i=0;i<studentFollowerList.size();i++){
