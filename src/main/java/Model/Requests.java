@@ -146,5 +146,13 @@ public class Requests {
 
 
     }
+    public ArrayList<String> getTeacherFriends(String userId){
+        System.out.println("reached");
+        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+        ArrayList<String> friendList = friendRequestDAO.getTeacherFriendKeys(userId);
+        return friendList;
+
+    }
 
 }
+
