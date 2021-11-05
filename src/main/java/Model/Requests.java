@@ -2,6 +2,7 @@ package Model;
 
 import DAO.AddFriendsDAO;
 import DAO.EnrollRequestDAO;
+import DAO.FollowsDAO;
 import DAO.FriendRequestDAO;
 
 import java.util.ArrayList;
@@ -146,11 +147,20 @@ public class Requests {
 
 
     }
+    /**************************/
     public ArrayList<String> getTeacherFriends(String userId){
         System.out.println("reached");
         AddFriendsDAO addFriendDAO = new AddFriendsDAO();
         ArrayList<String> friendList = addFriendDAO.getTeacherFriendKeys(userId);
         return friendList;
+
+    }
+
+    public ArrayList<String> getTeacherFollowers(String userId){
+        System.out.println("reached-2");
+        FollowsDAO followsDAO = new FollowsDAO();
+        ArrayList<String> followersList = followsDAO.getTeacherFollowersKeys(userId);
+        return followersList;
 
     }
 
