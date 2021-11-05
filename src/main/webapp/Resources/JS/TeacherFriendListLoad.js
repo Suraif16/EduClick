@@ -52,32 +52,6 @@ const loadTeacherFriendList = function (){
 
         console.log("abc-1");
 
-/*
-        const htmlString = '<div id="rightPanel" style="margin: 5.6% auto 5.6% auto;' +
-            '    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;' +
-            'left: 40%;' +
-            '    width: 900%;' +
-            '    padding: 1%;' +
-            '    display: flex;' +
-            '    flex-direction: column;' +
-            '    max-height: 76%;">' +
-            '            <div id="rightPanelStudentList"  >' +
-            '                    <div id="innerDiv">' +
-            '                        <a id="innerA" href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" class="profile">' +
-            '                            <div class="profileImage classroomStudentProfilePicture">' +
-            '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-            '                            </div>' +
-            '                            <div class="classroomStudentProfileName">' + firstName + " " +lastName + '</div>' +
-            '                        </a>' +
-            '                    </div>' +
-            '                    <div>' +
-            '                        <input style="display:block; width: 100%;" id="follow" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
-            '                        <input style="display:none;width: 100%;" id="unFollow" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
-            '                </div>' +
-            '            </div>' +
-            '        </div>'
-        console.log("ggg");
-        rightPanel.innerHTML +=htmlString;*/
 
         let htmlString = '<div id="rightPanel" style="margin: 2% auto 2% auto;' +
             'left: 400%;' +
@@ -92,7 +66,7 @@ const loadTeacherFriendList = function (){
             '                            <div class="profileImage classroomStudentProfilePicture" >' +
             '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"  >' +
             '                            </div>' +
-            '                            <div class="classroomStudentProfileName" style="color:#4775c4">' + firstName + " " +lastName + '</div>' +
+            '                            <div class="classroomStudentProfileName">' + firstName + " " +lastName + '</div>' +
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
