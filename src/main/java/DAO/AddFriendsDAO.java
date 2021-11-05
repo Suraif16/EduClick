@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AddFriendsDAO {
 
@@ -37,6 +38,36 @@ public class AddFriendsDAO {
         return false;
 
     }
+
+    public ArrayList<String> getTeacherFriendKeys(String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<String> friendList = new ArrayList<String>();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            System.out.println("kkk");
+            String sql = "SELECT Friend_UserID FROM add_friends WHERE UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString(1,userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                friendList.add(resultSet.getString("Friend_UserID"));
+            }
+            System.out.println(friendList+"*************");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+
+        }
+        return friendList;
+    }
+
 
 
 }
