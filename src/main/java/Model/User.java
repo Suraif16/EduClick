@@ -294,9 +294,9 @@ public class User {
         return studentFollowersList;
     }
 //*****************
-    public JSONArray getTeacherFollowersList(String userId){
+    public JSONArray getTeacherFollowersList(ArrayList<String> followersList){
         UserDAO userDAO = new UserDAO();
-        JSONArray teacherFollowersList = userDAO.getTeacherFollowersList(userId);
+        JSONArray teacherFollowersList = userDAO.getTeacherFollowersList(followersList);
         return teacherFollowersList;
     }
 
