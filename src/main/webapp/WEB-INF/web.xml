@@ -492,7 +492,7 @@
 
     <servlet>
         <servlet-name>teacherFriendListLoad</servlet-name>
-        <servlet-class>Controller.UserProfile.TeacherFriendsListLoadServlet</servlet-class>
+        <servlet-class>Controller.TeacherFriendListLoadServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
