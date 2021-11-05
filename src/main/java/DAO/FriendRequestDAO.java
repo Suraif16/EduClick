@@ -124,33 +124,4 @@ public class FriendRequestDAO {
 
     }
 
-
-    public ArrayList<String> getTeacherFriendKeys(String userId){
-        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
-        Connection connection = null;
-        ArrayList<String> friendList = new ArrayList<String>();
-
-        try {
-            connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT To_UserID FROM Friend_Request WHERE From_UserID = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement( sql );
-            preparedStatement.setString(1,userId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while(resultSet.next()){
-                friendList.add(resultSet.getString("To_UserID"));
-            }
-            System.out.println(friendList);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-
-            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
-
-        }
-        return friendList;
-    }
-
 }
