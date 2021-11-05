@@ -302,39 +302,43 @@ public class UserDAO<teacherArrayList> {
     }
 //****************
 
-    public JSONArray getTeacherFollowersList(String userId) {
+    public JSONArray getTeacherFollowersList(ArrayList<String> followsList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> teacherFollowerList = new ArrayList<>();
+        ArrayList<User> teacherFollowsDetails = new ArrayList<>();
         JSONArray jsonArray = new JSONArray();
 
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT UserID,FirstName, LastName FROM Users INNER JOIN Follows ON Users.UserID = Follows.S_UserID WHERE T_UserID = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, userId);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+            for (int i = 0; i < followsList.size(); i++) {
+                String sql = "SELECT FirstName, LastName,UserID FROM Users WHERE UserID = ?";
 
-            while (resultSet.next()) {
-                JSONObject jsonObject = new JSONObject();
-                String userID = resultSet.getString("UserID");
-                String firstName = resultSet.getString("FirstName");
-                String lastName = resultSet.getString("LastName");
-                //User user = new User(userID, firstName, lastName);
-                jsonObject.put("UserID", userID);
-                jsonObject.put("firstName", firstName);
-                jsonObject.put("lastName", lastName);
-                jsonArray.put(jsonObject);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, followsList.get(i));
 
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String userID = resultSet.getString("UserID");
+                    String firstName = resultSet.getString("FirstName");
+                    String lastName = resultSet.getString("LastName");
+
+                    JSONObject jsonObject = new JSONObject();
+
+                    jsonObject.put("UserID",userID);
+                    jsonObject.put("firstName",firstName);
+                    jsonObject.put("lastName",lastName);
+                    jsonArray.put(jsonObject);
+
+                }
             }
-            System.out.println(jsonArray);
-            for (int i = 0; i < teacherFollowerList.size(); i++) {
-                System.out.println(teacherFollowerList.get(i).getUserId() + "&&&&&&");
-                System.out.println(teacherFollowerList.get(i).getFirstName());
-                System.out.println(teacherFollowerList.get(i).getLastName());
+            for(int i=0;i< teacherFollowsDetails.size();i++){
+                System.out.println(teacherFollowsDetails.get(i).getUserId());
+                System.out.println(teacherFollowsDetails.get(i).getFirstName());
+                System.out.println(teacherFollowsDetails.get(i).getLastName());
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -342,10 +346,12 @@ public class UserDAO<teacherArrayList> {
                 connection.close();
             } catch (Exception ignore) {
             }
+
         }
         return jsonArray;
-
     }
+
+
 
     //***********************
     public JSONArray getTeacherFriendsDetails(ArrayList<String> friendList) {
