@@ -8,6 +8,7 @@ import DAO.UserDAO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -299,11 +300,14 @@ public class User {
         return teacherFollowersList;
     }
 
-    public JSONArray getTeacherFriendsList(String userId){
+    public JSONArray getTeacherFriendsDetails(ArrayList<String> friendList){
         UserDAO userDAO = new UserDAO();
-        JSONArray teacherFriendsList = userDAO.getTeacherFriendsList(userId);
-        return teacherFriendsList;
+        JSONArray teacherFriendsDetails = userDAO.getTeacherFriendsDetails(friendList);
+        return teacherFriendsDetails;
     }
+}
+
+
 
     /*to check the enroll table and get records*/
 
@@ -314,4 +318,4 @@ public class User {
         arrayList =  enrollDAO.checkEnrollment(studentId);
         return arrayList;
     }*/
-}
+
