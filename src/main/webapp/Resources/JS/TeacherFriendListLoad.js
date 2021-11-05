@@ -57,21 +57,21 @@ const loadTeacherFriendList = function (){
             'left: 400%;' +
             '    width: 90%;' +
             '    padding: 1%;' +
-            '    display: flex;' +
+            '    display: flex; background-color: #4775c4;' +
             '    flex-direction: column;' +
             '    max-height: 76%;">' +
-            '            <div id="rightPanelStudentList" style="color:#4775c4" >' +
-            '                    <div id="innerDiv" style="display: inline-flex;">' +
-            '                        <a id="innerA" href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" class="profile" style="flex: 1;display: flex;">' +
+            '            <div id="rightPanelStudentList" >' +
+            '                    <div id="innerDiv" style="display: inline-flex; background-color: red;">' +
+            '                        <a id="innerA" href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" class="profile" style="flex: 1;display: flex; background-color: #4775c4">' +
             '                            <div class="profileImage classroomStudentProfilePicture" >' +
-            '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"  >' +
+            '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg" style="margin-left: 20px;" >' +
             '                            </div>' +
-            '                            <div class="classroomStudentProfileName">' + firstName + " " +lastName + '</div>' +
+            '                            <div class="classroomStudentProfileName" style="color: white; width: 490px;">' + firstName + " " +lastName + '</div>' +
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
-            '                        <input style="display:none; width: 100%;" id="addFriend'+userID+'" type="button" value="Add Friend" onclick="addFriendCancel(' + userID +')">' +
-            '                        <input style="display:block;width: 100%;" id="cancelRequest'+userID+'" type="button" value="Unfriend" class="studentDisable" onclick="addFriendCancel(' +userID +')">' +
+            '                        <input style="display:none; width: 100%; background-color: black;" id="addFriend'+userID+'" type="button" value="Add Friend" onclick="addFriendCancel(' + userID +')">' +
+            '                        <input style="display:block;width: 100%; background-color: black;" id="cancelRequest'+userID+'" type="button" value="Unfriend" class="studentDisable" onclick="addFriendCancel(' +userID +')">' +
             '                </div>' +
             '            </div>' +
             '        </div>'
