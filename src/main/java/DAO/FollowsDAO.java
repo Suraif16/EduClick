@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FollowsDAO {
 
@@ -87,5 +88,37 @@ public class FollowsDAO {
         }
 
     }
+
+    //************
+    public ArrayList<String> getTeacherFollowersKeys(String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<String> followersList = new ArrayList<String>();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            System.out.println("kkk**");
+            String sql = "SELECT S_UserID FROM follows WHERE T_UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString(1,userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                followersList.add(resultSet.getString("S_UserID"));
+            }
+            System.out.println(followersList+"******hiii*****");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+
+        }
+        return followersList;
+    }
+
+
 
 }
