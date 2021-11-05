@@ -148,8 +148,8 @@ public class Requests {
     }
     public ArrayList<String> getTeacherFriends(String userId){
         System.out.println("reached");
-        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
-        ArrayList<String> friendList = friendRequestDAO.getTeacherFriendKeys(userId);
+        AddFriendsDAO addFriendDAO = new AddFriendsDAO();
+        ArrayList<String> friendList = addFriendDAO.getTeacherFriendKeys(userId);
         return friendList;
 
     }
