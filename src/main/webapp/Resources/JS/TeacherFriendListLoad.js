@@ -61,7 +61,7 @@ const loadTeacherFriendList = function (){
             '    flex-direction: column;' +
             '    max-height: 76%;">' +
             '            <div id="rightPanelStudentList" >' +
-            '                    <div id="innerDiv" style="display: inline-flex; background-color: red;">' +
+            '                    <div id="innerDiv" style="display: inline-flex; background-color:  #4775c4;">' +
             '                        <a id="innerA" href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" class="profile" style="flex: 1;display: flex; background-color: #4775c4">' +
             '                            <div class="profileImage classroomStudentProfilePicture" >' +
             '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg" style="margin-left: 20px;" >' +
