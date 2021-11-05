@@ -48,38 +48,35 @@ const loadTeacherFollowersList = function (){
         const searchContent = document.getElementById( "rightPanelStudentList" );
         const rightPanel = document.getElementById("rightPanel");
         rightPanel.style.display = "flex";
-        rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "270%";
+        rightPanel.style.width = "40%";
+        rightPanel.style.marginLeft = "30%";
 
         console.log("abc-1");
 
 
-        const htmlString = '<div id="rightPanel" style="margin: 5.6% auto 5.6% auto;' +
-            '    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;' +
-            'left: 40%;' +
+        let htmlString = '<div id="rightPanel" style="margin: 2% auto 2% auto;' +
+            'left: 400%;' +
             '    width: 90%;' +
             '    padding: 1%;' +
-            '    display: flex;' +
+            '    display: flex; background-color: #4775c4;' +
             '    flex-direction: column;' +
             '    max-height: 76%;">' +
-            '            <div id="rightPanelStudentList"  >' +
-            '                    <div id="innerDiv">' +
-            '                        <a id="innerA" href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" class="profile">' +
-            '                            <div class="profileImage classroomStudentProfilePicture">' +
-            '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+            '            <div id="rightPanelStudentList" >' +
+            '                    <div id="innerDiv" style="display: inline-flex; background-color:  #4775c4;">' +
+            '                        <a id="innerA" href="/EduClick_war_exploded/userProfileRedirect?userId='+ userID +'" class="profile" class="profile" style="flex: 1;display: flex;">' +
+            '                            <div class="profileImage classroomStudentProfilePicture" >' +
+            '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg" style="margin-left: 20px;" >' +
             '                            </div>' +
-            '                            <div class="classroomStudentProfileName">' + firstName + " " +lastName + '</div>' +
+            '                            <div class="classroomStudentProfileName" style="color: white; width: 490px;">' + firstName + " " +lastName + '</div>' +
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
-            '                        <input style="display:block; width: 100%;" id="follow" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
-            '                        <input style="display:none;width: 100%;" id="unFollow" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
+            '                        <input style="display:none; width: 100%; background-color: black;" id="addFriend'+userID+'" type="button" value="Add Friend" onclick="addFriendCancel(' + userID +')">' +
+            '                        <input style="display:block;width: 100%; background-color: black;" id="cancelRequest'+userID+'" type="button" value="Follow" class="studentDisable" onclick="addFriendCancel(' +userID +')">' +
             '                </div>' +
             '            </div>' +
             '        </div>'
-        console.log("ggg");
         rightPanel.innerHTML +=htmlString;
-
 
         console.log(firstName+"^^^^^^^^^^^");
         console.log(lastName+"^^^^^^^^");
