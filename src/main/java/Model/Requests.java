@@ -147,9 +147,9 @@ public class Requests {
 
 
     }
-    /**************************/
+
     public ArrayList<String> getTeacherFriends(String userId){
-        System.out.println("reached");
+
         AddFriendsDAO addFriendDAO = new AddFriendsDAO();
         ArrayList<String> friendList = addFriendDAO.getTeacherFriendKeys(userId);
         return friendList;
@@ -157,7 +157,7 @@ public class Requests {
     }
 
     public ArrayList<String> getTeacherFollowers(String userId){
-        System.out.println("reached-2");
+
         FollowsDAO followsDAO = new FollowsDAO();
         ArrayList<String> followersList = followsDAO.getTeacherFollowersKeys(userId);
         return followersList;
