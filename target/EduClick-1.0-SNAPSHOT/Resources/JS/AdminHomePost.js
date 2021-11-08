@@ -72,18 +72,24 @@ const sendServerData = function (){
                 '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                 '</div>'+
                 '<div class="postProfileName" >Admin</div>'+
-                '<div class="postTimeAndDate">18:32:26 | 03/25/2015</div>'+
+                '<div class="postTimeAndDate">'+'jsonLoginResponse.Date' +'|'+ 'jsonLoginResponse.Time'+' </div>'+
                 '</a>'+
                 '</div>'+
                 '</div>'+
                 '<div class="postContentContainer">'+
                 '<div class="postData">'+
-                '<div class="postMessage">'+
-                textMsg+
+                '<div class="postMessage" id = "text">'+
                 '</div>'+
                 '</div>'+
                 '</div>'+
                 '</div>';
+            document.getElementById("text").innerHTML = jsonLoginResponse.TextMsg;
+            //document.getElementById("count1").innerHTML = jsonLoginResponse.Date;
+            //document.getElementById("count1").innerHTML = jsonLoginResponse.Time;
+            console.log(jsonLoginResponse.TextMsg);
+            console.log(jsonLoginResponse.Date);
+            console.log(jsonLoginResponse.Time);
+
             classroomName.value = "";
             addClassroomForm.style.display = "none";
             addClassroomFormStatus = false;
