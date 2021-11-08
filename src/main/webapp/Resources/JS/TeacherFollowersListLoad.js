@@ -1,13 +1,12 @@
 
 const loadTeacherFollowersList = function (){
-    console.log("1234");
 
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function () {
 
         if (this.readyState === 4 && this.status === 200) {
-            console.log("I am running")
+
             completeLoad(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
 
         }
@@ -23,12 +22,10 @@ const loadTeacherFollowersList = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
-            console.log("Onna mama awa hehehehehe");
 
             let count = jsonLoginResponse.List.length - 1;
             for (i = 0 ; i <= count ; i++){
 
-                console.log("hiii");
                 classroomHtmlOutput(jsonLoginResponse.List[i].UserID,jsonLoginResponse.List[i].firstName,jsonLoginResponse.List[i].lastName);
 
             }
@@ -38,7 +35,7 @@ const loadTeacherFollowersList = function (){
     }
 
     function classroomHtmlOutput( userID , firstName , lastName){
-        console.log("very good");
+
         console.log(firstName);
         console.log(lastName);
         console.log(userID);
@@ -50,8 +47,6 @@ const loadTeacherFollowersList = function (){
         rightPanel.style.display = "flex";
         rightPanel.style.width = "40%";
         rightPanel.style.marginLeft = "30%";
-
-        console.log("abc-1");
 
 
         let htmlString = '<div id="rightPanel" style="margin: 2% auto 2% auto;' +
@@ -78,9 +73,9 @@ const loadTeacherFollowersList = function (){
             '        </div>'
         rightPanel.innerHTML +=htmlString;
 
-        console.log(firstName+"^^^^^^^^^^^");
-        console.log(lastName+"^^^^^^^^");
-        console.log(userID+"^^^^^^^^^^^^^^^");
+        console.log(firstName);
+        console.log(lastName);
+        console.log(userID);
 
 
 
