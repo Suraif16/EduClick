@@ -97,7 +97,6 @@ public class FollowsDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            System.out.println("kkk**");
             String sql = "SELECT S_UserID FROM follows WHERE T_UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString(1,userId);
@@ -106,7 +105,7 @@ public class FollowsDAO {
             while(resultSet.next()){
                 followersList.add(resultSet.getString("S_UserID"));
             }
-            System.out.println(followersList+"******hiii*****");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
