@@ -39,7 +39,7 @@ public class TeacherFollowersListLoadServlet extends HttpServlet {
         System.out.println("In servlet for followers : "+followersList);
 
         JSONArray teacherFollowerList = user.getTeacherFollowersList(followersList);
-        System.out.println(teacherFollowerList+"*****************");
+        System.out.println(teacherFollowerList);
 
         /*for(int i=0;i<studentFollowerList.size();i++){
             System.out.println(studentFollowerList.get(i).getUserId());
