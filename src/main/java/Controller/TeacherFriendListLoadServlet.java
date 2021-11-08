@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class TeacherFriendListLoadServlet extends HttpServlet {
 
         public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-            System.out.println("rrrrrrrrr");
+           
             PrintWriter out = response.getWriter();
             response.setContentType("text/html");
 
