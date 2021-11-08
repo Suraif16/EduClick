@@ -19,6 +19,10 @@ public class AdminPost {
 
     ArrayList<AdminPost> postDetails = new ArrayList<AdminPost>();
 
+    public AdminPost() {
+
+    }
+
     public String getSysPostID() {
         return sysPostID;
     }
@@ -66,8 +70,7 @@ public class AdminPost {
         this.time = time;
     }
 
-    public AdminPost(String sysPostID, String textMsg, String sdate, String stime) {
-        this.sysPostID = sysPostID;
+    public AdminPost( String textMsg, String sdate, String stime) {
         this.textMsg = textMsg;
         this.sdate = sdate;
         this.stime = stime;
@@ -90,7 +93,7 @@ public class AdminPost {
         AdminPostDAO adminPostDAO = new AdminPostDAO();
         return adminPostDAO.select(this);
     }*/
-    public ArrayList<AdminPost> getClassDetails(ArrayList<String> arrayList){
+    public ArrayList<AdminPost> getPostDetails(ArrayList<String> arrayList){
         AdminPostDAO adminpostDAO =  new AdminPostDAO();
         postDetails =adminpostDAO.selectPostDetails(arrayList);
 
