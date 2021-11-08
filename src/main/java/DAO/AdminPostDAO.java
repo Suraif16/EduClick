@@ -76,8 +76,8 @@ public class AdminPostDAO {
                     String date = resultSet.getString("APDate");
                     String time = resultSet.getString("APTime");
 
-
-                    AdminPost adminpost = new AdminPost(postId,textmsg,date,time);
+                    AdminPost adminpost = new AdminPost(textmsg,date,time);
+                    adminpost.setSysPostID(postId);
 
                 }
 
