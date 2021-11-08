@@ -89,7 +89,7 @@ public class FollowsDAO {
 
     }
 
-    //************
+
     public ArrayList<String> getTeacherFollowersKeys(String userId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
