@@ -61,7 +61,7 @@ const loadTeacherFriendList = function (){
             '                            <div class="profileImage classroomStudentProfilePicture" >' +
             '                                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg" style="margin-left: 20px;" >' +
             '                            </div>' +
-            '                            <div class="classroomStudentProfileName" style="color: white; width: 490px;">' + firstName + " " +lastName + '</div>' +
+            '                            <div class="classroomStudentProfileName" style="color: white; width: 490px; display: flex; flex: 6;">' + firstName + " " +lastName + '</div>' +
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
