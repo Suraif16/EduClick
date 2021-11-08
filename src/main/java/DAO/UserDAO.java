@@ -300,7 +300,7 @@ public class UserDAO<teacherArrayList> {
         return jsonArray;
 
     }
-//****************
+
 
     public JSONArray getTeacherFollowersList(ArrayList<String> followsList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -353,7 +353,7 @@ public class UserDAO<teacherArrayList> {
 
 
 
-    //***********************
+
     public JSONArray getTeacherFriendsDetails(ArrayList<String> friendList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
