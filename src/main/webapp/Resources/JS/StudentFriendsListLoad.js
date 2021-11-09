@@ -55,7 +55,7 @@ const loadFriendsList = function (){
         const rightPanel = document.getElementById("rightPanel");
         rightPanel.style.display = "flex";
         rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "270%";
+        rightPanel.style.marginLeft = "220%";
 
 
         /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
