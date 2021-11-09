@@ -61,7 +61,12 @@ const sendD = function () {
             '            <div class="rightPanelSingleStudent" >' +
             '                <div>' +
             '                    <a href="#" class="profile">' +
-            '                        <div class="classroomStudentProfileName">' + classroomName + ' : ' + subject + ' : Grade ' + gradeClass + ' : ' + yearOfExamination + '</div>' +
+            '                        <div class="classroomStudentProfileName">' +
+            '                                        <p>Classroom Name : ' + classroomName +'</p>' +
+            '                                        <p>Subject : ' + subject + '</p>' +
+            '                                        <p>Grade : ' + gradeClass + '</p>' +
+            '                                        <p>Year of Examination : ' + yearOfExamination + '</p>' +
+            '             </div>' +
             '                    </a>' +
             '' +
             '                </div>' +
