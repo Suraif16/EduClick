@@ -13,12 +13,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-
-public class StudentFollowerListLoadServlet extends HttpServlet {
-
+public class StudentFriendListLoadServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
 
+        PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
         HttpSession session = request.getSession( false );
@@ -27,7 +25,7 @@ public class StudentFollowerListLoadServlet extends HttpServlet {
 
         String userId = user.getUserId();
 
-        System.out.println(userId);
+        System.out.println("Friends userID : "+userId);
 
         JSONObject jsonObject = new JSONObject();
 
@@ -35,27 +33,23 @@ public class StudentFollowerListLoadServlet extends HttpServlet {
 
         Requests requests = new Requests();
 
-        ArrayList<String> followersList = requests.getStudentFollowers(userId);
+        ArrayList<String> friendList = requests.getStudentFriends(userId);
+        System.out.println("In servlet : "+friendList);
 
-        System.out.println("In servlet : "+followersList);
+        JSONArray studentFriendDetails = user.getStudentFriendsDetails(friendList);
 
-        JSONArray studentFollowersDetails = user.getStudentFollowersDetails(followersList);
-
-
-        /*for(int i=0;i<studentFollowerList.size();i++){
-            System.out.println(studentFollowerList.get(i).getUserId());
-            System.out.println(studentFollowerList.get(i).getFirstName());
-            System.out.println(studentFollowerList.get(i).getLastName());
+        /*for(int i=0;i< studentFriendDetails.size();i++){
+            System.out.println("Servlet"+studentFriendDetails.get(i).getUserId());
+            System.out.println("Servlet"+studentFriendDetails.get(i).getFirstName());
+            System.out.println("Servlet"+studentFriendDetails.get(i).getLastName());
         }*/
-//        JSONArray jsonArray = new JSONArray(studentFollowerList);
-        System.out.println(studentFollowersDetails);
+        System.out.println(studentFriendDetails);
 
 
-        jsonObject.put("List",studentFollowersDetails);
-
-
+        jsonObject.put("List",studentFriendDetails);
 
         out.write(jsonObject.toString());
         out.close();
+
     }
 }

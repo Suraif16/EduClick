@@ -488,6 +488,20 @@
 
     <!-- end of student follow list load -->
 
+    <!-- beginning of student follow list load -->
+
+    <servlet>
+        <servlet-name>studentFriendListLoad</servlet-name>
+        <servlet-class>Controller.StudentFriendListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentFriendListLoad</servlet-name>
+        <url-pattern>/student/studentFriendListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
 
 
 

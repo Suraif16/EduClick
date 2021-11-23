@@ -2,6 +2,7 @@ package Model;
 
 import DAO.AddFriendsDAO;
 import DAO.EnrollRequestDAO;
+import DAO.FollowsDAO;
 import DAO.FriendRequestDAO;
 
 import java.util.ArrayList;
@@ -145,6 +146,17 @@ public class Requests {
         friendRequestDAO.delete( this );
 
 
+    }
+    public ArrayList<String> getStudentFriends(String userId){
+        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+        ArrayList<String> friendList = friendRequestDAO.getStudentFriendKeys(userId);
+        return friendList;
+    }
+
+    public ArrayList<String> getStudentFollowers(String userId){
+        FollowsDAO followsDAO = new FollowsDAO();
+        ArrayList<String> followersList = FollowsDAO.getStudentFollowsKeys(userId);
+        return followersList;
     }
 
 }

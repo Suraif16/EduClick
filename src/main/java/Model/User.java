@@ -287,11 +287,6 @@ public class User {
         return fullName;
     }
 
-    public JSONArray getStudentFollowersList(String userId){
-        UserDAO userDAO = new UserDAO();
-        JSONArray studentFollowersList = userDAO.getStudentFollowersList(userId);
-        return studentFollowersList;
-    }
 //*****************
     public JSONArray getTeacherFollowersList(String userId){
         UserDAO userDAO = new UserDAO();
@@ -299,11 +294,18 @@ public class User {
         return teacherFollowersList;
     }
 
+    public JSONArray getStudentFriendsDetails(ArrayList<String> friendList){
+        UserDAO userDAO = new UserDAO();
+        JSONArray studentFriendsDetails = userDAO.getStudentFriendsDetails(friendList);
+        return studentFriendsDetails;
+    }
 
-    /*to check the enroll table and get records*/
-
-    /*public ArrayList<String> checkEnroll(String id){
-        System.out.println("checkEnroll reached");
+    public JSONArray getStudentFollowersDetails(ArrayList<String> followersList){
+        UserDAO userDAO = new UserDAO();
+        JSONArray studentFollowersDetails = userDAO.getStudentFollowersDetails(followersList);
+        return studentFollowersDetails;
+    }
+        /*System.out.println("checkEnroll reached");
         String studentId = id;
         EnrollDAO enrollDAO =  new EnrollDAO();
         arrayList =  enrollDAO.checkEnrollment(studentId);

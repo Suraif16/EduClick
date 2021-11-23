@@ -1,40 +1,40 @@
-let refresh1 = 0;
-/*if(refresh1==1){
-    window.location.reload();
+let refresh = 0;
+/*if(refresh==1){
+
 
 }*/
-const loadFollowersList = function (){
-    let btn = document.getElementById("followers");
+const loadFriendsList = function (){
+    console.log("Friends called!")
+    let btn = document.getElementById("friends");
     btn.style.backgroundColor = "#157DEC";
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function () {
 
         if (this.readyState === 4 && this.status === 200) {
-            console.log("I am running")
-            if(refresh1==0 && refresh==0){
-                completeLoad(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            console.log("I am running friendds")
+            if (refresh==0 && refresh1==0){
+                loadFriends(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
             }
-            else{
+        else{
                 window.location.reload();
             }
-        refresh1 = 1;
-
+        refresh = 1;
 
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/student/studentFollowerListLoad", true);
+    httpreq.open("POST", "/EduClick_war_exploded/student/studentFriendListLoad", true);
     httpreq.send();
 
-    function completeLoad(httpreq){
+    function loadFriends(httpreq){
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
         console.log(jsonLoginResponse)
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
-            console.log("Onna mama awa hehehehehe");
+            console.log("Onna mama awa hehehehehe friends");
 
             let count = jsonLoginResponse.List.length - 1;
             for (i = 0 ; i <= count ; i++){
@@ -55,7 +55,7 @@ const loadFollowersList = function (){
         const rightPanel = document.getElementById("rightPanel");
         rightPanel.style.display = "flex";
         rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "215%";
+        rightPanel.style.marginLeft = "220%";
 
 
         /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
@@ -98,8 +98,8 @@ const loadFollowersList = function (){
             '                        </a>' +
             '                    </div>' +
             '                    <div>' +
-            '                        <input style="display:none; width: 100%;" id="follow'+userID+'" type="button" value="Follow" onclick="followUnfollowTeachers(' + userID +')">' +
-            '                        <input style="display:block;width: 100%;" id="unFollow'+userID+'" type="button" value="Unfollow" class="studentDisable" onclick="followUnfollowTeachers(' +userID +')">' +
+            '                        <input style="display:none; width: 100%;" id="addFriend'+userID+'" type="button" value="Add Friend" onclick="addFriendCancel(' + userID +')">' +
+            '                        <input style="display:block;width: 100%;" id="cancelRequest'+userID+'" type="button" value="Cancel request" class="studentDisable" onclick="addFriendCancel(' +userID +')">' +
             '                </div>' +
             '            </div>' +
             '        </div>'
@@ -112,128 +112,69 @@ const loadFollowersList = function (){
 
 
 
-
-
-
-
-
-
-
     }
 
 
+
 }
+function addFriendCancel( id ){
 
-function followUnfollowTeachers( id ){
+    let addFriendStringValue = "addFriend" + id;
 
-    let followTeacherStringValue = "follow" + id;
+    let cancelRequestStringValue = "cancelRequest" + id;
 
-    let unFollowStringValue = "unFollow" + id;
+    let addFriendButton = document.getElementById( addFriendStringValue );
 
-    let followButton = document.getElementById( followTeacherStringValue );
+    let cancelRequestButton = document.getElementById( cancelRequestStringValue );
 
-    let unFollowButton = document.getElementById( unFollowStringValue );
+    if (cancelRequestButton.style.display === "none"){
 
-    if (unFollowButton.style.display === "none"){
-
-        /*defaultView.getComputedStyle(enableButton)*/
-        followTeacher( id , followButton , unFollowButton );
+        addFriendRequestServer( id , addFriendButton , cancelRequestButton);
 
     }else{
 
-        unfollowTeacher( id , followButton , unFollowButton );
+        cancelFriendRequestServer( id , addFriendButton , cancelRequestButton);
 
 
     }
 
 }
-
-const followTeacher = function( T_UserId , followButton , unFollowButton ){
+const addFriendRequestServer = function ( toUserId , addFriendButton , cancelRequestButton ){
 
     let httpreq = new XMLHttpRequest();
 
-    httpreq.onreadystatechange = function (){
+    httpreq.onreadystatechange = function(){
 
-        if ( this.readyState === 4 && this.status === 200 ){
+        if ( this.readyState === 4 && this.status == 200){
 
-            unFollowButton.style.display = "block";
-            followButton.style.display = "none";
+            cancelRequestButton.style.display = "block";
+            addFriendButton.style.display = "none";
 
         }
 
     }
-
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/followTeacher" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/addFriendRequest" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
-    httpreq.send( "teacherId=" + T_UserId );
+    httpreq.send( "toID=" + toUserId);
 
 }
 
-const unfollowTeacher = function( T_UserId , followButton , unFollowButton ){
+const cancelFriendRequestServer = function ( toUserId , addFriendButton , cancelRequestButton ){
 
     let httpreq = new XMLHttpRequest();
 
-    httpreq.onreadystatechange = function (){
+    httpreq.onreadystatechange = function(){
 
-        if ( this.readyState === 4 && this.status === 200 ){
+        if ( this.readyState === 4 && this.status == 200){
 
-            unFollowButton.style.display = "none";
-            followButton.style.display = "block";
+            cancelRequestButton.style.display = "none";
+            addFriendButton.style.display = "block";
 
         }
 
     }
-
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/unFollowTeacher" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/cancelFriendRequest" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
-    httpreq.send( "teacherId=" + T_UserId );
-
-}
-
-document.onreadystatechange = function (){
-
-    if ( document.readyState === 'complete' ){
-        /* when the document is loaded and complete this function will run*/
-        sendServerData();
-
-    }
-
-}
-
-const sendServerData = function (){
-    /* This function gets the username from the server*/
-    let httpreq = new XMLHttpRequest();
-    httpreq.onreadystatechange = function (){
-
-        if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-        }
-
-    }
-
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentProfileNameLoad" , true);
-    httpreq.send();
-
-    function completeLogin( httpreq ){
-
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
-
-
-        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonLoginResponse.serverResponse === "Allowed") {
-
-            console.log(jsonLoginResponse);
-            /* This is where I need work everytime as per the authentication filter*/
-            console.log(jsonLoginResponse.FullName);
-            const name = document.getElementById("profileUserName");
-            name.innerHTML = jsonLoginResponse.FullName;
-        }else{
-            alert("something went wrong!!!");
-        }
-
-    }
-
+    httpreq.send( "toID=" + toUserId);
 
 }

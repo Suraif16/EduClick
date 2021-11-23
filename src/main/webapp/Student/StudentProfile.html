@@ -12,7 +12,7 @@
 
     <div id="headerMainBar">
 
-        <a id="linkLogo" href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+        <a id="linkLogo" href="../Student/student.html"> <!--act as the container for the img tag for using flexbox -->
             <img src="../Resources/Icons/Logo.png" class="logo">
         </a>
 
@@ -53,8 +53,8 @@
         <ul>
             <li><a href="#">Posts</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Friends</a></li>
-            <li><a onclick="loadFollowersList()" href="#">Followers</a></li>
+            <li><a id="friends" onclick="loadFriendsList();"  href="#">Friends</a></li>
+            <li><a id="followers" onclick="loadFollowersList()" href="#">Followers</a></li>
         </ul>
     </div>
     <div id="image-container1">
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <div id="rightPanel" style="margin: 8.6% auto auto 25%;
+        <div id="rightPanel" style="margin: 2% auto 2% 25%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
 
     width: 50%;
@@ -369,5 +369,7 @@
 <footer>
 </footer>
 <script src="../Resources/JS/StudentFollowersListLoad.js" defer></script>
+<script src="../Resources/JS/StudentFriendsListLoad.js" defer></script>
+<script src="../Resources/JS/Search.js" defer></script>
 </body>
 </html>
