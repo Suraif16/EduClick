@@ -255,7 +255,7 @@ div#content > div#classroomsList {
 
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 15% auto 0 0;
+    margin: 19% auto 0 0;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     padding: 1%;
     position: fixed;
@@ -356,7 +356,7 @@ div#content > div#postContents {
     flex-basis: 50%;
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 15% 0 0 22%;
+    margin: 18% 0 0 22%;
     box-shadow:  inset 1px 0 0 #4775c4 , inset -1px 0 0 #4775c4;
     padding: 1%;
     /*making this a container for post class*/
@@ -716,7 +716,7 @@ a.mcqProfile > div.mcqProfileImage{
 div#content > div#rightPanel {
 
 
-    margin: 15% auto auto 73%;
+    margin: 19% auto auto 73%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     position: fixed;
     width: 24%;
@@ -975,25 +975,22 @@ input.requestDecline{
     div#content > div#postContents {
 
         flex: 1;
-        margin: 19% 0 0 auto;
+        margin: 28% 0 0 auto;
 
     }
 
     div#content > div#classroomsList {
 
         display: none;
-        margin: 20% auto 0 0;
+        margin: 28% auto 0 0;
         width: 30%;
         background-color: white;
-
-
-
 
     }
 
     div#content > div#rightPanel {
 
-        margin: 20% auto auto 66%;
+        margin: 28% auto auto 66%;
         width: 30%;
         display: none;
         max-height: 75%;
@@ -1015,20 +1012,20 @@ input.requestDecline{
 
     div#content > div#postContents {
 
-        margin: 28% 0 0 auto;
+        margin: 30% 0 0 auto;
 
     }
 
     div#content > div#classroomsList {
 
-        margin: 28% auto 0 0;
+        margin: 30% auto 0 0;
         width: 40%;
 
     }
 
     div#content > div#rightPanel {
 
-        margin: 28% auto auto 55%;
+        margin: 30% auto auto 55%;
         max-height: 75%;
         width: 40%;
 
@@ -1048,20 +1045,20 @@ input.requestDecline{
     }
     div#content > div#postContents {
 
-        margin: 30% 0 0 auto;
+        margin: 40% 0 0 auto;
 
     }
 
     div#content > div#classroomsList {
 
-        margin: 30% auto 0 0;
+        margin: 34% auto 0 0;
         width: 40%;
 
     }
 
     div#content > div#rightPanel {
 
-        margin: 30% auto auto 55%;
+        margin: 34% auto auto 55%;
         max-height: 75%;
         width: 40%;
 
@@ -1094,19 +1091,19 @@ input.requestDecline{
 
     div#content > div#postContents {
 
-        margin: 39% 0 0 auto;
+        margin: 41% 0 0 auto;
 
     }
 
     div#content > div#classroomsList {
 
-        margin: 39% auto 0 0;
+        margin: 41% auto 0 0;
         width: 50%;
 
     }
     div#content > div#rightPanel {
 
-        margin: 39% auto auto 45%;
+        margin: 41% auto auto 45%;
         max-height: 75%;
         width: 50%;
 
@@ -1152,20 +1149,20 @@ input.requestDecline{
 
     div#content > div#postContents {
 
-        margin: 21% 0 0 auto;
+        margin: 50% 0 0 auto;
 
     }
 
     div#content > div#classroomsList {
 
-        margin: 31% auto 0 0;
+        margin: 50% auto 0 0;
         width: 57%;
 
     }
 
     div#content > div#rightPanel {
 
-        margin: 31% auto auto 35%;
+        margin: 50% auto auto 35%;
         width: 57%;
 
     }
@@ -1183,20 +1180,20 @@ input.requestDecline{
 
     div#content > div#postContents {
 
-        margin: 33% 0 0 auto;
+        margin: 58% 0 0 auto;
 
     }
 
     div#content > div#classroomsList {
 
-        margin: 33% auto 0 0;
+        margin: 58% auto 0 0;
         width: 60%;
 
     }
 
     div#content > div#rightPanel {
 
-        margin: 33% auto auto 32%;
+        margin: 58% auto auto 32%;
         width: 60%;
 
     }
@@ -1215,20 +1212,20 @@ input.requestDecline{
     }
     div#content > div#postContents {
 
-        margin: 25% 0 0 auto;
+        margin: 59% 0 0 auto;
 
     }
 
     div#content > div#classroomsList {
 
-        margin: 35% auto 0 0;
+        margin: 59% auto 0 0;
         width: 65%;
 
     }
 
     div#content > div#rightPanel {
 
-        margin: 45% auto auto 28%;
+        margin: 59% auto auto 28%;
         width: 65%;
 
     }
@@ -1236,16 +1233,20 @@ input.requestDecline{
 }
 
 @media(max-width: 385px){
+    div#content > div#postContents {
 
+        margin: 62% 0 0 auto;
+
+    }
     div#content > div#classroomsList {
 
-        margin: 40% auto 0 0;
+        margin: 60% auto 0 0;
 
     }
 
     div#content > div#rightPanel {
 
-        margin: 40% auto auto 28%;
+        margin: 60% auto auto 28%;
 
     }
 
@@ -1262,18 +1263,22 @@ input.requestDecline{
 
     div#content > div#postContents {
 
-        margin: 30% 0 0 auto;
+        margin: 90% 0 0 auto;
 
     }
 
     div#content > div#classroomsList {
 
-        margin: 42% auto 0 0;
+        margin: 90% auto 0 0;
         width: 70%;
 
     }
 
+    div#content > div#rightPanel {
 
+        margin: 90% auto 0 28%;
+
+    }
 
 
 

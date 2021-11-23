@@ -1,7 +1,6 @@
 let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 let notificationStatus = false; /*if it is false the notification is hidden*/
-let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hidden*/
-let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
+
 
 const classroomListObjection = document.getElementById( "classroomsList" );
 const search = document.getElementById( "searchBarText" );
@@ -39,66 +38,16 @@ function showClassroomList(){
 }
 
 
-function showAddClassroomFrom(){
-
-    if(addClassroomFormStatus){
-
-        addClassroomForm.style.display = "none";
-        addClassroomFormStatus = false;
-
-    }else {
-
-        addClassroomForm.style.display = "flex";
-        addClassroomFormStatus = true;
-
-    }
-
-}
-
-function showClassroomFormRowErrorMessage( message ){
-
-    if(addClassroomFormErrorStatus){
-
-        classroomFormRowErrorMessage.style.display = "none";
-        addClassroomFormErrorStatus = false;
-
-    }else {
-
-        classroomFormRowErrorMessage.style.display = "flex";
-        classroomFormRowErrorMessage.innerHTML = message;
-        addClassroomFormErrorStatus = true;
-
-    }
-
-}
-
 function createClassroom(){
 
-    const classroomsListLinks = document.getElementById("classroomsListLinks");
+
     let classroomName = document.getElementById("classroomName");
     let yearOfExamination = document.getElementById("classroomYearOfExamination");
     let gradeClass = document.getElementById("classroomClassGrade");
     let subject = document.getElementById("classroomSubject");
 
 
-    const createClassroomHtml = function ( classroomId ){
 
-
-        classroomsListLinks.innerHTML += '<div class="classroomsListLinksItems">' +
-            '' +
-            '                        <a href="/EduClick_war_exploded/Teacher/Classroom.html?id="' + classroomId +  ' class="classRooms">' +
-            '' +
-            '                            <p>Classroom Name : ' + classroomName.value + '</p>' +
-            '                            <p>Subject : ' + subject.value + '</p>' +
-            '                            <p>Grade : ' + gradeClass.value + '</p>' +
-            '                            <p>Year of Examination : ' + yearOfExamination.value + '</p>' +
-            '' +
-            '                        </a>' +
-            '' +
-            '                    </div>';
-
-
-    }
 
     const sendServerData = function (){
 

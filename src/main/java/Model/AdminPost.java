@@ -1,9 +1,11 @@
 package Model;
 
 import DAO.AdminPostDAO;
+import DAO.ClassroomDAO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class AdminPost {
 
@@ -12,6 +14,14 @@ public class AdminPost {
     private String photo;
     private LocalDate date;
     private LocalTime time;
+    private String sdate;
+    private String stime;
+
+    ArrayList<AdminPost> postDetails = new ArrayList<AdminPost>();
+
+    public AdminPost() {
+
+    }
 
     public String getSysPostID() {
         return sysPostID;
@@ -59,6 +69,13 @@ public class AdminPost {
         this.date = date;
         this.time = time;
     }
+
+    public AdminPost( String textMsg, String sdate, String stime) {
+        this.textMsg = textMsg;
+        this.sdate = sdate;
+        this.stime = stime;
+    }
+
     public void adminPost(){
         AdminPostDAO adminPostDAO = new AdminPostDAO();
         adminPostDAO.insert(this);
@@ -72,8 +89,15 @@ public class AdminPost {
         this.date = adminPost.getDate();
         this.time = adminPost.getTime();
     }
-    public AdminPost getAdminPost(){
+    /*public AdminPost getAdminPost(){
         AdminPostDAO adminPostDAO = new AdminPostDAO();
         return adminPostDAO.select(this);
+    }*/
+    public ArrayList<AdminPost> getPostDetails(ArrayList<String> arrayList){
+        AdminPostDAO adminpostDAO =  new AdminPostDAO();
+        postDetails =adminpostDAO.selectPostDetails(arrayList);
+
+        return postDetails;
+
     }
 }
