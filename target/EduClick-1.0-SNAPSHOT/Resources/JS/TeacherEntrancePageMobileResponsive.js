@@ -1,26 +1,11 @@
 let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
-let notificationStatus = false; /*if it is false the notification is hidden*/
 let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hidden*/
 let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
 
 const classroomListObjection = document.getElementById( "classroomsList" );
-const search = document.getElementById( "searchBarText" );
 const addClassroomForm = document.getElementById("addClassroomForm");
 const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
 
-search.addEventListener( "keyup" , function ( event ){
-
-    if(event.key === "Enter"){
-
-        // console.log(search.value);
-        let httpreq = new XMLHttpRequest();
-
-        httpreq.onreadystatechange = function (){
-
-        }
-    }
-
-});
 
 function showClassroomList(){
 
@@ -37,7 +22,6 @@ function showClassroomList(){
     }
 
 }
-
 
 function showAddClassroomFrom(){
 
@@ -81,6 +65,8 @@ function createClassroom(){
     let subject = document.getElementById("classroomSubject");
 
 
+
+
     const createClassroomHtml = function ( classroomId ){
 
 
@@ -97,6 +83,13 @@ function createClassroom(){
             '' +
             '                    </div>';
 
+
+        classroomName.value = "";
+        yearOfExamination.value = "";
+        gradeClass.value = "";
+        subject.value = "";
+        console.log(classroomId);
+        showAddClassroomFrom();
 
     }
 
@@ -154,6 +147,32 @@ function createClassroom(){
     }else {
 
         sendServerData();
+
+    }
+
+
+}
+
+function searchTeacher(){
+
+    const searchName = document.getElementById("searchBarText").value;
+
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function (){
+
+        if (this.readyState === 4 && this.status === 200){
+            completeSearch( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+        }
+    }
+    /* ************************ */
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherCreateClassroom" , true);
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send("searchBarText=" + searchName);
+
+    function completeSearch(httpreq){
+
+        console.log(httpreq.responseText);
+        let jsonSearchResponse = JSON.parse(httpreq.responseText);
 
     }
 

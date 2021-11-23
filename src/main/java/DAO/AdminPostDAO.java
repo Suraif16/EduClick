@@ -2,10 +2,12 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.AdminPost;
+import Model.Classroom;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class AdminPostDAO {
 
@@ -52,31 +54,36 @@ public class AdminPostDAO {
         return generatedSysPostUserId;
     }
 
-    public AdminPost select(AdminPost adminPost) {
+    public ArrayList<AdminPost> selectPostDetails(ArrayList<String> arrayList) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
+        ArrayList<AdminPost> postDetails = new ArrayList<AdminPost>();
+
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select APTextMsg, APPhoto, APTime, APDate from Admin_Post_System_Updates where SysPostID = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, adminPost.getSysPostID());
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String textmsg = resultSet.getString("APTextMsg");
-                String photo = resultSet.getString("APPhoto");
-                String time = resultSet.getString("APTime");
-                String date = resultSet.getString("APDate");
 
-                adminPost.setTextMsg(textmsg);
-                adminPost.setPhoto(photo);
-                adminPost.setDate(LocalDate.parse(time));
-                adminPost.setTime(LocalTime.parse(date));
+            for(int i=0;i<arrayList.size();i++) {
+                String sql = "select  SysPostID,APTextMsg, APTime, APDate from Admin_Post_System_Updates where SysPostID = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, arrayList.get(i));
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+
+                    String postId = resultSet.getString("SysPostID");
+                    String textmsg = resultSet.getString("APTextMsg");
+                    String date = resultSet.getString("APDate");
+                    String time = resultSet.getString("APTime");
+
+                    AdminPost adminpost = new AdminPost(textmsg,date,time);
+                    adminpost.setSysPostID(postId);
+
+                }
+
 
             }
-            resultSet.close();
-            preparedStatement.close();
+
 
 
         } catch (SQLException throwables) {
@@ -84,7 +91,7 @@ public class AdminPostDAO {
         } finally {
             if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
         }
-        return adminPost;
+        return postDetails;
     }
 
 }

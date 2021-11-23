@@ -29,7 +29,7 @@ public class AdminServlet extends HttpServlet {
         JSONObject jsonObject = new JSONObject();
 
         jsonObject.put( "serverResponse" , "Allowed" );
-        Admin admin = new Admin( );
+        Admin admin = new Admin();
         admin = admin.getCount();
         jsonObject.put("counttotal" ,admin.getCountTeacher()+admin.getCountStudent());
         jsonObject.put("Teacher" ,admin.getCountTeacher());

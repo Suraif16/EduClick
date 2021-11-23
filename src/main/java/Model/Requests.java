@@ -147,6 +147,17 @@ public class Requests {
 
 
     }
+    public ArrayList<String> getStudentFriends(String userId){
+        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+        ArrayList<String> friendList = friendRequestDAO.getStudentFriendKeys(userId);
+        return friendList;
+    }
+
+    public ArrayList<String> getStudentFollowers(String userId){
+        FollowsDAO followsDAO = new FollowsDAO();
+        ArrayList<String> followersList = followsDAO.getStudentFollowsKeys(userId);
+        return followersList;
+    }
 
     public ArrayList<String> getTeacherFriends(String userId){
 

@@ -89,6 +89,33 @@ public class FollowsDAO {
 
     }
 
+    public ArrayList<String> getStudentFollowsKeys(String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<String> followsList = new ArrayList<String>();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT T_UserID FROM Follows WHERE S_UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString(1,userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                followsList.add(resultSet.getString("T_UserID"));
+            }
+            System.out.println(followsList);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+
+        }
+        return followsList;
+    }
 
     public ArrayList<String> getTeacherFollowersKeys(String userId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -117,7 +144,6 @@ public class FollowsDAO {
         }
         return followersList;
     }
-
 
 
 }
