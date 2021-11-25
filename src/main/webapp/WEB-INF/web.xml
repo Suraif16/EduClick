@@ -517,6 +517,20 @@
 
     <!-- end of student follow list load -->
 
+    <!-- beginning of teacher entrance page news feed load -->
+
+    <servlet>
+        <servlet-name>teacherNewsFeedLoad</servlet-name>
+        <servlet-class>Controller.UserProfile.TeacherEntrancePageNewsFeedLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherNewsFeedLoad</servlet-name>
+        <url-pattern>/teacher/teacherEntrancePageNewsFeedLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
 
 
 
