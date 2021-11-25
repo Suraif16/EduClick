@@ -46,7 +46,6 @@ public class AddFriendsDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            System.out.println("kkk");
             String sql = "SELECT Friend_UserID FROM add_friends WHERE UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString(1,userId);
