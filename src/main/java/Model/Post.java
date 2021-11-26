@@ -1,7 +1,11 @@
 package Model;
 
 
+import DAO.AddFriendsDAO;
+import DAO.PostDAO;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Post {
 
@@ -10,6 +14,11 @@ public class Post {
     private LocalDate date;
     private String time;
     private String caption;
+    private String userId;
+
+    public Post() {
+
+    }
 
     public String getPostID() {
         return postID;
@@ -50,4 +59,18 @@ public class Post {
     public void setCaption(String caption) {
         this.caption = caption;
     }
+
+
+    public ArrayList<String> getNewsFeedsTeacherID(String userId){
+
+        PostDAO postDAO = new PostDAO();
+        ArrayList<String> NFTeacherKeyList = postDAO.getNewsFeedsTeacherKeys(userId);
+        return NFTeacherKeyList;
+
+    }
+
+
+
+
+
 }
