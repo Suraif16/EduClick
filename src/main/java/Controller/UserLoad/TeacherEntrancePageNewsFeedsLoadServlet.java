@@ -30,20 +30,31 @@ import java.util.ArrayList;
 
             System.out.println(userId+" **************");
 
+            String firstName = user.getFirstName();
+            System.out.println(firstName);
+
+            String lastName = user.getLastName();
+            System.out.println(lastName);
+
+            String fullName = firstName + " " + lastName;
+            System.out.println(fullName);
+
             JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put("FullName",fullName);
 
             jsonObject.put("serverResponse" , "Allowed");
 
             Post post = new Post();
-            ArrayList<String> newsFeedsTeacherIDList = post.getNewsFeedsTeacherID(userId);
-            System.out.println("In servlet newsfeeds : "+newsFeedsTeacherIDList);
-
+            ArrayList<String> newsFeedsIDList = post.getNewsFeedsID(userId);
+            System.out.println("In servlet newsfeeds ID : "+newsFeedsIDList);
+            ArrayList<String> NFTeacherIDList = post.getNFTeacherID(userId);
             /*JSONArray TeacherDetails = user.getTeacherFriendsDetails(newsFeedsTeacherIDList);
             System.out.println(TeacherDetails);
 
-            jsonObject.put("List",TeacherDetails);
+            jsonObject.put("List",TeacherDetails);*/
 
-            out.write(jsonObject.toString());*/
+            out.write(jsonObject.toString());
             out.close();
         }
 
