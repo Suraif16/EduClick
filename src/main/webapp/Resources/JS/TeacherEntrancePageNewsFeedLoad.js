@@ -15,12 +15,12 @@ const sendServerDataTeacher = function (){
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            completeLogin( this );
         }
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherEntrancePageNewsFeedLoad" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherEntrancePageNewsFeedsLoad" , true);
     httpreq.send();
 
     function completeLogin( httpreq ){
@@ -43,6 +43,6 @@ const sendServerDataTeacher = function (){
         }
 
     }
-
+console.log("aaaa");
 
 }
