@@ -2,6 +2,7 @@ package Controller.UserLoad;
 
 import Model.Post;
 import Model.User;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
@@ -37,8 +38,12 @@ import java.util.ArrayList;
             ArrayList<String> newsFeedsTeacherIDList = post.getNewsFeedsTeacherID(userId);
             System.out.println("In servlet newsfeeds : "+newsFeedsTeacherIDList);
 
+            /*JSONArray TeacherDetails = user.getTeacherFriendsDetails(newsFeedsTeacherIDList);
+            System.out.println(TeacherDetails);
 
+            jsonObject.put("List",TeacherDetails);
 
+            out.write(jsonObject.toString());*/
             out.close();
         }
 
