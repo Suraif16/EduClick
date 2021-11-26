@@ -61,11 +61,19 @@ public class Post {
     }
 
 
-    public ArrayList<String> getNewsFeedsTeacherID(String userId){
+    public ArrayList<String> getNewsFeedsID(String userId){
 
         PostDAO postDAO = new PostDAO();
-        ArrayList<String> NFTeacherKeyList = postDAO.getNewsFeedsTeacherKeys(userId);
-        return NFTeacherKeyList;
+        ArrayList<String> NFKeyList = postDAO.getNewsFeedsKeys(userId);
+        return NFKeyList;
+
+    }
+
+    public ArrayList<String> getNFTeacherID(String userId){
+
+        PostDAO postDAO = new PostDAO();
+        ArrayList<String> NFTeacherList = postDAO.getNFTeacherKeys(userId);
+        return NFTeacherList;
 
     }
 
