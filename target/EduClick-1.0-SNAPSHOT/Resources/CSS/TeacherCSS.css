@@ -739,6 +739,14 @@ div#content > div#addNewsFeedForm > div.addNewsFeedFormRows{
 
 }
 
+div#content > div#addNewsFeedForm > div#addNewsFeedFormTopic{
+
+    background-color: #4775c4;
+    color: white;
+    text-align: center;
+
+}
+
 @media(max-width: 1100px) {
 
     div#content > div#notifications {
