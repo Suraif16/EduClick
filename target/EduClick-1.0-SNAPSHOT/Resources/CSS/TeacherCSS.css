@@ -718,6 +718,27 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
 }
 
+div#content > div#addNewsFeedForm{
+
+    background-color: white;
+    margin: 8% auto auto 30%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: fixed;
+    width: 40%;
+    padding: 1%;
+    height: fit-content;
+    display: flex; /*become a container for classroomFormRow*/
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+div#content > div#addNewsFeedForm > div.addNewsFeedFormRows{
+
+    flex: 1;
+
+}
+
 @media(max-width: 1100px) {
 
     div#content > div#notifications {
