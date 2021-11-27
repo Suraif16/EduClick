@@ -1,5 +1,8 @@
 const loadTeacherFriendList = function (){
 
+    const postContents = document.getElementById("postContents");
+    postContents.innerHTML = "";
+
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function () {
