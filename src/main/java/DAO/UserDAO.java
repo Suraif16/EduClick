@@ -168,7 +168,7 @@ public class UserDAO<teacherArrayList> {
             admin.setTodaycountStudent(todaycountStudent);
             System.out.println(todaycountStudent);
 
-
+            resultSet.close();
             preparedStatement.close();
 
         } catch (SQLException e) {
@@ -211,6 +211,8 @@ public class UserDAO<teacherArrayList> {
 
             }
 
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -244,6 +246,8 @@ public class UserDAO<teacherArrayList> {
                 fullName = firstName + " " + lastName;
             }
 
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -287,6 +291,9 @@ public class UserDAO<teacherArrayList> {
                     jsonArray.put(jsonObject);
 
                 }
+
+                resultSet.close();
+                preparedStatement.close();
             }
             for(int i=0;i< teacherFollowsDetails.size();i++){
                 System.out.println(teacherFollowsDetails.get(i).getUserId());
@@ -337,6 +344,9 @@ public class UserDAO<teacherArrayList> {
                     jsonArray.put(jsonObject);
 
                 }
+
+                resultSet.close();
+                preparedStatement.close();
             }
             for(int i=0;i< teacherFriendsDetails.size();i++){
                 System.out.println(teacherFriendsDetails.get(i).getUserId());
@@ -388,6 +398,9 @@ public class UserDAO<teacherArrayList> {
                     jsonArray.put(jsonObject);
 
                 }
+
+                resultSet.close();
+                preparedStatement.close();
             }
 
 
@@ -437,6 +450,9 @@ public class UserDAO<teacherArrayList> {
                     jsonArray.put(jsonObject);
 
                 }
+
+                resultSet.close();
+                preparedStatement.close();
             }
 
 

@@ -20,6 +20,8 @@ public class TeacherDAO {
             preparedStatement.setString(1, teacher.getUserId());
             preparedStatement.execute();
 
+            preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

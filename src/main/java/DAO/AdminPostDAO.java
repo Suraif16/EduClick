@@ -81,6 +81,8 @@ public class AdminPostDAO {
 
                 }
 
+                resultSet.close();
+                preparedStatement.close();
 
             }
 

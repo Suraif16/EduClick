@@ -108,6 +108,8 @@ public class LoginDAO {
 
             }
 
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -167,6 +169,9 @@ public class LoginDAO {
                 saltingKey = resultSet.getString( "SaltingKey" );
 
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
         }catch (SQLException throwables) {
             throwables.printStackTrace();

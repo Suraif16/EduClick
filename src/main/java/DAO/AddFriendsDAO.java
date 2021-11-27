@@ -28,6 +28,9 @@ public class AddFriendsDAO {
                 return true;
             }
 
+            resultSet.close();
+            preparedStatement.close();
+
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -56,6 +59,9 @@ public class AddFriendsDAO {
                 friendList.add(resultSet.getString("Friend_UserID"));
             }
             System.out.println(friendList+"*************");
+
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

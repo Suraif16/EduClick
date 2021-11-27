@@ -84,6 +84,9 @@ public class EnrollRequestDAO {
                 requestsList.add( requests );
             }
 
+            resultSet.close();
+            preparedStatement.close();
+
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -117,6 +120,9 @@ public class EnrollRequestDAO {
                 System.out.println(fromId);
                 records = fromId;
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

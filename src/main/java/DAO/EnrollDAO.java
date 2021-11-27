@@ -28,7 +28,8 @@ public class EnrollDAO {
                 arrayList.add(resultSet.getString("ClassroomID"));
             }
 
-
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

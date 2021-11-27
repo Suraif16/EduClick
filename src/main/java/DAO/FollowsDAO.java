@@ -28,6 +28,9 @@ public class FollowsDAO {
                 return true;
             }
 
+            resultSet.close();
+            preparedStatement.close();
+
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -106,6 +109,9 @@ public class FollowsDAO {
             }
             System.out.println(followsList);
 
+            resultSet.close();
+            preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -133,6 +139,8 @@ public class FollowsDAO {
                 followersList.add(resultSet.getString("S_UserID"));
             }
 
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

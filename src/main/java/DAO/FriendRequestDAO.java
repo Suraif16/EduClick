@@ -36,6 +36,9 @@ public class FriendRequestDAO {
                 requestsList.add( requests );
             }
 
+            resultSet.close();
+            preparedStatement.close();
+
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -60,6 +63,8 @@ public class FriendRequestDAO {
             preparedStatement.setString( 1 , requests.getFromId() );
             preparedStatement.setString( 2 , requests.getToId() );
             preparedStatement.executeUpdate();
+
+            preparedStatement.close();
 
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -87,6 +92,9 @@ public class FriendRequestDAO {
             if ( resultSet.next() ){
                 return true;
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -141,6 +149,9 @@ public class FriendRequestDAO {
                 friendList.add(resultSet.getString("To_UserID"));
             }
             System.out.println(friendList);
+
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

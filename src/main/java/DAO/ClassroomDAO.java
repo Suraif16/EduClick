@@ -42,7 +42,8 @@ public class ClassroomDAO {
 
             }
 
-
+            resultSet.close();
+            preparedStatement.close();
 
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -84,8 +85,8 @@ public class ClassroomDAO {
                     classDetails.add(classroom);
                 }
 
-
-
+                resultSet.close();
+                preparedStatement.close();
 
             }
             //System.out.println(classDetails.get(1).getClassroomName());
@@ -130,6 +131,9 @@ public class ClassroomDAO {
                 classroomList.add(classroom);
 
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
         }catch (SQLException throwables) {
             throwables.printStackTrace();
