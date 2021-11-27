@@ -165,6 +165,7 @@ CREATE TABLE EducationalPost(
 	Date DATE NOT NULL,
 	Time TIME NOT NULL,
 	EPtype ENUM('EducationalWork','MCQ') NOT NULL,
+	Type ENUM('Question','Messages') NOT NULL,
 	PRIMARY KEY(EPostID)
 	)ENGINE = INNODB;
 
@@ -261,10 +262,6 @@ CREATE TABLE Enroll_Request(
     Click_Time TIME,
     PRIMARY KEY(UserID)
     )ENGINE = INNODB;
-
-ALTER TABLE EducationalPost
-    ADD Type ENUM('Question','Messages');
-
 
 ALTER TABLE Bell_Icon
     ADD FOREIGN KEY(UserID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE;
