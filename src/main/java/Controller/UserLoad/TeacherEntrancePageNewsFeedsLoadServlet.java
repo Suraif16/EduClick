@@ -34,7 +34,6 @@ import java.util.ArrayList;
             String lastName = user.getLastName();
 
             String fullName = firstName + " " + lastName;
-            System.out.println(fullName + "*******");
 
             Post post = new Post();
 
