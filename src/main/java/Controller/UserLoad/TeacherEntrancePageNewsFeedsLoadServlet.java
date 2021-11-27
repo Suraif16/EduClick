@@ -1,5 +1,6 @@
 package Controller.UserLoad;
 
+import Model.NewsFeeds;
 import Model.Post;
 import Model.User;
 import org.json.JSONArray;
@@ -28,31 +29,34 @@ import java.util.ArrayList;
 
             String userId = user.getUserId();
 
-            System.out.println(userId+" **************");
-
             String firstName = user.getFirstName();
-            System.out.println(firstName);
 
             String lastName = user.getLastName();
-            System.out.println(lastName);
 
             String fullName = firstName + " " + lastName;
-            System.out.println(fullName);
+            System.out.println(fullName + "*******");
+
+            Post post = new Post();
+
+            ArrayList<String> newsFeedsIDList = post.getNewsFeedsID(userId);
+
+            ArrayList<String> NFTeacherIDList = post.getNFTeacherID(userId);
+
+            JSONArray TeacherNameList = user.getNFownerName(NFTeacherIDList);
+
+            NewsFeeds newsFeeds = new NewsFeeds();
+
+            JSONArray NFDetails = newsFeeds.getNFDetails(newsFeedsIDList);
 
             JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put("TeacherName",TeacherNameList);
+
+            jsonObject.put("NewsFeedsDetails",NFDetails);
 
             jsonObject.put("FullName",fullName);
 
             jsonObject.put("serverResponse" , "Allowed");
-
-            Post post = new Post();
-            ArrayList<String> newsFeedsIDList = post.getNewsFeedsID(userId);
-            System.out.println("In servlet newsfeeds ID : "+newsFeedsIDList);
-            ArrayList<String> NFTeacherIDList = post.getNFTeacherID(userId);
-            /*JSONArray TeacherDetails = user.getTeacherFriendsDetails(newsFeedsTeacherIDList);
-            System.out.println(TeacherDetails);
-
-            jsonObject.put("List",TeacherDetails);*/
 
             out.write(jsonObject.toString());
             out.close();
