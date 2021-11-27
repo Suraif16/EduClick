@@ -727,7 +727,7 @@ div#content > div#addNewsFeedForm{
     width: 40%;
     padding: 1%;
     height: fit-content;
-    display: flex; /*become a container for classroomFormRow*/
+    display: none; /*become a container for addNewsFeedFormRows*/
     flex-direction: column;
     flex-wrap: wrap;
 
@@ -735,7 +735,7 @@ div#content > div#addNewsFeedForm{
 
 div#content > div#addNewsFeedForm > div.addNewsFeedFormRows{
 
-    flex: 1;
+    flex: 1; /*child of addNewsFeedForm*/
     padding: 1%;
     margin:0.5% 0;
 
@@ -787,7 +787,7 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedF
 
 input[type="file"]{
 
-    /*height: max-content;*/
+
     display: none;
 
 }
