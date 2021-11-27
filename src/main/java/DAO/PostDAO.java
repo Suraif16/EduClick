@@ -36,7 +36,6 @@ public class PostDAO {
         return NFKeyList;
     }
 
-    //******
     public ArrayList<String> getNFTeacherKeys(String userId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -52,7 +51,6 @@ public class PostDAO {
             while(resultSet.next()){
                 NFKeyList.add(resultSet.getString("T_UserID"));
             }
-            System.out.println(NFKeyList+"fffff*************");
 
         } catch (SQLException e) {
             e.printStackTrace();
