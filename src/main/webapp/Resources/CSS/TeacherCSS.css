@@ -766,12 +766,36 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormText > textarea{
 div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs{
 
     display: flex;
+    background-color: #4775c4;
+    height: 5%;
+
 
 }
 
 div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedFormInputsRows{
 
     flex: 1;
+
+}
+
+input[type="file"]{
+
+    /*height: max-content;*/
+    display: none;
+
+}
+
+.attachment{
+
+    width: fit-content;
+    padding: 0.5%;
+
+}
+
+
+.attachmentLabel{
+
+    cursor: pointer;
 
 }
 
