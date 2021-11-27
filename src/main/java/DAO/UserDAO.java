@@ -428,9 +428,6 @@ public class UserDAO<teacherArrayList> {
 
                     JSONObject jsonObject = new JSONObject();
 
-                    /*User user = new User(userID, firstName, lastName);
-                    studentFriendsDetails.add(user);*/
-
                     jsonObject.put("UserID",userID);
                     jsonObject.put("firstName",firstName);
                     jsonObject.put("lastName",lastName);
@@ -451,7 +448,7 @@ public class UserDAO<teacherArrayList> {
         }
         return jsonArray;
     }
-//******************************
+
 
     public JSONArray getNFownerDetails(ArrayList<String> NFTeacherIDList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -474,11 +471,8 @@ public class UserDAO<teacherArrayList> {
                     String userID = resultSet.getString("UserID");
                     String firstName = resultSet.getString("FirstName");
                     String lastName = resultSet.getString("LastName");
-                    System.out.println(userID+" blablavla  "+firstName+"onna man awaaaaaaa "+lastName);
-                    JSONObject jsonObject = new JSONObject();
 
-                    /*User user = new User(userID, firstName, lastName);
-                    studentFriendsDetails.add(user);*/
+                    JSONObject jsonObject = new JSONObject();
 
                     jsonObject.put("UserID",userID);
                     jsonObject.put("firstName",firstName);
