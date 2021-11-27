@@ -762,6 +762,18 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormText > textarea{
 
 }
 
+div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs{
+
+    display: flex;
+
+}
+
+div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedFormInputsRows{
+
+    flex: 1;
+
+}
+
 @media(max-width: 1100px) {
 
     div#content > div#notifications {
