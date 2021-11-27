@@ -246,11 +246,13 @@ CREATE TABLE Enroll_Request(
     PRIMARY KEY(From_UserID,To_ClassroomID)
     )ENGINE = INNODB;
 
-CREATE TABLE Notifications(
+ CREATE TABLE Notifications(
     NotifierID BIGINT NOT NULL,
     NotifieeID BIGINT NOT NULL,
     ContentID BIGINT NOT NULL,
-    PostedType ENUM('Shared','Posted','Eductaional Post','Answer')
+    PostedType ENUM('Shared','Posted','Eductaional Post','Answer'),
+    Notification_Date DATE NOT NULL,
+    Notification_Time TIME NOT NULL
     )ENGINE = INNODB;
 
  CREATE TABLE Bell_Icon(
@@ -258,7 +260,11 @@ CREATE TABLE Notifications(
     Click_Date DATE,
     Click_Time TIME,
     PRIMARY KEY(UserID)
-    );
+    )ENGINE = INNODB;
+
+ALTER TABLE EducationalPost
+    ADD Type ENUM('Question','Messages');
+
 
 ALTER TABLE Bell_Icon
     ADD FOREIGN KEY(UserID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE;
