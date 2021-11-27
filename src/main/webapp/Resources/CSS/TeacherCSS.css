@@ -775,6 +775,13 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs{
 div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedFormInputsRows{
 
     flex: 1;
+    display: flex;
+
+}
+
+div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedFormInputsRows > input{
+
+    flex: 1;
 
 }
 
