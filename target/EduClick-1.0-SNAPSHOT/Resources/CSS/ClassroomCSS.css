@@ -1016,7 +1016,7 @@ div#content > div#addNewsFeedForm{
     width: 40%;
     padding: 1%;
     height: fit-content;
-    display: none; /*become a container for addNewsFeedFormRows*/
+    display: flex; /*become a container for addNewsFeedFormRows*/
     flex-direction: column;
     flex-wrap: wrap;
 
