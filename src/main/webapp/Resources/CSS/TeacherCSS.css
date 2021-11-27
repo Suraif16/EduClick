@@ -759,6 +759,7 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormText{
 div#content > div#addNewsFeedForm > div#addNewsFeedFormText > textarea{
 
     flex: 1;
+    resize: none;
 
 }
 
