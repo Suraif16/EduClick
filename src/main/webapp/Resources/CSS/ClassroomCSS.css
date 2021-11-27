@@ -1065,13 +1065,16 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedF
 
     flex: 1;
     display: flex;
+    color: white;
+    vertical-align: center;
+    text-align: center;
+    margin: auto;
 
 }
 
 div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedFormInputsRows > input{
 
     flex: 1;
-
 }
 
 input[type="file"]{
@@ -1102,9 +1105,8 @@ select {
     border-radius: 4px;
     display: flex;
     font: inherit;
-    line-height: 1.5em;
-    padding: 1%;
     margin: 0.5%;
+    padding: 0.5%;
     color: whitesmoke;
     cursor: pointer;
     border: solid 1px white;
