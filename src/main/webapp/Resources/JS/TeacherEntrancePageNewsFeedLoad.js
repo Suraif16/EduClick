@@ -37,15 +37,11 @@ const sendServerDataTeacher = function (){
                 LoadNewsfeeds(jsonLoginResponse.NewsFeedsDetails[i].Date, jsonLoginResponse.NewsFeedsDetails[i].Time, jsonLoginResponse.NewsFeedsDetails[i].Caption);
 
 
-         /*   let countTwo = jsonLoginResponse.TeacherName.length - 1;
+            let countTwo = jsonLoginResponse.TeacherName.length - 1;
             for (i = 0; i <= countTwo; i++) {
 
                 LoadNFownerDetails(jsonLoginResponse.TeacherName[i].firstName, jsonLoginResponse.TeacherName[i].lastName, jsonLoginResponse.TeacherName[i].UserID);
-
-            }*/
-
-            //***********
-
+     
             const postContents = document.getElementById("postContents");
             postContents.innerHTML = "";
 
@@ -57,9 +53,12 @@ const sendServerDataTeacher = function (){
                 '                           <div class="postProfileImage">' +
                 '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                 '                           </div>' +
-                '                           <div class="postProfileName" >User Name</div>' +
+                '                           <div class="postProfileName" >'+ jsonLoginResponse.TeacherName[i].firstName + " "+
+                                                jsonLoginResponse.TeacherName[i].lastName +
+                                            '</div>' +
                 '                           <div class="postTimeAndDate" >' +
-                jsonLoginResponse.NewsFeedsDetails[i].Time+ '|'+jsonLoginResponse.NewsFeedsDetails[i].Date +
+                                                        jsonLoginResponse.NewsFeedsDetails[i].Time + '|'+
+                                                        jsonLoginResponse.NewsFeedsDetails[i].Date +
                 '                            </div>' +
                 '                        </a>' +
                 '                   </div>' +
@@ -102,7 +101,7 @@ const sendServerDataTeacher = function (){
             postContents.innerHTML += htmlString;
 
 
-        }} else {
+        }} }else {
             alert("something went wrong!!!");
         }
 
