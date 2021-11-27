@@ -749,6 +749,19 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormTopic{
 
 }
 
+div#content > div#addNewsFeedForm > div#addNewsFeedFormText{
+
+    display: flex;
+
+}
+
+
+div#content > div#addNewsFeedForm > div#addNewsFeedFormText > textarea{
+
+    flex: 1;
+
+}
+
 @media(max-width: 1100px) {
 
     div#content > div#notifications {
