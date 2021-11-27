@@ -253,6 +253,16 @@ CREATE TABLE Notifications(
     PostedType ENUM('Shared','Posted','Eductaional Post','Answer')
     )ENGINE = INNODB;
 
+ CREATE TABLE Bell_Icon(
+    UserID BIGINT,
+    Click_Date DATE,
+    Click_Time TIME,
+    PRIMARY KEY(UserID)
+    );
+
+ALTER TABLE Bell_Icon
+    ADD FOREIGN KEY(UserID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE;
+
 ALTER TABLE Notifications
     ADD FOREIGN KEY(NotifierID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE,
     ADD FOREIGN KEY(NotifierID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE,
