@@ -1,5 +1,11 @@
 package Model;
 
+import DAO.NewsFeedsDAO;
+import DAO.UserDAO;
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+
 public class NewsFeeds extends Post{
 
     private String imagePath;
@@ -29,4 +35,16 @@ public class NewsFeeds extends Post{
     public void setLikeShare(int likeShare) {
         this.likeShare = likeShare;
     }
+
+
+
+
+    public JSONArray getNFDetails(ArrayList<String> newsFeedsIDList){
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        JSONArray NFDetailList = newsFeedsDAO.getNFDetails(newsFeedsIDList);
+        return NFDetailList;
+    }
+    
+    
+    
 }
