@@ -250,7 +250,7 @@ CREATE TABLE Enroll_Request(
     NotifierID BIGINT NOT NULL,
     NotifieeID BIGINT NOT NULL,
     ContentID BIGINT NOT NULL,
-    PostedType ENUM('Shared','Posted','Eductaional Post','Answer'),
+    PostedType ENUM('Shared','Posted','Educational Post','Answer'),
     Notification_Date DATE NOT NULL,
     Notification_Time TIME NOT NULL
     )ENGINE = INNODB;
