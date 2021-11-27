@@ -451,6 +451,58 @@ public class UserDAO<teacherArrayList> {
         }
         return jsonArray;
     }
+//******************************
+
+    public JSONArray getNFownerDetails(ArrayList<String> NFTeacherIDList) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<User> NewsFeedsOwnerDetails = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            for (int i = 0; i < NFTeacherIDList.size(); i++) {
+                String sql = "SELECT FirstName, LastName,UserID FROM Users WHERE UserID = ?";
+
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, NFTeacherIDList.get(i));
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String userID = resultSet.getString("UserID");
+                    String firstName = resultSet.getString("FirstName");
+                    String lastName = resultSet.getString("LastName");
+                    System.out.println(userID+" blablavla  "+firstName+"onna man awaaaaaaa "+lastName);
+                    JSONObject jsonObject = new JSONObject();
+
+                    /*User user = new User(userID, firstName, lastName);
+                    studentFriendsDetails.add(user);*/
+
+                    jsonObject.put("UserID",userID);
+                    jsonObject.put("firstName",firstName);
+                    jsonObject.put("lastName",lastName);
+                    jsonArray.put(jsonObject);
+
+                }
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonArray;
+    }
+
+
+
 
 }
 
