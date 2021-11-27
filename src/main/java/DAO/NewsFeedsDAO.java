@@ -36,7 +36,7 @@ public class NewsFeedsDAO {
                     String caption = resultSet.getString("Caption");
 
                     JSONObject jsonObject = new JSONObject();
-                    
+
                     jsonObject.put("Date",date);
                     jsonObject.put("Time",time);
                     jsonObject.put("Caption",caption);
