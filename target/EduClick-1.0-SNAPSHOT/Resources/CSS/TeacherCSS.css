@@ -866,6 +866,12 @@ input[type="file"]{
 
     }
 
+    div#content > div#addNewsFeedForm{
+
+        margin: 12% auto auto 30%;
+
+    }
+
 }
 
 @media(max-width: 750px) {
@@ -892,6 +898,12 @@ input[type="file"]{
     }
 
     div#content > div#addClassroomForm{
+
+        margin: 15% auto auto 30%;
+
+    }
+
+    div#content > div#addNewsFeedForm{
 
         margin: 15% auto auto 30%;
 
@@ -948,6 +960,13 @@ input[type="file"]{
     }
 
     div#content > div#addClassroomForm{
+
+        margin: 19% auto auto 30%;
+        width: 50%;
+
+    }
+
+    div#content > div#addNewsFeedForm{
 
         margin: 19% auto auto 30%;
         width: 50%;
@@ -1012,6 +1031,13 @@ input[type="file"]{
 
     }
 
+    div#content > div#addNewsFeedForm{
+
+        margin: 25% auto auto 30%;
+        width: 57%;
+
+    }
+
 }
 
 @media(max-width: 420px) {
@@ -1037,6 +1063,13 @@ input[type="file"]{
     }
 
     div#content > div#addClassroomForm{
+
+        margin: 27% auto auto 30%;
+        width: 60%;
+
+    }
+
+    div#content > div#addNewsFeedForm{
 
         margin: 27% auto auto 30%;
         width: 60%;
@@ -1075,6 +1108,13 @@ input[type="file"]{
 
     }
 
+    div#content > div#addNewsFeedForm{
+
+        margin: 29% auto auto 30%;
+        width: 65%;
+
+    }
+
 }
 
 @media(max-width: 340px) {
@@ -1100,6 +1140,13 @@ input[type="file"]{
     }
 
     div#content > div#addClassroomForm{
+
+        margin: 34% auto auto 22%;
+        width: 70%;
+
+    }
+
+    div#content > div#addNewsFeedForm{
 
         margin: 34% auto auto 22%;
         width: 70%;
