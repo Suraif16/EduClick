@@ -8,7 +8,6 @@ import DAO.UserDAO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -308,6 +307,12 @@ public class User {
         UserDAO userDAO = new UserDAO();
         JSONArray teacherFriendsDetails = userDAO.getTeacherFriendsDetails(friendList);
         return teacherFriendsDetails;
+    }
+
+    public JSONArray getNFownerName(ArrayList<String> NFTeacherIDList){
+        UserDAO userDAO = new UserDAO();
+        JSONArray teacherNameList = userDAO.getNFownerDetails(NFTeacherIDList);
+        return teacherNameList;
     }
 
 }
