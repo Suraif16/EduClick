@@ -1,7 +1,7 @@
 const loadTeacherFollowersList = function (){
 
-    const postContents = document.getElementById("postContents");
-    postContents.innerHTML = "";
+    /*const postContents = document.getElementById("postContents");
+    postContents.innerHTML = "";*/
 
     let httpreq = new XMLHttpRequest();
 
@@ -24,6 +24,9 @@ const loadTeacherFollowersList = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
+
+        //    const postContents = document.getElementById("postContents");
+         //   postContents.innerHTML = "";
 
             let count = jsonLoginResponse.List.length - 1;
             for (i = 0 ; i <= count ; i++){
