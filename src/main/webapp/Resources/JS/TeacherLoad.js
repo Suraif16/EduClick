@@ -6,6 +6,7 @@ document.onreadystatechange = function (){
         /* when the document is loaded and complete this function will run*/
         sendServerData();
         getClassroomList();
+        sendServerDataTeacher();
 
     }
 
@@ -38,7 +39,7 @@ const sendServerData = function (){
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
             let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
-            console.log(url);
+
             headerUserProfileIdAchorElement.setAttribute("href" , url);
         }else{
             alert("something went wrong!!!");

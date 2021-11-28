@@ -43,11 +43,15 @@ import java.util.ArrayList;
 
             JSONArray TeacherNameList = user.getNFownerName(NFTeacherIDList);
 
+            JSONArray NFIDList = post.getIDNewsFeeds(userId);
+
             NewsFeeds newsFeeds = new NewsFeeds();
 
             JSONArray NFDetails = newsFeeds.getNFDetails(newsFeedsIDList);
 
             JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put("NewsFeedID",NFIDList);
 
             jsonObject.put("TeacherName",TeacherNameList);
 
