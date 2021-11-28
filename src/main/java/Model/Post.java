@@ -3,6 +3,7 @@ package Model;
 
 import DAO.AddFriendsDAO;
 import DAO.PostDAO;
+import org.json.JSONArray;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -67,6 +68,7 @@ public class Post {
         ArrayList<String> NFKeyList = postDAO.getNewsFeedsKeys(userId);
         return NFKeyList;
 
+
     }
 
     public ArrayList<String> getNFTeacherID(String userId){
@@ -78,7 +80,10 @@ public class Post {
     }
 
 
+    public JSONArray getIDNewsFeeds(String userId) {
 
-
-
+        PostDAO postDAO = new PostDAO();
+        JSONArray NewsFeedIDList = postDAO.getIDNF(userId);
+        return NewsFeedIDList;
+    }
 }
