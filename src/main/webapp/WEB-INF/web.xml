@@ -529,7 +529,21 @@
         <url-pattern>/teacher/teacherEntrancePageNewsFeedsLoad</url-pattern>
     </servlet-mapping>
 
-    <!-- end of student follow list load -->
+    <!-- end of teacher entrance page news feed load -->
+
+    <!-- beginning of student entrance page news feed load -->
+
+    <servlet>
+        <servlet-name>studentNewsFeedsLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.StudentEntrancePageNewsFeedLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentNewsFeedsLoad</servlet-name>
+        <url-pattern>/student/studentEntrancePageNewsFeedsLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student entrance page news feed load -->
 
 
 
