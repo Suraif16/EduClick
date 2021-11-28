@@ -1,6 +1,10 @@
 package DAO;
 
 import Database.DBConnectionPool;
+import Model.User;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +27,7 @@ public class PostDAO {
             while(resultSet.next()){
                 NFKeyList.add(resultSet.getString("NFPostID"));
             }
-            System.out.println(NFKeyList+"*************");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,6 +67,48 @@ public class PostDAO {
         return NFKeyList;
     }
 
+
+
+    public JSONArray getIDNF(String userID) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+                String sql = "SELECT NFPostID FROM Posts WHERE UserID = ?";
+
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setString(1,userID);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String NewsFeedID = resultSet.getString("NFPostID");
+
+                    JSONObject jsonObject = new JSONObject();
+
+                    jsonObject.put("NewsFeedID",NewsFeedID);
+
+                    jsonArray.put(jsonObject);
+
+                }
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonArray;
+    }
 
 
 
