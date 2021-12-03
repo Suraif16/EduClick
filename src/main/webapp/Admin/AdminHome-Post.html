@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Admin</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../Resources/CSS/AdminHomeCSS.css" type="text/css">
+    <link rel="stylesheet" href="../Resources/CSS/Admin.css" type="text/css">
     <link rel="stylesheet" href="../Resources/CSS/Font.css" type="text/css">
 
 </head>
@@ -144,22 +144,34 @@
 
 
 
-<header>
-
-    <a href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
+<he  <div id="headerMainBar">
+    <a id="linkLogo" href="../Teacher/Teacher.html"> <!--act as the container for the img tag for using flexbox -->
         <img src="../Resources/Icons/Logo.png" class="logo">
     </a>
-    <h1 id="headerHeading">EduClick</h1>
-    <a href="#" id="profile">
-        <div>User Name</div>
-        <div id="profileImage">
-            <img id="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+    <div id="headingSearch">
+        <div id="searchBar">
+            <input id="searchBarText" type="text" placeholder="Search">
         </div>
+    </div>
+    <a id="headerUserProfileId" href="TeacherProfile.html" class="profile">
+        <div id="headerUserName">User Name</div>
+        <div class="profileImage">
+            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+        </div>
+    </a>
+    <div id="headerNotification" >
+        <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
+        <input type="button" value="    "  id="notificationSettings">
+    </div>
+    <div id="logout">
         <a href="/EduClick_war_exploded/Logout">
             Logout
         </a>
-    </a>
-
+    </div>
+</div>
+<div id="headerButtons">
+    <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+</div>
 </header>
 
 <!--<footer>
@@ -168,6 +180,8 @@
 
 
 <script src="../Resources/JS/AdminHomePost.js" defer></script>
+<script src="../Resources/JS/Settings.js" defer></script>
+
 
 </body>
 
