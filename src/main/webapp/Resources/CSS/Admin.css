@@ -217,11 +217,11 @@ div#content > div#classroomsList {
 
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 8.6% auto 0 8%;
+    margin: 7% auto 0 8%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     padding: 1%;
     position: fixed;
-    width: 20%;
+    width: 18%;
     display: flex; /* making this a container to options and classroomsListLinks */
     flex-direction: column;
     max-height: 75%;
@@ -361,8 +361,8 @@ div#content > div#postContents {
     flex-basis: 50%;
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 0% 0 0 30%;
-    box-shadow:  inset 1px 0 0 #4775c4 , inset -1px 0 0 #4775c4;
+    margin: 13% 0 0 30%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
     padding: 1%;
     /*making this a container for post class*/
     display: flex;
@@ -375,13 +375,15 @@ div#content > div#postContents1 {
     flex-basis: 50%;
     box-sizing: border-box;
     justify-content: space-between;
-    margin: 8.6% 0 0 30%;
-    box-shadow:  inset 1px 0 0 #4775c4 , inset -1px 0 0 #4775c4;
+    margin: 6% 0 0 29.5%;
+    box-shadow:inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2 ;
     padding: 1%;
     /*making this a container for post class*/
     display: flex;
     flex-direction: column;
-
+    position: fixed;
+    background: white;
+    width: 50%;
 }
 .post{
 
