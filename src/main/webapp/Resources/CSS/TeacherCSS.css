@@ -420,7 +420,7 @@ div#content > div#postContents {
 
     /* child of postProfile*/
     margin: auto auto auto 3px;
-    flex-basis: 65%;
+    flex-basis: 90%;
 
 }
 
@@ -429,13 +429,13 @@ div#content > div#postContents {
     flex-basis: 25%;
     margin: auto;
     font-size: x-small;
-
+    color: white;
 
 }
 
 .postProfileSection > a{
 
-    flex-basis: 95%;
+    flex-basis: 70%;
 
 }
 
@@ -453,7 +453,6 @@ div#content > div#postContents {
     border-radius: 50%;
     background-position: center;
     alignment: center;
-    border-color: red;
 
 }
 
