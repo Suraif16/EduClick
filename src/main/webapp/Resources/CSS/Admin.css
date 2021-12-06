@@ -857,19 +857,19 @@ input[type="file"]{
     div#content > div#postContents {
 
         flex: 1;
-        margin: 12% 0 0 auto;
+        margin: 20% 0 0 auto;
 
     }
+    div#content > div#postContents1 {
+        margin: 11% 0 0 23%;
 
+    }
     div#content > div#classroomsList {
 
         display: none;
         margin: 12% auto 0 0;
         width: 30%;
         background-color: white;
-
-
-
 
     }
 
@@ -899,10 +899,13 @@ input[type="file"]{
 
     div#content > div#postContents {
 
-        margin: 15% 0 0 auto;
+        margin: 25% 0 0 auto;
 
     }
+    div#content > div#postContents1 {
+        margin: 14% 0 0 23%;
 
+    }
     div#content > div#classroomsList {
 
         margin: 15% auto 0 0;
@@ -961,10 +964,13 @@ input[type="file"]{
 
     div#content > div#postContents {
 
-        margin: 19% 0 0 auto;
+        margin: 29% 0 0 auto;
 
     }
+    div#content > div#postContents1 {
+        margin: 17% 0 0 23%;
 
+    }
     div#content > div#classroomsList {
 
         margin: 19% auto 0 0;
@@ -1023,13 +1029,15 @@ input[type="file"]{
 
     }
 
-
     div#content > div#postContents {
 
-        margin: 21% 0 0 auto;
+        margin: 32% 0 0 auto;
 
     }
+    div#content > div#postContents1 {
+        margin: 19% 0 0 23%;
 
+    }
     div#content > div#classroomsList {
 
         margin: 25% auto 0 0;
@@ -1064,10 +1072,13 @@ input[type="file"]{
 
     div#content > div#postContents {
 
-        margin: 23% 0 0 auto;
+        margin: 39% 0 0 auto;
 
     }
+    div#content > div#postContents1 {
+        margin: 25% 0 0 23%;
 
+    }
     div#content > div#classroomsList {
 
         margin: 27% auto 0 0;
@@ -1103,10 +1114,13 @@ input[type="file"]{
     }
     div#content > div#postContents {
 
-        margin: 25% 0 0 auto;
+        margin: 41% 0 0 auto;
 
     }
+    div#content > div#postContents1 {
+        margin: 26% 0 0 23%;
 
+    }
     div#content > div#classroomsList {
 
         margin: 29% auto 0 0;
@@ -1141,10 +1155,13 @@ input[type="file"]{
 
     div#content > div#postContents {
 
-        margin: 30% 0 0 auto;
+        margin: 53% 0 0 auto;
 
     }
+    div#content > div#postContents1 {
+        margin: 35% 0 0 17%;
 
+    }
     div#content > div#classroomsList {
 
         margin: 34% auto 0 0;
@@ -1167,4 +1184,87 @@ input[type="file"]{
     }
 
 
+}
+.overview-boxes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 3fr)); /* Where the magic happens */
+    grid-auto-rows: 90px;
+    grid-gap: 45px;
+    margin: 20px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0px 20px;
+    margin-bottom: 26px;
+}
+.overview-boxes .box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    background: #fff;
+    padding: 15px 14px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+
+}
+.overview-boxes .box-topic{
+    font-size: 20px;
+    font-weight: 500;
+}
+.box .number{
+    display: inline-block;
+    font-size: 35px;
+    margin-top: -6px;
+    font-weight: 500;
+}
+.main-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 3fr)); /* Where the magic happens */
+    grid-auto-rows: 94px;
+    grid-gap: 20px;
+    margin: 20px;
+}
+.overview-boxes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 3fr)); /* Where the magic happens */
+    grid-auto-rows: 90px;
+    grid-gap: 45px;
+    margin: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-bottom: 26px;
+}
+.overview-boxes .box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    background: #fff;
+    padding: 15px 14px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+
+}
+.overview-boxes .box-topic{
+    font-size: 20px;
+    font-weight: 500;
+}
+.box .number{
+    display: inline-block;
+    font-size: 35px;
+    margin-top: -6px;
+    font-weight: 500;
+}
+.main-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 3fr)); /* Where the magic happens */
+    grid-auto-rows: 94px;
+    grid-gap: 20px;
+    margin: 20px;
 }
