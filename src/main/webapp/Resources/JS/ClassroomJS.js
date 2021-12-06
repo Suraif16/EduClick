@@ -1,6 +1,7 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
 
+
 function showRightPanel(){
 
     if(rightPanelStatus){
@@ -196,4 +197,8 @@ const getClassroomList = function (){
 
 
 }
+const displayComment = function (){
 
+ 
+
+}
