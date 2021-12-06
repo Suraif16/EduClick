@@ -396,6 +396,7 @@ div#content > div#postContents {
 
     background-color: #4775c4;
     padding: 1%;
+    display: flex;
 
 
 }
@@ -421,7 +422,6 @@ div#content > div#postContents {
     margin: auto auto auto 3px;
     flex-basis: 65%;
 
-
 }
 
 .postTimeAndDate{
@@ -430,6 +430,30 @@ div#content > div#postContents {
     margin: auto;
     font-size: x-small;
 
+
+}
+
+.postProfileSection > a{
+
+    flex-basis: 95%;
+
+}
+
+.userOptions{
+
+    flex-basis: 5%;
+    margin: auto;
+
+}
+
+.userOptionsButton{
+
+    background-image: url("../Icons/more_vert_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-position: center;
+    alignment: center;
+    border-color: red;
 
 }
 
