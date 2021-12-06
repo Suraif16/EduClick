@@ -159,21 +159,34 @@
 
 
 <header>
-
-    <a href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
-        <img src="../Resources/Icons/Logo.png" class="logo">
-    </a>
-    <h1 id="headerHeading">EduClick</h1>
-    <a href="#" id="profile">
-        <div>User Name</div>
-        <div id="profileImage">
-            <img id="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
-        </div>
-        <a href="/EduClick_war_exploded/Logout">
-            Logout
+    <div id="headerMainBar">
+        <a id="linkLogo" href="../Teacher/Teacher.html"> <!--act as the container for the img tag for using flexbox -->
+            <img src="../Resources/Icons/Logo.png" class="logo">
         </a>
-    </a>
-
+        <div id="headingSearch">
+            <div id="searchBar">
+                <input id="searchBarText" type="text" placeholder="Search">
+            </div>
+        </div>
+        <a id="headerUserProfileId" href="TeacherProfile.html" class="profile">
+            <div id="headerUserName">User Name</div>
+            <div class="profileImage">
+                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+            </div>
+        </a>
+        <div id="headerNotification" >
+            <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
+            <input type="button" value="    "  id="notificationSettings">
+        </div>
+        <div id="logout">
+            <a href="/EduClick_war_exploded/Logout">
+                Logout
+            </a>
+        </div>
+    </div>
+    <div id="headerButtons">
+        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+    </div>
 </header>
 
 <!--<footer>
@@ -181,7 +194,7 @@
 </footer>-->
 
 <script src="../Resources/JS/Admin.js"></script>
-
+<script src="../Resources/JS/Settings.js" defer></script>
 
 </body>
 
