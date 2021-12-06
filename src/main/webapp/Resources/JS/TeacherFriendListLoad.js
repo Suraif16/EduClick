@@ -1,7 +1,7 @@
 const loadTeacherFriendList = function (){
 
-    const postContents = document.getElementById("postContents");
-    postContents.innerHTML = "";
+    const rightPanel = document.getElementById("rightPanel");
+    rightPanel.innerHTML="";
 
     let httpreq = new XMLHttpRequest();
 
@@ -9,7 +9,7 @@ const loadTeacherFriendList = function (){
 
         if (this.readyState === 4 && this.status === 200) {
 
-            LoadFriends(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            LoadFriends(this);
 
         }
     }
@@ -23,7 +23,9 @@ const loadTeacherFriendList = function (){
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
-            /* This is where I need work everytime as per the authentication filter*/
+
+            const postContents = document.getElementById("postContents");
+            postContents.innerHTML = "";
 
             let count = jsonLoginResponse.List.length - 1;
             for (i = 0 ; i <= count ; i++){
@@ -42,8 +44,7 @@ const loadTeacherFriendList = function (){
         console.log(lastName);
         console.log(userID);
 
-        const postContents = document.getElementById("postContents");
-        postContents.innerHTML = "";
+
         const searchContent = document.getElementById( "rightPanelStudentList" );
         const rightPanel = document.getElementById("rightPanel");
         rightPanel.style.display = "flex";
