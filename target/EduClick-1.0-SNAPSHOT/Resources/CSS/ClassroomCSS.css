@@ -533,6 +533,7 @@ div.answerUser{
     background-color: #4775c4;
     padding: 1%;
     margin-bottom: 1%;
+    display: flex;
 
 }
 
@@ -540,6 +541,7 @@ div.answerUser{
 
     /*becomes the container for postProfileImage and postProfileName*/
     display: flex;
+    flex-basis: 60%;
 
 }
 

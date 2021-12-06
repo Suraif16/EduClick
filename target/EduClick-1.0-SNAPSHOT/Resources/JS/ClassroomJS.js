@@ -81,18 +81,6 @@ function showMcqResult( id ){
 
 }
 
-/*document.onreadystatechange = function (){
-
-    if ( document.readyState === 'complete' ){
-        /!* when the document is loaded and complete this function will run*!/
-        sendNameData();
-        getClassroomList();
-        console.log("I'm loaded js");
-
-    }
-
-}*/
-
 document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
