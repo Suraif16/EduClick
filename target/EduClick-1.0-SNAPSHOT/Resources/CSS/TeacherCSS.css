@@ -456,12 +456,6 @@ div#content > div#postContents {
 
 }
 
-.userOptionMenu{
-
-    background-color: red;
-
-}
-
 .postProfileIcon{
 
     width: 35px;
@@ -832,6 +826,12 @@ input[type="file"]{
 .attachmentLabel{
 
     cursor: pointer;
+
+}
+
+.userOptionMenu{
+
+    background-color: red;
 
 }
 
