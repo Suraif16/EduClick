@@ -12,7 +12,7 @@ const showOptionMenu = function ( id , type ){
     console.log( id , type );
     let element = document.getElementById( type + id )
     let elementLocation = element.getBoundingClientRect();
-    let bodyElement = document.getElementById("post1").getBoundingClientRect();
+    // let bodyElement = document.getElementById("post1").getBoundingClientRect();
     console.log( elementLocation.top , elementLocation.bottom , elementLocation.right , elementLocation.left );
     optionMenu.style.position = "absolute";
     let topValue = elementLocation.top + window.scrollY /*- bodyElement.top*/;
