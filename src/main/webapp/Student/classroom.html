@@ -397,6 +397,12 @@
 
                         </div>
 
+                        <div class="userOptions">
+
+                            <input class="userOptionsButton" type="button" value="    " id="postOption1" onclick="showOptionMenu(1,'postOption')">
+
+                        </div>
+
                     </a>
 
                 </div>
@@ -1117,6 +1123,12 @@
 
                         </div>
 
+                        <div class="userOptions">
+
+                            <input class="userOptionsButton" type="button" value="    " id="postOption2" onclick="showOptionMenu(2,'postOption')">
+
+                        </div>
+
                     </a>
 
                 </div>
@@ -1147,7 +1159,7 @@
                 </div>
 
             </div>
-
+            <!--***************-->
 
             <div class="postContentContainer">
 
@@ -1162,7 +1174,6 @@
 
                 </div>
 
-<!--***************-->
             <div class="postContentContainer">
 
                 <div style="display:none;" class="answersInPost" id="answersInPost2" >
@@ -1195,50 +1206,33 @@
                     </div>
 
 
-                    <div class="singleAnswer">
+                </div>
 
 
-                       <!-- <div class="pictureAnswers">
+            </div>
+                    <div style="display: none" class="Marks" id="ans">
 
-                            <a href="#">
+                        <div class="attachment">
 
-                                &lt;!&ndash;<img src="../Resources/Images/answers2.jpg">&ndash;&gt;
+                            <label class="attachmentLabel">
 
-                            </a>
+                                <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">
+                                <input type="file" accept="image/*">
 
-                        </div>-->
+                            </label>
+                            <input id="comment" type="text" placeholder="   Comments...">
 
-                        <div class="Marks">
+                            <input type="button" value="Post" class="answerShowButton">
 
-                            <div class="attachment">
-
-                                <label class="attachmentLabel">
-
-                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">
-                                    <input type="file" accept="image/*">
-
-                                </label>
-                               <input id="comment" type="text" placeholder="   Comments...">
-
-                                    <input type="button" value="Post" class="answerShowButton" onclick="displayComment()" >
-
-
-                            </div>
 
                         </div>
-
-
 
                     </div>
 
 
-                </div>
-
-
-
-                </div>
-
             </div>
+
+
 
             <div class="postContentContainer">
 
@@ -1337,6 +1331,12 @@
                         <div class="postTimeAndDate">
 
                             18:32:26 | 03/25/2015
+
+                        </div>
+
+                        <div class="userOptions">
+
+                            <input class="userOptionsButton" type="button" value="    " id="postOption3" onclick="showOptionMenu(3,'postOption')">
 
                         </div>
 
@@ -1490,6 +1490,12 @@
 
                         </div>
 
+                        <div class="userOptions">
+
+                            <input class="userOptionsButton" type="button" value="    " id="postOption4" onclick="showOptionMenu(4,'postOption')">
+
+                        </div>
+
                     </a>
 
                 </div>
@@ -1563,6 +1569,12 @@
                         <div class="postTimeAndDate">
 
                             18:32:26 | 03/25/2015
+
+                        </div>
+
+                        <div class="userOptions">
+
+                            <input class="userOptionsButton" type="button" value="    " id="postOption5" onclick="showOptionMenu(5,'postOption')">
 
                         </div>
 
@@ -1933,6 +1945,23 @@
 
     </div>
 
+
+    <div id="userOptionMenu">
+
+        <div class="userOptionMenuInput">
+
+            <input type="button" value="report">
+
+        </div>
+
+        <div class="userOptionMenuInput">
+
+            <input type="button" value="delete">
+
+        </div>
+
+    </div>
+
 </div>
 
 
@@ -2014,6 +2043,7 @@
 <script src="../Resources/JS/StudentEntrancePageMobileResponsive.js"></script>
 <script src="../Resources/JS/ClassroomJS.js"></script>
 <script src="../Resources/JS/Search.js" defer></script>
+<script src="../Resources/JS/UserOptionAndReport.js" defer></script>
 
 </body>
 
