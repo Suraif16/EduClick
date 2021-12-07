@@ -19,18 +19,16 @@ const showOptionMenu = function ( id , type ){
         optionMenuStatus = elementId;
         optionMenu.style.display = "flex"
         optionMenu.style.position = "absolute";
-        let topValue = elementLocation.top + window.scrollY;
-        let leftValue = elementLocation.left + window.scrollX;
+        let topValue = elementLocation.top + window.scrollY + 5;
+        let leftValue = elementLocation.left + window.scrollX + 10;
 
         let optionMenuInnerHtmlValue = '<div class="userOptionMenuInput">'+
             '                <input type="button" value="report" onclick="report('+ id + ',\'' + type +'\')">' +
             '            </div>' +
             '            <div class="userOptionMenuInput">' +
             '                <input type="button" value="delete">' +
-            '            </div>'+
-            '<div class="userOptionMenuInput">' +
-            elementId +
-            '</div>'
+            '            </div>';
+
         optionMenu.innerHTML = optionMenuInnerHtmlValue;
         optionMenu.style.margin = topValue +"px" + " auto auto "+ leftValue +"px";
 
