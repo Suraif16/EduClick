@@ -1256,6 +1256,12 @@ select {
 
     }
 
+    #userOptionMenu{
+
+        width: 12%;
+
+    }
+
 
 }
 
@@ -1300,6 +1306,12 @@ select {
     div#content > div#addNewsFeedForm{
 
         margin: 15% auto auto 41%;
+
+    }
+
+    #userOptionMenu{
+
+        width: 14%;
 
     }
 
@@ -1534,6 +1546,12 @@ select {
 
         margin: 29% auto auto 30%;
         width: 65%;
+
+    }
+
+    #userOptionMenu{
+
+        width: 15%;
 
     }
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Admin</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../Resources/CSS/AdminHomeCSS.css" type="text/css">
+    <link rel="stylesheet" href="../Resources/CSS/Admin.css" type="text/css">
     <link rel="stylesheet" href="../Resources/CSS/Font.css" type="text/css">
 
 </head>
@@ -32,7 +32,7 @@
             <div class="classroomsListLinksItems"> <!--this where the classroom link begins-->
                 <a href="AdminHome-Report-Comment.html" class="classRooms">
                   <i class='bx bx-comment' ></i>
-                    Comment
+                    Report
                 </a>
             </div>
             <div class="classroomsListLinksItems">
@@ -68,21 +68,19 @@
         </div>
     </div>
 
-
+    <div id="postContents1" >
+        <div class="postContentContainer">
+            <div class="postLikeShareButtons">
+                <input id="comment" type="text" placeholder="    Search... ">
+                <input type="button" value="Search" class="share"><!-- button -->
+                <div class="emptySpaceLikeShare" ></div>
+            </div>
+        </div>
+    </div>
 
 
     <div id="postContents" >
-      <div class="postContentContainer">
-          <div class="postLikeShareButtons">
-            <input id="comment" type="text" placeholder="    Search... ">
-              <input type="button" value="Search" class="share"><!-- button -->
-              <div class="emptySpaceLikeShare" ></div>
-              </div>
-      </div>
-
         <div class="post">
-
-
             <div class="postContentContainer">
                 <div class="postProfileSection">
                     <a href="#" class="postProfile">
@@ -136,28 +134,41 @@
 
 
 <header>
-
-    <a href="../Login.html"> <!--act as the container for the img tag for using flexbox -->
-        <img src="../Resources/Icons/Logo.png" class="logo">
-    </a>
-    <h1 id="headerHeading">EduClick</h1>
-    <a href="#" id="profile">
-        <div>User Name</div>
-        <div id="profileImage">
-            <img id="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
-        </div>
-        <a href="/EduClick_war_exploded/Logout">
-            Logout
+    <div id="headerMainBar">
+        <a id="linkLogo" href="../Teacher/Teacher.html"> <!--act as the container for the img tag for using flexbox -->
+            <img src="../Resources/Icons/Logo.png" class="logo">
         </a>
-    </a>
-
+        <div id="headingSearch">
+            <div id="searchBar">
+                <input id="searchBarText" type="text" placeholder="Search">
+            </div>
+        </div>
+        <a id="headerUserProfileId" href="TeacherProfile.html" class="profile">
+            <div id="headerUserName">User Name</div>
+            <div class="profileImage">
+                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+            </div>
+        </a>
+        <div id="headerNotification" >
+            <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
+            <input type="button" value="    "  id="notificationSettings">
+        </div>
+        <div id="logout">
+            <a href="/EduClick_war_exploded/Logout">
+                Logout
+            </a>
+        </div>
+    </div>
+    <div id="headerButtons">
+        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+    </div>
 </header>
 
 <!--<footer>
     &nbsp;
 </footer>-->
 
-<script src="JS/Settings.js"></script>
+<script src="../Resources/JS/Settings.js" defer></script>
 
 </body>
 
