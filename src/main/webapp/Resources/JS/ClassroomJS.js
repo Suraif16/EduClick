@@ -47,18 +47,34 @@ function enableDisableStatus( id ){
 
 function showAnswers( id ){
 
+  /*  let com = document.getElementById("ans");
+    if(com.style.display === "none"){
+
+        com.style.display = "flex";
+    }else{
+        com.style.display = "none"
+    }*/
+
     let answerId = "answersInPost" + id;
     let answerContainer = document.getElementById( answerId );
+    let com = document.getElementById("ans" + id) ;
 
     if (answerContainer.style.display === "none"){
 
         answerContainer.style.display = "flex";
 
-    }else{
+        com.style.display = "flex";
+
+        }
+
+
+    else{
 
         answerContainer.style.display = "none";
+        com.style.display = "none"
+}
 
-    }
+
 
 
 }
@@ -197,8 +213,4 @@ const getClassroomList = function (){
 
 
 }
-const displayComment = function (){
 
- 
-
-}
