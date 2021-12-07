@@ -30,33 +30,72 @@ const postQuestionsMessages = function (){
 
     }else{
 
-        let httpreq = new XMLHttpRequest();
-        let formData = new FormData();
-        httpreq.onreadystatechange = function(){
+        let isAllImageValid = false;
 
-            if ( this.readyState === 4 && this.status === 200 ){
+        for ( let i = 0; i < images.length; i++ ) {
 
-                let output = httpreq.responseText;
-
+            isAllImageValid = isImageAccepted( images[i].type )
+            if ( !isAllImageValid ){
+                console.log("break");
+                break;
 
             }
 
         }
 
-        for (let i = 0 ; i < images.length ; i++ ){
+        if ( isAllImageValid ){
 
-            let x = "photo"+[i];
-            formData.append( x , images[i] );
-            console.log(i);
+            let httpreq = new XMLHttpRequest();
+            let formData = new FormData();
+            httpreq.onreadystatechange = function(){
+
+                if ( this.readyState === 4 && this.status === 200 ){
+
+                    let output = httpreq.responseText;
+
+
+                }
+
+            }
+
+            for ( let i = 0 ; i < images.length ; i++ ){
+
+                let x = "photo"+[i];
+                formData.append( x , images[i] );
+                console.log(i);
+
+            }
+
+            formData.append( "message" , message );
+            formData.append( "type" , type );
+
+            httpreq.open("POST","/EduClick_war_exploded/teacher/EducationalPostInsert" , true );
+            httpreq.send( formData );
+
+        }else{
+
+            console.log( "image type invalid" );
 
         }
 
-        formData.append( "message" , message );
-        formData.append( "type" , type );
+    }
 
-        httpreq.open("POST","/EduClick_war_exploded/teacher/EducationalPostInsert" , true );
-        httpreq.send( formData );
+}
+
+const isImageAccepted = function ( type ){
+
+    const arrayLength = mimeTypeArray.length;
+
+    for ( let i = 0; i < arrayLength; i++ ) {
+
+        if ( mimeTypeArray[i] === type ){
+
+            return true;
+
+        }
 
     }
+
+    return false;
 
 }
