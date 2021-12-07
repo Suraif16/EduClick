@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.HandlingImages_Multipart.handleImageUploads;
+import Model.HandlingImages_Multipart.handleImageAndPostUploads;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServlet;
@@ -17,7 +17,7 @@ public class EducationalPostInsertServlet extends HttpServlet {
         if ( isMultipart ){
 
             System.out.println( "reached" );
-            handleImageUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) );
+            handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) );
             System.out.println( "reached and done");
 
         }

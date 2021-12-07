@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class handleImageUploads {
+public class handleImageAndPostUploads {
 
     public static void uploadEPostImages( HttpServletRequest request , String path ){
 
