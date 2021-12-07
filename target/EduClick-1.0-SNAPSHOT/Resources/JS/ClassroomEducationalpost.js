@@ -1,3 +1,4 @@
+const mimeTypeArray = [ "image/apng" , "image/avif" , "image/jpeg" , "image/png" , "image/webp" , "image/bmp" , "image/x-icon" , "image/tiff" , "image/heic" , "image/heif" ];
 
 const showAddEducationalPostForm = function (){
 
