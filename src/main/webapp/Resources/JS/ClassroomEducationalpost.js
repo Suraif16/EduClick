@@ -53,7 +53,7 @@ const postQuestionsMessages = function (){
         formData.append( "message" , message );
         formData.append( "type" , type );
 
-        httpreq.open("POST","/EduClick_war_exploded/" , true );
+        httpreq.open("POST","/EduClick_war_exploded/teacher/EducationalPostInsert" , true );
         httpreq.send( formData );
 
     }
