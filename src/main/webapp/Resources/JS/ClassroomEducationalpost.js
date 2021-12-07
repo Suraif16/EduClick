@@ -2,15 +2,15 @@ const mimeTypeArray = [ "image/apng" , "image/avif" , "image/jpeg" , "image/png"
 
 const showAddEducationalPostForm = function (){
 
-    let addEducationPostForm = document.getElementById( "addNewsFeedForm" );
+    const addEducationPostForm = document.getElementById( "addNewsFeedForm" );
 
-    if ( addEducationPostForm.style.display === "none" ){
+    if ( addEducationPostForm.style.display === "flex" ){
 
-        addEducationPostForm.style.display = "flex";
+        addEducationPostForm.style.display = "none";
 
     }else{
 
-        addEducationPostForm.style.display = "none";
+        addEducationPostForm.style.display = "flex";
 
     }
 
