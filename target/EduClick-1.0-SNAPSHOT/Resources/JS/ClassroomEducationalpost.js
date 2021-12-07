@@ -29,7 +29,32 @@ const postQuestionsMessages = function (){
 
     }else{
 
-        console.log("not empty")
+        let httpreq = new XMLHttpRequest();
+        let formData = new FormData();
+        httpreq.onreadystatechange = function(){
+
+            if ( this.readyState === 4 && this.status === 200 ){
+
+                let output = httpreq.responseText;
+
+
+            }
+
+        }
+
+        for (let i = 0 ; i < images.length ; i++ ){
+
+            let x = "photo"+[i];
+            formData.append( x , images[i] );
+            console.log(i);
+
+        }
+
+        formData.append( "message" , message );
+        formData.append( "type" , type );
+
+        httpreq.open("POST","/EduClick_war_exploded/" , true );
+        httpreq.send( formData );
 
     }
 
