@@ -1088,6 +1088,12 @@ div.answerUser{
         width: 40%;
     }
 
+    #userOptionMenu{
+
+        width: 12%;
+
+    }
+
 }
 
 @media(max-width: 750px) {
@@ -1308,6 +1314,12 @@ div.answerUser{
 
         margin: 25% auto auto 28%;
         width: 65%;
+
+    }
+
+    #userOptionMenu{
+
+        width: 15%;
 
     }
 
