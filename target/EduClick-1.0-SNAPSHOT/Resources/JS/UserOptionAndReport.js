@@ -7,7 +7,6 @@ const showOptionMenu = function ( id , type ){
     const elementId = type + id;
     const element = document.getElementById( elementId );
     const elementLocation = element.getBoundingClientRect();
-    console.log( elementLocation.top , elementLocation.bottom , elementLocation.right , elementLocation.left );
 
     if ( optionMenuStatus === elementId ){
 
