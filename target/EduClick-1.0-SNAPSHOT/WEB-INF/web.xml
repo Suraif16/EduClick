@@ -546,7 +546,19 @@
     <!-- end of student entrance page news feed load -->
 
 
+    <!-- beginning of Educational post insert servlet-->
 
+    <servlet>
+        <servlet-name>EducationalPostInsertServlet</servlet-name>
+        <servlet-class>Controller.EducationalPostInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EducationalPostInsertServlet</servlet-name>
+        <url-pattern>/teacher/EducationalPostInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Educational post insert servlet-->
 
 
     <session-config>
