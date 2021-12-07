@@ -1006,6 +1006,18 @@ div.answerUser{
 
 }
 
+.userOptions{
+    flex-basis: 5%;
+    margin: auto;
+}
+.userOptionsButton{
+    background-image: url("../Icons/more_vert_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-position: center;
+    alignment: center;
+}
+
 
 
 @media(max-width: 1100px) {
