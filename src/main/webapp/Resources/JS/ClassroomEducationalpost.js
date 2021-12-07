@@ -14,3 +14,23 @@ const showAddEducationalPostForm = function (){
     }
 
 }
+
+const postQuestionsMessages = function (){
+
+    let message = document.getElementById( "addNewsFeedFormTextArea" ).value;
+    let images = document.getElementById( "inputImage" ).files;
+    let type = document.getElementById( "ePostType" ).value;
+
+    console.log( message , images , type );
+
+    if ( message === "" && images.length === 0 ){
+
+        console.log("empty")
+
+    }else{
+
+        console.log("not empty")
+
+    }
+
+}

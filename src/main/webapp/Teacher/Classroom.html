@@ -2403,7 +2403,7 @@
                     <label class="attachmentLabel">
 
                         <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">
-                        <input type="file" accept="image/*">
+                        <input id="inputImage" type="file" accept="image/*">
 
                     </label>
 
@@ -2415,7 +2415,7 @@
 
                 <label for="typeOfPost"> Type :&nbsp; </label>
 
-                <select name="typeOfPost">
+                <select id="ePostType" name="typeOfPost">
 
                     <option value="Question" selected> Question </option>
                     <option value="Message"> Message </option>
@@ -2426,7 +2426,7 @@
 
             <div class="addNewsFeedFormInputsRows">
 
-                <input type="button" value="Post">
+                <input type="button" value="Post" onclick="postQuestionsMessages()">
 
             </div>
 
