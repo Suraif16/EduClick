@@ -1,11 +1,11 @@
 package Model;
 
 
-import DAO.AddFriendsDAO;
 import DAO.PostDAO;
 import org.json.JSONArray;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Post {
@@ -13,11 +13,19 @@ public class Post {
     private String postID;
     private String postName;
     private LocalDate date;
-    private String time;
+    private LocalTime time;
     private String caption;
     private String userId;
 
     public Post() {
+
+    }
+
+    public Post( String caption , LocalDate localDate , LocalTime localTime ){
+
+        this.caption = caption;
+        this.date = localDate;
+        this.time = localTime;
 
     }
 
@@ -45,11 +53,11 @@ public class Post {
         this.date = date;
     }
 
-    public String getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
