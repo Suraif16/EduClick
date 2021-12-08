@@ -102,20 +102,21 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
-        sendServerData();
+        sendNameData();
         getClassroomList();
+        loadStudentEducationalPosts();
 
     }
 
 }
 
-const sendServerData = function (){
-    /* This function gets the username from the server*/
+/*const sendServerData = function (){
+    /!* This function gets the username from the server*!/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            completeLogin( this ); /!*This is where we get the response when the request was successfully sent and a successfully response is received *!/
         }
 
     }
@@ -132,7 +133,7 @@ const sendServerData = function (){
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
-            /* This is where I need work everytime as per the authentication filter*/
+            /!* This is where I need work everytime as per the authentication filter*!/
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
             let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
@@ -145,7 +146,7 @@ const sendServerData = function (){
     }
 
 
-}
+}*/
 
 const sendNameData = function (){
     console.log("Firstname loaded!!")
@@ -198,7 +199,7 @@ const getClassroomList = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherLoadClassroomList" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentNewsFeedLoaded" , true);
     httpreq.send();
 
     function complete( httpreq ){
@@ -206,8 +207,7 @@ const getClassroomList = function (){
         let jsonResponse = JSON.parse(httpreq.responseText);
 
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
-            console.log("2");
-            // window.location.replace("/EduClick_war_exploded/Login.html");
+            window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
 
@@ -229,18 +229,23 @@ const getClassroomList = function (){
 
 
     function classroomHtmlOutput( classroomId , classroomName , subject , gradeClass , yearOfExamination ){
-        classroomsListLinksSelect.innerHTML += '<div class="classroomsListLinksItems">' +
-            '' +
-            '                        <a href="Classroom.html"  class="classRooms">' +
+
+        classroomsListLinksSelect.innerHTML += '<div className="classroomsListLinksItems"' +
+            ' style="flex: 1;\n' +
+            '    background-color: #4775c4;\n' +
+            '    text-align: center;\n' +
+            '    margin: 1.5% 0;\n' +
+            '    padding: 1%;"> ' +
+            '<a href="/EduClick_war_exploded/SaveClassroomId?id=' + classroomId +'"' +' className="classRooms"> ' +
             '' +
             '                            <p>Classroom Name : ' + classroomName +'</p>' +
             '                            <p>Subject : ' + subject + '</p>' +
             '                            <p>Grade : ' + gradeClass + '</p>' +
             '                            <p>Year of Examination : ' + yearOfExamination + '</p>' +
             '' +
-            '                        </a>' +
-            '' +
-            '                    </div>'
+            '</a>' +
+            '</div>';
+
 
     }
 
