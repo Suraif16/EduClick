@@ -10,7 +10,7 @@ const sendServerData = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/AdminPost1" , true);
+    httpreq.open( "GET" , "/EduClick_war_exploded/AdminPost1" , true);
     function completeLogin( httpreq ) {
 
             let jsonLoginResponse = JSON.parse(httpreq.responseText);
