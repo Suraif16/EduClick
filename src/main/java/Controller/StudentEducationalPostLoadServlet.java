@@ -24,7 +24,7 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
 
         JSONObject jsonObject = new JSONObject();
 
-        JSONArray jsonArray = new JSONArray();
+//        JSONArray jsonArray = new JSONArray();
 
         HttpSession session = request.getSession( false );
 
@@ -36,24 +36,26 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
 
         Classroom classroom =  new Classroom();
 
+        ArrayList<JSONObject> arr = new ArrayList<JSONObject>();
         ArrayList<String> ePostIdList = classroom.checkEposts(classroomId);
 
         for(int i=0;i<ePostIdList.size();i++) {
-            JSONArray jsonArray1 = new JSONArray();
+            /*JSONArray jsonArray1 = new JSONArray();*/
             JSONObject jsonObject1 = new JSONObject();
-            JSONObject jsonObject2 = new JSONObject();
             Post post = new Post();
-            jsonObject1 = post.getEPostDetails(ePostIdList.get(i));
-            jsonObject2 = post.getEPostContent(ePostIdList.get(i));
-            jsonArray1.put(jsonObject1);
-            jsonArray1.put(jsonObject2);
-            jsonArray.put(jsonArray1);
+            jsonObject1.put("ePost",post.getEPostDetails(ePostIdList.get(i)));
+            jsonObject1.put("eWork",post.getEPostContent(ePostIdList.get(i)));
+            arr.add(jsonObject1);
         }
-        System.out.println(jsonArray.get(0));
-        System.out.println("\n");
-        System.out.println(jsonArray.get(1));
+
+        JSONArray jsonArray1 = new JSONArray(arr);
+
+        System.out.println(jsonArray1);
 
 
+
+
+        jsonObject.put("EPostContent",jsonArray1);
 
 
         out.write(jsonObject.toString());
