@@ -44,6 +44,8 @@ public class EducationalPostDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
+
+        return null;
     }
 
 }
