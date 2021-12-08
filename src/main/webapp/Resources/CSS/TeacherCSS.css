@@ -396,6 +396,7 @@ div#content > div#postContents {
 
     background-color: #4775c4;
     padding: 1%;
+    display: flex;
 
 
 }
@@ -419,8 +420,7 @@ div#content > div#postContents {
 
     /* child of postProfile*/
     margin: auto auto auto 3px;
-    flex-basis: 65%;
-
+    flex-basis: 90%;
 
 }
 
@@ -429,7 +429,30 @@ div#content > div#postContents {
     flex-basis: 25%;
     margin: auto;
     font-size: x-small;
+    color: white;
 
+}
+
+.postProfileSection > a{
+
+    flex-basis: 70%;
+
+}
+
+.userOptions{
+
+    flex-basis: 5%;
+    margin: auto;
+
+}
+
+.userOptionsButton{
+
+    background-image: url("../Icons/more_vert_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-position: center;
+    alignment: center;
 
 }
 
@@ -727,7 +750,7 @@ div#content > div#addNewsFeedForm{
     width: 40%;
     padding: 1%;
     height: fit-content;
-    display: flex; /*become a container for addNewsFeedFormRows*/
+    display: none; /*become a container for addNewsFeedFormRows*/
     flex-direction: column;
     flex-wrap: wrap;
 
@@ -805,6 +828,36 @@ input[type="file"]{
     cursor: pointer;
 
 }
+
+#userOptionMenu{
+
+    display: none;
+    margin: 8% auto auto 30%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: absolute;
+    flex-direction: column;
+    padding: 0.5%;
+    background-color: white;
+    width: 10%;
+
+
+}
+
+.userOptionMenuInput{
+
+    flex: 1;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userOptionMenuInput > input[type = "button"]{
+
+    flex: 1;
+
+}
+
+
 
 @media(max-width: 1100px) {
 
