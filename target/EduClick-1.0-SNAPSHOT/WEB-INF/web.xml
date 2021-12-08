@@ -228,7 +228,7 @@
 
     <servlet-mapping>
         <servlet-name>SaveClassroomId</servlet-name>
-        <url-pattern>/SaveClassroomId</url-pattern>
+        <url-pattern>/user/SaveClassroomId</url-pattern>
     </servlet-mapping>
 
     <!-- end of SaveClassroomID -->
@@ -598,6 +598,21 @@
     </servlet-mapping>
 
     <!-- end of Student Educational post load servlet-->
+
+    <!-- beginning of user filter -->
+
+    <filter>
+        <filter-name>userAuthentication</filter-name>
+        <filter-class>Controller.Authentication.UserAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>userAuthentication</filter-name>
+        <url-pattern>/user/*</url-pattern>
+    </filter-mapping>
+
+    <!-- beginning of user filter -->
+
 
     <session-config>
 
