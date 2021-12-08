@@ -18,14 +18,6 @@ public class AdminPostDAO {
 
     public String generatedSysPostUserId;
 
-    public String getGeneratedSysPostUserId() {
-        return generatedSysPostUserId;
-    }
-
-    public void setGeneratedSysPostUserId(String generatedSysPostUserId) {
-        this.generatedSysPostUserId = generatedSysPostUserId;
-    }
-
     public String insert(AdminPost adminPost){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
