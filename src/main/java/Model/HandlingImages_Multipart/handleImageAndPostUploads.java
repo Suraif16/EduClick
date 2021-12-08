@@ -14,12 +14,11 @@ import java.util.List;
 
 public class handleImageAndPostUploads {
 
-    public static void uploadEPostImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime ){
+    public static EducationalWork uploadEPostImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime , String classroomId ){
 
         String type = "";
         String message = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
-
 
         try{
 
@@ -58,7 +57,7 @@ public class handleImageAndPostUploads {
 
             EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime );
 
-            educationalWork.insertEducationalWork( imageFile , path );
+            return educationalWork.insertEducationalWork( imageFile , path , classroomId );
 
 
         }catch ( Exception e ){
@@ -67,7 +66,7 @@ public class handleImageAndPostUploads {
 
         }
 
-//        return output;
+        return null;
 
     }
 
