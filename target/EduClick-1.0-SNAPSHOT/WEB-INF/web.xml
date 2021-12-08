@@ -228,7 +228,7 @@
 
     <servlet-mapping>
         <servlet-name>SaveClassroomId</servlet-name>
-        <url-pattern>/user/SaveClassroomId</url-pattern>
+        <url-pattern>/SaveClassroomId</url-pattern>
     </servlet-mapping>
 
     <!-- end of SaveClassroomID -->
