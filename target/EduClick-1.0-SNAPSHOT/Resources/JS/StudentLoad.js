@@ -105,7 +105,7 @@ const getClassroomList = function (){
             '    text-align: center;\n' +
             '    margin: 1.5% 0;\n' +
             '    padding: 1%;"> ' +
-            '<a href="/EduClick_war_exploded/Student/classroom.html?id=' + classroomId +'"' +' className="classRooms"> ' +
+            '<a href="/EduClick_war_exploded/SaveClassroomId?id=' + classroomId +'"' +' className="classRooms"> ' +
             '' +
             '                            <p>Classroom Name : ' + classroomName +'</p>' +
             '                            <p>Subject : ' + subject + '</p>' +

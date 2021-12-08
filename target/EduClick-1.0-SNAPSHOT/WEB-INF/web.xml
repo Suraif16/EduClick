@@ -218,6 +218,21 @@
 
     <!-- end of logout -->
 
+    <!-- beginning of SaveClassroomID-->
+
+    <servlet>
+        <servlet-name>SaveClassroomId</servlet-name>
+        <servlet-class>Controller.SaveClassroomIdServlet</servlet-class>
+        <load-on-startup>8</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SaveClassroomId</servlet-name>
+        <url-pattern>/SaveClassroomId</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of SaveClassroomID -->
+
     <!-- beginning of the TeacherClassroomListServlet-->
     <servlet>
         <servlet-name>TeacherLoadClassroomList</servlet-name>
@@ -560,6 +575,19 @@
 
     <!-- end of Educational post insert servlet-->
 
+    <!-- beginning of Student Educational post load servlet-->
+
+    <servlet>
+        <servlet-name>studentEducationalPostLoad</servlet-name>
+        <servlet-class>Controller.StudentEducationalPostLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentEducationalPostLoad</servlet-name>
+        <url-pattern>/student/StudentEducationalPostLoadServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Student Educational post load servlet-->
 
     <session-config>
 

@@ -47,13 +47,13 @@ function enableDisableStatus( id ){
 
 function showAnswers( id ){
 
-  /*  let com = document.getElementById("ans");
-    if(com.style.display === "none"){
+    /*  let com = document.getElementById("ans");
+      if(com.style.display === "none"){
 
-        com.style.display = "flex";
-    }else{
-        com.style.display = "none"
-    }*/
+          com.style.display = "flex";
+      }else{
+          com.style.display = "none"
+      }*/
 
     let answerId = "answersInPost" + id;
     let answerContainer = document.getElementById( answerId );
@@ -65,14 +65,14 @@ function showAnswers( id ){
 
         com.style.display = "flex";
 
-        }
+    }
 
 
     else{
 
         answerContainer.style.display = "none";
         com.style.display = "none"
-}
+    }
 
 
 
@@ -147,44 +147,6 @@ const sendServerData = function (){
 
 }
 
-const sendNameData = function (){
-    console.log("Firstname loaded!!")
-    /* This function gets the username from the server*/
-    let httpreq = new XMLHttpRequest();
-    httpreq.onreadystatechange = function (){
-
-        if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-        }
-
-    }
-
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentLoad" , true);
-    httpreq.send();
-
-    function completeLogin( httpreq ){
-
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
-
-
-        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonLoginResponse.serverResponse === "Allowed") {
-
-            console.log(jsonLoginResponse);
-            /* This is where I need work everytime as per the authentication filter*/
-            console.log(jsonLoginResponse.firstName);
-            const name = document.getElementById("headerUserName");
-            name.innerHTML = jsonLoginResponse.firstName;
-        }else{
-            alert("something went wrong!!!");
-        }
-
-    }
-
-
-}
 
 const getClassroomList = function (){
     /* This function gets the Lists of classrooms from the server*/
@@ -206,8 +168,7 @@ const getClassroomList = function (){
         let jsonResponse = JSON.parse(httpreq.responseText);
 
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
-            console.log("2");
-            // window.location.replace("/EduClick_war_exploded/Login.html");
+            window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
 
