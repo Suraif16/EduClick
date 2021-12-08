@@ -981,7 +981,7 @@ div.answerUser{
 
 #userOptionMenu{
 
-    display: flex;
+    display: none;
     margin: 8% auto auto 30%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     position: absolute;
@@ -1086,6 +1086,12 @@ div.answerUser{
     }
     input#comment{
         width: 40%;
+    }
+
+    #userOptionMenu{
+
+        width: 12%;
+
     }
 
 }
@@ -1308,6 +1314,12 @@ div.answerUser{
 
         margin: 25% auto auto 28%;
         width: 65%;
+
+    }
+
+    #userOptionMenu{
+
+        width: 15%;
 
     }
 

@@ -385,6 +385,16 @@
         <servlet-name>adminpost</servlet-name>
         <url-pattern>/AdminPost</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>adminpost1</servlet-name>
+        <servlet-class>Controller.AdminPost1Servlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminpost1</servlet-name>
+        <url-pattern>/AdminPost1</url-pattern>
+    </servlet-mapping>
 
     <!-- End of adminpost -->
 
@@ -584,7 +594,7 @@
 
     <servlet-mapping>
         <servlet-name>studentEducationalPostLoad</servlet-name>
-        <url-pattern>/student/StudentEducationalPostLoadServlet</url-pattern>
+        <url-pattern>/student/studentEducationalPostLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of Student Educational post load servlet-->

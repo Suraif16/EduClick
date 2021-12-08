@@ -1,8 +1,11 @@
 package Model;
 
 
+import DAO.EducationalPostDAO;
+import DAO.EducationalWorkDAO;
 import DAO.PostDAO;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -93,5 +96,14 @@ public class Post {
         PostDAO postDAO = new PostDAO();
         JSONArray NewsFeedIDList = postDAO.getIDNF(userId);
         return NewsFeedIDList;
+    }
+
+    public JSONObject getEPostDetails(String postId){
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        return educationalPostDAO.getEPostDetails(postId);
+    }
+    public JSONObject getEPostContent(String postId){
+        EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
+        return educationalWorkDAO.getEPostContent(postId);
     }
 }
