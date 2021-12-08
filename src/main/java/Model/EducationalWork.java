@@ -1,6 +1,7 @@
 package Model;
 
 import DAO.EducationalPostDAO;
+import DAO.EducationalWorkDAO;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 
@@ -42,8 +43,12 @@ public class EducationalWork extends Post{
 
         if ( this.getPostID() != null ){
 
-            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getPostID() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
+            EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
+            this.setImagePath( educationalWorkDAO.insert( this ) );
+
+            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
             saveImage.start();
+
 
         }
 
