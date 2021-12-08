@@ -575,6 +575,19 @@
 
     <!-- end of Educational post insert servlet-->
 
+    <!-- beginning of Student Educational post load servlet-->
+
+    <servlet>
+        <servlet-name>studentEducationalPostLoad</servlet-name>
+        <servlet-class>Controller.StudentEducationalPostLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentEducationalPostLoad</servlet-name>
+        <url-pattern>/student/StudentEducationalPostLoadServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Student Educational post load servlet-->
 
     <session-config>
 
