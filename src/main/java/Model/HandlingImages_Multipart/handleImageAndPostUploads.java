@@ -14,7 +14,7 @@ import java.util.List;
 
 public class handleImageAndPostUploads {
 
-    public static void uploadEPostImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime ){
+    public static void uploadEPostImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime , String classroomId ){
 
         String type = "";
         String message = "";
@@ -58,7 +58,7 @@ public class handleImageAndPostUploads {
 
             EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime );
 
-            educationalWork.insertEducationalWork( imageFile , path );
+            educationalWork.insertEducationalWork( imageFile , path , classroomId );
 
 
         }catch ( Exception e ){

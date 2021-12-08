@@ -15,11 +15,12 @@ public class EducationalPostInsertServlet extends HttpServlet {
     public void doPost( HttpServletRequest request , HttpServletResponse response ){
 
         boolean isMultipart = ServletFileUpload.isMultipartContent( request );
+        String classroomId = "1";
 
         if ( isMultipart ){
 
             System.out.println( "reached" );
-            handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() );
+            handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() , classroomId );
             System.out.println( "reached and done");
 
         }

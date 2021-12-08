@@ -1,5 +1,6 @@
 package Model;
 
+import DAO.ClassroomHasEPostDAO;
 import DAO.EducationalPostDAO;
 import DAO.EducationalWorkDAO;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
@@ -36,7 +37,7 @@ public class EducationalWork extends Post{
 
     }
 
-    public void insertEducationalWork( FileItem imageFile , String path ) throws Exception {
+    public void insertEducationalWork( FileItem imageFile , String path , String classroomId ) throws Exception {
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
         this.setPostID( educationalPostDAO.insert( this , "EducationalWork" ) );
@@ -45,6 +46,9 @@ public class EducationalWork extends Post{
 
             EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
             this.setImagePath( educationalWorkDAO.insert( this ) );
+
+            ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
+            classroomHasEPostDAO.insert( classroomId , getPostID() );
 
             Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
             saveImage.start();
