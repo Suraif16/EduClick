@@ -67,7 +67,7 @@ public class ImageJPEGConverterAndCompressor {
 
         imageWriter.write( null , new IIOImage( bufferedImage , null , null ) , imageWriteParam );
 
-        FileUtils.copyFile( new File( path + fileName + ".jpeg" ) , new File( "D:\\project\\2nd project servlet\\src\\main\\webapp\\Resources\\Images\\EducationalPostImages\\" + fileName + ".jpeg") );
+//        FileUtils.copyFile( new File( path + fileName + ".jpeg" ) , new File( "D:\\project\\2nd project servlet\\src\\main\\webapp\\Resources\\Images\\EducationalPostImages\\" + fileName + ".jpeg") );
 
         fileInputStream.close();
         fileOutputStream.close();
@@ -87,10 +87,21 @@ public class ImageJPEGConverterAndCompressor {
 
             } catch (Exception e) {
 
+                e.printStackTrace();
+
+            }
+
+
+            /*try {
+
+                convertToJPEG( fileName , path , imageFile);
+
+            } catch (Exception e) {
+
                 Thread thread = convertCompressJPEG( fileName , path , imageFile );
                 thread.start();
 
-            }
+            }*/
 
         };
 
