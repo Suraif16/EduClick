@@ -1,29 +1,31 @@
 package Model.HandlingImages_Multipart;
 
+import Model.EducationalWork;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class handleImageAndPostUploads {
 
-    public static void uploadEPostImages( HttpServletRequest request , String path ){
+    public static void uploadEPostImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime ){
 
         String type = "";
         String message = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
-        int count = 1;
-        StringBuilder output = new StringBuilder();
+
 
         try{
 
             List<FileItem> files = servletFileUpload.parseRequest( request );
 
-            List<FileItem> imageFiles = new ArrayList<>();
+            FileItem imageFile = null;
 
             for (FileItem file : files ){
 
@@ -48,28 +50,16 @@ public class handleImageAndPostUploads {
 
                 }else{
 
-                    /*System.out.println( file );
-                    String fileName = file.getName();
-                    *//* this should be removed when the system is uploaded into a server*//*
-                    file.write( new File( path + "Image\\" + fileName ) );
-
-                    ImageJPEGConverterAndCompressor.convertToJPEG( fileName , path , count + "");
-
-                    output.append( "<img src='Image/" + count + "Compressed" + ".jpeg" +"'><br/>" );
-
-                    count++;*/
-
-                    imageFiles.add( file );
-
+                    imageFile = file;
 
                 }
 
             }
 
-            System.out.println( message );
-            System.out.println( message.equals("") );
-            System.out.println( type );
-            System.out.println( imageFiles );
+            EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime );
+
+            educationalWork.insertEducationalWork( imageFile , path );
+
 
         }catch ( Exception e ){
 

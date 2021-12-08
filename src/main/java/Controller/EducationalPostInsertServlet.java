@@ -6,6 +6,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class EducationalPostInsertServlet extends HttpServlet {
 
@@ -17,7 +19,7 @@ public class EducationalPostInsertServlet extends HttpServlet {
         if ( isMultipart ){
 
             System.out.println( "reached" );
-            handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) );
+            handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() );
             System.out.println( "reached and done");
 
         }
