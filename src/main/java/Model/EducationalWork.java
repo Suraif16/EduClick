@@ -11,4 +11,11 @@ public class EducationalWork extends Post{
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
+    public EducationalWork(){
+
+        super();
+
+    }
+
 }
