@@ -594,7 +594,7 @@
 
     <servlet-mapping>
         <servlet-name>studentEducationalPostLoad</servlet-name>
-        <url-pattern>/student/StudentEducationalPostLoadServlet</url-pattern>
+        <url-pattern>/student/studentEducationalPostLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of Student Educational post load servlet-->

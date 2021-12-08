@@ -2,6 +2,7 @@ package Model;
 
 
 import DAO.ClassroomDAO;
+import DAO.ClassroomHasEPostDAO;
 
 import java.util.ArrayList;
 
@@ -112,6 +113,11 @@ public class Classroom {
         ClassroomDAO classroomDAO = new ClassroomDAO();
         classroomList = classroomDAO.selectAll( this.userId );
         return classroomList;
+
+    }
+    public ArrayList<String> checkEposts(String classroomId){
+        ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
+        return classroomHasEPostDAO.getEpostsIds(classroomId);
 
     }
 
