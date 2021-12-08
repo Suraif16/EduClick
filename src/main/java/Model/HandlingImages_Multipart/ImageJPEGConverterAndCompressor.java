@@ -1,5 +1,6 @@
 package Model.HandlingImages_Multipart;
 
+import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.io.FileUtils;
 
 import javax.imageio.IIOImage;
@@ -16,10 +17,12 @@ import java.util.Iterator;
 
 public class ImageJPEGConverterAndCompressor {
 
-    public static void convertToJPEG(String fileName , String path , String fileNameNew) throws IOException {
+    private static void convertToJPEG( String fileName , String path , FileItem imageFile ) throws Exception {
 
-        FileInputStream fileInputStream = new FileInputStream( path + "Image\\" + fileName );
-        FileOutputStream fileOutputStream = new FileOutputStream( path + "Image\\" + fileNameNew + ".jpeg");
+        String fileOldName = imageFile.getName();
+        imageFile.write( new File( path  + fileName + fileOldName ) );
+        FileInputStream fileInputStream = new FileInputStream( path  + fileName + fileOldName );
+        FileOutputStream fileOutputStream = new FileOutputStream( path  + fileName + "converted.jpeg");
 
         BufferedImage bufferedImage = ImageIO.read( fileInputStream );
 
@@ -28,21 +31,21 @@ public class ImageJPEGConverterAndCompressor {
         fileInputStream.close();
         fileOutputStream.close();
         System.out.println("first");
-        File file = new File( path + "Image\\" + fileName );
+        File file = new File( path + fileName + fileOldName );
         System.out.println(file.delete());
 
-        CompressJPEG( fileNameNew , path );
+        CompressJPEG( fileName , path );
 
         System.out.println("second");
-        File file1 = new File( path + "Image\\" + fileNameNew + ".jpeg" );
+        File file1 = new File( path + fileName + "converted.jpeg" );
         System.out.println(file1.delete());
 
     }
 
-    public static void CompressJPEG(String fileName , String path ) throws IOException {
+    private static void CompressJPEG( String fileName , String path ) throws IOException {
 
-        FileInputStream fileInputStream = new FileInputStream( path + "Image\\" + fileName + ".jpeg" );
-        FileOutputStream fileOutputStream = new FileOutputStream( path + "Image\\" + fileName + "Compressed" + ".jpeg");
+        FileInputStream fileInputStream = new FileInputStream( path + fileName + "converted.jpeg" );
+        FileOutputStream fileOutputStream = new FileOutputStream( path + fileName + ".jpeg");
 
         float quality = 0.5f;
 
@@ -64,13 +67,34 @@ public class ImageJPEGConverterAndCompressor {
 
         imageWriter.write( null , new IIOImage( bufferedImage , null , null ) , imageWriteParam );
 
-        FileUtils.copyFile( new File( path + "Image\\" + fileName + "Compressed" + ".jpeg" ) , new File( "D:\\project\\2nd project servlet\\src\\main\\webapp\\Image\\" + fileName + "Compressed" + ".jpeg") );
+        FileUtils.copyFile( new File( path + fileName + ".jpeg" ) , new File( "D:\\project\\2nd project servlet\\src\\main\\webapp\\Resources\\Images\\EducationalPostImages\\" + fileName + ".jpeg") );
 
         fileInputStream.close();
         fileOutputStream.close();
         imageOutputStream.close();
         imageWriter.dispose();
 
+
+    }
+
+    public static Thread convertCompressJPEG( String fileName , String path , FileItem imageFile ){
+
+        Runnable runnable = () -> {
+
+            try {
+
+                convertToJPEG( fileName , path , imageFile);
+                
+            } catch (Exception e) {
+
+                Thread thread = convertCompressJPEG( fileName , path , imageFile );
+                thread.start();
+
+            }
+
+        };
+
+        return new Thread( runnable );
 
     }
 
