@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class EducationalPostDAO {
 
-    public String insert( EducationalWork educationalWork ){
+    public String insert( EducationalWork educationalWork , String EPType ){
 
 
 
@@ -24,7 +24,7 @@ public class EducationalPostDAO {
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString( 1 , String.valueOf( educationalWork.getDate() ) );
             preparedStatement.setString( 2 , String.valueOf( educationalWork.getTime() ) );
-            preparedStatement.setString( 3 , "EducationalWork" );
+            preparedStatement.setString( 3 , EPType );
             preparedStatement.setString( 4 , educationalWork.getType() );
 
             preparedStatement.execute();

@@ -38,7 +38,7 @@ public class EducationalWork extends Post{
     public void insertEducationalWork( FileItem imageFile , String path ) throws Exception {
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        this.setPostID( educationalPostDAO.insert( this ) );
+        this.setPostID( educationalPostDAO.insert( this , "EducationalWork" ) );
 
         if ( this.getPostID() != null ){
 
