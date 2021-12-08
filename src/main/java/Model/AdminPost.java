@@ -2,6 +2,8 @@ package Model;
 
 import DAO.AdminPostDAO;
 import DAO.ClassroomDAO;
+import DAO.NewsFeedsDAO;
+import org.json.JSONArray;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -93,11 +95,17 @@ public class AdminPost {
         AdminPostDAO adminPostDAO = new AdminPostDAO();
         return adminPostDAO.select(this);
     }*/
-    public ArrayList<AdminPost> getPostDetails(ArrayList<String> arrayList){
+    /*public ArrayList<AdminPost> getPostDetails(ArrayList<String> arrayList){
         AdminPostDAO adminpostDAO =  new AdminPostDAO();
         postDetails =adminpostDAO.selectPostDetails(arrayList);
 
         return postDetails;
+    }*/
 
+
+    public JSONArray getAPostDetails(ArrayList<String> APostIDList){
+        AdminPostDAO adminpostDAO =  new AdminPostDAO();
+        JSONArray APostDetails = adminpostDAO.getAPostDetails(APostIDList);
+        return APostDetails;
     }
 }
