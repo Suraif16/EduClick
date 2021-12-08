@@ -20,7 +20,7 @@ public class EducationalPostDAO {
         try{
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSER INTO EducationalPost( DATE , TIME , EPtype , Type ) VALUES( ? , ? , ? , ? );";
+            String sql = "INSER INTO EducationalPost( DATE , TIME , EPtype , Type ) VALUES( ? , ? , ? , ? )";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString( 1 , String.valueOf( educationalWork.getDate() ) );
             preparedStatement.setString( 2 , String.valueOf( educationalWork.getTime() ) );

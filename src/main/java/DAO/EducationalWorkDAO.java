@@ -18,7 +18,7 @@ public class EducationalWorkDAO {
         try{
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO EducationalWork( EPostID , Caption) VALUES( ? , ? );";
+            String sql = "INSERT INTO EducationalWork( EPostID , Caption) VALUES( ? , ? )";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString( 1 , educationalWork.getPostID() );
             preparedStatement.setString( 2 , educationalWork.getCaption() );

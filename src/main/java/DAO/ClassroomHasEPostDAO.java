@@ -16,7 +16,7 @@ public class ClassroomHasEPostDAO {
         try {
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Classroom_Has_EPost VALUES( ? , ? );";
+            String sql = "INSERT INTO Classroom_Has_EPost VALUES( ? , ? )";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString( 1 , classroomId );
             preparedStatement.setString( 2 , EpostID );
