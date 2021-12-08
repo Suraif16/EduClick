@@ -84,7 +84,7 @@ public class ImageJPEGConverterAndCompressor {
             try {
 
                 convertToJPEG( fileName , path , imageFile);
-                
+
             } catch (Exception e) {
 
                 Thread thread = convertCompressJPEG( fileName , path , imageFile );
