@@ -72,7 +72,7 @@ function createClassroom(){
 
         classroomsListLinks.innerHTML += '<div class="classroomsListLinksItems">' +
             '' +
-            '                        <a href="/EduClick_war_exploded/Teacher/Classroom.html?id="' + classroomId +  ' class="classRooms">' +
+            '                        <a href="/EduClick_war_exploded/SaveClassroomId?id=' + classroomId + '"  class="classRooms">' +
             '' +
             '                            <p>Classroom Name : ' + classroomName.value + '</p>' +
             '                            <p>Subject : ' + subject.value + '</p>' +

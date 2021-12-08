@@ -92,7 +92,8 @@ const postQuestionsMessages = function (){
             let now = new Date().getTime();
             let extraTime = 7000;
             while(new Date().getTime() < now + extraTime ){}
-            postContentsElement.innerHTML += '<div class="post">' +
+            let innerPreviouseHTML = postContentsElement.innerHTML;
+            postContentsElement.innerHTML = '<div class="post">' +
                 '            <div class="postContentContainer">' +
                 '                <div class="postProfileSection">' +
                 '                    <a href="TeacherProfile.html" class="postProfile">' +
@@ -199,6 +200,8 @@ const postQuestionsMessages = function (){
                 '                </div>' +
                 '            </div>' +
                 '        </div>';
+
+            postContentsElement.innerHTML += innerPreviouseHTML;
 
         }else{
             alert("something went wrong!!!");

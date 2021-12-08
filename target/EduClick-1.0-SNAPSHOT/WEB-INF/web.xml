@@ -599,6 +599,21 @@
 
     <!-- end of Student Educational post load servlet-->
 
+    <!-- beginning of user filter -->
+
+    <filter>
+        <filter-name>userAuthentication</filter-name>
+        <filter-class>Controller.Authentication.UserAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>userAuthentication</filter-name>
+        <url-pattern>/user/*</url-pattern>
+    </filter-mapping>
+
+    <!-- beginning of user filter -->
+
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
