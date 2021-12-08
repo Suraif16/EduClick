@@ -76,12 +76,13 @@ public class AdminPostDAO {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    String postId = resultSet.getString("SysPostID");
+                    String ApostId = resultSet.getString("SysPostID");
                     String textmsg = resultSet.getString("APTextMsg");
                     String date = resultSet.getString("APDate");
                     String time = resultSet.getString("APTime");
 
                     JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("APId",ApostId);
                     jsonObject.put("Caption",textmsg);
                     jsonObject.put("Date",date);
                     jsonObject.put("Time",time);
