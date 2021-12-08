@@ -37,7 +37,7 @@ public class EducationalWork extends Post{
 
     }
 
-    public void insertEducationalWork( FileItem imageFile , String path , String classroomId ) throws Exception {
+    public EducationalWork insertEducationalWork( FileItem imageFile , String path , String classroomId ) throws Exception {
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
         this.setPostID( educationalPostDAO.insert( this , "EducationalWork" ) );
@@ -55,6 +55,8 @@ public class EducationalWork extends Post{
 
 
         }
+
+        return this;
 
     }
 
