@@ -3,10 +3,7 @@ package DAO;
 import Database.DBConnectionPool;
 import Model.EducationalWork;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class EducationalWorkDAO {
 
@@ -19,7 +16,7 @@ public class EducationalWorkDAO {
 
             connection = dbConnectionPool.dataSource.getConnection();
             String sql = "INSERT INTO EducationalWork( EPostID , Caption) VALUES( ? , ? )";
-            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
             preparedStatement.setString( 1 , educationalWork.getPostID() );
             preparedStatement.setString( 2 , educationalWork.getCaption() );
 
