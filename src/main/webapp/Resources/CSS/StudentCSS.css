@@ -676,7 +676,7 @@ input.requestDecline{
 }
 #userOptionMenu{
 
-    display: flex;
+    display: none;
     margin: 8% auto auto 30%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     position: absolute;
