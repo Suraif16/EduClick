@@ -20,8 +20,7 @@ const loadStudentEducationalPosts = function (){
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
-
-
+            console.log("math me paththen awa bosa")
 
 
 
