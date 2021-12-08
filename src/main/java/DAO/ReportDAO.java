@@ -41,20 +41,20 @@ public class ReportDAO {
                     //accont
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("ReportID",ReportID);
-                    jsonObject.put("EpostID",UserID);
+                    jsonObject.put("UserID",UserID);
                     jsonObject.put("Count",Count);
 
                 } else if (UserID.equals("NULL")&&EpostID.equals("NULL")) {
 
                     //Newsfeedpost
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("NF_postID",ReportID);
-                    jsonObject.put("EpostID",NF_postID);
+                    jsonObject.put("ReportID",ReportID);
+                    jsonObject.put("NF_postID",NF_postID);
                     jsonObject.put("Count",Count);
                 }else if (UserID.equals("NULL")&&NF_postID.equals("NULL")) {
                     //post
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("EpostID",ReportID);
+                    jsonObject.put("ReportID",ReportID);
                     jsonObject.put("EpostID",EpostID);
                     jsonObject.put("Count",Count);
 
