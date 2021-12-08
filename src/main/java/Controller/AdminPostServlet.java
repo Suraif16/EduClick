@@ -45,18 +45,4 @@ public class AdminPostServlet extends HttpServlet {
         out.close();
     }
 
-    public void doGet(HttpServletRequest request , HttpServletResponse response) throws IOException {
-
-        HttpSession session = request.getSession(  );
-        response.setContentType("text/html");
-
-        AdminPostDAO adminpostDAO =  new AdminPostDAO();
-        JSONArray APDetails = adminpostDAO.getAPostDetails(APostIDList);
-        JSONObject jsonObject = new JSONObject();
-
-        jsonObject.put("AdminPostDetails" ,APDetails);
-
-        jsonObject.put("serverResponse" , "Allowed");
-
-    }
 }
