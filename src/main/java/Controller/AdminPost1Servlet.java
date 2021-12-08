@@ -19,9 +19,7 @@ public class AdminPost1Servlet extends HttpServlet {
     public String generatedUserID;
     @Override
 
-
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
