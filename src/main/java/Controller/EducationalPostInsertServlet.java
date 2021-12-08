@@ -35,7 +35,9 @@ public class EducationalPostInsertServlet extends HttpServlet {
 
         }
 
-        jsonObject.put( "EPost" , educationalWork );
+        JSONObject educationalWorkJson = new JSONObject( educationalWork );
+
+        jsonObject.put( "EPost" , educationalWorkJson );
         out.write( jsonObject.toString() );
         out.close();
 

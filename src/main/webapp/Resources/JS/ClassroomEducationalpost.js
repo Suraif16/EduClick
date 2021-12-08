@@ -83,14 +83,16 @@ const postQuestionsMessages = function (){
     const complete = function ( httpreq ){
 
         let jsonResponse = JSON.parse( httpreq.responseText );
-
+        showAddEducationalPostForm();
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
-            console.log( jsonResponse );
+            console.log( jsonResponse.EPost );
             const postContentsElement = document.getElementById( "postContents" );
-
-            /*postContentsElement.innerHTML += '<div class="post">' +
+            let now = new Date().getTime();
+            let extraTime = 7000;
+            while(new Date().getTime() < now + extraTime ){}
+            postContentsElement.innerHTML += '<div class="post">' +
                 '            <div class="postContentContainer">' +
                 '                <div class="postProfileSection">' +
                 '                    <a href="TeacherProfile.html" class="postProfile">' +
@@ -100,7 +102,8 @@ const postQuestionsMessages = function (){
                 '                        <div class="postProfileName" >User Name</div>' +
                 '                    </a>' +
                 '                    <div class="postTimeAndDate">' +
-                '                        18:32:26 | 03/25/2015' +
+                + jsonResponse.EPost.time +
+                ' | ' + jsonResponse.EPost.date +
                 '                    </div>' +
                 '                    <div class="userOptions">' +
                 '                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion1" onclick="showOptionMenu(1,\'educationalPostOPtion\')">' +
@@ -110,12 +113,12 @@ const postQuestionsMessages = function (){
                 '            <div class="postContentContainer">' +
                 '                <div class="postData">' +
                 '                    <div class="postMessage">' +
-                '                        To answer these questions refer tutorial 9' +
+                                        jsonResponse.EPost.caption   +
                 '                    </div>' +
                 '                    <div class="postPicture">' +
                 '                        <div class="postPictureImageContainer">' +
                 '                            <!--To only present the message without the picture, keep this value as null / empty-->' +
-                '                            <img class="postPictureImage" src="../Resources/Images/Finding-the-Correct-Question-Words3.jpg">' +
+                '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + jsonResponse.EPost.imagePath + '.jpeg">' +
                 '                        </div>' +
                 '                    </div>' +
                 '                </div>' +
@@ -195,7 +198,7 @@ const postQuestionsMessages = function (){
                 '                    </div>' +
                 '                </div>' +
                 '            </div>' +
-                '        </div>';*/
+                '        </div>';
 
         }else{
             alert("something went wrong!!!");
