@@ -611,9 +611,10 @@ div.mcqSingleAnswer{
 
 }
 input#comment{
+    flex: 1;
     border-radius: 10px;
     margin-left: 1cm;
-    width:15cm;
+    width:10cm;
     height: 0.6cm;
 
 }
@@ -962,8 +963,61 @@ input[type="file"]{
 
 }
 
+div.answerUser{
+    background-color: #4775c4;
+    padding: 1%;
+    margin-bottom: 1%;
+    display: flex;
+
+}
+
+.answerProfile{
+
+    /*becomes the container for postProfileImage and postProfileName*/
+    display: flex;
+    flex-basis: 60%;
+
+}
+
+#userOptionMenu{
+
+    display: none;
+    margin: 8% auto auto 30%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: absolute;
+    flex-direction: column;
+    padding: 0.5%;
+    background-color: white;
+    width: 10%;
 
 
+}
+
+.userOptionMenuInput{
+
+    flex: 1;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userOptionMenuInput > input[type = "button"]{
+
+    flex: 1;
+
+}
+
+.userOptions{
+    flex-basis: 5%;
+    margin: auto;
+}
+.userOptionsButton{
+    background-image: url("../Icons/more_vert_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-position: center;
+    alignment: center;
+}
 
 
 @media(max-width: 1100px) {
@@ -1030,6 +1084,15 @@ input[type="file"]{
         background-color: white;
 
     }
+    input#comment{
+        width: 40%;
+    }
+
+    #userOptionMenu{
+
+        width: 12%;
+
+    }
 
 }
 
@@ -1075,6 +1138,9 @@ input[type="file"]{
 
         margin: auto 1% auto 1%;
 
+    }
+    input#comment{
+        width: 80%;
     }
 
 }
@@ -1248,6 +1314,12 @@ input[type="file"]{
 
         margin: 25% auto auto 28%;
         width: 65%;
+
+    }
+
+    #userOptionMenu{
+
+        width: 15%;
 
     }
 

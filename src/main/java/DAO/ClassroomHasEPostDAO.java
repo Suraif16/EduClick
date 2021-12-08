@@ -37,7 +37,6 @@ public class ClassroomHasEPostDAO {
 
     }
 
-public class ClassroomHasEPostDAO {
     public ArrayList<String> getEpostsIds(String classroomId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -65,5 +64,6 @@ public class ClassroomHasEPostDAO {
         }
         return ePostIdList;
     }
+
 
 }

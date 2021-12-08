@@ -47,10 +47,6 @@ function enableDisableStatus( id ){
 
 function showAnswers( id ){
 
-<<<<<<< HEAD
-    let answerId = "answersInPost" + id;
-    let answerContainer = document.getElementById( answerId );
-=======
     /*  let com = document.getElementById("ans");
       if(com.style.display === "none"){
 
@@ -62,21 +58,11 @@ function showAnswers( id ){
     let answerId = "answersInPost" + id;
     let answerContainer = document.getElementById( answerId );
     let com = document.getElementById("ans" + id) ;
->>>>>>> main
 
     if (answerContainer.style.display === "none"){
 
         answerContainer.style.display = "flex";
 
-<<<<<<< HEAD
-    }else{
-
-        answerContainer.style.display = "none";
-
-    }
-
-
-=======
         com.style.display = "flex";
 
     }
@@ -91,7 +77,6 @@ function showAnswers( id ){
 
 
 
->>>>>>> main
 }
 
 
@@ -117,25 +102,14 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
-<<<<<<< HEAD
-        sendNameData();
-        getClassroomList();
-        console.log("I'm loaded js");
-=======
         sendServerData();
         getClassroomList();
->>>>>>> main
 
     }
 
 }
 
-<<<<<<< HEAD
-const sendNameData = function (){
-    console.log("Firstname loaded!!")
-=======
 const sendServerData = function (){
->>>>>>> main
     /* This function gets the username from the server*/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -146,43 +120,24 @@ const sendServerData = function (){
 
     }
 
-<<<<<<< HEAD
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentLoad" , true);
-=======
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherLoad" , true);
->>>>>>> main
     httpreq.send();
 
     function completeLogin( httpreq ){
 
-<<<<<<< HEAD
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
-
-=======
         const headerUserProfileIdAchorElement = document.getElementById("headerUserProfileId");
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
->>>>>>> main
 
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
-<<<<<<< HEAD
-
-            console.log(jsonLoginResponse);
-            /* This is where I need work everytime as per the authentication filter*/
-            console.log(jsonLoginResponse.firstName);
-            const name = document.getElementById("headerUserName");
-            name.innerHTML = jsonLoginResponse.firstName;
-=======
             /* This is where I need work everytime as per the authentication filter*/
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
             let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
 
             headerUserProfileIdAchorElement.setAttribute("href" , url);
->>>>>>> main
         }else{
             alert("something went wrong!!!");
         }
@@ -192,10 +147,7 @@ const sendServerData = function (){
 
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> main
 const getClassroomList = function (){
     /* This function gets the Lists of classrooms from the server*/
     const classroomsListLinksSelect = document.getElementById("classroomsListLinks");
@@ -208,11 +160,7 @@ const getClassroomList = function (){
 
     }
 
-<<<<<<< HEAD
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentNewsFeedLoaded" , true);
-=======
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherLoadClassroomList" , true);
->>>>>>> main
     httpreq.send();
 
     function complete( httpreq ){
@@ -242,46 +190,21 @@ const getClassroomList = function (){
 
 
     function classroomHtmlOutput( classroomId , classroomName , subject , gradeClass , yearOfExamination ){
-<<<<<<< HEAD
-
-        classroomsListLinksSelect.innerHTML += '<div className="classroomsListLinksItems"' +
-            ' style="flex: 1;\n' +
-            '    background-color: #4775c4;\n' +
-            '    text-align: center;\n' +
-            '    margin: 1.5% 0;\n' +
-            '    padding: 1%;"> ' +
-            '<a href="/EduClick_war_exploded/Student/classroom.html?id=' + classroomId +'"' +' className="classRooms"> ' +
-=======
         classroomsListLinksSelect.innerHTML += '<div class="classroomsListLinksItems">' +
             '' +
             '                        <a href="Classroom.html"  class="classRooms">' +
->>>>>>> main
             '' +
             '                            <p>Classroom Name : ' + classroomName +'</p>' +
             '                            <p>Subject : ' + subject + '</p>' +
             '                            <p>Grade : ' + gradeClass + '</p>' +
             '                            <p>Year of Examination : ' + yearOfExamination + '</p>' +
             '' +
-<<<<<<< HEAD
-            '</a>' +
-            '</div>';
-
-=======
             '                        </a>' +
             '' +
             '                    </div>'
->>>>>>> main
 
     }
 
 
 }
-<<<<<<< HEAD
-const displayComment = function (){
 
- 
-
-}
-=======
-
->>>>>>> main
