@@ -1,8 +1,9 @@
 package Controller;
 
-
-
+import DAO.AdminPostDAO;
 import Model.AdminPost;
+import Model.NewsFeeds;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -49,27 +50,13 @@ public class AdminPostServlet extends HttpServlet {
         HttpSession session = request.getSession(  );
         response.setContentType("text/html");
 
-
-        //User user = (User) session.getAttribute("User");
-
+        AdminPostDAO adminpostDAO =  new AdminPostDAO();
+        JSONArray APDetails = adminpostDAO.getAPostDetails(APostIDList);
         JSONObject jsonObject = new JSONObject();
 
+        jsonObject.put("AdminPostDetails" ,APDetails);
+
         jsonObject.put("serverResponse" , "Allowed");
-
-
-        /*AdminPost adminPostid = new AdminPost();
-        String id = adminPostid.getSysPostID();
-        AdminPost adminPost = new AdminPost();
-        List<AdminPost> adminPostList = adminPost.getPostDetails();
-
-        JSONArray jsonArray = new JSONArray( adminPostList );
-        jsonObject.put( "adminPostList" , jsonArray);*/
-
-        AdminPost adminPost = new AdminPost();
-        //adminPost.getPostDetails();
-        jsonObject.put("Date" ,adminPost.getDate());
-        jsonObject.put("Time" ,adminPost.getTime());
-        jsonObject.put("TextMsg" ,adminPost.getTextMsg());
 
     }
 }
