@@ -48,6 +48,8 @@ public class StudentEntrancePageNewsFeedLoadServlet extends HttpServlet {
 
         NewsFeeds newsFeeds = new NewsFeeds();
 
+        JSONArray NFimagesPath = newsFeeds.getImagePath(newsFeedsIDList);
+
         JSONArray NFDetails = newsFeeds.getNFDetails(newsFeedsIDList);
 
         JSONObject jsonObject = new JSONObject();
@@ -57,6 +59,8 @@ public class StudentEntrancePageNewsFeedLoadServlet extends HttpServlet {
         jsonObject.put("TeacherName", TeacherNameList);
 
         jsonObject.put("NewsFeedsDetails", NFDetails);
+
+        jsonObject.put("ImagePath",NFimagesPath);
 
         jsonObject.put("FullName", fullName);
 
