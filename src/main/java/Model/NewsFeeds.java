@@ -1,5 +1,6 @@
 package Model;
 
+import DAO.NewsFeedImageDAO;
 import DAO.NewsFeedsDAO;
 import DAO.UserDAO;
 import org.json.JSONArray;
@@ -43,6 +44,12 @@ public class NewsFeeds extends Post{
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
         JSONArray NFDetailList = newsFeedsDAO.getNFDetails(newsFeedsIDList);
         return NFDetailList;
+    }
+
+    public JSONArray getImagePath(ArrayList<String> newsFeedsIDList){
+        NewsFeedImageDAO newsFeedImageDAO = new NewsFeedImageDAO();
+        JSONArray NFImageList = newsFeedImageDAO.getImagePath(newsFeedsIDList);
+        return NFImageList;
     }
     
     
