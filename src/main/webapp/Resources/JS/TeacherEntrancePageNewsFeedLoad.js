@@ -22,6 +22,11 @@ const sendServerDataTeacher = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         } else if (jsonLoginResponse.serverResponse === "Allowed") {
 
+            let k = jsonLoginResponse.ImagePath.length;
+            for(i=0 ; i <k; i++ ){
+                console.log(jsonLoginResponse.ImagePath[i]);
+            }
+
             const postContents = document.getElementById("postContents");
             postContents.innerHTML = "";
 
