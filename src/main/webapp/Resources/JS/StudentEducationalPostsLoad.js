@@ -28,6 +28,7 @@ const loadStudentEducationalPosts = function (){
                 console.log(jsonLoginResponse.EPostContent[i].ePost)
             }*/
             console.log(jsonLoginResponse.EPostContent.length)
+            console.log(jsonLoginResponse.TeacherId)
 
             for( i = 0 ; i < jsonLoginResponse.EPostContent.length ; i++){
                 if(jsonLoginResponse.EPostContent[i].ePost.Type == "Messages"){
@@ -35,7 +36,7 @@ const loadStudentEducationalPosts = function (){
                         '<div class="post">' +
                         '            <div class="postContentContainer">' +
                         '                <div class="postProfileSection">' +
-                        '                    <a href="../Teacher/Teacherpro.html" class="postProfile">' +
+                        '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ jsonLoginResponse.TeacherId +'" class="postProfile">' +
                         '                        <div class="postProfileImage">' +
                         '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
                         '                        </div>\n' +
