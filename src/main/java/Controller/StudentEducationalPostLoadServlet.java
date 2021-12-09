@@ -36,6 +36,16 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
 
         Classroom classroom =  new Classroom();
 
+        //Getting the full name of the teacher whom the classroom belongs to
+
+        User user = new User();
+
+        String id = classroom.getClassroomOwnerId(classroomId);
+        String fullName = user.getFullName(id);
+        System.out.println("Teacher FullName in servlet : "+fullName);
+
+        jsonObject.put("TeacherFullName",fullName);
+
         ArrayList<JSONObject> arr = new ArrayList<JSONObject>();
         ArrayList<String> ePostIdList = classroom.checkEposts(classroomId);
 
