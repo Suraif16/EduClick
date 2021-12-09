@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.Classroom;
 import Model.User;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,15 +20,29 @@ public class SaveClassroomIdServlet extends HttpServlet {
 
         String id = request.getParameter("id");
 
+        JSONObject jsonObject = new JSONObject();
 
-        session.setAttribute("CurrentClassroomId",id);
+        Classroom classroom = new Classroom();
 
-        if(user.getUserType().equals("Student")){
-            response.sendRedirect("Student/classroom.html");
+        String userId = classroom.getClassroomOwnerId(id);
+
+        if(!userId.equals("0")){
+            session.setAttribute("CurrentClassroomId",id);
+
+            if(user.getUserType().equals("Student")){
+                response.sendRedirect("Student/classroom.html");
+            }
+            else if(user.getUserType().equals("Teacher")){
+                response.sendRedirect("Teacher/Classroom.html");
+            }
         }
-        else if(user.getUserType().equals("Teacher")){
-            response.sendRedirect("Teacher/Classroom.html");
+        else{
+
+            jsonObject.put("Error","No User");
+
         }
+
+
 
     }
 
