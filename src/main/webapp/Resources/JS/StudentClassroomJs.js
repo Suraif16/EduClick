@@ -243,8 +243,7 @@ const getClassroomList = function (){
             '' +
             '                    </div>'
 
-        let jsonResponse = JSON.parse(httpreq.responseText);
-        console.log(jsonResponse.Error)
+        
 
     }
 
