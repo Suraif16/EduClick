@@ -58,6 +58,13 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
             arr.add(jsonObject1);
         }
 
+        String userId = classroom.getClassroomOwnerId(id);
+        System.out.println("Teachers ID : "+userId);
+
+        jsonObject.put("TeacherId",userId);
+
+
+
         JSONArray jsonArray1 = new JSONArray(arr);
 
         System.out.println(jsonArray1);
