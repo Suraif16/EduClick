@@ -35,7 +35,7 @@ const loadStudentEducationalPosts = function (){
                         '<div class="post">' +
                         '            <div class="postContentContainer">' +
                         '                <div class="postProfileSection">' +
-                        '                    <a href="#" class="postProfile">' +
+                        '                    <a href="../Teacher/Teacherpro.html" class="postProfile">' +
                         '                        <div class="postProfileImage">' +
                         '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
                         '                        </div>\n' +
