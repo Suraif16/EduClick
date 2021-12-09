@@ -49,6 +49,8 @@ import java.util.ArrayList;
 
             JSONArray NFDetails = newsFeeds.getNFDetails(newsFeedsIDList);
 
+            JSONArray NFimagesPath = newsFeeds.getImagePath(newsFeedsIDList);
+
             JSONObject jsonObject = new JSONObject();
 
             jsonObject.put("NewsFeedID",NFIDList);
@@ -56,6 +58,8 @@ import java.util.ArrayList;
             jsonObject.put("TeacherName",TeacherNameList);
 
             jsonObject.put("NewsFeedsDetails",NFDetails);
+
+            jsonObject.put("ImagePath",NFimagesPath);
 
             jsonObject.put("FullName",fullName);
 
