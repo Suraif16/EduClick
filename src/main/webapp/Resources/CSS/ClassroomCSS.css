@@ -1205,6 +1205,18 @@ div.nextPreviousButton:hover{
 
 }
 
+div.nextPreviousButton:active{
+
+    background-color: #c9d6f5;
+
+}
+
+div.navigateButtons{
+
+    /*making the buttons to be horizontally and vertically centered*/
+
+}
+
 div#previousQuestion{
 
     order: 1;
