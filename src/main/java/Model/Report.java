@@ -1,6 +1,6 @@
 package Model;
 
-import DAO.ReportDAO;
+import DAO.ReportInsertDAO;
 
 public class Report {
     private int count;
@@ -53,9 +53,9 @@ public class Report {
         this.contentID = contentID;
         this.type = type;
     }
-    public void Report(Report report){
-    ReportDAO reportDAO = new ReportDAO();
-        reportDAO.insert(this);
+    public void report(){
+        ReportInsertDAO reportDAO = new ReportInsertDAO();
+        ReportInsertDAO.insert(this);
     }
     public Report(Report report){
         this.contentID = report.getContentID();
