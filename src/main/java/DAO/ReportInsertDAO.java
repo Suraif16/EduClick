@@ -2,6 +2,7 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.AdminPost;
+import Model.Report;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,9 +12,7 @@ import java.util.ArrayList;
 
 public class ReportInsertDAO {
 
-
     public String generatedSysPostUserId;
-
     public String insert(AdminPost adminPost){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
