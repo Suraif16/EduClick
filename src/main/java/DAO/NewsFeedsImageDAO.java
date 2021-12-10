@@ -67,7 +67,6 @@ public class NewsFeedsImageDAO {
             preparedStatement.setString( 1 , newsFeeds.getPostID() );
             preparedStatement.setString( 2 , newsFeeds.getCaption() );
 
-            preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             if ( resultSet.next() ){
