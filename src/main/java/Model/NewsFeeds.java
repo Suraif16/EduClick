@@ -1,10 +1,12 @@
 package Model;
 
-import DAO.NewsFeedImageDAO;
-import DAO.NewsFeedsDAO;
-import DAO.UserDAO;
+import DAO.*;
+import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
+import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class NewsFeeds extends Post{
@@ -12,6 +14,14 @@ public class NewsFeeds extends Post{
     private String imagePath;
     private int likeCount;
     private int likeShare;
+
+    public NewsFeeds(String message , LocalDate localDate , LocalTime localTime) {
+        super( message , localDate , localTime );
+    }
+
+    public NewsFeeds() {
+
+    }
 
     public String getImagePath() {
         return imagePath;
@@ -47,11 +57,32 @@ public class NewsFeeds extends Post{
     }
 
     public JSONArray getImagePath(ArrayList<String> newsFeedsIDList){
-        NewsFeedImageDAO newsFeedImageDAO = new NewsFeedImageDAO();
+        NewsFeedsImageDAO newsFeedImageDAO = new NewsFeedsImageDAO();
         JSONArray NFImageList = newsFeedImageDAO.getImagePath(newsFeedsIDList);
         return NFImageList;
     }
-    
+
+    /*********************/
+
+    public NewsFeeds insertNewsFeeds(FileItem imageFile , String path ) throws Exception {
+
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        this.setPostID( newsFeedsDAO.insert( this , "NewsFeeds" ) );
+
+        if ( this.getPostID() != null ){
+
+            NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
+            this.setImagePath( newsFeedsImageDAO.insert( this ) );
+
+            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\NewsFeedImages\\" , imageFile );
+            saveImage.start();
+
+
+        }
+
+        return this;
+
+    }
     
     
 }
