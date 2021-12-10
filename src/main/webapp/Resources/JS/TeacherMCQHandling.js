@@ -1,16 +1,23 @@
 const previousElement = document.getElementById( "previousQuestion" );
 const nextElement = document.getElementById( "nextQuestion" );
 const mcqAddPostForm = document.getElementById( "mcqAddPostForm");
+const arrayCount = 10;
+
+let mcqContent = [];
+let arrayQuestionIndex = 0;
+
 
 previousElement.onclick = function (){
 
-    console.log( "clicked previous" );
+    arrayQuestionIndex = ( arrayQuestionIndex - 1 + arrayCount ) % arrayCount;
+    console.log( "clicked previous" , arrayQuestionIndex );
 
 }
 
 nextElement.onclick = function (){
 
-    console.log( "clicked next" );
+    arrayQuestionIndex = ( arrayQuestionIndex + 1 ) % arrayCount;
+    console.log( "clicked next" , arrayQuestionIndex );
 
 }
 
