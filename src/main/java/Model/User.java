@@ -1,10 +1,6 @@
 package Model;
 
-import DAO.AddFriendsDAO;
-import DAO.ClassroomDAO;
-import DAO.FollowsDAO;
-import DAO.FriendRequestDAO;
-import DAO.UserDAO;
+import DAO.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -313,6 +309,9 @@ public class User {
         UserDAO userDAO = new UserDAO();
         JSONArray teacherNameList = userDAO.getNFownerDetails(NFTeacherIDList);
         return teacherNameList;
+    } public String getUserIdFromClass(String id){
+        EnrollDAO enrollDAO = new EnrollDAO();
+        return enrollDAO.getUserIdFromClass(id);
     }
 
 }
