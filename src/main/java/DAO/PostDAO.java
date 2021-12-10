@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PostDAO {
-    public ArrayList<String> getNewsFeedsKeys(String userId){
+    public ArrayList<String> getNewsFeedsID(String userId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         ArrayList<String> NFKeyList = new ArrayList<String>();
