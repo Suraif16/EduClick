@@ -54,8 +54,8 @@ public class Report {
         this.type = type;
     }
     public void report(){
-        ReportInsertDAO reportDAO = new ReportInsertDAO();
-        ReportInsertDAO.insert(this);
+        ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
+        reportInsertDAO.insert(this);
     }
     public Report(Report report){
         this.contentID = report.getContentID();
