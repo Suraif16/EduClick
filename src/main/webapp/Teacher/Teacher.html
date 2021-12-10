@@ -35,7 +35,7 @@
 
                         </a>
 
-                        <input type="button" value="What's on your mind?" id="postButtonInput">
+                        <input type="button" value="What's on your mind?" id="postButtonInput" onclick="showNewsFeedsPostForm()">
 
                     </div>
 
@@ -1006,7 +1006,7 @@
                         <label class="attachmentLabel">
 
                             <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">
-                            <input type="file" accept="image/*">
+                            <input id="inputImage" type="file" accept="image/*">
 
                         </label>
 
@@ -1022,7 +1022,7 @@
 
                 <div class="addNewsFeedFormInputsRows">
 
-                    <input type="button" value="Post">
+                    <input type="button" value="Post" onclick="postNewsFeeds()">
 
                 </div>
 
@@ -1126,6 +1126,7 @@
     <script src="../Resources/JS/Search.js" defer></script>
     <script src="../Resources/JS/TeacherEntrancePageNewsFeedLoad.js" defer></script>
     <script src="../Resources/JS/UserOptionAndReport.js" defer></script>
+    <script src="../Resources/JS/TeacherNewsFeedsPost.js" defer></script>
 
 
 </body>
