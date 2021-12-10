@@ -1194,8 +1194,10 @@ div#mcqAddpostForm{
 div.nextPreviousButton{
 
     flex-basis: 10%;
+    /*background-color: rgba(71, 117, 196, 0.5);*/
     background-color: #4775c4;
     cursor: pointer;
+    display: flex;
 
 }
 
@@ -1214,6 +1216,8 @@ div.nextPreviousButton:active{
 div.navigateButtons{
 
     /*making the buttons to be horizontally and vertically centered*/
+    margin: auto;
+    flex: 1;
 
 }
 
@@ -1255,7 +1259,6 @@ div.singleMCQRowRow{
     margin: 1%;
     padding: 1%;
     color: white;
-    align-content: center;
 
 }
 
