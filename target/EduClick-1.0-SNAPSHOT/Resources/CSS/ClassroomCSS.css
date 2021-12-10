@@ -1179,9 +1179,9 @@ select {
 
 }
 
-div#mcqAddpostForm{
+div#mcqAddPostForm{
     /*A container for previouseQuestion , nextQuestion , and singleMCQQuestion */
-    display: flex;
+    display: none;
     margin: 8% auto auto 23%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     position: absolute;
