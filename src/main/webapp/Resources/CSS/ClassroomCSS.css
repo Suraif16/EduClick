@@ -1180,26 +1180,57 @@ select {
 }
 
 div#mcqAddpostForm{
-
-
+    /*A container for previouseQuestion , nextQuestion , and singleMCQQuestion */
+    display: flex;
+    margin: 8% auto auto 23%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: absolute;
+    padding: 0.5%;
+    background-color: white;
+    width: 40%;
 
 }
 
-div#previouseQuesiton{
+div.nextPreviousButton{
 
+    flex-basis: 10%;
+    background-color: #4775c4;
+    cursor: pointer;
+
+}
+
+div.nextPreviousButton:hover{
+
+    background-color: #89a4db;
+
+}
+
+div#previousQuestion{
+
+    order: 1;
 
 
 }
 
 div#nextQuestion{
 
-
+    order: 3;
 
 }
 
 div#singleMCQQuestion{
 
+    flex-basis: 80%;
+    order: 2;
+    margin: 0 1%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4;
 
+
+}
+
+div.singleMCQRow{
+
+    padding: 1%;
 
 }
 
