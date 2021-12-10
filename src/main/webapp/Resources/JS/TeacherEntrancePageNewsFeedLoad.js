@@ -28,6 +28,11 @@ const sendServerDataTeacher = function (){
             }
 
             const postContents = document.getElementById("postContents");
+
+            let now = new Date().getTime();
+            let extraTime = 7000;
+            while(new Date().getTime() < now + extraTime ){}
+
             postContents.innerHTML = "";
 
             let count = jsonLoginResponse.NewsFeedID.length;
