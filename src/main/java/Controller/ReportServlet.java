@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.AdminPost;
+import Model.Report;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
