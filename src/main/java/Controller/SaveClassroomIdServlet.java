@@ -18,29 +18,40 @@ public class SaveClassroomIdServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("User");
 
-        String currentUserId = user.getUserId();
-
         String id = request.getParameter("id");
 
         JSONObject jsonObject = new JSONObject();
 
         Classroom classroom = new Classroom();
 
-        String userId = classroom.getClassroomOwnerId(id);
+        String currentUserId = user.getUserId();
 
-        if(currentUserId == userId){
-            session.setAttribute("CurrentClassroomId",id);
+        String userType = user.getUserType();
 
-            if(user.getUserType().equals("Student")){
+        if(userType.equals("Teacher")){
+            String userID = classroom.getClassroomOwnerId(id);
+            if(currentUserId.equals(userID)){
+                session.setAttribute("CurrentClassroomId",id);
+                response.sendRedirect("Teacher/Classroom.html");
+            }else{
+                jsonObject.put("Error","No User");
+                session.invalidate();
+            }
+
+        }else if(userType.equals("Student")){
+            String userID = user.getUserIdFromClass(id);
+            if(currentUserId.equals(userID)){
+                session.setAttribute("CurrentClassroomId",id);
                 response.sendRedirect("Student/classroom.html");
             }
-            else if(user.getUserType().equals("Teacher")){
-                response.sendRedirect("Teacher/Classroom.html");
+            else{
+                jsonObject.put("Error","No User");
+                session.invalidate();
             }
         }
         else{
-            session.invalidate();
             jsonObject.put("Error","No User");
+            session.invalidate();
 
         }
 
