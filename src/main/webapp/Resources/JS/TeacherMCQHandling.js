@@ -1,6 +1,7 @@
 const previousElement = document.getElementById( "previousQuestion" );
 const nextElement = document.getElementById( "nextQuestion" );
 const mcqAddPostForm = document.getElementById( "mcqAddPostForm");
+const mcqSubmitButton = document.getElementById( "mcqSubmit" );
 const arrayCount = 10;
 
 let mcqContent = [];
@@ -9,17 +10,40 @@ let arrayQuestionIndex = 0;
 
 previousElement.onclick = function (){
 
+    insertDataIntoArray( false );
     arrayQuestionIndex = ( arrayQuestionIndex - 1 + arrayCount ) % arrayCount;
-    console.log( "clicked previous" , arrayQuestionIndex );
-    console.log( getAllInputs() );
+    getDataFromArrayToForm();
 
 }
 
 nextElement.onclick = function (){
 
-    arrayQuestionIndex = ( arrayQuestionIndex + 1 ) % arrayCount;
-    console.log( "clicked next" , arrayQuestionIndex );
-    console.log( getAllInputs() );
+    insertDataIntoArray( true );
+
+}
+
+const insertDataIntoArray = function ( previousCondition ){
+
+    let jsonInputData = getAllInputs();
+
+    if ( jsonInputData === false ){
+
+        alert("fill the visible field to move to next or previous question");
+
+    }else {
+
+        mcqContent[ arrayQuestionIndex ] = jsonInputData;
+        setInputDataToNull();
+        if ( previousCondition ){
+
+            arrayQuestionIndex = ( arrayQuestionIndex + 1 ) % arrayCount;
+            adjustFormData();
+
+        }
+
+    }
+
+    getDataFromArrayToForm();
 
 }
 
@@ -62,7 +86,7 @@ const getAllInputs = function (){
 
         return {
 
-            "question" : Question,
+            "Question" : Question,
             "Answer1" : answer1,
             "Answer2" : answer2,
             "Answer3" : answer3,
@@ -75,7 +99,76 @@ const getAllInputs = function (){
 
 }
 
+const setInputDataToNull = function (){
+
+    document.getElementById( "mcqQuestion" ).value = null ;
+    document.getElementById( "mcqAnswer1" ).value = null ;
+    document.getElementById( "mcqAnswer2" ).value = null ;
+    document.getElementById( "mcqAnswer3" ).value = null ;
+    document.getElementById( "mcqAnswer4" ).value = null ;
+
+    const radioElements = document.getElementsByName( "correctAnswerMCQ" );
+
+    for (let i = 0; i < radioElements.length; i++) {
+
+       radioElements[i].checked = false;
+
+    }
+
+}
+
+const adjustFormData = function (){
+
+    let questionCount = ( arrayQuestionIndex + 1 );console.log( "question count" , questionCount );
+    document.getElementById( "mcqQuestionLabel" ).innerHTML = "Question " + questionCount +" : ";
+    document.getElementById( "questionCount" ).innerHTML = "Question : " + questionCount + "/10";
+
+    if ( questionCount > 1 ){
+
+        previousElement.style.visibility = "visible";
+
+    }else{
+
+        previousElement.style.visibility = "hidden";
+
+    }
+
+    if ( questionCount === arrayCount ){
+
+        document.getElementById( "mcqSubmit" ).style.display = "flex";
+        nextElement.style.visibility = "hidden";
+
+    }else{
+
+        document.getElementById( "mcqSubmit" ).style.display = "none";
+        nextElement.style.visibility = "visible";
+
+    }
+
+}
+
+const getDataFromArrayToForm = function (){
+
+    let currentArrayElement = mcqContent[ arrayQuestionIndex ];
+
+    document.getElementById( "mcqQuestion" ).value = currentArrayElement[ "Question" ] ;
+    document.getElementById( "mcqAnswer1" ).value = currentArrayElement[ "Answer1" ]  ;
+    document.getElementById( "mcqAnswer2" ).value = currentArrayElement[ "Answer2" ]  ;
+    document.getElementById( "mcqAnswer3" ).value = currentArrayElement[ "Answer3" ]  ;
+    document.getElementById( "mcqAnswer4" ).value = currentArrayElement[ "Answer4" ]  ;
+
+    console.log( currentArrayElement[ "CorrectAnswer" ] , "currect answer values");
+
+    document.getElementById( "correctAnswer" + currentArrayElement[ "CorrectAnswer" ] ).checked = true;
+
+    adjustFormData();
+
+}
+
 const showMcqAddPostForm = function (){
+
+    mcqContent = [];
+    arrayQuestionIndex = 0;
 
     if ( mcqAddPostForm.style.display === "flex" ){
 
@@ -86,5 +179,13 @@ const showMcqAddPostForm = function (){
         mcqAddPostForm.style.display = "flex";
 
     }
+
+}
+
+mcqSubmitButton.onclick = function (){
+
+    insertDataIntoArray( false );
+    console.log( mcqContent );
+    showMcqAddPostForm();
 
 }
