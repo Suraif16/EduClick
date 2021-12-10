@@ -1181,7 +1181,7 @@ select {
 
 div#mcqAddPostForm{
     /*A container for previouseQuestion , nextQuestion , and singleMCQQuestion */
-    display: none;
+    display: flex;
     margin: 8% auto auto 23%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     position: absolute;
@@ -1293,6 +1293,27 @@ div#mcqSubmit{
     flex: 1;
     margin: 1% auto auto auto;
     padding: 1%;
+
+}
+
+div.singleMCQRowRowContent{
+
+    display: flex;
+    font-size: smaller;
+    margin: 1%;
+
+}
+
+div.singleMCQRowRowContent > .singleMCQRowRowContentValue{
+
+    flex: 1;
+
+}
+
+div.singleMCQRowRowContent > .singleMCQRowRowContentValue1{
+
+    flex: 1;
+    text-align: right;
 
 }
 
