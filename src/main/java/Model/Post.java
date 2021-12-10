@@ -76,7 +76,7 @@ public class Post {
     public ArrayList<String> getNewsFeedsID(String userId){
 
         PostDAO postDAO = new PostDAO();
-        ArrayList<String> NFKeyList = postDAO.getNewsFeedsKeys(userId);
+        ArrayList<String> NFKeyList = postDAO.getNewsFeedsID(userId);
         return NFKeyList;
 
 
