@@ -599,6 +599,20 @@
 
     <!-- end of Student Educational post load servlet-->
 
+    <!--Beginning of teacher Report-->
+
+    <servlet>
+        <servlet-name>report</servlet-name>
+        <servlet-class>Controller.ReportServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>report</servlet-name>
+        <url-pattern>/teacher/classroom</url-pattern>
+    </servlet-mapping>
+
+    <!--End of teacher Report-->
+
     <!-- beginning of user filter -->
 
     <filter>
