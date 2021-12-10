@@ -1255,10 +1255,44 @@ div.singleMCQRow{
 div.singleMCQRowRow{
 
     flex: 1;
-    background-color: #4775c4;
     margin: 1%;
     padding: 1%;
+
+}
+
+div.singleMCQRowRowBackground{
+
+    background-color: #4775c4;
     color: white;
+
+}
+
+div#mcqADDPostFormTopic{
+
+    text-align: center;
+
+}
+
+div#mcqQuestionCountAndPostButton{
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+div#questionCount{
+
+    flex: 1;
+    margin: auto;
+    padding: 1%;
+
+}
+
+div#mcqSubmit{
+
+    flex: 1;
+    margin: 1% auto auto auto;
+    padding: 1%;
 
 }
 
