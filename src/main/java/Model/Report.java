@@ -1,5 +1,7 @@
 package Model;
 
+import DAO.ReportDAO;
+
 public class Report {
     private int count;
     private String reportFlag;
@@ -45,5 +47,13 @@ public class Report {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Report(String contentID, String type) {
+        this.contentID = contentID;
+        this.type = type;
+    }
+    public void Report(Report report){
+
     }
 }
