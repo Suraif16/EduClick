@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class ReportServlet extends HttpServlet {
     public String generatedUserID;
@@ -26,8 +24,8 @@ public class ReportServlet extends HttpServlet {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
 
-        String id = request.getParameter("textMsg");
-        String type = request.getParameter("textMsg");
+        String id = request.getParameter("id");
+        String type = request.getParameter("type");
         System.out.println(id);
         System.out.println(type);
 
