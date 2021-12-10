@@ -542,6 +542,20 @@
 
     <!-- end of student follow list load -->
 
+    <!-- beginning of NewsFeeds post insert servlet-->
+
+    <servlet>
+        <servlet-name>NewsFeedsPostInsertServlet</servlet-name>
+        <servlet-class>Controller.NewsFeedsInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewsFeedsPostInsertServlet</servlet-name>
+        <url-pattern>/teacher/NewsFeedsInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of NewsFeeds post insert servlet-->
+
     <!-- beginning of teacher entrance page news feed load -->
 
     <servlet>
