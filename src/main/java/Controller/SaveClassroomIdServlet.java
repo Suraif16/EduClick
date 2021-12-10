@@ -18,6 +18,8 @@ public class SaveClassroomIdServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("User");
 
+        String currentUserId = user.getUserId();
+
         String id = request.getParameter("id");
 
         JSONObject jsonObject = new JSONObject();
@@ -26,7 +28,7 @@ public class SaveClassroomIdServlet extends HttpServlet {
 
         String userId = classroom.getClassroomOwnerId(id);
 
-        if(!userId.equals("0")){
+        if(currentUserId == userId){
             session.setAttribute("CurrentClassroomId",id);
 
             if(user.getUserType().equals("Student")){
@@ -37,7 +39,7 @@ public class SaveClassroomIdServlet extends HttpServlet {
             }
         }
         else{
-
+            session.invalidate();
             jsonObject.put("Error","No User");
 
         }
