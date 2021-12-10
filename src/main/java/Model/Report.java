@@ -57,8 +57,8 @@ public class Report {
     ReportDAO reportDAO = new ReportDAO();
         reportDAO.insert(this);
     }
-    public Report(AdminPost adminPost){
-        this.contentID = adminPost.getContentID();
-        this.type = adminPost.getType();
+    public Report(Report report){
+        this.contentID = report.getContentID();
+        this.type = report.getType();
     }
 }
