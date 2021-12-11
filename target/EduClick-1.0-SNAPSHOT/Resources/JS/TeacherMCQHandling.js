@@ -169,7 +169,8 @@ const showMcqAddPostForm = function (){
 
     mcqContent = [];
     arrayQuestionIndex = 0;
-
+    adjustFormData();
+    setInputDataToNull();
     if ( mcqAddPostForm.style.display === "flex" ){
 
         mcqAddPostForm.style.display = "none";
