@@ -86,13 +86,13 @@ const loadStudentEducationalPosts = function (){
                         '                                </div>' +
                         '                            </div>' +
                         '                        </div>' +
-                        '                        <div style="display: none" class="Marks" id="ans4" onclick="showAnswers(4)">' +
+                        '                        <div style="display: none" class="Marks" id="ans4" >' +
                         '                            <div class="attachment">' +
                         '                                <label class="attachmentLabel">' +
                         '                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">' +
-                        '                                    <input type="file" accept="image/*">' +
+                        '                                    <input id="inputImage" type="file" accept="image/*">' +
                         '                                </label>' +
-                        '                                <input id="comment" type="text" placeholder="   Comments...">' +
+                        '                                <input id="comment'+jsonLoginResponse.EPostContent+'" type="text" placeholder="   Comments...">' +
                         '                                <input type="button" value="Post" class="answerShowButton">' +
                         '                                <input type="button" value="Delete Answer" class="answerShowButton">' +
                         '                            </div>' +
@@ -159,14 +159,14 @@ const loadStudentEducationalPosts = function (){
                         '                                </div>' +
                         '                            </div>' +
                         '                        </div>' +
-                        '                        <div style="display: none" class="Marks" id="ans'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" onclick="showAnswers('+jsonLoginResponse.EPostContent[i].ePost.EPostID+')">' +
+                        '                        <div style="display: none" class="Marks" id="ans'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" >' +
                         '                            <div class="attachment">' +
                         '                                <label class="attachmentLabel">' +
                         '                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">' +
-                        '                                    <input type="file" accept="image/*">' +
+                        '                                    <input id="inputImage" type="file" accept="image/*">' +
                         '                                </label>' +
                         '                                <input id="comment" type="text" placeholder="   Comments...">' +
-                        '                                <input type="button" value="Post" class="answerShowButton">' +
+                        '                                <input type="button" value="Post" class="answerShowButton" onclick="submitAnswers()">' +
                         '                                <input type="button" value="Delete Answer" class="answerShowButton">' +
                         '                            </div>' +
                         '                        </div>' +
@@ -188,4 +188,12 @@ const loadStudentEducationalPosts = function (){
         }
 
     }
+}
+
+const submitAnswers = function(){
+    let images = document.getElementById( "inputImage" ).files;
+    let answers = document.getElementById("comment").value;
+
+    console.log("Answer is : "+answers);
+    // console.log(images)
 }
