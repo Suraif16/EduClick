@@ -15,12 +15,11 @@ public class QuestionDAO {
         try {
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Question VALUES( ? , ? , ? , ? )";
+            String sql = "INSERT INTO Question( Question , Correct_answers , EPostID ) VALUES( ? , ? , ? )";
             PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
-            preparedStatement.setString( 1 , mcq.getQuestionId() );
-            preparedStatement.setString( 2 , mcq.getQuestion() );
-            preparedStatement.setString( 3 , mcq.getCorrectAnswer() );
-            preparedStatement.setString( 4 , epostId );
+            preparedStatement.setString( 1 , mcq.getQuestion() );
+            preparedStatement.setString( 2 , mcq.getCorrectAnswer() );
+            preparedStatement.setString( 3 , epostId );
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
