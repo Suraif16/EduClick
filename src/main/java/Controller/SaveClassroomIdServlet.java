@@ -38,7 +38,8 @@ public class SaveClassroomIdServlet extends HttpServlet {
                 session.invalidate();
             }
 
-        }else if(userType.equals("Student")){
+        }
+        else if(userType.equals("Student")){
             String userID = user.getUserIdFromClass(id);
             if(currentUserId.equals(userID)){
                 session.setAttribute("CurrentClassroomId",id);
