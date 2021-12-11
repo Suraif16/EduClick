@@ -113,10 +113,14 @@ public class handleImageAndPostUploads {
                 }
 
             }
+            System.out.println("hello");
 
             NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime );
 
+            System.out.println("hello1234");
+
             return newsFeeds.insertNewsFeeds( imageFile , path );
+
 
 
         }catch ( Exception e ){
