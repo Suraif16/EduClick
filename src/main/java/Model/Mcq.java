@@ -1,5 +1,8 @@
 package Model;
 
+import DAO.QuestionAnswerValuesDAO;
+import DAO.QuestionDAO;
+
 public class Mcq {
     private String questionId;
     private String question;
@@ -9,6 +12,16 @@ public class Mcq {
     private String answer3;
     private String answer4;
 
+    public Mcq( String question, String correctAnswer, String answer1, String answer2, String answer3, String answer4 ) {
+
+        this.question = question;
+        this.correctAnswer = correctAnswer;
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.answer4 = answer4;
+
+    }
 
     public String getQuestionId() {
         return questionId;
@@ -65,4 +78,25 @@ public class Mcq {
     public void setAnswer4(String answer4) {
         this.answer4 = answer4;
     }
+
+    public void insertQuestionAndAnswer( String mcqPostId){
+
+        QuestionDAO questionDAO = new QuestionDAO();
+        this.setQuestionId( questionDAO.insert( this , mcqPostId ) );
+
+        if ( this.getQuestion() != null ){
+
+            QuestionAnswerValuesDAO questionAnswerValuesDAO = new QuestionAnswerValuesDAO();
+
+            questionAnswerValuesDAO.insert( this.getQuestionId() , "1" , this.getAnswer1() );
+            questionAnswerValuesDAO.insert( this.getQuestionId() , "2" , this.getAnswer2() );
+            questionAnswerValuesDAO.insert( this.getQuestionId() , "3" , this.getAnswer3() );
+            questionAnswerValuesDAO.insert( this.getQuestionId() , "4" , this.getAnswer4() );
+
+        }
+
+
+    }
+
+
 }
