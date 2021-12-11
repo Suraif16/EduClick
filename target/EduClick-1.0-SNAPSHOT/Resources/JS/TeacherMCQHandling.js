@@ -209,7 +209,22 @@ const submitMCQToServer = async function ( mcqContentArracy ){
 
     }
 
+    let httpreq = new XMLHttpRequest();
 
-    console.log( dataString );
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            console.log( "done!!!");
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/mcqPostInsert" , true);
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send( dataString );
+
+
 
 }
