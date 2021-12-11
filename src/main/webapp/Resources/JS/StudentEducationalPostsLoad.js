@@ -139,11 +139,11 @@ const loadStudentEducationalPosts = function (){
                         '                    <div class="postContentContainer">' +
                         '                        <div class="postAnswerButton">' +
                         '                            <div class="answerButton" >' +
-                        '                                <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(5)">' +
+                        '                                <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers('+jsonLoginResponse.EPostContent[i].ePost.EPostID+')">' +
                         '                            </div>' +
                         '                        </div>' +
                         '                        <div class="postContentContainer">' +
-                        '                            <div style="display:none;" class="answersInPost" id="answersInPost5" >' +
+                        '                            <div style="display:none;" class="answersInPost" id="answersInPost'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" >' +
                         '                                <div class="singleAnswer">' +
                         '                                    <div class="textAnswers" id="myComment">' +
                         '                                        This is my Answer !!!!!!!!!' +
@@ -159,7 +159,7 @@ const loadStudentEducationalPosts = function (){
                         '                                </div>' +
                         '                            </div>' +
                         '                        </div>' +
-                        '                        <div style="display: none" class="Marks" id="ans5" onclick="showAnswers(5)">' +
+                        '                        <div style="display: none" class="Marks" id="ans'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" onclick="showAnswers('+jsonLoginResponse.EPostContent[i].ePost.EPostID+')">' +
                         '                            <div class="attachment">' +
                         '                                <label class="attachmentLabel">' +
                         '                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">' +
