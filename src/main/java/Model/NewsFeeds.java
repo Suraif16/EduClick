@@ -67,7 +67,7 @@ public class NewsFeeds extends Post{
     public NewsFeeds insertNewsFeeds(FileItem imageFile , String path ) throws Exception {
 
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
-        this.setPostID( newsFeedsDAO.insert( this , "NewsFeeds" ) );
+        this.setPostID( newsFeedsDAO.insert( this) );
 
         if ( this.getPostID() != null ){
 
@@ -83,6 +83,7 @@ public class NewsFeeds extends Post{
         return this;
 
     }
-    
-    
+
+
+
 }
