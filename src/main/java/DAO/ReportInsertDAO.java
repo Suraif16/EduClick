@@ -1,6 +1,7 @@
 package DAO;
 
 import Database.DBConnectionPool;
+import Model.Admin;
 import Model.AdminPost;
 import Model.Report;
 import Model.User;
@@ -8,7 +9,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ReportInsertDAO {
 
@@ -26,7 +29,7 @@ public class ReportInsertDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            if(report.getType().equals("UserID")){
+            if(report.getType().equals("educationalPostOPtion")){
                  UserID = report.getContentID();
                  AnswerID = "";
                  NF_postID = "";
@@ -76,5 +79,61 @@ public class ReportInsertDAO {
         }
         return generatedReportId;
     }
+    public Admin count(Admin admin) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        int todaycountTeacher = 0;
+        int countTeacher = 0;
+        int countStudent = 0;
+        int todaycountStudent = 0;
 
+        java.util.Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = formatter.format(date);
+        System.out.println("Date Format with MM/dd/yyyy : " + strDate);
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "select UserType,RegistrationDate FROM Users";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String Usertype = resultSet.getString("UserType");
+                String Registrationdate = resultSet.getString("RegistrationDate");
+
+                if (Usertype.equals("Teacher")) {
+                    countTeacher++;
+                    if (strDate.equals(Registrationdate)) {
+                        todaycountTeacher++;
+                    }
+                } else {
+                    countStudent++;
+                    if (strDate.equals(Registrationdate)) {
+                        todaycountStudent++;
+                    }
+                }
+            }
+            admin.setCountTeacher(countTeacher);
+            System.out.println(countTeacher);
+            admin.setTodaycountTeacher(todaycountTeacher);
+            System.out.println(todaycountTeacher);
+            admin.setCountStudent(countStudent);
+            System.out.println(countStudent);
+            admin.setTodaycountStudent(todaycountStudent);
+            System.out.println(todaycountStudent);
+
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+
+        return admin;
+    }
 }
