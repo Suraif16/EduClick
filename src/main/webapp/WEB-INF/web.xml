@@ -613,6 +613,19 @@
 
     <!-- beginning of user filter -->
 
+    <!-- beginning of mcq post load servlet-->
+
+    <servlet>
+        <servlet-name>mcqPostInsert</servlet-name>
+        <servlet-class>Controller.mcqPostInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>mcqPostInsert</servlet-name>
+        <url-pattern>/teacher/mcqPostInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of mcq post load servlet-->
 
     <session-config>
 

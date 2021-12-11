@@ -28,7 +28,7 @@
                 <div class="optionButtonContainers">
 
                     <input type="button" value="Post Questions / Messages" onclick="showAddEducationalPostForm()">
-                    <input type="button" value="Post MCQs">
+                    <input type="button" value="Post MCQs" onclick="showMcqAddPostForm()">
 
                 </div>
 
@@ -2450,6 +2450,98 @@
 
     </div>
 
+    <div id="mcqAddPostForm">
+
+        <div id="previousQuestion" class="singleMCQRow nextPreviousButton">
+
+            <img src="../Resources/Icons/navigate_before_white_24dp.svg" alt="previous" class="navigateButtons">
+
+        </div>
+
+        <div id="nextQuestion" class="singleMCQRow nextPreviousButton">
+
+            <img src="../Resources/Icons/navigate_next_white_24dp.svg" alt="next" class="navigateButtons">
+
+        </div>
+
+        <div id="singleMCQQuestion" class="singleMCQRow">
+
+            <div class="singleMCQRowRow singleMCQRowRowBackground" id="mcqADDPostFormTopic">
+
+                Post MCQs
+
+            </div>
+
+            <div class="singleMCQRowRow">
+
+                <div class="singleMCQRowRowContent">
+
+                    <label for="mcqQuestion" id="mcqQuestionLabel">Question 1 :&nbsp;</label>
+                    <input id="mcqQuestion" type="text" placeholder="What is the square root of 25?" class="singleMCQRowRowContentValue">
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <div class="singleMCQRowRowContentValue1"> Select the correct answer :&nbsp;</div>
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <label for="mcqAnswer1" id="mcqQuestionLabel">Answer 1 :&nbsp;</label>
+                    <input id="mcqAnswer1" type="text" placeholder="Square root of 25 is 7" class="singleMCQRowRowContentValue">
+                    <input type="radio" name="correctAnswerMCQ" value="1" id="correctAnswer1">
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <label for="mcqAnswer2" id="mcqQuestionLabel">Answer 2 :&nbsp;</label>
+                    <input id="mcqAnswer2" type="text" placeholder="Square root of 25 is 9" class="singleMCQRowRowContentValue">
+                    <input type="radio" name="correctAnswerMCQ" value="2" id="correctAnswer2">
+
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <label for="mcqAnswer3" id="mcqQuestionLabel">Answer 3 :&nbsp;</label>
+                    <input id="mcqAnswer3" type="text" placeholder="Square root of 25 is 5" class="singleMCQRowRowContentValue">
+                    <input type="radio" name="correctAnswerMCQ" value="3" id="correctAnswer3">
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <label for="mcqAnswer4" id="mcqQuestionLabel">Answer 4 :&nbsp;</label>
+                    <input id="mcqAnswer4" type="text" placeholder="Square root of 25 is 25" class="singleMCQRowRowContentValue">
+                    <input type="radio" name="correctAnswerMCQ" value="4" id="correctAnswer4">
+
+                </div>
+
+            </div>
+
+            <div class="singleMCQRowRow singleMCQRowRowBackground" id="mcqQuestionCountAndPostButton">
+
+                <div id="questionCount">
+
+                    Question : 1/10
+
+                </div>
+
+                <div id="mcqSubmit">
+
+                    <input type="button" id="mcqSubmitButton" value="Post">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 
@@ -2535,8 +2627,7 @@
     <script src="../Resources/JS/Search.js" defer></script>
     <script src="../Resources/JS/UserOptionAndReport.js" defer></script>
     <script src="../Resources/JS/ClassroomEducationalpost.js" defer></script>
-
-
+    <script src="../Resources/JS/TeacherMCQHandling.js" defer></script>
 
 </body>
 

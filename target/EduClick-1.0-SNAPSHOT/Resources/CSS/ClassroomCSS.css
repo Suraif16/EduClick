@@ -1179,6 +1179,149 @@ select {
 
 }
 
+div#mcqAddPostForm{
+    /*A container for previouseQuestion , nextQuestion , and singleMCQQuestion */
+    display: none;
+    margin: 8% auto auto 23%;
+    /*box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;*/
+    position: fixed;
+    padding: 0.5%;
+    background-color: none;
+    width: 50%;
+
+}
+
+div.nextPreviousButton{
+
+    flex-basis: 10%;
+    /*background-color: rgba(71, 117, 196, 0.5);*/
+    background-color: #4775c4;
+    cursor: pointer;
+
+
+}
+
+div.nextPreviousButton:hover{
+
+    background-color: #89a4db;
+
+}
+
+div.nextPreviousButton:active{
+
+    background-color: #c9d6f5;
+
+}
+
+div.navigateButtons{
+
+    /*making the buttons to be horizontally and vertically centered*/
+    margin: auto;
+    flex: 1;
+
+}
+
+div#previousQuestion{
+
+    order: 1;
+    display: flex;
+    visibility: hidden;
+
+}
+
+div#nextQuestion{
+
+    order: 3;
+    display: flex;
+
+}
+
+div#singleMCQQuestion{
+
+    flex-basis: 80%;
+    order: 2;
+    margin: 0 1%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+
+}
+
+div.singleMCQRow{
+
+    padding: 3%;
+
+}
+
+div.singleMCQRowRow{
+
+    flex: 1;
+    margin: 1%;
+    padding: 1%;
+
+}
+
+div.singleMCQRowRowBackground{
+
+    background-color: #4775c4;
+    color: white;
+
+}
+
+div#mcqADDPostFormTopic{
+
+    text-align: center;
+
+}
+
+div#mcqQuestionCountAndPostButton{
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+div#questionCount{
+
+    flex: 1;
+    margin: auto;
+    padding: 1%;
+    display: flex;
+
+}
+
+div#mcqSubmit{
+
+    flex: 1;
+    margin: 1% auto auto auto;
+    padding: 1%;
+    display: none;
+
+}
+
+div.singleMCQRowRowContent{
+
+    display: flex;
+    font-size: smaller;
+    margin: 1%;
+
+}
+
+div.singleMCQRowRowContent > .singleMCQRowRowContentValue{
+
+    flex: 1;
+
+}
+
+div.singleMCQRowRowContent > .singleMCQRowRowContentValue1{
+
+    flex: 1;
+    text-align: right;
+
+}
+
 @media(max-width: 1100px) {
 
 
