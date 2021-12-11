@@ -32,6 +32,13 @@ public class Post {
 
     }
 
+    public Post( LocalDate localDate , LocalTime localTime ){
+
+        this.date = localDate;
+        this.time = localTime;
+
+    }
+
     public String getPostID() {
         return postID;
     }

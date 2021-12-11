@@ -32,6 +32,7 @@ const loadStudentEducationalPosts = function (){
 
             for( i = 0 ; i < jsonLoginResponse.EPostContent.length ; i++){
                 if(jsonLoginResponse.EPostContent[i].ePost.Type == "Messages"){
+                    console.log("Image Path of post "+i+" : "+jsonLoginResponse.EPostContent[i].eWork.ImagePath)
                     let htmlString =
                         '<div class="post">' +
                         '            <div class="postContentContainer">' +
@@ -85,13 +86,13 @@ const loadStudentEducationalPosts = function (){
                         '                                </div>' +
                         '                            </div>' +
                         '                        </div>' +
-                        '                        <div style="display: none" class="Marks" id="ans4" onclick="showAnswers(4)">' +
+                        '                        <div style="display: none" class="Marks" id="ans4" >' +
                         '                            <div class="attachment">' +
                         '                                <label class="attachmentLabel">' +
                         '                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">' +
-                        '                                    <input type="file" accept="image/*">' +
+                        '                                    <input id="inputImage" type="file" accept="image/*">' +
                         '                                </label>' +
-                        '                                <input id="comment" type="text" placeholder="   Comments...">' +
+                        '                                <input id="comment'+jsonLoginResponse.EPostContent+'" type="text" placeholder="   Comments...">' +
                         '                                <input type="button" value="Post" class="answerShowButton">' +
                         '                                <input type="button" value="Delete Answer" class="answerShowButton">' +
                         '                            </div>' +
@@ -101,6 +102,78 @@ const loadStudentEducationalPosts = function (){
                         '            </div>' +
                         '        </div>'
 
+                    postContents.innerHTML += htmlString;
+                }
+                else if(jsonLoginResponse.EPostContent[i].ePost.Type == "Question"){
+                    htmlString =
+                        '<div class="post">' +
+                        '            <div class="postContentContainer">' +
+                        '                <div class="postProfileSection">' +
+                        '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ jsonLoginResponse.TeacherId +'" class="postProfile">' +
+                        '                        <div class="postProfileImage">' +
+                        '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                        '                        </div>' +
+                        '                        <div class="postProfileName" >'+jsonLoginResponse.TeacherFullName+'</div>' +
+                        '                        <div class="postTimeAndDate">' +
+                                                    jsonLoginResponse.EPostContent[i].ePost.Time+ ' | '+ jsonLoginResponse.EPostContent[i].ePost.Date  +
+                        '                        </div>' +
+                        '                        <div class="userOptions">' +
+                        '                            <input class="userOptionsButton" type="button" value="    " id="postOption5" onclick="showOptionMenu(5,\'postOption\')">' +
+                        '                        </div>' +
+                        '                    </a>' +
+                        '                </div>' +
+                        '            </div>' +
+                        '            <div class="postContentContainer">' +
+                        '                <div class="postData">' +
+                        '                    <div class="postMessage">' +
+                        '                        <!--<div>-->' +
+                                                    jsonLoginResponse.EPostContent[i].eWork.Caption +
+                        '                        <!--</div>-->' +
+                        '                    </div>\n' +
+                        '                    <div class="postPicture">' +
+                        '                        <!--                        To only present the message without the picture, comment the part below-->\n' +
+                        '                        <div class="postPictureImageContainer">' +
+                        '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + jsonLoginResponse.EPostContent[i].eWork.ImagePath + '.jpeg">' +
+                        '                        </div>' +
+                        '                    </div>' +
+                        '                    <div class="postContentContainer">' +
+                        '                        <div class="postAnswerButton">' +
+                        '                            <div class="answerButton" >' +
+                        '                                <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers('+jsonLoginResponse.EPostContent[i].ePost.EPostID+')">' +
+                        '                            </div>' +
+                        '                        </div>' +
+                        '                        <div class="postContentContainer">' +
+                        '                            <div style="display:none;" class="answersInPost" id="answersInPost'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" >' +
+                        '                                <div class="singleAnswer">' +
+                        '                                    <div class="textAnswers" id="myComment">' +
+                        '                                        This is my Answer !!!!!!!!!' +
+                        '                                    </div>' +
+                        '                                    <div class="pictureAnswers">' +
+                        '                                        <a href="#">' +
+                        '                                            <img src="../Resources/Images/answers2.jpg">' +
+                        '                                        </a>' +
+                        '                                    </div>' +
+                        '                                    <div class="Marks">' +
+                        '                                        Your marks is 50%' +
+                        '                                    </div>' +
+                        '                                </div>' +
+                        '                            </div>' +
+                        '                        </div>' +
+                        '                        <div style="display: none" class="Marks" id="ans'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" >' +
+                        '                            <div class="attachment">' +
+                        '                                <label class="attachmentLabel">' +
+                        '                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">' +
+                        '                                    <input id="inputImage" type="file" accept="image/*">' +
+                        '                                </label>' +
+                        '                                <input id="comment" type="text" placeholder="   Comments...">' +
+                        '                                <input type="button" value="Post" class="answerShowButton" onclick="submitAnswers()">' +
+                        '                                <input type="button" value="Delete Answer" class="answerShowButton">' +
+                        '                            </div>' +
+                        '                        </div>' +
+                        '                    </div>' +
+                        '                </div>' +
+                        '            </div>' +
+                        '        </div>'
                     postContents.innerHTML += htmlString;
                 }
             }
@@ -115,4 +188,12 @@ const loadStudentEducationalPosts = function (){
         }
 
     }
+}
+
+const submitAnswers = function(){
+    let images = document.getElementById( "inputImage" ).files;
+    let answers = document.getElementById("comment").value;
+
+    console.log("Answer is : "+answers);
+    // console.log(images)
 }

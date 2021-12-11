@@ -37,6 +37,13 @@ public class EducationalWork extends Post{
 
     }
 
+    public EducationalWork( String type , LocalDate localDate , LocalTime localTime ){
+
+        super( localDate , localTime );
+        this.type = type;
+
+    }
+
     public EducationalWork insertEducationalWork( FileItem imageFile , String path , String classroomId ) throws Exception {
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
@@ -57,6 +64,22 @@ public class EducationalWork extends Post{
         }
 
         return this;
+
+    }
+
+    public String insertMCQ( String classroomId ){
+
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        this.setPostID( educationalPostDAO.insert( this , "MCQ" ) );
+
+        if ( this.getPostID() != null ){
+
+            ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
+            classroomHasEPostDAO.insert( classroomId , getPostID() );
+
+        }
+
+        return getPostID();
 
     }
 
