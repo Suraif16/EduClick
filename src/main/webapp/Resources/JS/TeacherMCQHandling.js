@@ -187,6 +187,29 @@ mcqSubmitButton.onclick = function (){
 
     insertDataIntoArray( false );
     console.log( mcqContent );
+    submitMCQToServer( mcqContent );
     showMcqAddPostForm();
+
+}
+
+const submitMCQToServer = async function ( mcqContentArracy ){
+
+    let dataString = "";
+
+    for ( let i = 0 ; i < 10 ; i++ ) {
+
+        dataString +="mcq" + ( i + 1 ) + "=";
+        dataString += JSON.stringify( mcqContentArracy[i] );
+
+        if ( i !== 9 ){
+
+            dataString+="&";
+
+        }
+
+    }
+
+
+    console.log( dataString );
 
 }
