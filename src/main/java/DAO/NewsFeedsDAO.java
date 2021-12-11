@@ -59,7 +59,7 @@ public class NewsFeedsDAO {
 
 /*****************************/
 
-public String insert(NewsFeeds newsFeeds, String feeds){
+public String insert(NewsFeeds newsFeeds){
 
     DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
     Connection connection = null;
