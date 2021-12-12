@@ -50,11 +50,16 @@ public class ReportInsertDAO {
                  NF_postID = "";
                  EpostID = report.getContentID();
             }
+            System.out.println(UserID);
+            System.out.println(AnswerID);
+            System.out.println(NF_postID);
+            System.out.println(EpostID);
             int Count = 1;
-            String sql = "INSERT INTO Report (Count,UserID,AnswerID,NF_postID,EpostID) VALUES (?,?,?,?)";
+            int i=Integer.parseInt(UserID);
+            String sql = "INSERT INTO Report (Count,UserID,AnswerID,NF_postID,EpostID) VALUES (?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, String.valueOf(Count));
-            preparedStatement.setString(2, UserID);
+            preparedStatement.setInt(1,Count );
+            preparedStatement.setInt(2, i);
             preparedStatement.setString(3, AnswerID);
             preparedStatement.setString(4, NF_postID);
             preparedStatement.setString(5, EpostID);
@@ -79,7 +84,7 @@ public class ReportInsertDAO {
         }
         return generatedReportId;
     }
-    public Admin count(Admin admin) {
+    /*public Admin count(Admin admin) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         int todaycountTeacher = 0;
@@ -135,5 +140,5 @@ public class ReportInsertDAO {
         }
 
         return admin;
-    }
+    }*/
 }
