@@ -64,7 +64,6 @@ public class NewsFeeds extends Post{
         return NFImageList;
     }
 
-    /*********************/
 
     public NewsFeeds insertNewsFeeds(FileItem imageFile , String path ) throws Exception {
 
