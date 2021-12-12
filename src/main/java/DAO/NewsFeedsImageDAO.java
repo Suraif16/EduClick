@@ -67,6 +67,13 @@ public class NewsFeedsImageDAO extends Post {
             PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
             preparedStatement.setString( 1 , newsFeeds.getPostID());
 
+            String i = newsFeeds.getPostID();
+            System.out.println(i + " -> This is newsfeed id ");
+
+           /* String path = newsFeeds.getImagePath();
+            System.out.println( path + " -> This is newsfeeds image path ");*/
+
+
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             if ( resultSet.next() ){
