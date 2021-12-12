@@ -56,9 +56,9 @@ const sendServerDataStudent = function (){
 
                     '                       </div>' +
                     '                       <div class="postPicture">' +
-                    '                           <!--<div class="postPictureImageContainer">-->' +
-                    '                               <!--<img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">-->' +
-                    '                          <!-- </div>-->' +
+                    '                           <div class="postPictureImageContainer">' +
+                    '                               <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg >' + jsonResponse.NewsFeed.imagePath + '.jpeg">'+
+                    '                           </div>' +
                     '                       </div>' +
                     '                     </div>' +
                     '                  </div>' +
