@@ -2,6 +2,7 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.NewsFeeds;
+import Model.Post;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -9,7 +10,7 @@ import org.json.JSONObject;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class NewsFeedsImageDAO {
+public class NewsFeedsImageDAO extends Post {
 
     public JSONArray getImagePath(ArrayList<String> newsFeedsIDList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -62,10 +63,9 @@ public class NewsFeedsImageDAO {
         try{
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO News_Feed_Image( NFPostID) VALUES( ? , ? )";
+            String sql = "INSERT INTO News_Feed_Image( NFPostID ) VALUES( ? )";
             PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
-            preparedStatement.setString( 1 , newsFeeds.getPostID() );
-            preparedStatement.setString( 2 , newsFeeds.getCaption() );
+            preparedStatement.setString( 1 , newsFeeds.getPostID());
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
