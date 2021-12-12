@@ -71,8 +71,6 @@ public class handleImageAndPostUploads {
     }
 
 
-    /****************/
-
     public static NewsFeeds uploadNewsFeedsImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime ){
 
         String message = "";
@@ -96,11 +94,7 @@ public class handleImageAndPostUploads {
 
                         message = new String( bytes );
 
-                    }/*else if ( file.getFieldName().equals( "type" ) ){
-
-                        type = new String( bytes );
-
-                    }*/
+                    }
 
                     inputStream.close();
 
@@ -112,11 +106,9 @@ public class handleImageAndPostUploads {
                 }
 
             }
-            System.out.println("hello");
 
             NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime );
 
-            System.out.println("hello1234");
 
             return newsFeeds.insertNewsFeeds( imageFile , path );
 
