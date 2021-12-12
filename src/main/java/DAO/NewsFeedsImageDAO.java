@@ -70,9 +70,6 @@ public class NewsFeedsImageDAO extends Post {
             String i = newsFeeds.getPostID();
             System.out.println(i + " -> This is newsfeed id ");
 
-           /* String path = newsFeeds.getImagePath();
-            System.out.println( path + " -> This is newsfeeds image path ");*/
-
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
