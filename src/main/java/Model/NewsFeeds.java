@@ -23,6 +23,8 @@ public class NewsFeeds extends Post{
 
     }
 
+
+
     public String getImagePath() {
         return imagePath;
     }
@@ -72,7 +74,7 @@ public class NewsFeeds extends Post{
         if ( this.getPostID() != null ){
 
             NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
-            this.setImagePath( newsFeedsImageDAO.insert( this ) );
+            this.setImagePath( newsFeedsImageDAO.insert(this) );
 
             Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\NewsFeedImages\\" , imageFile );
             saveImage.start();
@@ -83,7 +85,6 @@ public class NewsFeeds extends Post{
         return this;
 
     }
-
 
 
 }
