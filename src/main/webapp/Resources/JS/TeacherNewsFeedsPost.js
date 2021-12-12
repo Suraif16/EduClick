@@ -69,7 +69,7 @@ const postNewsFeeds = function (){
 
             httpreq.open("POST","/EduClick_war_exploded/teacher/NewsFeedsInsert" , true );
             httpreq.send( formData );
-            console.log("ppp");
+
 
         }else{
 
@@ -86,7 +86,7 @@ const postNewsFeeds = function (){
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
-            console.log( "omggggggg" );
+            console.log( "success" );
 
 
 
