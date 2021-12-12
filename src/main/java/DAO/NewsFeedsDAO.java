@@ -57,7 +57,7 @@ public class NewsFeedsDAO {
         return jsonArray;
     }
 
-/*****************************/
+
 
 public String insert(NewsFeeds newsFeeds){
 
