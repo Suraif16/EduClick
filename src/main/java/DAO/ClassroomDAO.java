@@ -178,4 +178,28 @@ public class ClassroomDAO {
         return classroomList;
     }*/
 
+    public String getClassroomOwnderId(String classroomId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String id = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT UserID FROM Classroom WHERE ClassroomID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1, classroomId );
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                id = resultSet.getString("UserID");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        return id;
+    }
+
 }

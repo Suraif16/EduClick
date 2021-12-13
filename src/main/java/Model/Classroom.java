@@ -120,6 +120,10 @@ public class Classroom {
         return classroomHasEPostDAO.getEpostsIds(classroomId);
 
     }
+    public String getClassroomOwnerId(String classroomId){
+        ClassroomDAO classroomDAO = new ClassroomDAO();
+        return classroomDAO.getClassroomOwnderId(classroomId);
+    }
 
 
 }
