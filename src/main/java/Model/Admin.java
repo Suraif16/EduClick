@@ -77,7 +77,7 @@ public class Admin {
     public Admin() {
 
     }
-    
+
     public Admin getCount(){
         UserDAO admindao = new UserDAO();
         return admindao.count(this);
