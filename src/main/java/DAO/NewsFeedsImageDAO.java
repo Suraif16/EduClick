@@ -66,10 +66,10 @@ public class NewsFeedsImageDAO extends Post {
             String sql = "INSERT INTO News_Feed_Image( NFPostID ) VALUES( ? )";
             PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
             preparedStatement.setString( 1 , newsFeeds.getPostID());
+            preparedStatement.execute();
 
             String i = newsFeeds.getPostID();
             System.out.println(i + " -> This is newsfeed id ");
-
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
