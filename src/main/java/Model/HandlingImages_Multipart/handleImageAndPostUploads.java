@@ -1,5 +1,6 @@
 package Model.HandlingImages_Multipart;
 
+import Model.Answers;
 import Model.EducationalWork;
 import Model.NewsFeeds;
 import org.apache.commons.fileupload.FileItem;
@@ -14,10 +15,66 @@ import java.util.List;
 
 public class handleImageAndPostUploads {
 
-    public static EducationalWork uploadEPostImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime , String classroomId ){
+    public static EducationalWork uploadEPostImages(HttpServletRequest request, String path, LocalDate localDate, LocalTime localTime, String classroomId) {
 
         String type = "";
         String message = "";
+        ServletFileUpload servletFileUpload = new ServletFileUpload(new DiskFileItemFactory());
+
+        try {
+
+            List<FileItem> files = servletFileUpload.parseRequest(request);
+
+            FileItem imageFile = null;
+
+            for (FileItem file : files) {
+
+                if (file.isFormField()) {
+
+                    InputStream inputStream = file.getInputStream();
+                    byte[] bytes = new byte[inputStream.available()];
+                    inputStream.read(bytes);
+
+                    if (file.getFieldName().equals("message")) {
+
+                        message = new String(bytes);
+
+                    } else if (file.getFieldName().equals("type")) {
+
+                        type = new String(bytes);
+
+                    }
+
+                    inputStream.close();
+
+
+                } else {
+
+                    imageFile = file;
+
+                }
+
+            }
+
+            EducationalWork educationalWork = new EducationalWork(message, type, localDate, localTime);
+
+            return educationalWork.insertEducationalWork(imageFile, path, classroomId);
+
+
+        } catch (Exception e) {
+
+            System.out.println(e);
+
+        }
+
+        return null;
+
+    }
+
+    public static Answers uploadEPostAnswersImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime , String userId ){
+
+        String answer = "";
+        String epostId = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
 
         try{
@@ -34,13 +91,13 @@ public class handleImageAndPostUploads {
                     byte[] bytes = new byte[ inputStream.available() ];
                     inputStream.read( bytes );
 
-                    if ( file.getFieldName().equals( "message" ) ){
+                    if ( file.getFieldName().equals( "answers" ) ){
 
-                        message = new String( bytes );
+                        answer = new String( bytes );
 
-                    }else if ( file.getFieldName().equals( "type" ) ){
+                    }else if ( file.getFieldName().equals( "ePostId" ) ){
 
-                        type = new String( bytes );
+                        epostId = new String( bytes );
 
                     }
 
@@ -54,10 +111,15 @@ public class handleImageAndPostUploads {
                 }
 
             }
+            System.out.println("Answer is : "+answer);
+            System.out.println("EPostID is : "+epostId);
 
-            EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime );
+            Answers answers = new Answers( answer , epostId , localDate , localTime , userId );
 
-            return educationalWork.insertEducationalWork( imageFile , path , classroomId );
+            answers.setAnswer(answer);
+            answers.setQuestionId(epostId);
+
+            return answers.insertAnswers( imageFile , path );
 
 
         }catch ( Exception e ){
@@ -69,7 +131,6 @@ public class handleImageAndPostUploads {
         return null;
 
     }
-
 
     public static NewsFeeds uploadNewsFeedsImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime ){
 
@@ -123,5 +184,6 @@ public class handleImageAndPostUploads {
         return null;
 
     }
+
 
 }
