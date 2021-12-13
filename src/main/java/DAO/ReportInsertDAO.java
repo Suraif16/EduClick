@@ -1,16 +1,10 @@
 package DAO;
 
 import Database.DBConnectionPool;
-import Model.Admin;
-import Model.AdminPost;
 import Model.Report;
-import Model.User;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class ReportInsertDAO {
@@ -59,11 +53,10 @@ public class ReportInsertDAO {
             String sql = "INSERT INTO Report (Count,UserID,AnswerID,NF_postID,EpostID) VALUES (?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1,Count );
-            preparedStatement.setInt(2, i);
+            preparedStatement.setString(2, UserID);//it didnt work
             preparedStatement.setString(3, AnswerID);
             preparedStatement.setString(4, NF_postID);
             preparedStatement.setString(5, EpostID);
-            //preparedStatement.setString(2, String.valueOf(report.getDate()));
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -84,48 +77,32 @@ public class ReportInsertDAO {
         }
         return generatedReportId;
     }
-    /*public Admin count(Admin admin) {
+    public Report select(Report report) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        int todaycountTeacher = 0;
-        int countTeacher = 0;
-        int countStudent = 0;
-        int todaycountStudent = 0;
 
-        java.util.Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String strDate = formatter.format(date);
-        System.out.println("Date Format with MM/dd/yyyy : " + strDate);
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select UserType,RegistrationDate FROM Users";
+            String sql = "select ReportID,Count,UserID,AnswerID,NF_postID,EpostID FROM Report";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                String Usertype = resultSet.getString("UserType");
-                String Registrationdate = resultSet.getString("RegistrationDate");
+                String ReportID = resultSet.getString("ReportID");
+                Integer Count = resultSet.getInt("Count");
+                String UserID = resultSet.getString("UserID");
+                String AnswerID = resultSet.getString("AnswerID");
+                String NF_postID = resultSet.getString("NF_postID");
+                String EpostID = resultSet.getString("EpostID");
 
-                if (Usertype.equals("Teacher")) {
-                    countTeacher++;
-                    if (strDate.equals(Registrationdate)) {
-                        todaycountTeacher++;
-                    }
-                } else {
-                    countStudent++;
-                    if (strDate.equals(Registrationdate)) {
-                        todaycountStudent++;
-                    }
-                }
+                report.setReportID(ReportID);
+                report.setCount(Count);
+                report.setUserID(UserID);
+                report.setAnswerID(AnswerID);
+                report.setNF_postID(NF_postID);
+                report.setEpostID(EpostID);
             }
-            admin.setCountTeacher(countTeacher);
-            System.out.println(countTeacher);
-            admin.setTodaycountTeacher(todaycountTeacher);
-            System.out.println(todaycountTeacher);
-            admin.setCountStudent(countStudent);
-            System.out.println(countStudent);
-            admin.setTodaycountStudent(todaycountStudent);
-            System.out.println(todaycountStudent);
+
 
             resultSet.close();
             preparedStatement.close();
@@ -139,6 +116,6 @@ public class ReportInsertDAO {
             }
         }
 
-        return admin;
-    }*/
+        return report;
+    }
 }
