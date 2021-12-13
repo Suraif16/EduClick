@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.AdminPost;
 import Model.Report;
 import org.json.JSONObject;
 
@@ -28,9 +27,16 @@ public class ReportServlet extends HttpServlet {
         String type = request.getParameter("type");
         System.out.println(id);
         System.out.println(type);
+        Report report1 = new Report();
+        report1 = report1.search();
 
-        Report report = new Report(id,type);
-        report.report();
+        if (id.equals(report1.getUserID()) || id.equals(report1.getAnswerID()) || id.equals(report1.getNF_postID()) || id.equals(report1.getEpostID())){
+
+        }else {
+            Report report = new Report(id,type);
+            report.report();
+        }
+
         out.write(jsonObject.toString());
         out.close();
     }
