@@ -1,5 +1,6 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
+let status ;
 
 
 function showRightPanel(){
@@ -189,14 +190,57 @@ function showMcqResult( id ){
 
 }
 
+const checkEnableOrDisable = function (){
+
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function (){
+
+        if (this.readyState === 4 && this.status === 200){
+            return completeEnabiltyCheck( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+        }
+
+    }
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/checkStudentEnableOrDisable" , true);
+    httpreq.send();
+
+    function completeEnabiltyCheck( httpreq ){
+
+
+
+        let jsonStatusResponse = JSON.parse(httpreq.responseText);
+
+
+        console.log(jsonStatusResponse.Status)
+
+        if( jsonStatusResponse.serverResponse === "null Session" || jsonStatusResponse.serverResponse === "Not Allowed"){
+            window.location.replace("/EduClick_war_exploded/Login.html");
+
+        }else if(jsonStatusResponse.serverResponse === "Allowed") {
+            console.log(jsonStatusResponse.Status)
+            if(jsonStatusResponse.Status==="Enable"){
+                loadStudentEducationalPosts();
+            }else if(jsonStatusResponse.Status==="Disable"){
+                console.log("Case case case")
+            }
+            status = jsonStatusResponse.Status;
+        }else{
+            alert("something went wrong!!!");
+        }
+
+    }
+
+}
+
 document.onreadystatechange = function (){
 
+
     if ( document.readyState === 'complete' ){
+
         /* when the document is loaded and complete this function will run*/
         checkEnableOrDisable();
         sendNameData();
         getClassroomList();
-        loadStudentEducationalPosts();
+
 
     }
 
@@ -239,38 +283,6 @@ document.onreadystatechange = function (){
 
 
 }*/
-
-const checkEnableOrDisable = function (){
-
-    let httpreq = new XMLHttpRequest();
-    httpreq.onreadystatechange = function (){
-
-        if (this.readyState === 4 && this.status === 200){
-            completeEnabiltyCheck( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-        }
-
-    }
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/checkStudentEnableOrDisable" , true);
-    httpreq.send();
-
-    function completeEnabiltyCheck( httpreq ){
-
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
-
-
-        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonLoginResponse.serverResponse === "Allowed") {
-
-
-        }else{
-            alert("something went wrong!!!");
-        }
-
-    }
-
-}
 
 const sendNameData = function (){
     console.log("Firstname loaded!!")
