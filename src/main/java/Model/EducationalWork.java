@@ -1,13 +1,12 @@
 package Model;
 
-import DAO.ClassroomHasEPostDAO;
 import DAO.EducationalPostDAO;
-import DAO.EducationalWorkDAO;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class EducationalWork extends Post{
 
@@ -47,39 +46,26 @@ public class EducationalWork extends Post{
     public EducationalWork insertEducationalWork( FileItem imageFile , String path , String classroomId ) throws Exception {
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        this.setPostID( educationalPostDAO.insert( this , "EducationalWork" ) );
 
-        if ( this.getPostID() != null ){
+        EducationalWork educationalWork = educationalPostDAO.insertEducationalWork( this , "EducationalWork" , classroomId );
 
-            EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
-            this.setImagePath( educationalWorkDAO.insert( this ) );
+        if ( educationalWork != null ){
 
-            ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
-            classroomHasEPostDAO.insert( classroomId , getPostID() );
-
-            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
+            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( educationalWork.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
             saveImage.start();
-
 
         }
 
-        return this;
+
+
+        return educationalWork;
 
     }
 
-    public String insertMCQ( String classroomId ){
+    public void insertMCQEducationalWork( String classroomId , List< Mcq > mcq ){
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        this.setPostID( educationalPostDAO.insert( this , "MCQ" ) );
-
-        if ( this.getPostID() != null ){
-
-            ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
-            classroomHasEPostDAO.insert( classroomId , getPostID() );
-
-        }
-
-        return getPostID();
+        educationalPostDAO.insertMCQ( this , "MCQ" , classroomId , mcq );
 
     }
 

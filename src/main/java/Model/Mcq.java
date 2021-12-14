@@ -79,24 +79,14 @@ public class Mcq {
         this.answer4 = answer4;
     }
 
-    public void insertQuestionAndAnswer( String mcqPostId){
+    public String getAnswerI( int i ){
 
-        QuestionDAO questionDAO = new QuestionDAO();
-        this.setQuestionId( questionDAO.insert( this , mcqPostId ) );
-
-        if ( this.getQuestion() != null ){
-
-            QuestionAnswerValuesDAO questionAnswerValuesDAO = new QuestionAnswerValuesDAO();
-
-            questionAnswerValuesDAO.insert( this.getQuestionId() , "1" , this.getAnswer1() );
-            questionAnswerValuesDAO.insert( this.getQuestionId() , "2" , this.getAnswer2() );
-            questionAnswerValuesDAO.insert( this.getQuestionId() , "3" , this.getAnswer3() );
-            questionAnswerValuesDAO.insert( this.getQuestionId() , "4" , this.getAnswer4() );
-
-        }
-
+        if ( i == 0 ){ return this.answer1; }
+        else if ( i == 1 ){ return this.answer2; }
+        else if ( i == 2 ){ return this.answer3; }
+        else if ( i == 3 ){ return this.answer4; }
+        else { return null; }
 
     }
-
 
 }
