@@ -3,6 +3,7 @@ package Model;
 import DAO.EducationalPostDAO;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -27,6 +28,12 @@ public class EducationalWork extends Post{
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public EducationalWork(){
+
+
+
     }
 
     public EducationalWork(String message , String type , LocalDate localDate , LocalTime localTime ){
@@ -66,6 +73,13 @@ public class EducationalWork extends Post{
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
         educationalPostDAO.insertMCQ( this , "MCQ" , classroomId , mcq );
+
+    }
+
+    public List<JSONObject> selectEducationalPost( String classroomId ){
+
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        return educationalPostDAO.select( classroomId );
 
     }
 

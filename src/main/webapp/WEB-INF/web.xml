@@ -669,6 +669,21 @@
 
     <!-- end of Educational post answer load servlet-->
 
+
+    <!-- beginning of select E post classroom servlet-->
+
+    <servlet>
+        <servlet-name>SelectEPostClassroom</servlet-name>
+        <servlet-class>Controller.SelectEPostClassroomServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectEPostClassroom</servlet-name>
+        <url-pattern>/teacher/selectEPostClassroom</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select E post classroom servlet-->
+
     <!-- beginning of Student classroom enable/disable check servlet-->
 
     <servlet>
@@ -682,6 +697,7 @@
     </servlet-mapping>
 
     <!-- end of EStudent classroom enable/disable check servlet-->
+
 
     <session-config>
 

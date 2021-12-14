@@ -3,6 +3,7 @@ package DAO;
 import Database.DBConnectionPool;
 import Model.EducationalWork;
 import Model.Mcq;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.sql.*;
@@ -303,23 +304,148 @@ public class EducationalPostDAO {
         return ePostIdList;
     }
 
-    public void select(){
+    public List<JSONObject> select(String classroomId ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
+        List< JSONObject > ePostList = new ArrayList<>();
+
+        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement2 = null;
+        PreparedStatement preparedStatement3 = null;
+        PreparedStatement preparedStatement4 = null;
+
+        ResultSet resultSet = null;
+        ResultSet resultSet2 = null;
+        ResultSet resultSet3 = null;
+        ResultSet resultSet4 = null;
 
         try{
 
             connection = dbConnectionPool.dataSource.getConnection();
-             connection.setAutoCommit( false );
-            String sql = "SELECT * FROM EducationalPost";
+            connection.setAutoCommit( false );
+            String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date , Time DESC LIMIT 20 ";
+
+            String sql2 = "SELECT ImagePath , Caption FROM EducationalWork Where EPostID = ?";
+            preparedStatement2 = connection.prepareStatement( sql2 );
+
+            String sql3 = "SELECT QuestionID , Question , Correct_answers FROM Question WHERE EPostID = ?";
+            preparedStatement3 = connection.prepareStatement( sql3 );
+
+            String sql4 = "SELECT Answer_no , Answer FROM Question_Answer_Value WHERE QuestionID = ?";
+            preparedStatement4 = connection.prepareStatement( sql4 );
+
+            preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , classroomId );
+            resultSet = preparedStatement.executeQuery();
+
+            while( resultSet.next() ){
+
+                JSONObject singleEPost = new JSONObject();
+                singleEPost.put( "EpostId" , resultSet.getString( 1 ) );
+                singleEPost.put( "date" , resultSet.getString( 2 ) );
+                singleEPost.put( "time" , resultSet.getString( 3 ) );
+                singleEPost.put( "EPtype" , resultSet.getString( 4 ) );
+                singleEPost.put( "type" , resultSet.getString( 5 ) );
+
+                if ( resultSet.getString( 4 ).equals("EducationalWork")){
+
+
+                    preparedStatement2.setString( 1 , ( String ) singleEPost.get( "EpostId" ) );
+                    resultSet2 = preparedStatement2.executeQuery();
+
+                    if ( resultSet2.next() ){
+
+                        singleEPost.put( "imagePath" , resultSet2.getString( 1 ) );
+                        singleEPost.put( "caption" , resultSet2.getString( 2 ) );
+
+                    }
+
+                }else if ( resultSet.getString( 4 ).equals( "MCQ" ) ){
+
+
+                    preparedStatement3.setString( 1 , ( String ) singleEPost.get( "EpostId" ) );
+                    resultSet3 = preparedStatement3.executeQuery();
+
+                    List< JSONObject > questionList = new ArrayList<>();
+
+                    while ( resultSet3.next() ){
+
+                        JSONObject singleQuestion = new JSONObject();
+                        singleQuestion.put( "questionId" , resultSet3.getString( 1 ) );
+                        singleQuestion.put( "question" , resultSet3.getString( 2 ) );
+                        singleQuestion.put( "correctAnswer" , resultSet3.getString( 3 ) );
+
+
+                        preparedStatement4.setString( 1 , ( String ) singleQuestion.get( "questionId" ) );
+                        resultSet4 = preparedStatement4.executeQuery();
+
+                        int i = 1;
+
+                        while ( resultSet4.next() ){
+
+                            String keyAnswerName = "answer" + i;
+                            String keyAnswerNoName = "answerNo" + i;
+                            singleQuestion.put( keyAnswerNoName , resultSet4.getString( 1 ) );
+                            singleQuestion.put( keyAnswerName , resultSet4.getString( 2 ) );
+                            i++;
+
+                        }
+
+                        questionList.add( singleQuestion );
+
+                    }
+
+                    JSONArray jsonQuestionList = new JSONArray( questionList );
+
+                    singleEPost.put( "questionList" , jsonQuestionList );
+
+                }
+
+                ePostList.add( singleEPost );
+
+            }
+
+            connection.commit();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+
+            try {
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException ex ){
+
+                ex.printStackTrace();
+
+            }
+
         }
         finally {
-            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+            try{
+
+                if ( resultSet != null )resultSet.close();
+                if ( resultSet2 != null )resultSet2.close();
+                if ( resultSet3 != null )resultSet2.close();
+                if ( resultSet4 != null )resultSet2.close();
+
+                if ( preparedStatement != null )preparedStatement.close();
+                if ( preparedStatement2 != null )preparedStatement2.close();
+                if ( preparedStatement3 != null )preparedStatement3.close();
+                if ( preparedStatement4 != null )preparedStatement3.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
         }
+
+        return ePostList;
+
 
     }
 
