@@ -162,3 +162,38 @@ const displaymcqPost = function (){
 
 
 }
+
+const selectEPostFromServer = function (){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.status === 200 && this.readyState === 4 ){
+
+            displayAll( this );
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/" , true );
+    httpreq.send();
+
+    const displayAll = function ( httpreq ){
+
+        let jsonResponse = JSON.parse(httpreq.responseText);
+
+        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+            window.location.replace("/EduClick_war_exploded/Login.html");
+        }else if(jsonResponse.serverResponse === "Allowed") {
+
+
+
+        }else{
+            alert("something went wrong!!!");
+        }
+
+    }
+
+}
