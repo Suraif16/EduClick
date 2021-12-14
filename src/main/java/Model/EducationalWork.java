@@ -79,22 +79,6 @@ public class EducationalWork extends Post{
 
     }
 
-    public String insertMCQ( String classroomId ){
-
-        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        this.setPostID( educationalPostDAO.insert( this , "MCQ" ) );
-
-        if ( this.getPostID() != null ){
-
-            ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
-            classroomHasEPostDAO.insert( classroomId , getPostID() );
-
-        }
-
-        return getPostID();
-
-    }
-
     public void insertMCQEducationalWork( String classroomId , List< Mcq > mcq ){
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
