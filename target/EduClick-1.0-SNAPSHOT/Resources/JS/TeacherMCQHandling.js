@@ -119,7 +119,7 @@ const setInputDataToNull = function (){
 
 const adjustFormData = function (){
 
-    let questionCount = ( arrayQuestionIndex + 1 );console.log( "question count" , questionCount );
+    let questionCount = ( arrayQuestionIndex + 1 );
     document.getElementById( "mcqQuestionLabel" ).innerHTML = "Question " + questionCount +" : ";
     document.getElementById( "questionCount" ).innerHTML = "Question : " + questionCount + "/10";
 

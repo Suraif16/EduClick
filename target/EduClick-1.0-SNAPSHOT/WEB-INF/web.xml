@@ -542,6 +542,20 @@
 
     <!-- end of student follow list load -->
 
+    <!-- beginning of NewsFeeds post insert servlet-->
+
+    <servlet>
+        <servlet-name>NewsFeedsPostInsertServlet</servlet-name>
+        <servlet-class>Controller.NewsFeedsInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewsFeedsPostInsertServlet</servlet-name>
+        <url-pattern>/teacher/NewsFeedsInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of NewsFeeds post insert servlet-->
+
     <!-- beginning of teacher entrance page news feed load -->
 
     <servlet>
@@ -626,6 +640,20 @@
     </servlet-mapping>
 
     <!-- end of mcq post load servlet-->
+
+    <!-- beginning of Educational post answers insert servlet-->
+
+    <servlet>
+        <servlet-name>EducationalPostAnswersInsertServlet</servlet-name>
+        <servlet-class>Controller.EducationalPostAnswersInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EducationalPostAnswersInsertServlet</servlet-name>
+        <url-pattern>/student/EducationalPostAnswersInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Educational post answers insert servlet-->
 
     <session-config>
 
