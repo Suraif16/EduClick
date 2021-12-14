@@ -23,8 +23,6 @@ public class StudentEnableOrDisableCheckServlet extends HttpServlet {
 
         jsonObject.put( "serverResponse" , "Allowed" );
 
-        System.out.println("Enable chack ekata awooooo");
-
         HttpSession session = request.getSession( false );
 
         User user = (User) session.getAttribute("User");
