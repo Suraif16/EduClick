@@ -655,6 +655,20 @@
 
     <!-- end of Educational post answers insert servlet-->
 
+    <!-- beginning of Educational post answer load servlet-->
+
+    <servlet>
+        <servlet-name>StudentEducationalPostAnswerLoadServlet</servlet-name>
+        <servlet-class>Controller.StudentEducationalPostAnswerLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentEducationalPostAnswerLoadServlet</servlet-name>
+        <url-pattern>/student/studentEducationalPostAnswerLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Educational post answer load servlet-->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes

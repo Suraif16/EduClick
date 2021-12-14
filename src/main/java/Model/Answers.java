@@ -5,6 +5,7 @@ import DAO.AnswerStudentPostRelationshipDAO;
 import DAO.EDWAnswersDAO;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -34,9 +35,6 @@ public class Answers {
         this.userId = userId;
     }
 
-    public Answers() {
-
-    }
 
     public String getAnswer() {
         return answer;
@@ -85,6 +83,12 @@ public class Answers {
         this.time = time;
         this.userId = userId;
     }
+
+    public Answers(String ePostId, String userId) {
+        this.questionId = ePostId;
+        this.userId = userId;
+    }
+
     public Answers insertAnswers(FileItem imageFile , String path){
 
         AnswerDAO answerDAO = new AnswerDAO();
@@ -102,5 +106,21 @@ public class Answers {
         }
         return this;
 
+    }
+
+    public String getAnswerId(){
+        System.out.println(this.getQuestionId());
+        System.out.println(this.getUserId());
+        AnswerStudentPostRelationshipDAO answerStudentPostRelationshipDAO = new AnswerStudentPostRelationshipDAO();
+        return answerStudentPostRelationshipDAO.getAnswerId(this);
+    }
+
+    public JSONObject getAnswerDetails(String answerId){
+        AnswerDAO answerDAO = new AnswerDAO();
+        return answerDAO.selectAnswerDetails(answerId);
+    }
+    public JSONObject getAnswerContent(String answerId){
+         EDWAnswersDAO edwAnswersDAO = new EDWAnswersDAO();
+         return edwAnswersDAO.getAnswerContent(answerId);
     }
 }

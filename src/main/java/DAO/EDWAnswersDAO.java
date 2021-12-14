@@ -2,6 +2,7 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.Answers;
+import org.json.JSONObject;
 
 import java.sql.*;
 
@@ -37,5 +38,35 @@ public class EDWAnswersDAO {
         }
         System.out.println("case eka nmekada? : "+generatedImageId);
         return generatedImageId;
+    }
+    public JSONObject getAnswerContent(String answerId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT Content,ImagePath FROM EDW_Answers WHERE AnswerID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,answerId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                jsonObject.put("Content",resultSet.getString("Content"));
+                jsonObject.put("ImagePath",resultSet.getString("ImagePath"));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+        return jsonObject;
     }
 }
