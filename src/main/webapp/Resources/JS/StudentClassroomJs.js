@@ -65,6 +65,97 @@ function showAnswers( id ){
 
         com.style.display = "flex";
 
+        console.log("ID is loading cerrr : "+id)
+
+        let httpreq = new XMLHttpRequest();
+        httpreq.onreadystatechange = function (){
+
+            if (this.readyState === 4 && this.status === 200){
+                completeAnswerLoad( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            }
+
+        }
+
+        httpreq.open( "POST" , "/EduClick_war_exploded/student/studentEducationalPostAnswerLoad" , true);
+        httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpreq.send("ePostId=" + id);
+
+
+        function completeAnswerLoad( httpreq ){
+            let jsonAnswerLoadResponse = JSON.parse( httpreq.responseText );
+            if( jsonAnswerLoadResponse.serverResponse === "null Session" || jsonAnswerLoadResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonAnswerLoadResponse.serverResponse === "Allowed") {
+
+                console.log("Danata everything is okay cerrrrrrr")
+                console.log(jsonAnswerLoadResponse.Answered)
+
+                let answersInPost = "answersInPost"+id;
+                let answer = document.getElementById(answersInPost);
+                let postTextBox = "ans"+id;
+                let textBoxId = document.getElementById(postTextBox);
+                let markText = "";
+
+                if(jsonAnswerLoadResponse.AnswerDetails.Marks == null){
+                    markText = "Your teacher has not marked your answer yet";
+                }else{
+                    markText = "Your mark is "+jsonAnswerLoadResponse.AnswerDetails.Marks+"%";
+                }
+                console.log("Mark text : "+markText)
+
+                if(jsonAnswerLoadResponse.Answered=="Yes"){
+
+                    answer.innerHTML = "";
+
+                    let htmlString =
+                        '<div class="singleAnswer">' +
+                        '                                    <div class="textAnswers" id="myComment">' +
+                        jsonAnswerLoadResponse.AnswerContent.Content +
+                        '                                    </div>' +
+                        '                                    <div class="pictureAnswers">' +
+                        '                                        <a href="#">' +
+                        '                                            <img src="../Resources/Images/AnswerImages/' + jsonAnswerLoadResponse.AnswerContent.ImagePath + '.jpeg">' +
+                        '                                        </a>' +
+                        '                                    </div>' +
+                        '                                    <div class="Marks">'
+                                                                + markText +
+                        '                                    </div>' +
+                        '                                </div>'
+                    answer.innerHTML+=htmlString;
+                    textBoxId.innerHTML="You have already answered to this question!";
+                    textBoxId.style.color = "white";
+                    textBoxId.style.backgroundColor = "#F4330A";
+
+
+
+                }else if(jsonAnswerLoadResponse.Answered=="No"){
+
+                    /*answer.innerHTML = "Enter your answer";*/
+
+                    /*let htmlString =
+                        '<div class="singleAnswer">' +
+                        '                                    <div class="textAnswers" id="myComment">' +
+                        jsonAnswerLoadResponse.AnswerContent.Content +
+                        '                                    </div>' +
+                        '                                    <div class="pictureAnswers">' +
+                        '                                        <a href="#">' +
+                        '                                            <img src="../Resources/Images/AnswerImages/' + jsonAnswerLoadResponse.AnswerContent.ImagePath + '.jpeg">' +
+                        '                                        </a>' +
+                        '                                    </div>' +
+                        '                                    <div class="Marks">'
+                                                                + markText +
+                        '                                    </div>' +
+                        '                                </div>'
+                    answer.innerHTML+=htmlString;*/
+
+                }
+
+
+            }else{
+                alert("something went wrong!!!");
+            }
+        }
+
     }
 
 
