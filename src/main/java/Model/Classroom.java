@@ -3,6 +3,7 @@ package Model;
 
 import DAO.ClassroomDAO;
 import DAO.ClassroomHasEPostDAO;
+import DAO.EnrollDAO;
 
 import java.util.ArrayList;
 
@@ -115,14 +116,21 @@ public class Classroom {
         return classroomList;
 
     }
-    public ArrayList<String> checkEposts(String classroomId){
+    /*public ArrayList<String> checkEposts(String classroomId){
         ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
         return classroomHasEPostDAO.getEpostsIds(classroomId);
 
-    }
+    }*/
     public String getClassroomOwnerId(String classroomId){
         ClassroomDAO classroomDAO = new ClassroomDAO();
         return classroomDAO.getClassroomOwnderId(classroomId);
+    }
+    public String checkEnableOrDisable(){
+        /*System.out.println("Enable Model : "+this.getUserId());
+        System.out.println("Enable Model : "+this.getClassroomID());*/
+        EnrollDAO enrollDAO = new EnrollDAO();
+        return enrollDAO.checkEnableOrDisable(this.getUserId(),this.getClassroomID());
+
     }
 
 
