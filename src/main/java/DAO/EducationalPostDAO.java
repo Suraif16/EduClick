@@ -168,6 +168,7 @@ public class EducationalPostDAO {
         PreparedStatement preparedStatement = null;
         PreparedStatement preparedStatement2 = null;
         PreparedStatement preparedStatement3 = null;
+        PreparedStatement preparedStatement4 = null;
 
         ResultSet resultSet = null;
         ResultSet resultSet2 = null;
@@ -229,8 +230,6 @@ public class EducationalPostDAO {
 
                         }
 
-
-
                     }else {
 
                         connection.rollback();
@@ -239,6 +238,14 @@ public class EducationalPostDAO {
                     }
 
                 }
+
+                String sql4 = "INSERT INTO Classroom_Has_EPost VALUES( ? , ? )";
+                preparedStatement4 = connection.prepareStatement( sql4 );
+                preparedStatement4.setString( 1 , classroomId );
+                preparedStatement4.setString( 2 , ePostId );
+                preparedStatement4.execute();
+
+                connection.commit();
 
             }else{
 
@@ -268,6 +275,7 @@ public class EducationalPostDAO {
                 if ( preparedStatement != null )preparedStatement.close();
                 if ( preparedStatement2 != null )preparedStatement2.close();
                 if ( preparedStatement3 != null )preparedStatement3.close();
+                if ( preparedStatement4 != null )preparedStatement3.close();
 
                 if ( connection != null )connection.close();
 
