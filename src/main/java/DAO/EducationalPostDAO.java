@@ -12,16 +12,16 @@ import java.util.List;
 
 public class EducationalPostDAO {
 
-    public JSONObject getEPostDetails(String postId){
+    public JSONObject getEPostDetails(String classroomId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         JSONObject jsonObject = new JSONObject();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT * FROM EducationalPost WHERE EPostID = ?";
+            String sql = "SELECT * FROM EducationalPost WHERE ClassroomID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, postId);
+            preparedStatement.setString(1, classroomId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
 
@@ -275,6 +275,33 @@ public class EducationalPostDAO {
 
         }
 
+    }
+    public ArrayList<String> getEpostsIds(String classroomId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<String> ePostIdList = new ArrayList<String>();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT EPostID FROM EducationalPost WHERE ClassroomID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, classroomId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                ePostIdList.add(resultSet.getString("EPostID"));
+            }
+            /*for(int i=0;i<ePostIdList.size();i++){
+                System.out.println("Epost ID "+i+" : "+ePostIdList.get(i)+"\n");
+            }*/
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+        }
+        return ePostIdList;
     }
 
     public List<JSONObject> select(String classroomId ){
