@@ -324,7 +324,7 @@ public class EducationalPostDAO {
 
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
-            String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date , Time DESC LIMIT 20 ";
+            String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 20 ";
 
             String sql2 = "SELECT ImagePath , Caption FROM EducationalWork Where EPostID = ?";
             preparedStatement2 = connection.prepareStatement( sql2 );
