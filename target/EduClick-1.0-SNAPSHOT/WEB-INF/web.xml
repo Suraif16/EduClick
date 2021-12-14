@@ -655,7 +655,6 @@
 
     <!-- end of Educational post answers insert servlet-->
 
-<<<<<<< HEAD
     <!-- beginning of Educational post answer load servlet-->
 
     <servlet>
@@ -670,8 +669,6 @@
 
     <!-- end of Educational post answer load servlet-->
 
-=======
->>>>>>> main
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
