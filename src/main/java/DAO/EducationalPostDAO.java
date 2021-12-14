@@ -46,7 +46,6 @@ public class EducationalPostDAO {
 
         PreparedStatement preparedStatement = null;
         PreparedStatement preparedStatement2 = null;
-        PreparedStatement preparedStatement3 = null;
 
         ResultSet resultSet = null;
         ResultSet resultSet2 = null;
@@ -54,12 +53,13 @@ public class EducationalPostDAO {
         try{
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
-            String sql = "INSERT INTO EducationalPost( DATE , TIME , EPtype , Type ) VALUES( ? , ? , ? , ? )";
+            String sql = "INSERT INTO EducationalPost( DATE , TIME , EPtype , Type , ClassroomID ) VALUES( ? , ? , ? , ? , ? )";
             preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
             preparedStatement.setString( 1 , String.valueOf( educationalWork.getDate() ) );
             preparedStatement.setString( 2 , String.valueOf( educationalWork.getTime() ) );
             preparedStatement.setString( 3 , EPType );
             preparedStatement.setString( 4 , educationalWork.getType() );
+            preparedStatement.setString( 5 , classroomId );
             preparedStatement.execute();
 
             resultSet = preparedStatement.getGeneratedKeys();
@@ -92,12 +92,6 @@ public class EducationalPostDAO {
                 if ( imagePath != null ){
 
                     educationalWork.setImagePath( imagePath );
-
-                    String sql3 = "INSERT INTO Classroom_Has_EPost VALUES( ? , ? )";
-                    preparedStatement3 = connection.prepareStatement( sql3 );
-                    preparedStatement3.setString( 1 , classroomId );
-                    preparedStatement3.setString( 2 , educationalWork.getPostID() );
-                    preparedStatement3.execute();
 
                     connection.commit();
                     return educationalWork;
@@ -142,7 +136,6 @@ public class EducationalPostDAO {
 
                 if ( preparedStatement != null ) preparedStatement.close();
                 if ( preparedStatement2 != null ) preparedStatement2.close();
-                if ( preparedStatement3 != null ) preparedStatement3.close();
 
                 if ( connection != null ) connection.close();
 
@@ -168,7 +161,6 @@ public class EducationalPostDAO {
         PreparedStatement preparedStatement = null;
         PreparedStatement preparedStatement2 = null;
         PreparedStatement preparedStatement3 = null;
-        PreparedStatement preparedStatement4 = null;
 
         ResultSet resultSet = null;
         ResultSet resultSet2 = null;
@@ -178,12 +170,13 @@ public class EducationalPostDAO {
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
 
-            String sql = "INSERT INTO EducationalPost( DATE , TIME , EPtype , Type ) VALUES( ? , ? , ? , ? )";
+            String sql = "INSERT INTO EducationalPost( DATE , TIME , EPtype , Type , ClassroomID ) VALUES( ? , ? , ? , ? , ? )";
             preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
             preparedStatement.setString( 1 , String.valueOf( educationalWork.getDate() ) );
             preparedStatement.setString( 2 , String.valueOf( educationalWork.getTime() ) );
             preparedStatement.setString( 3 , EPType );
             preparedStatement.setString( 4 , educationalWork.getType() );
+            preparedStatement.setString( 5 , classroomId );
             preparedStatement.execute();
 
             resultSet = preparedStatement.getGeneratedKeys();
@@ -239,12 +232,6 @@ public class EducationalPostDAO {
 
                 }
 
-                String sql4 = "INSERT INTO Classroom_Has_EPost VALUES( ? , ? )";
-                preparedStatement4 = connection.prepareStatement( sql4 );
-                preparedStatement4.setString( 1 , classroomId );
-                preparedStatement4.setString( 2 , ePostId );
-                preparedStatement4.execute();
-
                 connection.commit();
 
             }else{
@@ -275,7 +262,6 @@ public class EducationalPostDAO {
                 if ( preparedStatement != null )preparedStatement.close();
                 if ( preparedStatement2 != null )preparedStatement2.close();
                 if ( preparedStatement3 != null )preparedStatement3.close();
-                if ( preparedStatement4 != null )preparedStatement3.close();
 
                 if ( connection != null )connection.close();
 
@@ -285,6 +271,26 @@ public class EducationalPostDAO {
 
             }
 
+        }
+
+    }
+
+    public void select(){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+             connection.setAutoCommit( false );
+            String sql = "SELECT * FROM EducationalPost";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
 
     }
