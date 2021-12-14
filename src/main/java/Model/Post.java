@@ -105,12 +105,17 @@ public class Post {
         return NewsFeedIDList;
     }
 
-    public JSONObject getEPostDetails(String postId){
+    public JSONObject getEPostDetails(String classroomId){
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        return educationalPostDAO.getEPostDetails(postId);
+        return educationalPostDAO.getEPostDetails(classroomId);
     }
     public JSONObject getEPostContent(String postId){
         EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
         return educationalWorkDAO.getEPostContent(postId);
+    }
+    public ArrayList<String> checkEposts(String classroomId){
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        return educationalPostDAO.getEpostsIds(classroomId);
+
     }
 }
