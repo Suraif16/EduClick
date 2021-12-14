@@ -7,15 +7,14 @@ window.onscroll = function (){
 
         console.log( "At the bottom!!!" );
         reloadStatus = false;
-        postData.innerHTML = "";
-        postData.innerHTML += displayEducationalPost() + displayMessage() + displaymcqPost();
         selectEPostFromServer();
+
 
     }
 
 };
 
-const displayEducationalPost = function (){
+const displayEducationalPost = function ( postData ){
 
     let post = '<div class="post">' +
         '            <div class="postContentContainer">' +
@@ -28,7 +27,7 @@ const displayEducationalPost = function (){
         '                        <div class="postProfileName" >User Name</div>' +
         '                    </a>' +
         '                    <div class="postTimeAndDate">' +
-        '                        18:32:26 | 03/25/2015' +
+        postData.time +' | '+ postData.date +
         '                    </div>' +
         '                    <div class="userOptions">' +
         '                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion1" onclick="showOptionMenu(1,\'educationalPostOPtion\')">' +
@@ -38,12 +37,12 @@ const displayEducationalPost = function (){
         '            <div class="postContentContainer">' +
         '                <div class="postData">' +
         '                    <div class="postMessage">' +
-        '                        To answer these questions refer tutorial 9' +
+            postData.caption +
         '                    </div>' +
         '                    <div class="postPicture">' +
         '                        <div class="postPictureImageContainer">' +
         '                            <!--To only present the message without the picture, keep this value as null / empty-->' +
-        '                            <img class="postPictureImage" src="../Resources/Images/Finding-the-Correct-Question-Words3.jpg">' +
+        '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + postData.EpostId +'.jpeg">' +
         '                        </div>' +
         '                    </div>' +
         '                </div>' +
@@ -63,7 +62,7 @@ const displayEducationalPost = function (){
 
 }
 
-const displayMessage = function (){
+const displayMessage = function ( postData ){
 
     let post = '<div class="post">' +
         '            <div class="postContentContainer">' +
@@ -101,7 +100,7 @@ const displayMessage = function (){
 
 }
 
-const displaymcqPost = function (){
+const displayMcqPost = function ( postData ){
 
     let post = '<div class="post">' +
         '            <div class="postContentContainer">' +
@@ -167,6 +166,7 @@ const displaymcqPost = function (){
 const selectEPostFromServer = function (){
 
     let httpreq = new XMLHttpRequest();
+    let postContent = "";
 
     httpreq.onreadystatechange = function (){
 
@@ -191,10 +191,39 @@ const selectEPostFromServer = function (){
 
             console.log( jsonResponse.ePosts );
 
+            const ePostsLIst = jsonResponse.ePosts;
+
+            for (let i = 0; i < ePostsLIst.length ; i++) {
+
+                if ( ePostsLIst[i].EPtype === "MCQ" ){
+
+                    postContent += displayMcqPost( ePostsLIst[i] );
+
+                }else {
+
+                    if ( ePostsLIst[i].type === "Question" ){
+
+                        postContent += displayEducationalPost( ePostsLIst[i] );
+
+                    }else {
+
+                        postContent += displayMessage( ePostsLIst[i] );
+
+                    }
+
+                }
+
+            }
+
+            postData.innerHTML = "";
+            postData.innerHTML += postContent;
+
         }else{
             alert("something went wrong!!!");
         }
 
     }
+
+
 
 }
