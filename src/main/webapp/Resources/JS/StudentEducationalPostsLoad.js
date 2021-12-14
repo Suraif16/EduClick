@@ -99,7 +99,6 @@ const loadStudentEducationalPosts = function (){
                         '                                </label>' +
                         '                                <input id="comment'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" type="text" placeholder="   Comments...">' +
                         '                                <input type="button" value="Post" class="answerShowButton">' +
-                        '                                <input type="button" value="Delete Answer" class="answerShowButton">' +
                         '                            </div>' +
                         '                        </div>' +
                         '                    </div>' +
@@ -172,7 +171,6 @@ const loadStudentEducationalPosts = function (){
                         '                                </label>' +
                         '                                <input id="comment'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" type="text" placeholder="   Comments...">' +
                         '                                <input type="button" value="Post" class="answerShowButton" onclick="submitAnswers('+jsonLoginResponse.EPostContent[i].ePost.EPostID+')">' +
-                        '                                <input type="button" value="Delete Answer" class="answerShowButton">' +
                         '                            </div>' +
                         '                        </div>' +
                         '                    </div>' +
@@ -266,6 +264,8 @@ const submitAnswers = function(EPostId){
 
             let answersInPost = "answersInPost"+EPostId;
             let answer = document.getElementById(answersInPost);
+            let postTextBox = "ans"+EPostId;
+            let textBoxId = document.getElementById(postTextBox);
             let now = new Date().getTime();
             let extraTime = 7000;
             while(new Date().getTime() < now + extraTime ){}
@@ -279,11 +279,15 @@ const submitAnswers = function(EPostId){
                 '                                            <img src="../Resources/Images/AnswerImages/' + jsonAnswerResponse.EPostAnswer.imagePath + '.jpeg">' +
                 '                                        </a>' +
                 '                                    </div>' +
-                '                                    <div class="Marks">' +
-                                                        "Your marks is "+ jsonAnswerResponse.EPostAnswer.marks + "%"+
+                '                                    <div  class="Marks">' +
+                                                        /*"Your marks is "+ jsonAnswerResponse.EPostAnswer.marks + "%"+*/
+                                                        "Your answer will be marked soon by your teacher! "+
                 '                                    </div>' +
                 '                                </div>'
             answer.innerHTML+=htmlString;
+            textBoxId.innerHTML="You successfully answered to this question!";
+            textBoxId.style.color = "white";
+            textBoxId.style.backgroundColor = "#6BDD29";
 
         }
         else{
