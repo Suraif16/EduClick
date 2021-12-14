@@ -52,7 +52,6 @@ public class EducationalPostDAO {
         ResultSet resultSet2 = null;
 
         try{
-            System.out.println( 11 );
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
             String sql = "INSERT INTO EducationalPost( DATE , TIME , EPtype , Type ) VALUES( ? , ? , ? , ? )";
@@ -72,7 +71,6 @@ public class EducationalPostDAO {
             }
 
             if ( ePostId != null ){
-                System.out.println( 12 );
 
                 educationalWork.setPostID( ePostId );
                 String imagePath = null;
@@ -90,9 +88,8 @@ public class EducationalPostDAO {
                     imagePath = resultSet2.getString( 1 );
 
                 }
-                System.out.println( "image path = " + imagePath + " here it is...");
+
                 if ( imagePath != null ){
-                    System.out.println( 13 );
 
                     educationalWork.setImagePath( imagePath );
 
