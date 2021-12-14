@@ -9,6 +9,7 @@ window.onscroll = function (){
         reloadStatus = false;
         postData.innerHTML = "";
         postData.innerHTML += displayEducationalPost() + displayMessage() + displaymcqPost();
+        selectEPostFromServer();
 
     }
 
@@ -177,18 +178,18 @@ const selectEPostFromServer = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/selectEPostClassroom" , true );
     httpreq.send();
 
     const displayAll = function ( httpreq ){
 
-        let jsonResponse = JSON.parse(httpreq.responseText);
+        let jsonResponse = JSON.parse( httpreq.responseText );
 
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
 
-
+            console.log( jsonResponse.ePosts );
 
         }else{
             alert("something went wrong!!!");
