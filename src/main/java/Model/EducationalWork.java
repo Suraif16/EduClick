@@ -47,9 +47,11 @@ public class EducationalWork extends Post{
     public EducationalWork insertEducationalWork( FileItem imageFile , String path , String classroomId ) throws Exception {
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        this.setPostID( educationalPostDAO.insert( this , "EducationalWork" ) );
+//        this.setPostID( educationalPostDAO.insert( this , "EducationalWork" ) );
 
-        if ( this.getPostID() != null ){
+        EducationalWork educationalWork = educationalPostDAO.insertEducationalWork( this , "EducationalWork" , classroomId );
+
+        /*if ( this.getPostID() != null ){
 
             EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
             this.setImagePath( educationalWorkDAO.insert( this ) );
@@ -61,9 +63,18 @@ public class EducationalWork extends Post{
             saveImage.start();
 
 
+        }*/
+
+        if ( educationalWork != null ){
+
+            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( educationalWork.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
+            saveImage.start();
+
         }
 
-        return this;
+
+
+        return educationalWork;
 
     }
 
