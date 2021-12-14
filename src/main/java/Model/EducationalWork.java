@@ -1,8 +1,6 @@
 package Model;
 
-import DAO.ClassroomHasEPostDAO;
 import DAO.EducationalPostDAO;
-import DAO.EducationalWorkDAO;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 
@@ -48,23 +46,8 @@ public class EducationalWork extends Post{
     public EducationalWork insertEducationalWork( FileItem imageFile , String path , String classroomId ) throws Exception {
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-//        this.setPostID( educationalPostDAO.insert( this , "EducationalWork" ) );
 
         EducationalWork educationalWork = educationalPostDAO.insertEducationalWork( this , "EducationalWork" , classroomId );
-
-        /*if ( this.getPostID() != null ){
-
-            EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
-            this.setImagePath( educationalWorkDAO.insert( this ) );
-
-            ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
-            classroomHasEPostDAO.insert( classroomId , getPostID() );
-
-            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
-            saveImage.start();
-
-
-        }*/
 
         if ( educationalWork != null ){
 
