@@ -79,6 +79,16 @@ public class Mcq {
         this.answer4 = answer4;
     }
 
+    public String getAnswerI( int i ){
+
+        if ( i == 0 ){ return this.answer1; }
+        else if ( i == 1 ){ return this.answer2; }
+        else if ( i == 2 ){ return this.answer3; }
+        else if ( i == 3 ){ return this.answer4; }
+        else { return null; }
+
+    }
+
     public void insertQuestionAndAnswer( String mcqPostId){
 
         QuestionDAO questionDAO = new QuestionDAO();

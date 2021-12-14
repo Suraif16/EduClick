@@ -8,6 +8,7 @@ import org.apache.commons.fileupload.FileItem;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class EducationalWork extends Post{
 
@@ -91,6 +92,13 @@ public class EducationalWork extends Post{
         }
 
         return getPostID();
+
+    }
+
+    public void insertMCQEducationalWork( String classroomId , List< Mcq > mcq ){
+
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        educationalPostDAO.insertMCQ( this , "MCQ" , classroomId , mcq );
 
     }
 
