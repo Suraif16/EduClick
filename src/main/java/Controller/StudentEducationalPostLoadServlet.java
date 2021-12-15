@@ -48,6 +48,8 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
 
         jsonObject.put("TeacherFullName",user.getFullName(classroom.getClassroomOwnerId(classroomId)));
 
+        jsonObject.put("TeacherId",classroom.getClassroomOwnerId(classroomId));
+
 
 
         System.out.println(jsonObject);
