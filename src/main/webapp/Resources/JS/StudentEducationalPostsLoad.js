@@ -86,11 +86,11 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
                     if ( ePostsLIst[i].type === "Question" ){
 
-                        postContent += displayEducationalPost( ePostsLIst[i],jsonResponse.TeacherFullName );
+                        postContent += displayEducationalPost( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
 
                     }else {
 
-                        postContent += displayMessage( ePostsLIst[i],jsonResponse.TeacherFullName );
+                        postContent += displayMessage( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
 
                     }
 
@@ -110,14 +110,14 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 }
 
 
-const displayMessage = function (postData,TeacherFullName){
+const displayMessage = function (postData,TeacherFullName,TeaherId){
     if ( postData.imageStatus === "true" ) {
 
         let post =
             '<div class="post">' +
             '            <div class="postContentContainer">' +
             '                <div class="postProfileSection">' +
-            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + postData.EpostId + '" class="postProfile">' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + TeaherId + '" class="postProfile">' +
             '                        <div class="postProfileImage">' +
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
@@ -145,38 +145,6 @@ const displayMessage = function (postData,TeacherFullName){
             '                        </div>' +
             '                    </div>' +
             '                    <div class="postContentContainer">' +
-            '                        <div class="postAnswerButton">' +
-            '                            <div class="answerButton" >' +
-            '                                <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(' + postData.EpostId + ')">' +
-            '                            </div>' +
-            '                        </div>' +
-            '                        <div class="postContentContainer">' +
-            '                            <div style="display:none;" class="answersInPost" id="answersInPost' + postData.EpostId + '" >' +
-            '                                <div class="singleAnswer">' +
-            '                                    <div class="textAnswers" id="myComment">' +
-            '                                        This is my Answer !!!!!!!!!' +
-            '                                    </div>' +
-            '                                    <div class="pictureAnswers">' +
-            '                                        <a href="#">' +
-            '                                            <img src="../Resources/Images/answers2.jpg">' +
-            '                                        </a>' +
-            '                                    </div>' +
-            '                                    <div class="Marks">' +
-            '                                        Your marks is 50%' +
-            '                                    </div>' +
-            '                                </div>' +
-            '                            </div>' +
-            '                        </div>' +
-            '                        <div style="display: none" class="Marks" id="ans' + postData.EpostId + '" >' +
-            '                            <div class="attachment">' +
-            '                                <label class="attachmentLabel">' +
-            '                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">' +
-            '                                    <input id="inputImage" type="file" accept="image/!*">' +
-            '                                </label>' +
-            '                                <input id="comment' + postData.EpostId + '" type="text" placeholder="   Comments...">' +
-            '                                <input type="button" value="Post" class="answerShowButton" onclick="submitAnswers(' + postData.EpostId + ')">' +
-            '                            </div>' +
-            '                        </div>' +
             '                    </div>' +
             '                </div>' +
             '            </div>' +
@@ -188,16 +156,16 @@ const displayMessage = function (postData,TeacherFullName){
             '<div class="post">' +
             '            <div class="postContentContainer">' +
             '                <div class="postProfileSection">' +
-            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ postData.EpostId +'" class="postProfile">' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + TeaherId + '" class="postProfile">' +
             '                        <div class="postProfileImage">' +
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-            '                        </div>\n' +
-            '                        <div class="postProfileName" >'+TeacherFullName +'</div>' +
+            '                        </div>' +
+            '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
-            '                        </div>\n' +
+            '                        </div>' +
             '                        <div class="userOptions">' +
-            '                            <input class="userOptionsButton" type="button" value="    " id="postOption4" onclick="showOptionMenu(4,\'postOption\')">' +
+            '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
             '                    </a>' +
             '                </div>' +
@@ -208,55 +176,17 @@ const displayMessage = function (postData,TeacherFullName){
             '                        <!--<div>-->' +
             postData.caption +
             '                        <!--</div>-->' +
-            '                    </div>' +
-            '                    <div class="postPicture">' +
-            '                        <!--To only present the message without the picture, comment the part below-->' +
-            '                        <!--<div class="postPictureImageContainer">' +
-            '                            <img class="postPictureImage" src="Icons/seminar-text.jpg">' +
-            '                        </div>-->' +
-            '                    </div>' +
+            '                    </div>\n' +
             '                    <div class="postContentContainer">' +
-            '                        <div class="postAnswerButton">' +
-            '                            <div class="answerButton" >' +
-            '                                <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers('+postData.EpostId+')">' +
-            '                            </div>' +
-            '                        </div>' +
-            '                        <div class="postContentContainer">' +
-            '                            <div style="display:none;" class="answersInPost" id="answersInPost' + postData.EpostId + '">' +
-            '                                <div class="singleAnswer">' +
-            '                                    <div class="textAnswers" id="myComment">' +
-            '                                        This is my Answer !!!!!!!!!' +
-            '                                    </div>' +
-            '                                        <a href="#">' +
-            '                                            <img src="../Resources/Images/answers2.jpg">' +
-            '                                        </a>' +
-            '                                    </div>' +
-            '                                    <div class="Marks">' +
-            '                                        Your marks is 50%' +
-            '                                    </div>' +
-            '                                </div>' +
-            '                            </div>' +
-            '                        </div>' +
-            '                        <div style="display: none" class="Marks" id="ans' + postData.EpostId + '" >' +
-            '                            <div class="attachment">' +
-            '                                <label class="attachmentLabel">' +
-            '                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">' +
-            '                                    <input id="inputImage" type="file" accept="image/!*">' +
-            '                                </label>' +
-            '                                <input id="comment' + postData.EpostId + '" type="text" placeholder="   Comments...">' +
-            '                                <input type="button" value="Post" class="answerShowButton">' +
-            '                            </div>' +
-            '                        </div>' +
             '                    </div>' +
             '                </div>' +
             '            </div>' +
             '        </div>'
-
         return post;
     }
 }
 
-const displayEducationalPost = function (postData,TeacherFullName){
+const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
 
     if ( postData.imageStatus === "true" ) {
 
@@ -264,7 +194,7 @@ const displayEducationalPost = function (postData,TeacherFullName){
             '<div class="post">' +
             '            <div class="postContentContainer">' +
             '                <div class="postProfileSection">' +
-            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + postData.EpostId + '" class="postProfile">' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' +TeaherId + '" class="postProfile">' +
             '                        <div class="postProfileImage">' +
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
@@ -335,7 +265,7 @@ const displayEducationalPost = function (postData,TeacherFullName){
             '<div class="post">' +
             '            <div class="postContentContainer">' +
             '                <div class="postProfileSection">' +
-            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ postData.EpostId +'" class="postProfile">' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ TeaherId +'" class="postProfile">' +
             '                        <div class="postProfileImage">' +
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>\n' +
