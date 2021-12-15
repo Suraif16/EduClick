@@ -38,6 +38,58 @@ public class EnrollDAO {
         }
         return arrayList;
     }
+    public String getUserIdFromClass(String id){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String userID = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT UserID FROM Enroll WHERE ClassroomID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                userID =  resultSet.getString("UserID");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+        }
+        return userID;
+    }
+
+    public String checkEnableOrDisable(String userId,String classroomId){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String status = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT Status FROM Enroll WHERE UserID = ? AND ClassroomID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userId);
+            preparedStatement.setString(2,classroomId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                status =  resultSet.getString("Status");
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+        }
+        return status;
+    }
 
 
 }

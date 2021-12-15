@@ -22,7 +22,17 @@ const sendServerDataTeacher = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         } else if (jsonLoginResponse.serverResponse === "Allowed") {
 
+            let k = jsonLoginResponse.ImagePath.length;
+            for(i=0 ; i <k; i++ ){
+                console.log(jsonLoginResponse.ImagePath[i]);
+            }
+
             const postContents = document.getElementById("postContents");
+
+            let now = new Date().getTime();
+            let extraTime = 7000;
+            while(new Date().getTime() < now + extraTime ){}
+
             postContents.innerHTML = "";
 
             let count = jsonLoginResponse.NewsFeedID.length;
@@ -52,9 +62,9 @@ const sendServerDataTeacher = function (){
 
                 '                       </div>' +
                 '                       <div class="postPicture">' +
-                '                           <!--<div class="postPictureImageContainer">-->' +
-                '                               <!--<img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">-->' +
-                '                          <!-- </div>-->' +
+                '                           <div class="postPictureImageContainer">' +
+                '                              <img class="postPictureImage" src="../Resources/Images/ >' + jsonResponse.NewsFeed.imagePath + '.jpeg">'+
+                '                           </div>' +
                 '                       </div>' +
                 '                     </div>' +
                 '                  </div>' +

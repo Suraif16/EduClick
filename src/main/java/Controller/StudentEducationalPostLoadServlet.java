@@ -45,18 +45,23 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
         System.out.println("Teacher FullName in servlet : "+fullName);
 
         jsonObject.put("TeacherFullName",fullName);
+        Post post1 = new Post();
 
         ArrayList<JSONObject> arr = new ArrayList<JSONObject>();
-        ArrayList<String> ePostIdList = classroom.checkEposts(classroomId);
+        ArrayList<String> ePostIdList = post1.checkEposts(classroomId);
 
         for(int i=0;i<ePostIdList.size();i++) {
-            /*JSONArray jsonArray1 = new JSONArray();*/
+            JSONArray jsonArray1 = new JSONArray();
             JSONObject jsonObject1 = new JSONObject();
             Post post = new Post();
             jsonObject1.put("ePost",post.getEPostDetails(ePostIdList.get(i)));
             jsonObject1.put("eWork",post.getEPostContent(ePostIdList.get(i)));
             arr.add(jsonObject1);
         }
+
+
+
+
 
         String userId = classroom.getClassroomOwnerId(id);
         System.out.println("Teachers ID : "+userId);

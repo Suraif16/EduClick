@@ -1,13 +1,13 @@
 package Model;
 
-import DAO.ClassroomHasEPostDAO;
 import DAO.EducationalPostDAO;
-import DAO.EducationalWorkDAO;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class EducationalWork extends Post{
 
@@ -30,6 +30,12 @@ public class EducationalWork extends Post{
         this.type = type;
     }
 
+    public EducationalWork(){
+
+
+
+    }
+
     public EducationalWork(String message , String type , LocalDate localDate , LocalTime localTime ){
 
         super( message , localDate , localTime );
@@ -37,26 +43,43 @@ public class EducationalWork extends Post{
 
     }
 
+    public EducationalWork( String type , LocalDate localDate , LocalTime localTime ){
+
+        super( localDate , localTime );
+        this.type = type;
+
+    }
+
     public EducationalWork insertEducationalWork( FileItem imageFile , String path , String classroomId ) throws Exception {
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        this.setPostID( educationalPostDAO.insert( this , "EducationalWork" ) );
 
-        if ( this.getPostID() != null ){
+        EducationalWork educationalWork = educationalPostDAO.insertEducationalWork( this , "EducationalWork" , classroomId );
 
-            EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
-            this.setImagePath( educationalWorkDAO.insert( this ) );
+        if ( educationalWork != null ){
 
-            ClassroomHasEPostDAO classroomHasEPostDAO = new ClassroomHasEPostDAO();
-            classroomHasEPostDAO.insert( classroomId , getPostID() );
-
-            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
+            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( educationalWork.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
             saveImage.start();
-
 
         }
 
-        return this;
+
+
+        return educationalWork;
+
+    }
+
+    public void insertMCQEducationalWork( String classroomId , List< Mcq > mcq ){
+
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        educationalPostDAO.insertMCQ( this , "MCQ" , classroomId , mcq );
+
+    }
+
+    public List<JSONObject> selectEducationalPost( String classroomId ){
+
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        return educationalPostDAO.select( classroomId );
 
     }
 
