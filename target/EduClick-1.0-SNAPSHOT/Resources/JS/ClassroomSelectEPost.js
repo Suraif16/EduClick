@@ -39,12 +39,17 @@ const displayEducationalPost = function ( postData ){
         '                    <div class="postMessage">' +
             postData.caption +
         '                    </div>' +
-        '                    <div class="postPicture">' +
-        '                        <div class="postPictureImageContainer">' +
-        '                            <!--To only present the message without the picture, keep this value as null / empty-->' +
-        '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + postData.EpostId +'.jpeg">' +
-        '                        </div>' +
-        '                    </div>' +
+        '                    <div class="postPicture">';
+
+    if ( postData.imageStatus === "true" ){
+
+        post += '<div class="postPictureImageContainer">' +
+            '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + postData.EpostId +'.jpeg">' +
+                '                        </div>';
+
+    }
+
+        post += '                    </div>' +
         '                </div>' +
         '            </div>' +
         '            <div class="postContentContainer">' +
@@ -74,7 +79,7 @@ const displayMessage = function ( postData ){
         '                        <div class="postProfileName" >User Name</div>' +
         '                    </a>' +
         '                    <div class="postTimeAndDate">' +
-        '                        18:32:26 | 03/25/2015' +
+        postData.time +' | '+ postData.date +
         '                    </div>' +
         '                    <div class="userOptions">' +
         '                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion7" onclick="showOptionMenu(7,\'educationalPostOPtion\')">' +
@@ -84,14 +89,19 @@ const displayMessage = function ( postData ){
         '            <div class="postContentContainer">' +
         '                <div class="postData">' +
         '                    <div class="postMessage">' +
-        '                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe' +
+        postData.caption +
         '                    </div>' +
-        '                    <div class="postPicture">' +
-        '<!--                        To only present the message without the picture, comment the part below-->' +
-        '                        <div class="postPictureImageContainer">' +
-        '                            <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">' +
-        '                        </div>' +
-        '                    </div>' +
+        '                    <div class="postPicture">';
+
+    if ( postData.imageStatus === "true" ){
+
+        post += '<div class="postPictureImageContainer">' +
+            '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + postData.EpostId +'.jpeg">' +
+            '                        </div>';
+
+    }
+
+        post += '                    </div>' +
         '                </div>' +
         '            </div>' +
         '        </div>';
