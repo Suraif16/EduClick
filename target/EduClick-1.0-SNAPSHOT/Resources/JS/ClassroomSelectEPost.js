@@ -221,7 +221,9 @@ const selectEPostFromServer = function ( scrollStatus ){
 
         httpreq.open( "POST" , "/EduClick_war_exploded/teacher/selectEPostClassroom" , true );
         httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+        console.log( "its the selected id here : " , selectId)
         httpreq.send("id=" + selectId );
+        console.log(" in if condition and select is sent to server ")
 
     }
 
