@@ -25,8 +25,10 @@ public class SelectEPostClassroomServlet extends HttpServlet {
 
         HttpSession session = request.getSession( false );
 
+        String minPostId = ( String ) request.getParameter( "id" );
+
         EducationalWork educationalWork = new EducationalWork();
-        List< JSONObject > ePostList = educationalWork.selectEducationalPost( ( String ) session.getAttribute( "CurrentClassroomId" ) );
+        List< JSONObject > ePostList = educationalWork.selectEducationalPost( ( String ) session.getAttribute( "CurrentClassroomId" ) , minPostId );
 
         JSONArray jsonEPostList = new JSONArray( ePostList );
 

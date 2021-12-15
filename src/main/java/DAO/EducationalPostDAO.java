@@ -40,7 +40,8 @@ public class EducationalPostDAO {
         return jsonObject;
     }
 
-    public EducationalWork insertEducationalWork( EducationalWork educationalWork , String EPType , String classroomId ){
+    public EducationalWork insertEducationalWork( EducationalWork educationalWork , String EPType , String classroomId
+    ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -75,35 +76,17 @@ public class EducationalPostDAO {
             if ( ePostId != null ){
 
                 educationalWork.setPostID( ePostId );
-                String imagePath = null;
 
-                String sql2 = "INSERT INTO EducationalWork( EPostID , Caption) VALUES( ? , ? )";
-                preparedStatement2 = connection.prepareStatement( sql2 , Statement.RETURN_GENERATED_KEYS );
+                String sql2 = "INSERT INTO EducationalWork( EPostID , ImageStatus , Caption) VALUES( ? , ? , ? )";
+                preparedStatement2 = connection.prepareStatement( sql2 );
                 preparedStatement2.setString( 1 , educationalWork.getPostID() );
-                preparedStatement2.setString( 2 , educationalWork.getCaption() );
+                preparedStatement2.setString( 2 , educationalWork.getImageStatus() );
+                preparedStatement2.setString( 3 , educationalWork.getCaption() );
 
                 preparedStatement2.execute();
-                resultSet2 = preparedStatement2.getGeneratedKeys();
 
-                if ( resultSet2.next() ){
-
-                    imagePath = resultSet2.getString( 1 );
-
-                }
-
-                if ( imagePath != null ){
-
-                    educationalWork.setImagePath( imagePath );
-
-                    connection.commit();
-                    return educationalWork;
-
-                }else {
-
-                    connection.rollback();
-                    return null;
-
-                }
+                connection.commit();
+                return educationalWork;
 
             }else{
 
@@ -304,7 +287,7 @@ public class EducationalPostDAO {
         return ePostIdList;
     }
 
-    public List<JSONObject> select(String classroomId ){
+    public List<JSONObject> select( String classroomId , String minPostId ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -324,9 +307,8 @@ public class EducationalPostDAO {
 
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
-            String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date , Time DESC LIMIT 20 ";
 
-            String sql2 = "SELECT ImagePath , Caption FROM EducationalWork Where EPostID = ?";
+            String sql2 = "SELECT ImageStatus , Caption FROM EducationalWork Where EPostID = ?";
             preparedStatement2 = connection.prepareStatement( sql2 );
 
             String sql3 = "SELECT QuestionID , Question , Correct_answers FROM Question WHERE EPostID = ?";
@@ -335,9 +317,22 @@ public class EducationalPostDAO {
             String sql4 = "SELECT Answer_no , Answer FROM Question_Answer_Value WHERE QuestionID = ?";
             preparedStatement4 = connection.prepareStatement( sql4 );
 
-            preparedStatement = connection.prepareStatement( sql );
+            if ( minPostId.equals( "-1" ) ){
 
-            preparedStatement.setString( 1 , classroomId );
+                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 2 ";
+                preparedStatement = connection.prepareStatement( sql );
+                preparedStatement.setString( 1 , classroomId );
+
+            }else {
+
+                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? AND EPostID < ? ORDER BY Date DESC , Time DESC LIMIT 2 ";
+                preparedStatement = connection.prepareStatement( sql );
+                preparedStatement.setString( 1 , classroomId );
+                preparedStatement.setString( 2 , minPostId );
+
+            }
+
+
             resultSet = preparedStatement.executeQuery();
 
             while( resultSet.next() ){
@@ -357,7 +352,7 @@ public class EducationalPostDAO {
 
                     if ( resultSet2.next() ){
 
-                        singleEPost.put( "imagePath" , resultSet2.getString( 1 ) );
+                        singleEPost.put( "imageStatus" , resultSet2.getString( 1 ) );
                         singleEPost.put( "caption" , resultSet2.getString( 2 ) );
 
                     }

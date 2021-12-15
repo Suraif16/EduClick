@@ -11,15 +11,15 @@ import java.util.List;
 
 public class EducationalWork extends Post{
 
-    private String imagePath;
+    private String imageStatus;
     private String type;
 
-    public String getImagePath() {
-        return imagePath;
+    public String getImageStatus() {
+        return imageStatus;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImageStatus(String imageStatus) {
+        this.imageStatus = imageStatus;
     }
 
     public String getType() {
@@ -36,10 +36,11 @@ public class EducationalWork extends Post{
 
     }
 
-    public EducationalWork(String message , String type , LocalDate localDate , LocalTime localTime ){
+    public EducationalWork(String message , String type , LocalDate localDate , LocalTime localTime , String imageStatus ){
 
         super( message , localDate , localTime );
         this.type = type;
+        this.imageStatus = imageStatus;
 
     }
 
@@ -57,8 +58,8 @@ public class EducationalWork extends Post{
         EducationalWork educationalWork = educationalPostDAO.insertEducationalWork( this , "EducationalWork" , classroomId );
 
         if ( educationalWork != null ){
-
-            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( educationalWork.getImagePath() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
+            /* here the post id is given as the image name*/
+            Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( educationalWork.getPostID() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
             saveImage.start();
 
         }
@@ -76,10 +77,10 @@ public class EducationalWork extends Post{
 
     }
 
-    public List<JSONObject> selectEducationalPost( String classroomId ){
+    public List<JSONObject> selectEducationalPost( String classroomId , String minPostId ){
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        return educationalPostDAO.select( classroomId );
+        return educationalPostDAO.select( classroomId , minPostId );
 
     }
 

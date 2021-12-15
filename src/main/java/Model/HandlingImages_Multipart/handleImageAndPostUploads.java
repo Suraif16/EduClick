@@ -20,6 +20,7 @@ public class handleImageAndPostUploads {
         String type = "";
         String message = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload(new DiskFileItemFactory());
+        String imageStatus = "";
 
         try {
 
@@ -56,14 +57,22 @@ public class handleImageAndPostUploads {
 
             }
 
-            EducationalWork educationalWork = new EducationalWork(message, type, localDate, localTime);
+            if ( imageFile == null ){
 
-            return educationalWork.insertEducationalWork(imageFile, path, classroomId);
+                imageStatus = "false";
+
+            }else{
+
+                imageStatus = "true";
+
+            }
+            EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime , imageStatus );
+            return educationalWork.insertEducationalWork( imageFile , path , classroomId );
 
 
         } catch (Exception e) {
 
-            System.out.println(e);
+            e.printStackTrace();
 
         }
 
