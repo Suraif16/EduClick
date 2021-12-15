@@ -84,6 +84,7 @@ public class handleImageAndPostUploads {
 
         String answer = "";
         String epostId = "";
+        String imageStatus = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
 
         try{
@@ -118,15 +119,26 @@ public class handleImageAndPostUploads {
                     imageFile = file;
 
                 }
+                if ( imageFile == null ){
+
+                    imageStatus = "false";
+
+                }else{
+
+                    imageStatus = "true";
+
+                }
 
             }
             System.out.println("Answer is : "+answer);
             System.out.println("EPostID is : "+epostId);
+            System.out.println("ImageStatus is : "+imageStatus);
 
-            Answers answers = new Answers( answer , epostId , localDate , localTime , userId );
+            Answers answers = new Answers( answer , epostId , localDate , localTime , userId ,imageStatus);
 
             answers.setAnswer(answer);
             answers.setQuestionId(epostId);
+            answers.setImageStatus(imageStatus);
 
             return answers.insertAnswers( imageFile , path );
 
