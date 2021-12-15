@@ -218,7 +218,7 @@ const checkEnableOrDisable = function (){
         }else if(jsonStatusResponse.serverResponse === "Allowed") {
             console.log(jsonStatusResponse.Status)
             if(jsonStatusResponse.Status==="Enable"){
-                loadStudentEducationalPosts();
+                loadStudentEducationalPosts(false);
             }else if(jsonStatusResponse.Status==="Disable"){
                 console.log("Case case case")
             }
