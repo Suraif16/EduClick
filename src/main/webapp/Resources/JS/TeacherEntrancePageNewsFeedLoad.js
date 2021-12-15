@@ -1,4 +1,4 @@
-
+/*
 const sendServerDataTeacher = function (){
 
     let httpreq = new XMLHttpRequest();
@@ -22,12 +22,14 @@ const sendServerDataTeacher = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         } else if (jsonLoginResponse.serverResponse === "Allowed") {
 
-            let k = jsonLoginResponse.ImagePath.length;
+            console.log("success");*/
+
+           /* let k = jsonLoginResponse.ImagePath.length;
             for(i=0 ; i <k; i++ ){
                 console.log(jsonLoginResponse.ImagePath[i]);
             }
-
-            const postContents = document.getElementById("postContents");
+*/
+           /* const postContents = document.getElementById("postContents");
 
             let now = new Date().getTime();
             let extraTime = 7000;
@@ -93,15 +95,15 @@ const sendServerDataTeacher = function (){
 
             postContents.innerHTML += htmlString;
 
+*/
 
-
-        }
-        } else {
+       /* }*/
+   /*     } else {
             alert("something went wrong!!!");
         }
     }
 
-    }
+    }*/
 
 
 
