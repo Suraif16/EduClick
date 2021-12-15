@@ -76,6 +76,7 @@ const postQuestionsMessages = function (){
 
             formData.append( "message" , message );
             formData.append( "type" , type );
+            formData.append( "classroomId" , getClassroomIdClientSide() );
 
             httpreq.open("POST","/EduClick_war_exploded/teacher/EducationalPostInsert" , true );
             httpreq.send( formData );
