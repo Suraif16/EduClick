@@ -46,7 +46,7 @@ public class EDWAnswersDAO {
 
             while (resultSet.next()){
                 jsonObject.put("Content",resultSet.getString("Content"));
-                jsonObject.put("ImagePath",resultSet.getString("ImagePath"));
+                jsonObject.put("ImageStatus",resultSet.getString("ImageStatus"));
 
             }
 
