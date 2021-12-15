@@ -18,7 +18,7 @@ public class Post {
     private LocalDate date;
     private LocalTime time;
     private String caption;
-    private String userId;
+    public String userId;
 
     public Post() {
 
