@@ -10,7 +10,12 @@ let arrayQuestionIndex = 0;
 
 previousElement.onclick = function (){
 
-    insertDataIntoArray( false );
+
+    if ( getAllInputs() !== false ){
+
+        insertDataIntoArray( false );
+
+    }
     arrayQuestionIndex = ( arrayQuestionIndex - 1 + arrayCount ) % arrayCount;
     getDataFromArrayToForm();
 
@@ -148,20 +153,28 @@ const adjustFormData = function (){
 }
 
 const getDataFromArrayToForm = function (){
+    console.log( mcqContent[ arrayQuestionIndex ] , "new console" );
 
-    let currentArrayElement = mcqContent[ arrayQuestionIndex ];
+    if ( mcqContent[ arrayQuestionIndex ] !== undefined ){
 
-    document.getElementById( "mcqQuestion" ).value = currentArrayElement[ "Question" ] ;
-    document.getElementById( "mcqAnswer1" ).value = currentArrayElement[ "Answer1" ]  ;
-    document.getElementById( "mcqAnswer2" ).value = currentArrayElement[ "Answer2" ]  ;
-    document.getElementById( "mcqAnswer3" ).value = currentArrayElement[ "Answer3" ]  ;
-    document.getElementById( "mcqAnswer4" ).value = currentArrayElement[ "Answer4" ]  ;
+        console.log( mcqContent[ arrayQuestionIndex ] , "new console 1" );
 
-    console.log( currentArrayElement[ "CorrectAnswer" ] , "currect answer values");
+        let currentArrayElement = mcqContent[ arrayQuestionIndex ];
 
-    document.getElementById( "correctAnswer" + currentArrayElement[ "CorrectAnswer" ] ).checked = true;
+        document.getElementById( "mcqQuestion" ).value = currentArrayElement[ "Question" ] ;
+        document.getElementById( "mcqAnswer1" ).value = currentArrayElement[ "Answer1" ]  ;
+        document.getElementById( "mcqAnswer2" ).value = currentArrayElement[ "Answer2" ]  ;
+        document.getElementById( "mcqAnswer3" ).value = currentArrayElement[ "Answer3" ]  ;
+        document.getElementById( "mcqAnswer4" ).value = currentArrayElement[ "Answer4" ]  ;
 
-    adjustFormData();
+        console.log( currentArrayElement[ "CorrectAnswer" ] , "currect answer values");
+
+        document.getElementById( "correctAnswer" + currentArrayElement[ "CorrectAnswer" ] ).checked = true;
+
+        adjustFormData();
+
+    }
+
 
 }
 
