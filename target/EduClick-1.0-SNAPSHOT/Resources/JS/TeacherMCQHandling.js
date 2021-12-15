@@ -174,6 +174,7 @@ const showMcqAddPostForm = function (){
     if ( mcqAddPostForm.style.display === "flex" ){
 
         mcqAddPostForm.style.display = "none";
+        selectMoreStatus = true;
         setTimeout( function (){ selectEPostFromServer( false ) } , 3000 );
 
 

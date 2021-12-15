@@ -1,6 +1,7 @@
 let reloadStatus = true;
 const postDataContent = document.getElementById( "postContents" );
 let minEPostId = Infinity;
+let selectMoreStatus = true;
 
 window.onscroll = function (){
 
@@ -216,7 +217,7 @@ const selectEPostFromServer = function ( scrollStatus ){
 
     }
 
-    if ( minEPostId > 1){
+    if ( selectMoreStatus ){
 
         httpreq.open( "POST" , "/EduClick_war_exploded/teacher/selectEPostClassroom" , true );
         httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
@@ -235,6 +236,12 @@ const selectEPostFromServer = function ( scrollStatus ){
             console.log( jsonResponse.ePosts );
 
             const ePostsLIst = jsonResponse.ePosts;
+
+            if ( ePostsLIst.length === 0 ){
+
+                selectMoreStatus = false;
+
+            }
 
             for (let i = 0; i < ePostsLIst.length ; i++) {
 

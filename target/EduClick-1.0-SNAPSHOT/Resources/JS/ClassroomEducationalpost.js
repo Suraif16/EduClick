@@ -96,7 +96,7 @@ const postQuestionsMessages = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
             console.log( jsonResponse.EPost );
-
+            selectMoreStatus = true;
             setTimeout( function (){ selectEPostFromServer( false ) } , 3000 );
 
         }else{
