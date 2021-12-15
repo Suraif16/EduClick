@@ -14,10 +14,15 @@ previousElement.onclick = function (){
     if ( getAllInputs() !== false ){
 
         insertDataIntoArray( false );
+        arrayQuestionIndex = ( arrayQuestionIndex - 1 + arrayCount ) % arrayCount;
+        getDataFromArrayToForm();
+
+    }else{
+
+        alert("fill the visible field to move to next or previous question");
 
     }
-    arrayQuestionIndex = ( arrayQuestionIndex - 1 + arrayCount ) % arrayCount;
-    getDataFromArrayToForm();
+
 
 }
 
@@ -45,10 +50,10 @@ const insertDataIntoArray = function ( previousCondition ){
             adjustFormData();
 
         }
+        getDataFromArrayToForm();
 
     }
 
-    getDataFromArrayToForm();
 
 }
 
