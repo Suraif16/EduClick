@@ -1,5 +1,6 @@
 let reloadStatus = true;
 const postData = document.getElementById( "postContents" );
+let minEPostId;
 
 window.onscroll = function (){
 
@@ -7,7 +8,7 @@ window.onscroll = function (){
 
         console.log( "At the bottom!!!" );
         reloadStatus = false;
-        selectEPostFromServer();
+        selectEPostFromServer( true );
 
 
     }
@@ -187,10 +188,21 @@ const displayMcqPost = function ( postData ){
 
 }
 
-const selectEPostFromServer = function (){
+const selectEPostFromServer = function ( scrollStatus ){
 
     let httpreq = new XMLHttpRequest();
     let postContent = "";
+    let selectId = null;
+
+    if ( !scrollStatus ){
+
+        selectId = -1;
+
+    }else {
+
+        selectId = minEPostId;
+
+    }
 
     httpreq.onreadystatechange = function (){
 
@@ -203,7 +215,8 @@ const selectEPostFromServer = function (){
     }
 
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/selectEPostClassroom" , true );
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send("id=" + selectId );
 
     const displayAll = function ( httpreq ){
 
@@ -248,6 +261,5 @@ const selectEPostFromServer = function (){
 
     }
 
-
-
 }
+
