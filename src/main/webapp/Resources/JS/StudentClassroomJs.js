@@ -115,7 +115,7 @@ function showAnswers( id ){
                         '                                    </div>' +
                         '                                    <div class="pictureAnswers">' +
                         '                                        <a href="#">' +
-                        '                                            <img src="../Resources/Images/AnswerImages/' + jsonAnswerLoadResponse.AnswerContent.ImagePath + '.jpeg">' +
+                        '                                            <img src="../Resources/Images/AnswerImages/' + id + '.jpeg">' +
                         '                                        </a>' +
                         '                                    </div>' +
                         '                                    <div class="Marks">'
