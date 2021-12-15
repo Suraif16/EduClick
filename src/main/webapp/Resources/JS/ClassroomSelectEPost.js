@@ -190,7 +190,7 @@ const displayMcqPost = function ( postData ){
 }
 
 const selectEPostFromServer = function ( scrollStatus ){
-
+    getClassroomIdClientSide();
     let httpreq = new XMLHttpRequest();
     let postContent = "";
     let selectId = null;

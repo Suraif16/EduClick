@@ -17,7 +17,7 @@ const showAddEducationalPostForm = function (){
 }
 
 const postQuestionsMessages = function (){
-
+    getClassroomIdClientSide();
     let message = document.getElementById( "addNewsFeedFormTextArea" ).value;
     let images = document.getElementById( "inputImage" ).files;
     let type = document.getElementById( "ePostType" ).value;

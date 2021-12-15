@@ -18,7 +18,7 @@ public class SaveClassroomIdServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("User");
 
-        String id = request.getParameter("id");
+        String id = request.getParameter("id");System.out.println("classroom id - " + id);
 
         JSONObject jsonObject = new JSONObject();
 
@@ -32,7 +32,7 @@ public class SaveClassroomIdServlet extends HttpServlet {
             String userID = classroom.getClassroomOwnerId(id);
             if(currentUserId.equals(userID)){
                 session.setAttribute("CurrentClassroomId",id);
-                response.sendRedirect("Teacher/Classroom.html");
+                response.sendRedirect("Teacher/Classroom.html?clsId="+id);
             }else{
                 jsonObject.put("Error","No User");
                 session.invalidate();
@@ -43,7 +43,7 @@ public class SaveClassroomIdServlet extends HttpServlet {
             String userID = user.getUserIdFromClass(id);
             if(currentUserId.equals(userID)){
                 session.setAttribute("CurrentClassroomId",id);
-                response.sendRedirect("Student/classroom.html");
+                response.sendRedirect("Student/classroom.html?clsId="+id);
             }
             else{
                 jsonObject.put("Error","No User");

@@ -203,6 +203,7 @@ mcqSubmitButton.onclick = function (){
 
     insertDataIntoArray( false );
     console.log( mcqContent );
+    getClassroomIdClientSide();
     submitMCQToServer( mcqContent );
     showMcqAddPostForm();
 
