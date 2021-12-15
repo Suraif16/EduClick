@@ -2,6 +2,7 @@ package Controller;
 
 import Model.HandlingImages_Multipart.handleImageAndPostUploads;
 import Model.NewsFeeds;
+import Model.User;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.JSONObject;
 
@@ -23,7 +24,12 @@ public class NewsFeedsInsertServlet extends HttpServlet {
         response.setContentType( "text/html" );
 
         HttpSession session = request.getSession( false );
-        System.out.println("helooo");
+
+        User user = (User) session.getAttribute("User");
+
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
+        String fullName = firstName + " " + lastName;
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
@@ -33,15 +39,14 @@ public class NewsFeedsInsertServlet extends HttpServlet {
 
         if ( isMultipart ){
 
-            System.out.println( "reached **********" );
             newsFeeds = handleImageAndPostUploads.uploadNewsFeedsImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() );
-            System.out.println( "reached and done *********");
 
         }
 
         JSONObject newsFeedsJson = new JSONObject( newsFeeds );
 
         jsonObject.put( "NewsFeedsPost" , newsFeedsJson );
+        jsonObject.put("fullName",fullName);
 
         out.write( jsonObject.toString() );
         out.close();

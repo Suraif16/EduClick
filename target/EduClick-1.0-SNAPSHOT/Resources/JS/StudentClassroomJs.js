@@ -1,6 +1,6 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
-let status ;
+
 
 
 function showRightPanel(){
@@ -66,6 +66,7 @@ function showAnswers( id ){
 
         com.style.display = "flex";
 
+<<<<<<< selectEPost3
         console.log("ID is loading cerrr : "+id)
 
         let httpreq = new XMLHttpRequest();
@@ -157,6 +158,8 @@ function showAnswers( id ){
             }
         }
 
+=======
+>>>>>>> main
     }
 
 
@@ -190,6 +193,7 @@ function showMcqResult( id ){
 
 }
 
+<<<<<<< selectEPost3
 const checkEnableOrDisable = function (){
 
     let httpreq = new XMLHttpRequest();
@@ -241,6 +245,15 @@ document.onreadystatechange = function (){
         sendNameData();
         getClassroomList();
 
+=======
+document.onreadystatechange = function (){
+
+    if ( document.readyState === 'complete' ){
+        /* when the document is loaded and complete this function will run*/
+        sendNameData();
+        getClassroomList();
+        loadStudentEducationalPosts();
+>>>>>>> main
 
     }
 

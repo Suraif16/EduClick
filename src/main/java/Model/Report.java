@@ -1,17 +1,24 @@
 package Model;
 
+import DAO.ReportInsertDAO;
+
 public class Report {
     private int count;
     private String reportFlag;
     private String reportID;
     private String contentID;
     private String type;
+    private String UserID;
+    private String AnswerID;
+    private String NF_postID;
+    private String EpostID;
+
 
     public int getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
@@ -46,4 +53,39 @@ public class Report {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getUserID() {return UserID;}
+
+    public void setUserID(String userID) { UserID = userID;}
+
+    public String getAnswerID() {return AnswerID;}
+
+    public void setAnswerID(String answerID) {AnswerID = answerID;}
+
+    public String getNF_postID() {return NF_postID;}
+
+    public void setNF_postID(String NF_postID) {this.NF_postID = NF_postID;}
+
+    public String getEpostID() { return EpostID; }
+
+    public void setEpostID(String epostID) {EpostID = epostID;}
+
+    public Report(String contentID, String type) {
+        this.contentID = contentID;
+        this.type = type;
+    }
+    public void report(){
+        ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
+        reportInsertDAO.insert(this);
+    }
+    public Report() {
+
+    }
+
+    public Report search(){
+        ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
+        return reportInsertDAO.select(this);
+    }
+
+
 }
