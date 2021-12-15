@@ -159,7 +159,7 @@ CREATE TABLE EducationalPost(
 
 CREATE TABLE EducationalWork(
 	EPostID BIGINT NOT NULL,
-	ImagePath BIGINT AUTO_INCREMENT UNIQUE NOT NULL,
+	ImageStatus ENUM('true','false'),
 	Caption VARCHAR(8000),
 	PRIMARY KEY(EPostID)
 	)ENGINE = INNODB;
