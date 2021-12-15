@@ -112,7 +112,7 @@ const displayMcqPost = function ( postData ){
         '                        <div class="postProfileName" >User Name</div>' +
         '                    </a>' +
         '                    <div class="postTimeAndDate">' +
-        '                        18:32:26 | 03/25/2015' +
+            postData.time + ' | ' + postData.date +
         '                    </div>' +
         '                    <div class="userOptions">' +
         '                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion3" onclick="showOptionMenu(3,\'educationalPostOPtion\')">' +
@@ -125,21 +125,31 @@ const displayMcqPost = function ( postData ){
     for ( let i = 0; i < 10; i++ ) {
 
         post += '                    <div class="postMessage mcq">' +
-            '                        Question ' + ( i + 1 ) +
-            '                        <div class="mcqAnswerContainer">' +
-            '                            <div class="mcqSingleAnswer">' +
-            '                                MCQ Answer 1' +
-            '                            </div>' +
-            '                            <div class="mcqSingleAnswer">' +
-            '                                MCQ Answer 2' +
-            '                            </div>' +
-            '                            <div class="mcqSingleAnswer correctMcqSingleAnswer">' +
-            '                                MCQ Answer 3' +
-            '                            </div>' +
-            '                            <div class="mcqSingleAnswer">' +
-            '                                MCQ Answer 4' +
-            '                            </div>' +
-            '                        </div>' +
+                postData.questionList[i]["question"] +
+            '                        <div class="mcqAnswerContainer">';
+
+        for (let j = 1; j < 5; j++) {
+
+            let answerNumber = "answerNo";
+            let answer = "answer";
+
+            if ( postData.questionList[i][ answerNumber + j ] === postData.questionList[i][ "correctAnswer" ] ){
+
+                post += '                            <div class="mcqSingleAnswer correctMcqSingleAnswer">' +
+                    postData.questionList[i][ answer + j ]+
+                        '                            </div>';
+
+            }else{
+
+                post += '                            <div class="mcqSingleAnswer">' +
+                         postData.questionList[i][ answer + j ] +
+                        '                            </div>';
+
+            }
+
+        }
+
+        post +='                        </div>' +
             '                    </div>';
 
     }
