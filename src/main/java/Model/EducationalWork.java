@@ -77,10 +77,10 @@ public class EducationalWork extends Post{
 
     }
 
-    public List<JSONObject> selectEducationalPost( String classroomId ){
+    public List<JSONObject> selectEducationalPost( String classroomId , String minPostId ){
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        return educationalPostDAO.select( classroomId );
+        return educationalPostDAO.select( classroomId , minPostId );
 
     }
 

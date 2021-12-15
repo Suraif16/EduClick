@@ -287,7 +287,7 @@ public class EducationalPostDAO {
         return ePostIdList;
     }
 
-    public List<JSONObject> select(String classroomId ){
+    public List<JSONObject> select( String classroomId , String minPostId ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -307,7 +307,6 @@ public class EducationalPostDAO {
 
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
-            String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 20 ";
 
             String sql2 = "SELECT ImageStatus , Caption FROM EducationalWork Where EPostID = ?";
             preparedStatement2 = connection.prepareStatement( sql2 );
@@ -318,9 +317,22 @@ public class EducationalPostDAO {
             String sql4 = "SELECT Answer_no , Answer FROM Question_Answer_Value WHERE QuestionID = ?";
             preparedStatement4 = connection.prepareStatement( sql4 );
 
-            preparedStatement = connection.prepareStatement( sql );
+            if ( minPostId.equals( "-1" ) ){
 
-            preparedStatement.setString( 1 , classroomId );
+                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 2 ";
+                preparedStatement = connection.prepareStatement( sql );
+                preparedStatement.setString( 1 , classroomId );
+
+            }else {
+
+                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? AND EPostID < ? ORDER BY Date DESC , Time DESC LIMIT 2 ";
+                preparedStatement = connection.prepareStatement( sql );
+                preparedStatement.setString( 1 , classroomId );
+                preparedStatement.setString( 2 , minPostId );
+
+            }
+
+
             resultSet = preparedStatement.executeQuery();
 
             while( resultSet.next() ){
