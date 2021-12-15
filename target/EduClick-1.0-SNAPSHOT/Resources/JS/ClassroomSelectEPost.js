@@ -1,6 +1,6 @@
 let reloadStatus = true;
-const postData = document.getElementById( "postContents" );
-let minEPostId;
+const postDataContent = document.getElementById( "postContents" );
+let minEPostId = Infinity;
 
 window.onscroll = function (){
 
@@ -214,9 +214,13 @@ const selectEPostFromServer = function ( scrollStatus ){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/selectEPostClassroom" , true );
-    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-    httpreq.send("id=" + selectId );
+    if ( minEPostId > 1){
+
+        httpreq.open( "POST" , "/EduClick_war_exploded/teacher/selectEPostClassroom" , true );
+        httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+        httpreq.send("id=" + selectId );
+
+    }
 
     const displayAll = function ( httpreq ){
 
@@ -231,6 +235,12 @@ const selectEPostFromServer = function ( scrollStatus ){
             const ePostsLIst = jsonResponse.ePosts;
 
             for (let i = 0; i < ePostsLIst.length ; i++) {
+
+                if ( ePostsLIst[i].EpostId < minEPostId ){
+
+                    minEPostId = ePostsLIst[i].EpostId;
+
+                }
 
                 if ( ePostsLIst[i].EPtype === "MCQ" ){
 
@@ -252,8 +262,8 @@ const selectEPostFromServer = function ( scrollStatus ){
 
             }
 
-            postData.innerHTML = "";
-            postData.innerHTML += postContent;
+            postDataContent.innerHTML += postContent;
+            reloadStatus = true;
 
         }else{
             alert("something went wrong!!!");
