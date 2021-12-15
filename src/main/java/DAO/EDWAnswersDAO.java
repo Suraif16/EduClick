@@ -38,7 +38,7 @@ public class EDWAnswersDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT Content,ImagePath FROM EDW_Answers WHERE AnswerID = ?";
+            String sql = "SELECT Content,ImageStatus FROM EDW_Answers WHERE AnswerID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,answerId);
 
