@@ -208,7 +208,6 @@ mcqSubmitButton.onclick = function (){
 
     insertDataIntoArray( false );
     console.log( mcqContent );
-    getClassroomIdClientSide();
     submitMCQToServer( mcqContent );
     showMcqAddPostForm();
 
@@ -242,7 +241,7 @@ const submitMCQToServer = async function ( mcqContentArracy ){
         }
 
     }
-
+    dataString += "&classroomId=" + getClassroomIdClientSide();
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/mcqPostInsert" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send( dataString );

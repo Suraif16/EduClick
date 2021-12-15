@@ -20,6 +20,8 @@ public class mcqPostInsertServlet extends HttpServlet {
 
         HttpSession session = request.getSession( false );
 
+        String classroomId = request.getParameter( "classroomId" );
+
         List< Mcq > mcqList = new ArrayList<>();
 
         EducationalWork educationalWork = new EducationalWork( "Question" , LocalDate.now() , LocalTime.now() );
@@ -34,7 +36,7 @@ public class mcqPostInsertServlet extends HttpServlet {
 
         }
 
-        educationalWork.insertMCQEducationalWork( ( String ) session.getAttribute( "CurrentClassroomId" ) , mcqList );
+        educationalWork.insertMCQEducationalWork( classroomId , mcqList );
 
     }
 

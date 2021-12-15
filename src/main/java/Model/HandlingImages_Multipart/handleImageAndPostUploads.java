@@ -15,12 +15,13 @@ import java.util.List;
 
 public class handleImageAndPostUploads {
 
-    public static EducationalWork uploadEPostImages(HttpServletRequest request, String path, LocalDate localDate, LocalTime localTime, String classroomId) {
+    public static EducationalWork uploadEPostImages(HttpServletRequest request, String path, LocalDate localDate, LocalTime localTime ) {
 
         String type = "";
         String message = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload(new DiskFileItemFactory());
         String imageStatus = "";
+        String classroomId = "";
 
         try {
 
@@ -36,13 +37,17 @@ public class handleImageAndPostUploads {
                     byte[] bytes = new byte[inputStream.available()];
                     inputStream.read(bytes);
 
-                    if (file.getFieldName().equals("message")) {
+                    if ( file.getFieldName().equals("message") ) {
 
                         message = new String(bytes);
 
-                    } else if (file.getFieldName().equals("type")) {
+                    } else if ( file.getFieldName().equals("type") ) {
 
                         type = new String(bytes);
+
+                    }else if ( file.getFieldName().equals( "classroomId" ) ){
+
+                        classroomId = new String(bytes);
 
                     }
 

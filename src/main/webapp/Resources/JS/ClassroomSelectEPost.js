@@ -190,7 +190,7 @@ const displayMcqPost = function ( postData ){
 }
 
 const selectEPostFromServer = function ( scrollStatus ){
-    getClassroomIdClientSide();
+    let classroomId = getClassroomIdClientSide();
     let httpreq = new XMLHttpRequest();
     let postContent = "";
     let selectId = null;
@@ -222,7 +222,7 @@ const selectEPostFromServer = function ( scrollStatus ){
         httpreq.open( "POST" , "/EduClick_war_exploded/teacher/selectEPostClassroom" , true );
         httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
         console.log( "its the selected id here : " , selectId)
-        httpreq.send("id=" + selectId );
+        httpreq.send("id=" + selectId + "&classroomId=" + classroomId );
         console.log(" in if condition and select is sent to server ")
 
     }

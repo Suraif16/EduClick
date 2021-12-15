@@ -28,13 +28,12 @@ public class EducationalPostInsertServlet extends HttpServlet {
         jsonObject.put( "serverResponse" , "Allowed" );
 
         boolean isMultipart = ServletFileUpload.isMultipartContent( request );
-        String classroomId = ( String ) session.getAttribute( "CurrentClassroomId" );
         EducationalWork educationalWork = null;
 
         if ( isMultipart ){
 
             System.out.println( "reached" );
-            educationalWork = handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() , classroomId );
+            educationalWork = handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now()  );
             System.out.println( "reached and done");
 
         }
