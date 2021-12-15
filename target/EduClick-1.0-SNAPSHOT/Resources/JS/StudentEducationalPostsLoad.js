@@ -37,10 +37,7 @@ const loadStudentEducationalPosts = function (){
 
             for( i = 0 ; i < jsonLoginResponse.EPostContent.length ; i++){
                 if(jsonLoginResponse.EPostContent[i].ePost.Type == "Messages"){
-<<<<<<< HEAD
-=======
                     console.log("Image Path of post "+i+" : "+jsonLoginResponse.EPostContent[i].eWork.ImagePath)
->>>>>>> main
                     let htmlString =
                         '<div class="post">' +
                         '            <div class="postContentContainer">' +
@@ -94,17 +91,6 @@ const loadStudentEducationalPosts = function (){
                         '                                </div>' +
                         '                            </div>' +
                         '                        </div>' +
-<<<<<<< HEAD
-                        '                        <div style="display: none" class="Marks" id="ans4" onclick="showAnswers(4)">' +
-                        '                            <div class="attachment">' +
-                        '                                <label class="attachmentLabel">' +
-                        '                                    <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">' +
-                        '                                    <input type="file" accept="image/*">' +
-                        '                                </label>' +
-                        '                                <input id="comment" type="text" placeholder="   Comments...">' +
-                        '                                <input type="button" value="Post" class="answerShowButton">' +
-                        '                                <input type="button" value="Delete Answer" class="answerShowButton">' +
-=======
                         '                        <div style="display: none" class="Marks" id="ans4" >' +
                         '                            <div class="attachment">' +
                         '                                <label class="attachmentLabel">' +
@@ -113,7 +99,6 @@ const loadStudentEducationalPosts = function (){
                         '                                </label>' +
                         '                                <input id="comment'+jsonLoginResponse.EPostContent[i].ePost.EPostID+'" type="text" placeholder="   Comments...">' +
                         '                                <input type="button" value="Post" class="answerShowButton">' +
->>>>>>> main
                         '                            </div>' +
                         '                        </div>' +
                         '                    </div>' +
@@ -123,9 +108,6 @@ const loadStudentEducationalPosts = function (){
 
                     postContents.innerHTML += htmlString;
                 }
-<<<<<<< HEAD
-            }
-=======
                 else if(jsonLoginResponse.EPostContent[i].ePost.Type == "Question"){
                     htmlString =
                         '<div class="post">' +
@@ -236,7 +218,6 @@ const submitAnswers = function(EPostId){
             }
 
         }
->>>>>>> main
 
         if ( isAllImageValid ){
 
