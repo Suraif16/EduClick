@@ -57,7 +57,7 @@ public class EducationalWork extends Post{
 
         EducationalWork educationalWork = educationalPostDAO.insertEducationalWork( this , "EducationalWork" , classroomId );
 
-        if ( educationalWork != null ){
+        if ( educationalWork != null && educationalWork.getImageStatus().equals( "true" ) ){
             /* here the post id is given as the image name*/
             Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( educationalWork.getPostID() , path + "Resources\\Images\\EducationalPostImages\\" , imageFile );
             saveImage.start();

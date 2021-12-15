@@ -10,9 +10,19 @@ let arrayQuestionIndex = 0;
 
 previousElement.onclick = function (){
 
-    insertDataIntoArray( false );
-    arrayQuestionIndex = ( arrayQuestionIndex - 1 + arrayCount ) % arrayCount;
-    getDataFromArrayToForm();
+
+    if ( getAllInputs() !== false ){
+
+        insertDataIntoArray( false );
+        arrayQuestionIndex = ( arrayQuestionIndex - 1 + arrayCount ) % arrayCount;
+        getDataFromArrayToForm();
+
+    }else{
+
+        alert("fill the visible field to move to next or previous question");
+
+    }
+
 
 }
 
@@ -40,10 +50,10 @@ const insertDataIntoArray = function ( previousCondition ){
             adjustFormData();
 
         }
+        getDataFromArrayToForm();
 
     }
 
-    getDataFromArrayToForm();
 
 }
 
@@ -148,20 +158,28 @@ const adjustFormData = function (){
 }
 
 const getDataFromArrayToForm = function (){
+    console.log( mcqContent[ arrayQuestionIndex ] , "new console" );
 
-    let currentArrayElement = mcqContent[ arrayQuestionIndex ];
+    if ( mcqContent[ arrayQuestionIndex ] !== undefined ){
 
-    document.getElementById( "mcqQuestion" ).value = currentArrayElement[ "Question" ] ;
-    document.getElementById( "mcqAnswer1" ).value = currentArrayElement[ "Answer1" ]  ;
-    document.getElementById( "mcqAnswer2" ).value = currentArrayElement[ "Answer2" ]  ;
-    document.getElementById( "mcqAnswer3" ).value = currentArrayElement[ "Answer3" ]  ;
-    document.getElementById( "mcqAnswer4" ).value = currentArrayElement[ "Answer4" ]  ;
+        console.log( mcqContent[ arrayQuestionIndex ] , "new console 1" );
 
-    console.log( currentArrayElement[ "CorrectAnswer" ] , "currect answer values");
+        let currentArrayElement = mcqContent[ arrayQuestionIndex ];
 
-    document.getElementById( "correctAnswer" + currentArrayElement[ "CorrectAnswer" ] ).checked = true;
+        document.getElementById( "mcqQuestion" ).value = currentArrayElement[ "Question" ] ;
+        document.getElementById( "mcqAnswer1" ).value = currentArrayElement[ "Answer1" ]  ;
+        document.getElementById( "mcqAnswer2" ).value = currentArrayElement[ "Answer2" ]  ;
+        document.getElementById( "mcqAnswer3" ).value = currentArrayElement[ "Answer3" ]  ;
+        document.getElementById( "mcqAnswer4" ).value = currentArrayElement[ "Answer4" ]  ;
 
-    adjustFormData();
+        console.log( currentArrayElement[ "CorrectAnswer" ] , "currect answer values");
+
+        document.getElementById( "correctAnswer" + currentArrayElement[ "CorrectAnswer" ] ).checked = true;
+
+        adjustFormData();
+
+    }
+
 
 }
 
@@ -174,6 +192,9 @@ const showMcqAddPostForm = function (){
     if ( mcqAddPostForm.style.display === "flex" ){
 
         mcqAddPostForm.style.display = "none";
+        selectMoreStatus = true;
+        setTimeout( function (){ selectEPostFromServer( false ) } , 3000 );
+
 
     }else{
 
@@ -187,6 +208,7 @@ mcqSubmitButton.onclick = function (){
 
     insertDataIntoArray( false );
     console.log( mcqContent );
+    getClassroomIdClientSide();
     submitMCQToServer( mcqContent );
     showMcqAddPostForm();
 

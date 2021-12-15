@@ -288,7 +288,7 @@ public class EducationalPostDAO {
     }
 
     public List<JSONObject> select( String classroomId , String minPostId ){
-
+        System.out.println( "classroom id : " + classroomId + " : this is minPostId : " + minPostId );
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         List< JSONObject > ePostList = new ArrayList<>();
@@ -346,7 +346,6 @@ public class EducationalPostDAO {
 
                 if ( resultSet.getString( 4 ).equals("EducationalWork")){
 
-
                     preparedStatement2.setString( 1 , ( String ) singleEPost.get( "EpostId" ) );
                     resultSet2 = preparedStatement2.executeQuery();
 
@@ -358,7 +357,6 @@ public class EducationalPostDAO {
                     }
 
                 }else if ( resultSet.getString( 4 ).equals( "MCQ" ) ){
-
 
                     preparedStatement3.setString( 1 , ( String ) singleEPost.get( "EpostId" ) );
                     resultSet3 = preparedStatement3.executeQuery();
@@ -422,13 +420,13 @@ public class EducationalPostDAO {
 
                 if ( resultSet != null )resultSet.close();
                 if ( resultSet2 != null )resultSet2.close();
-                if ( resultSet3 != null )resultSet2.close();
-                if ( resultSet4 != null )resultSet2.close();
+                if ( resultSet3 != null )resultSet3.close();
+                if ( resultSet4 != null )resultSet4.close();
 
                 if ( preparedStatement != null )preparedStatement.close();
                 if ( preparedStatement2 != null )preparedStatement2.close();
                 if ( preparedStatement3 != null )preparedStatement3.close();
-                if ( preparedStatement4 != null )preparedStatement3.close();
+                if ( preparedStatement4 != null )preparedStatement4.close();
 
                 if ( connection != null )connection.close();
 

@@ -17,7 +17,7 @@ const showAddEducationalPostForm = function (){
 }
 
 const postQuestionsMessages = function (){
-
+    getClassroomIdClientSide();
     let message = document.getElementById( "addNewsFeedFormTextArea" ).value;
     let images = document.getElementById( "inputImage" ).files;
     let type = document.getElementById( "ePostType" ).value;
@@ -91,14 +91,19 @@ const postQuestionsMessages = function (){
     const complete = function ( httpreq ){
 
         let jsonResponse = JSON.parse( httpreq.responseText );
-        showAddEducationalPostForm();
+
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
             console.log( jsonResponse.EPost );
-            let now = new Date().getTime();
-            let extraTime = 7000;
-            while(new Date().getTime() < now + extraTime ){}
+
+            document.getElementById( "addNewsFeedFormTextArea" ).value = null;
+            document.getElementById( "inputImage" ).value = null;
+
+            showAddEducationalPostForm();
+
+            selectMoreStatus = true;
+            setTimeout( function (){ selectEPostFromServer( false ) } , 3000 );
 
         }else{
             alert("something went wrong!!!");

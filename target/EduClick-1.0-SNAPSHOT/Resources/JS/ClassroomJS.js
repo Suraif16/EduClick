@@ -209,3 +209,13 @@ const getClassroomList = function (){
 
 }
 
+const getClassroomIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    let clsid = currentClassUrl.searchParams.get( "clsId" );
+
+    let httpreq = new XMLHttpRequest();
+    httpreq.open( "GET" , "/EduClick_war_exploded/SaveClassroomId?id=" + clsid , false );
+    httpreq.send();
+
+}
