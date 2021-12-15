@@ -21,7 +21,7 @@ const postNewsFeeds = function (){
     let message = document.getElementById( "addNewsFeedFormTextArea" ).value;
     let images = document.getElementById( "inputImage" ).files;
 
-    console.log( message , images );
+   // console.log( message , images );
 
     if ( message === "" && images.length === 0 ){
 
@@ -82,11 +82,77 @@ const postNewsFeeds = function (){
     const complete = function ( httpreq ){
 
         let jsonResponse = JSON.parse( httpreq.responseText );
+        showNewsFeedsPostForm();
 
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
-            console.log( "success" );
+
+            console.log( jsonResponse.NewsFeedsPost );
+            console.log(jsonResponse.fullName);
+            console.log( jsonResponse.NewsFeedsPost.caption );
+
+            const postContents = document.getElementById("postContents");
+            let now = new Date().getTime();
+            let extraTime = 7000;
+            while(new Date().getTime() < now + extraTime ){}
+            let innerPreviouseHTML = postContents.innerHTML;
+            postContents.innerHTML = '        <div class="post">    ' +
+                '              <div class="postContentContainer">' +
+                '                   <div class="postProfileSection">' +
+                '                        <a href="TeacherProfile.html" class="postProfile">' +
+                '                           <div class="postProfileImage">' +
+                '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
+                '                           </div>' +
+                '                           <div class="postProfileName" >' + jsonResponse.fullName +
+                '</div>' + ' </a>' +
+                '                           <div class="postTimeAndDate" >' +
+                jsonResponse.NewsFeedsPost.time + ' | ' +
+                jsonResponse.NewsFeedsPost.date +
+                '                            </div>' +
+                '                    <div class="userOptions">' +
+                '                        <input class="userOptionsButton" type="button" value="    " id="PostOPtion1" onclick="showOptionMenu(1,\'PostOPtion\')">' +
+                '                    </div>' +
+
+                '                   </div>' +
+                '               </div>' +
+                '               <div class="postContentContainer">' +
+                '                   <div class="postData">' +
+                '                       <div class="postMessage">' + jsonResponse.NewsFeedsPost.caption +
+
+                '                       </div>' +
+                '                       <div class="postPicture">' +
+                '                           <div class="postPictureImageContainer">' +
+                '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/ >' + jsonResponse.NewsFeedsPost.imagePath + '.jpeg">'+
+                '                           </div>' +
+                '                       </div>' +
+                '                     </div>' +
+                '                  </div>' +
+                '                   <div class="postContentContainer">' +
+                '                       <div class="postLikeShareButtons">' +
+                '                           <div class="likeShareButtons" >' +
+                '                               <input type="button" value="Like" class="like">' +
+                '                           </div>' +
+                '                           <div class="countOfLikeShare" >' +
+                '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
+                '                                   Likes' +
+                '                               </div >' +
+                '                               <div class="emptySpaceLikeShare">' +
+                '                               </div>' +
+                '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
+                '                                    Shares' +
+                '                               </div>' +
+                '                              </div>' +
+                '                           <div class="likeShareButtons" >' +
+                '                               <input type="button" value="Share" class="share">' +
+                '                           </div>' +
+                '                        </div>' +
+                '                       </div>' +
+                '                   </div>'
+
+
+            postContents.innerHTML += innerPreviouseHTML;
+
 
 
 

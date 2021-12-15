@@ -37,6 +37,8 @@ import java.util.ArrayList;
 
             Post post = new Post();
 
+            NewsFeeds newsFeeds = new NewsFeeds();
+
             ArrayList<String> newsFeedsIDList = post.getNewsFeedsID(userId);
 
             ArrayList<String> NFTeacherIDList = post.getNFTeacherID(userId);
@@ -44,8 +46,6 @@ import java.util.ArrayList;
             JSONArray TeacherNameList = user.getNFownerName(NFTeacherIDList);
 
             JSONArray NFIDList = post.getIDNewsFeeds(userId);
-
-            NewsFeeds newsFeeds = new NewsFeeds();
 
             JSONArray NFDetails = newsFeeds.getNFDetails(newsFeedsIDList);
 
