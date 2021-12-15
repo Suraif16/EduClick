@@ -7,26 +7,20 @@ import org.json.JSONObject;
 import java.sql.*;
 
 public class EDWAnswersDAO {
-    public String insert(Answers answers,String answerId){
+    public void insert(Answers answers,String answerId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         String generatedImageId = "";
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO EDW_Answers(AnswerID,Content) VALUES (?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            String sql = "INSERT INTO EDW_Answers(AnswerID,Content,ImageStatus) VALUES (?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,answerId);
             preparedStatement.setString(2,answers.getAnswer());
+            preparedStatement.setString(3,answers.getImageStatus());
 
             preparedStatement.execute();
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-
-            if ( resultSet.next() ){
-
-                generatedImageId = resultSet.getString( 1 );
-
-            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -36,8 +30,6 @@ public class EDWAnswersDAO {
             } catch (Exception ignore) {
             }
         }
-        System.out.println("case eka nmekada? : "+generatedImageId);
-        return generatedImageId;
     }
     public JSONObject getAnswerContent(String answerId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
