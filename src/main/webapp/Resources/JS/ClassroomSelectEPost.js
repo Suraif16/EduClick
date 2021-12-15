@@ -197,6 +197,8 @@ const selectEPostFromServer = function ( scrollStatus ){
     if ( !scrollStatus ){
 
         selectId = -1;
+        document.getElementById( "postContents" ).innerHTML = "";
+        minEPostId = Infinity;
 
     }else {
 
