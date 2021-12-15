@@ -17,51 +17,53 @@ window.onscroll = function (){
 const displayEducationalPost = function ( postData ){
 
     let post = '<div class="post">' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postProfileSection">' +
-        '                    <a href="TeacherProfile.html" class="postProfile">' +
+        '<div class="postContentContainer">' +
+        '<div class="postProfileSection">' +
+        '<a href="TeacherProfile.html" class="postProfile">' +
 
-        '                        <div class="postProfileImage">' +
-        '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-        '                        </div>' +
-        '                        <div class="postProfileName" >User Name</div>' +
-        '                    </a>' +
-        '                    <div class="postTimeAndDate">' +
+        '<div class="postProfileImage">' +
+        '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+        '</div>' +
+        '<div class="postProfileName" >User Name</div>' +
+        '</a>' +
+        '<div class="postTimeAndDate">' +
         postData.time +' | '+ postData.date +
-        '                    </div>' +
-        '                    <div class="userOptions">' +
-        '                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion1" onclick="showOptionMenu(1,\'educationalPostOPtion\')">' +
-        '                    </div>' +
-        '                </div>' +
-        '            </div>' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postData">' +
-        '                    <div class="postMessage">' +
-            postData.caption +
-        '                    </div>' +
-        '                    <div class="postPicture">';
+        '</div>' +
+        '<div class="userOptions">' +
+        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion'+ postData.EpostId +'" onclick="showOptionMenu('+ postData.EpostId +',\'educationalPostOPtion\')">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="postContentContainer">' +
+        '<div class="postData">' +
+        '<div class="postMessage">' +
+        postData.caption +
+        '</div>' +
+        '<div class="postPicture">';
 
     if ( postData.imageStatus === "true" ){
 
         post += '<div class="postPictureImageContainer">' +
-            '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + postData.EpostId +'.jpeg">' +
-                '                        </div>';
+            '<img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + postData.EpostId +'.jpeg">' +
+                '</div>';
 
     }
 
-        post += '                    </div>' +
-        '                </div>' +
-        '            </div>' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postAnswerButton">' +
-        '                    <div class="answerButton" >' +
-        '                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(1)">' +
-        '                    </div>' +
-        '                </div>' +
-        '            </div>' +
-        '            <div class="postContentContainer">' +
-        '            </div>' +
-        '        </div>';
+        post += '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="postContentContainer">' +
+        '<div class="postAnswerButton">' +
+        '<div class="answerButton" >' +
+        '<input type="button" value="Answer" class="answerShowButton" onclick="showAnswers('+ postData.EpostId +')">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="postContentContainer">' +
+            '<div style="display:none;" class="answersInPost" id="answersInPost'+ postData.EpostId +'" >' +
+            '</div>'+
+        '</div>' +
+        '</div>';
 
     return post;
 
@@ -70,41 +72,41 @@ const displayEducationalPost = function ( postData ){
 const displayMessage = function ( postData ){
 
     let post = '<div class="post">' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postProfileSection">' +
-        '                    <a href="TeacherProfile.html" class="postProfile">' +
-        '                        <div class="postProfileImage">' +
-        '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-        '                        </div>' +
-        '                        <div class="postProfileName" >User Name</div>' +
-        '                    </a>' +
-        '                    <div class="postTimeAndDate">' +
+        '<div class="postContentContainer">' +
+        '<div class="postProfileSection">' +
+        '<a href="TeacherProfile.html" class="postProfile">' +
+        '<div class="postProfileImage">' +
+        '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+        '</div>' +
+        '<div class="postProfileName" >User Name</div>' +
+        '</a>' +
+        '<div class="postTimeAndDate">' +
         postData.time +' | '+ postData.date +
-        '                    </div>' +
-        '                    <div class="userOptions">' +
-        '                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion7" onclick="showOptionMenu(7,\'educationalPostOPtion\')">' +
-        '                    </div>' +
-        '                </div>' +
-        '            </div>' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postData">' +
-        '                    <div class="postMessage">' +
+        '</div>' +
+        '<div class="userOptions">' +
+        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion'+ postData.EpostId +'" onclick="showOptionMenu('+ postData.EpostId +',\'educationalPostOPtion\')">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="postContentContainer">' +
+        '<div class="postData">' +
+        '<div class="postMessage">' +
         postData.caption +
-        '                    </div>' +
-        '                    <div class="postPicture">';
+        '</div>' +
+        '<div class="postPicture">';
 
     if ( postData.imageStatus === "true" ){
 
         post += '<div class="postPictureImageContainer">' +
-            '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + postData.EpostId +'.jpeg">' +
-            '                        </div>';
+            '<img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + postData.EpostId +'.jpeg">' +
+            '</div>';
 
     }
 
-        post += '                    </div>' +
-        '                </div>' +
-        '            </div>' +
-        '        </div>';
+        post += '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
 
     return post;
 
@@ -113,30 +115,30 @@ const displayMessage = function ( postData ){
 const displayMcqPost = function ( postData ){
 
     let post = '<div class="post">' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postProfileSection">' +
-        '                    <a href="TeacherProfile.html" class="postProfile">' +
-        '                        <div class="postProfileImage">' +
-        '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-        '                        </div>' +
-        '                        <div class="postProfileName" >User Name</div>' +
-        '                    </a>' +
-        '                    <div class="postTimeAndDate">' +
+        '<div class="postContentContainer">' +
+        '<div class="postProfileSection">' +
+        '<a href="TeacherProfile.html" class="postProfile">' +
+        '<div class="postProfileImage">' +
+        '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+        '</div>' +
+        '<div class="postProfileName" >User Name</div>' +
+        '</a>' +
+        '<div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
-        '                    </div>' +
-        '                    <div class="userOptions">' +
-        '                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion3" onclick="showOptionMenu(3,\'educationalPostOPtion\')">' +
-        '                    </div>' +
-        '                </div>' +
-        '            </div>' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postData">';
+        '</div>' +
+        '<div class="userOptions">' +
+        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion'+ postData.EpostId +'" onclick="showOptionMenu('+ postData.EpostId +',\'educationalPostOPtion\')">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="postContentContainer">' +
+        '<div class="postData">';
 
     for ( let i = 0; i < 10; i++ ) {
 
-        post += '                    <div class="postMessage mcq">' +
+        post += '<div class="postMessage mcq">' +
                 postData.questionList[i]["question"] +
-            '                        <div class="mcqAnswerContainer">';
+            '<div class="mcqAnswerContainer">';
 
         for (let j = 1; j < 5; j++) {
 
@@ -145,38 +147,40 @@ const displayMcqPost = function ( postData ){
 
             if ( postData.questionList[i][ answerNumber + j ] === postData.questionList[i][ "correctAnswer" ] ){
 
-                post += '                            <div class="mcqSingleAnswer correctMcqSingleAnswer">' +
+                post += '<div class="mcqSingleAnswer correctMcqSingleAnswer">' +
                     postData.questionList[i][ answer + j ]+
-                        '                            </div>';
+                        '</div>';
 
             }else{
 
-                post += '                            <div class="mcqSingleAnswer">' +
+                post += '<div class="mcqSingleAnswer">' +
                          postData.questionList[i][ answer + j ] +
-                        '                            </div>';
+                        '</div>';
 
             }
 
         }
 
-        post +='                        </div>' +
-            '                    </div>';
+        post +='</div>' +
+            '</div>';
 
     }
 
 
-    post +=    '                </div>' +
-        '            </div>' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postAnswerButton">' +
-        '                    <div class="answerButton" >' +
-        '                        <input type="button" value="Show Results" class="mcqResultShowButton" onclick="showMcqResult(1)">' +
-        '                    </div>' +
-        '                </div>' +
-        '            </div>' +
-        '            <div class="postContentContainer">' +
-        '            </div>' +
-        '        </div>';
+    post +=    '</div>' +
+        '</div>' +
+        '<div class="postContentContainer">' +
+        '<div class="postAnswerButton">' +
+        '<div class="answerButton" >' +
+        '<input type="button" value="Show Results" class="mcqResultShowButton" onclick="showMcqResult(1)">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="postContentContainer">' +
+        '<div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost1" >' +
+        '</div>' +
+        '</div>' +
+        '</div>';
 
     return post;
 
