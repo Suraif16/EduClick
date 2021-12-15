@@ -609,7 +609,7 @@ const submitAnswers = function(EPostId){
                 '                                    </div>' +
                 '                                    <div class="pictureAnswers">' +
                 '                                        <a href="#">' +
-                '                                            <img src="../Resources/Images/AnswerImages/' + jsonAnswerResponse.EPostAnswer.imagePath + '.jpeg">' +
+                '                                            <img src="../Resources/Images/AnswerImages/' + EPostId+ '.jpeg">' +
                 '                                        </a>' +
                 '                                    </div>' +
                 '                                    <div  class="Marks">' +
