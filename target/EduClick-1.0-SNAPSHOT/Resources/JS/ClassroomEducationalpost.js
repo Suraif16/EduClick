@@ -32,12 +32,20 @@ const postQuestionsMessages = function (){
 
         let isAllImageValid = false;
 
-        for ( let i = 0; i < images.length; i++ ) {
+        if ( images.length === 0 ){
 
-            isAllImageValid = isImageAccepted( images[i].type )
-            if ( !isAllImageValid ){
-                console.log("break");
-                break;
+            isAllImageValid = true;
+
+        }else{
+
+            for ( let i = 0; i < images.length; i++ ) {
+
+                isAllImageValid = isImageAccepted( images[i].type )
+                if ( !isAllImageValid ){
+                    console.log("break");
+                    break;
+
+                }
 
             }
 
@@ -88,120 +96,9 @@ const postQuestionsMessages = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
             console.log( jsonResponse.EPost );
-            const postContentsElement = document.getElementById( "postContents" );
             let now = new Date().getTime();
             let extraTime = 7000;
             while(new Date().getTime() < now + extraTime ){}
-            let innerPreviouseHTML = postContentsElement.innerHTML;
-            postContentsElement.innerHTML = '<div class="post">' +
-                '            <div class="postContentContainer">' +
-                '                <div class="postProfileSection">' +
-                '                    <a href="TeacherProfile.html" class="postProfile">' +
-                '                        <div class="postProfileImage">' +
-                '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-                '                        </div>' +
-                '                        <div class="postProfileName" >User Name</div>' +
-                '                    </a>' +
-                '                    <div class="postTimeAndDate">' +
-                + jsonResponse.EPost.time +
-                ' | ' + jsonResponse.EPost.date +
-                '                    </div>' +
-                '                    <div class="userOptions">' +
-                '                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion1" onclick="showOptionMenu(1,\'educationalPostOPtion\')">' +
-                '                    </div>' +
-                '                </div>' +
-                '            </div>' +
-                '            <div class="postContentContainer">' +
-                '                <div class="postData">' +
-                '                    <div class="postMessage">' +
-                                        jsonResponse.EPost.caption   +
-                '                    </div>' +
-                '                    <div class="postPicture">' +
-                '                        <div class="postPictureImageContainer">' +
-                '                            <!--To only present the message without the picture, keep this value as null / empty-->' +
-                '                            <img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + jsonResponse.EPost.imagePath + '.jpeg">' +
-                '                        </div>' +
-                '                    </div>' +
-                '                </div>' +
-                '            </div>' +
-                '            <div class="postContentContainer">' +
-                '                <div class="postAnswerButton">' +
-                '                    <div class="answerButton" >' +
-                '                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(1)">' +
-                '                    </div>' +
-                '                </div>' +
-                '            </div>' +
-                '            <div class="postContentContainer">' +
-                '                <div style="display:none;" class="answersInPost" id="answersInPost1" >' +
-                '                    <div class="singleAnswer">' +
-                '                        <div class="answerUser">' +
-                '                            <a href="TeacherProfile.html" class="answerProfile">' +
-                '                                <div class="answerProfileImage">' +
-                '                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-                '                                </div>' +
-                '                                <div class="answerProfileName" >Student Name</div>' +
-                '                            </a>' +
-                '                            <div class="postTimeAndDate">' +
-                '                                18:32:26 | 03/25/2015' +
-                '                            </div>' +
-                '                            <div class="userOptions">' +
-                '                                <input class="userOptionsButton" type="button" value="    " id="answerOption1" onclick="showOptionMenu(1,\'answerOption\')">' +
-                '                            </div>' +
-                '                        </div>' +
-                '                        <div class="textAnswers">' +
-                '                            This could be proved by a contradiction.' +
-                '                            This could be proved by a contradiction.' +
-                '                            This could be proved by a contradiction.' +
-                '                            This could be proved by a contradiction.' +
-                '                            This could be proved by a contradiction.' +
-                '                        </div>' +
-                '                        <div class="pictureAnswers">' +
-                '                            <a href="#">' +
-                '                                <img src="../Resources/Images/images.jfif">' +
-                '                            </a>' +
-                '                        </div>' +
-                '                        <div class="marksForAnswers">' +
-                '                            <input type="range" value="0" max="100" oninput="answer1.value = this.value" class="marksForAnswersRange">' +
-                '                            <output id="answer1" class="marksForAnswersRangeValue">0</output>' +
-                '                        </div>' +
-                '                    </div>' +
-                '                    <div class="singleAnswer">' +
-                '                        <div class="answerUser">' +
-                '                            <a href="TeacherProfile.html" class="answerProfile">' +
-                '                                <div class="answerProfileImage">' +
-                '                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-                '                                </div>' +
-                '                                <div class="answerProfileName" >Student Name</div>' +
-                '                            </a>' +
-                '                            <div class="postTimeAndDate">' +
-                '                                18:32:26 | 03/25/2015' +
-                '                            </div>' +
-                '                            <div class="userOptions">' +
-                '                                <input class="userOptionsButton" type="button" value="    " id="answerOption2" onclick="showOptionMenu(2,\'answerOption\')">' +
-                '                            </div>' +
-                '                        </div>' +
-                '                        <div class="textAnswers">' +
-                '                            This could be proved by a contradiction.' +
-                '                            This could be proved by a contradiction.' +
-                '                            This could be proved by a contradiction.' +
-                '                            This could be proved by a contradiction.' +
-                '                            This could be proved by a contradiction.' +
-                '                        </div>' +
-                '                        <div class="pictureAnswers">' +
-                '                            <a href="#">' +
-                '                                <img src="../Resources/Images/answers2.jpg">' +
-                '                            </a>' +
-                '                        </div>' +
-                '                        <div class="marksForAnswers">' +
-                '                            <input type="range" value="0" max="100" oninput="answer2.value = this.value" class="marksForAnswersRange">' +
-                '                            <output id="answer2" class="marksForAnswersRangeValue">0</output>' +
-                '                        </div>' +
-                '                    </div>' +
-                '                </div>' +
-                '            </div>' +
-                '        </div>';
-
-            postContentsElement.innerHTML += innerPreviouseHTML;
 
         }else{
             alert("something went wrong!!!");
