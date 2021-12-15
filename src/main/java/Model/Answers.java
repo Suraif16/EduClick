@@ -17,14 +17,14 @@ public class Answers {
     private LocalTime time;
     private int marks;
     private String userId;
-    private String imagePath;
+    private String imageStatus;
 
-    public String getImagePath() {
-        return imagePath;
+    public String getImageStatus() {
+        return imageStatus;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImageStatus(String imagePath) {
+        this.imageStatus = imagePath;
     }
 
     public String getUserId() {
@@ -76,12 +76,13 @@ public class Answers {
         this.marks = marks;
     }
 
-    public Answers(String questionId, String answer, LocalDate date, LocalTime time,String userId) {
+    public Answers(String questionId, String answer, LocalDate date, LocalTime time,String userId,String imageStatus) {
         this.questionId = questionId;
         this.answer = answer;
         this.date = date;
         this.time = time;
         this.userId = userId;
+        this.imageStatus = imageStatus;
     }
 
     public Answers(String ePostId, String userId) {
@@ -99,8 +100,8 @@ public class Answers {
             if(status.equals("Done")){
 
                 EDWAnswersDAO edwAnswersDao = new EDWAnswersDAO();
-                this.setImagePath(edwAnswersDao.insert(this,answerId));
-                Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\AnswerImages\\" , imageFile );
+                edwAnswersDao.insert(this,answerId);
+                Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getQuestionId() , path + "Resources\\Images\\AnswerImages\\" , imageFile );
                 saveImage.start();
             }
         }
