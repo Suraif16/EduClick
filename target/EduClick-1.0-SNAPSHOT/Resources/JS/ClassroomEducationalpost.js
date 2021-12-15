@@ -91,11 +91,17 @@ const postQuestionsMessages = function (){
     const complete = function ( httpreq ){
 
         let jsonResponse = JSON.parse( httpreq.responseText );
-        showAddEducationalPostForm();
+
         if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
             console.log( jsonResponse.EPost );
+
+            document.getElementById( "addNewsFeedFormTextArea" ).value = null;
+            document.getElementById( "inputImage" ).value = null;
+
+            showAddEducationalPostForm();
+
             selectMoreStatus = true;
             setTimeout( function (){ selectEPostFromServer( false ) } , 3000 );
 
