@@ -173,6 +173,7 @@ function showAnswers( id ){
 
 
 function showMcqResult( id ){
+    console.log("PostID eka awooo : "+id)
 
     let mcqResultsInPostId = "mcqResultsInPost" + id;
     let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
@@ -218,9 +219,11 @@ const checkEnableOrDisable = function (){
         }else if(jsonStatusResponse.serverResponse === "Allowed") {
             console.log(jsonStatusResponse.Status)
             if(jsonStatusResponse.Status==="Enable"){
-                loadStudentEducationalPosts(false);
+                /*loadStudentEducationalPosts(false);*/
                 console.log("I am enabled")
             }else if(jsonStatusResponse.Status==="Disable"){
+                let postContents = document.getElementById("postContents");
+                postContents.innerHTML = ""
                 console.log("Case case case disabled")
             }
             status = jsonStatusResponse.Status;
@@ -238,6 +241,7 @@ document.onreadystatechange = function (){
     if ( document.readyState === 'complete' ){
 
         /* when the document is loaded and complete this function will run*/
+        loadStudentEducationalPosts(false);
         checkEnableOrDisable();
         sendNameData();
         getClassroomList();
@@ -386,5 +390,12 @@ const getClassroomList = function (){
 
 
 }
-setInterval( checkEnableOrDisable , 20000);
+//setInterval( checkEnableOrDisable , 20000);
+
+const getClassroomIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "clsId" );
+
+}
 
