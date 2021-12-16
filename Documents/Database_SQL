@@ -80,7 +80,7 @@ CREATE TABLE Answer(
 CREATE TABLE EDW_Answers(
     AnswerID BIGINT NOT NULL,
     Content VARCHAR(8000),
-    ImagePath BIGINT AUTO_INCREMENT UNIQUE NOT NULL,
+    ImageStatus ENUM('true','false'),
     PRIMARY KEY(AnswerID)
     )ENGINE = INNODB;
 

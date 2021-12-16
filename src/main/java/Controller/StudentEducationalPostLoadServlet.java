@@ -14,74 +14,49 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class StudentEducationalPostLoadServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request , HttpServletResponse response ) throws IOException {
         PrintWriter out = response.getWriter();
-
         response.setContentType("text/html");
 
         JSONObject jsonObject = new JSONObject();
+        jsonObject.put( "serverResponse" , "Allowed" );
 
-//        JSONArray jsonArray = new JSONArray();
-
-        HttpSession session = request.getSession( false );
-
-        String classroomId = (String) session.getAttribute( "CurrentClassroomId");
-
-        System.out.println("The classroom id : "+classroomId);
-
-        jsonObject.put("serverResponse" , "Allowed");
-
-        Classroom classroom =  new Classroom();
-
-        //Getting the full name of the teacher whom the classroom belongs to
+        Classroom classroom = new Classroom();
 
         User user = new User();
 
-        String id = classroom.getClassroomOwnerId(classroomId);
-        String fullName = user.getFullName(id);
-        System.out.println("Teacher FullName in servlet : "+fullName);
+        HttpSession session = request.getSession( false );
 
-        jsonObject.put("TeacherFullName",fullName);
-        Post post1 = new Post();
+        String minPostId = ( String ) request.getParameter( "id" );
 
-        ArrayList<JSONObject> arr = new ArrayList<JSONObject>();
-        ArrayList<String> ePostIdList = post1.checkEposts(classroomId);
+        String classroomId = (String) session.getAttribute("CurrentClassroomId");
 
-        for(int i=0;i<ePostIdList.size();i++) {
-            JSONArray jsonArray1 = new JSONArray();
-            JSONObject jsonObject1 = new JSONObject();
-            Post post = new Post();
-            jsonObject1.put("ePost",post.getEPostDetails(ePostIdList.get(i)));
-            jsonObject1.put("eWork",post.getEPostContent(ePostIdList.get(i)));
-            arr.add(jsonObject1);
-        }
+        System.out.println("minPostId : "+minPostId);
 
+        EducationalWork educationalWork = new EducationalWork();
+        List< JSONObject > ePostList = educationalWork.selectEducationalPost( ( String ) session.getAttribute( "CurrentClassroomId" ) , minPostId );
 
+        JSONArray jsonEPostList = new JSONArray( ePostList );
 
+        jsonObject.put( "ePosts" , jsonEPostList );
 
+        System.out.println(classroomId);
 
-        String userId = classroom.getClassroomOwnerId(id);
-        System.out.println("Teachers ID : "+userId);
+        jsonObject.put("TeacherFullName",user.getFullName(classroom.getClassroomOwnerId(classroomId)));
 
-        jsonObject.put("TeacherId",userId);
+        jsonObject.put("TeacherId",classroom.getClassroomOwnerId(classroomId));
 
 
 
-        JSONArray jsonArray1 = new JSONArray(arr);
+        System.out.println(jsonObject);
 
-        System.out.println(jsonArray1);
+        System.out.println("New post load student ok!!!");
 
-
-
-
-        jsonObject.put("EPostContent",jsonArray1);
-
-
-        out.write(jsonObject.toString());
-
+        out.write( jsonObject.toString() );
         out.close();
 
     }
