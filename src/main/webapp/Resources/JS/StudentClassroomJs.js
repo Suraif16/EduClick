@@ -89,7 +89,7 @@ function showAnswers( id ){
             }else if(jsonAnswerLoadResponse.serverResponse === "Allowed") {
 
                 console.log("Danata everything is okay cerrrrrrr")
-                console.log(jsonAnswerLoadResponse.Answered)
+                console.log("Answer Load Response : "+jsonAnswerLoadResponse.AnswerContent.ImageStatus)
 
                 let answersInPost = "answersInPost"+id;
                 let answer = document.getElementById(answersInPost);
@@ -108,24 +108,43 @@ function showAnswers( id ){
 
                     answer.innerHTML = "";
 
-                    let htmlString =
-                        '<div class="singleAnswer">' +
-                        '                                    <div class="textAnswers" id="myComment">' +
-                        jsonAnswerLoadResponse.AnswerContent.Content +
-                        '                                    </div>' +
-                        '                                    <div class="pictureAnswers">' +
-                        '                                        <a href="#">' +
-                        '                                            <img src="../Resources/Images/AnswerImages/' + id + '.jpeg">' +
-                        '                                        </a>' +
-                        '                                    </div>' +
-                        '                                    <div class="Marks">'
-                                                                + markText +
-                        '                                    </div>' +
-                        '                                </div>'
-                    answer.innerHTML+=htmlString;
-                    textBoxId.innerHTML="You have already answered to this question!";
-                    textBoxId.style.color = "white";
-                    textBoxId.style.backgroundColor = "#F4330A";
+                    if(jsonAnswerLoadResponse.AnswerContent.ImageStatus == "true"){
+                        let htmlString =
+                            '<div class="singleAnswer">' +
+                            '                                    <div class="textAnswers" id="myComment">' +
+                            jsonAnswerLoadResponse.AnswerContent.Content +
+                            '                                    </div>' +
+                            '                                    <div class="pictureAnswers">' +
+                            '                                        <a href="#">' +
+                            '                                            <img src="../Resources/Images/AnswerImages/' + id + '.jpeg">' +
+                            '                                        </a>' +
+                            '                                    </div>' +
+                            '                                    <div class="Marks">'
+                            + markText +
+                            '                                    </div>' +
+                            '                                </div>'
+                        answer.innerHTML+=htmlString;
+                        textBoxId.innerHTML="You have already answered to this question!";
+                        textBoxId.style.color = "white";
+                        textBoxId.style.backgroundColor = "#F4330A";
+
+                    }else if(jsonAnswerLoadResponse.AnswerContent.ImageStatus == "false"){
+                        let htmlString =
+                            '<div class="singleAnswer">' +
+                            '                                    <div class="textAnswers" id="myComment">' +
+                            jsonAnswerLoadResponse.AnswerContent.Content +
+                            '                                    </div>' +
+                            '                                    <div class="Marks">'
+                            + markText +
+                            '                                    </div>' +
+                            '                                </div>'
+                        answer.innerHTML+=htmlString;
+                        textBoxId.innerHTML="You have already answered to this question!";
+                        textBoxId.style.color = "white";
+                        textBoxId.style.backgroundColor = "#F4330A";
+                    }
+
+
 
 
 
