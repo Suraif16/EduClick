@@ -30,25 +30,25 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
                 postData.questionList[i].question+
                 '                        <div class="mcqAnswerContainer">' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQ Answer 1" name="MCQ1">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'">' +
                 '                                    <label for="MCQ Answer 1">' +
                 postData.questionList[i].answer1+
                 '                                    </label>' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQ Answer 2" name="MCQ1">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'">' +
                 '                                    <label for="MCQ Answer 2">' +
                 postData.questionList[i].answer2 +
                 '                                    </label>' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQ Answer 3" name="MCQ1">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'">' +
                 '                                    <label for="MCQ Answer 3">' +
                 postData.questionList[i].answer3 +
                 '                                    </label>\n' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQ Answer 4" name="MCQ1">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'">' +
                 '                                    <label for="MCQ Answer 4">' +
                 postData.questionList[i].answer4 +
                 '                                    </label>' +
