@@ -219,8 +219,9 @@ const checkEnableOrDisable = function (){
             console.log(jsonStatusResponse.Status)
             if(jsonStatusResponse.Status==="Enable"){
                 loadStudentEducationalPosts(false);
+                console.log("I am enabled")
             }else if(jsonStatusResponse.Status==="Disable"){
-                console.log("Case case case")
+                console.log("Case case case disabled")
             }
             status = jsonStatusResponse.Status;
         }else{
@@ -385,4 +386,5 @@ const getClassroomList = function (){
 
 
 }
+setInterval( checkEnableOrDisable , 20000);
 
