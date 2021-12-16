@@ -109,13 +109,13 @@ const displayRequest = function ( jsonResponse ){
 
                     '</div>' +
 
-                    '<div id="description' + jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId + '">' +
+                    '<div>' +
 
                     ' '+ jsonResponse.requestList[i].description +
 
                     '</div>'+
 
-                    '<div>'+
+                    '<div id="buttons' + jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId + '">' +
 
                     '<input type="button" value="Accept" onclick="' + acceptFunction + '"' +'>'+
 
@@ -161,15 +161,24 @@ function EnrollRequestAccept( fromId , toId ){
             }else if(jsonResponse.serverResponse === "Allowed") {
                 /* This is where I need work everytime as per the authentication filter*/
                 console.log( "enroll status : " , jsonResponse.enrollStatus )
-                if ( jsonResponse.enrollStatus === true ){
+                const singleNotificaiton = document.getElementById( "Enroll" + fromId + "" + toId );
 
-                    alert( "request accepted" );
+                if ( jsonResponse.enrollStatus === true ){
+                    /*console.log( "buttonsEnroll" + fromId + "" + toId );console.log("please work");
+                    document.getElementById( "buttonsEnroll" + fromId + "" + toId ).style.backgroundColor = "red";
+                    let now = new Date().getTime();
+                    let extraTime = 2500;
+                    while(new Date().getTime() < now + extraTime ){}*/
+
+                    singleNotificaiton.style.display = "none";
+
 
                 }else {
 
                     alert( "something went wrong")
 
                 }
+
 
             }else{
                 alert("something went wrong!!!");
