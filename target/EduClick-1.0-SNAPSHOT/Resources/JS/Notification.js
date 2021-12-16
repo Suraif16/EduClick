@@ -146,9 +146,42 @@ function FriendRequestDecline(fromId , toId ){
 
 }
 
-function EnrollRequestAccept(fromId , toId ){
+function EnrollRequestAccept( fromId , toId ){
 
     console.log( "Enroll request accepted" , fromId , toId );
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status === 200){
+
+            let jsonResponse = JSON.parse( this.responseText );
+
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed") {
+                /* This is where I need work everytime as per the authentication filter*/
+                console.log( "enroll status : " , jsonResponse.enrollStatus )
+                if ( jsonResponse.enrollStatus === true ){
+
+                    alert( "request accepted" );
+
+                }else {
+
+                    alert( "something went wrong")
+
+                }
+
+            }else{
+                alert("something went wrong!!!");
+            }
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/AcceptEnrollRequest" , true );
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send( "fromId=" + fromId + "&toId=" + toId );
 
 }
 
