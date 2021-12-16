@@ -53,6 +53,7 @@ public class LoginServlet extends HttpServlet {
 
             }else{
 
+                login.updateDateAndTime();
                 jsonObject.put( "User" , "User");
                 User user = new User( (String) jsonObjectLoginStatus.get("userid") );
                 user = user.getUser();

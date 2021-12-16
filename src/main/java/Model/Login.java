@@ -153,4 +153,11 @@ public class Login {
         loginDAO.updateValueStatus( this , "PasswordIncorrect");
 
     }
+
+    public void updateDateAndTime(){
+
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.update( this.email , this.loginDate , this.loginTime );
+
+    }
 }
