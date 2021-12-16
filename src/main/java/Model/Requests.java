@@ -1,9 +1,6 @@
 package Model;
 
-import DAO.AddFriendsDAO;
-import DAO.EnrollRequestDAO;
-import DAO.FollowsDAO;
-import DAO.FriendRequestDAO;
+import DAO.*;
 
 import java.util.ArrayList;
 
@@ -172,6 +169,13 @@ public class Requests {
         FollowsDAO followsDAO = new FollowsDAO();
         ArrayList<String> followersList = followsDAO.getTeacherFollowersKeys(userId);
         return followersList;
+
+    }
+
+    public boolean confirmEnrollRequest(){
+
+        EnrollDAO enrollDAO = new EnrollDAO();
+        return enrollDAO.acceptClassroomEnrollRequest( this );
 
     }
 
