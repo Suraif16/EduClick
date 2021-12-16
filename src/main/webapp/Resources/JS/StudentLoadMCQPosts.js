@@ -36,19 +36,19 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
                 '                                    </label>' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo2+'" name="MCQ'+postData.questionList[i].questionId+'">' +
                 '                                    <label for="MCQ Answer 2">' +
                 postData.questionList[i].answer2 +
                 '                                    </label>' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo3+'" name="MCQ'+postData.questionList[i].questionId+'">' +
                 '                                    <label for="MCQ Answer 3">' +
                 postData.questionList[i].answer3 +
                 '                                    </label>\n' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo4+'" name="MCQ'+postData.questionList[i].questionId+'">' +
                 '                                    <label for="MCQ Answer 4">' +
                 postData.questionList[i].answer4 +
                 '                                    </label>' +
