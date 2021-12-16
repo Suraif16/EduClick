@@ -1,6 +1,7 @@
 package DAO;
 
 import Database.DBConnectionPool;
+import Model.Requests;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -91,5 +92,81 @@ public class EnrollDAO {
         return status;
     }
 
+    public boolean acceptClassroomEnrollRequest( Requests requests ){
 
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement1 = null;
+
+        boolean enrollStatus = false;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "DELETE FROM Enroll_Request WHERE From_UserID = ? AND To_ClassroomID = ?";
+            preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , requests.getFromId() );
+            preparedStatement.setString( 2 , requests.getToId() );
+
+            int deleteRowCount = preparedStatement.executeUpdate();
+            System.out.println( deleteRowCount );
+            if ( deleteRowCount == 1 ){
+
+                String sql1 = "INSERT INTO Enroll VALUES( ? , ? , ? )";
+                preparedStatement1 = connection.prepareStatement( sql1 );
+
+                preparedStatement1.setString( 1 , requests.getFromId() );
+                preparedStatement1.setString( 2 , requests.getToId() );
+                preparedStatement1.setString( 3 , "Enable");
+
+                preparedStatement1.executeUpdate();
+
+                connection.commit();
+                enrollStatus = true;
+
+            }else {
+
+                connection.rollback();
+
+            }
+
+
+
+        }catch ( SQLException E ){
+
+            try {
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException ex ){
+
+                ex.printStackTrace();
+
+            }
+
+        }finally {
+
+            try{
+
+                if ( preparedStatement != null )preparedStatement.close();
+                if ( preparedStatement1 != null )preparedStatement1.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }
+
+        return enrollStatus;
+
+    }
 }
