@@ -3,7 +3,7 @@ const mimeTypeArray = [ "image/apng" , "image/avif" , "image/jpeg" , "image/png"
 let reloadStatus = true;
 const postDataContent = document.getElementById( "postContents" );
 let minEPostId = Infinity;
-
+let selectMoreStatus = true;
 
 window.onscroll = function (){
 
@@ -21,6 +21,7 @@ window.onscroll = function (){
 
 const loadStudentEducationalPosts = function ( scrollStatus ){
 
+    let classroomId = getClassroomIdClientSide();
     let httpreq = new XMLHttpRequest();
     let postContent = "";
     let selectId = null;
@@ -28,8 +29,11 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
     if ( !scrollStatus ){
 
         selectId = -1;
+        document.getElementById( "postContents" ).innerHTML = "";
+        minEPostId = Infinity;
 
     }else {
+
 
         selectId = minEPostId;
 
@@ -45,11 +49,13 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
     }
 
-    if ( minEPostId > 1){
+    if ( selectMoreStatus){
 
         httpreq.open( "POST" , "/EduClick_war_exploded/student/studentEducationalPostLoad" , true );
         httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-        httpreq.send("id=" + selectId );
+        console.log( "its the selected id here : " , selectId)
+        httpreq.send("id=" + selectId + "&classroomId=" + classroomId );
+        console.log(" in if condition and select is sent to server ")
 
         }
 
@@ -70,6 +76,12 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
             console.log(ePostsLIst)
 
+            if ( ePostsLIst.length === 0 ){
+
+                selectMoreStatus = false;
+
+            }
+
             for (let i = 0; i < ePostsLIst.length ; i++) {
 
                 if ( ePostsLIst[i].EpostId < minEPostId ){
@@ -80,7 +92,9 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
                 if ( ePostsLIst[i].EPtype === "MCQ" ){
 
-                    postContent += displayMcqPost( ePostsLIst[i] );
+                    console.log("MCQ thynwa load krnne khmda bn?")
+
+                    postContent += displayMcqPost( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
 
                 }else {
 
