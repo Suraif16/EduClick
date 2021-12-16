@@ -70,7 +70,7 @@ const displayRequest = function ( jsonResponse ){
         if( initialRequestCount < count ){
             initialRequestCount = count;
             notificationRequestButton.style.backgroundColor = "red";
-
+            console.log(jsonResponse.requestList)
             for(i = 0 ; i < count ; i++ ){
 
                 let acceptFunction;
@@ -91,7 +91,7 @@ const displayRequest = function ( jsonResponse ){
 
                 /* This is where the each request element is created*/
 
-                request.innerHTML += '<div class="singleNotification">' +
+                request.innerHTML += '<div class="singleNotification" id="'+ jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId +'">' +
 
                     '<div>' +
 
@@ -109,7 +109,7 @@ const displayRequest = function ( jsonResponse ){
 
                     '</div>' +
 
-                    '<div>' +
+                    '<div id="description' + jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId + '">' +
 
                     ' '+ jsonResponse.requestList[i].description +
 
