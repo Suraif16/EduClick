@@ -215,3 +215,33 @@ const getClassroomIdClientSide = function (){
     return currentClassUrl.searchParams.get( "clsId" );
 
 }
+
+const selectStudentEnrollList = function (){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            complete( this );
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/getTeacherClassroomStudentEnrollList" , true );
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send("classroomId=" + getClassroomIdClientSide() );
+
+    const complete = function ( httpreq ){
+
+        const jsonObject = JSON.parse( httpreq.responseText );
+        console.log(" this is the one ")
+        console.log( jsonObject );
+
+    }
+
+}
+
+setInterval( selectStudentEnrollList , 5000);

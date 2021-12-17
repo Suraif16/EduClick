@@ -4,8 +4,10 @@ package Model;
 import DAO.ClassroomDAO;
 import DAO.ClassroomHasEPostDAO;
 import DAO.EnrollDAO;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Classroom {
     private String classroomID;
@@ -133,5 +135,11 @@ public class Classroom {
 
     }
 
+    public List<JSONObject> SelectClassroomStudentEnrollList( String classroomId ){
+
+        EnrollDAO enrollDAO = new EnrollDAO();
+        return enrollDAO.selectStudentEnrollList( classroomId );
+
+    }
 
 }
