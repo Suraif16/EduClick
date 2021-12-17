@@ -2,12 +2,14 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.Requests;
+import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class EnrollDAO {
 
@@ -167,6 +169,97 @@ public class EnrollDAO {
         }
 
         return enrollStatus;
+
+    }
+
+    public List< JSONObject > selectStudentEnrollList( String classroomId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        List< JSONObject > enrollStudentList = new ArrayList<>();
+
+        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement1 = null;
+
+        ResultSet resultSet = null;
+        ResultSet resultSet1 = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "SELECT UserID , Status FROM Enroll WHERE ClassroomID = ?";
+            preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , classroomId );
+
+            String sql1 = "SELECT FirstName , ProfilePic FROM USERS WHERE UserID = ?";
+            preparedStatement1 = connection.prepareStatement( sql1 );
+
+            resultSet = preparedStatement.executeQuery();
+
+            while( resultSet.next() ){
+
+                JSONObject singleEnrolledStudent = new JSONObject();
+
+                singleEnrolledStudent.put( "userID" , resultSet.getString( 1 ) );
+                singleEnrolledStudent.put( "status" , resultSet.getString( 2 ) );
+
+                preparedStatement1.setString( 1 , resultSet.getString( 1 ) );
+
+                resultSet1 = preparedStatement1.executeQuery();
+
+                if ( resultSet1.next() ){
+
+                    singleEnrolledStudent.put( "studentName" , resultSet1.getString( 1 ) );
+                    singleEnrolledStudent.put( "profilePicture" , resultSet1.getString( 2 ) );
+
+                }else{
+
+                    connection.rollback();
+
+                }
+
+                enrollStudentList.add( singleEnrolledStudent );
+
+            }
+
+
+
+        }catch ( SQLException E ){
+
+            try {
+
+                connection.rollback();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }finally {
+
+            try{
+
+                if ( resultSet != null )resultSet.close();
+                if ( resultSet1 != null )resultSet1.close();
+
+                if ( preparedStatement != null )preparedStatement.close();
+                if ( preparedStatement1 != null )preparedStatement1.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException E ){
+
+                E.printStackTrace();
+
+            }
+
+        }
+
+        return enrollStudentList;
 
     }
 }
