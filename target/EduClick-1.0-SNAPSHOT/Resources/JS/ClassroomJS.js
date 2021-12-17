@@ -236,9 +236,134 @@ const selectStudentEnrollList = function (){
 
     const complete = function ( httpreq ){
 
+        let rightPanelStudentList = document.getElementById( "rightPanelStudentList" );
+        rightPanelStudentList.innerHTML = "";
+
         const jsonObject = JSON.parse( httpreq.responseText );
         console.log(" this is the one ")
         console.log( jsonObject );
+
+        let studentEnrollList = jsonObject.classroomEnrollList;
+        let nowDateTime = new Date();
+        for (let i = 0; i < studentEnrollList.length; i++) {
+
+
+            let loginDateTime  = new Date( studentEnrollList[i].loginDate + " " + studentEnrollList[i].loginTime );
+
+            let loginStatus = calculateOnlineStatus( nowDateTime , loginDateTime );
+
+            let singlestudent = '<div class="rightPanelSingleStudent" >' +
+                '<div>' +
+                '<a href="/EduClick_war_exploded/userProfileRedirect?userId=' + studentEnrollList[i].userId + '" class="profile">' +
+                '<div class="profileImage classroomStudentProfilePicture">' +
+                '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                '</div>' +
+                '<div class="classroomStudentProfileName">' + studentEnrollList[i].studentName + '</div>' +
+                '</a>' +
+                '<div class="lastSeen">';
+
+
+            if ( loginStatus === "Active"){
+
+                singlestudent += '<img style="background-color:greenyellow;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">' + 'Active';
+
+            }else{
+
+                singlestudent += '<img style="background-color:red;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">' + loginStatus + '';
+
+            }
+
+            singlestudent +=    '</div>' +
+                '</div>' +
+                '<div>';
+
+            if ( studentEnrollList[i].status === "Enable" ){
+
+                singlestudent += '<input style="display:block;" id="enable' + studentEnrollList[i].userId + '" type="button" value="Enabled" onclick="enableDisableStatus(' + studentEnrollList[i].userId + ')">' +
+                '<input style="display:none;" id="disable' + studentEnrollList[i].userId + '" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(' + studentEnrollList[i].userId + ')">';
+
+
+            }else{
+
+                singlestudent += '<input style="display:block;" id="enable' + studentEnrollList[i].userId + '" type="button" value="Enabled" onclick="enableDisableStatus(' + studentEnrollList[i].userId + ')">' +
+                '<input style="display:none;" id="disable' + studentEnrollList[i].userId + '" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(' + studentEnrollList[i].userId + ')">';
+
+
+            }
+
+            singlestudent +=    '</div>' +
+                '</div>';
+
+            rightPanelStudentList.innerHTML += singlestudent;
+
+        }
+
+
+    }
+
+    const calculateOnlineStatus = function ( nowDateTime , loginDateTime ){
+
+        if ( loginDateTime.getFullYear() === nowDateTime.getFullYear() ){
+
+            if ( loginDateTime.getMonth() === nowDateTime.getMonth() ){
+
+                if ( loginDateTime.getDate() === nowDateTime.getDate() ){
+
+                    if ( loginDateTime.getHours() === nowDateTime.getHours() ){
+
+                        let minuteDifference = loginDateTime.getMinutes() - nowDateTime.getMinutes();
+
+                        if ( minuteDifference <= 2 ){
+
+                            return "Active";
+
+                        }else{
+
+                            return "Last Seen " + minuteDifference + " minute/s ago"
+
+                        }
+
+                    }else{
+
+                        return "Last Seen " + ( loginDateTime.getHours() - nowDateTime.getHours() ) + " hour/s ago";
+
+                    }
+
+                }else{
+
+                    let numberOfDays = loginDateTime.getDate() - nowDateTime.getDate();
+
+                    if ( numberOfDays < 7 ){
+
+                        return "Last Seen " + numberOfDays + " day/s ago"
+
+                    }else if ( numberOfDays < 14 ){
+
+                        return "Last Seen a week ago"
+
+                    }else if ( numberOfDays < 21 ){
+
+                        return "Last Seen two weeks ago"
+
+                    }else{
+
+                        return "Last Seen three weeks ago"
+
+                    }
+
+                }
+
+            }else{
+
+                return "Last Seen " + (  loginDateTime.getMonth() - nowDateTime.getMonth() ) + " month/s ago";
+
+            }
+
+        }else{
+
+            return "Last Seen " + ( nowDateTime.getFullYear() - loginDateTime.getFullYear() ) + " year/s ago";
+
+        }
 
     }
 
