@@ -233,7 +233,7 @@ public class EnrollDAO {
 
             try {
 
-                connection.rollback();
+                if ( connection != null )connection.rollback();
 
             }catch ( SQLException e ){
 

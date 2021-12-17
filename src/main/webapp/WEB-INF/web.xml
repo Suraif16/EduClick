@@ -726,6 +726,20 @@
 
     <!-- end of EStudent classroom enable/disable check servlet-->
 
+    <!-- beginning of get teacher classroom student enroll list servlet-->
+
+    <servlet>
+        <servlet-name>GetTeacherClassroomStudentEnrollList</servlet-name>
+        <servlet-class>Controller.GetTeacherClassroomStudentEnrollListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetTeacherClassroomStudentEnrollList</servlet-name>
+        <url-pattern>/teacher/getTeacherClassroomStudentEnrollList</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of get teacher classroom student enroll list servlet-->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
