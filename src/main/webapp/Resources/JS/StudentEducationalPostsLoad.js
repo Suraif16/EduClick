@@ -94,6 +94,8 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
                     console.log("MCQ thynwa load krnne khmda bn?")
 
+                    array = ePostsLIst[i]
+
                     postContent += displayMcqPost( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
 
                 }else {
@@ -122,6 +124,8 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
     }
 
 }
+
+let array;
 
 
 const displayMessage = function (postData,TeacherFullName,TeaherId){
