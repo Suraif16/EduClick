@@ -712,6 +712,22 @@
 
     <!-- end of EStudent classroom enable/disable check servlet-->
 
+
+    <!-- beginning of Student mcq result load servlet-->
+
+    <servlet>
+        <servlet-name>StudentMCQResultLoadServlet</servlet-name>
+        <servlet-class>Controller.StudentMCQResultLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentMCQResultLoadServlet</servlet-name>
+        <url-pattern>/student/mcqResultLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Student mcq result load servlet-->
+
+
     <!-- beginning of Student classroom enable/disable check servlet-->
 
     <servlet>
@@ -725,6 +741,7 @@
     </servlet-mapping>
 
     <!-- end of EStudent classroom enable/disable check servlet-->
+
 
     <!-- beginning of get teacher classroom student enroll list servlet-->
 

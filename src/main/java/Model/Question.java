@@ -1,5 +1,9 @@
 package Model;
 
+import DAO.QuestionDAO;
+
+import java.util.ArrayList;
+
 public class Question {
     private String questionId;
     private String question;
@@ -36,5 +40,10 @@ public class Question {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public ArrayList<String> selectCorrectAnswers(String postId){
+        QuestionDAO questionDAO = new QuestionDAO();
+        return  questionDAO.selectCorrectAnswers(postId);
     }
 }

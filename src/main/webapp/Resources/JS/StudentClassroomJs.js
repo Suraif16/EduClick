@@ -89,7 +89,7 @@ function showAnswers( id ){
             }else if(jsonAnswerLoadResponse.serverResponse === "Allowed") {
 
                 console.log("Danata everything is okay cerrrrrrr")
-                console.log(jsonAnswerLoadResponse.Answered)
+                console.log("Answer Load Response : "+jsonAnswerLoadResponse.AnswerContent.ImageStatus)
 
                 let answersInPost = "answersInPost"+id;
                 let answer = document.getElementById(answersInPost);
@@ -108,24 +108,43 @@ function showAnswers( id ){
 
                     answer.innerHTML = "";
 
-                    let htmlString =
-                        '<div class="singleAnswer">' +
-                        '                                    <div class="textAnswers" id="myComment">' +
-                        jsonAnswerLoadResponse.AnswerContent.Content +
-                        '                                    </div>' +
-                        '                                    <div class="pictureAnswers">' +
-                        '                                        <a href="#">' +
-                        '                                            <img src="../Resources/Images/AnswerImages/' + id + '.jpeg">' +
-                        '                                        </a>' +
-                        '                                    </div>' +
-                        '                                    <div class="Marks">'
-                                                                + markText +
-                        '                                    </div>' +
-                        '                                </div>'
-                    answer.innerHTML+=htmlString;
-                    textBoxId.innerHTML="You have already answered to this question!";
-                    textBoxId.style.color = "white";
-                    textBoxId.style.backgroundColor = "#F4330A";
+                    if(jsonAnswerLoadResponse.AnswerContent.ImageStatus == "true"){
+                        let htmlString =
+                            '<div class="singleAnswer">' +
+                            '                                    <div class="textAnswers" id="myComment">' +
+                            jsonAnswerLoadResponse.AnswerContent.Content +
+                            '                                    </div>' +
+                            '                                    <div class="pictureAnswers">' +
+                            '                                        <a href="#">' +
+                            '                                            <img src="../Resources/Images/AnswerImages/' + id + '.jpeg">' +
+                            '                                        </a>' +
+                            '                                    </div>' +
+                            '                                    <div class="Marks">'
+                            + markText +
+                            '                                    </div>' +
+                            '                                </div>'
+                        answer.innerHTML+=htmlString;
+                        textBoxId.innerHTML="You have already answered to this question!";
+                        textBoxId.style.color = "white";
+                        textBoxId.style.backgroundColor = "#F4330A";
+
+                    }else if(jsonAnswerLoadResponse.AnswerContent.ImageStatus == "false"){
+                        let htmlString =
+                            '<div class="singleAnswer">' +
+                            '                                    <div class="textAnswers" id="myComment">' +
+                            jsonAnswerLoadResponse.AnswerContent.Content +
+                            '                                    </div>' +
+                            '                                    <div class="Marks">'
+                            + markText +
+                            '                                    </div>' +
+                            '                                </div>'
+                        answer.innerHTML+=htmlString;
+                        textBoxId.innerHTML="You have already answered to this question!";
+                        textBoxId.style.color = "white";
+                        textBoxId.style.backgroundColor = "#F4330A";
+                    }
+
+
 
 
 
@@ -173,6 +192,7 @@ function showAnswers( id ){
 
 
 function showMcqResult( id ){
+    console.log("PostID eka awooo : "+id)
 
     let mcqResultsInPostId = "mcqResultsInPost" + id;
     let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
@@ -181,6 +201,9 @@ function showMcqResult( id ){
 
         mcqResultsInPost.style.display = "flex";
 
+        console.log("Openedo okay?")
+
+        calculateMarks();
     }else{
 
         mcqResultsInPost.style.display = "none";
@@ -218,9 +241,11 @@ const checkEnableOrDisable = function (){
         }else if(jsonStatusResponse.serverResponse === "Allowed") {
             console.log(jsonStatusResponse.Status)
             if(jsonStatusResponse.Status==="Enable"){
-                loadStudentEducationalPosts(false);
+                /*loadStudentEducationalPosts(false);*/
                 console.log("I am enabled")
             }else if(jsonStatusResponse.Status==="Disable"){
+                let postContents = document.getElementById("postContents");
+                postContents.innerHTML = ""
                 console.log("Case case case disabled")
             }
             status = jsonStatusResponse.Status;
@@ -238,6 +263,7 @@ document.onreadystatechange = function (){
     if ( document.readyState === 'complete' ){
 
         /* when the document is loaded and complete this function will run*/
+        loadStudentEducationalPosts(false);
         checkEnableOrDisable();
         sendNameData();
         getClassroomList();
@@ -386,5 +412,12 @@ const getClassroomList = function (){
 
 
 }
-setInterval( checkEnableOrDisable , 20000);
+//setInterval( checkEnableOrDisable , 20000);
+
+const getClassroomIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "clsId" );
+
+}
 

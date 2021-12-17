@@ -33,7 +33,8 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
 
         String minPostId = ( String ) request.getParameter( "id" );
 
-        String classroomId = (String) session.getAttribute("CurrentClassroomId");
+        /*String classroomId = (String) session.getAttribute("CurrentClassroomId");*/
+        String classroomId = request.getParameter( "classroomId" );
 
         System.out.println("minPostId : "+minPostId);
 
