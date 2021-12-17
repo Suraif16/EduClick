@@ -70,7 +70,7 @@ const displayRequest = function ( jsonResponse ){
         if( initialRequestCount < count ){
             initialRequestCount = count;
             notificationRequestButton.style.backgroundColor = "red";
-
+            console.log(jsonResponse.requestList)
             for(i = 0 ; i < count ; i++ ){
 
                 let acceptFunction;
@@ -91,7 +91,7 @@ const displayRequest = function ( jsonResponse ){
 
                 /* This is where the each request element is created*/
 
-                request.innerHTML += '<div class="singleNotification">' +
+                request.innerHTML += '<div class="singleNotification" id="'+ jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId +'">' +
 
                     '<div>' +
 
@@ -115,7 +115,7 @@ const displayRequest = function ( jsonResponse ){
 
                     '</div>'+
 
-                    '<div>'+
+                    '<div id="buttons' + jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId + '">' +
 
                     '<input type="button" value="Accept" onclick="' + acceptFunction + '"' +'>'+
 
@@ -146,9 +146,51 @@ function FriendRequestDecline(fromId , toId ){
 
 }
 
-function EnrollRequestAccept(fromId , toId ){
+function EnrollRequestAccept( fromId , toId ){
 
     console.log( "Enroll request accepted" , fromId , toId );
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status === 200){
+
+            let jsonResponse = JSON.parse( this.responseText );
+
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed") {
+                /* This is where I need work everytime as per the authentication filter*/
+                console.log( "enroll status : " , jsonResponse.enrollStatus )
+                const singleNotificaiton = document.getElementById( "Enroll" + fromId + "" + toId );
+
+                if ( jsonResponse.enrollStatus === true ){
+                    /*console.log( "buttonsEnroll" + fromId + "" + toId );console.log("please work");
+                    document.getElementById( "buttonsEnroll" + fromId + "" + toId ).style.backgroundColor = "red";
+                    let now = new Date().getTime();
+                    let extraTime = 2500;
+                    while(new Date().getTime() < now + extraTime ){}*/
+
+                    singleNotificaiton.style.display = "none";
+
+
+                }else {
+
+                    alert( "something went wrong")
+
+                }
+
+
+            }else{
+                alert("something went wrong!!!");
+            }
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/AcceptEnrollRequest" , true );
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send( "fromId=" + fromId + "&toId=" + toId );
 
 }
 

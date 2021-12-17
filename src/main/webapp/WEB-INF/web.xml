@@ -712,6 +712,7 @@
 
     <!-- end of EStudent classroom enable/disable check servlet-->
 
+
     <!-- beginning of Student mcq result load servlet-->
 
     <servlet>
@@ -725,6 +726,21 @@
     </servlet-mapping>
 
     <!-- end of Student mcq result load servlet-->
+
+
+    <!-- beginning of Student classroom enable/disable check servlet-->
+
+    <servlet>
+        <servlet-name>AcceptEnrollRequestTeacherServlet</servlet-name>
+        <servlet-class>Controller.Requests.AcceptEnrollRequestTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AcceptEnrollRequestTeacherServlet</servlet-name>
+        <url-pattern>/teacher/AcceptEnrollRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of EStudent classroom enable/disable check servlet-->
 
 
     <session-config>

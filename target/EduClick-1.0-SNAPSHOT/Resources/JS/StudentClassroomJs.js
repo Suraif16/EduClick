@@ -115,7 +115,7 @@ function showAnswers( id ){
                         '                                    </div>' +
                         '                                    <div class="pictureAnswers">' +
                         '                                        <a href="#">' +
-                        '                                            <img src="../Resources/Images/AnswerImages/' + jsonAnswerLoadResponse.AnswerContent.ImagePath + '.jpeg">' +
+                        '                                            <img src="../Resources/Images/AnswerImages/' + id + '.jpeg">' +
                         '                                        </a>' +
                         '                                    </div>' +
                         '                                    <div class="Marks">'
@@ -218,9 +218,10 @@ const checkEnableOrDisable = function (){
         }else if(jsonStatusResponse.serverResponse === "Allowed") {
             console.log(jsonStatusResponse.Status)
             if(jsonStatusResponse.Status==="Enable"){
-                loadStudentEducationalPosts();
+                loadStudentEducationalPosts(false);
+                console.log("I am enabled")
             }else if(jsonStatusResponse.Status==="Disable"){
-                console.log("Case case case")
+                console.log("Case case case disabled")
             }
             status = jsonStatusResponse.Status;
         }else{
@@ -385,4 +386,5 @@ const getClassroomList = function (){
 
 
 }
+setInterval( checkEnableOrDisable , 20000);
 
