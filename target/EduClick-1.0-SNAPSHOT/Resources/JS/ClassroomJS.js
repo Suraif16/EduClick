@@ -32,14 +32,14 @@ function enableDisableStatus( id ){
     if (disableButton.style.display === "none"){
 
         console.log( 1 );/* pressing enabled button to disable student*/
-        enableDisableStatusServer( id , " " , true );
+        enableDisableStatusServer( id , "Disable" , true , enableButton , disableButton );
 
 
 
     }else{
 
         console.log( 2 );/* pressing disable button to enable student*/
-        enableDisableStatusServer( id , " " , true );
+        enableDisableStatusServer( id , "Enable" , false , enableButton , disableButton );
 
 
     }
@@ -371,9 +371,9 @@ const selectStudentEnrollList = function (){
 
 }
 
-setInterval( selectStudentEnrollList , 7000);
+// setInterval( selectStudentEnrollList , 7000);
 
-const enableDisableStatusServer = function ( id , enableDisableStatus , buttonStatus ){
+const enableDisableStatusServer = function ( id , enableDisableStatus , buttonStatus , enableButton , disableButton ){
 
     let httpreq = new XMLHttpRequest();
 
@@ -397,8 +397,9 @@ const enableDisableStatusServer = function ( id , enableDisableStatus , buttonSt
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded" , true );
+    let classroomId = getClassroomIdClientSide();
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/classroomEnableDisableStudent" , true );
     httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
-    httpreq.send();
+    httpreq.send( "userId=" + id + "&classroomId=" + classroomId + "&status=" + enableDisableStatus );
 
 }
