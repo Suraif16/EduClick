@@ -95,8 +95,8 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
 
 function calculateMarks(){
 
-
     let mcqAnswers = [];
+
 
     let postData = array
 
@@ -115,31 +115,23 @@ function calculateMarks(){
         }
 
     }
+
+
     submitMCQToServer( mcqAnswers,postData.EpostId);
 
 }
 
 const submitMCQToServer = function (mcqAnswers,postId){
+    let goodToSubmit = 1;
     for (i = 0 ; i < 10 ; i++){
         console.log(mcqAnswers[i]+"\n")
-    }
-
-    let dataString = "";
-
-    for ( let i = 0 ; i < 10 ; i++ ) {
-
-        dataString +="mcq" + ( i + 1 ) + "=";
-        dataString += JSON.stringify( mcqAnswers[i] );
-
-        if ( i !== 9 ){
-
-            dataString+="&";
-
+        if(mcqAnswers[i] === undefined){
+            goodToSubmit = 0;
         }
-
     }
-    console.log(dataString)
 
+
+if(goodToSubmit === 1){
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function (){
@@ -151,12 +143,17 @@ const submitMCQToServer = function (mcqAnswers,postId){
         }
 
     }
-    dataString += "&classroomId=" + getClassroomIdClientSide();
-    dataString += "&postId=" + postId;
     httpreq.open( "POST" , "/EduClick_war_exploded/student/mcqResultLoad" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send( "mcq1=" + mcqAnswers[0] + "&mcq2=" + mcqAnswers[1] + "&mcq3=" + mcqAnswers[2] +"&mcq4=" + mcqAnswers[3] +"&mcq5=" + mcqAnswers[4] +"&mcq6=" + mcqAnswers[5] +"&mcq7=" + mcqAnswers[6] +"&mcq8=" + mcqAnswers[7] +"&mcq9=" + mcqAnswers[8] +"&mcq10=" + mcqAnswers[9] +"&classroomId=" + getClassroomIdClientSide() + "&postId=" +postId);
 
+
+}else{
+    let mcqResultsInPostId = "mcqResultsInPost" + postId;
+    let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
+    mcqResultsInPost.style.display = "none";
+    alert("You cant keep empty fields")
+}
 
 }
 
