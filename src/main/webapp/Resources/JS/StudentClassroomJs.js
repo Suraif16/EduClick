@@ -201,6 +201,9 @@ function showMcqResult( id ){
 
         mcqResultsInPost.style.display = "flex";
 
+        console.log("Openedo okay?")
+
+        calculateMarks();
     }else{
 
         mcqResultsInPost.style.display = "none";
