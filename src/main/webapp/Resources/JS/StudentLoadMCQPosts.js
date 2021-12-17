@@ -30,25 +30,25 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
                 postData.questionList[i].question+
                 '                        <div class="mcqAnswerContainer">' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo1+'" name="MCQ'+postData.questionList[i].questionId+'" value="'+postData.questionList[i].answerNo1+'">' +
                 '                                    <label for="MCQ Answer 1">' +
                 postData.questionList[i].answer1+
                 '                                    </label>' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo2+'" name="MCQ'+postData.questionList[i].questionId+'">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo2+'" name="MCQ'+postData.questionList[i].questionId+'" value="'+postData.questionList[i].answerNo2+'">' +
                 '                                    <label for="MCQ Answer 2">' +
                 postData.questionList[i].answer2 +
                 '                                    </label>' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo3+'" name="MCQ'+postData.questionList[i].questionId+'">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo3+'" name="MCQ'+postData.questionList[i].questionId+'" value="'+postData.questionList[i].answerNo3+'">' +
                 '                                    <label for="MCQ Answer 3">' +
                 postData.questionList[i].answer3 +
                 '                                    </label>\n' +
                 '                            </div>' +
                 '                            <div class="mcqSingleAnswer">' +
-                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo4+'" name="MCQ'+postData.questionList[i].questionId+'">' +
+                '                                <input type="radio" id="MCQAnswer'+postData.questionList[i].answerNo4+'" name="MCQ'+postData.questionList[i].questionId+'" value="'+postData.questionList[i].answerNo4+'">' +
                 '                                    <label for="MCQ Answer 4">' +
                 postData.questionList[i].answer4 +
                 '                                    </label>' +
@@ -80,7 +80,7 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
                 '                        </a>' +
                 '                        <div class="mcqSingleStudentResultMarks">' +
 
-                '                            25%' +
+                                                25+"%" +
                 '                        </div>' +
                 '                    </div>'+
                 '               </div>'+
@@ -89,4 +89,78 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
 
     return post;
 
+
 }
+
+
+function calculateMarks(){
+
+
+    let mcqAnswers = [];
+
+    let postData = array
+
+    for(i = 0; i < 10 ; i++){
+
+        let MCQName = "MCQ"+postData.questionList[i].questionId;
+
+        let option = document.getElementsByName(MCQName);
+
+        for (let j = 0; j < option.length; j++) {
+            if (option[j].checked){
+
+                mcqAnswers[i] = option[j].value
+
+            }
+        }
+
+    }
+    submitMCQToServer( mcqAnswers,postData.EpostId);
+
+}
+
+const submitMCQToServer = function (mcqAnswers,postId){
+    for (i = 0 ; i < 10 ; i++){
+        console.log(mcqAnswers[i]+"\n")
+    }
+
+    let dataString = "";
+
+    for ( let i = 0 ; i < 10 ; i++ ) {
+
+        dataString +="mcq" + ( i + 1 ) + "=";
+        dataString += JSON.stringify( mcqAnswers[i] );
+
+        if ( i !== 9 ){
+
+            dataString+="&";
+
+        }
+
+    }
+    console.log(dataString)
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            console.log( "done!!!");
+
+        }
+
+    }
+    dataString += "&classroomId=" + getClassroomIdClientSide();
+    dataString += "&postId=" + postId;
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/mcqResultLoad" , true);
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send( "mcq1=" + mcqAnswers[0] + "&mcq2=" + mcqAnswers[1] + "&mcq3=" + mcqAnswers[2] +"&mcq4=" + mcqAnswers[3] +"&mcq5=" + mcqAnswers[4] +"&mcq6=" + mcqAnswers[5] +"&mcq7=" + mcqAnswers[6] +"&mcq8=" + mcqAnswers[7] +"&mcq9=" + mcqAnswers[8] +"&mcq10=" + mcqAnswers[9] +"&classroomId=" + getClassroomIdClientSide() + "&postId=" +postId);
+
+
+}
+
+
+
+
+
