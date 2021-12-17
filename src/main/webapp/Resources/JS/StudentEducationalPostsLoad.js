@@ -3,7 +3,7 @@ const mimeTypeArray = [ "image/apng" , "image/avif" , "image/jpeg" , "image/png"
 let reloadStatus = true;
 const postDataContent = document.getElementById( "postContents" );
 let minEPostId = Infinity;
-
+let selectMoreStatus = true;
 
 window.onscroll = function (){
 
@@ -21,6 +21,7 @@ window.onscroll = function (){
 
 const loadStudentEducationalPosts = function ( scrollStatus ){
 
+    let classroomId = getClassroomIdClientSide();
     let httpreq = new XMLHttpRequest();
     let postContent = "";
     let selectId = null;
@@ -28,8 +29,11 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
     if ( !scrollStatus ){
 
         selectId = -1;
+        document.getElementById( "postContents" ).innerHTML = "";
+        minEPostId = Infinity;
 
     }else {
+
 
         selectId = minEPostId;
 
@@ -45,11 +49,13 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
     }
 
-    if ( minEPostId > 1){
+    if ( selectMoreStatus){
 
         httpreq.open( "POST" , "/EduClick_war_exploded/student/studentEducationalPostLoad" , true );
         httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-        httpreq.send("id=" + selectId );
+        console.log( "its the selected id here : " , selectId)
+        httpreq.send("id=" + selectId + "&classroomId=" + classroomId );
+        console.log(" in if condition and select is sent to server ")
 
         }
 
@@ -70,6 +76,12 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
             console.log(ePostsLIst)
 
+            if ( ePostsLIst.length === 0 ){
+
+                selectMoreStatus = false;
+
+            }
+
             for (let i = 0; i < ePostsLIst.length ; i++) {
 
                 if ( ePostsLIst[i].EpostId < minEPostId ){
@@ -80,7 +92,11 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
                 if ( ePostsLIst[i].EPtype === "MCQ" ){
 
-                    postContent += displayMcqPost( ePostsLIst[i] );
+                    console.log("MCQ thynwa load krnne khmda bn?")
+
+                    array = ePostsLIst[i]
+
+                    postContent += displayMcqPost( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
 
                 }else {
 
@@ -108,6 +124,8 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
     }
 
 }
+
+let array;
 
 
 const displayMessage = function (postData,TeacherFullName,TeaherId){
@@ -229,19 +247,6 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                        </div>' +
             '                        <div class="postContentContainer">' +
             '                            <div style="display:none;" class="answersInPost" id="answersInPost' + postData.EpostId + '" >' +
-            '                                <div class="singleAnswer">' +
-            '                                    <div class="textAnswers" id="myComment">' +
-            '                                        This is my Answer !!!!!!!!!' +
-            '                                    </div>' +
-            '                                    <div class="pictureAnswers">' +
-            '                                        <a href="#">' +
-            '                                            <img src="../Resources/Images/answers2.jpg">' +
-            '                                        </a>' +
-            '                                    </div>' +
-            '                                    <div class="Marks">' +
-            '                                        Your marks is 50%' +
-            '                                    </div>' +
-            '                                </div>' +
             '                            </div>' +
             '                        </div>' +
             '                        <div style="display: none" class="Marks" id="ans' + postData.EpostId + '" >' +
@@ -265,16 +270,16 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '<div class="post">' +
             '            <div class="postContentContainer">' +
             '                <div class="postProfileSection">' +
-            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ TeaherId +'" class="postProfile">' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' +TeaherId + '" class="postProfile">' +
             '                        <div class="postProfileImage">' +
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-            '                        </div>\n' +
-            '                        <div class="postProfileName" >'+TeacherFullName +'</div>' +
+            '                        </div>' +
+            '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
-            '                        </div>\n' +
+            '                        </div>' +
             '                        <div class="userOptions">' +
-            '                            <input class="userOptionsButton" type="button" value="    " id="postOption4" onclick="showOptionMenu(4,\'postOption\')">' +
+            '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
             '                    </a>' +
             '                </div>' +
@@ -285,33 +290,15 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                        <!--<div>-->' +
             postData.caption +
             '                        <!--</div>-->' +
-            '                    </div>' +
-            '                    <div class="postPicture">' +
-            '                        <!--To only present the message without the picture, comment the part below-->' +
-            '                        <!--<div class="postPictureImageContainer">' +
-            '                            <img class="postPictureImage" src="Icons/seminar-text.jpg">' +
-            '                        </div>-->' +
-            '                    </div>' +
+            '                    </div>\n' +
             '                    <div class="postContentContainer">' +
             '                        <div class="postAnswerButton">' +
             '                            <div class="answerButton" >' +
-            '                                <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers('+postData.EpostId+')">' +
+            '                                <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(' + postData.EpostId + ')">' +
             '                            </div>' +
             '                        </div>' +
             '                        <div class="postContentContainer">' +
-            '                            <div style="display:none;" class="answersInPost" id="answersInPost' + postData.EpostId + '">' +
-            '                                <div class="singleAnswer">' +
-            '                                    <div class="textAnswers" id="myComment">' +
-            '                                        This is my Answer !!!!!!!!!' +
-            '                                    </div>' +
-            '                                        <a href="#">' +
-            '                                            <img src="../Resources/Images/answers2.jpg">' +
-            '                                        </a>' +
-            '                                    </div>' +
-            '                                    <div class="Marks">' +
-            '                                        Your marks is 50%' +
-            '                                    </div>' +
-            '                                </div>' +
+            '                            <div style="display:none;" class="answersInPost" id="answersInPost' + postData.EpostId + '" >' +
             '                            </div>' +
             '                        </div>' +
             '                        <div style="display: none" class="Marks" id="ans' + postData.EpostId + '" >' +
@@ -321,13 +308,14 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                                    <input id="inputImage" type="file" accept="image/!*">' +
             '                                </label>' +
             '                                <input id="comment' + postData.EpostId + '" type="text" placeholder="   Comments...">' +
-            '                                <input type="button" value="Post" class="answerShowButton">' +
+            '                                <input type="button" value="Post" class="answerShowButton" onclick="submitAnswers(' + postData.EpostId + ')">' +
             '                            </div>' +
             '                        </div>' +
             '                    </div>' +
             '                </div>' +
             '            </div>' +
             '        </div>'
+
 
         return post;
     }
@@ -541,16 +529,26 @@ const submitAnswers = function(EPostId){
 
         let isAllImageValid = false;
 
-        for ( let i = 0; i < images.length; i++ ) {
+        if ( images.length === 0 ){
 
-            isAllImageValid = isImageAccepted( images[i].type )
-            if ( !isAllImageValid ){
-                console.log("break");
-                break;
+            isAllImageValid = true;
+
+        }else{
+
+            for ( let i = 0; i < images.length; i++ ) {
+
+                isAllImageValid = isImageAccepted( images[i].type )
+                if ( !isAllImageValid ){
+                    console.log("break");
+                    break;
+
+                }
 
             }
 
         }
+
+
 
         if ( isAllImageValid ){
 
@@ -602,25 +600,43 @@ const submitAnswers = function(EPostId){
             let now = new Date().getTime();
             let extraTime = 7000;
             while(new Date().getTime() < now + extraTime ){}
-            let htmlString =
-                '<div class="singleAnswer">' +
-                '                                    <div class="textAnswers" id="myComment">' +
-                                                        jsonAnswerResponse.EPostAnswer.answer +
-                '                                    </div>' +
-                '                                    <div class="pictureAnswers">' +
-                '                                        <a href="#">' +
-                '                                            <img src="../Resources/Images/AnswerImages/' + EPostId+ '.jpeg">' +
-                '                                        </a>' +
-                '                                    </div>' +
-                '                                    <div  class="Marks">' +
-                                                        /*"Your marks is "+ jsonAnswerResponse.EPostAnswer.marks + "%"+*/
-                                                        "Your answer will be marked soon by your teacher! "+
-                '                                    </div>' +
-                '                                </div>'
-            answer.innerHTML+=htmlString;
-            textBoxId.innerHTML="You successfully answered to this question!";
-            textBoxId.style.color = "white";
-            textBoxId.style.backgroundColor = "#6BDD29";
+            if(images.length>0){
+                let htmlString =
+                    '<div class="singleAnswer">' +
+                    '                                    <div class="textAnswers" id="myComment">' +
+                    jsonAnswerResponse.EPostAnswer.answer +
+                    '                                    </div>' +
+                    '                                    <div class="pictureAnswers">' +
+                    '                                        <a href="#">' +
+                    '                                            <img src="../Resources/Images/AnswerImages/' + EPostId+ '.jpeg">' +
+                    '                                        </a>' +
+                    '                                    </div>' +
+                    '                                    <div  class="Marks">' +
+                    /*"Your marks is "+ jsonAnswerResponse.EPostAnswer.marks + "%"+*/
+                    "Your answer will be marked soon by your teacher! "+
+                    '                                    </div>' +
+                    '                                </div>'
+                answer.innerHTML+=htmlString;
+                textBoxId.innerHTML="You successfully answered to this question!";
+                textBoxId.style.color = "white";
+                textBoxId.style.backgroundColor = "#6BDD29";
+            }else if(images.length === 0){
+                let htmlString =
+                    '<div class="singleAnswer">' +
+                    '                                    <div class="textAnswers" id="myComment">' +
+                    jsonAnswerResponse.EPostAnswer.answer +
+                    '                                    </div>' +
+                    '                                    <div  class="Marks">' +
+                    /*"Your marks is "+ jsonAnswerResponse.EPostAnswer.marks + "%"+*/
+                    "Your answer will be marked soon by your teacher! "+
+                    '                                    </div>' +
+                    '                                </div>'
+                answer.innerHTML+=htmlString;
+                textBoxId.innerHTML="You successfully answered to this question!";
+                textBoxId.style.color = "white";
+                textBoxId.style.backgroundColor = "#6BDD29";
+            }
+
 
         }
         else{

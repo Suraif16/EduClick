@@ -3,12 +3,14 @@ package Model;
 import DAO.AnswerDAO;
 import DAO.AnswerStudentPostRelationshipDAO;
 import DAO.EDWAnswersDAO;
+import DAO.MCQAnswersDAO;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Answers {
     private String questionId;
@@ -90,6 +92,12 @@ public class Answers {
         this.userId = userId;
     }
 
+    public Answers(LocalDate date, LocalTime time, int marks) {
+        this.date = date;
+        this.time = time;
+        this.marks = marks;
+    }
+
     public Answers insertAnswers(FileItem imageFile , String path){
 
         AnswerDAO answerDAO = new AnswerDAO();
@@ -123,5 +131,14 @@ public class Answers {
     public JSONObject getAnswerContent(String answerId){
          EDWAnswersDAO edwAnswersDAO = new EDWAnswersDAO();
          return edwAnswersDAO.getAnswerContent(answerId);
+    }
+    public String enterMCQMarks(){
+        AnswerDAO answerDAO = new AnswerDAO();
+        return answerDAO.enterMCQMarks(this);
+    }
+    public void saveMCQAnswers(String answerId, ArrayList<String> studentAnswerList, String postId){
+        MCQAnswersDAO mcqAnswersDAO = new MCQAnswersDAO();
+        mcqAnswersDAO.saveMCQAnswers(answerId,studentAnswerList,postId);
+
     }
 }
