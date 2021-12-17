@@ -24,7 +24,11 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
         '            </div>' +
         '            <div class="postContentContainer">' +
         '                <div class="postData">'
+        let x = "[";
         for(i = 0 ; i<10; i++){
+
+
+            x += postData.questionList[i].questionId + ",";
             let htmlString =
                 '                    <div class="postMessage mcq">' +
                 postData.questionList[i].question+
@@ -57,6 +61,7 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
                 '                    </div>'
             post+=htmlString
         }
+        x += "]";
 
         post += '                </div>' +
                  '            </div>' +
@@ -65,24 +70,13 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
                 '                <div class="postAnswerButton">' +
 
                 '                    <div class="answerButton" >' +
-                '                        <input type="button" value="Show Marks" class="mcqResultShowButton" onclick="showMcqResult('+postData.EpostId+')">' +
+                '                        <input type="button" value="Show Marks" class="mcqResultShowButton" onclick="showMcqResult('+ x +","+postData.EpostId+')">' +
                 '                    </div>' +
                 '                </div>' +
                 '            </div>'    +
                 '<div class="postContentContainer">' +
                 '                <div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost'+postData.EpostId+'" >' +
-                '                    <div class="mcqSingleStudentResult">' +
-                '                        <a href="#" class="mcqProfile">' +
-                '                            <div class="mcqProfileImage">' +
-                '                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-                '                            </div>' +
-                '                            <div>Student Name</div>' +
-                '                        </a>' +
-                '                        <div class="mcqSingleStudentResultMarks">' +
 
-                                                25+"%" +
-                '                        </div>' +
-                '                    </div>'+
                 '               </div>'+
                 '            </div>'+
                 '        </div>'
@@ -98,8 +92,9 @@ function calculateMarks(){
     let mcqAnswers = [];
 
 
-    let postData = array
-
+    let postData = arrayX
+    console.log("farzan")
+    console.log( postData );
     for(i = 0; i < 10 ; i++){
 
         let MCQName = "MCQ"+postData.questionList[i].questionId;
@@ -107,8 +102,10 @@ function calculateMarks(){
         let option = document.getElementsByName(MCQName);
 
         for (let j = 0; j < option.length; j++) {
+            console.log("asddsaudssaiuia fasduysadygd")
             if (option[j].checked){
 
+                console.log("hsadgjhsakdbhjhdsf :  "+option[j].value)
                 mcqAnswers[i] = option[j].value
 
             }
@@ -139,6 +136,29 @@ if(goodToSubmit === 1){
         if ( this.readyState === 4 && this.status === 200 ){
 
             console.log( "done!!!");
+
+            let jsonResponse = JSON.parse( httpreq.responseText );
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed"){
+
+                console.log(jsonResponse.Result)
+                let resultTag = "mcqResultsInPost"+postId
+                let studentResult = document.getElementById(resultTag);
+                studentResult.innerHTML="";
+                let htmlString =
+                    '<div class="mcqSingleStudentResult">' +
+                    '          <div  class="mcqSingleStudentResultMarks">' +
+                    "Your result is "+jsonResponse.Result+"%" +
+                    '           </div>' +
+                    '</div>'
+                studentResult.innerHTML+=htmlString
+
+
+
+            }else{
+                alert("something went wrong!!!");
+            }
 
         }
 
