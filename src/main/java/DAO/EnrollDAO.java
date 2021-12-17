@@ -265,9 +265,11 @@ public class EnrollDAO {
 
                 if ( resultSet != null )resultSet.close();
                 if ( resultSet1 != null )resultSet1.close();
+                if ( resultSet2 != null )resultSet2.close();
 
                 if ( preparedStatement != null )preparedStatement.close();
                 if ( preparedStatement1 != null )preparedStatement1.close();
+                if ( preparedStatement2 != null )preparedStatement2.close();
 
                 if ( connection != null )connection.close();
 
