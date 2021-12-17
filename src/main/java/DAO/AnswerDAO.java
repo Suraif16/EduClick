@@ -2,9 +2,12 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.Answers;
+import org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReport;
 import org.json.JSONObject;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnswerDAO {
     public String saveAnswers(Answers answers){
@@ -73,4 +76,139 @@ public class AnswerDAO {
         }
         return jsonObject;
     }
+
+    public List< JSONObject > selectEpostAnswer( String EPostId ){
+
+        List< JSONObject > answerList = new ArrayList<>();
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement1 = null;
+        PreparedStatement preparedStatement2 = null;
+        PreparedStatement preparedStatement3 = null;
+
+        ResultSet resultSet = null;
+        ResultSet resultSet1 = null;
+        ResultSet resultSet2 = null;
+        ResultSet resultSet3 = null;
+
+        try {
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "SELECT S_UserID , AnswerID FROM Answer_Student_Post_Relationship WHERE EPostID = ?";
+            preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , EPostId );
+
+            resultSet = preparedStatement.executeQuery();
+
+            String sql1 = "SELECT Date , Time , Marks FROM Answer WHERE AnswerID = ?";
+            preparedStatement1 = connection.prepareStatement( sql1 );
+
+            String sql2 = "SELECT Content , ImageStatus FROM EDW_Answers WHERE AnswerID = ?";
+            preparedStatement2 = connection.prepareStatement( sql2 );
+
+            String sql3 = "SELECT FirstName , ProfilePic FROM USERS WHERE UserID = ?";
+            preparedStatement3 = connection.prepareStatement( sql3 );
+
+            while( resultSet.next() ){
+
+                JSONObject singleAnswer = new JSONObject();
+                singleAnswer.put( "SId" , resultSet.getString( 1 ) );
+                singleAnswer.put( "AnswerId" , resultSet.getString( 2 ) );
+
+                preparedStatement1.setString( 1 , resultSet.getString( 2 ) );
+
+                resultSet1 = preparedStatement1.executeQuery();
+
+                if ( resultSet1.next() ){
+
+                    singleAnswer.put( "answerDate" , resultSet1.getString( 1 ) );
+                    singleAnswer.put( "answerTime" , resultSet1.getString( 2 ) );
+                    singleAnswer.put( "marks" , resultSet1.getString( 3 ) );
+
+                    preparedStatement2.setString( 1 , resultSet.getString( 2 ) );
+
+                    resultSet2 = preparedStatement2.executeQuery();
+
+                    if ( resultSet2.next() ){
+
+                        singleAnswer.put( "content" , resultSet2.getString( 1 ) );
+                        singleAnswer.put( "imageStatus" , resultSet2.getString( 2 ) );
+
+                        preparedStatement3.setString( 1 , resultSet.getString( 1 ) );
+
+                        resultSet3 = preparedStatement3.executeQuery();
+
+                        if ( resultSet3.next() ){
+
+                            singleAnswer.put( "studentName" , resultSet3.getString( 1 ) );
+                            singleAnswer.put( "profilePicture" , resultSet3.getString( 2 ) );
+
+                        }else{
+
+                            connection.rollback();
+
+                        }
+
+                    }else{
+
+                        connection.rollback();
+
+                    }
+
+                }else {
+
+                    connection.rollback();
+
+                }
+
+                answerList.add( singleAnswer );
+
+            }
+
+            connection.commit();
+
+
+        }catch ( SQLException e ){
+
+            try {
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException E ){
+
+                E.printStackTrace();
+
+            }
+
+        }finally {
+
+            try{
+
+                if ( resultSet != null )resultSet.close();
+                if ( resultSet1 != null )resultSet1.close();
+                if ( resultSet2 != null )resultSet2.close();
+                if ( resultSet3 != null )resultSet3.close();
+
+                if ( preparedStatement != null )preparedStatement.close();
+                if ( preparedStatement1 != null )preparedStatement1.close();
+                if ( preparedStatement2 != null )preparedStatement2.close();
+                if ( preparedStatement3 != null )preparedStatement3.close();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }
+
+        return answerList;
+
+    }
+
 }
