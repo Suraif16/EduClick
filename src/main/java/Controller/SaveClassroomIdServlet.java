@@ -40,7 +40,7 @@ public class SaveClassroomIdServlet extends HttpServlet {
 
         }
         else if(userType.equals("Student")){
-            String userID = user.getUserIdFromClass(id);
+            String userID = user.getUserIdFromClass(currentUserId,id);
             if(currentUserId.equals(userID)){
                 session.setAttribute("CurrentClassroomId",id);
                 response.sendRedirect("Student/classroom.html?clsId="+id);
