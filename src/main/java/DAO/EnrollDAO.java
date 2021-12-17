@@ -284,4 +284,68 @@ public class EnrollDAO {
         return enrollStudentList;
 
     }
+
+    public void updateStatus( String userId , String classroomId , String status ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        try {
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "UPDATE ENROLL SET Status = ? WHERE UserID = ? AND ClassroomID = ?";
+            preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , status );
+            preparedStatement.setString( 2 , userId );
+            preparedStatement.setString( 3 , classroomId );
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if ( rowsAffected == 1 ){
+
+                connection.commit();
+
+            }else {
+
+                connection.rollback();
+
+            }
+
+        }catch ( SQLException E ){
+
+            try{
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }finally {
+
+            try{
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }
+
+    }
+
 }
