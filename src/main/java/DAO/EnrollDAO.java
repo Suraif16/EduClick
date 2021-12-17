@@ -183,9 +183,11 @@ public class EnrollDAO {
 
         PreparedStatement preparedStatement = null;
         PreparedStatement preparedStatement1 = null;
+        PreparedStatement preparedStatement2 = null;
 
         ResultSet resultSet = null;
         ResultSet resultSet1 = null;
+        ResultSet resultSet2 = null;
 
         try{
 
@@ -199,13 +201,16 @@ public class EnrollDAO {
             String sql1 = "SELECT FirstName , ProfilePic FROM USERS WHERE UserID = ?";
             preparedStatement1 = connection.prepareStatement( sql1 );
 
+            String sql2 = "SELECT LoginDate , LoginTime FROM Login WHERE UserID = ?";
+            preparedStatement2 = connection.prepareStatement( sql2 );
+
             resultSet = preparedStatement.executeQuery();
 
             while( resultSet.next() ){
 
                 JSONObject singleEnrolledStudent = new JSONObject();
 
-                singleEnrolledStudent.put( "userID" , resultSet.getString( 1 ) );
+                singleEnrolledStudent.put( "userId" , resultSet.getString( 1 ) );
                 singleEnrolledStudent.put( "status" , resultSet.getString( 2 ) );
 
                 preparedStatement1.setString( 1 , resultSet.getString( 1 ) );
@@ -220,6 +225,17 @@ public class EnrollDAO {
                 }else{
 
                     connection.rollback();
+
+                }
+
+                preparedStatement2.setString( 1 , resultSet.getString( 1 ) );
+
+                resultSet2 = preparedStatement2.executeQuery();
+
+                if ( resultSet2.next() ){
+
+                    singleEnrolledStudent.put( "loginDate" , resultSet2.getString( 1 ) );
+                    singleEnrolledStudent.put( "loginTime" , resultSet2.getString( 2 ) );
 
                 }
 
