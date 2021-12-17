@@ -105,6 +105,7 @@ document.onreadystatechange = function (){
         sendServerData();
         getClassroomList();
         selectEPostFromServer( false );
+        selectStudentEnrollList();
 
     }
 
@@ -369,4 +370,4 @@ const selectStudentEnrollList = function (){
 
 }
 
-setInterval( selectStudentEnrollList , 5000);
+setInterval( selectStudentEnrollList , 7000);
