@@ -189,6 +189,8 @@ public class AnswerDAO {
 
             try{
 
+                if ( connection != null )connection.setAutoCommit( true );
+
                 if ( resultSet != null )resultSet.close();
                 if ( resultSet1 != null )resultSet1.close();
                 if ( resultSet2 != null )resultSet2.close();

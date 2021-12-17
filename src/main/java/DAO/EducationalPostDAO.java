@@ -116,6 +116,8 @@ public class EducationalPostDAO {
 
             try{
 
+                if ( connection != null )connection.setAutoCommit( true );
+
                 if ( resultSet != null ) resultSet.close();
                 if ( resultSet2 != null ) resultSet2.close();
 
@@ -240,6 +242,8 @@ public class EducationalPostDAO {
         }finally {
 
             try{
+
+                if ( connection != null )connection.setAutoCommit( true );
 
                 if ( resultSet != null )resultSet.close();
                 if ( resultSet2 != null )resultSet2.close();
@@ -417,6 +421,8 @@ public class EducationalPostDAO {
         }
         finally {
             try{
+
+                if ( connection != null )connection.setAutoCommit( true );
 
                 if ( resultSet != null )resultSet.close();
                 if ( resultSet2 != null )resultSet2.close();
