@@ -287,8 +287,8 @@ const selectStudentEnrollList = function (){
 
             }else{
 
-                singlestudent += '<input style="display:block;" id="enable' + studentEnrollList[i].userId + '" type="button" value="Enabled" onclick="enableDisableStatus(' + studentEnrollList[i].userId + ')">' +
-                '<input style="display:none;" id="disable' + studentEnrollList[i].userId + '" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(' + studentEnrollList[i].userId + ')">';
+                singlestudent += '<input style="display:none;" id="enable' + studentEnrollList[i].userId + '" type="button" value="Enabled" onclick="enableDisableStatus(' + studentEnrollList[i].userId + ')">' +
+                '<input style="display:block;" id="disable' + studentEnrollList[i].userId + '" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(' + studentEnrollList[i].userId + ')">';
 
 
             }
@@ -371,7 +371,6 @@ const selectStudentEnrollList = function (){
 
 }
 
-// setInterval( selectStudentEnrollList , 7000);
 
 const enableDisableStatusServer = function ( id , enableDisableStatus , buttonStatus , enableButton , disableButton ){
 
@@ -403,3 +402,5 @@ const enableDisableStatusServer = function ( id , enableDisableStatus , buttonSt
     httpreq.send( "userId=" + id + "&classroomId=" + classroomId + "&status=" + enableDisableStatus );
 
 }
+
+setInterval( selectStudentEnrollList , 10000);
