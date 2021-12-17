@@ -155,6 +155,8 @@ public class EnrollDAO {
 
             try{
 
+                if ( connection != null )connection.setAutoCommit( true );
+
                 if ( preparedStatement != null )preparedStatement.close();
                 if ( preparedStatement1 != null )preparedStatement1.close();
 
@@ -242,6 +244,8 @@ public class EnrollDAO {
         }finally {
 
             try{
+
+                if ( connection != null )connection.setAutoCommit( true );
 
                 if ( resultSet != null )resultSet.close();
                 if ( resultSet1 != null )resultSet1.close();
