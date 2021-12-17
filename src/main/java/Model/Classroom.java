@@ -142,4 +142,10 @@ public class Classroom {
 
     }
 
+    public void updateEnableDisableStatus( String userId , String classroomId , String status ){
+
+        EnrollDAO enrollDAO = new EnrollDAO();
+        enrollDAO.updateStatus( userId , classroomId , status );
+
+    }
 }

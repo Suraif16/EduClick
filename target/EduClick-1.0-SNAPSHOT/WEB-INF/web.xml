@@ -757,6 +757,20 @@
 
     <!-- end of get teacher classroom student enroll list servlet-->
 
+    <!-- beginning of enable disable student enroll status servlet-->
+
+    <servlet>
+        <servlet-name>ClassroomEnableDisableStudent</servlet-name>
+        <servlet-class>Controller.ClassroomEnableDisableStudents</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClassroomEnableDisableStudent</servlet-name>
+        <url-pattern>/teacher/classroomEnableDisableStudent</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of enable disable student enroll status servlet-->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
