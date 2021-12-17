@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Answers;
 import Model.Question;
 import org.json.JSONObject;
 
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +37,9 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
             String mcq = "mcq"+(i+1);
             studentAnswerList.add(request.getParameter(mcq));
         }
+        for(int i = 0 ; i<10 ; i++){
+            System.out.println(studentAnswerList.get(i));
+        }
 
 
         System.out.println("EPostId is : "+postId);
@@ -46,6 +52,13 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
             }
         }
         System.out.println("Your result is : "+result);
+
+        Answers answers = new Answers(LocalDate.now(),LocalTime.now(),result);
+        String answerId = answers.enterMCQMarks();
+        System.out.println("AnswerID is : "+answerId);
+        answers.saveMCQAnswers(answerId,studentAnswerList,postId);
+
+        System.out.println("Everything inserted into tables smoothly");
 
 
 
