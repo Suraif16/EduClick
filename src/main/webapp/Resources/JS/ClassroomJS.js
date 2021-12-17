@@ -31,15 +31,16 @@ function enableDisableStatus( id ){
 
     if (disableButton.style.display === "none"){
 
-        /*defaultView.getComputedStyle(enableButton)*/
-        disableButton.style.display = "block";
-        enableButton.style.display = "none";
+        console.log( 1 );/* pressing enabled button to disable student*/
+        enableDisableStatusServer( id , "Disable" , true );
+
 
 
     }else{
 
-        disableButton.style.display = "none";
-        enableButton.style.display = "block";
+        console.log( 2 );/* pressing disable button to enable student*/
+        enableDisableStatusServer( id , "Enable" , true );
+
 
     }
 
@@ -371,3 +372,34 @@ const selectStudentEnrollList = function (){
 }
 
 setInterval( selectStudentEnrollList , 7000);
+
+const enableDisableStatusServer = function ( id , enableDisableStatus , buttonStatus ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.status === 200 && this.readyState === 4 ){
+
+            if ( buttonStatus ){
+
+                disableButton.style.display = "block";
+                enableButton.style.display = "none";
+
+            }else{
+
+                disableButton.style.display = "none";
+                enableButton.style.display = "block";
+
+            }
+
+        }
+
+    }
+
+    let classroomId = getClassroomIdClientSide();
+    httpreq.open( "POST" , "/EduClick_war_exploded" , true );
+    httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
+    httpreq.send( "userId=" + id + "&classroomId=" + classroomId + "&status=" + enableDisableStatus );
+
+}
