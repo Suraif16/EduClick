@@ -199,6 +199,9 @@ public class AnswerDAO {
                 if ( preparedStatement2 != null )preparedStatement2.close();
                 if ( preparedStatement3 != null )preparedStatement3.close();
 
+                if ( connection != null )connection.close();
+
+
             }catch ( SQLException e ){
 
                 e.printStackTrace();
