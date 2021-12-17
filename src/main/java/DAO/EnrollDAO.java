@@ -41,16 +41,17 @@ public class EnrollDAO {
         }
         return arrayList;
     }
-    public String getUserIdFromClass(String id){
+    public String getUserIdFromClass(String userId,String id){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         String userID = "";
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT UserID FROM Enroll WHERE ClassroomID = ?";
+            String sql = "SELECT UserID FROM Enroll WHERE ClassroomID = ? AND UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, id);
+            preparedStatement.setString(2, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
