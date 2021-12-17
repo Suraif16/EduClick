@@ -191,8 +191,14 @@ function showAnswers( id ){
 }
 
 
-function showMcqResult( id ){
+function showMcqResult( x,id ){
     console.log("PostID eka awooo : "+id)
+
+    for (let i = 0; i <x.length; i++) {
+
+        console.log( "id is here : " , x[i] );
+
+    }
 
     let mcqResultsInPostId = "mcqResultsInPost" + id;
     let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
@@ -203,7 +209,26 @@ function showMcqResult( id ){
 
         console.log("Openedo okay?")
 
-        calculateMarks();
+        let mcqAnswers = [];
+
+        for (let i = 0; i <x.length; i++) {
+
+            let MCQName = "MCQ"+x[i];
+
+            let option = document.getElementsByName(MCQName);
+
+            for (let j = 0; j < option.length; j++) {
+                if (option[j].checked){
+                    console.log("Check Vlues : "+option[j].value)
+                    mcqAnswers[i] = option[j].value;
+                }
+            }
+
+        }
+
+        submitMCQToServer( mcqAnswers,id);
+
+
     }else{
 
         mcqResultsInPost.style.display = "none";
