@@ -661,7 +661,7 @@ div.mcqSingleStudentResult{
     flex: 1;
     display: flex; /*container for <a> and div.mcqSingleStudentResultMarks*/
     flex-wrap: wrap;
-    width: 75%;
+    width: 94%;
     margin: 1%;
     padding: 2%;
 

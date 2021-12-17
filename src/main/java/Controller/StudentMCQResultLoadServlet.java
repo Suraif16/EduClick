@@ -53,12 +53,17 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
         }
         System.out.println("Your result is : "+result);
 
-        Answers answers = new Answers(LocalDate.now(),LocalTime.now(),result);
+        /*Answers answers = new Answers(LocalDate.now(),LocalTime.now(),result);
         String answerId = answers.enterMCQMarks();
         System.out.println("AnswerID is : "+answerId);
-        answers.saveMCQAnswers(answerId,studentAnswerList,postId);
+        answers.saveMCQAnswers(answerId,studentAnswerList,postId);*/
 
         System.out.println("Everything inserted into tables smoothly");
+
+        jsonObject.put("Result",result);
+
+        out.write( jsonObject.toString() );
+        out.close();
 
 
 

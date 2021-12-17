@@ -309,9 +309,9 @@ public class User {
         UserDAO userDAO = new UserDAO();
         JSONArray teacherNameList = userDAO.getNFownerDetails(NFTeacherIDList);
         return teacherNameList;
-    } public String getUserIdFromClass(String id){
+    } public String getUserIdFromClass(String userId,String id){
         EnrollDAO enrollDAO = new EnrollDAO();
-        return enrollDAO.getUserIdFromClass(id);
+        return enrollDAO.getUserIdFromClass(userId,id);
     }
 
 }
