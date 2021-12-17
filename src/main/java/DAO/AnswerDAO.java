@@ -73,4 +73,48 @@ public class AnswerDAO {
         }
         return jsonObject;
     }
+
+    public String enterMCQMarks(Answers answers){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String generatedAnswerId = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "INSERT INTO Answer (Date,Time,Marks) VALUES (?,?,?) ";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, String.valueOf(answers.getDate()));
+            preparedStatement.setString(2, String.valueOf(answers.getTime()));
+            preparedStatement.setString(3, String.valueOf(answers.getMarks()));
+
+            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+            if (resultSet.next()) {
+                generatedAnswerId = resultSet.getString(1);
+
+            }
+            resultSet.close();
+            preparedStatement.close();
+
+
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+
+
+
+        return generatedAnswerId;
+    }
 }
