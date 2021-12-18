@@ -70,7 +70,7 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
                 '                <div class="postAnswerButton">' +
 
                 '                    <div class="answerButton" >' +
-                '                        <input type="button" value="Show Marks" class="mcqResultShowButton" onclick="showMcqResult('+ x +","+postData.EpostId+')">' +
+                '                        <input type="button" value="Submit and Finish" class="mcqResultShowButton" onclick="showMcqResult('+ x +","+postData.EpostId+')">' +
                 '                    </div>' +
                 '                </div>' +
                 '            </div>'    +
@@ -118,13 +118,17 @@ function calculateMarks(){
 
 }
 
-const submitMCQToServer = function (mcqAnswers,postId){
+const submitMCQToServer = function (mcqAnswers,postId,x){
     let goodToSubmit = 1;
     for (i = 0 ; i < 10 ; i++){
         console.log(mcqAnswers[i]+"\n")
         if(mcqAnswers[i] === undefined){
             goodToSubmit = 0;
         }
+    }
+
+    for(i=0;i<10;i++){
+        console.log(x[i]);
     }
 
 
@@ -156,6 +160,7 @@ if(goodToSubmit === 1){
 
 
 
+
             }else{
                 alert("something went wrong!!!");
             }
@@ -167,6 +172,9 @@ if(goodToSubmit === 1){
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send( "mcq1=" + mcqAnswers[0] + "&mcq2=" + mcqAnswers[1] + "&mcq3=" + mcqAnswers[2] +"&mcq4=" + mcqAnswers[3] +"&mcq5=" + mcqAnswers[4] +"&mcq6=" + mcqAnswers[5] +"&mcq7=" + mcqAnswers[6] +"&mcq8=" + mcqAnswers[7] +"&mcq9=" + mcqAnswers[8] +"&mcq10=" + mcqAnswers[9] +"&classroomId=" + getClassroomIdClientSide() + "&postId=" +postId);
 
+    "mcq1={ questionid :@ qidvalue , answerchoice : answerchoicevalue}&mcq2={}"
+
+    // let a = mcq[i] + "={ questionid : " +  mcqquestionId[i] + ", answerchoice : " +  mcqAnswers[0] + " }&" + mcq[i+1]  + "={ questionid : " +  mcqquestionId[i] + ", answerchoice : " +  mcqAnswers[0] + " }"
 
 }else{
     let mcqResultsInPostId = "mcqResultsInPost" + postId;
