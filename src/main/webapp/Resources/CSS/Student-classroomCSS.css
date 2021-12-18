@@ -638,6 +638,13 @@ input[type="radio"]{
 div.correctMcqSingleAnswer{
     /*additional class to distinquish  correct answers*/
 
+    background-color: #EE3818;
+    padding: 4%;
+
+}
+
+div.choiceMcqSingleAnswer{
+    background-color: #6BDD29;
     padding: 4%;
 
 }
