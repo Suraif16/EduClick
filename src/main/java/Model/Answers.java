@@ -136,9 +136,9 @@ public class Answers {
         AnswerDAO answerDAO = new AnswerDAO();
         return answerDAO.enterMCQMarks(this);
     }
-    public void saveMCQAnswers(String answerId, ArrayList<String> studentAnswerList, String postId){
+    public void saveMCQAnswers(String answerId, String studentAnswerListElement, String questionId){
         MCQAnswersDAO mcqAnswersDAO = new MCQAnswersDAO();
-        mcqAnswersDAO.saveMCQAnswers(answerId,studentAnswerList,postId);
+        mcqAnswersDAO.saveMCQAnswers(answerId,studentAnswerListElement,questionId);
 
     }
 
