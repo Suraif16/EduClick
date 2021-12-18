@@ -44,12 +44,17 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
         String postId = request.getParameter("postId");
         for(int i = 0 ; i<10 ; i++){
             String mcq = "mcq"+(i+1);
-            studentAnswerList.add(request.getParameter(mcq));
+            JSONObject jsonMCQ = new JSONObject( request.getParameter(mcq) );
+            System.out.println(jsonMCQ.get("questionId"));
+            System.out.println(jsonMCQ.get("answerChoice"));
+
+//            studentAnswerList.add(request.getParameter(mcq));
         }
         for(int i = 0 ; i<10 ; i++){
             System.out.println(studentAnswerList.get(i));
         }
 
+//        JSONObject jsonmcq = new JSONObject( request.getParameter(mcq) );
 
         System.out.println("EPostId is : "+postId);
 
@@ -62,11 +67,11 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
         }
         System.out.println("Your result is : "+result);
 
-        Answers answers = new Answers(LocalDate.now(),LocalTime.now(),result);
+        /*Answers answers = new Answers(LocalDate.now(),LocalTime.now(),result);
         String answerId = answers.enterMCQMarks();
         System.out.println("AnswerID is : "+answerId);
         answers.saveMCQAnswers(answerId,studentAnswerList,postId);
-        answers.saveMCQAnswerPostStudentRelationship(userId,answerId,postId);
+        answers.saveMCQAnswerPostStudentRelationship(userId,answerId,postId);*/
 
 
         System.out.println("Everything inserted into tables smoothly");
