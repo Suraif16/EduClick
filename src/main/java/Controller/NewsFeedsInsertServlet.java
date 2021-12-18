@@ -14,9 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import static java.time.LocalDate.now;
 
 public class NewsFeedsInsertServlet extends HttpServlet {
 
@@ -46,11 +45,16 @@ public class NewsFeedsInsertServlet extends HttpServlet {
 
         if ( isMultipart ){
 
-            newsFeeds = handleImageAndPostUploads.uploadNewsFeedsImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() );
+            newsFeeds = handleImageAndPostUploads.uploadNewsFeedsImages( request , getServletContext().getRealPath( "" ) , LocalDate.now(), LocalTime.now() );
 
         }
 
-        newsfeeds.getTeacherFriendsFollowers(newsFeeds,userId);
+        if ( newsFeeds != null ){
+
+            Thread loadNewsFeeds = NewsFeeds.loadNewsFeeds( newsFeeds , userId );
+            loadNewsFeeds.start();
+
+        }
 
         JSONObject newsFeedsJson = new JSONObject( newsFeeds );
 
