@@ -487,7 +487,7 @@ public class EducationalPostDAO {
             String sql5 = "SELECT AnswerID FROM Answer_Student_Post_Relationship WHERE S_UserID = ? AND EPostID = ?";
             preparedStatement5 = connection.prepareStatement(sql5);
 
-            String sql6 = "SELECT Choice FROM MCQ_Answers WHERE QuestionID  = ?";
+            String sql6 = "SELECT Choice FROM MCQ_Answers WHERE AnswerID  = ?";
             preparedStatement6 = connection.prepareStatement(sql6);
 
             if ( minPostId.equals( "-1" ) ){
@@ -538,14 +538,23 @@ public class EducationalPostDAO {
 
                 }else if ( resultSet.getString( 4 ).equals( "MCQ" ) ){
 
+                    String answerId = "";
+
                     preparedStatement3.setString( 1 , ( String ) singleEPost.get( "EpostId" ) );
                     resultSet3 = preparedStatement3.executeQuery();
 
 
-                    /*preparedStatement5.setString(1,userId);
+                    preparedStatement5.setString(1,userId);
                     preparedStatement5.setString(2,(String) singleEPost.get("EpostId"));
                     resultSet5 = preparedStatement5.executeQuery();
-                    preparedStatement6.setString( 1 , minPostId );*/
+
+
+                    if(resultSet5.next()){
+                        answerId = resultSet5.getString("AnswerID");
+                    }
+
+                    preparedStatement6.setString( 1 , answerId );
+                    resultSet6 = preparedStatement6.executeQuery();
 
 
                     List< JSONObject > questionList = new ArrayList<>();
@@ -579,51 +588,22 @@ public class EducationalPostDAO {
 
 
 
-                        /*if(resultSet6.next()){
+                        if(resultSet6.next()){
 
                             singleEPost.put("Answered","Yes");
-
-
-                            System.out.println("ResultSet6 : "+resultSet6.getString("Choice"));
 
                             String studentChoice = "choice" + j;
 
                             singleQuestion.put(studentChoice,resultSet6.getString(1));
 
                             j++;
-                        }*/
+                        }
 
                         questionList.add( singleQuestion );
 
                     }
 
-                    /*while(resultSet5.next()){
-
-
-                        System.out.println("In result Set 5 : "+resultSet5.getString("AnswerID"));
-
-                        //resultSet6 = preparedStatement6.executeQuery();
-
-                        singleEPost.put("Answered","Yes");
-
-                        *//*JSONObject singleQuestionChoice = new JSONObject();
-
-                        int j = 1;
-
-                        while(resultSet6.next()){
-
-                            String studentChoice = "choice"+j;
-
-                            singleQuestionChoice.put(studentChoice,resultSet6.getString(1));
-
-                            j++;
-
-                        }
-                        questionList.add(singleQuestionChoice);*//*
-
-
-                    }*/
-
+                    
 
                     JSONArray jsonQuestionList = new JSONArray( questionList );
 
