@@ -118,8 +118,8 @@ public class AnswerDAO {
             while( resultSet.next() ){
 
                 JSONObject singleAnswer = new JSONObject();
-                singleAnswer.put( "SId" , resultSet.getString( 1 ) );
-                singleAnswer.put( "AnswerId" , resultSet.getString( 2 ) );
+                singleAnswer.put( "userId" , resultSet.getString( 1 ) );
+                singleAnswer.put( "answerId" , resultSet.getString( 2 ) );
 
                 preparedStatement1.setString( 1 , resultSet.getString( 2 ) );
 
