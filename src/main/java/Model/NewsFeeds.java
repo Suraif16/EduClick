@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NewsFeeds extends Post{
 
@@ -15,7 +16,7 @@ public class NewsFeeds extends Post{
     private int likeCount;
     private int likeShare;
 
-    public NewsFeeds(String message , LocalDate localDate , LocalTime localTime) {
+    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime) {
         super( message , localDate , localTime );
     }
 
@@ -102,15 +103,6 @@ public class NewsFeeds extends Post{
             PostDAO postDAO = new PostDAO();
             postDAO.insert(newsFeeds,followersIDList.get(i), userId );
         }
-
-        if ( newsFeeds != null ){
-
-            Thread loadNewsFeeds = NewsFeeds.loadNewsFeeds( newsFeeds , userId );
-            loadNewsFeeds.start();
-
-        }
-
-
 
     }
 
