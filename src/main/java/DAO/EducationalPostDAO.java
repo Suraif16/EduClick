@@ -448,4 +448,241 @@ public class EducationalPostDAO {
 
     }
 
+
+
+    public List<JSONObject> selectForMCQ( String classroomId , String minPostId, String userId){
+        System.out.println( "classroom id : " + classroomId + " : this is minPostId : " + minPostId );
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        List< JSONObject > ePostList = new ArrayList<>();
+
+        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement2 = null;
+        PreparedStatement preparedStatement3 = null;
+        PreparedStatement preparedStatement4 = null;
+        PreparedStatement preparedStatement5 = null;
+        PreparedStatement preparedStatement6 = null;
+
+        ResultSet resultSet = null;
+        ResultSet resultSet2 = null;
+        ResultSet resultSet3 = null;
+        ResultSet resultSet4 = null;
+        ResultSet resultSet5 = null;
+        ResultSet resultSet6 = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql2 = "SELECT ImageStatus , Caption FROM EducationalWork Where EPostID = ?";
+            preparedStatement2 = connection.prepareStatement( sql2 );
+
+            String sql3 = "SELECT QuestionID , Question , Correct_answers FROM Question WHERE EPostID = ?";
+            preparedStatement3 = connection.prepareStatement( sql3 );
+
+            String sql4 = "SELECT Answer_no , Answer FROM Question_Answer_Value WHERE QuestionID = ?";
+            preparedStatement4 = connection.prepareStatement( sql4 );
+
+            String sql5 = "SELECT AnswerID FROM Answer_Student_Post_Relationship WHERE S_UserID = ? AND EPostID = ?";
+            preparedStatement5 = connection.prepareStatement(sql5);
+
+            String sql6 = "SELECT Choice FROM MCQ_Answers WHERE QuestionID  = ?";
+            preparedStatement6 = connection.prepareStatement(sql6);
+
+            if ( minPostId.equals( "-1" ) ){
+
+                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 2 ";
+                preparedStatement = connection.prepareStatement( sql );
+                preparedStatement.setString( 1 , classroomId );
+
+            }else {
+
+                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? AND EPostID < ? ORDER BY Date DESC , Time DESC LIMIT 2 ";
+                preparedStatement = connection.prepareStatement( sql );
+                preparedStatement.setString( 1 , classroomId );
+                preparedStatement.setString( 2 , minPostId );
+
+            }
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            while( resultSet.next() ){
+
+                JSONObject singleEPost = new JSONObject();
+                singleEPost.put( "EpostId" , resultSet.getString( 1 ) );
+                singleEPost.put( "date" , resultSet.getString( 2 ) );
+                singleEPost.put( "time" , resultSet.getString( 3 ) );
+                singleEPost.put( "EPtype" , resultSet.getString( 4 ) );
+                singleEPost.put( "type" , resultSet.getString( 5 ) );
+
+
+
+
+
+
+                if ( resultSet.getString( 4 ).equals("EducationalWork")){
+
+                    preparedStatement2.setString( 1 , ( String ) singleEPost.get( "EpostId" ) );
+                    resultSet2 = preparedStatement2.executeQuery();
+
+
+                    if ( resultSet2.next() ){
+
+                        singleEPost.put( "imageStatus" , resultSet2.getString( 1 ) );
+                        singleEPost.put( "caption" , resultSet2.getString( 2 ) );
+
+                    }
+
+
+                }else if ( resultSet.getString( 4 ).equals( "MCQ" ) ){
+
+                    preparedStatement3.setString( 1 , ( String ) singleEPost.get( "EpostId" ) );
+                    resultSet3 = preparedStatement3.executeQuery();
+
+
+                    /*preparedStatement5.setString(1,userId);
+                    preparedStatement5.setString(2,(String) singleEPost.get("EpostId"));
+                    resultSet5 = preparedStatement5.executeQuery();
+                    preparedStatement6.setString( 1 , minPostId );*/
+
+
+                    List< JSONObject > questionList = new ArrayList<>();
+
+
+                    int j = 1;
+
+                    while ( resultSet3.next() ){
+
+                        JSONObject singleQuestion = new JSONObject();
+                        singleQuestion.put( "questionId" , resultSet3.getString( 1 ) );
+                        singleQuestion.put( "question" , resultSet3.getString( 2 ) );
+                        singleQuestion.put( "correctAnswer" , resultSet3.getString( 3 ) );
+
+
+                        preparedStatement4.setString( 1 , ( String ) singleQuestion.get( "questionId" ) );
+                        resultSet4 = preparedStatement4.executeQuery();
+
+                        int i = 1;
+
+
+                        while ( resultSet4.next() ){
+
+                            String keyAnswerName = "answer" + i;
+                            String keyAnswerNoName = "answerNo" + i;
+                            singleQuestion.put( keyAnswerNoName , resultSet4.getString( 1 ) );
+                            singleQuestion.put( keyAnswerName , resultSet4.getString( 2 ) );
+                            i++;
+
+                        }
+
+
+
+                        /*if(resultSet6.next()){
+
+                            singleEPost.put("Answered","Yes");
+
+
+                            System.out.println("ResultSet6 : "+resultSet6.getString("Choice"));
+
+                            String studentChoice = "choice" + j;
+
+                            singleQuestion.put(studentChoice,resultSet6.getString(1));
+
+                            j++;
+                        }*/
+
+                        questionList.add( singleQuestion );
+
+                    }
+
+                    /*while(resultSet5.next()){
+
+
+                        System.out.println("In result Set 5 : "+resultSet5.getString("AnswerID"));
+
+                        //resultSet6 = preparedStatement6.executeQuery();
+
+                        singleEPost.put("Answered","Yes");
+
+                        *//*JSONObject singleQuestionChoice = new JSONObject();
+
+                        int j = 1;
+
+                        while(resultSet6.next()){
+
+                            String studentChoice = "choice"+j;
+
+                            singleQuestionChoice.put(studentChoice,resultSet6.getString(1));
+
+                            j++;
+
+                        }
+                        questionList.add(singleQuestionChoice);*//*
+
+
+                    }*/
+
+
+                    JSONArray jsonQuestionList = new JSONArray( questionList );
+
+                    singleEPost.put( "questionList" , jsonQuestionList );
+
+                }
+
+                ePostList.add( singleEPost );
+
+            }
+
+            connection.commit();
+
+        } catch (SQLException e) {
+
+            try {
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException ex ){
+
+                ex.printStackTrace();
+
+            }
+
+        }
+        finally {
+            try{
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( resultSet != null )resultSet.close();
+                if ( resultSet2 != null )resultSet2.close();
+                if ( resultSet3 != null )resultSet3.close();
+                if ( resultSet4 != null )resultSet4.close();
+                if ( resultSet5 != null )resultSet5.close();
+                if ( resultSet6 != null )resultSet6.close();
+
+                if ( preparedStatement != null )preparedStatement.close();
+                if ( preparedStatement2 != null )preparedStatement2.close();
+                if ( preparedStatement3 != null )preparedStatement3.close();
+                if ( preparedStatement4 != null )preparedStatement4.close();
+                if ( preparedStatement5 != null )preparedStatement5.close();
+                if ( preparedStatement6 != null )preparedStatement6.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+        }
+
+        return ePostList;
+
+
+    }
+
+
+
 }
