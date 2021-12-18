@@ -68,4 +68,39 @@ public class AnswerStudentPostRelationshipDAO {
         System.out.println("AnswerID in AnsPostStuDAO : "+answerId);
         return answerId;
     }
+
+
+    public void saveMCQAnswerPostStudentRelationship(String userId,String answerId,String postId){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "INSERT INTO Answer_Student_Post_Relationship (S_UserID,AnswerID,EPostID) VALUES (?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1,userId);
+            preparedStatement.setString(2,answerId);
+            preparedStatement.setString(3,postId);
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+
+        System.out.println("Everything saved in database for MCQ answer loading");
+
+    }
+
 }

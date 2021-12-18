@@ -192,6 +192,7 @@ function showAnswers( id ){
 
 
 function showMcqResult( x,id ){
+
     console.log("PostID eka awooo : "+id)
 
     for (let i = 0; i <x.length; i++) {
@@ -226,8 +227,88 @@ function showMcqResult( x,id ){
 
         }
 
-        submitMCQToServer( mcqAnswers,id);
+        // submitMCQToServer(mcqAnswers,id);
 
+        let goodToSubmit = 1;
+        for (i = 0 ; i < 10 ; i++){
+            console.log(mcqAnswers[i]+"\n")
+            if(mcqAnswers[i] === undefined){
+                goodToSubmit = 0;
+            }
+        }
+
+        for(i=0;i<10;i++){
+            console.log(x[i]);
+        }
+
+
+        if(goodToSubmit === 1){
+            let httpreq = new XMLHttpRequest();
+
+            httpreq.onreadystatechange = function (){
+
+                if ( this.readyState === 4 && this.status === 200 ){
+
+                    console.log( "done!!!");
+
+                    let jsonResponse = JSON.parse( httpreq.responseText );
+                    if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                        window.location.replace("/EduClick_war_exploded/Login.html");
+                    }else if(jsonResponse.serverResponse === "Allowed"){
+
+                        console.log(jsonResponse.Result)
+                        let resultTag = "mcqResultsInPost"+id
+                        let studentResult = document.getElementById(resultTag);
+                        studentResult.innerHTML="";
+                        let htmlString =
+                            '<div class="mcqSingleStudentResult">' +
+                            '          <div  class="mcqSingleStudentResultMarks">' +
+                            "Your result is "+jsonResponse.Result+"%" +
+                            '           </div>' +
+                            '</div>'
+                        studentResult.innerHTML+=htmlString
+
+
+
+
+                    }else{
+                        alert("something went wrong!!!");
+                    }
+
+                }
+
+            }
+            let dataString =
+                "mcq1=" + '{"questionId" : ' + '"' + x[0] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[0] + '"'+'}'+
+                "&mcq2=" + '{"questionId" : ' + '"' + x[1] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[1] + '"'+'}'+
+                "&mcq3=" + '{"questionId" : ' + '"' + x[2] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[2] + '"'+'}'+
+                "&mcq4=" + '{"questionId" : ' + '"' + x[3] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[3] + '"'+'}'+
+                "&mcq5=" + '{"questionId" : ' + '"' + x[4] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[4] + '"'+'}'+
+                "&mcq6=" + '{"questionId" : ' + '"' + x[5] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[5] + '"'+'}'+
+                "&mcq7=" + '{"questionId" : ' + '"' + x[6] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[6] + '"'+'}'+
+                "&mcq8=" + '{"questionId" : ' + '"' + x[7] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[7] + '"'+'}'+
+                "&mcq9=" + '{"questionId" : ' + '"' + x[8] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[8] + '"'+'}'+
+                "&mcq10=" + '{"questionId" : ' + '"' + x[9] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[9] + '"'+'}';
+
+
+
+            console.log(dataString)
+
+            httpreq.open( "POST" , "/EduClick_war_exploded/student/mcqResultLoad" , true);
+            httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+            // httpreq.send( "mcq1=" + mcqAnswers[0] + "&mcq2=" + mcqAnswers[1] + "&mcq3=" + mcqAnswers[2] +"&mcq4=" + mcqAnswers[3] +"&mcq5=" + mcqAnswers[4] +"&mcq6=" + mcqAnswers[5] +"&mcq7=" + mcqAnswers[6] +"&mcq8=" + mcqAnswers[7] +"&mcq9=" + mcqAnswers[8] +"&mcq10=" + mcqAnswers[9] +"&classroomId=" + getClassroomIdClientSide() + "&postId=" +id);
+
+            httpreq.send(dataString);
+            "mcq1={ questionid :@ qidvalue , answerchoice : answerchoicevalue}&mcq2={}"
+
+            // let a = mcq[i] + "={ questionid : " +  mcqquestionId[i] + ", answerchoice : " +  mcqAnswers[0] + " }&" + mcq[i+1]  + "={ questionid : " +  mcqquestionId[i] + ", answerchoice : " +  mcqAnswers[0] + " }"
+
+        }else{
+            let mcqResultsInPostId = "mcqResultsInPost" + postId;
+            let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
+            mcqResultsInPost.style.display = "none";
+            alert("You cant keep empty fields")
+        }
 
     }else{
 
