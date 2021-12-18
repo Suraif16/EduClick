@@ -106,7 +106,7 @@ public class Answers {
 
                 EDWAnswersDAO edwAnswersDao = new EDWAnswersDAO();
                 edwAnswersDao.insert(this,answerId);
-                Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getQuestionId() , path + "Resources\\Images\\AnswerImages\\" , imageFile );
+                Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( answerId , path + "Resources\\Images\\AnswerImages\\" , imageFile );
                 saveImage.start();
             }
         }
