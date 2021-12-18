@@ -560,8 +560,6 @@ public class EducationalPostDAO {
                     List< JSONObject > questionList = new ArrayList<>();
 
 
-                    int j = 1;
-
                     while ( resultSet3.next() ){
 
                         JSONObject singleQuestion = new JSONObject();
@@ -592,11 +590,10 @@ public class EducationalPostDAO {
 
                             singleEPost.put("Answered","Yes");
 
-                            String studentChoice = "choice" + j;
+                            String studentChoice = "choice";
 
                             singleQuestion.put(studentChoice,resultSet6.getString(1));
 
-                            j++;
                         }
 
                         questionList.add( singleQuestion );
