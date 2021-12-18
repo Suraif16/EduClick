@@ -85,5 +85,53 @@ public class NewsFeeds extends Post{
 
     }
 
+    public static void getTeacherFriendsFollowers(NewsFeeds newsFeeds, String userId){
+
+        AddFriendsDAO addFriendDAO = new AddFriendsDAO();
+        ArrayList<String> friendsIDList = addFriendDAO.getTeacherFriendKeys(userId);
+
+        for(int i=0; i<friendsIDList.size(); i++){
+            PostDAO postDAO = new PostDAO();
+            postDAO.insert(newsFeeds,friendsIDList.get(i), userId );
+        }
+
+        FollowsDAO followsDAO = new FollowsDAO();
+        ArrayList<String> followersIDList = followsDAO.getTeacherFollowersKeys(userId);
+
+        for(int i=0; i<followersIDList.size(); i++){
+            PostDAO postDAO = new PostDAO();
+            postDAO.insert(newsFeeds,followersIDList.get(i), userId );
+        }
+
+        if ( newsFeeds != null ){
+
+            Thread loadNewsFeeds = NewsFeeds.loadNewsFeeds( newsFeeds , userId );
+            loadNewsFeeds.start();
+
+        }
+
+
+
+    }
+
+    public static Thread loadNewsFeeds(NewsFeeds newsFeeds, String userId ){
+
+        Runnable runnable = () -> {
+
+            getTeacherFriendsFollowers(  newsFeeds, userId);
+
+          };
+
+        return new Thread( runnable );
+
+    }
 
 }
+
+
+
+
+
+
+
+
