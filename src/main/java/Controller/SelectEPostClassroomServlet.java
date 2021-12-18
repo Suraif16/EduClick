@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.EducationalWork;
+import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,6 +25,11 @@ public class SelectEPostClassroomServlet extends HttpServlet {
         jsonObject.put( "serverResponse" , "Allowed" );
 
         HttpSession session = request.getSession( false );
+
+        User user = ( User ) session.getAttribute( "User" );
+
+        jsonObject.put( "userName" , user.getFirstName() );
+        jsonObject.put( "userId" , user.getUserId() );
 
         String minPostId = request.getParameter( "id" );
         String classroomId = request.getParameter( "classroomId" );

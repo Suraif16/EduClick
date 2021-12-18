@@ -193,7 +193,13 @@ const showMcqAddPostForm = function (){
 
         mcqAddPostForm.style.display = "none";
         selectMoreStatus = true;
-        setTimeout( function (){ selectEPostFromServer( false ) } , 3000 );
+        setTimeout( function (){
+
+                ePostGetAnswerList = [];
+            selectEPostFromServer( false );
+
+            }
+            , 3000 );
 
 
     }else{

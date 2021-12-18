@@ -1,3 +1,5 @@
+let ePostGetAnswerList = [];
+
 function showAnswers( id ){
 
     let answerId = "answersInPost" + id;
@@ -5,10 +7,13 @@ function showAnswers( id ){
 
     if (answerContainer.style.display === "none"){
 
-        getAnswersServer( id , answerContainer );
+        ePostGetAnswerList.push( id );
+
         answerContainer.style.display = "flex";
 
     }else{
+
+        ePostGetAnswerList.splice( ePostGetAnswerList.indexOf( id ) , 1 );
 
         answerContainer.style.display = "none";
 
@@ -16,7 +21,10 @@ function showAnswers( id ){
 
 }
 
-const getAnswersServer = function ( id , answerContainer ){
+const getAnswersServer = function ( id ){
+
+    let answerId = "answersInPost" + id;
+    let answerContainer = document.getElementById( answerId );
 
     let httpreq = new XMLHttpRequest();
 
@@ -88,3 +96,15 @@ const getAnswersServer = function ( id , answerContainer ){
     }
 
 }
+
+const traverseEPostListToGetAnswers = function (){
+
+    ePostGetAnswerList.forEach( function ( id ){
+
+        getAnswersServer( id );
+
+    });
+
+}
+
+setInterval( traverseEPostListToGetAnswers , 2000 );

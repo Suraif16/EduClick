@@ -2,6 +2,8 @@ let reloadStatus = true;
 const postDataContent = document.getElementById( "postContents" );
 let minEPostId = Infinity;
 let selectMoreStatus = true;
+let userName = "";
+let userId = "";
 
 window.onscroll = function (){
 
@@ -21,12 +23,12 @@ const displayEducationalPost = function ( postData ){
     let post = '<div class="post">' +
         '<div class="postContentContainer">' +
         '<div class="postProfileSection">' +
-        '<a href="TeacherProfile.html" class="postProfile">' +
+        '<a href="/EduClick_war_exploded/userProfileRedirect?userId=' + userId + '" class="postProfile">' +
 
         '<div class="postProfileImage">' +
         '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
         '</div>' +
-        '<div class="postProfileName" >User Name</div>' +
+        '<div class="postProfileName" >' + userName + '</div>' +
         '</a>' +
         '<div class="postTimeAndDate">' +
         postData.time +' | '+ postData.date +
@@ -76,11 +78,11 @@ const displayMessage = function ( postData ){
     let post = '<div class="post">' +
         '<div class="postContentContainer">' +
         '<div class="postProfileSection">' +
-        '<a href="TeacherProfile.html" class="postProfile">' +
+        '<a href="/EduClick_war_exploded/userProfileRedirect?userId=' + userId + '" class="postProfile">' +
         '<div class="postProfileImage">' +
         '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
         '</div>' +
-        '<div class="postProfileName" >User Name</div>' +
+        '<div class="postProfileName" >' + userName + '</div>' +
         '</a>' +
         '<div class="postTimeAndDate">' +
         postData.time +' | '+ postData.date +
@@ -119,11 +121,11 @@ const displayMcqPost = function ( postData ){
     let post = '<div class="post">' +
         '<div class="postContentContainer">' +
         '<div class="postProfileSection">' +
-        '<a href="TeacherProfile.html" class="postProfile">' +
+        '<a href="/EduClick_war_exploded/userProfileRedirect?userId=' + userId + '" class="postProfile">' +
         '<div class="postProfileImage">' +
         '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
         '</div>' +
-        '<div class="postProfileName" >User Name</div>' +
+        '<div class="postProfileName" >' + userName + '</div>' +
         '</a>' +
         '<div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
@@ -235,7 +237,10 @@ const selectEPostFromServer = function ( scrollStatus ){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
 
-            console.log( jsonResponse.ePosts );
+            console.log( jsonResponse );
+
+            userName = jsonResponse.userName;
+            userId = jsonResponse.userId;
 
             const ePostsLIst = jsonResponse.ePosts;
 
