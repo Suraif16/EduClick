@@ -792,4 +792,12 @@
 
     </session-config>
 
+    <listener>
+        <listener-class>
+
+            Database.DBBackup
+
+        </listener-class>
+    </listener>
+
 </web-app>
