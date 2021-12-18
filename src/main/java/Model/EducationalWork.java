@@ -83,5 +83,11 @@ public class EducationalWork extends Post{
         return educationalPostDAO.select( classroomId , minPostId );
 
     }
+    public List<JSONObject> selectEducationalPost( String classroomId , String minPostId ,String userId ){
+
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        return educationalPostDAO.selectForMCQ( classroomId , minPostId ,userId);
+
+    }
 
 }

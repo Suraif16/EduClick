@@ -25,11 +25,14 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
 
+
         Classroom classroom = new Classroom();
 
-        User user = new User();
-
         HttpSession session = request.getSession( false );
+
+        User user = (User) session.getAttribute("User");
+
+        String userId = user.getUserId();
 
         String minPostId = ( String ) request.getParameter( "id" );
 
@@ -39,7 +42,7 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
         System.out.println("minPostId : "+minPostId);
 
         EducationalWork educationalWork = new EducationalWork();
-        List< JSONObject > ePostList = educationalWork.selectEducationalPost( ( String ) session.getAttribute( "CurrentClassroomId" ) , minPostId );
+        List< JSONObject > ePostList = educationalWork.selectEducationalPost( ( String ) session.getAttribute( "CurrentClassroomId" ) , minPostId, userId );
 
         JSONArray jsonEPostList = new JSONArray( ePostList );
 

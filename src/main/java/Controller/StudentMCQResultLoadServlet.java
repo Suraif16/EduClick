@@ -2,11 +2,13 @@ package Controller;
 
 import Model.Answers;
 import Model.Question;
+import Model.User;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
@@ -22,6 +24,13 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
 
         response.setContentType("text/html");
 
+        HttpSession session = request.getSession( false );
+
+        User user = (User) session.getAttribute("User");
+
+        String userId = user.getUserId();
+
+
         JSONObject jsonObject = new JSONObject();
 
         jsonObject.put( "serverResponse" , "Allowed" );
@@ -35,12 +44,17 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
         String postId = request.getParameter("postId");
         for(int i = 0 ; i<10 ; i++){
             String mcq = "mcq"+(i+1);
-            studentAnswerList.add(request.getParameter(mcq));
+            JSONObject jsonMCQ = new JSONObject( request.getParameter(mcq) );
+            System.out.println(jsonMCQ.get("questionId"));
+            System.out.println(jsonMCQ.get("answerChoice"));
+
+//            studentAnswerList.add(request.getParameter(mcq));
         }
         for(int i = 0 ; i<10 ; i++){
             System.out.println(studentAnswerList.get(i));
         }
 
+//        JSONObject jsonmcq = new JSONObject( request.getParameter(mcq) );
 
         System.out.println("EPostId is : "+postId);
 
@@ -56,7 +70,9 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
         /*Answers answers = new Answers(LocalDate.now(),LocalTime.now(),result);
         String answerId = answers.enterMCQMarks();
         System.out.println("AnswerID is : "+answerId);
-        answers.saveMCQAnswers(answerId,studentAnswerList,postId);*/
+        answers.saveMCQAnswers(answerId,studentAnswerList,postId);
+        answers.saveMCQAnswerPostStudentRelationship(userId,answerId,postId);*/
+
 
         System.out.println("Everything inserted into tables smoothly");
 

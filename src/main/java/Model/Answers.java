@@ -1,9 +1,6 @@
 package Model;
 
-import DAO.AnswerDAO;
-import DAO.AnswerStudentPostRelationshipDAO;
-import DAO.EDWAnswersDAO;
-import DAO.MCQAnswersDAO;
+import DAO.*;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 import org.json.JSONObject;
@@ -112,7 +109,7 @@ public class Answers {
 
                 EDWAnswersDAO edwAnswersDao = new EDWAnswersDAO();
                 edwAnswersDao.insert(this,answerId);
-                Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getQuestionId() , path + "Resources\\Images\\AnswerImages\\" , imageFile );
+                Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( answerId , path + "Resources\\Images\\AnswerImages\\" , imageFile );
                 saveImage.start();
             }
         }
@@ -145,10 +142,16 @@ public class Answers {
 
     }
 
+
     public List< JSONObject > getEpostAnswers( String epostId ){
 
         AnswerDAO answerDAO = new AnswerDAO();
         return answerDAO.selectEpostAnswer( epostId );
+    }
+
+    public void saveMCQAnswerPostStudentRelationship(String userId,String answerId,String postId){
+        AnswerStudentPostRelationshipDAO answerStudentPostRelationshipDAO = new AnswerStudentPostRelationshipDAO();
+        answerStudentPostRelationshipDAO.saveMCQAnswerPostStudentRelationship(userId,answerId,postId);
 
     }
 }
