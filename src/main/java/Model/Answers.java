@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Answers {
     private String questionId;
@@ -98,6 +99,8 @@ public class Answers {
         this.marks = marks;
     }
 
+    public Answers(){}
+
     public Answers insertAnswers(FileItem imageFile , String path){
 
         AnswerDAO answerDAO = new AnswerDAO();
@@ -139,6 +142,13 @@ public class Answers {
     public void saveMCQAnswers(String answerId, ArrayList<String> studentAnswerList, String postId){
         MCQAnswersDAO mcqAnswersDAO = new MCQAnswersDAO();
         mcqAnswersDAO.saveMCQAnswers(answerId,studentAnswerList,postId);
+
+    }
+
+    public List< JSONObject > getEpostAnswers( String epostId ){
+
+        AnswerDAO answerDAO = new AnswerDAO();
+        return answerDAO.selectEpostAnswer( epostId );
 
     }
 }
