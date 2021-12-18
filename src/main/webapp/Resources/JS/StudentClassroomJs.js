@@ -288,7 +288,7 @@ function showMcqResult( x,id ){
                 "&mcq7=" + '{"questionId" : ' + '"' + x[6] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[6] + '"'+'}'+
                 "&mcq8=" + '{"questionId" : ' + '"' + x[7] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[7] + '"'+'}'+
                 "&mcq9=" + '{"questionId" : ' + '"' + x[8] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[8] + '"'+'}'+
-                "&mcq10=" + '{"questionId" : ' + '"' + x[9] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[9] + '"'+'}';
+                "&mcq10=" + '{"questionId" : ' + '"' + x[9] + '"' + ', "answerChoice" : ' + '"' + mcqAnswers[9] + '"'+'}' + "&postId="+id;
 
 
 
@@ -304,7 +304,7 @@ function showMcqResult( x,id ){
             // let a = mcq[i] + "={ questionid : " +  mcqquestionId[i] + ", answerchoice : " +  mcqAnswers[0] + " }&" + mcq[i+1]  + "={ questionid : " +  mcqquestionId[i] + ", answerchoice : " +  mcqAnswers[0] + " }"
 
         }else{
-            let mcqResultsInPostId = "mcqResultsInPost" + postId;
+            let mcqResultsInPostId = "mcqResultsInPost" + id;
             let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
             mcqResultsInPost.style.display = "none";
             alert("You cant keep empty fields")

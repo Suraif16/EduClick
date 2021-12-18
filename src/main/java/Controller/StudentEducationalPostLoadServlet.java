@@ -42,7 +42,7 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
         System.out.println("minPostId : "+minPostId);
 
         EducationalWork educationalWork = new EducationalWork();
-        List< JSONObject > ePostList = educationalWork.selectEducationalPost( ( String ) session.getAttribute( "CurrentClassroomId" ) , minPostId, userId );
+        List< JSONObject > ePostList = educationalWork.selectEducationalPostMCQ( ( String ) session.getAttribute( "CurrentClassroomId" ) , minPostId, userId );
 
         JSONArray jsonEPostList = new JSONArray( ePostList );
 
