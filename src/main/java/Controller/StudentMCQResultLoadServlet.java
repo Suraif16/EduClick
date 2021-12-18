@@ -90,7 +90,7 @@ public class StudentMCQResultLoadServlet extends HttpServlet {
 
             System.out.println("Question ID list "+(i+1)+" : "+questionIdList.get(i));
         }
-        
+
         System.out.println("Everything inserted into tables smoothly");
 
         jsonObject.put("Result",result);
