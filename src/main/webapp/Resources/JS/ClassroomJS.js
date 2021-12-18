@@ -31,14 +31,14 @@ function enableDisableStatus( id ){
 
     if (disableButton.style.display === "none"){
 
-        console.log( 1 );/* pressing enabled button to disable student*/
+        /* pressing enabled button to disable student*/
         enableDisableStatusServer( id , "Disable" , true , enableButton , disableButton );
 
 
 
     }else{
 
-        console.log( 2 );/* pressing disable button to enable student*/
+        /* pressing disable button to enable student*/
         enableDisableStatusServer( id , "Enable" , false , enableButton , disableButton );
 
 
@@ -207,8 +207,8 @@ const selectStudentEnrollList = function (){
         rightPanelStudentList.innerHTML = "";
 
         const jsonObject = JSON.parse( httpreq.responseText );
-        console.log(" this is the one ")
-        console.log( jsonObject );
+
+        // console.log( jsonObject );
 
         let studentEnrollList = jsonObject.classroomEnrollList;
         let nowDateTime = new Date();

@@ -104,7 +104,13 @@ const postQuestionsMessages = function (){
             showAddEducationalPostForm();
 
             selectMoreStatus = true;
-            setTimeout( function (){ selectEPostFromServer( false ) } , 3000 );
+            setTimeout( function (){
+
+                    ePostGetAnswerList = [];
+                selectEPostFromServer( false );
+
+                }
+                , 3000 );
 
         }else{
             alert("something went wrong!!!");
