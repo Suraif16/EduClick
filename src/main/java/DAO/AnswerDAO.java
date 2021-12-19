@@ -262,4 +262,39 @@ public class AnswerDAO {
         return generatedAnswerId;
     }
 
+    public String selectMarksForMCQ(String answerId)  {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String mcqResult = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT Marks FROM Answer WHERE AnswerID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, String.valueOf(answerId));
+
+            ResultSet resultSet =  preparedStatement.executeQuery();
+            while (resultSet.next()){
+                mcqResult = resultSet.getString("Marks");
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+
+        return mcqResult;
+
+    }
+
+
+
 }
