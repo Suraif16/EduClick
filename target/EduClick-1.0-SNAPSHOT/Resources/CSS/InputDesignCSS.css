@@ -161,7 +161,7 @@ input {
     height: 100%;
     width: 100%;
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.1s ease;
     background-color: black;
 
 }
@@ -231,7 +231,7 @@ textarea {
     height: 100%;
     width: 100%;
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.1s ease;
     background-color: black;
 
 }
