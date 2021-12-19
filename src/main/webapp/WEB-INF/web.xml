@@ -785,6 +785,21 @@
 
     <!-- end of enable disable student enroll status servlet-->
 
+    <!-- beginning of student MCQ result load on correct answers post servlet-->
+
+    <servlet>
+        <servlet-name>StudentMCQResultLoadOnClickServlet</servlet-name>
+        <servlet-class>Controller.StudentMCQResultLoadOnClickServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentMCQResultLoadOnClickServlet</servlet-name>
+        <url-pattern>/student/studentMCQResultLoadOnClick</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student MCQ result load on correct answers post servlet-->
+
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
