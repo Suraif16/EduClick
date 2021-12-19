@@ -94,28 +94,19 @@ div.formRow{
 
     flex: 1;/*a child of containerflex*/
     display: flex;
+    flex-wrap: wrap;
 
 }
 
 input[type = "email"]{
 
-    padding: 0.3%;
     flex: 5;/*a child of formRow*/
-    cursor: text;
 
 }
 
 input[type = "password"]{
 
-    padding: 0.3%;
     flex: 5;/*a child of formRow*/
-    cursor: text;
-
-}
-
-label{
-
-    padding-right: 10px;
 
 }
 
@@ -134,7 +125,7 @@ label{
 
     /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
     margin: auto;
-    background-color: #4775c4;
+    width: 100%;
     color: whitesmoke;
     padding: 1%;
 
@@ -154,20 +145,8 @@ div#incorrectPassword{
     margin: 0 auto 0.3% auto;
     display: none;
 
-
 }
 
-input{
-    /*all input values will have these properties*/
-    border-radius: 5px;
-    border: #6a6a6a solid 1px;
-
-
-}
-
-input[type = "button"]{
-    cursor: pointer;
-}
 
 a.loginFormForgotPasswordNotAUser {
 
