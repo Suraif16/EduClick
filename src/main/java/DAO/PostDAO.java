@@ -110,7 +110,7 @@ public class PostDAO {
         return jsonArray;
     }
 
-    public String insert(NewsFeeds newsFeeds, String userId) {
+    public String insert(NewsFeeds newsFeeds, String friendsID, String userId) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -121,7 +121,7 @@ public class PostDAO {
             String sql = "INSERT INTO Posts( NFPostID, UserID , T_UserID ) VALUES( ? , ? , ? )";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, newsFeeds.getPostID());
-            preparedStatement.setString(2, userId);
+            preparedStatement.setString(2, friendsID);
             preparedStatement.setString(3, userId);
             preparedStatement.execute();
 

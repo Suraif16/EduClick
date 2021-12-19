@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NewsFeeds extends Post{
 
@@ -15,7 +16,7 @@ public class NewsFeeds extends Post{
     private int likeCount;
     private int likeShare;
 
-    public NewsFeeds(String message , LocalDate localDate , LocalTime localTime) {
+    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime) {
         super( message , localDate , localTime );
     }
 
@@ -85,5 +86,44 @@ public class NewsFeeds extends Post{
 
     }
 
+    public static void getTeacherFriendsFollowers(NewsFeeds newsFeeds, String userId){
+
+        AddFriendsDAO addFriendDAO = new AddFriendsDAO();
+        ArrayList<String> friendsIDList = addFriendDAO.getTeacherFriendKeys(userId);
+
+        for(int i=0; i<friendsIDList.size(); i++){
+            PostDAO postDAO = new PostDAO();
+            postDAO.insert(newsFeeds,friendsIDList.get(i), userId );
+        }
+
+        FollowsDAO followsDAO = new FollowsDAO();
+        ArrayList<String> followersIDList = followsDAO.getTeacherFollowersKeys(userId);
+
+        for(int i=0; i<followersIDList.size(); i++){
+            PostDAO postDAO = new PostDAO();
+            postDAO.insert(newsFeeds,followersIDList.get(i), userId );
+        }
+
+    }
+
+    public static Thread loadNewsFeeds(NewsFeeds newsFeeds, String userId ){
+
+        Runnable runnable = () -> {
+
+            getTeacherFriendsFollowers(  newsFeeds, userId);
+
+          };
+
+        return new Thread( runnable );
+
+    }
 
 }
+
+
+
+
+
+
+
+

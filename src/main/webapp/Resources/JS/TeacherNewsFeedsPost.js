@@ -89,12 +89,10 @@ const postNewsFeeds = function (){
         }else if(jsonResponse.serverResponse === "Allowed") {
 
             console.log( jsonResponse.NewsFeedsPost );
-            console.log(jsonResponse.fullName);
-            console.log( jsonResponse.NewsFeedsPost.caption );
 
             const postContents = document.getElementById("postContents");
             let now = new Date().getTime();
-            let extraTime = 7000;
+            let extraTime = 3000;
             while(new Date().getTime() < now + extraTime ){}
             let innerPreviouseHTML = postContents.innerHTML;
             postContents.innerHTML = '        <div class="post">    ' +
@@ -111,7 +109,7 @@ const postNewsFeeds = function (){
                 jsonResponse.NewsFeedsPost.date +
                 '                            </div>' +
                 '                    <div class="userOptions">' +
-                '                        <input class="userOptionsButton" type="button" value="    " id="PostOPtion1" onclick="showOptionMenu(1,\'PostOPtion\')">' +
+                '                        <input class="userOptionsButton" type="button" value="    " id="PostOPtion" '+ jsonResponse.NewsFeedsPost.postID +'onclick="showOptionMenu('+jsonResponse.NewsFeedsPost.postID +',\'PostOPtion\')">' +
                 '                    </div>' +
 
                 '                   </div>' +
@@ -123,7 +121,7 @@ const postNewsFeeds = function (){
                 '                       </div>' +
                 '                       <div class="postPicture">' +
                 '                           <div class="postPictureImageContainer">' +
-                '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/ >' + jsonResponse.NewsFeedsPost.imagePath + '.jpeg">'+
+                '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.NewsFeedsPost.imagePath + '.jpeg">'+
                 '                           </div>' +
                 '                       </div>' +
                 '                     </div>' +

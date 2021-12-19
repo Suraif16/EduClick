@@ -15,6 +15,8 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static java.time.LocalDate.now;
+
 public class NewsFeedsInsertServlet extends HttpServlet {
 
     @Override
@@ -27,9 +29,13 @@ public class NewsFeedsInsertServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("User");
 
+        String userId = user.getUserId();
+
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
         String fullName = firstName + " " + lastName;
+
+        NewsFeeds newsfeeds = new NewsFeeds();
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
@@ -39,7 +45,14 @@ public class NewsFeedsInsertServlet extends HttpServlet {
 
         if ( isMultipart ){
 
-            newsFeeds = handleImageAndPostUploads.uploadNewsFeedsImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() );
+            newsFeeds = handleImageAndPostUploads.uploadNewsFeedsImages( request , getServletContext().getRealPath( "" ) , LocalDate.now(), LocalTime.now() );
+
+        }
+
+        if ( newsFeeds != null ){
+
+            Thread loadNewsFeeds = NewsFeeds.loadNewsFeeds( newsFeeds , userId );
+            loadNewsFeeds.start();
 
         }
 
