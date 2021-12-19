@@ -39,7 +39,7 @@ header > div#headerButtons {
 
 }
 
-header > div#headerButtons > input {
+header > div#headerButtons > div {
 
     flex-basis: 15%;
     margin: 0.2%  auto;
@@ -47,15 +47,15 @@ header > div#headerButtons > input {
 
 }
 
-header > div#headerButtons > input#classroomListHideButton {
+header > div#headerButtons > div#classroomListHideButton {
 
-    margin-right: 0.5%;
+    margin-right: 0;
 
 }
 
-header > div#headerButtons > input#rightPanelHideButton {
+header > div#headerButtons > div#rightPanelHideButton {
 
-    margin-left: 0.5%;
+    margin-left: 0;
 
 
 }
@@ -274,15 +274,6 @@ optionButtonContainers > input{
 #classroomAddButton{
 
     flex: 1;
-
-}
-
-
-
-input{
-    /*all input values will have these properties*/
-    border-radius: 5px;
-    border: #6a6a6a solid 1px;
 
 }
 
@@ -1007,8 +998,6 @@ div#content > div#addClassroomForm > div.classroomFormRow{
     margin: 1%;
     display: flex; /*becomes a container for the input elements*/
     flex-direction: row;
-    /*padding: 1% 1%;*/
-    color: black;
     flex-wrap: wrap;
 
 
@@ -1016,6 +1005,12 @@ div#content > div#addClassroomForm > div.classroomFormRow{
 }
 
 div#content > div#addClassroomForm > div.classroomFormRow > input{
+
+    flex: 1;
+
+}
+
+div#content > div#addClassroomForm > div.classroomFormRow > div{
 
     flex: 1;
 
@@ -1194,24 +1189,9 @@ div#mcqAddPostForm{
 div.nextPreviousButton{
 
     flex-basis: 10%;
-    /*background-color: rgba(71, 117, 196, 0.5);*/
-    background-color: #4775c4;
-    cursor: pointer;
-
 
 }
 
-div.nextPreviousButton:hover{
-
-    background-color: #89a4db;
-
-}
-
-div.nextPreviousButton:active{
-
-    background-color: #c9d6f5;
-
-}
 
 div.navigateButtons{
 
@@ -1283,21 +1263,32 @@ div#mcqQuestionCountAndPostButton{
 
 }
 
-div#questionCount{
+div#mcqQuestionCountAndPostButton > div {
+
+    width: 98%;
+    align-self: center;
+    display: flex;
+    padding: 1%;
+    /*margin: auto;*/
+
+}
+
+div#mcqQuestionCountAndPostButton > div > div {
 
     flex: 1;
-    margin: auto;
-    padding: 1%;
-    display: flex;
+    text-align: center;
 
 }
 
 div#mcqSubmit{
 
-    flex: 1;
-    margin: 1% auto auto auto;
-    padding: 1%;
     display: none;
+
+}
+
+div#questionCount > div{
+
+    text-align: center;
 
 }
 
@@ -1306,6 +1297,7 @@ div.singleMCQRowRowContent{
     display: flex;
     font-size: smaller;
     margin: 1%;
+    align-items: center;
 
 }
 
