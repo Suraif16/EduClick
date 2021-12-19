@@ -171,3 +171,73 @@ input {
     transform: scaleX(1);
 
 }
+
+/* text area*/
+.inputFieldFormsTextArea{
+
+    height: 40px;
+    position: relative;
+    margin: 3% 0;
+
+}
+
+.inputFieldFormsTextArea textarea{
+
+    height: 100%;
+    border: none ;
+    border-left: solid 2px silver;
+    border-right: solid 2px silver;
+    border-top: solid 2px silver;
+    font-size: 17px;
+    width: 100%;
+
+}
+
+textarea {
+
+    outline: none;
+}
+
+.inputFieldFormsTextArea textarea:focus ~ label , .inputFieldFormsTextArea textarea:valid ~ label{
+
+    visibility: hidden;
+
+}
+
+.inputFieldFormsTextArea label{
+
+    position: absolute;
+    bottom: 89%;
+    left: 7px;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+
+}
+
+.inputFieldFormsTextArea .bottomLine {
+
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #4775c4;
+    width: 98%;
+}
+
+.inputFieldFormsTextArea .bottomLine:before {
+
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    background-color: black;
+
+}
+
+.inputFieldFormsTextArea textarea:focus ~ .bottomLine:before , .inputFieldFormsTextArea textarea:valid ~ .bottomLine:before{
+
+    transform: scaleX(1);
+
+}
