@@ -256,7 +256,6 @@ div#content > div#classroomsList {
 
 .optionButtonContainers{
 
-    /*margin: 0 auto 2% auto;*/
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -1842,3 +1841,10 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
     background: #2497E3;
 }*/
+
+input{
+    /*all input values will have these properties*/
+    border-radius: 5px;
+    border: #6a6a6a solid 1px;
+
+}
