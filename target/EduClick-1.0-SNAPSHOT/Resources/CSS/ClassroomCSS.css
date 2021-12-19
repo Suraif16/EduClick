@@ -664,7 +664,7 @@ div.mcqSingleAnswer{
     background-color: #4775c4;
     margin: 1%;
     padding: 1%;
-
+    flex-grow: 1;
 
 }
 
