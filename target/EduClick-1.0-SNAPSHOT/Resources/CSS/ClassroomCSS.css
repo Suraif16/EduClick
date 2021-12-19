@@ -665,6 +665,7 @@ div.mcqSingleAnswer{
     margin: 1%;
     padding: 1%;
     flex-grow: 1;
+    text-align: center;
 
 }
 
