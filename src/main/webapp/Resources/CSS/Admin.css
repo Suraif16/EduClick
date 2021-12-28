@@ -789,6 +789,10 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedF
 
     flex: 1;
     display: flex;
+    color: white;
+    vertical-align: center;
+    text-align: center;
+    margin: auto;
 
 }
 
@@ -1143,6 +1147,23 @@ input[type="file"]{
     }
 
 }
+
+@media(max-width: 385px){
+
+    div#content > div#classroomsList {
+
+        margin: 30% auto 0 0;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 30% auto auto 28%;
+
+    }
+
+}
+
 
 @media(max-width: 340px) {
 
