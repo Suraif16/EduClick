@@ -128,17 +128,25 @@
 
     </div>
 
-    <div id="addClassroomForm">
-        <div class="classroomFormRow">
-            <label >Message :&nbsp; </label>
-            <input type="text" id="classroomName">
+    <div id="addNewsFeedForm">
+        <div class="addNewsFeedFormRows" id="addNewsFeedFormTopic">
+            Admin Post
         </div>
-
-        <div id="classroomFormRowErrorMessage">
-            <!-- The error message will be shown here -->
+        <div class="addNewsFeedFormRows" id="addNewsFeedFormText">
+            <textarea id="addNewsFeedFormTextArea" rows="11" placeholder="What's on your mind?"></textarea>
         </div>
-        <div class="classroomFormRow">
-            <input id="postButton" type="button" name="post" value="Post" >
+        <div class="addNewsFeedFormRows" id="addNewsFeedFormInputs">
+            <div class="addNewsFeedFormInputsRows">
+                <div class="attachment">
+                    <label class="attachmentLabel">
+                        <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">
+                        <input id="inputImage" type="file" accept="image/*">
+                    </label>
+                </div>
+            </div>
+            <div class="addNewsFeedFormInputsRows">
+                <input type="button" value="Post" onclick="postQuestionsMessages()">
+            </div>
         </div>
     </div>
 
