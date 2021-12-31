@@ -8,7 +8,6 @@ import org.json.JSONArray;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class NewsFeeds extends Post{
 
@@ -117,6 +116,16 @@ public class NewsFeeds extends Post{
         return new Thread( runnable );
 
     }
+
+    public String getPostedTime(String postId){
+
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        String NFpostedTime = newsFeedsDAO.getPostedTime(postId);
+        return NFpostedTime;
+
+
+    }
+
 
 }
 
