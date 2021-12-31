@@ -88,7 +88,8 @@ const postNewsFeeds = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
 
-            console.log( jsonResponse.NewsFeedsPost );
+         //   console.log( jsonResponse.NewsFeedsPost );
+          //  console.log(jsonResponse.Time + "pissek");
 
             const postContents = document.getElementById("postContents");
             let now = new Date().getTime();
@@ -105,13 +106,12 @@ const postNewsFeeds = function (){
                 '                           <div class="postProfileName" >' + jsonResponse.fullName +
                 '</div>' + ' </a>' +
                 '                           <div class="postTimeAndDate" >' +
-                jsonResponse.NewsFeedsPost.time + ' | ' +
+                jsonResponse.Time + ' | ' +
                 jsonResponse.NewsFeedsPost.date +
                 '                            </div>' +
                 '                    <div class="userOptions">' +
-                '                        <input class="userOptionsButton" type="button" value="    " id="PostOPtion" '+ jsonResponse.NewsFeedsPost.postID +'onclick="showOptionMenu('+jsonResponse.NewsFeedsPost.postID +',\'PostOPtion\')">' +
+                '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">'+
                 '                    </div>' +
-
                 '                   </div>' +
                 '               </div>' +
                 '               <div class="postContentContainer">' +
