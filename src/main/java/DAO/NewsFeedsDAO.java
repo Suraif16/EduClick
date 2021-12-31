@@ -1,7 +1,6 @@
 package DAO;
 
 import Database.DBConnectionPool;
-import Model.EducationalWork;
 import Model.NewsFeeds;
 import Model.User;
 import org.json.JSONArray;
@@ -94,6 +93,45 @@ public String insert(NewsFeeds newsFeeds){
 
     return null;
 }
+
+    public String getPostedTime(String postId) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String NewsFeedsTime = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+                String sql = "SELECT Time FROM NewsFeeds WHERE NFPostID = ?";
+
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, postId);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+
+                    String time = resultSet.getString("Time");
+                    NewsFeedsTime = time;
+
+
+                }
+
+            resultSet.close();
+            preparedStatement.close();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return NewsFeedsTime;
+    }
 
 
 
