@@ -729,6 +729,12 @@ div#content > div#addClassroomForm > div.classroomFormRow > input{
 
 }
 
+div#content > div#addClassroomForm > div.classroomFormRow > div{
+
+    flex: 1;
+
+}
+
 #classroomFormRowErrorMessage{
 
     flex: 1;

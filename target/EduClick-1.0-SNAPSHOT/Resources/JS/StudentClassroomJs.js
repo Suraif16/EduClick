@@ -296,12 +296,8 @@ function showMcqResult( x,id ){
 
             httpreq.open( "POST" , "/EduClick_war_exploded/student/mcqResultLoad" , true);
             httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-            // httpreq.send( "mcq1=" + mcqAnswers[0] + "&mcq2=" + mcqAnswers[1] + "&mcq3=" + mcqAnswers[2] +"&mcq4=" + mcqAnswers[3] +"&mcq5=" + mcqAnswers[4] +"&mcq6=" + mcqAnswers[5] +"&mcq7=" + mcqAnswers[6] +"&mcq8=" + mcqAnswers[7] +"&mcq9=" + mcqAnswers[8] +"&mcq10=" + mcqAnswers[9] +"&classroomId=" + getClassroomIdClientSide() + "&postId=" +id);
-
             httpreq.send(dataString);
-            "mcq1={ questionid :@ qidvalue , answerchoice : answerchoicevalue}&mcq2={}"
 
-            // let a = mcq[i] + "={ questionid : " +  mcqquestionId[i] + ", answerchoice : " +  mcqAnswers[0] + " }&" + mcq[i+1]  + "={ questionid : " +  mcqquestionId[i] + ", answerchoice : " +  mcqAnswers[0] + " }"
 
         }else{
             let mcqResultsInPostId = "mcqResultsInPost" + id;

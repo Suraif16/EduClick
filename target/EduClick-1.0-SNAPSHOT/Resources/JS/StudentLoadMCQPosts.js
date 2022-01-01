@@ -3,27 +3,117 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
     console.log("In MCQ : "+TeacherFullName)
     console.log("In MCQ : "+TeaherId)
     console.log("In MCQ Post ID : "+postData.EpostId)
+    console.log("IN MCQ LOADING : "+postData.Answered)
 
-    let post =
-        '<div class="post">' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postProfileSection">' +
-        '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' +TeaherId + '" class="postProfile">' +
-        '                        <div class="postProfileImage">' +
-        '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-        '                        </div>' +
-        '                        <div class="postProfileName">' + TeacherFullName + '</div>' +
-        '                        <div class="postTimeAndDate">' +
-        postData.time + ' | ' + postData.date +
-        '                        </div>' +
-        '                        <div class="userOptions">' +
-        '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
-        '                        </div>' +
-        '                    </a>' +
-        '                </div>' +
-        '            </div>' +
-        '            <div class="postContentContainer">' +
-        '                <div class="postData">'
+    if(postData.Answered == "Yes"){
+
+        let post =
+            '<div class="post">' +
+            '            <div class="postContentContainer">' +
+            '                <div class="postProfileSection">' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' +TeaherId + '" class="postProfile">' +
+            '                        <div class="postProfileImage">' +
+            '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+            '                        </div>' +
+            '                        <div class="postProfileName">' + TeacherFullName + '</div>' +
+            '                        <div class="postTimeAndDate">' +
+            postData.time + ' | ' + postData.date +
+            '                        </div>' +
+            '                        <div class="userOptions">' +
+            '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
+            '                        </div>' +
+            '                    </a>' +
+            '                </div>' +
+            '            </div>' +
+            '            <div class="postContentContainer">' +
+            '                <div class="postData">'
+
+        for ( let i = 0; i < 10; i++ ) {
+
+            post += '<div class="postMessage mcq">' +
+                postData.questionList[i]["question"] +
+                '<div class="mcqAnswerContainer">';
+
+            for (let j = 1; j < 5; j++) {
+
+                let answerNumber = "answerNo";
+                let answer = "answer";
+
+                let htmlStringMCQ;
+
+                if (postData.questionList[i][answerNumber + j] ===postData.questionList[i]["choice"]  ){
+
+                    htmlStringMCQ = '<div class="mcqSingleAnswer choiceMcqSingleAnswer">' +
+                        postData.questionList[i][ answer + j ]+
+                        '</div>';
+
+                }
+                else if( postData.questionList[i][ answerNumber + j ] === postData.questionList[i][ "correctAnswer" ]){
+
+                    htmlStringMCQ = '<div class="mcqSingleAnswer correctMcqSingleAnswer">' +
+                        postData.questionList[i][ answer + j ]+
+                        '</div>';
+                }
+                else{
+
+                    htmlStringMCQ = '<div class="mcqSingleAnswer">' +
+                        postData.questionList[i][ answer + j ] +
+                        '</div>';
+
+                }
+                post+=htmlStringMCQ;
+
+
+            }
+
+            post +='</div>' +
+                '</div>';
+
+        }
+
+
+        post +=  '  </div>' +
+            '            </div>' +
+            '                   <div class="postContentContainer">' +
+
+            '                          <div class="postAnswerButton">' +
+
+            '                               <div class="answerButton" >' +
+            '                                       <input type="button" value="Show Results" class="mcqResultShowButton" onclick="showMcqResultOnLoad('+postData.EpostId+')">' +
+            '                               </div>' +
+            '                   </div>' +
+            '            </div>'    +
+            '   <div class="postContentContainer">' +
+            '                <div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost'+postData.EpostId+'" >' +
+
+            '               </div>'+
+            '            </div>'+
+            '        </div>'
+
+        return post;
+
+    }else{
+
+        let post =
+            '<div class="post">' +
+            '            <div class="postContentContainer">' +
+            '                <div class="postProfileSection">' +
+            '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' +TeaherId + '" class="postProfile">' +
+            '                        <div class="postProfileImage">' +
+            '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+            '                        </div>' +
+            '                        <div class="postProfileName">' + TeacherFullName + '</div>' +
+            '                        <div class="postTimeAndDate">' +
+            postData.time + ' | ' + postData.date +
+            '                        </div>' +
+            '                        <div class="userOptions">' +
+            '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
+            '                        </div>' +
+            '                    </a>' +
+            '                </div>' +
+            '            </div>' +
+            '            <div class="postContentContainer">' +
+            '                <div class="postData">'
         let x = "[";
         for(i = 0 ; i<10; i++){
 
@@ -64,24 +154,30 @@ const displayMcqPost = function (postData,TeacherFullName,TeaherId){
         x += "]";
 
         post += '                </div>' +
-                 '            </div>' +
-                '<div class="postContentContainer">' +
+            '            </div>' +
+            '<div class="postContentContainer">' +
 
-                '                <div class="postAnswerButton">' +
+            '                <div class="postAnswerButton">' +
 
-                '                    <div class="answerButton" >' +
-                '                        <input type="button" value="Submit and Finish" class="mcqResultShowButton" onclick="showMcqResult('+ x +","+postData.EpostId+')">' +
-                '                    </div>' +
-                '                </div>' +
-                '            </div>'    +
-                '<div class="postContentContainer">' +
-                '                <div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost'+postData.EpostId+'" >' +
+            '                    <div class="answerButton" >' +
+            '                        <input type="button" value="Submit and Finish" class="mcqResultShowButton" onclick="showMcqResult('+ x +","+postData.EpostId+')">' +
+            '                    </div>' +
+            '                </div>' +
+            '            </div>'    +
+            '<div class="postContentContainer">' +
+            '                <div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost'+postData.EpostId+'" >' +
 
-                '               </div>'+
-                '            </div>'+
-                '        </div>'
+            '               </div>'+
+            '            </div>'+
+            '        </div>'
 
-    return post;
+        return post;
+
+
+
+    }
+
+
 
 
 }
@@ -184,6 +280,14 @@ if(goodToSubmit === 1){
 }
 
 }
+
+const showMcqResultOnLoad = function (){
+
+
+
+
+}
+
 
 
 
