@@ -785,6 +785,36 @@
 
     <!-- end of enable disable student enroll status servlet-->
 
+
+    <!-- beginning of share newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.ShareNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <url-pattern>/teacher/shareNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of share newsfeeds servlet-->
+
+    <!-- beginning of like newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.LikeNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <url-pattern>/teacher/likeNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of like newsfeeds servlet-->
+
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
