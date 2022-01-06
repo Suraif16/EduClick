@@ -4,6 +4,7 @@ import DAO.*;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -123,8 +124,21 @@ public class NewsFeeds extends Post{
         String NFpostedTime = newsFeedsDAO.getPostedTime(postId);
         return NFpostedTime;
 
-
     }
+
+    public JSONObject getNewsFeedsDetails(String SharedPostID){
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        JSONObject NewsFeedsDetailList = newsFeedsDAO.getNewsFeedsDetails(SharedPostID);
+        return NewsFeedsDetailList;
+    }
+
+    public JSONObject getPathOfImage(String SharedPostID){
+        NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
+        JSONObject NewsFeedsImage = newsFeedsImageDAO.getNewsFeedsImageDetails(SharedPostID);
+        return NewsFeedsImage;
+    }
+
+
 
 
 }
