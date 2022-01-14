@@ -3,7 +3,7 @@ let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hid
 let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
 
 const classroomListObjection = document.getElementById( "classroomsList" );
-const addClassroomForm = document.getElementById("addClassroomForm");
+const addClassroomForm = document.getElementById("addNewsFeedForm");
 const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
 const submitButton = document.getElementById("postButton");
 
