@@ -2,7 +2,6 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.AdminDatacheck;
-import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,16 +11,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class AdminDatacheckDAO<teacherArrayList> {
+public class AdminDatacheckDAO {
 
 
-    public User select(User user) {
+    public AdminDatacheck select(AdminDatacheck user) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         String userType = "";
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City from Users where UserID = ?";
+            String sql = "select FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City from Users ";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user.getUserId());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -61,11 +60,6 @@ public class AdminDatacheckDAO<teacherArrayList> {
         }
         return user;
     }
-
-
-
-
-
 
 }
 
