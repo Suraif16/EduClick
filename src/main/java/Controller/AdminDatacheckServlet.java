@@ -24,12 +24,10 @@ public class AdminDatacheckServlet extends HttpServlet {
         JSONObject jsonObject = new JSONObject();
 
         jsonObject.put( "serverResponse" , "Allowed" );
-        Admin admin = new Admin();
-        admin = admin.getCount();
-        jsonObject.put("Teacher" ,admin.getCountTeacher());
-        jsonObject.put("TeacherReg" ,admin.getTodaycountTeacher());
-        jsonObject.put("Student" ,admin.getCountStudent());
-        jsonObject.put("StudentReg" ,admin.getTodaycountStudent());
+        AdminDatacheck user = new AdminDatacheck();
+        user = user.getData();
+        jsonObject.put("getLastName" ,user.getLastName());
+
 
 
 
