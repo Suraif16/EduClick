@@ -784,6 +784,19 @@
     </servlet-mapping>
 
     <!-- end of enable disable student enroll status servlet-->
+    <!-- beginning of enable disable student enroll status servlet-->
+
+    <servlet>
+        <servlet-name>AdminDatacheck</servlet-name>
+        <servlet-class>Controller.AdminDatacheckServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminDatacheck</servlet-name>
+        <url-pattern>/Admin/AdminDatacheckServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of enable disable student enroll status servlet-->
 
     <session-config>
 
