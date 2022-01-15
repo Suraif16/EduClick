@@ -1,6 +1,7 @@
 package Model;
 
 import DAO.AdminDatacheckDAO;
+import DAO.UserDAO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,22 +25,6 @@ public class AdminDatacheck {
     private String userType;
 
 
-    ArrayList<String> arrayList = new ArrayList<String>();
-
-    public AdminDatacheck(String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber, String country, String city, LocalTime registrationTime, LocalDate registrationDate, String gender, String userType) {
-
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.mobileNumber = mobileNumber;
-        this.country = country;
-        this.city = city;
-        this.registrationTime = registrationTime;
-        this.registrationDate = registrationDate;
-        this.gender = gender;
-        this.userType = userType;
-    }
-
     public AdminDatacheck(String userId, String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber, String profilePicture, String country, String city, String gender, String userType) {
         this.userId = userId;
         this.firstName = firstName;
@@ -57,18 +42,15 @@ public class AdminDatacheck {
     public String getUserType() {
            return userType;
     }
-
     public void setUserType(String userType) {
         this.userType = userType;
     }
-
 
     /*Getters and setters begins here*/
 
     public String getUserId() {
         return userId;
     }
-
     public void setUserId(String userId) {
         this.userId = userId;
     }
@@ -76,7 +58,6 @@ public class AdminDatacheck {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -84,7 +65,6 @@ public class AdminDatacheck {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -92,7 +72,6 @@ public class AdminDatacheck {
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
@@ -100,7 +79,6 @@ public class AdminDatacheck {
     public String getMobileNumber() {
         return mobileNumber;
     }
-
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
@@ -108,7 +86,6 @@ public class AdminDatacheck {
     public String getProfilePicture() {
         return profilePicture;
     }
-
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
@@ -116,7 +93,6 @@ public class AdminDatacheck {
     public String getCountry() {
         return country;
     }
-
     public void setCountry(String country) {
         this.country = country;
     }
@@ -124,7 +100,6 @@ public class AdminDatacheck {
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }
@@ -132,7 +107,6 @@ public class AdminDatacheck {
     public LocalTime getRegistrationTime() {
         return registrationTime;
     }
-
     public void setRegistrationTime(LocalTime registrationTime) {
         this.registrationTime = registrationTime;
     }
@@ -140,7 +114,6 @@ public class AdminDatacheck {
     public LocalDate getRegistrationDate() {
         return registrationDate;
     }
-
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
@@ -148,13 +121,18 @@ public class AdminDatacheck {
     public String getGender() {
         return gender;
     }
-
     public void setGender(String gender) {
         this.gender = gender;
     }
 
     /*Getters and setters ends here*/
+    public AdminDatacheck() {
 
+    }
+    public AdminDatacheck getData(){
+        AdminDatacheckDAO admindao = new AdminDatacheckDAO();
+        return admindao.select(this);
+    }
 
 }
 
