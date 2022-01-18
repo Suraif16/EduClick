@@ -800,4 +800,12 @@
         </listener-class>
     </listener>
 
+    <listener>
+        <listener-class>
+
+            SystemAvailableStatus.SignalAdminEmail
+
+        </listener-class>
+    </listener>
+
 </web-app>
