@@ -28,7 +28,7 @@ public class SignalAdminEmail implements ServletContextListener {
                         Email email = new Email();
                         email.sendMail( emailAddress , subject , message );
 
-                        Thread.sleep( 5000 );
+                        Thread.sleep( 1000 * 60 * 60 );
 
                     }
 
