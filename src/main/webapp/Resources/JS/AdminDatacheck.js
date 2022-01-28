@@ -1,57 +1,74 @@
-const search = document.getElementById( "searchBarText" );
 
-search.addEventListener( "keyup" , function ( event ){
-    if(event.key === "Enter"){
-        let httpreq = new XMLHttpRequest();
-        httpreq.onreadystatechange = function (){
-            if ( httpreq.readyState === 4 && httpreq.status === 200){
-                window.location.replace("/EduClick_war_exploded/Search.html")
+function checkdata(){
+    let search = document.getElementById( "comment" ).value;
+    console.log(search);
+    document.onreadystatechange = function (){
+        if ( document.readyState === 'complete' ){
+            /* when the document is loaded and complete this function will run*/
+            console.log("page loaded");
+            sendServerData();
+            getServerData();
+            console.log("page complete");
+        }
+    }
+    const sendServerData = function (){
+
+        let httpReq = new XMLHttpRequest();
+        httpReq.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                completesentdata(this) /*This is where we get the response when the request was successfully sent and a successfully response is received */
             }
         }
-        let url = "/EduClick_war_exploded/Search?searchValue="+search.value+"&searchType=Teacher";
-        httpreq.open( "GET" , url ,true);
-        httpreq.send();
-    }
-});
 
-document.onreadystatechange = function (){
-    if ( document.readyState === 'complete' ){
-        /* when the document is loaded and complete this function will run*/
-        console.log("page loaded");
-        sendServerData();
-        console.log("page complete");
-    }
-}
-const sendServerData = function (){
+        httpReq.open( "POST" , "/EduClick_war_exploded/Admin/AdminDatacheckServlet" , true);
+        httpReq.send(search);
+        function completesentdata( httpreq ) {
+            let jsonLoginResponse = JSON.parse(httpreq.responseText);
 
-    let httpReq = new XMLHttpRequest();
-    httpReq.onreadystatechange = function () {
+            if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
-        if (this.readyState === 4 && this.status === 200) {
-            completecount(this) /*This is where we get the response when the request was successfully sent and a successfully response is received */
-        }
+                document.getElementById("countTotal").innerHTML = jsonLoginResponse.counttotal;
+                console.log(jsonLoginResponse.counttotal);
 
-    }
-    httpReq.open( "GET" , "/EduClick_war_exploded/Admin" , true);
-    httpReq.send();
-
-
-    function completecount( httpreq ) {
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
-        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonLoginResponse.serverResponse === "Allowed") {
-
-            document.getElementById("countTotal").innerHTML = jsonLoginResponse.counttotal;
-            console.log(jsonLoginResponse.counttotal);
-
-        }else{
-            alert("something went wrong!!!");
+            }else{
+                alert("something went wrong!!!");
+            }
         }
 
     }
 
+    const getServerData = function (){
+
+        let httpReq = new XMLHttpRequest();
+        httpReq.onreadystatechange = function () {
+
+            if (this.readyState === 4 && this.status === 200) {
+                completegetdata(this)
+            }
+
+        }
+        httpReq.open( "GET" , "/EduClick_war_exploded/Admin/AdminDatacheckServlet" , true);
+        httpReq.send();
+        function completegetdata( httpreq ) {
+            let jsonLoginResponse = JSON.parse(httpreq.responseText);
+
+            if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonLoginResponse.serverResponse === "Allowed") {
+
+                document.getElementById("countTotal").innerHTML = jsonLoginResponse.counttotal;
+                console.log(jsonLoginResponse.counttotal);
+
+            }else{
+                alert("something went wrong!!!");
+            }
+        }
+    }
+
 }
+
+
 
 
