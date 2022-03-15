@@ -117,6 +117,7 @@ function showMcqResult( id ){
     if (mcqResultsInPost.style.display === "none"){
 
         mcqResultsInPost.style.display = "flex";
+        getMcqResult( mcqResultsInPost )
 
     }else{
 
@@ -124,5 +125,21 @@ function showMcqResult( id ){
 
     }
 
+
+}
+
+const getMcqResult = function ( elementId ){
+
+    elementId.innerHTML = '<div class="mcqSingleStudentResult">' +
+        '                        <a href="#" class="mcqProfile">' +
+        '                            <div class="mcqProfileImage">' +
+        '                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+        '                            </div>' +
+        '                            <div>Student Name</div>' +
+        '                        </a>' +
+        '                        <div class="mcqSingleStudentResultMarks">' +
+        '                            25%' +
+        '                        </div>' +
+        '                    </div>'
 
 }
