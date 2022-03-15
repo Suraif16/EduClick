@@ -176,7 +176,7 @@ const displayMcqPost = function ( postData ){
         '<div class="postContentContainer">' +
         '<div class="postAnswerButton">' +
         '<div class="answerButton" >' +
-        '<input type="button" value="Show Results" class="mcqResultShowButton" onclick="showMcqResult(1)">' +
+        '<input type="button" value="Show Results" class="mcqResultShowButton" onclick="showMcqResult(' + postData.EpostId + ')">' +
         '</div>' +
         '</div>' +
         '</div>' +
