@@ -181,7 +181,7 @@ const displayMcqPost = function ( postData ){
         '</div>' +
         '</div>' +
         '<div class="postContentContainer">' +
-        '<div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost1" >' +
+        '<div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost' + postData.EpostId + '" >' +
         '</div>' +
         '</div>' +
         '</div>';
