@@ -117,7 +117,7 @@ function showMcqResult( id ){
     if (mcqResultsInPost.style.display === "none"){
 
         mcqResultsInPost.style.display = "flex";
-        getMcqResult( mcqResultsInPost )
+        getMcqResult( mcqResultsInPost , id )
 
     }else{
 
@@ -128,18 +128,38 @@ function showMcqResult( id ){
 
 }
 
-const getMcqResult = function ( elementId ){
+const getMcqResult = function ( elementId , id ){
 
-    elementId.innerHTML = '<div class="mcqSingleStudentResult">' +
-        '                        <a href="#" class="mcqProfile">' +
-        '                            <div class="mcqProfileImage">' +
-        '                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-        '                            </div>' +
-        '                            <div>Student Name</div>' +
-        '                        </a>' +
-        '                        <div class="mcqSingleStudentResultMarks">' +
-        '                            25%' +
-        '                        </div>' +
-        '                    </div>'
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            displayMcqResult( this )
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/" , true );
+    httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
+    httpreq.send( "epostMcqId=" + id );
+
+    const displayMcqResult = function ( httpreq ){
+
+        elementId.innerHTML = '<div class="mcqSingleStudentResult">' +
+            '                        <a href="#" class="mcqProfile">' +
+            '                            <div class="mcqProfileImage">' +
+            '                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+            '                            </div>' +
+            '                            <div>Student Name</div>' +
+            '                        </a>' +
+            '                        <div class="mcqSingleStudentResultMarks">' +
+            '                            25%' +
+            '                        </div>' +
+            '                    </div>'
+
+    }
 
 }
