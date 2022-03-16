@@ -148,17 +148,35 @@ const getMcqResult = function ( elementId , id ){
 
     const displayMcqResult = function ( httpreq ){
 
-        elementId.innerHTML = '<div class="mcqSingleStudentResult">' +
-            '                        <a href="#" class="mcqProfile">' +
-            '                            <div class="mcqProfileImage">' +
-            '                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-            '                            </div>' +
-            '                            <div>Student Name</div>' +
-            '                        </a>' +
-            '                        <div class="mcqSingleStudentResultMarks">' +
-            '                            25%' +
-            '                        </div>' +
-            '                    </div>'
+
+        let jsonResponse = JSON.parse( httpreq.responseText );
+        elementId.innerHTML = "";
+
+        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+            window.location.replace("/EduClick_war_exploded/Login.html");
+        }else if(jsonResponse.serverResponse === "Allowed") {
+
+            const mcqResultList = jsonResponse.mcqResultList;
+            console.log( mcqResultList )
+            for ( mcqResultListElement of mcqResultList ) {
+
+                elementId.innerHTML += '<div class="mcqSingleStudentResult">' +
+                    '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + mcqResultListElement.userId + '" class="mcqProfile">' +
+                    '                            <div class="mcqProfileImage">' +
+                    '                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                    '                            </div>' +
+                    '                            <div>' + mcqResultListElement.firstName + " " + mcqResultListElement.lastName + '</div>' +
+                    '                        </a>' +
+                    '                        <div class="mcqSingleStudentResultMarks">' +
+                    mcqResultListElement.marks +
+                    '                        </div>' +
+                    '                    </div>'
+
+            }
+
+        }else{
+            alert("something went wrong!!!");
+        }
 
     }
 

@@ -106,6 +106,7 @@ public class AnswerStudentPostRelationshipDAO {
     }
 
     public JSONArray getMcqResult( String mcqPostId ){
+        System.out.println( mcqPostId + " this is it ");
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -139,18 +140,29 @@ public class AnswerStudentPostRelationshipDAO {
 
             while( resultSet.next() ){
 
+                JSONObject singleMcqResult = new JSONObject();
+
+                singleMcqResult.put( "userId" , resultSet.getString( 1 ) );
+
                 preparedStatement1.setString( 1 , resultSet.getString( 2 ) );
                 resultSet1 = preparedStatement1.executeQuery();
 
                 preparedStatement2.setString( 1 , resultSet.getString( 1 ) );
                 resultSet2 = preparedStatement2.executeQuery();
 
-                JSONObject singleMcqResult = new JSONObject();
-                singleMcqResult.put( "userId" , resultSet.getString( 1 ) );
-                singleMcqResult.put( "firstName" , resultSet2.getString( 1 ) );
-                singleMcqResult.put( "lastName" , resultSet2.getString( 2 ) );
-                singleMcqResult.put( "profilePic" , resultSet2.getString( 3 ) );
-                singleMcqResult.put( "marks" , resultSet1.getString( 1 ) );
+                if ( resultSet1.next() ){
+
+                    singleMcqResult.put( "marks" , resultSet1.getString( 1 ) );
+
+                }
+
+                if ( resultSet2.next() ){
+
+                    singleMcqResult.put( "firstName" , resultSet2.getString( 1 ) );
+                    singleMcqResult.put( "lastName" , resultSet2.getString( 2 ) );
+                    singleMcqResult.put( "profilePic" , resultSet2.getString( 3 ) );
+
+                }
 
                 jsonArray.put( singleMcqResult );
             }

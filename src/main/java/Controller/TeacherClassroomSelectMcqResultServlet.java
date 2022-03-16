@@ -21,12 +21,11 @@ public class TeacherClassroomSelectMcqResultServlet extends HttpServlet {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
 
-        String mcqPostId = request.getParameter("epostMcqId");
-
+        String mcqPostId = request.getParameter("epostMcqId" );
         Post mcqPost = new Post( mcqPostId );
 
         JSONArray jsonArray = mcqPost.getMcqResults();
-        jsonObject.put( "mcqResult" , jsonArray );
+        jsonObject.put( "mcqResultList" , jsonArray );
 
         out.write( jsonObject.toString() );
         out.close();
