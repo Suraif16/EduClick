@@ -142,7 +142,7 @@ const getMcqResult = function ( elementId , id ){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherClassroomSelectMcqResultServlet" , true );
     httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
     httpreq.send( "epostMcqId=" + id );
 
