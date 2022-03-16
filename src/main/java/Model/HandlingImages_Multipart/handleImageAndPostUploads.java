@@ -1,13 +1,12 @@
 package Model.HandlingImages_Multipart;
 
-import Model.Answers;
-import Model.EducationalWork;
-import Model.NewsFeeds;
+import Model.*;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -113,6 +112,32 @@ public class handleImageAndPostUploads {
                     }else if ( file.getFieldName().equals( "ePostId" ) ){
 
                         epostId = new String( bytes );
+                        System.out.println("Notification check in File upload file :"+epostId);
+                        Post post = new Post();
+                        System.out.println("The classroomID of notiii is : "+post.selectClassroomId(epostId));
+                        Classroom classroom = new Classroom();
+                        String teacherID = classroom.getClassroomOwnerId(post.selectClassroomId(epostId));
+
+                        System.out.println("The userID to notification syste,m is : "+teacherID);
+
+
+
+                        HttpSession session = request.getSession( false );
+
+                        User user = (User) session.getAttribute("User");
+
+                        String studentId = user.getUserId();
+
+                        String param = "Answer";
+
+                        System.out.println("The Post ID not notification : "+epostId);
+                        System.out.println("The teacher ID not notification : "+teacherID);
+                        System.out.println("The stundet not notification : "+studentId);
+                        ;
+
+
+                        Notifications notifications = new Notifications();
+                        notifications.insertNotifications(studentId,teacherID,epostId,param);
 
                     }
 
