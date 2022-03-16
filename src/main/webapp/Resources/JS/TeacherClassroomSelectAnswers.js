@@ -108,3 +108,76 @@ const traverseEPostListToGetAnswers = function (){
 }
 
 setInterval( traverseEPostListToGetAnswers , 2000 );
+
+function showMcqResult( id ){
+
+    let mcqResultsInPostId = "mcqResultsInPost" + id;
+    let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
+
+    if (mcqResultsInPost.style.display === "none"){
+
+        mcqResultsInPost.style.display = "flex";
+        getMcqResult( mcqResultsInPost , id )
+
+    }else{
+
+        mcqResultsInPost.style.display = "none";
+
+    }
+
+
+}
+
+const getMcqResult = function ( elementId , id ){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            displayMcqResult( this )
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherClassroomSelectMcqResultServlet" , true );
+    httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
+    httpreq.send( "epostMcqId=" + id );
+
+    const displayMcqResult = function ( httpreq ){
+
+
+        let jsonResponse = JSON.parse( httpreq.responseText );
+        elementId.innerHTML = "";
+
+        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+            window.location.replace("/EduClick_war_exploded/Login.html");
+        }else if(jsonResponse.serverResponse === "Allowed") {
+
+            const mcqResultList = jsonResponse.mcqResultList;
+            console.log( mcqResultList )
+            for ( mcqResultListElement of mcqResultList ) {
+
+                elementId.innerHTML += '<div class="mcqSingleStudentResult">' +
+                    '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + mcqResultListElement.userId + '" class="mcqProfile">' +
+                    '                            <div class="mcqProfileImage">' +
+                    '                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                    '                            </div>' +
+                    '                            <div>' + mcqResultListElement.firstName + " " + mcqResultListElement.lastName + '</div>' +
+                    '                        </a>' +
+                    '                        <div class="mcqSingleStudentResultMarks">' +
+                    mcqResultListElement.marks +
+                    '                        </div>' +
+                    '                    </div>'
+
+            }
+
+        }else{
+            alert("something went wrong!!!");
+        }
+
+    }
+
+}
