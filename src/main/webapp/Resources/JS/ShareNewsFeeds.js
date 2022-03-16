@@ -31,7 +31,7 @@ function shareNewsFeeds ( NewsFeedspostID){
             console.log(jsonResponse.NewsFeedsDetail.Time);
             console.log(jsonResponse.NewsFeedsDetail.Caption);
             console.log(jsonResponse.NewsFeedsImagePath);
-            console.log(jsonResponse.fullName + "******");
+            console.log(jsonResponse.fullName);
 
 
             /*const ppostContents = document.getElementById("profilePostContents");
