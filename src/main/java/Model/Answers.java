@@ -154,4 +154,10 @@ public class Answers {
         answerStudentPostRelationshipDAO.saveMCQAnswerPostStudentRelationship(userId,answerId,postId);
 
     }
+
+    public String selectMarksForMCQ(String answerId){
+        AnswerDAO answerDAO = new AnswerDAO();
+        return answerDAO.selectMarksForMCQ(answerId);
+
+    }
 }

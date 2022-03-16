@@ -5,6 +5,7 @@
     <title>Registration Form</title>
     <link href="Resources/CSS/RegistrationNewCSS.css" type="text/css" rel="stylesheet"/>
     <link href="Resources/CSS/Font.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="Resources/CSS/InputDesignCSS.css" type="text/css">
 </head>
 <body>
 <div id="content">
@@ -12,10 +13,14 @@
         <h1 id="registrationFormHeading" class="formElement">Registration</h1>
 
         <form name="registrationPage" id="registrationPage" action="" method="post">
-            <div class="formRow formElement">
+            <div class="formRow formElement inputField">
+
+
+                <input id="firstName" type="text" maxlength="20" required>
+
+                <div class="bottomLine"></div>
 
                 <label for="firstname">First Name : </label>
-                <input id="firstName" type="text" maxlength="20" >
 
                 <div class="formElementButton" id="FNError">
                     <div id="FirstNameError">
@@ -27,10 +32,14 @@
             </div>
 
 
-            <div class="formRow formElement">
+            <div class="formRow formElement inputField">
+
+
+                <input id="lastName" type="text" maxlength="20" required>
+
+                <div class="bottomLine"></div>
 
                 <label for="lastname">Last Name : </label>
-                <input id="lastName" type="text" maxlength="20">
 
                 <div class="formElementButton" id="LNError">
                     <div id="LastNameError">
@@ -40,10 +49,13 @@
                 </div>
 
             </div>
-            <div class="formRow formElement">
+            <div class="formRow formElement inputField">
+
+                <div class="bottomLine"></div>
+
+                <input id="email" type="email" maxlength="50" required>
 
                 <label for="email">Email : </label>
-                <input id="email" type="email" maxlength="50">
 
                 <div class="formElementButton" id="EError">
                     <div id="EmailError">
@@ -57,10 +69,17 @@
                 </div>
 
             </div>
-            <div class="formRow formElement">
+            <div class="box dateLabel">
+                <label>DOB :</label>
+            </div>
+            <div class="box date">
+            <div class="formRow formElement inputField">
 
-                <label for="DOB">Date Of Birth : </label>
-                <input type="date" id="DOB" >
+                <div class="bottomLine"></div>
+
+                <input type="date" id="DOB" required >
+
+
 
                 <div class="formElementButton" id="DOBError">
                     <div id="DateOfBirthError">
@@ -71,6 +90,8 @@
                 </div>
 
             </div>
+            </div>
+
             <div class="formRow formElement">
 
                 <label >You are a: </label>
@@ -346,10 +367,14 @@
                 </select>
 
             </div>
-            <div class="formRow formElement">
+            <div class="formRow formElement inputField">
+
+                <div class="bottomLine"></div>
+
+
+                <input id="city" type="text" maxlength="30" required>
 
                 <label for="city">City : </label>
-                <input id="city" type="text" maxlength="30">
 
                 <div class="formElementButton" id="CError">
                     <div id="CityError">
@@ -358,11 +383,12 @@
                 </div>
 
             </div>
-            <div class="formRow formElement">
+            <div class="formRow formElement ">
 
-                <label for="mobileno">Mobile Number : </label>
                 <div id="mobileno-container">
-                    <select name="countryCode" id="countryCode">
+                    <label>Mobile Number  : </label>
+                    <div class="box cc">
+                    <select  name="countryCode" id="countryCode">
                         <option data-countryCode="GB" value="44" >UK (+44)</option>
                         <option data-countryCode="US" value="1">USA (+1)</option>
                         <optgroup label="Other countries">
@@ -582,7 +608,14 @@
                             <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
                         </optgroup>
                     </select>
-                    <input id="mobileNo" maxlength="15" >
+                    </div>
+                    <div class="box mn">
+                    <div class="formRow formElement inputField">
+                    <input id="mobileNo" maxlength="15" required >
+                    <div class="bottomLine"></div>
+                    <label for="mobileNo">Mobile Number</label>
+                    </div>
+                    </div>
 
             </div>
                 <!--<div class="formElementButton" id="MobComp">
@@ -598,7 +631,7 @@
                     </div>
                 </div>
             </div>
-            <div class="formRow formElement">
+            <div class="formRow formElement ">
 
                 <label >Gender : </label>
 
@@ -620,10 +653,13 @@
 
             </div>
 
-            <div class="formRow formElement">
+            <div class="formRow formElement inputField">
+
+                <div class="bottomLine"></div>
+
+                <input type="password" id="Password" required >
 
                 <label for="password">Password : </label>
-                <input type="password" id="Password" >
 
                 <div class="formElementButton" id="PError">
                     <div id="PasswordError">
@@ -632,10 +668,14 @@
                 </div>
 
             </div>
-            <div class="formRow formElement">
+            <div class="formRow formElement inputField">
+
+                <div class="bottomLine"></div>
+
+
+                <input type="password" id="confirmPassword" required>
 
                 <label for="confirmPassword">Confirm Password : </label>
-                <input type="password" id="confirmPassword">
 
                 <div class="formElementButton" id="ConPError">
                     <div id="ConfirmPasswordError">

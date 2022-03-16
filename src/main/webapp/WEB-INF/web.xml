@@ -785,6 +785,21 @@
 
     <!-- end of enable disable student enroll status servlet-->
 
+
+    <!-- beginning of student MCQ result load on correct answers post servlet-->
+
+    <servlet>
+        <servlet-name>StudentMCQResultLoadOnClickServlet</servlet-name>
+        <servlet-class>Controller.StudentMCQResultLoadOnClickServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentMCQResultLoadOnClickServlet</servlet-name>
+        <url-pattern>/student/studentMCQResultLoadOnClick</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student MCQ result load on correct answers post servlet-->
+
     <!-- beginning of share newsfeeds servlet-->
 
     <servlet>
@@ -827,6 +842,7 @@
     </servlet-mapping>
 
     <!-- end of select mcq result servlet-->
+
 
 
     <session-config>

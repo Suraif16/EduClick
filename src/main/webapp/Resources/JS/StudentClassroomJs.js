@@ -342,14 +342,18 @@ const checkEnableOrDisable = function (){
 
         }else if(jsonStatusResponse.serverResponse === "Allowed") {
             console.log(jsonStatusResponse.Status)
-            if(jsonStatusResponse.Status==="Enable"){
+            if(jsonStatusResponse.Status==="Disable"){
                 /*loadStudentEducationalPosts(false);*/
-                console.log("I am enabled")
-            }else if(jsonStatusResponse.Status==="Disable"){
                 let postContents = document.getElementById("postContents");
                 postContents.innerHTML = ""
                 console.log("Case case case disabled")
-            }
+
+            }/*else if(jsonStatusResponse.Status==="Enable"){
+                console.log("Case case case disabled")
+                console.log("I am enabled")
+                loadStudentEducationalPosts(false);
+                br
+            }*/
             status = jsonStatusResponse.Status;
         }else{
             alert("something went wrong!!!");
@@ -514,7 +518,8 @@ const getClassroomList = function (){
 
 
 }
-//setInterval( checkEnableOrDisable , 20000);
+setInterval( checkEnableOrDisable , 5000);
+
 
 const getClassroomIdClientSide = function (){
 
@@ -522,4 +527,5 @@ const getClassroomIdClientSide = function (){
     return currentClassUrl.searchParams.get( "clsId" );
 
 }
+
 

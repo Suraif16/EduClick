@@ -41,18 +41,39 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
 
         System.out.println("minPostId : "+minPostId);
 
-        EducationalWork educationalWork = new EducationalWork();
-        List< JSONObject > ePostList = educationalWork.selectEducationalPostMCQ( ( String ) session.getAttribute( "CurrentClassroomId" ) , minPostId, userId );
+        classroom.setClassroomID(classroomId);
 
-        JSONArray jsonEPostList = new JSONArray( ePostList );
+        classroom.setUserId(userId);
 
-        jsonObject.put( "ePosts" , jsonEPostList );
+        String status = classroom.checkEnableOrDisable();
 
-        System.out.println(classroomId);
+        System.out.println("Status is : "+status);
 
-        jsonObject.put("TeacherFullName",user.getFullName(classroom.getClassroomOwnerId(classroomId)));
+        if(status.equals("Enable")){
 
-        jsonObject.put("TeacherId",classroom.getClassroomOwnerId(classroomId));
+            EducationalWork educationalWork = new EducationalWork();
+            List< JSONObject > ePostList = educationalWork.selectEducationalPostMCQ( ( String ) session.getAttribute( "CurrentClassroomId" ) , minPostId, userId );
+
+            JSONArray jsonEPostList = new JSONArray( ePostList );
+
+            jsonObject.put( "ePosts" , jsonEPostList );
+
+            System.out.println(classroomId);
+
+            jsonObject.put("TeacherFullName",user.getFullName(classroom.getClassroomOwnerId(classroomId)));
+
+            jsonObject.put("TeacherId",classroom.getClassroomOwnerId(classroomId));
+
+            jsonObject.put("Status","Enable");
+
+
+        }else{
+            System.out.println("Disabled!!!!");
+
+            jsonObject.put("Status","Disable");
+        }
+
+
 
 
 

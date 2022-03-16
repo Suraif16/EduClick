@@ -383,3 +383,9 @@ passwordConfirmInput.addEventListener( "keyup" , function (event){
     }
 
 });
+
+
+function displayDate() {
+    document.getElementById("DOB").style.display = "flex"
+    console.log("Hovered!!!!")
+}

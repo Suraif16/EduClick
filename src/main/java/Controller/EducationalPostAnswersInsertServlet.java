@@ -39,6 +39,8 @@ public class EducationalPostAnswersInsertServlet extends HttpServlet {
 
         Answers answers = null;
 
+        System.out.println("The Epost ID to notification check : "+request);
+
         boolean isMultipart = ServletFileUpload.isMultipartContent( request );
 
 

@@ -125,6 +125,13 @@ public class Post {
         return educationalPostDAO.getEpostsIds(classroomId);
 
     }
+  
+    public String selectClassroomId(String ePostId){
+        EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
+        return educationalPostDAO.selectClassroomId(ePostId);
+
+    }
+
 
     public JSONArray getMcqResults(){
 
