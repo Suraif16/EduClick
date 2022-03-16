@@ -77,12 +77,12 @@ public class ShareNewsFeedsServlet extends HttpServlet {
             shareDAO.insert(time, date, userId, friendList.get(i), SharedPostID);
         }
 
-        JSONArray a = shareDAO.getSharedNFReceiver(userId);
-        System.out.println(a+ "*******************");
+        JSONArray NewsfeedsReceivers = shareDAO.getSharedNFReceiver(userId);
+        System.out.println( NewsfeedsReceivers + "*******************");
 
         PostDAO postDAO = new PostDAO();
-        JSONArray b = postDAO.getPostReceiver(userId);
-        System.out.println(b +"%%%%%%%%%%%%%%");
+        JSONArray PostReceivers = postDAO.getPostReceiver(userId);
+        System.out.println(PostReceivers +"%%%%%%%%%%%%%%");
 
         JSONArray sharedList = shareDAO.count(SharedPostID);
 
@@ -90,6 +90,8 @@ public class ShareNewsFeedsServlet extends HttpServlet {
         jsonObject.put("NewsFeedsImagePath", NewsFeedsImagePath);
         jsonObject.put("fullName",fullName);
         jsonObject.put("sharedList",sharedList);
+        jsonObject.put("NewsfeedsReceivers",NewsfeedsReceivers);
+        jsonObject.put("PostReceivers",PostReceivers);
 
         out.write( jsonObject.toString() );
         out.close();
