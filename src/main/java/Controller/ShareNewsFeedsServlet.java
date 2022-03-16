@@ -1,6 +1,8 @@
 package Controller;
 
 import DAO.NewsFeedsDAO;
+import DAO.NewsFeedsImageDAO;
+import DAO.PostDAO;
 import DAO.ShareDAO;
 import Model.NewsFeeds;
 import Model.Requests;
@@ -55,10 +57,10 @@ public class ShareNewsFeedsServlet extends HttpServlet {
         Requests requests = new Requests();
 
         JSONObject NewsFeedsDetail = newsFeeds.getNewsFeedsDetails(SharedPostID);
-       // System.out.println(NewsFeedsDetail);
+        System.out.println(NewsFeedsDetail);
 
         JSONObject NewsFeedsImagePath =  newsFeeds.getPathOfImage(SharedPostID);
-      //  System.out.println(NewsFeedsImagePath );
+        System.out.println(NewsFeedsImagePath);
 
         ArrayList<String> followersList = requests.getTeacherFollowers(userId);
       //  System.out.println(" followers  : "+followersList);
@@ -67,7 +69,6 @@ public class ShareNewsFeedsServlet extends HttpServlet {
      //   System.out.println(" friends : "+friendList);
 
         ShareDAO shareDAO = new ShareDAO();
-      //  System.out.println("***********");
 
         for(int i=0; i < followersList.size(); i++){
             shareDAO.insert(time, date, userId, followersList.get(i), SharedPostID);
@@ -75,6 +76,13 @@ public class ShareNewsFeedsServlet extends HttpServlet {
         for(int i=0; i < friendList.size(); i++){
             shareDAO.insert(time, date, userId, friendList.get(i), SharedPostID);
         }
+
+        JSONArray a = shareDAO.getSharedNFReceiver(userId);
+        System.out.println(a+ "*******************");
+
+        PostDAO postDAO = new PostDAO();
+        JSONArray b = postDAO.getPostReceiver(userId);
+        System.out.println(b +"%%%%%%%%%%%%%%");
 
         JSONArray sharedList = shareDAO.count(SharedPostID);
 
