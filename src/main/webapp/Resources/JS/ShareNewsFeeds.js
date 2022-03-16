@@ -27,14 +27,14 @@ function shareNewsFeeds ( NewsFeedspostID){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
 
-            console.log(jsonResponse.NewsFeedsDetail);
+            console.log(jsonResponse.NewsFeedsDetail + "yyyyy");
             console.log(jsonResponse.NewsFeedsDetail.Time);
             console.log(jsonResponse.NewsFeedsDetail.Caption);
             console.log(jsonResponse.NewsFeedsImagePath);
             console.log(jsonResponse.fullName);
 
 
-            /*const ppostContents = document.getElementById("profilePostContents");
+            const ppostContents = document.getElementById("profilePostContents");
             let now = new Date().getTime();
             let extraTime = 1000;
             while(new Date().getTime() < now + extraTime ){}
@@ -49,8 +49,8 @@ function shareNewsFeeds ( NewsFeedspostID){
                 '                           <div class="postProfileName" >' + jsonResponse.fullName +
                 '</div>' + ' </a>' +
                 '                           <div class="postTimeAndDate" >' +
-                jsonResponse.NewsFeedsDetail.Time + ' | ' +
-                jsonResponse.NewsFeedsDetail.date +
+                jsonResponse.NewsFeedsDetail[i].Time + ' | ' +
+                jsonResponse.NewsFeedsDetail[i].date +
                 '                            </div>' +
                 '                    <div class="userOptions">' +
                 '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + id + '" onclick="showOptionMenu(' + id + ',\'educationalPostOPtion\')">'+
@@ -92,7 +92,7 @@ function shareNewsFeeds ( NewsFeedspostID){
                 '                   </div>'
 
             ppostContents.innerHTML += innerPreviouseHTML;
-*/
+
         }else{
             alert("something went wrong!!!");
         }
