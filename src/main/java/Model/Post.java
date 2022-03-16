@@ -1,6 +1,7 @@
 package Model;
 
 
+import DAO.AnswerStudentPostRelationshipDAO;
 import DAO.EducationalPostDAO;
 import DAO.EducationalWorkDAO;
 import DAO.PostDAO;
@@ -36,6 +37,12 @@ public class Post {
 
         this.date = localDate;
         this.time = localTime;
+
+    }
+
+    public Post( String postID ) {
+
+        this.postID = postID;
 
     }
 
@@ -116,6 +123,13 @@ public class Post {
     public ArrayList<String> checkEposts(String classroomId){
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
         return educationalPostDAO.getEpostsIds(classroomId);
+
+    }
+
+    public JSONArray getMcqResults(){
+
+        AnswerStudentPostRelationshipDAO answerStudentPostRelationshipDAO = new AnswerStudentPostRelationshipDAO();
+        return answerStudentPostRelationshipDAO.getMcqResult( this.postID );
 
     }
 
