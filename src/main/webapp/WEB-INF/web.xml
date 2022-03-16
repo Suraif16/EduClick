@@ -785,7 +785,7 @@
 
     <!-- end of enable disable student enroll status servlet-->
 
-    <!-- beginning of enable disable student enroll status servlet-->
+    <!-- beginning of select mcq result servlet-->
 
     <servlet>
         <servlet-name>TeacherClassroomSelectMcqResultServlet</servlet-name>
@@ -797,7 +797,7 @@
         <url-pattern>/teacher/teacherClassroomSelectMcqResultServlet</url-pattern>
     </servlet-mapping>
 
-    <!-- end of enable disable student enroll status servlet-->
+    <!-- end of select mcq result servlet-->
 
     <session-config>
 
