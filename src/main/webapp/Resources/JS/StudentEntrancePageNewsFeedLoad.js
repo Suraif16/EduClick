@@ -34,7 +34,7 @@ const sendServerDataStudent = function (){
 
                 let htmlString =
                     '        <div class="post">    ' +
-                    '              <div class="postContentContainer">' +
+                    '              <div class="postCon tentContainer">' +
                     '                   <div class="postProfileSection">' +
                     '                        <a href="TeacherProfile.html" class="postProfile">' +
                     '                           <div class="postProfileImage">' +
