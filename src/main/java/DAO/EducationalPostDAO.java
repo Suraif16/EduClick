@@ -660,6 +660,31 @@ public class EducationalPostDAO {
 
     }
 
+    public String selectClassroomId(String ePostId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONObject jsonObject = new JSONObject();
+        String classroomId = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT ClassroomID FROM EducationalPost WHERE EPostID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, ePostId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+
+                classroomId = resultSet.getString("ClassroomID");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        return classroomId;
+    }
+
 
 
 }
