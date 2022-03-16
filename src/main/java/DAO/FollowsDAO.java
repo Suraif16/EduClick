@@ -1,6 +1,9 @@
 package DAO;
 
 import Database.DBConnectionPool;
+import Model.User;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -151,6 +154,44 @@ public class FollowsDAO {
 
         }
         return followersList;
+    }
+
+    public JSONArray getFollowersIdLists(String userId) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT S_UserID FROM follows WHERE T_UserID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+
+                String date = resultSet.getString("S_UserID");
+
+                jsonArray.put(Integer.parseInt("Date"),date);
+
+            }
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonArray;
     }
 
 

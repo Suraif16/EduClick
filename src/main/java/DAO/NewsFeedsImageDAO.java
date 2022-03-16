@@ -93,6 +93,40 @@ public class NewsFeedsImageDAO extends Post {
 
     }
 
+    public JSONObject getNewsFeedsImageDetails(String postId) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT ImagePath FROM News_Feed_Image WHERE NFPostID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, postId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String imagePath = resultSet.getString("imagePath");
+
+                jsonObject.put("ImagePath",imagePath);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonObject;
+    }
+
 
 
 }

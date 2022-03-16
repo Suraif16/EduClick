@@ -785,6 +785,35 @@
 
     <!-- end of enable disable student enroll status servlet-->
 
+    <!-- beginning of share newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.ShareNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <url-pattern>/teacher/shareNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of share newsfeeds servlet-->
+
+    <!-- beginning of like newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.LikeNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <url-pattern>/teacher/likeNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of like newsfeeds servlet-->
+
+
     <!-- beginning of select mcq result servlet-->
 
     <servlet>
@@ -798,6 +827,7 @@
     </servlet-mapping>
 
     <!-- end of select mcq result servlet-->
+
 
     <session-config>
 

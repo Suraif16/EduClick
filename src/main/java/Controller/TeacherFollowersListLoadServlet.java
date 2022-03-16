@@ -41,16 +41,7 @@ public class TeacherFollowersListLoadServlet extends HttpServlet {
         JSONArray teacherFollowerList = user.getTeacherFollowersList(followersList);
         System.out.println(teacherFollowerList);
 
-        /*for(int i=0;i<studentFollowerList.size();i++){
-            System.out.println(studentFollowerList.get(i).getUserId());
-            System.out.println(studentFollowerList.get(i).getFirstName());
-            System.out.println(studentFollowerList.get(i).getLastName());
-        }*/
-//        JSONArray jsonArray = new JSONArray(studentFollowerList);
         jsonObject.put("List",teacherFollowerList);
-
-
-
 
         out.write(jsonObject.toString());
         out.close();

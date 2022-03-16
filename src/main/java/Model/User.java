@@ -309,10 +309,25 @@ public class User {
         UserDAO userDAO = new UserDAO();
         JSONArray teacherNameList = userDAO.getNFownerDetails(NFTeacherIDList);
         return teacherNameList;
-    } public String getUserIdFromClass(String userId,String id){
+    }
+
+    public String getUserIdFromClass(String userId,String id){
         EnrollDAO enrollDAO = new EnrollDAO();
         return enrollDAO.getUserIdFromClass(userId,id);
     }
+    /*public JSONArray getFollowersList(String userId){
+        FollowsDAO followsDAO = new FollowsDAO();
+        JSONArray followersIdList = followsDAO.getFollowersIdLists(userId);
+
+        return followersIdList;
+    }*/
+
+    /*public JSONArray getFriendsList(String userId){
+        UserDAO userDAO = new UserDAO();
+        JSONArray teacherNameList = userDAO.getNFownerDetails(userId);
+        return teacherNameList;
+    }*/
+
 
 }
 
