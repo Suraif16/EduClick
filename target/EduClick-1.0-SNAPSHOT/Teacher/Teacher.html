@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="../Resources/CSS/Font.css" type="text/css">
 
+    <link rel="stylesheet" href="../Resources/CSS/InputDesignCSS.css" type="text/css">
+
 </head>
 
 <body>
@@ -111,9 +113,10 @@
         </div>
 
 
-
-
         <div id="postContents" >
+
+<!--
+
 
 
             <div class="post">
@@ -157,20 +160,20 @@
 
                         <div class="postMessage">
 
-                            <!--<div>-->
+                            &lt;!&ndash;<div>&ndash;&gt;
 
                                 Book your seats NOW!!!
 
 
 
-                            <!--</div>-->
+                            &lt;!&ndash;</div>&ndash;&gt;
 
                         </div>
 
                         <div class="postPicture">
 
                             <div class="postPictureImageContainer">
-                                <!--To only present the message without the picture, keep this value as null / empty-->
+                                &lt;!&ndash;To only present the message without the picture, keep this value as null / empty&ndash;&gt;
                                 <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
 
 
@@ -226,7 +229,7 @@
 
             </div>
 
-            <!--a another post-->
+            &lt;!&ndash;a another post&ndash;&gt;
 
             <div class="post">
 
@@ -279,13 +282,13 @@
 
                         <div class="postPicture">
 
-                            <!--To only present the message without the picture, comment the part below-->
+                            &lt;!&ndash;To only present the message without the picture, comment the part below&ndash;&gt;
 
-                            <!--<div class="postPictureImageContainer">
+                            &lt;!&ndash;<div class="postPictureImageContainer">
                                 <img class="postPictureImage" src="Icons/seminar-text.jpg">
 
 
-                            </div>-->
+                            </div>&ndash;&gt;
 
                         </div>
 
@@ -379,18 +382,18 @@
 
                         <div class="postMessage">
 
-                            <!--<div>-->
+                            &lt;!&ndash;<div>&ndash;&gt;
 
                             Book your seats NOW!!!
 
-                            <!--</div>-->
+                            &lt;!&ndash;</div>&ndash;&gt;
 
                         </div>
 
                         <div class="postPicture">
 
                             <div class="postPictureImageContainer">
-                                <!--To only present the message without the picture, keep this value as null / empty-->
+                                &lt;!&ndash;To only present the message without the picture, keep this value as null / empty&ndash;&gt;
                                 <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
 
 
@@ -446,7 +449,7 @@
 
             </div>
 
-            <!--a another post-->
+            &lt;!&ndash;a another post&ndash;&gt;
 
             <div class="post">
 
@@ -489,23 +492,23 @@
 
                         <div class="postMessage">
 
-                            <!--<div>-->
+                            &lt;!&ndash;<div>&ndash;&gt;
 
                             Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
 
-                            <!--</div>-->
+                            &lt;!&ndash;</div>&ndash;&gt;
 
                         </div>
 
                         <div class="postPicture">
 
-                            <!--To only present the message without the picture, comment the part below-->
+                            &lt;!&ndash;To only present the message without the picture, comment the part below&ndash;&gt;
 
-                            <!--<div class="postPictureImageContainer">
+                            &lt;!&ndash;<div class="postPictureImageContainer">
                                 <img class="postPictureImage" src="Icons/seminar-text.jpg">
 
 
-                            </div>-->
+                            </div>&ndash;&gt;
 
                         </div>
 
@@ -555,10 +558,8 @@
 
                 </div>
 
-            </div>
 
-
-        </div>
+        </div>-->
 
         <!--<div id="rightPanel">
 
@@ -566,6 +567,7 @@
 
         </div>
 -->
+        </div>
         <div id="notifications">
 
             <div id="request">
@@ -941,31 +943,35 @@
 
         <div id="addClassroomForm">
 
-            <div class="classroomFormRow">
+            <div class="classroomFormRow inputFieldForms">
 
-                <label >Classroom Name :&nbsp; </label>
-                <input type="text" id="classroomName" placeholder="e.g. - Institute of Education">
-
-            </div>
-
-            <div class="classroomFormRow">
-
-                <label >Subject :&nbsp; </label>
-                <input type="text" id="classroomSubject" placeholder="e.g. - Mathematics">
+                <input type="text" id="classroomName" required>
+                <div class="bottomLine"></div>
+                <label >Classroom Name : e.g. - Institute of Education </label>
 
             </div>
 
-            <div class="classroomFormRow">
+            <div class="classroomFormRow inputFieldForms">
 
-                <label >Grade / Class :&nbsp; </label>
-                <input type="text" id="classroomClassGrade" placeholder="e.g. - 7">
+                <input type="text" id="classroomSubject" required>
+                <div class="bottomLine"></div>
+                <label >Subject : Mathematics </label>
 
             </div>
 
-            <div class="classroomFormRow">
+            <div class="classroomFormRow inputFieldForms">
 
-                <label >Year of examination :&nbsp; </label>
-                <input type="text" id="classroomYearOfExamination" placeholder="e.g. - 20xx">
+                <input type="text" id="classroomClassGrade" required>
+                <div class="bottomLine"></div>
+                <label >Grade / Class : e.g. - 7 </label>
+
+            </div>
+
+            <div class="classroomFormRow inputFieldForms">
+
+                <input type="text" id="classroomYearOfExamination" required>
+                <div class="bottomLine"></div>
+                <label >Year of examination : e.g. - 20xx </label>
 
             </div>
 
@@ -977,7 +983,7 @@
 
             <div class="classroomFormRow">
 
-                <input type="button" value="Create classroom" onclick="createClassroom()">
+                <div class="systemButtons" onclick="createClassroom()"> Create classroom </div>
 
             </div>
 
@@ -991,9 +997,11 @@
 
             </div>
 
-            <div class="addNewsFeedFormRows" id="addNewsFeedFormText">
+            <div class="addNewsFeedFormRows inputFieldFormsTextArea" id="addNewsFeedFormText">
 
-                <textarea id="addNewsFeedFormTextArea" rows="11" placeholder="What's on your mind?"></textarea>
+                <textarea id="addNewsFeedFormTextArea" rows="11" required></textarea>
+                <div class="bottomLine"></div>
+                <label> What's on your mind </label>
 
             </div>
 

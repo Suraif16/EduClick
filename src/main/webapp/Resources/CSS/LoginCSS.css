@@ -2,6 +2,7 @@
 body{
     display: flex; /*This the container body*/
     flex-direction: column;
+    background: white;
 }
 
 header{
@@ -43,6 +44,7 @@ footer{
     order: 3;
     background-color: #4775c4;
     box-shadow: 8px 8px 2px #a7a7a7;
+    display: none;
 
 }
 
@@ -59,13 +61,12 @@ div#contentFlex{
 
     max-width: 50%;
     min-width: 30% ;
-    padding: 0.5%;
+    padding: 1%;
     display: flex;
     flex-direction: column; /*default is row , in which flew sets the items in a single row, to make it in a single column we have to do this*/
     margin: auto; /*since this is the element, and it is in a container*/
-    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
-
-
+    box-shadow: 8px 8px 4px #403434;
+    border: solid 2px black;
 }
 
 
@@ -94,28 +95,19 @@ div.formRow{
 
     flex: 1;/*a child of containerflex*/
     display: flex;
+    flex-wrap: wrap;
 
 }
 
 input[type = "email"]{
 
-    padding: 0.3%;
     flex: 5;/*a child of formRow*/
-    cursor: text;
 
 }
 
 input[type = "password"]{
 
-    padding: 0.3%;
     flex: 5;/*a child of formRow*/
-    cursor: text;
-
-}
-
-label{
-
-    padding-right: 10px;
 
 }
 
@@ -134,7 +126,7 @@ label{
 
     /*child element of formElementButton and its in a container can use margin auto to center it horizontally and vertically*/
     margin: auto;
-    background-color: #4775c4;
+    width: 100%;
     color: whitesmoke;
     padding: 1%;
 
@@ -154,20 +146,8 @@ div#incorrectPassword{
     margin: 0 auto 0.3% auto;
     display: none;
 
-
 }
 
-input{
-    /*all input values will have these properties*/
-    border-radius: 5px;
-    border: #6a6a6a solid 1px;
-
-
-}
-
-input[type = "button"]{
-    cursor: pointer;
-}
 
 a.loginFormForgotPasswordNotAUser {
 
