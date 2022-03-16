@@ -110,7 +110,7 @@ public class PostDAO {
         return jsonArray;
     }
 
-    public String insert(NewsFeeds newsFeeds, String userId) {
+    public String insert(NewsFeeds newsFeeds, String friendsID, String userId) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -121,7 +121,7 @@ public class PostDAO {
             String sql = "INSERT INTO Posts( NFPostID, UserID , T_UserID ) VALUES( ? , ? , ? )";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, newsFeeds.getPostID());
-            preparedStatement.setString(2, userId);
+            preparedStatement.setString(2, friendsID);
             preparedStatement.setString(3, userId);
             preparedStatement.execute();
 
@@ -149,4 +149,46 @@ public class PostDAO {
 
 
     }
+
+
+    public JSONArray getPostReceiver(String T_UserID) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT UserID FROM Posts WHERE T_UserID = ? LIMIT 15";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, T_UserID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String UserID = resultSet.getString("UserID");
+
+                JSONObject jsonObject = new JSONObject();
+
+                jsonObject.put("UserID", UserID);
+
+                jsonArray.put(jsonObject);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonArray;
+    }
+
 }

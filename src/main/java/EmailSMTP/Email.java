@@ -8,7 +8,7 @@ import java.util.Properties;
 public class Email {
 
     private final String username = "educlickorg@gmail.com";
-    private final String password = "hckujhhwzxqijdsd";
+    private final String password = "oumpnrpmenvekbil";
     private Session session = null;
 
     public Email(){

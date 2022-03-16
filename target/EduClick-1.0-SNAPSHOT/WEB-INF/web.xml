@@ -785,6 +785,20 @@
 
     <!-- end of enable disable student enroll status servlet-->
 
+    <!-- beginning of select mcq result servlet-->
+
+    <servlet>
+        <servlet-name>TeacherClassroomSelectMcqResultServlet</servlet-name>
+        <servlet-class>Controller.TeacherClassroomSelectMcqResultServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherClassroomSelectMcqResultServlet</servlet-name>
+        <url-pattern>/teacher/teacherClassroomSelectMcqResultServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select mcq result servlet-->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
@@ -796,6 +810,14 @@
         <listener-class>
 
             Database.DBBackup
+
+        </listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>
+
+            SystemAvailableStatus.SignalAdminEmail
 
         </listener-class>
     </listener>

@@ -4,6 +4,7 @@ import DAO.*;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,7 +16,7 @@ public class NewsFeeds extends Post{
     private int likeCount;
     private int likeShare;
 
-    public NewsFeeds(String message , LocalDate localDate , LocalTime localTime) {
+    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime) {
         super( message , localDate , localTime );
     }
 
@@ -85,5 +86,67 @@ public class NewsFeeds extends Post{
 
     }
 
+    public static void getTeacherFriendsFollowers(NewsFeeds newsFeeds, String userId){
+
+        AddFriendsDAO addFriendDAO = new AddFriendsDAO();
+        ArrayList<String> friendsIDList = addFriendDAO.getTeacherFriendKeys(userId);
+
+        for(int i=0; i<friendsIDList.size(); i++){
+            PostDAO postDAO = new PostDAO();
+            postDAO.insert(newsFeeds,friendsIDList.get(i), userId );
+        }
+
+        FollowsDAO followsDAO = new FollowsDAO();
+        ArrayList<String> followersIDList = followsDAO.getTeacherFollowersKeys(userId);
+
+        for(int i=0; i<followersIDList.size(); i++){
+            PostDAO postDAO = new PostDAO();
+            postDAO.insert(newsFeeds,followersIDList.get(i), userId );
+        }
+
+    }
+
+    public static Thread loadNewsFeeds(NewsFeeds newsFeeds, String userId ){
+
+        Runnable runnable = () -> {
+
+            getTeacherFriendsFollowers(  newsFeeds, userId);
+
+          };
+
+        return new Thread( runnable );
+
+    }
+
+    public String getPostedTime(String postId){
+
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        String NFpostedTime = newsFeedsDAO.getPostedTime(postId);
+        return NFpostedTime;
+
+    }
+
+    public JSONObject getNewsFeedsDetails(String SharedPostID){
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        JSONObject NewsFeedsDetailList = newsFeedsDAO.getNewsFeedsDetails(SharedPostID);
+        return NewsFeedsDetailList;
+    }
+
+    public JSONObject getPathOfImage(String SharedPostID){
+        NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
+        JSONObject NewsFeedsImage = newsFeedsImageDAO.getNewsFeedsImageDetails(SharedPostID);
+        return NewsFeedsImage;
+    }
+
+
+
 
 }
+
+
+
+
+
+
+
+

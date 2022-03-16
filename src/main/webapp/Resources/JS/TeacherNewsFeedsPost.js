@@ -89,12 +89,11 @@ const postNewsFeeds = function (){
         }else if(jsonResponse.serverResponse === "Allowed") {
 
             console.log( jsonResponse.NewsFeedsPost );
-            console.log(jsonResponse.fullName);
-            console.log( jsonResponse.NewsFeedsPost.caption );
+          //  console.log(jsonResponse.Time);
 
             const postContents = document.getElementById("postContents");
             let now = new Date().getTime();
-            let extraTime = 7000;
+            let extraTime = 1000;
             while(new Date().getTime() < now + extraTime ){}
             let innerPreviouseHTML = postContents.innerHTML;
             postContents.innerHTML = '        <div class="post">    ' +
@@ -107,13 +106,12 @@ const postNewsFeeds = function (){
                 '                           <div class="postProfileName" >' + jsonResponse.fullName +
                 '</div>' + ' </a>' +
                 '                           <div class="postTimeAndDate" >' +
-                jsonResponse.NewsFeedsPost.time + ' | ' +
+                jsonResponse.Time + ' | ' +
                 jsonResponse.NewsFeedsPost.date +
                 '                            </div>' +
                 '                    <div class="userOptions">' +
-                '                        <input class="userOptionsButton" type="button" value="    " id="PostOPtion1" onclick="showOptionMenu(1,\'PostOPtion\')">' +
+                '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">'+
                 '                    </div>' +
-
                 '                   </div>' +
                 '               </div>' +
                 '               <div class="postContentContainer">' +
@@ -123,7 +121,7 @@ const postNewsFeeds = function (){
                 '                       </div>' +
                 '                       <div class="postPicture">' +
                 '                           <div class="postPictureImageContainer">' +
-                '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/ >' + jsonResponse.NewsFeedsPost.imagePath + '.jpeg">'+
+                '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.NewsFeedsPost.imagePath + '.jpeg">'+
                 '                           </div>' +
                 '                       </div>' +
                 '                     </div>' +
@@ -131,7 +129,7 @@ const postNewsFeeds = function (){
                 '                   <div class="postContentContainer">' +
                 '                       <div class="postLikeShareButtons">' +
                 '                           <div class="likeShareButtons" >' +
-                '                               <input type="button" value="Like" class="like">' +
+                '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                 '                           </div>' +
                 '                           <div class="countOfLikeShare" >' +
                 '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
@@ -144,7 +142,7 @@ const postNewsFeeds = function (){
                 '                               </div>' +
                 '                              </div>' +
                 '                           <div class="likeShareButtons" >' +
-                '                               <input type="button" value="Share" class="share">' +
+                '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                 '                           </div>' +
                 '                        </div>' +
                 '                       </div>' +

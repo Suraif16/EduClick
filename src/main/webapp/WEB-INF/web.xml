@@ -785,6 +785,7 @@
 
     <!-- end of enable disable student enroll status servlet-->
 
+
     <!-- beginning of student MCQ result load on correct answers post servlet-->
 
     <servlet>
@@ -799,6 +800,50 @@
 
     <!-- end of student MCQ result load on correct answers post servlet-->
 
+    <!-- beginning of share newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.ShareNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <url-pattern>/teacher/shareNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of share newsfeeds servlet-->
+
+    <!-- beginning of like newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.LikeNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <url-pattern>/teacher/likeNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of like newsfeeds servlet-->
+
+
+    <!-- beginning of select mcq result servlet-->
+
+    <servlet>
+        <servlet-name>TeacherClassroomSelectMcqResultServlet</servlet-name>
+        <servlet-class>Controller.TeacherClassroomSelectMcqResultServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherClassroomSelectMcqResultServlet</servlet-name>
+        <url-pattern>/teacher/teacherClassroomSelectMcqResultServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select mcq result servlet-->
+
+
 
     <session-config>
 
@@ -811,6 +856,14 @@
         <listener-class>
 
             Database.DBBackup
+
+        </listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>
+
+            SystemAvailableStatus.SignalAdminEmail
 
         </listener-class>
     </listener>
