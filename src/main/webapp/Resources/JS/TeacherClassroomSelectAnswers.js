@@ -1,4 +1,5 @@
 let ePostGetAnswerList = [];
+let markingStatus = false;
 
 function showAnswers( id ){
 
@@ -82,12 +83,23 @@ const getAnswersServer = function ( id ){
                     '</div>';
 
             }
+            if ( answerList[i].marks === undefined ){
 
-            singleAnswer +=    '<div class="marksForAnswers">' +
-                '    <input type="range" value="0" max="100" oninput="answer' + answerList[i].answerId + '.value = this.value" class="marksForAnswersRange">' +
-                '    <output id="answer' + answerList[i].answerId + '" class="marksForAnswersRangeValue">0</output>' +
-                '</div>' +
-                '</div>';
+                singleAnswer +=    '<div class="marksForAnswers">' +
+                    '    <input type="range" value="0" max="100" oninput="markingStatus=true;answer' + answerList[i].answerId + '.value = this.value" onchange="setMarks( ' + answerList[i].answerId + ' )" class="marksForAnswersRange">' +
+                    '    <output id="answer' + answerList[i].answerId + '" class="marksForAnswersRangeValue">0</output>' +
+                    '</div>' +
+                    '</div>';
+
+            }else{
+
+                singleAnswer +=    '<div class="marksForAnswers">' +
+                    '    <input type="range" value=" ' + answerList[i].marks + ' " max="100" oninput="markingStatus=true;answer' + answerList[i].answerId + '.value = this.value" onchange="setMarks( ' + answerList[i].answerId + ' )" class="marksForAnswersRange">' +
+                    '    <output id="answer' + answerList[i].answerId + '" class="marksForAnswersRangeValue"> ' + answerList[i].marks + ' </output>' +
+                    '</div>' +
+                    '</div>';
+
+            }
 
             answerContainer.innerHTML += singleAnswer;
 
@@ -99,15 +111,19 @@ const getAnswersServer = function ( id ){
 
 const traverseEPostListToGetAnswers = function (){
 
-    ePostGetAnswerList.forEach( function ( id ){
+    if ( !markingStatus ){
 
-        getAnswersServer( id );
+        ePostGetAnswerList.forEach( function ( id ){
 
-    });
+            getAnswersServer( id );
+
+        });
+
+    }
 
 }
 
-setInterval( traverseEPostListToGetAnswers , 2000 );
+setInterval( traverseEPostListToGetAnswers , 10000 );
 
 function showMcqResult( id ){
 
@@ -179,5 +195,13 @@ const getMcqResult = function ( elementId , id ){
         }
 
     }
+
+}
+
+const setMarks = function ( id ){
+
+    console.log( markingStatus );
+    markingStatus = false;
+    console.log( markingStatus );
 
 }
