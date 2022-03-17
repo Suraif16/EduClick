@@ -88,12 +88,12 @@ const postNewsFeeds = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonResponse.serverResponse === "Allowed") {
 
-         //   console.log( jsonResponse.NewsFeedsPost );
-          //  console.log(jsonResponse.Time + "pissek");
+            console.log( jsonResponse.NewsFeedsPost );
+          //  console.log(jsonResponse.Time);
 
             const postContents = document.getElementById("postContents");
             let now = new Date().getTime();
-            let extraTime = 3000;
+            let extraTime = 1000;
             while(new Date().getTime() < now + extraTime ){}
             let innerPreviouseHTML = postContents.innerHTML;
             postContents.innerHTML = '        <div class="post">    ' +
@@ -129,7 +129,7 @@ const postNewsFeeds = function (){
                 '                   <div class="postContentContainer">' +
                 '                       <div class="postLikeShareButtons">' +
                 '                           <div class="likeShareButtons" >' +
-                '                               <input type="button" value="Like" class="like">' +
+                '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                 '                           </div>' +
                 '                           <div class="countOfLikeShare" >' +
                 '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
@@ -142,7 +142,7 @@ const postNewsFeeds = function (){
                 '                               </div>' +
                 '                              </div>' +
                 '                           <div class="likeShareButtons" >' +
-                '                               <input type="button" value="Share" class="share">' +
+                '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                 '                           </div>' +
                 '                        </div>' +
                 '                       </div>' +
