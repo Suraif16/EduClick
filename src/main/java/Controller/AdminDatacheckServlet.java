@@ -25,8 +25,22 @@ public class AdminDatacheckServlet extends HttpServlet {
         jsonObject.put( "serverResponse" , "Allowed" );
         AdminDatacheck user = new AdminDatacheck();
         user = user.getData();
+        jsonObject.put("getUserId" ,user.getUserId());
+        System.out.println(user.getUserId());
+        jsonObject.put("getFirstName" ,user.getFirstName());
+        System.out.println(user.getFirstName());
         jsonObject.put("getLastName" ,user.getLastName());
         System.out.println(user.getLastName());
+        jsonObject.put("getGender" ,user.getGender());
+        System.out.println(user.getGender());
+        jsonObject.put("getDateOfBirth" ,user.getDateOfBirth());
+        System.out.println(user.getDateOfBirth());
+        jsonObject.put("getCountry" ,user.getCountry());
+        System.out.println(user.getCountry());
+        jsonObject.put("getRegistrationDate" ,user.getRegistrationDate());
+        System.out.println(user.getRegistrationDate());
+        jsonObject.put("getRegistrationTime" ,user.getRegistrationTime());
+        System.out.println(user.getRegistrationTime());
 
 
 
