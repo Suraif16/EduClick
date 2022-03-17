@@ -25,25 +25,25 @@ const getServerData = function (){
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
-            if(jsonLoginResponse.getFirstName === search || jsonLoginResponse.getLastName === search ){
-
-                document.getElementById("getUserId").innerHTML = jsonLoginResponse.getUserId;
-                console.log(jsonLoginResponse.getUserId);
-                document.getElementById("getFirstName").innerHTML = jsonLoginResponse.getFirstName;
-                console.log(jsonLoginResponse.getFirstName);
-                document.getElementById("getLastName").innerHTML = jsonLoginResponse.getLastName;
-                console.log(jsonLoginResponse.getLastName);
-                document.getElementById("getGender").innerHTML = jsonLoginResponse.getGender;
-                console.log(jsonLoginResponse.getGender);
-                document.getElementById("getDateOfBirth").innerHTML = jsonLoginResponse.getDateOfBirth;
-                console.log(jsonLoginResponse.getDateOfBirth);
-                document.getElementById("getCountry").innerHTML = jsonLoginResponse.getCountry;
-                console.log(jsonLoginResponse.getCountry);
-                document.getElementById("getRegistrationDate").innerHTML = jsonLoginResponse.getRegistrationDate;
-                console.log(jsonLoginResponse.getRegistrationDate);
-                document.getElementById("getRegistrationTime").innerHTML = jsonLoginResponse.getRegistrationTime;
-                console.log(jsonLoginResponse.getRegistrationTime);
-
+            if(jsonLoginResponse.getUserType === "Teacher"){
+                if(jsonLoginResponse.getFirstName === search || jsonLoginResponse.getLastName === search ){
+                    document.getElementById("getUserId").innerHTML = jsonLoginResponse.getUserId;
+                    console.log(jsonLoginResponse.getUserId);
+                    document.getElementById("getFirstName").innerHTML = jsonLoginResponse.getFirstName;
+                    console.log(jsonLoginResponse.getFirstName);
+                    document.getElementById("getLastName").innerHTML = jsonLoginResponse.getLastName;
+                    console.log(jsonLoginResponse.getLastName);
+                    document.getElementById("getGender").innerHTML = jsonLoginResponse.getGender;
+                    console.log(jsonLoginResponse.getGender);
+                    document.getElementById("getDateOfBirth").innerHTML = jsonLoginResponse.getDateOfBirth;
+                    console.log(jsonLoginResponse.getDateOfBirth);
+                    document.getElementById("getCountry").innerHTML = jsonLoginResponse.getCountry;
+                    console.log(jsonLoginResponse.getCountry);
+                    document.getElementById("getRegistrationDate").innerHTML = jsonLoginResponse.getRegistrationDate;
+                    console.log(jsonLoginResponse.getRegistrationDate);
+                    document.getElementById("getRegistrationTime").innerHTML = jsonLoginResponse.getRegistrationTime;
+                    console.log(jsonLoginResponse.getRegistrationTime);
+                }
             }
 
         }else{
