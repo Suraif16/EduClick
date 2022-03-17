@@ -86,7 +86,7 @@ const getAnswersServer = function ( id ){
             if ( answerList[i].marks === undefined ){
 
                 singleAnswer +=    '<div class="marksForAnswers">' +
-                    '    <input type="range" value="0" max="100" oninput="markingStatus=true;answer' + answerList[i].answerId + '.value = this.value" onchange="setMarks( ' + answerList[i].answerId + ' )" class="marksForAnswersRange">' +
+                    '    <input type="range" value="0" max="100" oninput="markingStatus=true;answer' + answerList[i].answerId + '.value = this.value" onchange="setMarks( ' + answerList[i].answerId + ' , this.value )" class="marksForAnswersRange">' +
                     '    <output id="answer' + answerList[i].answerId + '" class="marksForAnswersRangeValue">0</output>' +
                     '</div>' +
                     '</div>';
@@ -94,7 +94,7 @@ const getAnswersServer = function ( id ){
             }else{
 
                 singleAnswer +=    '<div class="marksForAnswers">' +
-                    '    <input type="range" value=" ' + answerList[i].marks + ' " max="100" oninput="markingStatus=true;answer' + answerList[i].answerId + '.value = this.value" onchange="setMarks( ' + answerList[i].answerId + ' )" class="marksForAnswersRange">' +
+                    '    <input type="range" value=" ' + answerList[i].marks + ' " max="100" oninput="markingStatus=true;answer' + answerList[i].answerId + '.value = this.value" onchange="setMarks( ' + answerList[i].answerId + ' , this.value )" class="marksForAnswersRange">' +
                     '    <output id="answer' + answerList[i].answerId + '" class="marksForAnswersRangeValue"> ' + answerList[i].marks + ' </output>' +
                     '</div>' +
                     '</div>';
@@ -198,10 +198,22 @@ const getMcqResult = function ( elementId , id ){
 
 }
 
-const setMarks = function ( id ){
+const setMarks = function ( id , marks ){
 
-    console.log( markingStatus );
-    markingStatus = false;
-    console.log( markingStatus );
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            markingStatus = false;
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherSetMarksForAnswersServlet" , true );
+    httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
+    httpreq.send( "answerId=" + id + "&marks=" + marks );
 
 }
