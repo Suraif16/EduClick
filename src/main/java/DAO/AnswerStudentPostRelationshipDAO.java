@@ -177,10 +177,12 @@ public class AnswerStudentPostRelationshipDAO {
 
             }catch ( SQLException E ){
 
-                throwables.printStackTrace();
                 E.printStackTrace();
 
             }
+
+            throwables.printStackTrace();
+
 
         }finally {
 
