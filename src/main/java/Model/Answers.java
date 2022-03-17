@@ -160,4 +160,11 @@ public class Answers {
         return answerDAO.selectMarksForMCQ(answerId);
 
     }
+
+    public void setMarksForAnswers( String answerId , String marks ){
+
+        AnswerDAO answerDAO = new AnswerDAO();
+        answerDAO.updateMarks( answerId , marks );
+
+    }
 }
