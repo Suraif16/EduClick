@@ -41,7 +41,8 @@ public class AdminDatacheckServlet extends HttpServlet {
         System.out.println(user.getRegistrationDate());
         jsonObject.put("getRegistrationTime" ,user.getRegistrationTime());
         System.out.println(user.getRegistrationTime());
-
+        jsonObject.put("getUserType" ,user.getUserType());
+        System.out.println(user.getUserType());
 
 
         System.out.println(jsonObject);
