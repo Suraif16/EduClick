@@ -46,7 +46,6 @@ const getAnswersServer = function ( id ){
     const complete = function ( httpreq ){
 
         let jsonObject = JSON.parse( httpreq.responseText );
-        console.log( jsonObject );
         let answerList = jsonObject.answerList;
 
         answerContainer.innerHTML = "";
@@ -94,7 +93,7 @@ const getAnswersServer = function ( id ){
             }else{
 
                 singleAnswer +=    '<div class="marksForAnswers">' +
-                    '    <input type="range" value=" ' + answerList[i].marks + ' " max="100" oninput="markingStatus=true;answer' + answerList[i].answerId + '.value = this.value" onchange="setMarks( ' + answerList[i].answerId + ' , this.value )" class="marksForAnswersRange">' +
+                    '    <input type="range" value="' + parseInt( answerList[i].marks ) + '" max="100" oninput="markingStatus=true;answer' + answerList[i].answerId + '.value = this.value" onchange="setMarks( ' + answerList[i].answerId + ' , this.value )" class="marksForAnswersRange">' +
                     '    <output id="answer' + answerList[i].answerId + '" class="marksForAnswersRangeValue"> ' + answerList[i].marks + ' </output>' +
                     '</div>' +
                     '</div>';
@@ -123,7 +122,7 @@ const traverseEPostListToGetAnswers = function (){
 
 }
 
-setInterval( traverseEPostListToGetAnswers , 10000 );
+setInterval( traverseEPostListToGetAnswers , 4000 );
 
 function showMcqResult( id ){
 
@@ -173,7 +172,7 @@ const getMcqResult = function ( elementId , id ){
         }else if(jsonResponse.serverResponse === "Allowed") {
 
             const mcqResultList = jsonResponse.mcqResultList;
-            console.log( mcqResultList )
+
             for ( mcqResultListElement of mcqResultList ) {
 
                 elementId.innerHTML += '<div class="mcqSingleStudentResult">' +
