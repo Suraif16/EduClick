@@ -13,7 +13,6 @@ import java.io.PrintWriter;
 
 
 public class AdminDatacheckServlet extends HttpServlet {
-    public String generatedUserID;
     @Override
 
     public void doGet(HttpServletRequest request , HttpServletResponse response) throws IOException {
@@ -27,7 +26,7 @@ public class AdminDatacheckServlet extends HttpServlet {
         AdminDatacheck user = new AdminDatacheck();
         user = user.getData();
         jsonObject.put("getLastName" ,user.getLastName());
-
+        System.out.println(user.getLastName());
 
 
 

@@ -22,7 +22,6 @@ public class AdminDatacheckDAO {
             connection = dbConnectionPool.dataSource.getConnection();
             String sql = "select FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City from Users ";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, user.getUserId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String firstName = resultSet.getString("FirstName");
