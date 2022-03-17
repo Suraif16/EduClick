@@ -843,7 +843,19 @@
 
     <!-- end of select mcq result servlet-->
 
+    <!-- beginning of select mcq result servlet-->
 
+    <servlet>
+        <servlet-name>TeacherSetMarksForAnswersServlet</servlet-name>
+        <servlet-class>Controller.TeacherSetMarksForAnswersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherSetMarksForAnswersServlet</servlet-name>
+        <url-pattern>/teacher/teacherSetMarksForAnswersServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select mcq result servlet-->
 
     <session-config>
 
