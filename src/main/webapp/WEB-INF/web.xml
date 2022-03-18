@@ -804,7 +804,7 @@
 
     <servlet>
         <servlet-name>ShareNewsFeedsServlet</servlet-name>
-        <servlet-class>Controller.ShareNewsFeedsServlet</servlet-class>
+        <servlet-class>Controller.SharedNewsFeedsServletInsert</servlet-class>
     </servlet>
 
     <servlet-mapping>
