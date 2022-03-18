@@ -148,4 +148,8 @@ public class Classroom {
         enrollDAO.updateStatus( userId , classroomId , status );
 
     }
+    public ArrayList<String> getStudentListInClass(String classroomId){
+        EnrollDAO enrollDAO = new EnrollDAO();
+        return enrollDAO.getStudentsListInClass(classroomId);
+    }
 }
