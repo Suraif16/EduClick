@@ -2,53 +2,45 @@ package Controller;
 
 
 import Model.AdminDatacheck;
+import Model.User;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminDatacheckServlet extends HttpServlet {
-    @Override
 
-    public void doGet(HttpServletRequest request , HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
-        HttpSession session = request.getSession(false);
         JSONObject jsonObject = new JSONObject();
+        HttpSession session = request.getSession( false );
 
-        jsonObject.put( "serverResponse" , "Allowed" );
-        AdminDatacheck user = new AdminDatacheck();
-        user = user.getData();
-        jsonObject.put("getUserId" ,user.getUserId());
-        System.out.println(user.getUserId());
-        jsonObject.put("getFirstName" ,user.getFirstName());
-        System.out.println(user.getFirstName());
-        jsonObject.put("getLastName" ,user.getLastName());
-        System.out.println(user.getLastName());
-        jsonObject.put("getGender" ,user.getGender());
-        System.out.println(user.getGender());
-        jsonObject.put("getDateOfBirth" ,user.getDateOfBirth());
-        System.out.println(user.getDateOfBirth());
-        jsonObject.put("getCountry" ,user.getCountry());
-        System.out.println(user.getCountry());
-        jsonObject.put("getRegistrationDate" ,user.getRegistrationDate());
-        System.out.println(user.getRegistrationDate());
-        jsonObject.put("getRegistrationTime" ,user.getRegistrationTime());
-        System.out.println(user.getRegistrationTime());
-        jsonObject.put("getUserType" ,user.getUserType());
-        System.out.println(user.getUserType());
+        String searchValue = request.getParameter("userName");
+        String searchType = request.getParameter("searchType");
+        System.out.println("Search value " +  searchValue);
+        System.out.println("Search value " +  searchType);
+        JSONArray jsonArray = new JSONArray();
 
+        if ( searchType.equals( "Teacher" ) ){
+            AdminDatacheck user = new AdminDatacheck();
+            //ArrayList< AdminDatacheck > userList = new ArrayList<>();
+            List< JSONObject > userList =  user.searchUser( searchValue , searchType );
+            jsonArray = new JSONArray( userList );
+        }
 
-        System.out.println(jsonObject);
+        jsonObject.put( "searchResult" , jsonArray );
         out.write(jsonObject.toString());
         out.close();
     }
-
 
 }
