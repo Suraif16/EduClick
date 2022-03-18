@@ -14,59 +14,50 @@ import java.util.Date;
 
 public class AdminDatacheckDAO {
 
+   public ArrayList<AdminDatacheck> searchUser(String searchValue, String searchType) {
+       DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+       Connection connection = null;
+       ArrayList<AdminDatacheck> teacherArrayList = new ArrayList<>();
+       try {
+           connection = dbConnectionPool.dataSource.getConnection();
+           String sql = "SELECT UserID , FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City , RegistrationDate , RegistrationTime FROM Users WHERE (FirstName LIKE ? OR LastName LIKE ?) AND ( UserType = ?)";
 
-    public AdminDatacheck select(AdminDatacheck user) {
-        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
-        Connection connection = null;
-        String userType = "";
-        try {
-            connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select UserID , FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City , RegistrationDate , RegistrationTime from Users ";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String userID = resultSet.getString("UserID");
-                String firstName = resultSet.getString("FirstName");
-                String lastName = resultSet.getString("LastName");
-                String dataOfBirth = resultSet.getString("DOB");
-                String mobileNumber = resultSet.getString("MobileNum");
-                String profilePicture = resultSet.getString("ProfilePic");
-                String country = resultSet.getString("Country");
-                String city = resultSet.getString("City");
-                String gender = resultSet.getString("Gender");
-                userType = resultSet.getString("UserType");
-                String dataOfReg = resultSet.getString("RegistrationDate");
-                String timeOfReg = resultSet.getString("RegistrationTime");
+           PreparedStatement preparedStatement = connection.prepareStatement(sql);
+           preparedStatement.setString(1, "%" + searchValue + "%");
+           preparedStatement.setString(2, "%" + searchValue + "%");
+           preparedStatement.setString(3, searchType);
 
-                user.setUserId(userID);
-                user.setFirstName(firstName);
-                user.setLastName(lastName);
-                user.setDateOfBirth(LocalDate.parse(dataOfBirth));
-                user.setMobileNumber(mobileNumber);
-                user.setProfilePicture(profilePicture);
-                user.setCountry(country);
-                user.setCity(city);
-                user.setGender(gender);
-                user.setUserType(userType);
-                user.setRegistrationDate(LocalDate.parse(dataOfReg));
-                user.setRegistrationTime(LocalTime.parse(timeOfReg));
+           ResultSet resultSet = preparedStatement.executeQuery();
 
-            }
-            resultSet.close();
-            preparedStatement.close();
+           while (resultSet.next()) {
 
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
-            if (connection != null) try {
-                connection.close();
-            } catch (Exception ignore) {
-            }
-        }
-        return user;
-    }
-
+               String userId = resultSet.getString("UserID");
+               String firstName = resultSet.getString("FirstName");
+               String lastName = resultSet.getString("LastName");
+               String dataOfBirth = resultSet.getString("DOB");
+               String mobileNumber = resultSet.getString("MobileNum");
+               String profilePicture = resultSet.getString("ProfilePic");
+               String country = resultSet.getString("Country");
+               String city = resultSet.getString("City");
+               String gender = resultSet.getString("Gender");
+               String dataOfReg = resultSet.getString("RegistrationDate");
+               String timeOfReg = resultSet.getString("RegistrationTime");
+               System.out.println(userId);
+               AdminDatacheck user = new AdminDatacheck( userId,firstName, lastName,LocalDate.parse(dataOfBirth),mobileNumber,profilePicture,country,city,gender,LocalDate.parse(dataOfReg),LocalTime.parse(timeOfReg));
+               teacherArrayList.add(user);
+           }
+           resultSet.close();
+           preparedStatement.close();
+       } catch (SQLException e) {
+           e.printStackTrace();
+       } finally {
+           if (connection != null) try {
+               connection.close();
+           } catch (Exception ignore) {
+           }
+       }
+       return teacherArrayList;
+   }
 }
 
 
