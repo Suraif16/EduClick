@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 public class handleImageAndPostUploads {
@@ -187,6 +186,7 @@ public class handleImageAndPostUploads {
     public static NewsFeeds uploadNewsFeedsImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime ){
 
         String message = "";
+        String imageStatus = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
 
         try{
@@ -217,10 +217,20 @@ public class handleImageAndPostUploads {
                     imageFile = file;
 
                 }
+                if ( imageFile == null ){
+
+                    imageStatus = "false";
+
+                }else{
+
+                    imageStatus = "true";
+
+                }
 
             }
 
-            NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime );
+
+            NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime,imageStatus);
 
 
             return newsFeeds.insertNewsFeeds( imageFile , path );
