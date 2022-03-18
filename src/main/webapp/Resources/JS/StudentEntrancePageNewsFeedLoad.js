@@ -5,6 +5,7 @@ const sendServerDataStudent = function (){
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
+            console.log("KKKKKKKKKKKKK");
             completeLogin( this );
         }
 
@@ -21,6 +22,10 @@ const sendServerDataStudent = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         } else if (jsonLoginResponse.serverResponse === "Allowed") {
 
+            console.log("omjjjj");
+            console.log(jsonLoginResponse);
+            console.log("ammoo");
+
             let k = jsonLoginResponse.ImagePath.length;
             for(i=0 ; i <k; i++ ){
                 console.log(jsonLoginResponse.ImagePath[i]);
@@ -34,7 +39,7 @@ const sendServerDataStudent = function (){
 
                 let htmlString =
                     '        <div class="post">    ' +
-                    '              <div class="postCon tentContainer">' +
+                    '              <div class="postContentContainer">' +
                     '                   <div class="postProfileSection">' +
                     '                        <a href="TeacherProfile.html" class="postProfile">' +
                     '                           <div class="postProfileImage">' +
