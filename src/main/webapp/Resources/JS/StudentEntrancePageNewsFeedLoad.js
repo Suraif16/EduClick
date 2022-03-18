@@ -1,3 +1,4 @@
+/*
 
 const sendServerDataStudent = function (){
 
@@ -22,9 +23,6 @@ const sendServerDataStudent = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         } else if (jsonLoginResponse.serverResponse === "Allowed") {
 
-            console.log("omjjjj");
-            console.log(jsonLoginResponse);
-            console.log("ammoo");
 
             let k = jsonLoginResponse.ImagePath.length;
             for(i=0 ; i <k; i++ ){
@@ -106,3 +104,4 @@ const sendServerDataStudent = function (){
 
 
 
+*/
