@@ -349,4 +349,32 @@ public class EnrollDAO {
 
     }
 
+    public ArrayList<String> getStudentsListInClass(String classroomId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<String> studentList = new ArrayList<>();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT UserID FROM Enroll WHERE ClassroomID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, classroomId);
+
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                studentList.add(resultSet.getString("UserID"));
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
+        }
+        return studentList;
+    }
+
 }
