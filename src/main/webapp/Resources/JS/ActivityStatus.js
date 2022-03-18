@@ -3,10 +3,10 @@ const activityStatus = document.getElementById("activityStatus");
 const acceptFriendRequestActivityStatus = function (){
 
     activityStatus.innerHTML += '<div class="innerActivityStatus ">' +
-        '                <div class="requestsActivityStatusMessage">' +
+        '                <div class="ActivityStatusMessage">' +
         '                    Friend request has been accepted' +
         '                </div>' +
-        '                <div class="requestsActivityStatusIcon">' +
+        '                <div class="ActivityStatusIcon">' +
         '                    <img class="greenColor" src="../Resources/Icons/done_white_24dp.svg" alt="">' +
         '                </div>' +
         '            </div>'
@@ -20,10 +20,10 @@ const acceptFriendRequestActivityStatus = function (){
 const declineFriendRequestActivityStatus = function (){
 
     activityStatus.innerHTML += '<div class="innerActivityStatus ">' +
-        '                <div class="requestsActivityStatusMessage">' +
+        '                <div class="ActivityStatusMessage">' +
         '                    Friend request has been declined' +
         '                </div>' +
-        '                <div class="requestsActivityStatusIcon">' +
+        '                <div class="ActivityStatusIcon">' +
         '                    <img class="redColor" src="../Resources/Icons/close_white_24dp.svg" alt="">' +
         '                </div>' +
         '            </div>'
@@ -37,10 +37,10 @@ const declineFriendRequestActivityStatus = function (){
 const acceptEnrollRequestActivityStatus = function (){
 
     activityStatus.innerHTML += '<div class="innerActivityStatus ">' +
-        '                <div class="requestsActivityStatusMessage">' +
+        '                <div class="ActivityStatusMessage">' +
         '                    Enroll request has been accepted' +
         '                </div>' +
-        '                <div class="requestsActivityStatusIcon">' +
+        '                <div class="ActivityStatusIcon">' +
         '                    <img class="greenColor" src="../Resources/Icons/done_white_24dp.svg" alt="">' +
         '                </div>' +
         '            </div>'
@@ -54,10 +54,10 @@ const acceptEnrollRequestActivityStatus = function (){
 const declineEnrollRequestActivityStatus = function (){
 
     activityStatus.innerHTML += '<div class="innerActivityStatus ">' +
-        '                <div class="requestsActivityStatusMessage">' +
+        '                <div class="ActivityStatusMessage">' +
         '                    Enroll request has been declined' +
         '                </div>' +
-        '                <div class="requestsActivityStatusIcon">' +
+        '                <div class="ActivityStatusIcon">' +
         '                    <img class="redColor" src="../Resources/Icons/close_white_24dp.svg" alt="">' +
         '                </div>' +
         '            </div>'
@@ -66,6 +66,24 @@ const declineEnrollRequestActivityStatus = function (){
         activityStatus.removeChild(activityStatus.children[0]);
     }, 4000);
 
+}
+
+const classroomSuccessfullyCreated = function ( classroomName , subject , grade , yearOfExamination ){
+    
+    activityStatus.innerHTML += '<div class="innerActivityStatus">' +
+        '                <div class="ActivityStatusMessage">' +
+        '                    Class Created Successfully<br/>' +
+         classroomName + " " + subject + " " + grade + " " + yearOfExamination +
+        '                </div>' +
+        '                <div class="ActivityStatusIcon">' +
+        '                    <img class="greenColor" src="../Resources/Icons/done_white_24dp.svg" alt="">' +
+        '                </div>' +
+        '            </div>'
+
+    setTimeout(function() {
+        activityStatus.removeChild(activityStatus.children[0]);
+    }, 4000);
+    
 }
 
 /*
