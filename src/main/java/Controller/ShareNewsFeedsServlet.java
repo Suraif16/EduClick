@@ -5,6 +5,7 @@ import DAO.NewsFeedsImageDAO;
 import DAO.PostDAO;
 import DAO.ShareDAO;
 import Model.NewsFeeds;
+import Model.Notifications;
 import Model.Requests;
 import Model.User;
 import org.json.JSONArray;
@@ -23,6 +24,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ShareNewsFeedsServlet extends HttpServlet {
 
@@ -84,12 +88,25 @@ public class ShareNewsFeedsServlet extends HttpServlet {
         JSONArray b = postDAO.getPostReceiver(userId);
         System.out.println(b +"%%%%%%%%%%%%%%");
 
+        /*ArrayList<String> notifyList = new ArrayList<>();
+        notifyList.addAll(friendList);
+        notifyList.addAll(followersList);
+
+        String param = "Shared";
+        Notifications notifications = new Notifications();
+        notifications.insertEpostNotificationsFromTeacher(userId,notifyList,SharedPostID,param);
+
+        System.out.println("Newsfeed notifications runn8ng!!!!!");*/
+
         JSONArray sharedList = shareDAO.count(SharedPostID);
 
         jsonObject.put("NewsFeedsDetail" , NewsFeedsDetail);
         jsonObject.put("NewsFeedsImagePath", NewsFeedsImagePath);
         jsonObject.put("fullName",fullName);
         jsonObject.put("sharedList",sharedList);
+
+
+
 
         out.write( jsonObject.toString() );
         out.close();
