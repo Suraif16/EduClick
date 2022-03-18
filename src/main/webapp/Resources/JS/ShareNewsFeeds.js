@@ -1,4 +1,4 @@
-function shareNewsFeeds ( NewsFeedspostID){
+function shareNewsFeeds (NewsFeedspostID){
 
     console.log(NewsFeedspostID);
 
@@ -15,10 +15,10 @@ function shareNewsFeeds ( NewsFeedspostID){
 
         }
     }
+
     httpreq.open("POST", "/EduClick_war_exploded/teacher/shareNewsFeedsServlet", true);
-    httpreq.send();
- //   httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-  //  httpreq.send("id=" + id );
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send("id=" + id );
 
     function completeShare(httpreq){
 
