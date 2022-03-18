@@ -1,7 +1,6 @@
 package Model;
 
-import DAO.AdminDatacheckDAO;
-import DAO.UserDAO;
+import DAO.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -25,17 +24,33 @@ public class AdminDatacheck {
     private String userType;
 
 
-    public AdminDatacheck(String userId, String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber, String profilePicture, String country, String city, String gender, String userType) {
+    public AdminDatacheck(String userId, String firstName,String lastName,LocalDate dataOfBirth,String mobileNumber,String profilePicture,String country,String city,String gender,LocalDate dataOfReg,LocalTime timeOfReg) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = dataOfBirth;
         this.mobileNumber = mobileNumber;
         this.profilePicture = profilePicture;
         this.country = country;
         this.city = city;
         this.gender = gender;
-        this.userType = userType;
+        this.registrationDate = dataOfReg;
+        this.registrationTime = timeOfReg;
+
+    }
+
+    public AdminDatacheck(AdminDatacheck user ) {
+        this.userId = user.getUserId();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.dateOfBirth = user.getDateOfBirth();
+        this.mobileNumber = user.getMobileNumber();
+        this.profilePicture = user.getProfilePicture();
+        this.country = user.getCountry();
+        this.city = user.getCity();
+        this.gender = user.getGender();
+        this.registrationDate = user.getRegistrationDate();
+        this.registrationTime = user.getRegistrationTime();
 
     }
 
@@ -129,10 +144,35 @@ public class AdminDatacheck {
     public AdminDatacheck() {
 
     }
-    public AdminDatacheck getData(){
+   /* public AdminDatacheck getData(){
         AdminDatacheckDAO admindao = new AdminDatacheckDAO();
         return admindao.select(this);
-    }
+    }*/
 
+    public ArrayList<JSONObject> searchUser(String searchValue , String searchType ){
+        AdminDatacheckDAO adminDatacheckDAO =  new AdminDatacheckDAO();
+        ArrayList< AdminDatacheck > userList = new ArrayList<>();
+        userList =  adminDatacheckDAO.searchUser( searchValue , searchType );
+        ArrayList< JSONObject > teacherJsonList = new ArrayList<>();
+        if ( userList.size() > 0){
+                    for ( int i = 0 ; i < userList.size() ; i++ ){
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put( "userId" , userList.get(i).getUserId() );
+                        jsonObject.put( "firstName" , userList.get(i).getFirstName() );
+                        jsonObject.put( "lastName" , userList.get(i).getLastName());
+                        jsonObject.put( "dataOfBirth" , userList.get(i).getDateOfBirth() );
+                        jsonObject.put( "mobileNumber" , userList.get(i).getMobileNumber());
+                        jsonObject.put( "profilePicture" , userList.get(i).getProfilePicture());
+                        jsonObject.put( "country" , userList.get(i).getCountry());
+                        jsonObject.put( "city" , userList.get(i).getCity());
+                        jsonObject.put( "gender" , userList.get(i).getGender() );
+                        jsonObject.put( "dataOfReg" , userList.get(i).getRegistrationDate());
+                        jsonObject.put( "timeOfReg" , userList.get(i).getRegistrationTime());
+
+                        teacherJsonList.add( jsonObject );
+                    }
+            }
+        return  teacherJsonList;
+    }
 }
 
