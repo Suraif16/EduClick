@@ -1,0 +1,72 @@
+#activityStatus{
+
+    margin: 38% auto auto 7%;
+    position: fixed;
+    width: 25%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+
+.innerActivityStatus{
+
+    display: flex;
+    background-color: #4775c4;
+    flex-wrap: wrap;
+    padding-top: 0.5%;
+    margin: .5% 0 .5% 0;
+
+}
+
+.requestsActivityStatusMessage{
+
+    flex: 7;
+    flex-wrap: wrap;
+    margin: auto 1% auto 2%;
+    color: white;
+
+}
+
+.requestsActivityStatusIcon{
+
+    flex: 1;
+    flex-wrap: wrap;
+    margin: auto 1% auto 2%;
+    border-left: white solid 1px;
+    display: flex;
+
+}
+
+.requestsActivityStatusIcon > img {
+
+    margin: auto;
+    border-radius: 50%;
+
+}
+
+.greenColor{
+
+    background-color: #6BDD29;
+
+}
+
+.redColor{
+
+    background-color: crimson;
+
+}
+
+.hideElement{
+
+    animation:  5s forwards;
+
+}
+
+@keyframes hide {
+
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+
+}

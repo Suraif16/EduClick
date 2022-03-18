@@ -171,6 +171,7 @@ function EnrollRequestAccept( fromId , toId ){
                     while(new Date().getTime() < now + extraTime ){}*/
 
                     singleNotificaiton.style.display = "none";
+                    acceptEnrollRequestActivityStatus();
 
 
                 }else {
