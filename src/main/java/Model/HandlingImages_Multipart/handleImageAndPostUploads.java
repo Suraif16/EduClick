@@ -10,8 +10,11 @@ import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class handleImageAndPostUploads {
 
@@ -71,6 +74,24 @@ public class handleImageAndPostUploads {
                 imageStatus = "true";
 
             }
+
+            /*HttpSession session = request.getSession( false );
+
+            User user = (User) session.getAttribute("User");
+
+            String teacherId = user.getUserId();
+
+            String param = "Educational Post";
+
+            String epostId = "2";
+
+            Classroom classroom = new Classroom();
+            ArrayList<String> studentList = classroom.getStudentListInClass(classroomId);
+
+            Notifications notifications = new Notifications();
+            notifications.insertEpostNotificationsFromTeacher(teacherId,studentList,epostId,param);*/
+
+
             EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime , imageStatus );
             return educationalWork.insertEducationalWork( imageFile , path , classroomId );
 
@@ -134,8 +155,6 @@ public class handleImageAndPostUploads {
                         System.out.println("The Post ID not notification : "+epostId);
                         System.out.println("The teacher ID not notification : "+teacherID);
                         System.out.println("The stundet not notification : "+studentId);
-                        ;
-
 
                         Notifications notifications = new Notifications();
                         notifications.insertNotifications(studentId,teacherID,epostId,param);
@@ -219,6 +238,28 @@ public class handleImageAndPostUploads {
                 }
 
             }
+
+            /*HttpSession session = request.getSession( false );
+            User user = (User) session.getAttribute("User");
+
+            String userId = user.getUserId();
+            Requests requests = new Requests();
+
+            ArrayList<String> followersList = requests.getTeacherFollowers(userId);
+            ArrayList<String> friendList = requests.getTeacherFriends(userId);
+            ArrayList<String> notifyList = new ArrayList<>();
+            notifyList.addAll(friendList);
+            notifyList.addAll(followersList);
+
+            String param = "Posted";
+
+            String postId = "";
+
+            Notifications notifications = new Notifications();
+            notifications.insertEpostNotificationsFromTeacher(userId,notifyList,postId,param);*/
+
+
+
 
             NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime );
 
