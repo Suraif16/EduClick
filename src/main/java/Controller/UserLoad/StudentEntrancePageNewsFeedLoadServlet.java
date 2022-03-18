@@ -123,11 +123,11 @@ public class StudentEntrancePageNewsFeedLoadServlet extends HttpServlet {
 
         JSONArray NFIDList = post.getIDNewsFeeds(userId);
 
-        NewsFeeds newsFeeds = new NewsFeeds();
+        NewsFeeds newsFeedsOnee = new NewsFeeds();
 
-        JSONArray NFimagesPath = newsFeeds.getImagePath(newsFeedsIDList);
+        JSONArray NFimagesPath = newsFeedsOnee.getImagePath(newsFeedsIDList);
 
-        JSONArray NFDetails = newsFeeds.getNFDetails(newsFeedsIDList);
+        JSONArray NFDetails = newsFeedsOnee.getNFDetails(newsFeedsIDList);
 
         JSONObject jsonObject = new JSONObject();
 
