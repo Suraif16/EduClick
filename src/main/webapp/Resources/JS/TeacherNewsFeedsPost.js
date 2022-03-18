@@ -16,34 +16,32 @@ const showNewsFeedsPostForm = function (){
 
 }
 
-const postNewsFeeds = function (){
+const postNewsFeeds = function () {
 
-    let message = document.getElementById( "addNewsFeedFormTextArea" ).value;
-    let images = document.getElementById( "inputImage" ).files;
+    let message = document.getElementById("addNewsFeedFormTextArea").value;
+    let images = document.getElementById("inputImage").files;
 
-   // console.log( message , images );
+    // console.log( message , images );
 
-    if ( message === "" && images.length === 0 ){
+    if (message === "" && images.length === 0) {
 
         console.log("empty")
 
 
-    }
-
-    else{
+    } else {
 
         let isAllImageValid = false;
 
-        if ( images.length === 0 ){
+        if (images.length === 0) {
 
             isAllImageValid = true;
 
         }
 
-        for ( let i = 0; i < images.length; i++ ) {
+        for (let i = 0; i < images.length; i++) {
 
-            isAllImageValid = isImageAccepted( images[i].type )
-            if ( !isAllImageValid ){
+            isAllImageValid = isImageAccepted(images[i].type)
+            if (!isAllImageValid) {
                 console.log("break");
                 break;
 
@@ -51,38 +49,38 @@ const postNewsFeeds = function (){
 
         }
 
-        if ( isAllImageValid ){
+        if (isAllImageValid) {
 
             let httpreq = new XMLHttpRequest();
             let formData = new FormData();
-            httpreq.onreadystatechange = function(){
+            httpreq.onreadystatechange = function () {
 
-                if ( this.readyState === 4 && this.status === 200 ){
+                if (this.readyState === 4 && this.status === 200) {
 
-                    complete( this );
+                    complete(this);
 
 
                 }
 
             }
 
-            for ( let i = 0 ; i < images.length ; i++ ){
+            for (let i = 0; i < images.length; i++) {
 
-                let x = "photo"+[i];
-                formData.append( x , images[i] );
+                let x = "photo" + [i];
+                formData.append(x, images[i]);
                 console.log(i);
 
             }
 
-            formData.append( "message" , message );
+            formData.append("message", message);
 
-            httpreq.open("POST","/EduClick_war_exploded/teacher/NewsFeedsInsert" , true );
-            httpreq.send( formData );
+            httpreq.open("POST", "/EduClick_war_exploded/teacher/NewsFeedsInsert", true);
+            httpreq.send(formData);
 
 
-        }else{
+        } else {
 
-            console.log( "image type invalid" );
+            console.log("image type invalid");
 
 
         }
@@ -90,25 +88,29 @@ const postNewsFeeds = function (){
     }
 
 
+    const complete = function (httpreq) {
 
-
-    const complete = function ( httpreq ){
-
-        let jsonResponse = JSON.parse( httpreq.responseText );
+        let jsonResponse = JSON.parse(httpreq.responseText);
         showNewsFeedsPostForm();
 
-        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+        if (jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed") {
             window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonResponse.serverResponse === "Allowed") {
+        } else if (jsonResponse.serverResponse === "Allowed") {
 
-            console.log(jsonResponse.NewsFeedsPost);
+            console.log(jsonResponse.NewsFeedsPost.imageStatus);
+
+            console.log('nbvxhsgc');
 
             const postContents = document.getElementById("postContents");
             let now = new Date().getTime();
             let extraTime = 1000;
             while (new Date().getTime() < now + extraTime) {
             }
-            if(jsonResponse.NewsFeedsPost.imagePath !== 0){
+            if (jsonResponse.NewsFeedsPost.imageStatus === 'true') {
+
+                console.log("omgggggggg");
+                console.log(jsonResponse.NewsFeedsPost);
+
 
                 let innerPreviouseHTML = postContents.innerHTML;
                 postContents.innerHTML = '        <div class="post">    ' +
@@ -165,73 +167,72 @@ const postNewsFeeds = function (){
 
 
                 postContents.innerHTML += innerPreviouseHTML;
-            return postContents;
+
+
+            }else if(jsonResponse.NewsFeedsPost.imageStatus === 'false'){
+
+                console.log('ssssssssssssssssssssssssssssssssss');
+                let innerPreviouseHTML = postContents.innerHTML;
+                postContents.innerHTML = '        <div class="post">    ' +
+                    '              <div class="postContentContainer">' +
+                    '                   <div class="postProfileSection">' +
+                    '                        <a href="TeacherProfile.html" class="postProfile">' +
+                    '                           <div class="postProfileImage">' +
+                    '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
+                    '                           </div>' +
+                    '                           <div class="postProfileName" >' + jsonResponse.fullName +
+                    '</div>' + ' </a>' +
+                    '                           <div class="postTimeAndDate" >' +
+                    jsonResponse.Time + ' | ' +
+                    jsonResponse.NewsFeedsPost.date +
+                    '                            </div>' +
+                    '                    <div class="userOptions">' +
+                    '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">' +
+                    '                    </div>' +
+                    '                   </div>' +
+                    '               </div>' +
+                    '               <div class="postContentContainer">' +
+                    '                   <div class="postData">' +
+                    '                       <div class="postMessage">' + jsonResponse.NewsFeedsPost.caption +
+
+                    '                       </div>' +
+
+                    '                     </div>' +
+                    '                  </div>' +
+                    '                   <div class="postContentContainer">' +
+                    '                       <div class="postLikeShareButtons">' +
+                    '                           <div class="likeShareButtons" >' +
+                    '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                           </div>' +
+                    '                           <div class="countOfLikeShare" >' +
+                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
+                    '                                   Likes' +
+                    '                               </div >' +
+                    '                               <div class="emptySpaceLikeShare">' +
+                    '                               </div>' +
+                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
+                    '                                    Shares' +
+                    '                               </div>' +
+                    '                              </div>' +
+                    '                           <div class="likeShareButtons" >' +
+                    '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                           </div>' +
+                    '                        </div>' +
+                    '                       </div>' +
+                    '                   </div>'
+
+
+                postContents.innerHTML += innerPreviouseHTML;
+                return postContents;
+
+            }else if (jsonResponse.NewsFeedsPost.caption === '')
+            {
+                console.log("aaaaaaaaaaaa");
             }
-
-
-        }else if (jsonResponse.NewsFeedsPost.imagePath=== 0){
-
-            let innerPreviouseHTML = postContents.innerHTML;
-            postContents.innerHTML = '        <div class="post">    ' +
-                '              <div class="postContentContainer">' +
-                '                   <div class="postProfileSection">' +
-                '                        <a href="TeacherProfile.html" class="postProfile">' +
-                '                           <div class="postProfileImage">' +
-                '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
-                '                           </div>' +
-                '                           <div class="postProfileName" >' + jsonResponse.fullName +
-                '</div>' + ' </a>' +
-                '                           <div class="postTimeAndDate" >' +
-                jsonResponse.Time + ' | ' +
-                jsonResponse.NewsFeedsPost.date +
-                '                            </div>' +
-                '                    <div class="userOptions">' +
-                '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">' +
-                '                    </div>' +
-                '                   </div>' +
-                '               </div>' +
-                '               <div class="postContentContainer">' +
-                '                   <div class="postData">' +
-                '                       <div class="postMessage">' + jsonResponse.NewsFeedsPost.caption +
-
-                '                       </div>' +
-
-                '                     </div>' +
-                '                  </div>' +
-                '                   <div class="postContentContainer">' +
-                '                       <div class="postLikeShareButtons">' +
-                '                           <div class="likeShareButtons" >' +
-                '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
-                '                           </div>' +
-                '                           <div class="countOfLikeShare" >' +
-                '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
-                '                                   Likes' +
-                '                               </div >' +
-                '                               <div class="emptySpaceLikeShare">' +
-                '                               </div>' +
-                '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
-                '                                    Shares' +
-                '                               </div>' +
-                '                              </div>' +
-                '                           <div class="likeShareButtons" >' +
-                '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
-                '                           </div>' +
-                '                        </div>' +
-                '                       </div>' +
-                '                   </div>'
-
-
-            postContents.innerHTML += innerPreviouseHTML;
-            return postContents;
-
-
+        } else {
+        alert("something went wrong!!!");
         }
-        else{
-            alert("something went wrong!!!");
-        }
-
     }
-
 }
 
 const isImageAccepted = function ( type ){
