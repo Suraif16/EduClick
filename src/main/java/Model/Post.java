@@ -14,12 +14,12 @@ import java.util.ArrayList;
 
 public class Post {
 
-    private String postID;
-    private String postName;
-    private LocalDate date;
-    private LocalTime time;
-    private String caption;
-    public String userId;
+    protected String postID;
+    protected String postName;
+    protected LocalDate date;
+    protected LocalTime time;
+    protected String caption;
+    protected String userId;
 
     public Post() {
 
