@@ -31,12 +31,18 @@ public class AdminDatacheckServlet extends HttpServlet {
         System.out.println("Search value " +  searchType);
         JSONArray jsonArray = new JSONArray();
 
-        if ( searchType.equals( "Teacher" ) ){
+        /*if ( searchType.equals( "Teacher" ) ){
             AdminDatacheck user = new AdminDatacheck();
             //ArrayList< AdminDatacheck > userList = new ArrayList<>();
             List< JSONObject > userList =  user.searchUser( searchValue , searchType );
             jsonArray = new JSONArray( userList );
-        }
+        }*/
+
+            AdminDatacheck user = new AdminDatacheck();
+            //ArrayList< AdminDatacheck > userList = new ArrayList<>();
+            List< JSONObject > userList =  user.searchUser( searchValue , searchType );
+            jsonArray = new JSONArray( userList );
+
 
         jsonObject.put( "searchResult" , jsonArray );
         out.write(jsonObject.toString());
