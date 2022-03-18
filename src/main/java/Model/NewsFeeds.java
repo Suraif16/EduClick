@@ -15,14 +15,35 @@ public class NewsFeeds extends Post{
     private String imagePath;
     private int likeCount;
     private int likeShare;
-
-    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime) {
-        super( message , localDate , localTime );
-    }
+    private String imageStatus;
+    private LocalDate localDate;
+    private LocalTime localTime;
 
     public NewsFeeds() {
+      //  super(caption, localDate, localTime);
+        this.caption = caption;
+        this.localDate = localDate;
+        this.localTime = localTime;
+        this.imageStatus = imageStatus;
+    }
+
+    public String getImageStatus() {
+        return imageStatus;
+    }
+
+    public void setImageStatus(String imageStatus) {
+        this.imageStatus = imageStatus;
+    }
+
+    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime, String imageStatus) {
+        super( message , localDate , localTime );
+        this.imageStatus = this.imageStatus;
 
     }
+    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime) {
+
+    }
+
 
 
 
@@ -66,7 +87,7 @@ public class NewsFeeds extends Post{
     }
 
 
-    public NewsFeeds insertNewsFeeds(FileItem imageFile , String path ) throws Exception {
+    public NewsFeeds insertNewsFeeds(FileItem imageFile, String path) throws Exception {
 
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
         this.setPostID( newsFeedsDAO.insert( this) );
@@ -126,7 +147,7 @@ public class NewsFeeds extends Post{
 
     }
 
-    public JSONObject getNewsFeedsDetails(String SharedPostID){
+  /*  public JSONObject getNewsFeedsDetails(String SharedPostID){
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
         JSONObject NewsFeedsDetailList = newsFeedsDAO.getNewsFeedsDetails(SharedPostID);
         return NewsFeedsDetailList;
@@ -136,7 +157,7 @@ public class NewsFeeds extends Post{
         NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
         JSONObject NewsFeedsImage = newsFeedsImageDAO.getNewsFeedsImageDetails(SharedPostID);
         return NewsFeedsImage;
-    }
+    }*/
 
 
 
