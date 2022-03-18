@@ -58,16 +58,3 @@
     background-color: crimson;
 
 }
-
-.hideElement{
-
-    animation:  5s forwards;
-
-}
-
-@keyframes hide {
-
-    0% {opacity: 1;}
-    100% {opacity: 0;}
-
-}
