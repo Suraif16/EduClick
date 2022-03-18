@@ -1,5 +1,6 @@
 package Controller.Requests;
 
+import Model.Notifications;
 import Model.Requests;
 import Model.User;
 
@@ -17,6 +18,11 @@ public class AddFriendRequestServlet extends HttpServlet {
         User user = ( User ) session.getAttribute( "User" );
         String fromID = user.getUserId();
         String toID = request.getParameter( "toID" );
+
+        String param = "Friend Request";
+
+        Notifications notifications = new Notifications();
+        notifications.insertNotifications(fromID,toID,"0",param);
 
         Requests requests = new Requests( fromID , toID );
         requests.addRequest();
