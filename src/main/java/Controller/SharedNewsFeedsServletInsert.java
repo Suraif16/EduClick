@@ -18,7 +18,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-public class ShareNewsFeedsServlet extends HttpServlet {
+//insert share table
+
+public class SharedNewsFeedsServletInsert extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException , ServletException {
 
@@ -43,22 +45,22 @@ public class ShareNewsFeedsServlet extends HttpServlet {
         System.out.println("Shared NewsfeedID = ^^^^^ " + SharedPostID);
 
         ShareDAO shareDAO = new ShareDAO();
-        JSONArray jsonArray = shareDAO.getPostReceiver(SharedPostID);
-        System.out.println(jsonArray);
+      //  JSONArray jsonArray = shareDAO.getPostReceiver(SharedPostID);
+       // System.out.println(jsonArray);
 
         LocalDate date = LocalDate.now();
         System.out.println(date);
 
         LocalTime time = LocalTime.ofSecondOfDay(10000);
 
-        NewsFeeds newsFeeds = new NewsFeeds(message, localDate, localTime, imageStatus);
+//        NewsFeeds newsFeeds = new NewsFeeds(message, localDate, localTime, imageStatus);
         Requests requests = new Requests();
 
-        JSONObject NewsFeedsDetail = newsFeeds.getNewsFeedsDetails(SharedPostID);
-        System.out.println(NewsFeedsDetail);
+//        JSONObject NewsFeedsDetail = newsFeeds.getNewsFeedsDetails(SharedPostID);
+//        System.out.println(NewsFeedsDetail);
 
-        JSONObject NewsFeedsImagePath =  newsFeeds.getPathOfImage(SharedPostID);
-        System.out.println(NewsFeedsImagePath);
+       /* JSONObject NewsFeedsImagePath =  newsFeeds.getPathOfImage(SharedPostID);
+        System.out.println(NewsFeedsImagePath);*/
 
         ArrayList<String> followersList = requests.getTeacherFollowers(userId);
       //  System.out.println(" followers  : "+followersList);
@@ -74,12 +76,11 @@ public class ShareNewsFeedsServlet extends HttpServlet {
             shareDAO.insert(time, date, userId, friendList.get(i), SharedPostID);
         }
 
-        JSONArray sharedList = shareDAO.count(SharedPostID);
+      /*  JSONArray sharedList = shareDAO.count(SharedPostID);
 
         jsonObject.put("NewsFeedsDetail" , NewsFeedsDetail);
-        jsonObject.put("NewsFeedsImagePath", NewsFeedsImagePath);
-        jsonObject.put("fullName",fullName);
-        jsonObject.put("sharedList",sharedList);
+
+        jsonObject.put("sharedList",sharedList);*/
 
 
         out.write( jsonObject.toString() );
