@@ -69,7 +69,7 @@ function createClassroom(){
 
     const createClassroomHtml = function ( classroomId ){
 
-
+        classroomSuccessfullyCreated( classroomName.value , subject.value , gradeClass.value , yearOfExamination.value );
         classroomsListLinks.innerHTML += '<div class="classroomsListLinksItems">' +
             '' +
             '                        <a href="/EduClick_war_exploded/SaveClassroomId?id=' + classroomId + '"  class="classRooms">' +
