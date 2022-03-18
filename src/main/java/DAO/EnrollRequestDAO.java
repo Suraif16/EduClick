@@ -43,7 +43,7 @@ public class EnrollRequestDAO {
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            String sql = "DELETE FROM Enroll_Request WHERE From_UserID = ? AND To_ClassroomID = ? ";
+            String sql =  "DELETE FROM Enroll_Request WHERE From_UserID = ? AND To_ClassroomID = ? ";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
 
             preparedStatement.setString(1,userId);
