@@ -2,9 +2,7 @@ package Controller.Requests;
 
 import DAO.EnrollDAO;
 import DAO.EnrollRequestDAO;
-import Model.Requests;
-import Model.Student;
-import Model.User;
+import Model.*;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
@@ -32,6 +30,13 @@ public class EnrollRequestServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         System.out.println(action);
+
+        Classroom classroom = new Classroom();
+        String teacherId = classroom.getClassroomOwnerId(ClassroomId);
+        String param = "Classroom Request";
+
+        Notifications notifications = new Notifications();
+        notifications.insertNotifications(user.getUserId(),teacherId,"0",param);
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
