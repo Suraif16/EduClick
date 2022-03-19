@@ -59,6 +59,7 @@ const sendD = function () {
             '</div>';*/
 
 
+        let flag = 0;
 
         classroomsListLinksSelect.innerHTML +=
             '            <div class="rightPanelSingleStudent" >' +
@@ -77,11 +78,12 @@ const sendD = function () {
             '                <div>'
 
 
-        if(enrolledClassroomList.length == 0){
+        if(enrolledClassroomList.length == 0 ){
             classroomsListLinksSelect.innerHTML +=
                 '                    <input style="display:block;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
                 '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
                 '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
+            flag =1;
         }else{
             for(let i = 0;i<enrolledClassroomList.length;i++){
                 if(enrolledClassroomList[i]==classroomId){
@@ -89,8 +91,8 @@ const sendD = function () {
                         '                <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
                         '                    <input style="display:block;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
                         '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
-
-                    continue;
+                    flag =1;
+                    break;
                 }
 
             }
@@ -98,11 +100,16 @@ const sendD = function () {
         }
 
         if(RequestedClassroomList.length == 0){
-            classroomsListLinksSelect.innerHTML +=
+            if(flag==1){
+                classroomsListLinksSelect.innerHTML +=
                 '                    <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
                 '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
                 '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
-
+            }else
+            classroomsListLinksSelect.innerHTML +=
+                '                    <input style="display:block;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
 
         }else{
             for(let i = 0;i<RequestedClassroomList.length;i++){
@@ -112,8 +119,23 @@ const sendD = function () {
                         '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
                         '                    <input style="display:block;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
 
-                    continue;
+                    flag =1;
+                    break;
                 }
+
+            }
+            if(enrolledClassroomList.length == 0 && RequestedClassroomList.length==0){
+                classroomsListLinksSelect.innerHTML +=
+                    '                    <input style="display:block;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                    '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                    '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
+
+            }
+            if(enrolledClassroomList.length ==0 && RequestedClassroomList.length !=0){
+                classroomsListLinksSelect.innerHTML +=
+                    '                    <input style="display:block;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                    '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                    '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
 
             }
         }
@@ -151,6 +173,7 @@ const sendD = function () {
 
 
         classroomsListLinksSelect.innerHTML+='  </div>';
+
 
     }
 }
