@@ -1,9 +1,8 @@
-let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hidden*/
+let addClassroomFormStatus = true; /*if it is false the addClassroomForm is hidden*/
 let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
 
 const addClassroomForm = document.getElementById("addNewsFeedForm");
 const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
-const submitButton = document.getElementById("postButton");
 
 
 function showAddClassroomFrom(){
@@ -30,7 +29,7 @@ function showClassroomFormRowErrorMessage( message ){
 
 
 const sendServerData = function (){
-    let textMsg = document.getElementById("classroomName").value;
+    let textMsg = document.getElementById("addNewsFeedFormTextArea").value;
 
 
     let httpreq = new XMLHttpRequest();
@@ -84,6 +83,7 @@ const sendServerData = function (){
     }
 }
 
-submitButton.onclick = function (){
+const postQuestionsMessages = function (){
     sendServerData();
+    showAddClassroomFrom();
 }
