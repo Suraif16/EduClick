@@ -28,7 +28,7 @@ function shareNewsFeeds (NewsFeedspostID){
             window.location.replace("/EduClick_war_exploded/Login.html");
         } else if (jsonLoginResponse.serverResponse === "Allowed") {
 
-            console.log("yep yep ");
+           // console.log("yep yep ");
             }
 
         else
