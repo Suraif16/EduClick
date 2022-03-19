@@ -3,7 +3,7 @@ function shareNewsFeeds (NewsFeedspostID){
     console.log(NewsFeedspostID);
 
     let id = NewsFeedspostID;
-    console.log(id+" = sharedID ****");
+    console.log(id+" = sharedID");
 
     let httpreq = new XMLHttpRequest();
 
