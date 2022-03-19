@@ -78,7 +78,8 @@ import java.util.ArrayList;
 
 
 
-*/
+*//*
+
 package Controller.UserLoad;
 
 import Model.NewsFeeds;
@@ -151,4 +152,4 @@ public class TeacherEntrancePageNewsFeedsLoadServlet extends HttpServlet {
     }
 
 
-}
+}*/
