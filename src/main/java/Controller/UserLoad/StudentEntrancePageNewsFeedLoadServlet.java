@@ -74,7 +74,8 @@ public class StudentEntrancePageNewsFeedLoadServlet extends HttpServlet {
 
 
 }
-*/
+*//*
+
 package Controller.UserLoad;
 
 import Model.NewsFeeds;
@@ -127,7 +128,7 @@ public class StudentEntrancePageNewsFeedLoadServlet extends HttpServlet {
 
         JSONArray NFimagesPath = newsFeedsOnee.getImagePath(newsFeedsIDList);
 
-        JSONArray NFDetails = newsFeedsOnee.getNFDetails(newsFeedsIDList);
+        JSONArray NFDetails = newsFeedsOnee.getNFDetails(SharedPostID);
 
         JSONObject jsonObject = new JSONObject();
 
@@ -149,4 +150,4 @@ public class StudentEntrancePageNewsFeedLoadServlet extends HttpServlet {
 
 
 
-}
+}*/
