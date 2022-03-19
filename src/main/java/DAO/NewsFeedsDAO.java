@@ -11,21 +11,21 @@ import java.util.ArrayList;
 
 public class NewsFeedsDAO {
 
-    public JSONArray getNFDetails(ArrayList<String> newsFeedsIDList) {
+    public JSONArray getNFDetails(String SharedPostID) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
+       // ArrayList<User> NewsFeedsDetails = new ArrayList<>();
         JSONArray jsonArray = new JSONArray();
 
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            for (int i = 0; i < newsFeedsIDList.size(); i++) {
+
                 String sql = "SELECT Date, Time, Caption FROM NewsFeeds WHERE NFPostID = ?";
 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, newsFeedsIDList.get(i));
+                preparedStatement.setString(1,SharedPostID);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
@@ -41,7 +41,7 @@ public class NewsFeedsDAO {
                     jsonArray.put(jsonObject);
 
                 }
-            }
+
 
 
         } catch (SQLException e) {
