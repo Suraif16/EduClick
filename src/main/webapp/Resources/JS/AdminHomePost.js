@@ -43,7 +43,7 @@ const sendServerData = function (){
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("textMsg=" + textMsg );
 
-    function completeLogin( httpreq ){
+    /*function completeLogin( httpreq ){
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
 
@@ -78,9 +78,7 @@ const sendServerData = function (){
         }else{
             alert("something went wrong!!!");
         }
-
-
-    }
+    }*/
 }
 
 const postQuestionsMessages = function (){
