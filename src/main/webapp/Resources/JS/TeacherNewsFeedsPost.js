@@ -238,7 +238,7 @@ const postNewsFeeds = function () {
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
-                   
+
 
                     '                       <div class="postPicture">' +
                     '                           <div class="postPictureImageContainer">' +
