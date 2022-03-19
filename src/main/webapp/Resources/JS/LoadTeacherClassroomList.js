@@ -28,17 +28,20 @@ const sendD = function () {
         let jsonResponse = JSON.parse(httpreq.responseText);
         let count = jsonResponse.classroomList.length - 1;
 
+        console.log(jsonResponse)
+
+
         for (i = 0; i <= count; i++) {
 
             classroomHtmlOutput(jsonResponse.classroomList[i].classroomID,
                 jsonResponse.classroomList[i].classroomName, jsonResponse.classroomList[i].subject,
-                jsonResponse.classroomList[i].grade, jsonResponse.classroomList[i].year);
+                jsonResponse.classroomList[i].grade, jsonResponse.classroomList[i].year,jsonResponse.EnrolledClassroomList,jsonResponse.RequestedClassroomList);
 
         }
 
     }
 
-    function classroomHtmlOutput( classroomId , classroomName , subject , gradeClass , yearOfExamination ){
+    function classroomHtmlOutput( classroomId , classroomName , subject , gradeClass , yearOfExamination,enrolledClassroomList,RequestedClassroomList ){
         console.log(classroomId)
         console.log(classroomName)
         console.log(subject)
@@ -71,10 +74,83 @@ const sendD = function () {
             '' +
             '                </div>' +
             '' +
-            '                <div>' +
-            '                    <input style="display:block;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+            '                <div>'
+
+
+        if(enrolledClassroomList.length == 0){
+            classroomsListLinksSelect.innerHTML +=
+                '                    <input style="display:block;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
+        }else{
+            for(let i = 0;i<enrolledClassroomList.length;i++){
+                if(enrolledClassroomList[i]==classroomId){
+                    classroomsListLinksSelect.innerHTML +=
+                        '                <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                        '                    <input style="display:block;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                        '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
+
+                    continue;
+                }
+
+            }
+
+        }
+
+        if(RequestedClassroomList.length == 0){
+            classroomsListLinksSelect.innerHTML +=
+                '                    <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
+
+
+        }else{
+            for(let i = 0;i<RequestedClassroomList.length;i++){
+                if(RequestedClassroomList[i]==classroomId){
+                    classroomsListLinksSelect.innerHTML +=
+                        '                <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                        '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                        '                    <input style="display:block;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
+
+                    continue;
+                }
+
+            }
+        }
+
+
+            /*for(i=0;i<=enrolledClassroomList.length;i++){
+                if(enrolledClassroomList[i]==classroomId){
+                    classroomsListLinksSelect.innerHTML+=
+                    '                    <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                    '                    <input style="display:block;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                    '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
+
+                }
+
+            }
+
+        for(i=0;i<=RequestedClassroomList.length;i++){
+            if(enrolledClassroomList[i]==classroomId){
+                classroomsListLinksSelect.innerHTML+=
+                    '                    <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
+                    '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
+                    '                    <input style="display:block;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
+
+            }
+
+        }*/
+
+
+
+
+       /*     '                    <input style="display:block;" id="enable'+ classroomId +'" type="button" value="Enroll request" onclick="enableDisableStatus('+classroomId+')">' +
             '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Cancel" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
-            '                </div>';
+            '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Requested" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +*/
+
+
+
+        classroomsListLinksSelect.innerHTML+='  </div>';
 
     }
 }
