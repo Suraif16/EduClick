@@ -7,6 +7,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -74,9 +75,9 @@ public class NewsFeeds extends Post{
 
 
 
-    public JSONArray getNFDetails(ArrayList<String> newsFeedsIDList){
+    public JSONArray getNFDetails(String SharedPostID){
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
-        JSONArray NFDetailList = newsFeedsDAO.getNFDetails(newsFeedsIDList);
+        JSONArray NFDetailList = newsFeedsDAO.getNFDetails(SharedPostID);
         return NFDetailList;
     }
 
@@ -158,6 +159,17 @@ public class NewsFeeds extends Post{
         return NewsFeedsImage;
     }*/
 
+    public JSONArray getNewsFeedsReceiver(String SharedPostID) throws SQLException {
+        ShareDAO shareDAO = new ShareDAO();
+        JSONArray NFReceiversList = shareDAO.getNewsFeedsReceiver(SharedPostID);
+        return NFReceiversList;
+    }
+
+    public JSONObject getNewsFeedsImageDetails(String SharedPostID) {
+        NewsFeedsImageDAO newsFeedImageDAO = new NewsFeedsImageDAO();
+        JSONObject NFImagePath = newsFeedImageDAO.getNewsFeedsImageDetails(SharedPostID);
+        return NFImagePath;
+    }
 
 
 
