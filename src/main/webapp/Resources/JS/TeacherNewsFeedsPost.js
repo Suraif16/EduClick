@@ -193,7 +193,7 @@ const postNewsFeeds = function () {
                     '                   <div class="postContentContainer">' +
                     '                       <div class="postLikeShareButtons">' +
                     '                           <div class="likeShareButtons" >' +
-                    '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                               <input type="button" value="Like" class="like" onclick="leNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
                     '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
