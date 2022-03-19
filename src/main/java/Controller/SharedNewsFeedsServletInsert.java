@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class SharedNewsFeedsServletInsert extends HttpServlet {
         User user = (User) session.getAttribute("User");
 
         String userId = user.getUserId();
-       // System.out.println("user id = " + userId);
+        System.out.println("user id = ***** " + userId);
 
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
@@ -66,6 +67,32 @@ public class SharedNewsFeedsServletInsert extends HttpServlet {
         }
         for(int i=0; i < friendList.size(); i++){
             shareDAO.insert(time, date, userId, friendList.get(i), SharedPostID);
+        }
+        NewsFeeds newsFeeds = new NewsFeeds();
+
+//*****************************
+
+
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            jsonArray =newsFeeds.getNewsFeedsReceiver(SharedPostID);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        System.out.println(jsonArray+"huuuu");
+
+        jsonObject = newsFeeds.getNewsFeedsImageDetails(SharedPostID);
+        System.out.println(jsonObject + "imageeeeeeeeeeee");
+
+        jsonArray = newsFeeds.getNFDetails(SharedPostID);
+        System.out.println(jsonArray + "awoooooooooo");
+
+        for(int i =0; i<jsonArray.length(); i++){
+            if(jsonArray.get(i) == userId){
+                System.out.println("yeeeeeeeeeee");
+            }
         }
 
 
