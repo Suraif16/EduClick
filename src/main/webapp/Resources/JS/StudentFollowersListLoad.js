@@ -1,25 +1,17 @@
-let refresh1 = 0;
-/*if(refresh1==1){
-    window.location.reload();
 
-}*/
+
 const loadFollowersList = function (){
-    let btn = document.getElementById("followers");
-    btn.style.backgroundColor = "#157DEC";
+    /*let btn = document.getElementById("followers");
+    btn.style.backgroundColor = "#157DEC";*/
     let httpreq = new XMLHttpRequest();
+    const postContents = document.getElementById("postContents");
+    postContents.innerHTML = "";
 
     httpreq.onreadystatechange = function () {
 
         if (this.readyState === 4 && this.status === 200) {
             console.log("I am running")
-            if(refresh1==0 && refresh==0){
                 completeLoad(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-            }
-            else{
-                window.location.reload();
-            }
-        refresh1 = 1;
-
 
         }
     }
@@ -53,6 +45,7 @@ const loadFollowersList = function (){
         postContents.innerHTML = "";
         const searchContent = document.getElementById( "rightPanelStudentList" );
         const rightPanel = document.getElementById("rightPanel");
+        rightPanel.innerHTML="";
         rightPanel.style.display = "flex";
         rightPanel.style.width = "400%";
         rightPanel.style.marginLeft = "215%";
