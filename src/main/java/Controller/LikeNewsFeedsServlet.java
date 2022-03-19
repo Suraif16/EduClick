@@ -31,7 +31,7 @@ public class LikeNewsFeedsServlet extends HttpServlet {
       //  System.out.println("user id = " + userId);
 
         String likedPostID = request.getParameter("id");
-     //   System.out.println("Liked NewsfeedID =" + likedPostID);
+      //  System.out.println("Liked NewsfeedID =" + likedPostID);
 
         LikesDAO likesDAO = new LikesDAO();
         likesDAO.insert(userId , likedPostID);
