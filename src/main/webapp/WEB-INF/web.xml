@@ -800,7 +800,7 @@
 
     <!-- end of student MCQ result load on correct answers post servlet-->
 
-    <!-- beginning of share newsfeeds servlet-->
+    <!-- beginning of share newsfeeds servlet(shared news feeds details insert)-->
 
     <servlet>
         <servlet-name>ShareNewsFeedsServlet</servlet-name>
