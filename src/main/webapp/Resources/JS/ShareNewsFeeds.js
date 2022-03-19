@@ -11,7 +11,7 @@ function shareNewsFeeds (NewsFeedspostID){
 
         if (this.readyState === 4 && this.status === 200) {
 
-            completeShare(this);
+          //  completeShare(this);
 
         }
     }
