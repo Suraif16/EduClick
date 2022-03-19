@@ -39,8 +39,6 @@ public class NewsFeeds extends Post{
     public NewsFeeds(String message, LocalDate localDate, LocalTime localTime, String imageStatus) {
         super( message , localDate , localTime );
         this.imageStatus = imageStatus;
-       // this.imageStatus = this.imageStatus;
-
     }
     public NewsFeeds(String message, LocalDate localDate, LocalTime localTime) {
 
