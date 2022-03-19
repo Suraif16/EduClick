@@ -88,11 +88,8 @@ public class ShareDAO {
         return jsonArray;
     }
 
-    //**********************
 
-
-    public JSONArray getPostReceiver(String SharedPostID) throws SQLException {
-        System.out.println(SharedPostID+"ll");
+    public JSONArray getNewsFeedsReceiver(String SharedPostID) throws SQLException {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         JSONArray jsonArray = new JSONArray();
@@ -106,12 +103,10 @@ public class ShareDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, SharedPostID);
             ResultSet resultSet = preparedStatement.executeQuery();
-            System.out.println(resultSet+"OOOOOOOOO");
+
 
             while (resultSet.next()) {
                 String ReceiversUserID = resultSet.getString("ReceiveUserID");
-                System.out.println(ReceiversUserID+"YYY");
-
                 JSONObject jsonObject = new JSONObject();
 
                 jsonObject.put("ReceiveUserID", ReceiversUserID);
@@ -121,15 +116,13 @@ public class ShareDAO {
 
             }
 
-
-            System.out.println(jsonArray+"/?????????????");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             if (connection != null)connection.close();
 
         }
-        System.out.println(jsonArray+"  hiiiiiiiiiiiiiiiii");
+
         return jsonArray;
     }
 
