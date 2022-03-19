@@ -238,10 +238,8 @@ const postNewsFeeds = function () {
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
-                    '               <div class="postContentContainer">' +
-                    '                   <div class="postData">' +
+                   
 
-                    '                       </div>' +
                     '                       <div class="postPicture">' +
                     '                           <div class="postPictureImageContainer">' +
                     '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.NewsFeedsPost.imagePath + '.jpeg">' +
