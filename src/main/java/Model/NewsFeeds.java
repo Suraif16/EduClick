@@ -148,17 +148,6 @@ public class NewsFeeds extends Post{
 
     }
 
-  /*  public JSONObject getNewsFeedsDetails(String SharedPostID){
-        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
-        JSONObject NewsFeedsDetailList = newsFeedsDAO.getNewsFeedsDetails(SharedPostID);
-        return NewsFeedsDetailList;
-    }
-    public JSONObject getPathOfImage(String SharedPostID){
-        NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
-        JSONObject NewsFeedsImage = newsFeedsImageDAO.getNewsFeedsImageDetails(SharedPostID);
-        return NewsFeedsImage;
-    }*/
-
     public JSONArray getNewsFeedsReceiver(String SharedPostID) throws SQLException {
         ShareDAO shareDAO = new ShareDAO();
         JSONArray NFReceiversList = shareDAO.getNewsFeedsReceiver(SharedPostID);
