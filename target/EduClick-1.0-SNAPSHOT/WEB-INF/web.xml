@@ -276,17 +276,33 @@
     <!-- beginning of DisplayRequestServlet-->
         
     <servlet>
-        <servlet-name>DisplayRequest</servlet-name>
+        <servlet-name>DisplayRequestStudent</servlet-name>
         <servlet-class>Controller.Requests.DisplayRequestServlet</servlet-class>
         <load-on-startup>12</load-on-startup>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>DisplayRequest</servlet-name>
-        <url-pattern>/teacher/displayRequest</url-pattern>
+        <servlet-name>DisplayRequestStudent</servlet-name>
+        <url-pattern>/student/displayRequest</url-pattern>
     </servlet-mapping>
     
     <!-- end of DisplayRequestServlet-->
+
+    <!-- beginning of DisplayRequestServlet-->
+
+    <servlet>
+        <servlet-name>DisplayRequest</servlet-name>
+        <servlet-class>Controller.Requests.DisplayRequestServlet</servlet-class>
+        <load-on-startup>12</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DisplayRequest</servlet-name>
+        <url-pattern>/teacher/displayRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of DisplayRequestServlet-->
+
 
     <!-- beginning of incorrectPassword -->
     <servlet>
