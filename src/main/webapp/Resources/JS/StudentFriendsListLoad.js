@@ -43,13 +43,14 @@ const loadFriendsList = function (){
         btn.style.backgroundColor = "#157DEC";*/
         const postContents = document.getElementById("postContents");
         postContents.innerHTML = "";
+        postContents.style.boxShadow = "";
         const searchContent = document.getElementById( "rightPanelStudentList" );
         const rightPanel = document.getElementById("rightPanel");
 
         rightPanel.innerHTML="";
         rightPanel.style.display = "flex";
-        rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "220%";
+        rightPanel.style.width = "435%";
+        rightPanel.style.marginLeft = "230%";
 
 
         /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
