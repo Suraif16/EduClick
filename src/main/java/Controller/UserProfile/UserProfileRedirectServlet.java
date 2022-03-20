@@ -16,7 +16,6 @@ public class UserProfileRedirectServlet extends HttpServlet {
         HttpSession session = request.getSession( false );
         String userId = request.getParameter("userId");
         User profileUser = new User( userId );
-        session.setAttribute( "profileUserId" , userId );
         profileUser.getUser();
 
         if( session.getAttribute("User") == null ){
