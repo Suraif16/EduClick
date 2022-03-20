@@ -248,7 +248,17 @@ public class EnrollRequestDAO {
             preparedStatement.setString( 1 , fromId );
             preparedStatement.setString( 2 , toId );
 
-            preparedStatement.executeUpdate();
+            int x = preparedStatement.executeUpdate();
+
+            if ( x == 0 ){
+
+                connection.rollback();
+
+            }else{
+
+                connection.commit();
+
+            }
 
         } catch (SQLException throwables) {
 

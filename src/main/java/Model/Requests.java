@@ -195,6 +195,12 @@ public class Requests {
 
     }
 
+    public void acceptFriendRequest(){
+
+        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+        friendRequestDAO.acceptFriendRequest( this.fromId , this.toId );
+
+    }
 
 }
 

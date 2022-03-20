@@ -499,6 +499,20 @@
 
     <!-- end of cancel friend request -->
 
+    <!-- beginning of accept friend request -->
+
+    <servlet>
+        <servlet-name>acceptEnrollRequest</servlet-name>
+        <servlet-class>Controller.Requests.AcceptFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>acceptEnrollRequest</servlet-name>
+        <url-pattern>/user/AcceptFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of accept friend request -->
+
     <!-- beginning of cancel enroll request -->
 
     <servlet>
