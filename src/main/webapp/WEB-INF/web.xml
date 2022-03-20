@@ -485,7 +485,7 @@
 
     <!-- end of unfollow teachers -->
 
-    <!-- beginning of unfollow teachers -->
+    <!-- beginning of cancel friend request -->
 
     <servlet>
         <servlet-name>cancelFriendRequest</servlet-name>
@@ -494,10 +494,10 @@
 
     <servlet-mapping>
         <servlet-name>cancelFriendRequest</servlet-name>
-        <url-pattern>/cancelFriendRequest</url-pattern>
+        <url-pattern>/user/cancelFriendRequest</url-pattern>
     </servlet-mapping>
 
-    <!-- end of unfollow teachers -->
+    <!-- end of cancel friend request -->
 
     <!-- beginning of teacher follow list load -->
 
