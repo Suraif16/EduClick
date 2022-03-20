@@ -323,7 +323,7 @@ public class EducationalPostDAO {
 
             if ( minPostId.equals( "-1" ) ){
 
-                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 2 ";
+                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 5 ";
                 preparedStatement = connection.prepareStatement( sql );
                 preparedStatement.setString( 1 , classroomId );
 

@@ -40,7 +40,7 @@ header > div#headerButtons {
 
 }
 
-header > div#headerButtons > input#classroomListHideButton {
+header > div#headerButtons > div#classroomListHideButton {
 
 
     margin: 0.2%  auto 0.2% auto;
@@ -287,12 +287,6 @@ div#content > div#classroomsList {
 
 }
 
-input{
-    /*all input values will have these properties*/
-    border-radius: 5px;
-    border: #6a6a6a solid 1px;
-
-}
 
 #postButton{
 
@@ -705,8 +699,6 @@ div#content > div#addClassroomForm > div.classroomFormRow{
     margin: 1%;
     display: flex; /*becomes a container for the input elements*/
     flex-direction: row;
-    /*padding: 1% 1%;*/
-    color: black;
     flex-wrap: wrap;
 
 
@@ -714,6 +706,11 @@ div#content > div#addClassroomForm > div.classroomFormRow{
 }
 
 div#content > div#addClassroomForm > div.classroomFormRow > input{
+
+    flex: 1;
+
+}
+div#content > div#addClassroomForm > div.classroomFormRow > div{
 
     flex: 1;
 
@@ -789,6 +786,10 @@ div#content > div#addNewsFeedForm > div#addNewsFeedFormInputs > div.addNewsFeedF
 
     flex: 1;
     display: flex;
+    color: white;
+    vertical-align: center;
+    text-align: center;
+    margin: auto;
 
 }
 
@@ -1143,6 +1144,23 @@ input[type="file"]{
     }
 
 }
+
+@media(max-width: 385px){
+
+    div#content > div#classroomsList {
+
+        margin: 30% auto 0 0;
+
+    }
+
+    div#content > div#rightPanel {
+
+        margin: 30% auto auto 28%;
+
+    }
+
+}
+
 
 @media(max-width: 340px) {
 

@@ -122,7 +122,7 @@ const traverseEPostListToGetAnswers = function (){
 
 }
 
-setInterval( traverseEPostListToGetAnswers , 4000 );
+setInterval( traverseEPostListToGetAnswers , 2500 );
 
 function showMcqResult( id ){
 
