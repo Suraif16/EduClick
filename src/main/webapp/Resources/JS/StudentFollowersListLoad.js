@@ -47,8 +47,8 @@ const loadFollowersList = function (){
         const rightPanel = document.getElementById("rightPanel");
         rightPanel.innerHTML="";
         rightPanel.style.display = "flex";
-        rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "215%";
+        rightPanel.style.width = "380%";
+        rightPanel.style.marginLeft = "209%";
 
 
         /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
