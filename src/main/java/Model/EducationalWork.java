@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EducationalWork extends Post{
@@ -70,10 +71,16 @@ public class EducationalWork extends Post{
 
     }
 
-    public void insertMCQEducationalWork( String classroomId , List< Mcq > mcq ){
+    public void insertMCQEducationalWork( String classroomId , List< Mcq > mcq , String userId ){
 
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
-        educationalPostDAO.insertMCQ( this , "MCQ" , classroomId , mcq );
+        String epostId = educationalPostDAO.insertMCQ( this , "MCQ" , classroomId , mcq );
+
+        Classroom classroom = new Classroom();
+        ArrayList<String> studentList = classroom.getStudentListInClass( classroomId );
+
+        Notifications notifications = new Notifications();
+        notifications.insertEpostNotificationsFromTeacher( userId , studentList , epostId , "Educational Post" );
 
     }
 

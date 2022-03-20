@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class handleImageAndPostUploads {
 
-    public static EducationalWork uploadEPostImages(HttpServletRequest request, String path, LocalDate localDate, LocalTime localTime ) {
+    public static EducationalWork uploadEPostImages(HttpServletRequest request, String path, LocalDate localDate, LocalTime localTime , String userId ) {
 
         String type = "";
         String message = "";
@@ -75,25 +75,17 @@ public class handleImageAndPostUploads {
 
             }
 
-            /*HttpSession session = request.getSession( false );
+            EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime , imageStatus );
 
-            User user = (User) session.getAttribute("User");
-
-            String teacherId = user.getUserId();
-
-            String param = "Educational Post";
-
-            String epostId = "2";
-
+            educationalWork = educationalWork.insertEducationalWork( imageFile , path , classroomId );
+            
             Classroom classroom = new Classroom();
-            ArrayList<String> studentList = classroom.getStudentListInClass(classroomId);
+            ArrayList<String> studentList = classroom.getStudentListInClass( classroomId );
 
             Notifications notifications = new Notifications();
-            notifications.insertEpostNotificationsFromTeacher(teacherId,studentList,epostId,param);*/
+            notifications.insertEpostNotificationsFromTeacher( userId , studentList , educationalWork.getPostID() , "Educational Post" );
 
-
-            EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime , imageStatus );
-            return educationalWork.insertEducationalWork( imageFile , path , classroomId );
+            return educationalWork;
 
 
         } catch (Exception e) {
