@@ -43,10 +43,9 @@ public class NotificationsDAO {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         try {
+            connection = dbConnectionPool.dataSource.getConnection();
 
             for(int i=0;i<studentList.size();i++){
-
-                connection = dbConnectionPool.dataSource.getConnection();
                 String sql = "INSERT INTO Notifications (NotifierID,NotifieeID,ContentID,PostedType,Notification_Date,Notification_Time) VALUES (?,?,?,?,?,?)";
                 PreparedStatement preparedStatement = connection.prepareStatement( sql );
                 preparedStatement.setString(1,teacherId);
