@@ -68,32 +68,6 @@ public class SharedNewsFeedsServletInsert extends HttpServlet {
         for(int i=0; i < friendList.size(); i++){
             shareDAO.insert(time, date, userId, friendList.get(i), SharedPostID);
         }
-        NewsFeeds newsFeeds = new NewsFeeds();
-
-//*****************************
-
-
-        JSONArray jsonArray = new JSONArray();
-
-        try {
-            jsonArray =newsFeeds.getNewsFeedsReceiver(SharedPostID);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        System.out.println(jsonArray+"huuuu");
-
-        jsonObject = newsFeeds.getNewsFeedsImageDetails(SharedPostID);
-        System.out.println(jsonObject + "imageeeeeeeeeeee");
-
-        jsonArray = newsFeeds.getNFDetails(SharedPostID);
-        System.out.println(jsonArray + "awoooooooooo");
-
-        for(int i =0; i<jsonArray.length(); i++){
-            if(jsonArray.get(i) == userId){
-                System.out.println("yeeeeeeeeeee");
-            }
-        }
 
 
         out.write( jsonObject.toString() );
