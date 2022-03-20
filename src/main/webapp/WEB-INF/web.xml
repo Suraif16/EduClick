@@ -283,7 +283,7 @@
     
     <servlet-mapping>
         <servlet-name>DisplayRequestStudent</servlet-name>
-        <url-pattern>/student/displayRequest</url-pattern>
+        <url-pattern>/displayRequest</url-pattern>
     </servlet-mapping>
     
     <!-- end of DisplayRequestServlet-->
