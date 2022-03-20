@@ -1,10 +1,7 @@
 package Model;
 
 
-import DAO.AnswerStudentPostRelationshipDAO;
-import DAO.EducationalPostDAO;
-import DAO.EducationalWorkDAO;
-import DAO.PostDAO;
+import DAO.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -25,7 +22,7 @@ public class Post {
 
     }
 
-    public Post( String caption , LocalDate localDate , LocalTime localTime ){
+    public Post(String caption, LocalDate localDate, LocalTime localTime) {
 
         this.caption = caption;
         this.date = localDate;
@@ -33,14 +30,14 @@ public class Post {
 
     }
 
-    public Post( LocalDate localDate , LocalTime localTime ){
+    public Post(LocalDate localDate, LocalTime localTime) {
 
         this.date = localDate;
         this.time = localTime;
 
     }
 
-    public Post( String postID ) {
+    public Post(String postID) {
 
         this.postID = postID;
 
@@ -87,7 +84,7 @@ public class Post {
     }
 
 
-    public ArrayList<String> getNewsFeedsID(String userId){
+    public ArrayList<String> getNewsFeedsID(String userId) {
 
         PostDAO postDAO = new PostDAO();
         ArrayList<String> NFKeyList = postDAO.getNewsFeedsID(userId);
@@ -96,7 +93,7 @@ public class Post {
 
     }
 
-    public ArrayList<String> getNFTeacherID(String userId){
+    public ArrayList<String> getNFTeacherID(String userId) {
 
         PostDAO postDAO = new PostDAO();
         ArrayList<String> NFTeacherList = postDAO.getNFTeacherKeys(userId);
@@ -112,32 +109,63 @@ public class Post {
         return NewsFeedIDList;
     }
 
-    public JSONObject getEPostDetails(String classroomId){
+    public JSONObject getEPostDetails(String classroomId) {
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
         return educationalPostDAO.getEPostDetails(classroomId);
     }
-    public JSONObject getEPostContent(String postId){
+
+    public JSONObject getEPostContent(String postId) {
         EducationalWorkDAO educationalWorkDAO = new EducationalWorkDAO();
         return educationalWorkDAO.getEPostContent(postId);
     }
-    public ArrayList<String> checkEposts(String classroomId){
+
+    public ArrayList<String> checkEposts(String classroomId) {
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
         return educationalPostDAO.getEpostsIds(classroomId);
 
     }
-  
-    public String selectClassroomId(String ePostId){
+
+    public String selectClassroomId(String ePostId) {
         EducationalPostDAO educationalPostDAO = new EducationalPostDAO();
         return educationalPostDAO.selectClassroomId(ePostId);
 
     }
 
 
-    public JSONArray getMcqResults(){
+    public JSONArray getMcqResults() {
 
         AnswerStudentPostRelationshipDAO answerStudentPostRelationshipDAO = new AnswerStudentPostRelationshipDAO();
-        return answerStudentPostRelationshipDAO.getMcqResult( this.postID );
+        return answerStudentPostRelationshipDAO.getMcqResult(this.postID);
 
+    }
+
+    public Object getLoadedNewsFeedsId(String userId) {
+
+        PostDAO postDAO = new PostDAO();
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
+
+        JSONArray NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
+        System.out.println(NewsFeedUserIdList + "@@@@");
+
+
+      //  ArrayList<String> newsFeedDetails = new ArrayList<>();
+        JSONArray newsFeedDetails = new JSONArray();
+
+        for (int i = 0; i < NewsFeedUserIdList.length(); i++) {
+
+            newsFeedDetails.put(newsFeedsDAO.getNewsFeedsDetails(String.valueOf(NewsFeedUserIdList.get(i))));
+          //  System.out.println(newsFeedDetails);
+
+            newsFeedDetails.put(newsFeedsImageDAO.getImagePath((String) NewsFeedUserIdList.get(i)));
+
+
+        }
+
+      //  JSONArray jsonArray = new JSONArray(newsFeedDetails);
+
+
+        return newsFeedDetails;
     }
 
 
