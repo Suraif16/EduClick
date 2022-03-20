@@ -20,7 +20,7 @@ public class TeacherClassroomListLoad extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         HttpSession session = request.getSession( false );
-        String userId = (String) session.getAttribute( "profileUserId");
+        String userId = request.getParameter("userId");
         User user = new User();
         JSONObject jsonObject = new JSONObject();
 
