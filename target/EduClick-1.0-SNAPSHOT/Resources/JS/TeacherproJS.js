@@ -34,44 +34,53 @@ function enableDisableStatus( id ){
 
     let disableStringValue = "disable" + id;
 
+    let requestedStringValue = "requested" + id
+
     let enableButton = document.getElementById(enableStringValue);
 
     let disableButton = document.getElementById(disableStringValue);
 
+    let requestedButton = document.getElementById(requestedStringValue);
 
 
-    if (disableButton.style.display === "none"){
+
+    if (disableButton.style.display === "none" && requestedButton.style.display == "none"){
 
         /*defaultView.getComputedStyle(enableButton)*/
 
 
 
-        let status = sendInsertData(id);
-        if(status=="Requested"){
+         sendInsertData(id);
+        /*if(status=="Requested"){
             disableButton.style.display = "block";
             enableButton.style.display = "none";
-        }
+        }*/
 
 
 
 
-    }else if(enableButton.style.display == "none"){
+    }else if(enableButton.style.display == "none" && requestedButton.style.display == "none"){
 
 
 
 
 
-        let status = sendDeleteData(id);
-        if(status=="Deleted"){
+        sendDeleteData(id);
+        /*if(status=="Deleted"){
             disableButton.style.display = "none";
             enableButton.style.display = "block";
-        }
+        }*/
 
 
 
         console.log("Deleting!!!!")
     }
-    else {
+    else if(disableButton.style.display === "none" && enableButton.style.display == "none"){
+
+       sendRequestData(id);
+
+    }
+    else{
         console.log("Something went wrong!!");
     }
 
@@ -93,7 +102,7 @@ let sendDeleteData = function (id){
     let action = "delete"
     sendData(id,action);
     console.log("Action is : "+action);
-    return "Deleted";
+
 
 }
 
@@ -101,10 +110,29 @@ let sendInsertData = function (id){
     let action = "request"
     sendData(id,action);
     console.log(id);
-    return "Requested";
+
+}
+
+let sendRequestData = function (id){
+    let action = "apply"
+    sendData(id,action);
+    console.log(id);
 }
 
 let sendData = function (id,action){
+
+    let enableStringValue = "enable" + id;
+
+    let disableStringValue = "disable" + id;
+
+    let requestedStringValue = "requested" + id
+
+    let enableButton = document.getElementById(enableStringValue);
+
+    let disableButton = document.getElementById(disableStringValue);
+
+    let requestedButton = document.getElementById(requestedStringValue);
+
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function (){
@@ -119,33 +147,49 @@ let sendData = function (id,action){
                 /* This is where I need work everytime as per the authentication filter*/
 
                 console.log("Im hereeee")
-                if(jsonResponse.Enroll === "Requested"){
+                if(jsonResponse.Enroll_Status === "Enrolled"){
 
                     console.log("hjksahdiuahdisd")
+
+                    disableButton.style.display = "block";
+                    enableButton.style.display = "none";
+                    requestedButton.style.display = "none";
+
                     /*disableButton.style.display = "block";
                     enableButton.style.display = "none";*/
                     /*disableButton.style.display = "block";
                     enableButton.style.display = "none";*/
 
-                    return "Requested";
+                    /*return "Requested";*/
                 }
-                else if(jsonResponse.Enroll === "Deleted"){
+                else if(jsonResponse.Enroll_Status === "Enroll Requested"){
                     /*disableButton.style.display = "none";
                     enableButton.style.display = "block";*/
                     /*disableButton.style.display = "none";
                     enableButton.style.display = "block";*/
 
-                    return "Deleted";
+                    disableButton.style.display = "none";
+                    enableButton.style.display = "none";
+                    requestedButton.style.display = "block";
+
+
+                    /*return "Deleted";*/
                 }
-                else if(jsonResponse.Enroll === "Already Enrolled"){
-                    /*disableButton.style.display = "none";
-                    enableButton.style.display = "block";*/
+                else {
+                    disableButton.style.display = "none";
+                    enableButton.style.display = "block";
+                    requestedButton.style.display = "none";
+                }
+            }
+                /*else if(jsonResponse.Enroll === "Already Enrolled"){
+                    /!*disableButton.style.display = "none";
+                    enableButton.style.display = "block";*!/
 
                     alert("Already Enrolled")
                 }
                 else if(jsonResponse.Enroll === "No Enrollment"){
-                    /*disableButton.style.display = "none";
-                    enableButton.style.display = "block";*/
+                    /!*disableButton.style.display = "none";
+                    enableButton.style.display = "block";*!/
 
                     alert("No Enrollment found in the database");
                 }
@@ -156,7 +200,7 @@ let sendData = function (id,action){
 
             }else{
                 alert("something went wrong!!!");
-            }
+            }*/
         }
 
     }
