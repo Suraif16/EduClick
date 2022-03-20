@@ -147,13 +147,13 @@ const displayMessage = function (postData,TeacherFullName,TeaherId){
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
+            '                    </a>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
             '                        </div>' +
             '                        <div class="userOptions">' +
             '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
-            '                    </a>' +
             '                </div>' +
             '            </div>' +
             '            <div class="postContentContainer">' +
@@ -186,13 +186,13 @@ const displayMessage = function (postData,TeacherFullName,TeaherId){
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
+            '                    </a>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
             '                        </div>' +
             '                        <div class="userOptions">' +
             '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
-            '                    </a>' +
             '                </div>' +
             '            </div>' +
             '            <div class="postContentContainer">' +
@@ -224,13 +224,13 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
+            '                    </a>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
             '                        </div>' +
             '                        <div class="userOptions">' +
             '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
-            '                    </a>' +
             '                </div>' +
             '            </div>' +
             '            <div class="postContentContainer">' +
@@ -282,13 +282,13 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
+            '                    </a>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
             '                        </div>' +
             '                        <div class="userOptions">' +
             '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
-            '                    </a>' +
             '                </div>' +
             '            </div>' +
             '            <div class="postContentContainer">' +

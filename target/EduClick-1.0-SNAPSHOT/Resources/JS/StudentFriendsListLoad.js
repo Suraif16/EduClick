@@ -1,26 +1,16 @@
-let refresh = 0;
-/*if(refresh==1){
 
-
-}*/
 const loadFriendsList = function (){
     console.log("Friends called!")
-    let btn = document.getElementById("friends");
-    btn.style.backgroundColor = "#157DEC";
+    /*let btn = document.getElementById("friends");
+    btn.style.backgroundColor = "#157DEC";*/
     let httpreq = new XMLHttpRequest();
 
     httpreq.onreadystatechange = function () {
 
         if (this.readyState === 4 && this.status === 200) {
             console.log("I am running friendds")
-            if (refresh==0 && refresh1==0){
-                loadFriends(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-            }
-        else{
-                window.location.reload();
-            }
-        refresh = 1;
 
+                loadFriends(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
         }
     }
 
@@ -49,13 +39,18 @@ const loadFriendsList = function (){
     }
 
     function classroomHtmlOutput( userID , firstName , lastName){
+        /*let btn = document.getElementById("friends");
+        btn.style.backgroundColor = "#157DEC";*/
         const postContents = document.getElementById("postContents");
         postContents.innerHTML = "";
+        postContents.style.boxShadow = "";
         const searchContent = document.getElementById( "rightPanelStudentList" );
         const rightPanel = document.getElementById("rightPanel");
+
+        rightPanel.innerHTML="";
         rightPanel.style.display = "flex";
-        rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "220%";
+        rightPanel.style.width = "435%";
+        rightPanel.style.marginLeft = "230%";
 
 
         /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
