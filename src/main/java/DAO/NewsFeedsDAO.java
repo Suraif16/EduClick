@@ -133,7 +133,8 @@ public String insert(NewsFeeds newsFeeds){
         return NewsFeedsTime;
     }
 
-    public JSONObject getNewsFeedsDetails(String SharedPostID) {
+    public String getNewsFeedsDetails(String SharedPostID) {
+
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         ArrayList<User> NewsFeedsDetails = new ArrayList<>();
@@ -171,7 +172,7 @@ public String insert(NewsFeeds newsFeeds){
             }
 
         }
-        return jsonObject;
+        return String.valueOf(jsonObject);
     }
 
 
