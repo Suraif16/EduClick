@@ -102,17 +102,17 @@ public class AdminPost {
 
         return postDetails;
     }*/
-    public ArrayList<String> getSysPostID(String userId){
+    /*public ArrayList<String> getSysPostID(String userId){
 
         AdminPostDAO adminpostDAO =  new AdminPostDAO();
         ArrayList<String> APostIDList = adminpostDAO.getSysPostIDkeys(userId);
         return APostIDList;
 
-    }
+    }*/
 
-    public JSONArray getAPostDetails(ArrayList<String> APostIDList){
+    public JSONArray getAPostDetails(){
         AdminPostDAO adminpostDAO =  new AdminPostDAO();
-        JSONArray APostDetails = adminpostDAO.getAPostDetails(APostIDList);
+        JSONArray APostDetails = adminpostDAO.getAPostDetails();
         return APostDetails;
     }
 }
