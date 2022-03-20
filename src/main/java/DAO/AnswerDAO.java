@@ -314,7 +314,17 @@ public class AnswerDAO {
             preparedStatement.setString( 1 , marks );
             preparedStatement.setString( 2 , answerId );
 
-            preparedStatement.executeUpdate();
+            int x = preparedStatement.executeUpdate();
+
+            if( x == 0 ){
+
+                connection.rollback();
+
+            }else {
+
+                connection.commit();
+
+            }
 
         }catch ( SQLException E ){
 

@@ -164,6 +164,88 @@ public class FriendRequestDAO {
         return friendList;
     }
 
+    public void acceptFriendRequest( String fromId , String toId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        PreparedStatement preparedStatement1 = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "DELETE FROM Friend_Request WHERE From_UserID = ? AND To_UserID = ?";
+            preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , fromId );
+            preparedStatement.setString( 2 , toId );
+
+
+            int x = preparedStatement.executeUpdate();
+
+            if ( x == 0 ){
+
+                connection.rollback();
+
+            }else {
+
+                String sql1 = "INSERT INTO Add_Friends VALUES( ? , ? );";
+                preparedStatement1 = connection.prepareStatement( sql1 );
+
+                preparedStatement1.setString( 1 , toId );
+                preparedStatement1.setString( 2 , fromId );
+
+                int y = preparedStatement1.executeUpdate();
+                if( y == 0 ){
+
+                    connection.rollback();
+
+                }else {
+
+                    connection.commit();
+
+                }
+
+            }
+
+        }catch ( SQLException e ){
+
+            e.printStackTrace();
+            try{
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException E ){
+
+                E.printStackTrace();
+
+            }
+
+        }finally {
+
+            try{
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+                if ( preparedStatement1 != null )preparedStatement1.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException E ){
+
+                E.printStackTrace();
+
+            }
+
+        }
+
+    }
+
 }
 
 

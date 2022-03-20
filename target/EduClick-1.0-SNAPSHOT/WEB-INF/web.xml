@@ -485,7 +485,35 @@
 
     <!-- end of unfollow teachers -->
 
-    <!-- beginning of unfollow teachers -->
+    <!-- beginning of cancel friend request -->
+
+    <servlet>
+        <servlet-name>cancelEnrollRequest</servlet-name>
+        <servlet-class>Controller.Requests.DeclineEnrollRequestTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cancelEnrollRequest</servlet-name>
+        <url-pattern>/teacher/declineEnrollRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of cancel friend request -->
+
+    <!-- beginning of accept friend request -->
+
+    <servlet>
+        <servlet-name>acceptEnrollRequest</servlet-name>
+        <servlet-class>Controller.Requests.AcceptFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>acceptEnrollRequest</servlet-name>
+        <url-pattern>/user/AcceptFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of accept friend request -->
+
+    <!-- beginning of cancel enroll request -->
 
     <servlet>
         <servlet-name>cancelFriendRequest</servlet-name>
@@ -494,10 +522,10 @@
 
     <servlet-mapping>
         <servlet-name>cancelFriendRequest</servlet-name>
-        <url-pattern>/cancelFriendRequest</url-pattern>
+        <url-pattern>/user/cancelFriendRequest</url-pattern>
     </servlet-mapping>
 
-    <!-- end of unfollow teachers -->
+    <!-- end of cancel enroll request -->
 
     <!-- beginning of teacher follow list load -->
 

@@ -188,5 +188,19 @@ public class Requests {
         return enrollRequestDAO.deleteRequest(classroomId,userId);
     }
 
+    public void deleteEnrollRequest(){
+
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        enrollRequestDAO.deleteEnrollRequest( this.fromId , this.toId );
+
+    }
+
+    public void acceptFriendRequest(){
+
+        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+        friendRequestDAO.acceptFriendRequest( this.fromId , this.toId );
+
+    }
+
 }
 
