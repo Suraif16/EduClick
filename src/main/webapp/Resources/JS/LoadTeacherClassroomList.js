@@ -21,7 +21,8 @@ const sendD = function () {
 
     }
     httpreq.open("POST", "/EduClick_war_exploded/teacherClassroomList", true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLoad(httpreq) {
 
@@ -273,8 +274,13 @@ const LoadTeacherProName = function (){
 
     }
 
+    console.log("sadsad asda : "+getUserIdClientSide())
+    let id = getUserIdClientSide();
+
     httpreq.open( "POST" , "/EduClick_war_exploded/student/teacherProfileNameLoad" , true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + id);
+
 
     function completeLogin( httpreq ){
 
@@ -298,5 +304,14 @@ const LoadTeacherProName = function (){
 
     }
 
+
+}
+
+
+
+const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
 
 }
