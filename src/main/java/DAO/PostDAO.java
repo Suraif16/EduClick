@@ -161,7 +161,7 @@ public class PostDAO {
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            String sql = "SELECT UserID FROM Posts WHERE T_UserID = ? LIMIT 15";
+            String sql = "SELECT NFPostID FROM Posts WHERE UserID = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, T_UserID);
@@ -175,6 +175,42 @@ public class PostDAO {
                 jsonObject.put("UserID", UserID);
 
                 jsonArray.put(jsonObject);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonArray;
+    }
+
+    public JSONArray getLoadedNewsFeedsId(String AUserID) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONArray jsonArray = new JSONArray();
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT NFPostID FROM Posts WHERE UserID = ?;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, AUserID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String UserID = resultSet.getString("NFPostID");
+
+
+                jsonArray.put(UserID);
 
             }
 
