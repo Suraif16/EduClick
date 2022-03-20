@@ -247,7 +247,7 @@ public class EnrollDAO {
 
             }
 
-
+            connection.commit();
 
         }catch ( SQLException E ){
 

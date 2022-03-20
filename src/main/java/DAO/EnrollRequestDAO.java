@@ -228,4 +228,68 @@ public class EnrollRequestDAO {
         }
         return requestedClassroomList;
     }
+
+    public void deleteEnrollRequest( String fromId , String toId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        try {
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "DELETE FROM Enroll_Request WHERE From_UserID = ? AND To_ClassroomID = ?;";
+            preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , fromId );
+            preparedStatement.setString( 2 , toId );
+
+            int x = preparedStatement.executeUpdate();
+
+            if ( x == 0 ){
+
+                connection.rollback();
+
+            }else{
+
+                connection.commit();
+
+            }
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+            try{
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException E ){
+
+                E.printStackTrace();
+
+            }
+
+        }finally {
+
+            try{
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }
+
+    }
 }

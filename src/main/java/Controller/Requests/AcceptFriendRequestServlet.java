@@ -9,28 +9,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class cancelFriendRequestServlet extends HttpServlet {
+public class AcceptFriendRequestServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request , HttpServletResponse response ) throws IOException {
 
         PrintWriter out = response.getWriter();
-        response.setContentType( "text/html" );
-
-        String fromID = request.getParameter("fromId");
-        String toID = request.getParameter( "toId" );
+        response.setContentType( "text/html");
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put( "serverResponse"  , "Allowed" );
+        jsonObject.put( "serverResponse" , "Allowed" );
 
-        Requests requests = new Requests( fromID , toID );
-        requests.cancelRequest();
+        String fromId = request.getParameter("fromId" );
+        String toId = request.getParameter( "toId" );
+
+        Requests requests = new Requests( fromId , toId );
+        requests.acceptFriendRequest();
 
         out.write( jsonObject.toString() );
         out.close();
 
     }
-
-
 
 }

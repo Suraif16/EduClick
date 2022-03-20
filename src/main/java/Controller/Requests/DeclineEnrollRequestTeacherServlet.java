@@ -9,28 +9,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class cancelFriendRequestServlet extends HttpServlet {
+public class DeclineEnrollRequestTeacherServlet extends HttpServlet {
 
     @Override
-    public void doPost(HttpServletRequest request , HttpServletResponse response ) throws IOException {
+    public void doPost( HttpServletRequest request , HttpServletResponse response ) throws IOException {
 
         PrintWriter out = response.getWriter();
-        response.setContentType( "text/html" );
+        response.setContentType("text/html");
 
-        String fromID = request.getParameter("fromId");
-        String toID = request.getParameter( "toId" );
+        String fromId = request.getParameter( "fromId" );
+        String toId = request.getParameter( "toId" );
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse"  , "Allowed" );
 
-        Requests requests = new Requests( fromID , toID );
-        requests.cancelRequest();
+        Requests requests = new Requests( fromId , toId );
+        requests.deleteEnrollRequest();
 
         out.write( jsonObject.toString() );
         out.close();
 
     }
-
-
 
 }
