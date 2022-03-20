@@ -181,6 +181,8 @@ CREATE TABLE NewsFeeds(
 	Date DATE NOT NULL,
 	Time TIME NOT NULL,
 	Caption VARCHAR(8000),
+	LikeCount INT,
+	ShareCount INT,
 	PRIMARY KEY(NFPostID)
 	)ENGINE = INNODB;
 
