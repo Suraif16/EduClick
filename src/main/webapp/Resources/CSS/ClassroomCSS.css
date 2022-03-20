@@ -901,7 +901,7 @@ div#content > div#notifications {
     padding: 1%;
     z-index: 1;
     background-color: white;
-    height: 80%;
+    max-height: 80%;
     display: none; /*becomes a container to the request*/
     flex-direction: column;
 
@@ -973,6 +973,41 @@ div#content > div#notifications > div.notificationShowRequest > div.singleNotifi
 input.requestDecline{
 
     background-color: #403434;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage{
+    /*child of request*/
+    display: flex;
+    width: 100%;
+    background-color: #4775c4;
+    color: white;
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a{
+
+    display: flex;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationImage{
+
+    flex: 1;
+    margin: auto;
+    border-right: white solid 2px;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationImage > img{
+
+    width: 100%;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationMessage{
+
+    flex: 4;
+    margin: auto 1%;
 
 }
 
