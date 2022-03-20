@@ -12,6 +12,9 @@
 
     <link rel="stylesheet" href="../Resources/CSS/Font.css" type="text/css">
 
+    <link rel="stylesheet" href="../Resources/CSS/InputDesignCSS.css" type="text/css">
+
+    <link rel="stylesheet" href="../Resources/CSS/ActivityStatusCSS.css" type="text/css">
 
 </head>
 
@@ -29,6 +32,8 @@
 
                     <input type="button" value="Post Questions / Messages" onclick="showAddEducationalPostForm()">
                     <input type="button" value="Post MCQs" onclick="showMcqAddPostForm()">
+                    <!--<div class="systemButtons" onclick="showAddEducationalPostForm()"> Post Questions / Messages </div>
+                    <div class="systemButtons" onclick="showMcqAddPostForm()"> Post MCQs </div>-->
 
                 </div>
 
@@ -1965,9 +1970,9 @@
 
     <div id="notifications">
 
-        <div id="request">
+        <div id="request" class="notificationShowRequest">
 
-            <div class="singleNotification" >
+            <!--<div class="singleNotification" >
 
                 <div>
 
@@ -2328,9 +2333,33 @@
 
                 </div>
 
+            </div>-->
+
+
+
+        </div>
+
+        <div class="notificationShowRequest">
+
+            <div class="singleNotificationMessage">
+
+                <a href="#">
+
+                    <div class="notificationImage">
+
+                        <img src="../Resources/Icons/Logo.png">
+
+                    </div>
+
+                    <div class="notificationMessage">
+
+                        Welcome to EduClick!!!
+
+                    </div>
+
+                </a>
+
             </div>
-
-
 
         </div>
 
@@ -2338,31 +2367,35 @@
 
     <div id="addClassroomForm">
 
-        <div class="classroomFormRow">
+        <div class="classroomFormRow inputFieldForms">
 
-            <label >Classroom Name :&nbsp; </label>
-            <input type="text" id="classroomName" placeholder="e.g. - Institute of Education">
-
-        </div>
-
-        <div class="classroomFormRow">
-
-            <label >Subject :&nbsp; </label>
-            <input type="text" id="classroomSubject" placeholder="e.g. - Mathematics">
+            <input type="text" id="classroomName" required>
+            <div class="bottomLine"></div>
+            <label >Classroom Name : e.g. - Institute of Education </label>
 
         </div>
 
-        <div class="classroomFormRow">
+        <div class="classroomFormRow inputFieldForms">
 
-            <label >Grade / Class :&nbsp; </label>
-            <input type="text" id="classroomClassGrade" placeholder="e.g. - 7">
+            <input type="text" id="classroomSubject" required>
+            <div class="bottomLine"></div>
+            <label >Subject : Mathematics </label>
 
         </div>
 
-        <div class="classroomFormRow">
+        <div class="classroomFormRow inputFieldForms">
 
-            <label >Year of examination :&nbsp; </label>
-            <input type="text" id="classroomYearOfExamination" placeholder="e.g. - 20xx">
+            <input type="text" id="classroomClassGrade" required>
+            <div class="bottomLine"></div>
+            <label >Grade / Class : e.g. - 7 </label>
+
+        </div>
+
+        <div class="classroomFormRow inputFieldForms">
+
+            <input type="text" id="classroomYearOfExamination" required>
+            <div class="bottomLine"></div>
+            <label >Year of examination : e.g. - 20xx </label>
 
         </div>
 
@@ -2374,7 +2407,7 @@
 
         <div class="classroomFormRow">
 
-            <input type="button" value="Create classroom" onclick="createClassroom()">
+            <div class="systemButtons" onclick="createClassroom()"> Create classroom </div>
 
         </div>
 
@@ -2388,9 +2421,11 @@
 
         </div>
 
-        <div class="addNewsFeedFormRows" id="addNewsFeedFormText">
+        <div class="addNewsFeedFormRows inputFieldFormsTextArea" id="addNewsFeedFormText">
 
-            <textarea id="addNewsFeedFormTextArea" rows="11" placeholder="What's on your mind?"></textarea>
+            <textarea id="addNewsFeedFormTextArea" rows="11" required></textarea>
+            <div class="bottomLine"></div>
+            <label> What's on your mind </label>
 
         </div>
 
@@ -2434,6 +2469,12 @@
 
     </div>
 
+    <div id="activityStatus">
+
+
+
+    </div>
+
     <div id="userOptionMenu">
 
         <!--<div class="userOptionMenuInput" onclick="report( 1 , 'optionPost')">
@@ -2452,13 +2493,13 @@
 
     <div id="mcqAddPostForm">
 
-        <div id="previousQuestion" class="singleMCQRow nextPreviousButton">
+        <div id="previousQuestion" class="singleMCQRow nextPreviousButton systemButtons">
 
             <img src="../Resources/Icons/navigate_before_white_24dp.svg" alt="previous" class="navigateButtons">
 
         </div>
 
-        <div id="nextQuestion" class="singleMCQRow nextPreviousButton">
+        <div id="nextQuestion" class="singleMCQRow nextPreviousButton systemButtons">
 
             <img src="../Resources/Icons/navigate_next_white_24dp.svg" alt="next" class="navigateButtons">
 
@@ -2476,8 +2517,14 @@
 
                 <div class="singleMCQRowRowContent">
 
-                    <label for="mcqQuestion" id="mcqQuestionLabel">Question 1 :&nbsp;</label>
-                    <input id="mcqQuestion" type="text" placeholder="What is the square root of 25?" class="singleMCQRowRowContentValue">
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqQuestion" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqQuestion" id="mcqQuestionLabel">Question 1 : What is the square root of 25?</label>
+
+                    </div>
+
 
                 </div>
 
@@ -2489,16 +2536,28 @@
 
                 <div class="singleMCQRowRowContent">
 
-                    <label for="mcqAnswer1" id="mcqQuestionLabel">Answer 1 :&nbsp;</label>
-                    <input id="mcqAnswer1" type="text" placeholder="Square root of 25 is 7" class="singleMCQRowRowContentValue">
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqAnswer1" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqAnswer1" id="mcqQuestionLabel">Answer 1 :Square root of 25 is 7</label>
+
+                    </div>
+
                     <input type="radio" name="correctAnswerMCQ" value="1" id="correctAnswer1">
 
                 </div>
 
                 <div class="singleMCQRowRowContent">
 
-                    <label for="mcqAnswer2" id="mcqQuestionLabel">Answer 2 :&nbsp;</label>
-                    <input id="mcqAnswer2" type="text" placeholder="Square root of 25 is 9" class="singleMCQRowRowContentValue">
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqAnswer2" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqAnswer2" id="mcqQuestionLabel">Answer 2 : Square root of 25 is 9</label>
+
+                    </div>
+
                     <input type="radio" name="correctAnswerMCQ" value="2" id="correctAnswer2">
 
 
@@ -2506,16 +2565,28 @@
 
                 <div class="singleMCQRowRowContent">
 
-                    <label for="mcqAnswer3" id="mcqQuestionLabel">Answer 3 :&nbsp;</label>
-                    <input id="mcqAnswer3" type="text" placeholder="Square root of 25 is 5" class="singleMCQRowRowContentValue">
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqAnswer3" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqAnswer3" id="mcqQuestionLabel">Answer 3 : Square root of 25 is 5</label>
+
+                    </div>
+
                     <input type="radio" name="correctAnswerMCQ" value="3" id="correctAnswer3">
 
                 </div>
 
                 <div class="singleMCQRowRowContent">
 
-                    <label for="mcqAnswer4" id="mcqQuestionLabel">Answer 4 :&nbsp;</label>
-                    <input id="mcqAnswer4" type="text" placeholder="Square root of 25 is 25" class="singleMCQRowRowContentValue">
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqAnswer4" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqAnswer4" id="mcqQuestionLabel">Answer 4 : Square root of 25 is 25</label>
+
+                    </div>
+
                     <input type="radio" name="correctAnswerMCQ" value="4" id="correctAnswer4">
 
                 </div>
@@ -2526,13 +2597,17 @@
 
                 <div id="questionCount">
 
-                    Question : 1/10
+                    <div>
+
+                        Question : 1/10
+
+                    </div>
 
                 </div>
 
                 <div id="mcqSubmit">
 
-                    <input type="button" id="mcqSubmitButton" value="Post">
+                    <div id="mcqSubmitButton" class="systemButtons"> Post </div>
 
                 </div>
 
@@ -2605,9 +2680,13 @@
 
     <div id="headerButtons">
 
-        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+<!--        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">-->
 
-        <input id="rightPanelHideButton" type="button" value="Students Enrolled" onclick="showRightPanel()">
+        <div id="classroomListHideButton" class="systemButtons" onclick="showClassroomList()"> menu </div>
+
+<!--        <input id="rightPanelHideButton" type="button" value="Students Enrolled" onclick="showRightPanel()">-->
+
+        <div id="rightPanelHigeButton" class="systemButtons" onclick="showRightPanel()" > Students Enrolled </div>
 
     </div>
 
@@ -2631,6 +2710,8 @@
     <script src="../Resources/JS/ClassroomSelectEPost.js" defer></script>
     <script src="../Resources/JS/TeacherClassroomStudentsEnrolledList.js" defer></script>
     <script src="../Resources/JS/TeacherClassroomSelectAnswers.js" defer></script>
+    <script src="../Resources/JS/ActivityStatus.js" defer></script>
+
 
 
 </body>

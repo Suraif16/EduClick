@@ -624,7 +624,7 @@ div#content > div#notifications {
 
 }
 
-div#content > div#notifications > div#request {
+div#content > div#notifications > div.notificationShowRequest {
    /*child of notification*/
    /* flex-basis: 50%;*/ /* DON'T DELETE THIS... This is kept for future modifications*/
     flex: 1;
@@ -635,7 +635,7 @@ div#content > div#notifications > div#request {
 
 }
 
-div#content > div#notifications > div#request > div.singleNotification{
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification{
     /*child of request*/
     flex-basis: 15%;
     margin: 1% auto;
@@ -646,7 +646,7 @@ div#content > div#notifications > div#request > div.singleNotification{
     background-color: #4775c4;
 }
 
-div#content > div#notifications > div#request > div.singleNotification > div{
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div{
 
     padding: 1%;
     margin: 1%;
@@ -655,32 +655,32 @@ div#content > div#notifications > div#request > div.singleNotification > div{
 
 }
 
-div#content > div#notifications > div#request > div.singleNotification > div > input{
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > input{
 
     flex: 1;
     margin: 1%;
 
 }
 
-div#content > div#notifications > div#request > div.singleNotification > div > a {
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > a {
 
     flex: 1;
 
 }
 
-div#content > div#notifications > div#request > div.singleNotification > div > a > div{
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > a > div{
 
     margin: 1%;
 
 }
 
-div#content > div#notifications > div#request > div.singleNotification > div > a > div.requestProfilePicture{
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > a > div.requestProfilePicture{
 
     flex: 1;
 
 }
 
-div#content > div#notifications > div#request > div.singleNotification > div > a > div.requestProfileName{
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > a > div.requestProfileName{
 
     flex: 5;
     margin: auto;
@@ -690,6 +690,41 @@ div#content > div#notifications > div#request > div.singleNotification > div > a
 input.requestDecline{
 
     background-color: #403434;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage{
+    /*child of request*/
+    display: flex;
+    width: 100%;
+    background-color: #4775c4;
+    color: white;
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a{
+
+    display: flex;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationImage{
+
+    flex: 1;
+    margin: auto;
+    border-right: white solid 2px;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationImage > img{
+
+    width: 100%;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationMessage{
+
+    flex: 4;
+    margin: auto 1%;
 
 }
 
@@ -724,6 +759,12 @@ div#content > div#addClassroomForm > div.classroomFormRow{
 }
 
 div#content > div#addClassroomForm > div.classroomFormRow > input{
+
+    flex: 1;
+
+}
+
+div#content > div#addClassroomForm > div.classroomFormRow > div{
 
     flex: 1;
 

@@ -154,4 +154,17 @@ public class Answers {
         answerStudentPostRelationshipDAO.saveMCQAnswerPostStudentRelationship(userId,answerId,postId);
 
     }
+
+    public String selectMarksForMCQ(String answerId){
+        AnswerDAO answerDAO = new AnswerDAO();
+        return answerDAO.selectMarksForMCQ(answerId);
+
+    }
+
+    public void setMarksForAnswers( String answerId , String marks ){
+
+        AnswerDAO answerDAO = new AnswerDAO();
+        answerDAO.updateMarks( answerId , marks );
+
+    }
 }

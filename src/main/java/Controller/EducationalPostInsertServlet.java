@@ -2,6 +2,7 @@ package Controller;
 
 import Model.EducationalWork;
 import Model.HandlingImages_Multipart.handleImageAndPostUploads;
+import Model.User;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.JSONObject;
 
@@ -23,6 +24,8 @@ public class EducationalPostInsertServlet extends HttpServlet {
         response.setContentType( "text/html" );
 
         HttpSession session = request.getSession( false );
+        User user = (User) session.getAttribute("User");
+
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
@@ -32,9 +35,7 @@ public class EducationalPostInsertServlet extends HttpServlet {
 
         if ( isMultipart ){
 
-            System.out.println( "reached" );
-            educationalWork = handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now()  );
-            System.out.println( "reached and done");
+            educationalWork = handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() , user.getUserId() );
 
         }
 

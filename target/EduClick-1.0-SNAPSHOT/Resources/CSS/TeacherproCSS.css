@@ -716,14 +716,14 @@ a.mcqProfile > div.mcqProfileImage{
 div#content > div#rightPanel {
 
 
-    margin: 19% auto auto 73%;
+    margin: 16% auto auto 73%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     position: fixed;
     width: 24%;
     padding: 1%;
     display: flex;  /*making this a container to rightPanelTopic and rightPanelStudentList*/
     flex-direction: column;
-    max-height: 63%;
+    max-height: 60%;
 
 
 }

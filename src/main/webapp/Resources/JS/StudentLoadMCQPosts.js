@@ -281,12 +281,74 @@ if(goodToSubmit === 1){
 
 }
 
-const showMcqResultOnLoad = function (){
+const showMcqResultOnLoad = function (id){
+
+    console.log("Id value in loaded mcq answer post : "+id)
+    let mcqResultsInPostId = "mcqResultsInPost" + id;
+    let mcqResultsInPost = document.getElementById( mcqResultsInPostId );
+
+    if (mcqResultsInPost.style.display === "none") {
+
+        mcqResultsInPost.style.display = "flex";
+
+        let httpreq = new XMLHttpRequest();
+
+        httpreq.onreadystatechange = function (){
+
+            if (this.readyState === 4 && this.status === 200){
+                completeResultLoad( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            }
+
+        }
+        httpreq.open( "POST" , "/EduClick_war_exploded/student/studentMCQResultLoadOnClick" , true );
+        httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+        httpreq.send("postId=" + id);
+
+        function completeResultLoad( httpreq ){
+
+            let jsonMcqResultResponse = JSON.parse(httpreq.responseText);
+            console.log(jsonMcqResultResponse.MCQResult)
+
+
+            if( jsonMcqResultResponse.serverResponse === "null Session" || jsonMcqResultResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonMcqResultResponse.serverResponse === "Allowed") {
+
+                let mcqResult = "mcqResultsInPost"+id;
+                let getMcqResult = document.getElementById(mcqResult);
+
+                getMcqResult.innerHTML=""
+
+                let htmlString =
+                    '<div class="mcqSingleStudentResult">' +
+                    '          <div  class="mcqSingleStudentResultMarks">' +
+                    "Your result is "+jsonMcqResultResponse.MCQResult+"%" +
+                    '           </div>' +
+                    '</div>'
+                getMcqResult.innerHTML+=htmlString;
 
 
 
 
-}
+            }else{
+                alert("something went wrong!!!");
+            }
+
+
+        }
+
+
+
+    }
+    else{
+
+        mcqResultsInPost.style.display = "none";
+
+    }
+
+
+
+    }
 
 
 

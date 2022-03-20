@@ -262,4 +262,94 @@ public class AnswerDAO {
         return generatedAnswerId;
     }
 
+    public String selectMarksForMCQ(String answerId)  {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String mcqResult = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT Marks FROM Answer WHERE AnswerID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, String.valueOf(answerId));
+
+            ResultSet resultSet =  preparedStatement.executeQuery();
+            while (resultSet.next()){
+                mcqResult = resultSet.getString("Marks");
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+
+        return mcqResult;
+
+    }
+
+    public void updateMarks( String answerId , String marks ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "UPDATE Answer SET Marks = ? WHERE AnswerID = ?";
+
+            preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , marks );
+            preparedStatement.setString( 2 , answerId );
+
+            preparedStatement.executeUpdate();
+
+        }catch ( SQLException E ){
+
+            try{
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+            E.printStackTrace();
+
+        }finally {
+
+            try{
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException E ){
+
+                E.printStackTrace();
+
+            }
+
+        }
+
+    }
+
+
+
 }

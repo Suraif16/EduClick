@@ -1,7 +1,6 @@
 package DAO;
 
 import Database.DBConnectionPool;
-import Model.EducationalWork;
 import Model.NewsFeeds;
 import Model.User;
 import org.json.JSONArray;
@@ -95,9 +94,85 @@ public String insert(NewsFeeds newsFeeds){
     return null;
 }
 
+    public String getPostedTime(String postId) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String NewsFeedsTime = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+                String sql = "SELECT Time FROM NewsFeeds WHERE NFPostID = ?";
+
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, postId);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+
+                    String time = resultSet.getString("Time");
+                    NewsFeedsTime = time;
+
+
+                }
+
+            resultSet.close();
+            preparedStatement.close();
 
 
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return NewsFeedsTime;
+    }
+
+    public JSONObject getNewsFeedsDetails(String SharedPostID) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+                String sql = "SELECT Date, Time, Caption FROM NewsFeeds WHERE NFPostID = ?";
+
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, SharedPostID);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String date = resultSet.getString("Date");
+                    String time = resultSet.getString("Time");
+                    String caption = resultSet.getString("Caption");
+
+                    jsonObject.put("Date",date);
+                    jsonObject.put("Time",time);
+                    jsonObject.put("Caption",caption);
+
+
+                }
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonObject;
+    }
 
 
 

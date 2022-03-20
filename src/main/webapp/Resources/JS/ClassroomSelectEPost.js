@@ -141,7 +141,7 @@ const displayMcqPost = function ( postData ){
     for ( let i = 0; i < 10; i++ ) {
 
         post += '<div class="postMessage mcq">' +
-                postData.questionList[i]["question"] +
+              'Q'+ ( i + 1 ) + '. ' +  postData.questionList[i]["question"] +
             '<div class="mcqAnswerContainer">';
 
         for (let j = 1; j < 5; j++) {
@@ -152,13 +152,13 @@ const displayMcqPost = function ( postData ){
             if ( postData.questionList[i][ answerNumber + j ] === postData.questionList[i][ "correctAnswer" ] ){
 
                 post += '<div class="mcqSingleAnswer correctMcqSingleAnswer">' +
-                    postData.questionList[i][ answer + j ]+
+                    j + '. ' + postData.questionList[i][ answer + j ]+
                         '</div>';
 
             }else{
 
                 post += '<div class="mcqSingleAnswer">' +
-                         postData.questionList[i][ answer + j ] +
+                    j + '. ' + postData.questionList[i][ answer + j ] +
                         '</div>';
 
             }
@@ -176,12 +176,12 @@ const displayMcqPost = function ( postData ){
         '<div class="postContentContainer">' +
         '<div class="postAnswerButton">' +
         '<div class="answerButton" >' +
-        '<input type="button" value="Show Results" class="mcqResultShowButton" onclick="showMcqResult(1)">' +
+        '<input type="button" value="Show Results" class="mcqResultShowButton" onclick="showMcqResult(' + postData.EpostId + ')">' +
         '</div>' +
         '</div>' +
         '</div>' +
         '<div class="postContentContainer">' +
-        '<div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost1" >' +
+        '<div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost' + postData.EpostId + '" >' +
         '</div>' +
         '</div>' +
         '</div>';

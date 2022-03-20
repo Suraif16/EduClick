@@ -57,7 +57,6 @@ public class AddFriendsDAO {
             while(resultSet.next()){
                 friendList.add(resultSet.getString("Friend_UserID"));
             }
-            System.out.println(friendList+"*************");
 
             resultSet.close();
             preparedStatement.close();

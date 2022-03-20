@@ -2,6 +2,7 @@ package Controller;
 
 import Model.EducationalWork;
 import Model.Mcq;
+import Model.User;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,7 @@ public class mcqPostInsertServlet extends HttpServlet {
     public void doPost(HttpServletRequest request , HttpServletResponse response ){
 
         HttpSession session = request.getSession( false );
+        User user = (User) session.getAttribute("User");
 
         String classroomId = request.getParameter( "classroomId" );
 
@@ -36,7 +38,7 @@ public class mcqPostInsertServlet extends HttpServlet {
 
         }
 
-        educationalWork.insertMCQEducationalWork( classroomId , mcqList );
+        educationalWork.insertMCQEducationalWork( classroomId , mcqList , user.getUserId() );
 
     }
 

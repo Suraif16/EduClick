@@ -149,4 +149,46 @@ public class PostDAO {
 
 
     }
+
+
+    public JSONArray getPostReceiver(String T_UserID) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT UserID FROM Posts WHERE T_UserID = ? LIMIT 15";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, T_UserID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String UserID = resultSet.getString("UserID");
+
+                JSONObject jsonObject = new JSONObject();
+
+                jsonObject.put("UserID", UserID);
+
+                jsonArray.put(jsonObject);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonArray;
+    }
+
 }

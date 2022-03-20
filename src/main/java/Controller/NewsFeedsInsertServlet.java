@@ -55,11 +55,16 @@ public class NewsFeedsInsertServlet extends HttpServlet {
             loadNewsFeeds.start();
 
         }
+        String postId = newsFeeds.getPostID();
+
+        String postedTime = newsfeeds.getPostedTime(postId);
 
         JSONObject newsFeedsJson = new JSONObject( newsFeeds );
 
         jsonObject.put( "NewsFeedsPost" , newsFeedsJson );
         jsonObject.put("fullName",fullName);
+        jsonObject.put("Time",postedTime);
+
 
         out.write( jsonObject.toString() );
         out.close();
