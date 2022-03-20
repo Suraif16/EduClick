@@ -39,6 +39,9 @@ public class EnrollDAO {
         }finally {
             if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
         }
+
+
+
         return arrayList;
     }
     public String getUserIdFromClass(String userId,String id){
@@ -375,6 +378,30 @@ public class EnrollDAO {
             if (connection != null) try { connection.close(); } catch (Exception ignore) {            }
         }
         return studentList;
+    }
+
+    public String deleteRecord(String classrooomId,String userId){
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql =  "DELETE FROM Enroll WHERE UserID = ? AND ClassroomID = ? ";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString(1,userId);
+            preparedStatement.setString(2,classrooomId);
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        return "Enrollment Deleted";
+
     }
 
 }

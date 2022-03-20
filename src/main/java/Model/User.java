@@ -328,6 +328,16 @@ public class User {
         return teacherNameList;
     }*/
 
+    public void updateBellIcon(String userId){
+        BellIconDAO bellIconDAO = new BellIconDAO();
+        bellIconDAO.updateRecord(userId);
+    }
+
+    public void insertBellIcon(String userId){
+        BellIconDAO bellIconDAO = new BellIconDAO();
+        bellIconDAO.insertRecord(userId);
+    }
+
 
 }
 
