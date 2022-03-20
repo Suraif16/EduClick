@@ -75,15 +75,15 @@ public class NewsFeeds extends Post{
 
 
 
-    public JSONArray getNFDetails(String SharedPostID){
+    public JSONArray getNFDetails(Object SharedPostID){
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
-        JSONArray NFDetailList = newsFeedsDAO.getNFDetails(SharedPostID);
+        JSONArray NFDetailList = newsFeedsDAO.getNFDetails((String) SharedPostID);
         return NFDetailList;
     }
 
-    public JSONArray getImagePath(ArrayList<String> newsFeedsIDList){
+    public String getImagePath(String newsFeedsIDList){
         NewsFeedsImageDAO newsFeedImageDAO = new NewsFeedsImageDAO();
-        JSONArray NFImageList = newsFeedImageDAO.getImagePath(newsFeedsIDList);
+        String NFImageList = newsFeedImageDAO.getImagePath(newsFeedsIDList);
         return NFImageList;
     }
 
