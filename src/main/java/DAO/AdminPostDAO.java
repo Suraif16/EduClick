@@ -37,7 +37,6 @@ public class AdminPostDAO {
                 generatedSysPostUserId = resultSet.getString(1);
 
             }
-            //returns userID
             resultSet.close();
             preparedStatement.close();
 
@@ -50,23 +49,19 @@ public class AdminPostDAO {
         return generatedSysPostUserId;
     }
 
-    public JSONArray getAPostDetails(ArrayList<String> APostIDList) {
+    public JSONArray getAPostDetails() {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
+        //ArrayList<User> NewsFeedsDetails = new ArrayList<>();
         JSONArray jsonArray = new JSONArray();
-
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            for (int i = 0; i < APostIDList.size(); i++) {
-                String sql = "select  SysPostID,APTextMsg, APTime, APDate from Admin_Post_System_Updates where SysPostID = ?";
+            String sql = "select  SysPostID,APTextMsg, APTime, APDate from Admin_Post_System_Updates";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, APostIDList.get(i));
-
-                ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     String ApostId = resultSet.getString("SysPostID");
                     String textmsg = resultSet.getString("APTextMsg");
@@ -74,15 +69,13 @@ public class AdminPostDAO {
                     String time = resultSet.getString("APTime");
 
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("APId",ApostId);
-                    jsonObject.put("Caption",textmsg);
-                    jsonObject.put("Date",date);
-                    jsonObject.put("Time",time);
+                    jsonObject.put("aPId",ApostId);
+                    jsonObject.put("caption",textmsg);
+                    jsonObject.put("date",date);
+                    jsonObject.put("time",time);
 
                     jsonArray.put(jsonObject);
-
                 }
-            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,7 +89,7 @@ public class AdminPostDAO {
         return jsonArray;
     }
 
-    public ArrayList<String> getSysPostIDkeys(String userId){
+    /*public ArrayList<String> getSysPostIDkeys(String userId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         ArrayList<String> APostIDList = new ArrayList<String>();
@@ -121,5 +114,5 @@ public class AdminPostDAO {
 
         }
         return APostIDList;
-    }
+    }*/
 }
