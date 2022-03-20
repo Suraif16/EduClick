@@ -3,8 +3,6 @@ package DAO;
 import Database.DBConnectionPool;
 import Model.NewsFeeds;
 import Model.Post;
-import Model.User;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.sql.*;
@@ -12,35 +10,27 @@ import java.util.ArrayList;
 
 public class NewsFeedsImageDAO extends Post {
 
-    public JSONArray getImagePath(ArrayList<String> newsFeedsIDList) {
+    public String getImagePath(String newsFeedsIDList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> NewsFeedsImagesDetails = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray();
+        ArrayList<String> imagePathList = new ArrayList<String>();
 
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            for (int i = 0; i < newsFeedsIDList.size(); i++) {
+
                 String sql = "SELECT imagePath FROM News_Feed_Image WHERE NFPostID = ?";
 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, newsFeedsIDList.get(i));
+                preparedStatement.setString(1, newsFeedsIDList);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    String imagePath = resultSet.getString("imagePath");
-
-
-                    JSONObject jsonObject = new JSONObject();
-
-                    jsonObject.put("ImagePath",imagePath);
-
-                    jsonArray.put(jsonObject);
+                    imagePathList.add(resultSet.getString("imagePath"));
 
                 }
-            }
+
 
 
         } catch (SQLException e) {
@@ -52,7 +42,7 @@ public class NewsFeedsImageDAO extends Post {
             }
 
         }
-        return jsonArray;
+        return String.valueOf(imagePathList);
     }
 
     public String insert(NewsFeeds newsFeeds){
@@ -94,6 +84,7 @@ public class NewsFeedsImageDAO extends Post {
     }
 
     public JSONObject getNewsFeedsImageDetails(String postId) {
+
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         JSONObject jsonObject = new JSONObject();
@@ -125,6 +116,8 @@ public class NewsFeedsImageDAO extends Post {
 
         }
         return jsonObject;
+
+
     }
 
 
