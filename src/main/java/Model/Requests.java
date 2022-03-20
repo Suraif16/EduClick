@@ -188,5 +188,13 @@ public class Requests {
         return enrollRequestDAO.deleteRequest(classroomId,userId);
     }
 
+    public void deleteEnrollRequest(){
+
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        enrollRequestDAO.deleteEnrollRequest( this.fromId , this.toId );
+
+    }
+
+
 }
 
