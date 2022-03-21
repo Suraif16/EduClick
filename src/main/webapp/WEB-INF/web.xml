@@ -558,7 +558,7 @@
 
     <!-- beginning of teacher entrance page news feed load -->
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>teacherNewsFeedsLoad</servlet-name>
         <servlet-class>Controller.UserLoad.TeacherEntrancePageNewsFeedsLoadServlet</servlet-class>
     </servlet>
@@ -566,21 +566,21 @@
     <servlet-mapping>
         <servlet-name>teacherNewsFeedsLoad</servlet-name>
         <url-pattern>/teacher/teacherEntrancePageNewsFeedsLoad</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
     <!-- end of teacher entrance page news feed load -->
 
     <!-- beginning of student entrance page news feed load -->
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>studentNewsFeedsLoad</servlet-name>
         <servlet-class>Controller.UserLoad.StudentEntrancePageNewsFeedLoadServlet</servlet-class>
-    </servlet>
+    </servlet>-->
 
-    <servlet-mapping>
+   <!-- <servlet-mapping>
         <servlet-name>studentNewsFeedsLoad</servlet-name>
         <url-pattern>/student/studentEntrancePageNewsFeedsLoad</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
     <!-- end of student entrance page news feed load -->
 
@@ -810,6 +810,20 @@
     <servlet-mapping>
         <servlet-name>ShareNewsFeedsServlet</servlet-name>
         <url-pattern>/teacher/shareNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of share newsfeeds servlet-->
+    <!--***********-->
+    <!-- beginning selected newsfeeds load servlet-->
+
+    <servlet>
+        <servlet-name>SelectedNewsFeedsLoadServlet</servlet-name>
+        <servlet-class>Controller.SelectedNewsFeedsLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectedNewsFeedsLoadServlet</servlet-name>
+        <url-pattern>/teacher/selectedNewsFeedsLoadServlet</url-pattern>
     </servlet-mapping>
 
     <!-- end of share newsfeeds servlet-->
