@@ -259,7 +259,8 @@ public class handleImageAndPostUploads {
             Notifications notifications = new Notifications();
             notifications.insertEpostNotificationsFromTeacher(userId,notifyList,postId,param);*/
 
-            return newsFeeds.insertNewsFeeds( imageFile , path );
+            newsFeeds =  newsFeeds.insertNewsFeeds( imageFile , path );
+            return newsFeeds;
 
 
 
