@@ -109,3 +109,9 @@ const getClassroomList = function (){
 
 
 }
+const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
+
+}
