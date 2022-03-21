@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Post {
 
@@ -148,24 +149,22 @@ public class Post {
         JSONArray NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
         System.out.println(NewsFeedUserIdList + "@@@@");
 
-
-      //  ArrayList<String> newsFeedDetails = new ArrayList<>();
-        JSONArray newsFeedDetails = new JSONArray();
+        JSONArray array = new JSONArray();
 
         for (int i = 0; i < NewsFeedUserIdList.length(); i++) {
 
-            newsFeedDetails.put(newsFeedsDAO.getNewsFeedsDetails(String.valueOf(NewsFeedUserIdList.get(i))));
-          //  System.out.println(newsFeedDetails);
+            JSONObject newsFeedDetails = newsFeedsDAO.getNewsFeedsDetails(NewsFeedUserIdList.get(i));
+            JSONObject imagePath = newsFeedsImageDAO.getImagePath(NewsFeedUserIdList.get(i));
 
-            newsFeedDetails.put(newsFeedsImageDAO.getImagePath((String) NewsFeedUserIdList.get(i)));
+            newsFeedDetails.put("path", imagePath.get("path"));
 
+            array.put(newsFeedDetails);
+
+            System.out.println(array + "ooo");
 
         }
 
-      //  JSONArray jsonArray = new JSONArray(newsFeedDetails);
-
-
-        return newsFeedDetails;
+        return array;
     }
 
 
