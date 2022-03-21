@@ -92,6 +92,7 @@ public class NewsFeeds extends Post{
 
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
         this.setPostID( newsFeedsDAO.insert( this) );
+       NewsFeeds newsFeeds = new NewsFeeds();
 
         if ( this.getPostID() != null ){
 
@@ -100,7 +101,6 @@ public class NewsFeeds extends Post{
 
             Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\NewsFeedImages\\" , imageFile );
             saveImage.start();
-
 
         }
 
