@@ -1,6 +1,7 @@
 package Model;
 
 import DAO.AdminPostDAO;
+import DAO.*;
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 
@@ -10,19 +11,12 @@ import java.time.LocalTime;
 public class AdminWork extends Post{
 
     private String sysPostID;
-    private String imageStatus;
-    private String imagePath;
-
     private String textMsg;
     private String photo;
     private LocalDate date;
     private LocalTime time;
 
 
-    public String getImagePath() { return imagePath; }
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 
     public String getSysPostID() {
         return sysPostID;
@@ -60,19 +54,15 @@ public class AdminWork extends Post{
     }
 
 
-    public String getImageStatus() {
-        return imageStatus;
-    }
-    public void setImageStatus(String imageStatus) {
-        this.imageStatus = imageStatus;
-    }
 
 
     public AdminWork(){    }
 
 
-    public AdminWork(String message , LocalDate localDate , LocalTime localTime ){
-        super( message , localDate , localTime );
+    public AdminWork(String textMsg , LocalDate date , LocalTime time ){
+        this.textMsg = textMsg;
+        this.date = date;
+        this.time = time;
     }
 
    /* public AdminWork insertEducationalWork(FileItem imageFile , String path  ) throws Exception {
@@ -91,12 +81,15 @@ public class AdminWork extends Post{
         AdminPostDAO adminPostDAO = new AdminPostDAO();
         this.setSysPostID( adminPostDAO.insert2( this) );
         if ( this.getSysPostID() != null ){
-            /*AdminPostDAO educationalPostDAO = new AdminPostDAO();
-            this.setImagePath( educationalPostDAO.insertpostid(this) );*/
+            //AdminPostDAO educationalPostDAO = new AdminPostDAO();
+            //this.setPhoto( educationalPostDAO.insertpostid(this) );
 
             Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getSysPostID() , path + "Resources\\Images\\AdminPostImages\\" , imageFile );
             saveImage.start();
         }
         return this;
     }
+
+
+
 }
