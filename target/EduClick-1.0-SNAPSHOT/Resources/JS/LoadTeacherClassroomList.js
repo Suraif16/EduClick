@@ -60,7 +60,6 @@ const sendD = function () {
             '</div>';*/
 
 
-        let flag = 0;
 
         classroomsListLinksSelect.innerHTML +=
             '            <div class="rightPanelSingleStudent" >' +
@@ -78,14 +77,15 @@ const sendD = function () {
             '' +
             '                <div>'
 
-
-        for(let i = 0;i<enrolledClassroomList.length + RequestedClassroomList.length;i++){
+let flag = 0;
+        for(let i = 0;i<enrolledClassroomList.length+RequestedClassroomList.length;i++){
             if(enrolledClassroomList[i]==classroomId){
                 classroomsListLinksSelect.innerHTML +=
                     '                <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll Request" onclick="enableDisableStatus('+classroomId+')">' +
                     '                    <input style="display:block;" id="disable'+ classroomId +'" type="button" value="Unenroll" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +
                     '                    <input style="display:none;" id="requested'+ classroomId +'" type="button" value="Cancel Request" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">';
-            break;
+
+                break;
             }else if(RequestedClassroomList[i]==classroomId){
                 classroomsListLinksSelect.innerHTML +=
                     '                <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll Request" onclick="enableDisableStatus('+classroomId+')">' +
@@ -102,7 +102,6 @@ const sendD = function () {
                 break;
             }
         }
-
 
         /*if(enrolledClassroomList.length == 0 || RequestedClassroomList.length == 0 ){
             classroomsListLinksSelect.innerHTML +=

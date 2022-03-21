@@ -280,4 +280,67 @@ public class ClassroomDAO {
 
     }
 
+    public void deleteClassroom( String classroomId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        try {
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "DELETE FROM Classroom WHERE ClassroomID = ?";
+            preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , classroomId );
+
+            int x = preparedStatement.executeUpdate();
+
+            if ( x == 0 ){
+
+                connection.rollback();
+
+            }else{
+
+                connection.commit();
+
+            }
+        }catch ( SQLException E ){
+
+            E.printStackTrace();
+
+            try{
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }finally {
+
+            try {
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+
+                if ( connection != null )connection.close();
+
+            }catch( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }
+
+    }
+
 }

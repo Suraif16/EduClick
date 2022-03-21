@@ -390,8 +390,32 @@ const displayCurrentClassroomDetails = function (){
 
 const deleteClassroom = function ( id ){
 
-    console.log( id );
-    console.log( "3asdf35" );
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.status === 200 && this.readyState === 4 ){
+
+            let jsonResponse = JSON.parse( this.responseText );
+
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed") {
+                /* This is where I need work everytime as per the authentication filter*/
+
+                window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
+
+            }else{
+                alert("something went wrong!!!");
+            }
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/classroomDeleteServlet" , true );
+    httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
+    httpreq.send( "classroomId=" + id );
 
 }
 
