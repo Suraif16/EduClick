@@ -14,7 +14,7 @@ const loadFriendsList = function (){
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/student/studentFriendListLoad", true);
+    httpreq.open("POST", "/EduClick_war_exploded/studentFriendListLoad", true);
     httpreq.send();
 
     function loadFriends(httpreq){

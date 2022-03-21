@@ -994,7 +994,7 @@ input.requestDecline{
         margin: 28% auto auto 66%;
         width: 30%;
         display: none;
-        max-height: 75%;
+        max-height: 65%;
         background-color: white;
 
     }
@@ -1027,7 +1027,7 @@ input.requestDecline{
     div#content > div#rightPanel {
 
         margin: 30% auto auto 55%;
-        max-height: 75%;
+        max-height: 55%;
         width: 40%;
 
 
@@ -1060,7 +1060,7 @@ input.requestDecline{
     div#content > div#rightPanel {
 
         margin: 34% auto auto 55%;
-        max-height: 75%;
+        max-height: 55%;
         width: 40%;
 
 
@@ -1105,7 +1105,7 @@ input.requestDecline{
     div#content > div#rightPanel {
 
         margin: 41% auto auto 45%;
-        max-height: 75%;
+        max-height: 55%;
         width: 50%;
 
     }

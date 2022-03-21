@@ -32,7 +32,7 @@ const getRequestData = function(){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/displayRequest" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/displayRequest" , true);
     httpreq.send();
 
     const serverResponseComplete = function( httpreq ){

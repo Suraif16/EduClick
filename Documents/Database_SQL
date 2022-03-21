@@ -356,5 +356,25 @@ ALTER TABLE Notifications
     ADD FOREIGN KEY(NotifierID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE,
     ADD FOREIGN KEY(NotifieeID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE CASCADE;
 
+DELIMITER $$
+CREATE TRIGGER IncrementLikeCount AFTER INSERT ON Likes
+for each row
+BEGIN
+	UPDATE NewsFeeds
+	SET LikeCount = LikeCount + 1
+	WHERE NFPostID = NEW.NFPostID;
+end$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER DecrementLikeCount AFTER DELETE ON Likes
+for each row
+BEGIN
+	UPDATE NewsFeeds
+	SET LikeCount = LikeCount - 1
+	WHERE NFPostID = OLD.NFPostID;
+end$$
+DELIMITER ;
+
 INSERT INTO Admin (EmailID, Password, AdminName)
 VALUES('rahuram666@gmail.com','dfe338b7c702ebc9fac2339f130510539ee7049d7106c612bba48e5ef7d9d4e7','Rahuram');
