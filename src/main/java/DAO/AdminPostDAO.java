@@ -1,8 +1,7 @@
 package DAO;
 
 import Database.DBConnectionPool;
-import Model.AdminPost;
-import Model.User;
+import Model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -69,7 +68,7 @@ public class AdminPostDAO {
                     String time = resultSet.getString("APTime");
 
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("aPId",ApostId);
+                    jsonObject.put("PId",ApostId);
                     jsonObject.put("caption",textmsg);
                     jsonObject.put("date",date);
                     jsonObject.put("time",time);
@@ -89,30 +88,67 @@ public class AdminPostDAO {
         return jsonArray;
     }
 
-    /*public ArrayList<String> getSysPostIDkeys(String userId){
+    public String insert2(AdminWork adminWork){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<String> APostIDList = new ArrayList<String>();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select  * from Admin_Post_System_Updates WHERE SysPostID = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement( sql );
-            preparedStatement.setString(1,userId);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            String sql = "INSERT INTO Admin_Post_System_Updates (APTextMsg,APDate,APTime) VALUES (?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, String.valueOf(adminWork.getTextMsg()));
+            preparedStatement.setString(2, String.valueOf(adminWork.getDate()));
+            preparedStatement.setString(3, String.valueOf(adminWork.getTime()));
 
-            while(resultSet.next()){
-                APostIDList.add(resultSet.getString("SysPostID"));
+            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+            if (resultSet.next()){
+                return resultSet.getString(1);
+
             }
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         finally {
-
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
-
         }
-        return APostIDList;
+        return null;
+    }
+    /*public String insertpostid(AdminWork adminWork){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "INSERT INTO Admin_Post_System_Updates( SysPostID ) VALUES( ? )";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
+            preparedStatement.setString( 1 , adminWork.getSysPostID());
+            preparedStatement.execute();
+
+            String i = adminWork.getSysPostID();
+            System.out.println(i + " -> This is adminpost id ");
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+            if ( resultSet.next() ){
+                return resultSet.getString( 1 );
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        return  null;
     }*/
 }
