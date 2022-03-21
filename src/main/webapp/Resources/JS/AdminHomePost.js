@@ -11,21 +11,7 @@ function showAddClassroomFrom(){
 }
 
 
-
-/*
-const sendServerData = function (){
-    let textMsg = document.getElementById("addNewsFeedFormTextArea").value;
-    let httpreq = new XMLHttpRequest();
-
-
-    httpreq.open( "POST" , "/EduClick_war_exploded/AdminPost" , true);
-    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
-    httpreq.send("textMsg=" + textMsg );
-
-
-}
-
-const postQuestionsMessages = function (){
+/*const postQuestionsMessages = function (){
     showAddClassroomFrom();
     sendServerData();
 
