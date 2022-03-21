@@ -122,7 +122,7 @@ public class NewsFeedsInsertServlet extends HttpServlet {
         if ( isMultipart ){
 
             newsFeeds = handleImageAndPostUploads.uploadNewsFeedsImages( request , getServletContext().getRealPath( "" ) , LocalDate.now(), LocalTime.now() );
-
+          //  System.out.println(newsFeeds.getImageStatus() + "huu huu huu ");
         }
 
         if ( newsFeeds != null ){

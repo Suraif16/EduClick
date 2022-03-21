@@ -248,8 +248,6 @@ public class PostDAO {
                 UserID = resultSet.getString("T_UserID");
 
 
-             //   jsonObject.put("ownerID",UserID);
-
             }
 
 
