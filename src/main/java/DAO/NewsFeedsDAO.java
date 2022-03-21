@@ -133,11 +133,10 @@ public String insert(NewsFeeds newsFeeds){
         return NewsFeedsTime;
     }
 
-    public String getNewsFeedsDetails(String SharedPostID) {
+    public JSONObject getNewsFeedsDetails(Object SharedPostID) {
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
         JSONObject jsonObject = new JSONObject();
 
         try {
@@ -146,7 +145,7 @@ public String insert(NewsFeeds newsFeeds){
                 String sql = "SELECT Date, Time, Caption FROM NewsFeeds WHERE NFPostID = ?";
 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, SharedPostID);
+                preparedStatement.setString(1, (String) SharedPostID);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
@@ -172,7 +171,7 @@ public String insert(NewsFeeds newsFeeds){
             }
 
         }
-        return String.valueOf(jsonObject);
+        return jsonObject;
     }
 
 
