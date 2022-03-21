@@ -81,9 +81,9 @@ public class NewsFeeds extends Post{
         return NFDetailList;
     }
 
-    public JSONObject getImagePath(String newsFeedsIDList){
+    public String getImagePath(String newsFeedsIDList){
         NewsFeedsImageDAO newsFeedImageDAO = new NewsFeedsImageDAO();
-        JSONObject NFImageList = newsFeedImageDAO.getImagePath(newsFeedsIDList);
+        String NFImageList = newsFeedImageDAO.getImagePath(newsFeedsIDList);
         return NFImageList;
     }
 
