@@ -1,9 +1,8 @@
 package Model;
 
-import DAO.AdminPostDAO;
-import DAO.ClassroomDAO;
-import DAO.NewsFeedsDAO;
-import DAO.PostDAO;
+import DAO.*;
+import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
+import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
 
 import java.time.LocalDate;
@@ -92,22 +91,12 @@ public class AdminPost {
         this.date = adminPost.getDate();
         this.time = adminPost.getTime();
     }
-    /*public AdminPost getAdminPost(){
-        AdminPostDAO adminPostDAO = new AdminPostDAO();
-        return adminPostDAO.select(this);
-    }*/
+
     /*public ArrayList<AdminPost> getPostDetails(ArrayList<String> arrayList){
         AdminPostDAO adminpostDAO =  new AdminPostDAO();
         postDetails =adminpostDAO.selectPostDetails(arrayList);
 
         return postDetails;
-    }*/
-    /*public ArrayList<String> getSysPostID(String userId){
-
-        AdminPostDAO adminpostDAO =  new AdminPostDAO();
-        ArrayList<String> APostIDList = adminpostDAO.getSysPostIDkeys(userId);
-        return APostIDList;
-
     }*/
 
     public JSONArray getAPostDetails(){
@@ -115,4 +104,5 @@ public class AdminPost {
         JSONArray APostDetails = adminpostDAO.getAPostDetails();
         return APostDetails;
     }
+
 }
