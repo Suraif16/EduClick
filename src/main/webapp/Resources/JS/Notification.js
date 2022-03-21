@@ -194,7 +194,7 @@ function FriendRequestDecline(fromId , toId ){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/user/cancelFriendRequest" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/declineFriendRequest" , true );
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send( "fromId=" + fromId + "&toId=" + toId );
 

@@ -174,9 +174,12 @@ public class FriendRequestDAO {
 
         PreparedStatement preparedStatement1 = null;
 
+        PreparedStatement preparedStatement2 = null;
+
         try{
 
             connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
 
             String sql = "DELETE FROM Friend_Request WHERE From_UserID = ? AND To_UserID = ?";
             preparedStatement = connection.prepareStatement( sql );
@@ -206,7 +209,21 @@ public class FriendRequestDAO {
 
                 }else {
 
-                    connection.commit();
+                    preparedStatement2 = connection.prepareStatement( sql1 );
+                    preparedStatement2.setString( 1 , fromId );
+                    preparedStatement2.setString( 2 , toId );
+
+                    int z = preparedStatement2.executeUpdate();
+                    if ( z==0 ){
+
+                        connection.rollback();
+
+                    }else {
+
+                        connection.commit();
+
+
+                    }
 
                 }
 
@@ -233,6 +250,7 @@ public class FriendRequestDAO {
 
                 if ( preparedStatement != null )preparedStatement.close();
                 if ( preparedStatement1 != null )preparedStatement1.close();
+                if ( preparedStatement2 != null )preparedStatement2.close();
 
                 if ( connection != null )connection.close();
 
