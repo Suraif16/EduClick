@@ -18,7 +18,7 @@ public class StudentProfileFullNameLoad extends HttpServlet {
         jsonObject.put( "serverResponse" , "Allowed" );
         HttpSession session = request.getSession( false );
         User user = (User) session.getAttribute("User");
-        String userId = user.getUserId();
+        String userId = request.getParameter("userId");
         String fullName=user.getFullName(userId);
         System.out.println("In Servlet profile = "+fullName);
         jsonObject.put("FullName",fullName);
