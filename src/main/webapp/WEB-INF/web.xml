@@ -616,15 +616,15 @@
 
     <!-- beginning of teacher entrance page news feed load -->
 
-    <!--<servlet>
-        <servlet-name>teacherNewsFeedsLoad</servlet-name>
-        <servlet-class>Controller.UserLoad.TeacherEntrancePageNewsFeedsLoadServlet</servlet-class>
+    <servlet>
+        <servlet-name>SelectedNewsFeedsLoad</servlet-name>
+        <servlet-class>Controller.SelectedNewsFeedsLoadServelet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>teacherNewsFeedsLoad</servlet-name>
-        <url-pattern>/teacher/teacherEntrancePageNewsFeedsLoad</url-pattern>
-    </servlet-mapping>-->
+        <servlet-name>SelectedNewsFeedsLoad</servlet-name>
+        <url-pattern>/teacher/teacher/selectedNewsFeedsLoadServlet</url-pattern>
+    </servlet-mapping>
 
     <!-- end of teacher entrance page news feed load -->
 
@@ -889,7 +889,7 @@
 
     <servlet>
         <servlet-name>SelectedNewsFeedsLoadServlet</servlet-name>
-        <servlet-class>Controller.SelectedNewsFeedsLoadServlet</servlet-class>
+        <servlet-class>Controller.SelectedNewsFeedsLoadServelet</servlet-class>
     </servlet>
 
     <servlet-mapping>

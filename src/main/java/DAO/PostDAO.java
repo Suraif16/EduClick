@@ -227,4 +227,43 @@ public class PostDAO {
         return jsonArray;
     }
 
+
+    public String getOwnerId(Object NewsFeedID) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+      //  JSONObject jsonObject = new JSONObject();
+        String UserID = "";
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT T_UserID FROM Posts WHERE NFPostID = ?;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, (String) NewsFeedID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                UserID = resultSet.getString("T_UserID");
+
+
+             //   jsonObject.put("ownerID",UserID);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        //System.out.println(jsonObject+"owners");
+        return UserID;
+    }
+
 }
