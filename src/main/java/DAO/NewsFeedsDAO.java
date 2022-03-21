@@ -68,6 +68,7 @@ public String insert(NewsFeeds newsFeeds){
 
     try{
 
+
         connection = dbConnectionPool.dataSource.getConnection();
         String sql = "INSERT INTO NewsFeeds( DATE , TIME , Caption, LikeCount, ShareCount  ) VALUES( ? , ? , ? ,? , ? )";
         PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
