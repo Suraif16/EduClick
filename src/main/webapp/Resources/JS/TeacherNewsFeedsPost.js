@@ -102,6 +102,7 @@ const postNewsFeeds = function () {
             let extraTime = 1000;
             while (new Date().getTime() < now + extraTime) {
             }
+            console.log(jsonResponse);
             if (jsonResponse.NewsFeedsPost.imageStatus === 'true') {
 
                 let innerPreviouseHTML = postContents.innerHTML;
