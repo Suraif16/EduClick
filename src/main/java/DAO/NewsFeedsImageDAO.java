@@ -10,10 +10,11 @@ import java.util.ArrayList;
 
 public class NewsFeedsImageDAO extends Post {
 
-    public String getImagePath(String newsFeedsIDList) {
+    public JSONObject getImagePath(Object newsFeedsIDList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<String> imagePathList = new ArrayList<String>();
+       // ArrayList<String> imagePathList = new ArrayList<String>();
+        JSONObject jsonObject = new JSONObject();
 
 
         try {
@@ -23,11 +24,12 @@ public class NewsFeedsImageDAO extends Post {
                 String sql = "SELECT imagePath FROM News_Feed_Image WHERE NFPostID = ?";
 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, newsFeedsIDList);
+                preparedStatement.setString(1, (String) newsFeedsIDList);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    imagePathList.add(resultSet.getString("imagePath"));
+                    String path = resultSet.getString("imagePath");
+                    jsonObject.put("path",path);
 
                 }
 
@@ -42,7 +44,8 @@ public class NewsFeedsImageDAO extends Post {
             }
 
         }
-        return String.valueOf(imagePathList);
+
+        return jsonObject;
     }
 
     public String insert(NewsFeeds newsFeeds){
