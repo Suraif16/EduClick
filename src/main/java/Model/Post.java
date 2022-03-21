@@ -145,22 +145,27 @@ public class Post {
         PostDAO postDAO = new PostDAO();
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
         NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
+        UserDAO userDAO = new UserDAO();
 
         JSONArray NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
-      //  System.out.println(NewsFeedUserIdList );
+      //  System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
 
         JSONArray array = new JSONArray();
 
         for (int i = 0; i < NewsFeedUserIdList.length(); i++) {
 
             JSONObject newsFeedDetails = newsFeedsDAO.getNewsFeedsDetails(NewsFeedUserIdList.get(i));
-            JSONObject imagePath = newsFeedsImageDAO.getImagePath(NewsFeedUserIdList.get(i));
 
-            newsFeedDetails.put("path", imagePath.get("path"));
+            String imagePath = newsFeedsImageDAO.getImagePath((String) NewsFeedUserIdList.get(i));
 
+            String ownerId = String.valueOf(postDAO.getOwnerId(NewsFeedUserIdList.get(i)));
+
+            String ownerName = userDAO.getOwnerName(ownerId);
+
+            newsFeedDetails.put("ownerName",ownerName);
+            newsFeedDetails.put("path", imagePath);
+           ;
             array.put(newsFeedDetails);
-
-          //  System.out.println(array + "ooo");
 
         }
 
