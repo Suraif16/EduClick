@@ -1,7 +1,6 @@
 package Controller;
 
 import DAO.ShareDAO;
-import Model.NewsFeeds;
 import Model.Requests;
 import Model.User;
 import org.json.JSONArray;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -68,7 +66,6 @@ public class SharedNewsFeedsServletInsert extends HttpServlet {
         for(int i=0; i < friendList.size(); i++){
             shareDAO.insert(time, date, userId, friendList.get(i), SharedPostID);
         }
-
 
         out.write( jsonObject.toString() );
         out.close();

@@ -4,6 +4,7 @@ package Model;
 import DAO.ClassroomDAO;
 import DAO.ClassroomHasEPostDAO;
 import DAO.EnrollDAO;
+import DAO.EnrollRequestDAO;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -147,5 +148,19 @@ public class Classroom {
         EnrollDAO enrollDAO = new EnrollDAO();
         enrollDAO.updateStatus( userId , classroomId , status );
 
+    }
+    public ArrayList<String> getStudentListInClass(String classroomId){
+        EnrollDAO enrollDAO = new EnrollDAO();
+        return enrollDAO.getStudentsListInClass(classroomId);
+    }
+
+    public ArrayList<String> getEnrolledClassrooms(String userId){
+        EnrollDAO enrollDAO = new EnrollDAO();
+        return enrollDAO.checkEnrollment(userId);
+
+    }
+    public ArrayList<String> getRequestedClassroomList(String userId){
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        return enrollRequestDAO.getRequestedClassroomList(userId);
     }
 }

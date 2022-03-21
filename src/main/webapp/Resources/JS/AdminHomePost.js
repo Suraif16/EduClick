@@ -1,21 +1,9 @@
-let classroomListStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
-let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hidden*/
+let addClassroomFormStatus = true; /*if it is false the addClassroomForm is hidden*/
 let addClassroomFormErrorStatus = false; /* if it is false then classroomFormRowErrorMessage is hidden*/
 
-const classroomListObjection = document.getElementById( "classroomsList" );
-const addClassroomForm = document.getElementById("addClassroomForm");
+const addClassroomForm = document.getElementById("addNewsFeedForm");
 const classroomFormRowErrorMessage = document.getElementById( "classroomFormRowErrorMessage" );
-const submitButton = document.getElementById("postButton");
 
-function showClassroomList(){
-    if(classroomListStatus){
-        classroomListObjection.style.display = "none";
-        classroomListStatus = false;
-    }else{
-        classroomListObjection.style.display = "flex";
-        classroomListStatus = true;
-    }
-}
 
 function showAddClassroomFrom(){
     if(addClassroomFormStatus){
@@ -41,7 +29,7 @@ function showClassroomFormRowErrorMessage( message ){
 
 
 const sendServerData = function (){
-    let textMsg = document.getElementById("classroomName").value;
+    let textMsg = document.getElementById("addNewsFeedFormTextArea").value;
 
 
     let httpreq = new XMLHttpRequest();
@@ -55,7 +43,7 @@ const sendServerData = function (){
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("textMsg=" + textMsg );
 
-    function completeLogin( httpreq ){
+    /*function completeLogin( httpreq ){
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
 
@@ -90,11 +78,10 @@ const sendServerData = function (){
         }else{
             alert("something went wrong!!!");
         }
-
-
-    }
+    }*/
 }
 
-submitButton.onclick = function (){
+const postQuestionsMessages = function (){
     sendServerData();
+    showAddClassroomFrom();
 }

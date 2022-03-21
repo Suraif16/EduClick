@@ -593,7 +593,7 @@ div#content > div#notifications {
     padding: 1%;
     z-index: 1;
     background-color: white;
-    height: 80%;
+    height-max: 80%;
     display: none; /*becomes a container to the request*/
     flex-direction: column;
 
@@ -626,6 +626,7 @@ div#content > div#notifications > div#request > div.singleNotification > div{
     padding: 1%;
     margin: 1%;
     display: flex;
+    color: white;
 
 }
 

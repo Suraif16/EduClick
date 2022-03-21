@@ -167,7 +167,7 @@ public class AnswerStudentPostRelationshipDAO {
                 jsonArray.put( singleMcqResult );
             }
 
-
+            connection.commit();
 
         } catch (SQLException throwables) {
 
@@ -177,10 +177,12 @@ public class AnswerStudentPostRelationshipDAO {
 
             }catch ( SQLException E ){
 
-                throwables.printStackTrace();
                 E.printStackTrace();
 
             }
+
+            throwables.printStackTrace();
+
 
         }finally {
 

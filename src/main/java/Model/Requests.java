@@ -112,9 +112,9 @@ public class Requests {
     }
 
 
-    public void deleteEnroll(String classroomId,String userId){
-        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
-        enrollRequestDAO.deleteRecord(classroomId,userId);
+    public String deleteEnroll(String classroomId,String userId){
+        EnrollDAO enrollDAO = new EnrollDAO();
+        return enrollDAO.deleteRecord(classroomId,userId);
     }
 
     public String alreadyEnrolledCheck(String classroomId,String userId){
@@ -176,6 +176,29 @@ public class Requests {
 
         EnrollDAO enrollDAO = new EnrollDAO();
         return enrollDAO.acceptClassroomEnrollRequest( this );
+
+    }
+    public ArrayList<String> requestCheck(String classroomId){
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        return enrollRequestDAO.requestCheck(classroomId);
+    }
+
+    public String deleteRequest(String classroomId,String userId){
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        return enrollRequestDAO.deleteRequest(classroomId,userId);
+    }
+
+    public void deleteEnrollRequest(){
+
+        EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
+        enrollRequestDAO.deleteEnrollRequest( this.fromId , this.toId );
+
+    }
+
+    public void acceptFriendRequest(){
+
+        FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
+        friendRequestDAO.acceptFriendRequest( this.fromId , this.toId );
 
     }
 

@@ -276,17 +276,33 @@
     <!-- beginning of DisplayRequestServlet-->
         
     <servlet>
-        <servlet-name>DisplayRequest</servlet-name>
+        <servlet-name>DisplayRequestStudent</servlet-name>
         <servlet-class>Controller.Requests.DisplayRequestServlet</servlet-class>
         <load-on-startup>12</load-on-startup>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>DisplayRequest</servlet-name>
-        <url-pattern>/teacher/displayRequest</url-pattern>
+        <servlet-name>DisplayRequestStudent</servlet-name>
+        <url-pattern>/displayRequest</url-pattern>
     </servlet-mapping>
     
     <!-- end of DisplayRequestServlet-->
+
+    <!-- beginning of DisplayRequestServlet-->
+
+    <servlet>
+        <servlet-name>DisplayRequest</servlet-name>
+        <servlet-class>Controller.Requests.DisplayRequestServlet</servlet-class>
+        <load-on-startup>12</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DisplayRequest</servlet-name>
+        <url-pattern>/teacher/displayRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of DisplayRequestServlet-->
+
 
     <!-- beginning of incorrectPassword -->
     <servlet>
@@ -423,7 +439,7 @@
 
     <servlet-mapping>
         <servlet-name>studentFollowerListLoad</servlet-name>
-        <url-pattern>/student/studentFollowerListLoad</url-pattern>
+        <url-pattern>/studentFollowerListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student follow list load -->
@@ -437,7 +453,7 @@
 
     <servlet-mapping>
         <servlet-name>studentProfileNameLoad</servlet-name>
-        <url-pattern>/student/studentProfileNameLoad</url-pattern>
+        <url-pattern>/studentProfileNameLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student full name load -->
@@ -466,7 +482,7 @@
 
     <servlet-mapping>
         <servlet-name>followTeacher</servlet-name>
-        <url-pattern>/student/followTeacher</url-pattern>
+        <url-pattern>/followTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- end of follow teachers -->
@@ -480,12 +496,40 @@
 
     <servlet-mapping>
         <servlet-name>unfollowTeacher</servlet-name>
-        <url-pattern>/student/unFollowTeacher</url-pattern>
+        <url-pattern>/unFollowTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- end of unfollow teachers -->
 
-    <!-- beginning of unfollow teachers -->
+    <!-- beginning of cancel friend request -->
+
+    <servlet>
+        <servlet-name>cancelEnrollRequest</servlet-name>
+        <servlet-class>Controller.Requests.DeclineEnrollRequestTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cancelEnrollRequest</servlet-name>
+        <url-pattern>/teacher/declineEnrollRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of cancel friend request -->
+
+    <!-- beginning of accept friend request -->
+
+    <servlet>
+        <servlet-name>acceptEnrollRequest</servlet-name>
+        <servlet-class>Controller.Requests.AcceptFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>acceptEnrollRequest</servlet-name>
+        <url-pattern>/user/AcceptFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of accept friend request -->
+
+    <!-- beginning of cancel enroll request -->
 
     <servlet>
         <servlet-name>cancelFriendRequest</servlet-name>
@@ -494,10 +538,10 @@
 
     <servlet-mapping>
         <servlet-name>cancelFriendRequest</servlet-name>
-        <url-pattern>/cancelFriendRequest</url-pattern>
+        <url-pattern>/user/cancelFriendRequest</url-pattern>
     </servlet-mapping>
 
-    <!-- end of unfollow teachers -->
+    <!-- end of cancel enroll request -->
 
     <!-- beginning of teacher follow list load -->
 
@@ -537,7 +581,7 @@
 
     <servlet-mapping>
         <servlet-name>studentFriendListLoad</servlet-name>
-        <url-pattern>/student/studentFriendListLoad</url-pattern>
+        <url-pattern>/studentFriendListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student follow list load -->
@@ -784,6 +828,63 @@
     </servlet-mapping>
 
     <!-- end of enable disable student enroll status servlet-->
+    <!-- beginning of enable disable student enroll status servlet-->
+
+    <servlet>
+        <servlet-name>AdminDatacheck</servlet-name>
+        <servlet-class>Controller.AdminDatacheckServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminDatacheck</servlet-name>
+        <url-pattern>/AdminDatacheckServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of enable disable student enroll status servlet-->
+
+
+    <!-- beginning of student MCQ result load on correct answers post servlet-->
+
+    <servlet>
+        <servlet-name>StudentMCQResultLoadOnClickServlet</servlet-name>
+        <servlet-class>Controller.StudentMCQResultLoadOnClickServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentMCQResultLoadOnClickServlet</servlet-name>
+        <url-pattern>/student/studentMCQResultLoadOnClick</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student MCQ result load on correct answers post servlet-->
+
+    <!-- beginning of share newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.ShareNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <url-pattern>/teacher/shareNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of share newsfeeds servlet-->
+
+    <!-- beginning of like newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.LikeNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <url-pattern>/teacher/likeNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of like newsfeeds servlet-->
+
 
     <!-- beginning of select mcq result servlet-->
 
@@ -795,6 +896,20 @@
     <servlet-mapping>
         <servlet-name>TeacherClassroomSelectMcqResultServlet</servlet-name>
         <url-pattern>/teacher/teacherClassroomSelectMcqResultServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select mcq result servlet-->
+
+    <!-- beginning of select mcq result servlet-->
+
+    <servlet>
+        <servlet-name>TeacherSetMarksForAnswersServlet</servlet-name>
+        <servlet-class>Controller.TeacherSetMarksForAnswersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherSetMarksForAnswersServlet</servlet-name>
+        <url-pattern>/teacher/teacherSetMarksForAnswersServlet</url-pattern>
     </servlet-mapping>
 
     <!-- end of select mcq result servlet-->

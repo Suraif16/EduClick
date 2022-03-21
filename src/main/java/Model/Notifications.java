@@ -2,6 +2,8 @@ package Model;
 
 import DAO.NotificationsDAO;
 
+import java.util.ArrayList;
+
 public class Notifications {
     public String getNotifierID() {
         return notifierID;
@@ -54,6 +56,11 @@ public class Notifications {
     public void insertNotifications(String notifierId,String notifieeId,String ePostId,String param){
         NotificationsDAO notificationsDAO = new NotificationsDAO();
         notificationsDAO.insertNotifications(notifierId,notifieeId,ePostId,param);
+    }
+
+    public void insertEpostNotificationsFromTeacher(String teacherId, ArrayList<String> studentList,String ePostId,String param){
+        NotificationsDAO notificationsDAO = new NotificationsDAO();
+        notificationsDAO.insertNotificationsFromTeacher(teacherId,studentList,ePostId,param);
     }
 
 

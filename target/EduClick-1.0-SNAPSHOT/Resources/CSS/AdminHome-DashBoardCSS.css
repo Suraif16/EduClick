@@ -40,7 +40,7 @@ header > div#headerButtons {
 
 }
 
-header > div#headerButtons > input#classroomListHideButton {
+header > div#headerButtons > div#classroomListHideButton {
 
 
     margin: 0.2%  auto 0.2% auto;
@@ -284,13 +284,6 @@ div#content > div#classroomsList {
     background-color: #4775c4;
     width: 200px;
     height: 25px;
-
-}
-
-input{
-    /*all input values will have these properties*/
-    border-radius: 5px;
-    border: #6a6a6a solid 1px;
 
 }
 
@@ -691,8 +684,6 @@ div#content > div#addClassroomForm > div.classroomFormRow{
     margin: 1%;
     display: flex; /*becomes a container for the input elements*/
     flex-direction: row;
-    /*padding: 1% 1%;*/
-    color: black;
     flex-wrap: wrap;
 
 
@@ -700,6 +691,11 @@ div#content > div#addClassroomForm > div.classroomFormRow{
 }
 
 div#content > div#addClassroomForm > div.classroomFormRow > input{
+
+    flex: 1;
+
+}
+div#content > div#addClassroomForm > div.classroomFormRow > div{
 
     flex: 1;
 

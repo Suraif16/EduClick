@@ -18,7 +18,6 @@ window.onscroll = function (){
 
 };
 
-
 const loadStudentEducationalPosts = function ( scrollStatus ){
 
     let classroomId = getClassroomIdClientSide();
@@ -63,67 +62,77 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
         let jsonResponse = JSON.parse( httpreq.responseText );
 
-        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonResponse.serverResponse === "Allowed") {
+        console.log("Status of the student is : "+jsonResponse.Status)
 
-            console.log("New Post load check");
+        if(jsonResponse.Status === "Enable"){
+
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed") {
+
+                console.log("New Post load check");
 
 
-            console.log( jsonResponse.TeacherFullName );
+                console.log( jsonResponse.TeacherFullName );
 
-            const ePostsLIst = jsonResponse.ePosts;
+                const ePostsLIst = jsonResponse.ePosts;
 
-            console.log(ePostsLIst)
+                console.log(ePostsLIst)
 
-            if ( ePostsLIst.length === 0 ){
+                if ( ePostsLIst.length === 0 ){
 
-                selectMoreStatus = false;
-
-            }
-
-            for (let i = 0; i < ePostsLIst.length ; i++) {
-
-                if ( ePostsLIst[i].EpostId < minEPostId ){
-
-                    minEPostId = ePostsLIst[i].EpostId;
+                    selectMoreStatus = false;
 
                 }
 
-                if ( ePostsLIst[i].EPtype === "MCQ" ){
+                for (let i = 0; i < ePostsLIst.length ; i++) {
 
-                    console.log("MCQ thynwa load krnne khmda bn?")
+                    if ( ePostsLIst[i].EpostId < minEPostId ){
 
-                    postContent += displayMcqPost( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
+                        minEPostId = ePostsLIst[i].EpostId;
 
-                }else {
+                    }
 
-                    if ( ePostsLIst[i].type === "Question" ){
+                    if ( ePostsLIst[i].EPtype === "MCQ" ){
 
-                        postContent += displayEducationalPost( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
+                        console.log("MCQ thynwa load krnne khmda bn?")
+
+                        postContent += displayMcqPost( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
 
                     }else {
 
-                        postContent += displayMessage( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
+                        if ( ePostsLIst[i].type === "Question" ){
+
+                            postContent += displayEducationalPost( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
+
+                        }else {
+
+                            postContent += displayMessage( ePostsLIst[i],jsonResponse.TeacherFullName,jsonResponse.TeacherId );
+
+                        }
 
                     }
 
                 }
 
+                postDataContent.innerHTML += postContent;
+                reloadStatus = true;
+
+            }else{
+                alert("something went wrong!!!");
             }
 
-            postDataContent.innerHTML += postContent;
-            reloadStatus = true;
 
-        }else{
-            alert("something went wrong!!!");
+        }else if(jsonResponse.Status === "Disable"){
+            document.getElementById( "postContents" ).innerHTML = "";
         }
+
+
 
     }
 
 }
 
-let arrayX;
 
 
 const displayMessage = function (postData,TeacherFullName,TeaherId){
@@ -138,13 +147,13 @@ const displayMessage = function (postData,TeacherFullName,TeaherId){
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
+            '                    </a>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
             '                        </div>' +
             '                        <div class="userOptions">' +
             '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
-            '                    </a>' +
             '                </div>' +
             '            </div>' +
             '            <div class="postContentContainer">' +
@@ -177,13 +186,13 @@ const displayMessage = function (postData,TeacherFullName,TeaherId){
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
+            '                    </a>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
             '                        </div>' +
             '                        <div class="userOptions">' +
             '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
-            '                    </a>' +
             '                </div>' +
             '            </div>' +
             '            <div class="postContentContainer">' +
@@ -215,13 +224,13 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
+            '                    </a>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
             '                        </div>' +
             '                        <div class="userOptions">' +
             '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
-            '                    </a>' +
             '                </div>' +
             '            </div>' +
             '            <div class="postContentContainer">' +
@@ -273,13 +282,13 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
+            '                    </a>' +
             '                        <div class="postTimeAndDate">' +
             postData.time + ' | ' + postData.date +
             '                        </div>' +
             '                        <div class="userOptions">' +
             '                            <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + postData.EpostId + '" onclick="showOptionMenu(' + postData.EpostId + ',\'educationalPostOPtion\')">' +
             '                        </div>' +
-            '                    </a>' +
             '                </div>' +
             '            </div>' +
             '            <div class="postContentContainer">' +
@@ -659,4 +668,13 @@ const isImageAccepted = function ( type ){
     return false;
 
 }
+
+/*setInterval( function (){
+
+        loadStudentEducationalPosts(false);
+
+
+
+
+} ,5000);*/
 

@@ -10,11 +10,12 @@ import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class handleImageAndPostUploads {
 
-    public static EducationalWork uploadEPostImages(HttpServletRequest request, String path, LocalDate localDate, LocalTime localTime ) {
+    public static EducationalWork uploadEPostImages(HttpServletRequest request, String path, LocalDate localDate, LocalTime localTime , String userId ) {
 
         String type = "";
         String message = "";
@@ -70,8 +71,18 @@ public class handleImageAndPostUploads {
                 imageStatus = "true";
 
             }
+
             EducationalWork educationalWork = new EducationalWork( message , type , localDate , localTime , imageStatus );
-            return educationalWork.insertEducationalWork( imageFile , path , classroomId );
+
+            educationalWork = educationalWork.insertEducationalWork( imageFile , path , classroomId );
+            
+            Classroom classroom = new Classroom();
+            ArrayList<String> studentList = classroom.getStudentListInClass( classroomId );
+
+            Notifications notifications = new Notifications();
+            notifications.insertEpostNotificationsFromTeacher( userId , studentList , educationalWork.getPostID() , "Educational Post" );
+
+            return educationalWork;
 
 
         } catch (Exception e) {
@@ -133,8 +144,6 @@ public class handleImageAndPostUploads {
                         System.out.println("The Post ID not notification : "+epostId);
                         System.out.println("The teacher ID not notification : "+teacherID);
                         System.out.println("The stundet not notification : "+studentId);
-                        ;
-
 
                         Notifications notifications = new Notifications();
                         notifications.insertNotifications(studentId,teacherID,epostId,param);
@@ -229,9 +238,26 @@ public class handleImageAndPostUploads {
 
             }
 
-
             NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime,imageStatus);
 
+            /*HttpSession session = request.getSession( false );
+            User user = (User) session.getAttribute("User");
+
+            String userId = user.getUserId();
+            Requests requests = new Requests();
+
+            ArrayList<String> followersList = requests.getTeacherFollowers(userId);
+            ArrayList<String> friendList = requests.getTeacherFriends(userId);
+            ArrayList<String> notifyList = new ArrayList<>();
+            notifyList.addAll(friendList);
+            notifyList.addAll(followersList);
+
+            String param = "Posted";
+
+            String postId = "";
+
+            Notifications notifications = new Notifications();
+            notifications.insertEpostNotificationsFromTeacher(userId,notifyList,postId,param);*/
 
             return newsFeeds.insertNewsFeeds( imageFile , path );
 

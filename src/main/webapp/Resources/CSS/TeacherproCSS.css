@@ -716,14 +716,14 @@ a.mcqProfile > div.mcqProfileImage{
 div#content > div#rightPanel {
 
 
-    margin: 19% auto auto 73%;
+    margin: 16% auto auto 73%;
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
     position: fixed;
     width: 24%;
     padding: 1%;
     display: flex;  /*making this a container to rightPanelTopic and rightPanelStudentList*/
     flex-direction: column;
-    max-height: 63%;
+    max-height: 60%;
 
 
 }
@@ -862,7 +862,7 @@ div#content > div#notifications {
     padding: 1%;
     z-index: 1;
     background-color: white;
-    height: 80%;
+    height-max: 80%;
     display: none; /*becomes a container to the request*/
     flex-direction: column;
 
@@ -895,6 +895,7 @@ div#content > div#notifications > div#request > div.singleNotification > div{
     padding: 1%;
     margin: 1%;
     display: flex;
+    color: white;
 
 }
 
@@ -993,7 +994,7 @@ input.requestDecline{
         margin: 28% auto auto 66%;
         width: 30%;
         display: none;
-        max-height: 75%;
+        max-height: 65%;
         background-color: white;
 
     }
@@ -1026,7 +1027,7 @@ input.requestDecline{
     div#content > div#rightPanel {
 
         margin: 30% auto auto 55%;
-        max-height: 75%;
+        max-height: 55%;
         width: 40%;
 
 
@@ -1059,7 +1060,7 @@ input.requestDecline{
     div#content > div#rightPanel {
 
         margin: 34% auto auto 55%;
-        max-height: 75%;
+        max-height: 55%;
         width: 40%;
 
 
@@ -1104,7 +1105,7 @@ input.requestDecline{
     div#content > div#rightPanel {
 
         margin: 41% auto auto 45%;
-        max-height: 75%;
+        max-height: 55%;
         width: 50%;
 
     }

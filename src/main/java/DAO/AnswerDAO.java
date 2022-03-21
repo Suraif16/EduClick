@@ -295,6 +295,71 @@ public class AnswerDAO {
 
     }
 
+    public void updateMarks( String answerId , String marks ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "UPDATE Answer SET Marks = ? WHERE AnswerID = ?";
+
+            preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , marks );
+            preparedStatement.setString( 2 , answerId );
+
+            int x = preparedStatement.executeUpdate();
+
+            if( x == 0 ){
+
+                connection.rollback();
+
+            }else {
+
+                connection.commit();
+
+            }
+
+        }catch ( SQLException E ){
+
+            try{
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+            E.printStackTrace();
+
+        }finally {
+
+            try{
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException E ){
+
+                E.printStackTrace();
+
+            }
+
+        }
+
+    }
+
 
 
 }

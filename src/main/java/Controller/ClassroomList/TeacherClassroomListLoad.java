@@ -1,6 +1,7 @@
 package Controller.ClassroomList;
 
 import Model.Classroom;
+import Model.Requests;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ public class TeacherClassroomListLoad extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
         HttpSession session = request.getSession( false );
-        String userId = (String) session.getAttribute( "profileUserId");
+        String userId = request.getParameter("userId");
         User user = new User();
         JSONObject jsonObject = new JSONObject();
 
@@ -32,8 +33,22 @@ public class TeacherClassroomListLoad extends HttpServlet {
             System.out.println(classroomList.get(i).getGrade());
             System.out.println(classroomList.get(i).getSubject());
         }
+
+        User user1 = (User) session.getAttribute( "User" );
+
+        Classroom classroom = new Classroom();
+        ArrayList<String> studentEnrollList = classroom.getEnrolledClassrooms(user1.getUserId());
+        ArrayList<String> requestedClassroomList = classroom.getRequestedClassroomList(user1.getUserId());
+
+
+
+
         JSONArray jsonArray = new JSONArray( classroomList );
+        JSONArray jsonArray1 = new JSONArray(studentEnrollList);
+        JSONArray jsonArray2 = new JSONArray(requestedClassroomList);
         jsonObject.put( "classroomList" , jsonArray);
+        jsonObject.put( "EnrolledClassroomList" , jsonArray1);
+        jsonObject.put("RequestedClassroomList",jsonArray2);
 
         out.write(jsonObject.toString());
         out.close();

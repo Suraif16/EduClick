@@ -21,12 +21,12 @@
 
         </div>
 
-        <a href="#" class="profile">
+        <!--<a href="#" class="profile">
             <div id="teacherUserNameHeader">User Name</div>
             <div class="profileImage">
                 <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
             </div>
-        </a>
+        </a>-->
         <div id="headerNotification" >
             <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
             <input type="button" value="    "  id="notificationSettings">
@@ -51,14 +51,13 @@
             <div id="navbar">
                 <ul>
                     <li><a href="#">Posts</a></li>
-                    <li><a href="#">About</a></li>
                     <li><a onclick="loadTeacherFriendList()" href="#">Friends</a></li>
                     <li><a onclick="loadTeacherFollowersList()" href="#">Followers</a></li>
                 </ul>
             </div>
             <div id="image-container1">
-                <!--<img id="profilepic1" src="../Resources/Icons/account_circle_white_24dp.svg">
-                <div class="postProfileUserName" id="teacherUserName" > User Name</div>-->
+                <img id="profilepic1" src="../Resources/Icons/account_circle_white_24dp.svg">
+                <div id="profileUserName"  class="postProfileUserName" > User Name</div>
             </div>
             <div id="navbar2">
                 <ul>
@@ -504,6 +503,7 @@
 <script src="../Resources/JS/TeacherFriendListLoad.js" defer></script>
 <script src="../Resources/JS/TeacherProfile.js" defer></script>
 <script src="../Resources/JS/ShareNewsFeeds.js" defer></script>
+<script src="../Resources/JS/Notification.js" defer></script>
 
 </body>
 </html>

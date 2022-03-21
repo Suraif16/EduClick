@@ -25,16 +25,15 @@ public class AdminPost1Servlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
+        //String userId = adminPost.getSysPostID();
+        //ArrayList<String> APostIDList = adminPost.getSysPostID(userId);
+
         AdminPost adminPost = new AdminPost();
-        String userId = adminPost.getSysPostID();
-        ArrayList<String> APostIDList = adminPost.getSysPostID(userId);
-
-
-        JSONArray APDetails = adminPost.getAPostDetails(APostIDList);
-
+        JSONArray APDetails = adminPost.getAPostDetails();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("AdminPostDetails" ,APDetails);
-        jsonObject.put("AdminPostDetails" ,APostIDList);
+
+        //jsonObject.put("AdminPostDetails" ,APostIDList);
 
         jsonObject.put("serverResponse" , "Allowed");
 

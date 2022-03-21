@@ -31,7 +31,7 @@ const LoadUserName = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
-            const headerName = document.getElementById("teacherUserNameHeader");
+            const headerName = document.getElementById("profileUserName");
             headerName.innerHTML = jsonLoginResponse.FullName;
             console.log(headerName);
 

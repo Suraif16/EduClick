@@ -1,30 +1,22 @@
-let refresh1 = 0;
-/*if(refresh1==1){
-    window.location.reload();
 
-}*/
+
 const loadFollowersList = function (){
-    let btn = document.getElementById("followers");
-    btn.style.backgroundColor = "#157DEC";
+    /*let btn = document.getElementById("followers");
+    btn.style.backgroundColor = "#157DEC";*/
     let httpreq = new XMLHttpRequest();
+    const postContents = document.getElementById("postContents");
+    postContents.innerHTML = "";
 
     httpreq.onreadystatechange = function () {
 
         if (this.readyState === 4 && this.status === 200) {
             console.log("I am running")
-            if(refresh1==0 && refresh==0){
                 completeLoad(this); /*This is where we get the response when the request was successfully sent and a successfully response is received */
-            }
-            else{
-                window.location.reload();
-            }
-        refresh1 = 1;
-
 
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/student/studentFollowerListLoad", true);
+    httpreq.open("POST", "/EduClick_war_exploded/studentFollowerListLoad", true);
     httpreq.send();
 
     function completeLoad(httpreq){
@@ -53,9 +45,10 @@ const loadFollowersList = function (){
         postContents.innerHTML = "";
         const searchContent = document.getElementById( "rightPanelStudentList" );
         const rightPanel = document.getElementById("rightPanel");
+        rightPanel.innerHTML="";
         rightPanel.style.display = "flex";
-        rightPanel.style.width = "400%";
-        rightPanel.style.marginLeft = "215%";
+        rightPanel.style.width = "380%";
+        rightPanel.style.marginLeft = "209%";
 
 
         /*let htmlString = '<div class="rightPanelSingleStudent" style=" flex-basis: 15%;' +
@@ -163,7 +156,7 @@ const followTeacher = function( T_UserId , followButton , unFollowButton ){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/followTeacher" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/followTeacher" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send( "teacherId=" + T_UserId );
 
@@ -184,7 +177,7 @@ const unfollowTeacher = function( T_UserId , followButton , unFollowButton ){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/unFollowTeacher" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/unFollowTeacher" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send( "teacherId=" + T_UserId );
 
@@ -211,7 +204,7 @@ const sendServerData = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentProfileNameLoad" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/studentProfileNameLoad" , true);
     httpreq.send();
 
     function completeLogin( httpreq ){
@@ -235,5 +228,12 @@ const sendServerData = function (){
 
     }
 
+
+}
+
+const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
 
 }

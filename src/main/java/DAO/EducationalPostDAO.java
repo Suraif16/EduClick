@@ -138,7 +138,7 @@ public class EducationalPostDAO {
 
     }
 
-    public void insertMCQ( EducationalWork educationalWork , String EPType , String classroomId , List<Mcq> mcqList ){
+    public String insertMCQ( EducationalWork educationalWork , String EPType , String classroomId , List<Mcq> mcqList ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
@@ -261,7 +261,7 @@ public class EducationalPostDAO {
             }
 
         }
-
+        return ePostId;
     }
     public ArrayList<String> getEpostsIds(String classroomId){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -323,7 +323,7 @@ public class EducationalPostDAO {
 
             if ( minPostId.equals( "-1" ) ){
 
-                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 2 ";
+                String sql = "SELECT EPostID , Date , Time , EPtype , Type FROM EducationalPost WHERE ClassroomID = ? ORDER BY Date DESC , Time DESC LIMIT 5 ";
                 preparedStatement = connection.prepareStatement( sql );
                 preparedStatement.setString( 1 , classroomId );
 
