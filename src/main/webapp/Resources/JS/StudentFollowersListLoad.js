@@ -205,7 +205,8 @@ const sendServerData = function (){
     }
 
     httpreq.open( "POST" , "/EduClick_war_exploded/studentProfileNameLoad" , true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLogin( httpreq ){
 
