@@ -160,6 +160,7 @@ function searchResult() {
 
 const displayTeacher = function ( jsonResponse ){
     const searchContent = document.getElementById( "rightPanelStudentList" );
+    console.log(jsonResponse);
     for ( i = 0 ; i < jsonResponse.searchResult.length ; i++ ){
 
         let htmlString = '<div class="rightPanelSingleStudent" >' +
