@@ -147,7 +147,7 @@ public class Post {
         NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
 
         JSONArray NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
-        System.out.println(NewsFeedUserIdList + "@@@@");
+      //  System.out.println(NewsFeedUserIdList );
 
         JSONArray array = new JSONArray();
 
@@ -160,7 +160,7 @@ public class Post {
 
             array.put(newsFeedDetails);
 
-            System.out.println(array + "ooo");
+          //  System.out.println(array + "ooo");
 
         }
 
