@@ -227,7 +227,7 @@ public class PostDAO {
         return jsonArray;
     }
 
-    //***********
+
     public String getOwnerId(Object NewsFeedID) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
