@@ -767,6 +767,41 @@ div#content > div#rightPanel {
 
 }
 
+div#content > div#rightPanel > div#rightPanelClassroom{
+
+    background-color: #4775c4;
+    flex: 1;
+    margin: auto 0 1% 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+}
+
+div#content > div#rightPanel > div#rightPanelClassroom > div.rightPanelClassroomDetails{
+
+    flex: 1;
+    margin: 1%;
+
+}
+
+div#content > div#rightPanel > div#rightPanelClassroom > div.rightPanelUnEnrollButton{
+
+    flex: 1;
+    margin: 1% auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+div#content > div#rightPanel > div#rightPanelClassroom > div.rightPanelUnEnrollButton > input[type = "button"]{
+
+    flex: 1;
+    margin: auto;
+    background-color: #403434;
+
+}
+
 div#content > div#rightPanel > div#rightPanelTopic {
     /*child of rightpanel*/
     background-color: #4775c4;

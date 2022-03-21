@@ -1,3 +1,4 @@
+/*
 
 const sendServerDataStudent = function (){
 
@@ -5,6 +6,7 @@ const sendServerDataStudent = function (){
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
+            console.log("KKKKKKKKKKKKK");
             completeLogin( this );
         }
 
@@ -20,6 +22,7 @@ const sendServerDataStudent = function (){
         if (jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed") {
             window.location.replace("/EduClick_war_exploded/Login.html");
         } else if (jsonLoginResponse.serverResponse === "Allowed") {
+
 
             let k = jsonLoginResponse.ImagePath.length;
             for(i=0 ; i <k; i++ ){
@@ -101,3 +104,4 @@ const sendServerDataStudent = function (){
 
 
 
+*/
