@@ -162,6 +162,7 @@ public class Post {
 
             String ownerName = userDAO.getOwnerName(ownerId);
 
+
             newsFeedDetails.put("ownerName",ownerName);
             newsFeedDetails.put("path", imagePath);
            ;
