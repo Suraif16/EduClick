@@ -609,7 +609,7 @@
 
     <servlet-mapping>
         <servlet-name>SelectedNewsFeedsLoad</servlet-name>
-        <url-pattern>/teacher/teacher/selectedNewsFeedsLoadServlet</url-pattern>
+        <url-pattern>/user/selectedNewsFeedsLoadServlet</url-pattern>
     </servlet-mapping>
 
     <!-- end of teacher entrance page news feed load -->
