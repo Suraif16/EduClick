@@ -2,6 +2,7 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.Classroom;
+import org.json.JSONObject;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -178,7 +179,7 @@ public class ClassroomDAO {
         return classroomList;
     }*/
 
-    public String getClassroomOwnderId(String classroomId){
+    public String getClassroomOwnderId( String classroomId ){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
         String id = "";
@@ -200,6 +201,83 @@ public class ClassroomDAO {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
         return id;
+    }
+
+    public JSONObject selectClassroomDetails( String classroomId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        ResultSet resultSet = null;
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "SELECT CR_Name,YearOfExamination,Grade,Subject FROM Classroom WHERE ClassroomID = ?;";
+
+            preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , classroomId );
+
+            resultSet = preparedStatement.executeQuery();
+
+            if ( resultSet.next() ){
+
+                jsonObject.put( "classroomName" , resultSet.getString( 1 ) );
+                jsonObject.put( "yearOfExamination" , resultSet.getString( 2 ) );
+                jsonObject.put( "grade" , resultSet.getString( 3 ) );
+                jsonObject.put( "subject" , resultSet.getString( 4 ) );
+
+                connection.commit();
+
+            }else {
+
+                connection.rollback();
+
+            }
+
+        }catch ( SQLException E ){
+
+            E.printStackTrace();
+
+            try {
+
+                if ( connection != null )connection.rollback();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }finally {
+
+            try {
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+
+                if( resultSet != null )resultSet.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }
+
+        return jsonObject;
+
     }
 
 }
