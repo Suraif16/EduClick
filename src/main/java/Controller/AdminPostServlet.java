@@ -2,7 +2,10 @@ package Controller;
 
 import DAO.AdminPostDAO;
 import Model.AdminPost;
-import Model.NewsFeeds;
+import Model.HandlingImages_Multipart.handleImageAndPostUploads;
+import Model.AdminWork;
+import Model.User;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,9 +25,7 @@ public class AdminPostServlet extends HttpServlet {
     public String generatedUserID;
     @Override
 
-
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    /*public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
 
@@ -43,6 +44,31 @@ public class AdminPostServlet extends HttpServlet {
 
         out.write(jsonObject.toString());
         out.close();
+    }*/
+    public void doPost( HttpServletRequest request , HttpServletResponse response ) throws IOException {
+
+        PrintWriter out = response.getWriter();
+        response.setContentType( "text/html" );
+        HttpSession session = request.getSession( false );
+        //User user = (User) session.getAttribute("User");
+
+
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put( "serverResponse" , "Allowed" );
+
+        boolean isMultipart = ServletFileUpload.isMultipartContent( request );
+        AdminWork adminWork = null;
+        if ( isMultipart ){
+            adminWork = handleImageAndPostUploads.uploadEPostImages( request , getServletContext().getRealPath( "" ) , LocalDate.now() , LocalTime.now() );
+        }
+
+        JSONObject adminWorkJson = new JSONObject( adminWork );
+        jsonObject.put( "EPost" , adminWorkJson );
+        out.write( jsonObject.toString() );
+        out.close();
+
     }
+
 
 }
