@@ -118,6 +118,7 @@ public class NewsFeeds extends Post{
             postDAO.insert(newsFeeds,friendsIDList.get(i), userId );
         }
 
+
         FollowsDAO followsDAO = new FollowsDAO();
         ArrayList<String> followersIDList = followsDAO.getTeacherFollowersKeys(userId);
 
