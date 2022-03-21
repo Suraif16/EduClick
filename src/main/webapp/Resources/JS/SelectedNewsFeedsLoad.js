@@ -11,7 +11,7 @@ const  LoadSelectedNewsFeeds = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/selectedNewsFeedsLoadServlet" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/selectedNewsFeedsLoadServlet" , true);
     httpreq.send();
 
     function completeLoad( httpreq ){
