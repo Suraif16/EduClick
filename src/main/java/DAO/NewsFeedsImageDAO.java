@@ -6,15 +6,13 @@ import Model.Post;
 import org.json.JSONObject;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class NewsFeedsImageDAO extends Post {
 
-    public JSONObject getImagePath(Object newsFeedsIDList) {
+    public String getImagePath(String newsFeedsIDList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-       // ArrayList<String> imagePathList = new ArrayList<String>();
-        JSONObject jsonObject = new JSONObject();
+       String path="";
 
 
         try {
@@ -28,8 +26,8 @@ public class NewsFeedsImageDAO extends Post {
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    String path = resultSet.getString("imagePath");
-                    jsonObject.put("path",path);
+                    path = resultSet.getString("imagePath");
+
 
                 }
 
@@ -45,7 +43,7 @@ public class NewsFeedsImageDAO extends Post {
 
         }
 
-        return jsonObject;
+        return path;
     }
 
     public String insert(NewsFeeds newsFeeds){
