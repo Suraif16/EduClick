@@ -533,15 +533,29 @@
 
     <servlet>
         <servlet-name>cancelFriendRequest</servlet-name>
-        <servlet-class>Controller.Requests.cancelFriendRequestServlet</servlet-class>
+        <servlet-class>Controller.Requests.CancelFriendRequestServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>cancelFriendRequest</servlet-name>
-        <url-pattern>/user/cancelFriendRequest</url-pattern>
+        <url-pattern>/cancelFriendRequest</url-pattern>
     </servlet-mapping>
 
     <!-- end of cancel friend request -->
+
+    <!-- beginning of Decline friend request -->
+
+    <servlet>
+        <servlet-name>DeclineFriendRequest</servlet-name>
+        <servlet-class>Controller.Requests.DeclineFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeclineFriendRequest</servlet-name>
+        <url-pattern>/user/declineFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Decline friend request -->
 
     <!-- beginning of teacher follow list load -->
 
