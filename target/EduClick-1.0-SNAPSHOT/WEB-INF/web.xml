@@ -283,7 +283,7 @@
     
     <servlet-mapping>
         <servlet-name>DisplayRequestStudent</servlet-name>
-        <url-pattern>/student/displayRequest</url-pattern>
+        <url-pattern>/displayRequest</url-pattern>
     </servlet-mapping>
     
     <!-- end of DisplayRequestServlet-->
@@ -439,7 +439,7 @@
 
     <servlet-mapping>
         <servlet-name>studentFollowerListLoad</servlet-name>
-        <url-pattern>/student/studentFollowerListLoad</url-pattern>
+        <url-pattern>/studentFollowerListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student follow list load -->
@@ -453,7 +453,7 @@
 
     <servlet-mapping>
         <servlet-name>studentProfileNameLoad</servlet-name>
-        <url-pattern>/student/studentProfileNameLoad</url-pattern>
+        <url-pattern>/studentProfileNameLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student full name load -->
@@ -482,7 +482,7 @@
 
     <servlet-mapping>
         <servlet-name>followTeacher</servlet-name>
-        <url-pattern>/student/followTeacher</url-pattern>
+        <url-pattern>/followTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- end of follow teachers -->
@@ -496,7 +496,7 @@
 
     <servlet-mapping>
         <servlet-name>unfollowTeacher</servlet-name>
-        <url-pattern>/student/unFollowTeacher</url-pattern>
+        <url-pattern>/unFollowTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- end of unfollow teachers -->
@@ -581,7 +581,7 @@
 
     <servlet-mapping>
         <servlet-name>studentFriendListLoad</servlet-name>
-        <url-pattern>/student/studentFriendListLoad</url-pattern>
+        <url-pattern>/studentFriendListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student follow list load -->
