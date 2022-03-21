@@ -170,4 +170,11 @@ public class Classroom {
         return classroomDAO.selectClassroomDetails( this.classroomID );
 
     }
+
+    public void deleteClassroom(){
+
+        ClassroomDAO classroomDAO = new ClassroomDAO();
+        classroomDAO.deleteClassroom( this.classroomID );
+
+    }
 }

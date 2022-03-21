@@ -21,7 +21,8 @@ const LoadUserName = function (){
     }
 
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherProfileNameLoad" , true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLogin( httpreq ){
 
@@ -41,5 +42,11 @@ const LoadUserName = function (){
 
     }
 
+
+}
+const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
 
 }

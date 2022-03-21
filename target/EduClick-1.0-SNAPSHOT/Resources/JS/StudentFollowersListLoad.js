@@ -17,7 +17,8 @@ const loadFollowersList = function (){
     }
 
     httpreq.open("POST", "/EduClick_war_exploded/studentFollowerListLoad", true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId="+getUserIdClientSide());
 
     function completeLoad(httpreq){
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
@@ -205,7 +206,8 @@ const sendServerData = function (){
     }
 
     httpreq.open( "POST" , "/EduClick_war_exploded/studentProfileNameLoad" , true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLogin( httpreq ){
 

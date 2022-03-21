@@ -956,6 +956,20 @@
 
     <!-- end of Classroom Details servlet-->
 
+    <!-- beginning of Classroom Delete servlet-->
+
+    <servlet>
+        <servlet-name>ClassroomDeleteServlet</servlet-name>
+        <servlet-class>Controller.Classroom.TeacherDeleteClassroomServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClassroomDeleteServlet</servlet-name>
+        <url-pattern>/teacher/classroomDeleteServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Classroom Delete servlet-->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
