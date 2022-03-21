@@ -928,6 +928,20 @@
 
     <!-- end of select mcq result servlet-->
 
+    <!-- beginning of Classroom Details servlet-->
+
+    <servlet>
+        <servlet-name>ClassroomDetailsServlet</servlet-name>
+        <servlet-class>Controller.Classroom.ClassroomDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClassroomDetailsServlet</servlet-name>
+        <url-pattern>/user/classroomDetailsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Classroom Details servlet-->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes

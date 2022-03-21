@@ -163,4 +163,11 @@ public class Classroom {
         EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
         return enrollRequestDAO.getRequestedClassroomList(userId);
     }
+
+    public JSONObject getClassroomDetails(){
+
+        ClassroomDAO classroomDAO = new ClassroomDAO();
+        return classroomDAO.selectClassroomDetails( this.classroomID );
+
+    }
 }

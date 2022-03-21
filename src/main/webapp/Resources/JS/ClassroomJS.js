@@ -51,6 +51,7 @@ document.onreadystatechange = function (){
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
         sendServerData();
+        displayCurrentClassroomDetails();
         getClassroomList();
         selectEPostFromServer( false );
         selectStudentEnrollList();
@@ -347,6 +348,50 @@ const enableDisableStatusServer = function ( id , enableDisableStatus , buttonSt
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/classroomEnableDisableStudent" , true );
     httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
     httpreq.send( "userId=" + id + "&classroomId=" + classroomId + "&status=" + enableDisableStatus );
+
+}
+
+const displayCurrentClassroomDetails = function (){
+
+    let httpreq = new XMLHttpRequest();
+    const rightPanelClassroom = document.getElementById( "rightPanelClassroom" );
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.status === 200 && this.readyState === 4 ){
+
+            let jsonResponse = JSON.parse( this.responseText );
+
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed") {
+                /* This is where I need work everytime as per the authentication filter*/
+
+                rightPanelClassroom.innerHTML = '<div class="rightPanelClassroomDetails">' +
+                    '                Classroom : ' + jsonResponse.classroomDetails.classroomName + ' : ' + jsonResponse.classroomDetails.yearOfExamination + ' : ' + jsonResponse.classroomDetails.grade + ' : ' + jsonResponse.classroomDetails.subject +
+                    '            </div>' +
+                    '            <div class="rightPanelUnEnrollButton">' +
+                    '                <input type="button" value="Delete Classroom" onclick="deleteClassroom(' + getClassroomIdClientSide() + ')">' +
+                    '            </div>';
+
+            }else{
+                alert("something went wrong!!!");
+            }
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/classroomDetailsServlet" , true );
+    httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
+    httpreq.send( "classroomId=" + getClassroomIdClientSide() );
+
+}
+
+const deleteClassroom = function ( id ){
+
+    console.log( id );
+    console.log( "3asdf35" );
 
 }
 
