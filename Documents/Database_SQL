@@ -359,7 +359,7 @@ ALTER TABLE Notifications
 DELIMITER $$
 CREATE TRIGGER IncrementLikeCount AFTER INSERT ON Likes
 for each row
-begin
+BEGIN
 	UPDATE NewsFeeds
 	SET LikeCount = LikeCount + 1
 	WHERE NFPostID = NEW.NFPostID;
@@ -369,27 +369,9 @@ DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER DecrementLikeCount AFTER DELETE ON Likes
 for each row
-begin
+BEGIN
 	UPDATE NewsFeeds
 	SET LikeCount = LikeCount - 1
-	WHERE NFPostID = OLD.NFPostID;
-end$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER IncrementShareCount AFTER INSERT ON Share
-begin
-	UPDATE NewsFeeds
-	SET ShareCount = ShareCount + 1
-	WHERE NFPostID = NEW.NFPostID;
-end$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER DecrementShareCount AFTER DELETE ON Share
-begin
-	UPDATE NewsFeeds
-	SET ShareCount = ShareCount - 1
 	WHERE NFPostID = OLD.NFPostID;
 end$$
 DELIMITER ;
