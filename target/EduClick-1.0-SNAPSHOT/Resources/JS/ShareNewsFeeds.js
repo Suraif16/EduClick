@@ -11,12 +11,12 @@ function shareNewsFeeds (NewsFeedspostID){
 
         if (this.readyState === 4 && this.status === 200) {
 
-          //  completeShare(this);
+            completeShare(this);
 
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/teacher/shareNewsFeedsServlet", true);
+    httpreq.open("POST", "/EduClick_war_exploded/user/shareNewsFeedsServlet", true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("id=" + id );
 
