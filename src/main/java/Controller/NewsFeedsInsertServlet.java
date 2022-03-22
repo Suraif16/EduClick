@@ -2,8 +2,10 @@ package Controller;
 
 import Model.HandlingImages_Multipart.handleImageAndPostUploads;
 import Model.NewsFeeds;
+import Model.Post;
 import Model.User;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
@@ -66,6 +68,14 @@ public class NewsFeedsInsertServlet extends HttpServlet {
         jsonObject.put( "NewsFeedsPost" , newsFeedsJson );
         jsonObject.put("fullName",fullName);
         jsonObject.put("Time",postedTime);
+
+        Post post = new Post();
+
+        JSONArray NewsFeedsPost = new JSONArray();
+
+        NewsFeedsPost = (JSONArray) post.getLoadedInsertedNewsFeedsId(userId);
+
+        jsonObject.put("jsonArray1",NewsFeedsPost);
 
 
         out.write( jsonObject.toString() );
