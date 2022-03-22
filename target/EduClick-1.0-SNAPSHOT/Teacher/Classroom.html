@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>Classroom</title>
+
+    <link rel="stylesheet" href="../Resources/CSS/ClassroomCSS.css" type="text/css">
+
+    <link rel="stylesheet" href="../Resources/CSS/Font.css" type="text/css">
+
+    <link rel="stylesheet" href="../Resources/CSS/InputDesignCSS.css" type="text/css">
+
+    <link rel="stylesheet" href="../Resources/CSS/ActivityStatusCSS.css" type="text/css">
+
+</head>
+
+<body>
+
+<div id="content">
+
+    <div id="classroomsList" >
+
+        <div id="classroomsListContainer">
+
+            <div id="options">
+
+                <div class="optionButtonContainers">
+
+                    <input type="button" value="Post Questions / Messages" onclick="showAddEducationalPostForm()">
+                    <input type="button" value="Post MCQs" onclick="showMcqAddPostForm()">
+                    <!--<div class="systemButtons" onclick="showAddEducationalPostForm()"> Post Questions / Messages </div>
+                    <div class="systemButtons" onclick="showMcqAddPostForm()"> Post MCQs </div>-->
+
+                </div>
+
+                <div id="classroomAddButton" class="optionButtonContainers">
+
+                    <input id="classroomAddButtonInput" type="button" value=" + add Classroom" onclick="showAddClassroomFrom()">
+
+                </div>
+
+            </div>
+
+            <div id="classroomsListLinks">
+
+                <!--<div class="classroomsListLinksItems">
+
+                    <a href="Classroom.html"  class="classRooms">
+
+                        <a href="Classroom.html"  class="classRooms">
+
+                            <p>Classroom Name : classroom 1</p>
+                            <p>Subject : science</p>
+                            <p>Grade : 11</p>
+                            <p>Year of Examination : 2022</p>
+
+                        </a>
+                    </a>
+
+                </div>
+
+                <div class="classroomsListLinksItems">
+
+                    <a href="Classroom.html"  class="classRooms">
+
+                        <a href="Classroom.html"  class="classRooms">
+
+                            <p>Classroom Name : classroom 2</p>
+                            <p>Subject : science</p>
+                            <p>Grade : 11</p>
+                            <p>Year of Examination : 2022</p>
+
+                        </a>
+
+                    </a>
+
+                </div>
+
+                <div class="classroomsListLinksItems">
+
+                    <a href="Classroom.html"  class="classRooms">
+
+                        <a href="Classroom.html"  class="classRooms">
+
+                            <p>Classroom Name : classroom 3</p>
+                            <p>Subject : science</p>
+                            <p>Grade : 11</p>
+                            <p>Year of Examination : 2022</p>
+
+                        </a>
+
+                    </a>
+
+                </div>
+
+                <div class="classroomsListLinksItems">
+
+                    <a href="Classroom.html"  class="classRooms">
+
+                        <a href="Classroom.html"  class="classRooms">
+
+                            <p>Classroom Name : classroom 4</p>
+                            <p>Subject : science</p>
+                            <p>Grade : 11</p>
+                            <p>Year of Examination : 2022</p>
+
+                        </a>
+
+                    </a>
+
+                </div>-->
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <div id="postContents" >
+
+
+        <!--<div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="TeacherProfile.html" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                    <div class="postTimeAndDate">
+
+                        18:32:26 | 03/25/2015
+
+                    </div>
+
+                    <div class="userOptions">
+
+                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion1" onclick="showOptionMenu(1,'educationalPostOPtion')">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        To answer these questions refer tutorial 9
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <div class="postPictureImageContainer">
+                            &lt;!&ndash;To only present the message without the picture, keep this value as null / empty&ndash;&gt;
+                            <img class="postPictureImage" src="../Resources/Images/Finding-the-Correct-Question-Words3.jpg">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(1)">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost1" >
+
+                    <div class="singleAnswer">
+
+                        <div class="answerUser">
+
+                            <a href="TeacherProfile.html" class="answerProfile">
+
+
+                                <div class="answerProfileImage">
+
+                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                                </div>
+
+                                <div class="answerProfileName" >Student Name</div>
+
+                            </a>
+
+                            <div class="postTimeAndDate">
+
+                                18:32:26 | 03/25/2015
+
+                            </div>
+
+                            <div class="userOptions">
+
+                                <input class="userOptionsButton" type="button" value="    " id="answerOption1" onclick="showOptionMenu(1,'answerOption')">
+
+                            </div>
+
+                        </div>
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/images.jfif">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer1.value = this.value" class="marksForAnswersRange">
+                            <output id="answer1" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="answerUser">
+
+                            <a href="TeacherProfile.html" class="answerProfile">
+
+
+                                <div class="answerProfileImage">
+
+                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                                </div>
+
+                                <div class="answerProfileName" >Student Name</div>
+
+                            </a>
+
+                            <div class="postTimeAndDate">
+
+                                18:32:26 | 03/25/2015
+
+                            </div>
+
+                            <div class="userOptions">
+
+                                <input class="userOptionsButton" type="button" value="    " id="answerOption2" onclick="showOptionMenu(2,'answerOption')">
+
+                            </div>
+
+                        </div>
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer2.value = this.value" class="marksForAnswersRange">
+                            <output id="answer2" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        &lt;!&ndash;a another post&ndash;&gt;
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="TeacherProfile.html" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                    <div class="postTimeAndDate">
+
+                        18:32:26 | 03/25/2015
+
+                    </div>
+
+                    <div class="userOptions">
+
+                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion2" onclick="showOptionMenu(2,'educationalPostOPtion')">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        how to prove the uniqueness theoremhow to prove the uniqueness theoremhow to prove the uniqueness theorem
+                        how to prove the uniqueness theoremhow to prove the uniqueness theoremhow to prove the uniqueness theorem
+                        how to prove the uniqueness theoremhow to prove the uniqueness theoremhow to prove the uniqueness theorem
+                        how to prove the uniqueness theoremhow to prove the uniqueness theoremhow to prove the uniqueness theorem
+                        how to prove the uniqueness theoremhow to prove the uniqueness theoremhow to prove the uniqueness theorem
+                        how to prove the uniqueness theoremhow to prove the uniqueness theoremhow to prove the uniqueness theorem
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        &lt;!&ndash;To only present the message without the picture, comment the part below&ndash;&gt;
+
+                        &lt;!&ndash;<div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="Icons/seminar-text.jpg">
+
+
+                        </div>&ndash;&gt;
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(2)">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost2" >
+
+                    <div class="singleAnswer">
+
+                        <div class="answerUser">
+
+                            <a href="TeacherProfile.html" class="answerProfile">
+
+
+                                <div class="answerProfileImage">
+
+                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                                </div>
+
+                                <div class="answerProfileName" >Student Name</div>
+
+                            </a>
+
+                            <div class="postTimeAndDate">
+
+                                18:32:26 | 03/25/2015
+
+                            </div>
+
+                            <div class="userOptions">
+
+                                <input class="userOptionsButton" type="button" value="    " id="answerOption3" onclick="showOptionMenu(3,'answerOption')">
+
+                            </div>
+
+                        </div>
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer3.value = this.value" class="marksForAnswersRange">
+                            <output id="answer3" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="answerUser">
+
+                            <a href="TeacherProfile.html" class="answerProfile">
+
+
+                                <div class="answerProfileImage">
+
+                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                                </div>
+
+                                <div class="answerProfileName" >Student Name</div>
+
+                            </a>
+
+                            <div class="postTimeAndDate">
+
+                                18:32:26 | 03/25/2015
+
+                            </div>
+
+                            <div class="userOptions">
+
+                                <input class="userOptionsButton" type="button" value="    " id="answerOption4" onclick="showOptionMenu(4,'answerOption')">
+
+                            </div>
+
+                        </div>
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer4.value = this.value" class="marksForAnswersRange">
+                            <output id="answer4" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="TeacherProfile.html" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                    <div class="postTimeAndDate">
+
+                        18:32:26 | 03/25/2015
+
+                    </div>
+
+                    <div class="userOptions">
+
+                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion3" onclick="showOptionMenu(3,'educationalPostOPtion')">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage mcq">
+
+                        Question 1
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 2
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 3
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 4
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 5
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 6
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer ">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 7
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer ">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 8
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 9
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="postMessage mcq">
+
+                        Question 10
+
+                        <div class="mcqAnswerContainer">
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 1
+
+                            </div>
+
+                            <div class="mcqSingleAnswer correctMcqSingleAnswer">
+
+                                MCQ Answer 2
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 3
+
+                            </div>
+
+                            <div class="mcqSingleAnswer">
+
+                                MCQ Answer 4
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Show Results" class="mcqResultShowButton" onclick="showMcqResult(1)">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="mcqResultsInPost" id="mcqResultsInPost1" >
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            25%
+
+                        </div>
+
+                    </div>
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            55%
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            25%
+
+                        </div>
+
+                    </div>
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            85%
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mcqSingleStudentResult">
+
+                        <a href="#" class="mcqProfile">
+
+
+                            <div class="mcqProfileImage">
+
+                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                            </div>
+
+                            <div>Student Name</div>
+
+                        </a>
+
+                        <div class="mcqSingleStudentResultMarks">
+
+                            99%
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="TeacherProfile.html" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                    <div class="postTimeAndDate">
+
+                        18:32:26 | 03/25/2015
+
+                    </div>
+
+                    <div class="userOptions">
+
+                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion4" onclick="showOptionMenu(4,'educationalPostOPtion')">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        To answer these questions refer tutorial 9
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        <div class="postPictureImageContainer">
+                            &lt;!&ndash;To only present the message without the picture, keep this value as null / empty&ndash;&gt;
+                            <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(3)">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost3" >
+
+                    <div class="singleAnswer">
+
+                        <div class="answerUser">
+
+                            <a href="TeacherProfile.html" class="answerProfile">
+
+
+                                <div class="answerProfileImage">
+
+                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                                </div>
+
+                                <div class="answerProfileName" >Student Name</div>
+
+                            </a>
+
+                            <div class="postTimeAndDate">
+
+                                18:32:26 | 03/25/2015
+
+                            </div>
+
+                            <div class="userOptions">
+
+                                <input class="userOptionsButton" type="button" value="    " id="answerOption5" onclick="showOptionMenu(5,'answerOption')">
+
+                            </div>
+
+                        </div>
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer5.value = this.value" class="marksForAnswersRange">
+                            <output id="answer5" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="answerUser">
+
+                            <a href="TeacherProfile.html" class="answerProfile">
+
+
+                                <div class="answerProfileImage">
+
+                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                                </div>
+
+                                <div class="answerProfileName" >Student Name</div>
+
+                            </a>
+
+                            <div class="postTimeAndDate">
+
+                                18:32:26 | 03/25/2015
+
+                            </div>
+
+                            <div class="userOptions">
+
+                                <input class="userOptionsButton" type="button" value="    " id="answerOption6" onclick="showOptionMenu(6,'answerOption')">
+
+                            </div>
+
+                        </div>
+
+                        &lt;!&ndash; To add only picture answers comment this&ndash;&gt;
+                        &lt;!&ndash;<div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>&ndash;&gt;
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer6.value = this.value" class="marksForAnswersRange">
+                            <output id="answer6" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        &lt;!&ndash;a another post&ndash;&gt;
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="TeacherProfile.html" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                    <div class="postTimeAndDate">
+
+                        18:32:26 | 03/25/2015
+
+                    </div>
+
+                    <div class="userOptions">
+
+                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion5" onclick="showOptionMenu(5,'educationalPostOPtion')">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        &lt;!&ndash;<div>&ndash;&gt;
+
+                        how to prove the uniqueness theorem
+
+                        &lt;!&ndash;</div>&ndash;&gt;
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        &lt;!&ndash;To only present the message without the picture, comment the part below&ndash;&gt;
+
+                        &lt;!&ndash;<div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="Icons/seminar-text.jpg">
+
+
+                        </div>&ndash;&gt;
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postAnswerButton">
+
+                    <div class="answerButton" >
+
+                        <input type="button" value="Answer" class="answerShowButton" onclick="showAnswers(4)">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div style="display:none;" class="answersInPost" id="answersInPost4" >
+
+                    <div class="singleAnswer">
+
+                        <div class="answerUser">
+
+                            <a href="TeacherProfile.html" class="answerProfile">
+
+
+                                <div class="answerProfileImage">
+
+                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                                </div>
+
+                                <div class="answerProfileName" >Student Name</div>
+
+                            </a>
+
+                            <div class="postTimeAndDate">
+
+                                18:32:26 | 03/25/2015
+
+                            </div>
+
+                            <div class="userOptions">
+
+                                <input class="userOptionsButton" type="button" value="    " id="answerOption7" onclick="showOptionMenu(7,'answerOption')">
+
+                            </div>
+
+                        </div>
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        <div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer7.value = this.value" class="marksForAnswersRange">
+                            <output id="answer7" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="singleAnswer">
+
+                        <div class="answerUser">
+
+                            <a href="TeacherProfile.html" class="answerProfile">
+
+
+                                <div class="answerProfileImage">
+
+                                    <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                                </div>
+
+                                <div class="answerProfileName" >Student Name</div>
+
+                            </a>
+
+                            <div class="postTimeAndDate">
+
+                                18:32:26 | 03/25/2015
+
+                            </div>
+
+                            <div class="userOptions">
+
+                                <input class="userOptionsButton" type="button" value="    " id="answerOption8" onclick="showOptionMenu(8,'answerOption')">
+
+                            </div>
+
+                        </div>
+
+                        <div class="textAnswers">
+
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+                            This could be proved by a contradiction.
+
+                        </div>
+
+                        &lt;!&ndash; To add a only text answers comment this&ndash;&gt;
+                        &lt;!&ndash;<div class="pictureAnswers">
+
+                            <a href="#">
+
+                                <img src="../Resources/Images/answers2.jpg">
+
+                            </a>
+
+                        </div>&ndash;&gt;
+
+                        <div class="marksForAnswers">
+
+                            <input type="range" value="0" max="100" oninput="answer8.value = this.value" class="marksForAnswersRange">
+                            <output id="answer8" class="marksForAnswersRangeValue">0</output>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+&lt;!&ndash;        Just a message&ndash;&gt;
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="TeacherProfile.html" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                    <div class="postTimeAndDate">
+
+                        18:32:26 | 03/25/2015
+
+                    </div>
+
+                    <div class="userOptions">
+
+                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion6" onclick="showOptionMenu(6,'educationalPostOPtion')">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        &lt;!&ndash;<div>&ndash;&gt;
+
+                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                        &lt;!&ndash;</div>&ndash;&gt;
+
+                    </div>
+
+                    <div class="postPicture">
+
+                        &lt;!&ndash;To only present the message without the picture, comment the part below&ndash;&gt;
+
+                        &lt;!&ndash;<div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="Icons/seminar-text.jpg">
+
+
+                        </div>&ndash;&gt;
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="post">
+
+            <div class="postContentContainer">
+
+                <div class="postProfileSection">
+
+                    <a href="TeacherProfile.html" class="postProfile">
+
+
+                        <div class="postProfileImage">
+
+                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+                        </div>
+
+                        <div class="postProfileName" >User Name</div>
+
+                    </a>
+
+                    <div class="postTimeAndDate">
+
+                        18:32:26 | 03/25/2015
+
+                    </div>
+
+                    <div class="userOptions">
+
+                        <input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion7" onclick="showOptionMenu(7,'educationalPostOPtion')">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="postContentContainer">
+
+                <div class="postData">
+
+                    <div class="postMessage">
+
+                        &lt;!&ndash;<div>&ndash;&gt;
+
+                        Due to the pandemic situations all classes will be canceled for two weeks, and we will start online class soon...Stay Safe
+
+                        &lt;!&ndash;</div>&ndash;&gt;
+
+                    </div>
+
+                    <div class="postPicture">
+
+&lt;!&ndash;                        To only present the message without the picture, comment the part below&ndash;&gt;
+
+                        <div class="postPictureImageContainer">
+                            <img class="postPictureImage" src="../Resources/Images/seminar-text.jpg">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>-->
+
+
+    </div>
+
+    <div id="rightPanel">
+
+        <div id="rightPanelTopic">
+
+            <div>
+
+                Students Enrolled
+
+            </div>
+
+            <div>
+
+                <input type="text" placeholder="Search">
+
+            </div>
+
+        </div>
+
+        <div id="rightPanelStudentList">
+
+
+            <!--<div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="../Student/StudentProfile.html" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:greenyellow;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Active
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:block;" id="enable5" type="button" value="Enabled" onclick="enableDisableStatus(5)">
+
+                    <input style="display:none;" id="disable5" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(5)">
+
+                </div>
+
+            </div>
+
+            <div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="../Student/StudentProfile.html" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:greenyellow;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Active
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:block;" id="enable3" type="button" value="Enabled" onclick="enableDisableStatus(3)">
+
+                    <input style="display:none;" id="disable3" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(3)">
+
+                </div>
+
+            </div>
+
+            <div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="../Student/StudentProfile.html" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:greenyellow;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Active
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:block;" id="enable4" type="button" value="Enabled" onclick="enableDisableStatus(4)">
+
+                    <input style="display:none;" id="disable4" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(4)">
+
+                </div>
+
+            </div>
+
+            <div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="../Student/StudentProfile.html" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:red;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Last Seen 30 days ago
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:none;" id="enable1" type="button" value="Enabled" onclick="enableDisableStatus(1)">
+
+                    <input style="display:block;" id="disable1" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(1)">
+
+
+                </div>
+
+            </div>
+
+            <div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="../Student/StudentProfile.html" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:greenyellow;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Active
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:block;" id="enable6" type="button" value="Enabled" onclick="enableDisableStatus(6)">
+
+                    <input style="display:none;" id="disable6" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(6)">
+
+                </div>
+
+            </div>
+
+            <div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="../Student/StudentProfile.html" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:greenyellow;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Active
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:block;" id="enable7" type="button" value="Enabled" onclick="enableDisableStatus(7)">
+
+                    <input style="display:none;" id="disable7" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(7)">
+
+                </div>
+
+            </div>
+
+            <div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="../Student/StudentProfile.html" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:greenyellow;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Active
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:block;" id="enable8" type="button" value="Enabled" onclick="enableDisableStatus(8)">
+
+                    <input style="display:none;" id="disable8" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(8)">
+
+                </div>
+
+            </div>
+
+            <div class="rightPanelSingleStudent" >
+
+                <div>
+
+                    <a href="../Student/StudentProfile.html" class="profile">
+
+                        <div class="profileImage classroomStudentProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="classroomStudentProfileName">Student Name</div>
+
+                    </a>
+
+                    <div class="lastSeen">
+
+                        <img style="background-color:greenyellow;" class="onlineStatus" src="../Resources/Icons/circle_white_24dp.svg">
+                        Active
+
+                    </div>
+
+                </div>
+
+
+
+                <div>
+
+                    <input style="display:block;" id="enable2" type="button" value="Enabled" onclick="enableDisableStatus(2)">
+
+                    <input style="display:none;" id="disable2" type="button" value="Disabled" class="studentDisable" onclick="enableDisableStatus(2)">
+
+                </div>
+
+            </div>-->
+
+        </div>
+
+
+    </div>
+
+    <div id="notifications">
+
+        <div id="request" class="notificationShowRequest">
+
+            <!--<div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    want to be your friend
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    wants to join to classroom 1 : science : grade 11 : 2022
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    want to be your friend
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    wants to join to classroom 2 : science : grade 11 : 2022
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    want to be your friend
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    wants to join to classroom 2 : science : grade 11 : 2022
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    wants to join to classroom 3 : science : grade 11 : 2022
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    want to be your friend
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    wants to join to classroom 4 : science : grade 11 : 2022
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>
+
+
+            <div class="singleNotification" >
+
+                <div>
+
+                    <a href="#" class="profile">
+
+                        <div class="profileImage requestProfilePicture">
+
+                            <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+
+                        </div>
+
+                        <div class="requestProfileName">User Name</div>
+
+                    </a>
+
+                </div>
+
+                <div>
+
+                    want to be your friend
+
+                </div>
+
+                <div>
+
+                    <input type="button" value="Accept">
+
+                    <input type="button" value="Decline" class="requestDecline">
+
+
+                </div>
+
+            </div>-->
+
+
+
+        </div>
+
+        <div class="notificationShowRequest">
+
+            <div class="singleNotificationMessage">
+
+                <a href="#">
+
+                    <div class="notificationImage">
+
+                        <img src="../Resources/Icons/Logo.png">
+
+                    </div>
+
+                    <div class="notificationMessage">
+
+                        Welcome to EduClick!!!
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="addClassroomForm">
+
+        <div class="classroomFormRow inputFieldForms">
+
+            <input type="text" id="classroomName" required>
+            <div class="bottomLine"></div>
+            <label >Classroom Name : e.g. - Institute of Education </label>
+
+        </div>
+
+        <div class="classroomFormRow inputFieldForms">
+
+            <input type="text" id="classroomSubject" required>
+            <div class="bottomLine"></div>
+            <label >Subject : Mathematics </label>
+
+        </div>
+
+        <div class="classroomFormRow inputFieldForms">
+
+            <input type="text" id="classroomClassGrade" required>
+            <div class="bottomLine"></div>
+            <label >Grade / Class : e.g. - 7 </label>
+
+        </div>
+
+        <div class="classroomFormRow inputFieldForms">
+
+            <input type="text" id="classroomYearOfExamination" required>
+            <div class="bottomLine"></div>
+            <label >Year of examination : e.g. - 20xx </label>
+
+        </div>
+
+        <div id="classroomFormRowErrorMessage">
+
+            <!-- The error message will be shown here -->
+
+        </div>
+
+        <div class="classroomFormRow">
+
+            <div class="systemButtons" onclick="createClassroom()"> Create classroom </div>
+
+        </div>
+
+    </div>
+
+    <div id="addNewsFeedForm">
+
+        <div class="addNewsFeedFormRows" id="addNewsFeedFormTopic">
+
+            Create Questions / Messages
+
+        </div>
+
+        <div class="addNewsFeedFormRows inputFieldFormsTextArea" id="addNewsFeedFormText">
+
+            <textarea id="addNewsFeedFormTextArea" rows="11" required></textarea>
+            <div class="bottomLine"></div>
+            <label> What's on your mind </label>
+
+        </div>
+
+        <div class="addNewsFeedFormRows" id="addNewsFeedFormInputs">
+
+            <div class="addNewsFeedFormInputsRows">
+
+                <div class="attachment">
+
+                    <label class="attachmentLabel">
+
+                        <img id="attachmentImage" src="../Resources/Icons/outline_attach_file_white_24dp.png">
+                        <input id="inputImage" type="file" accept="image/*">
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="addNewsFeedFormInputsRows">
+
+                <label for="typeOfPost"> Type :&nbsp; </label>
+
+                <select id="ePostType" name="typeOfPost">
+
+                    <option value="Question" selected> Question </option>
+                    <option value="Messages"> Message </option>
+
+                </select>
+
+            </div>
+
+            <div class="addNewsFeedFormInputsRows">
+
+                <input type="button" value="Post" onclick="postQuestionsMessages()">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="activityStatus">
+
+
+
+    </div>
+
+    <div id="userOptionMenu">
+
+        <!--<div class="userOptionMenuInput" onclick="report( 1 , 'optionPost')">
+
+            <input type="button" value="report">
+
+        </div>
+
+        <div class="userOptionMenuInput">
+
+            <input type="button" value="delete">
+
+        </div>-->
+
+    </div>
+
+    <div id="mcqAddPostForm">
+
+        <div id="previousQuestion" class="singleMCQRow nextPreviousButton systemButtons">
+
+            <img src="../Resources/Icons/navigate_before_white_24dp.svg" alt="previous" class="navigateButtons">
+
+        </div>
+
+        <div id="nextQuestion" class="singleMCQRow nextPreviousButton systemButtons">
+
+            <img src="../Resources/Icons/navigate_next_white_24dp.svg" alt="next" class="navigateButtons">
+
+        </div>
+
+        <div id="singleMCQQuestion" class="singleMCQRow">
+
+            <div class="singleMCQRowRow singleMCQRowRowBackground" id="mcqADDPostFormTopic">
+
+                Post MCQs
+
+            </div>
+
+            <div class="singleMCQRowRow">
+
+                <div class="singleMCQRowRowContent">
+
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqQuestion" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqQuestion" id="mcqQuestionLabel">Question 1 : What is the square root of 25?</label>
+
+                    </div>
+
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <div class="singleMCQRowRowContentValue1"> Select the correct answer :&nbsp;</div>
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqAnswer1" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqAnswer1" id="mcqQuestionLabel">Answer 1 :Square root of 25 is 7</label>
+
+                    </div>
+
+                    <input type="radio" name="correctAnswerMCQ" value="1" id="correctAnswer1">
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqAnswer2" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqAnswer2" id="mcqQuestionLabel">Answer 2 : Square root of 25 is 9</label>
+
+                    </div>
+
+                    <input type="radio" name="correctAnswerMCQ" value="2" id="correctAnswer2">
+
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqAnswer3" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqAnswer3" id="mcqQuestionLabel">Answer 3 : Square root of 25 is 5</label>
+
+                    </div>
+
+                    <input type="radio" name="correctAnswerMCQ" value="3" id="correctAnswer3">
+
+                </div>
+
+                <div class="singleMCQRowRowContent">
+
+                    <div class="singleMCQRowRowContentValue inputFieldForms">
+
+                        <input id="mcqAnswer4" type="text" required>
+                        <div class="bottomLine"></div>
+                        <label for="mcqAnswer4" id="mcqQuestionLabel">Answer 4 : Square root of 25 is 25</label>
+
+                    </div>
+
+                    <input type="radio" name="correctAnswerMCQ" value="4" id="correctAnswer4">
+
+                </div>
+
+            </div>
+
+            <div class="singleMCQRowRow singleMCQRowRowBackground" id="mcqQuestionCountAndPostButton">
+
+                <div id="questionCount">
+
+                    <div>
+
+                        Question : 1/10
+
+                    </div>
+
+                </div>
+
+                <div id="mcqSubmit">
+
+                    <div id="mcqSubmitButton" class="systemButtons"> Post </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<header >
+
+    <div id="headerMainBar">
+
+        <a id="linkLogo" href="../Teacher/Teacher.html"> <!--act as the container for the img tag for using flexbox -->
+
+            <img src="../Resources/Icons/Logo.png" class="logo">
+
+        </a>
+
+
+        <div id="headingSearch">
+
+
+            <div id="searchBar">
+
+
+                <input id="searchBarText" type="text" placeholder="Search">
+
+
+
+            </div>
+
+        </div>
+
+        <a id="headerUserProfileId" href="TeacherProfile.html" class="profile">
+
+            <div id="headerUserName">User Name</div>
+
+            <div class="profileImage">
+
+                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+
+            </div>
+
+        </a>
+
+        <div id="headerNotification" >
+
+            <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
+
+            <input type="button" value="    "  id="notificationSettings">
+
+
+        </div>
+
+        <div id="logout">
+
+            <a href="/EduClick_war_exploded/Logout">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div id="headerButtons">
+
+<!--        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">-->
+
+        <div id="classroomListHideButton" class="systemButtons" onclick="showClassroomList()"> menu </div>
+
+<!--        <input id="rightPanelHideButton" type="button" value="Students Enrolled" onclick="showRightPanel()">-->
+
+        <div id="rightPanelHigeButton" class="systemButtons" onclick="showRightPanel()" > Students Enrolled </div>
+
+    </div>
+
+
+</header>
+
+
+
+<!--<footer>
+    &nbsp;
+</footer>-->
+
+
+    <script src="../Resources/JS/TeacherEntrancePageMobileResponsive.js" defer></script>
+    <script src="../Resources/JS/ClassroomJS.js" defer></script>
+    <script src="../Resources/JS/Notification.js" defer></script>
+    <script src="../Resources/JS/Search.js" defer></script>
+    <script src="../Resources/JS/UserOptionAndReport.js" defer></script>
+    <script src="../Resources/JS/ClassroomEducationalpost.js" defer></script>
+    <script src="../Resources/JS/TeacherMCQHandling.js" defer></script>
+    <script src="../Resources/JS/ClassroomSelectEPost.js" defer></script>
+    <script src="../Resources/JS/TeacherClassroomStudentsEnrolledList.js" defer></script>
+    <script src="../Resources/JS/TeacherClassroomSelectAnswers.js" defer></script>
+    <script src="../Resources/JS/ActivityStatus.js" defer></script>
+
+
+
+</body>
+
+</html>
