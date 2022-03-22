@@ -1,9 +1,11 @@
 package Model;
 
 import DAO.*;
+
 import Model.HandlingImages_Multipart.ImageJPEGConverterAndCompressor;
 import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,10 +21,9 @@ public class AdminPost {
     private String sdate;
     private String stime;
 
-    ArrayList<AdminPost> postDetails = new ArrayList<AdminPost>();
+
 
     public AdminPost() {
-
     }
 
     public String getSysPostID() {
@@ -92,17 +93,12 @@ public class AdminPost {
         this.time = adminPost.getTime();
     }
 
-    /*public ArrayList<AdminPost> getPostDetails(ArrayList<String> arrayList){
-        AdminPostDAO adminpostDAO =  new AdminPostDAO();
-        postDetails =adminpostDAO.selectPostDetails(arrayList);
-
-        return postDetails;
-    }*/
-
     public JSONArray getAPostDetails(){
         AdminPostDAO adminpostDAO =  new AdminPostDAO();
         JSONArray APostDetails = adminpostDAO.getAPostDetails();
         return APostDetails;
     }
+
+
 
 }
