@@ -10,11 +10,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class AdminPostDAO {
-
-
     public String generatedSysPostUserId;
 
     public String insert(AdminPost adminPost){
@@ -48,45 +48,6 @@ public class AdminPostDAO {
         return generatedSysPostUserId;
     }
 
-    public JSONArray getAPostDetails() {
-        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
-        Connection connection = null;
-        //ArrayList<User> NewsFeedsDetails = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray();
-
-        try {
-            connection = dbConnectionPool.dataSource.getConnection();
-
-            String sql = "select  SysPostID,APTextMsg, APTime, APDate from Admin_Post_System_Updates";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-                while (resultSet.next()) {
-                    String ApostId = resultSet.getString("SysPostID");
-                    String textmsg = resultSet.getString("APTextMsg");
-                    String date = resultSet.getString("APDate");
-                    String time = resultSet.getString("APTime");
-
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("PId",ApostId);
-                    jsonObject.put("caption",textmsg);
-                    jsonObject.put("date",date);
-                    jsonObject.put("time",time);
-
-                    jsonArray.put(jsonObject);
-                }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (connection != null) try {
-                connection.close();
-            } catch (Exception ignore) {
-            }
-
-        }
-        return jsonArray;
-    }
 
     public String insert2(AdminWork adminWork){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -118,5 +79,45 @@ public class AdminPostDAO {
         }
         return null;
     }
-    
+
+    public JSONArray getAPostDetails() {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        //ArrayList<User> NewsFeedsDetails = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "select  SysPostID,APTextMsg, APTime, APDate from Admin_Post_System_Updates";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String ApostId = resultSet.getString("SysPostID");
+                String textmsg = resultSet.getString("APTextMsg");
+                String date = resultSet.getString("APDate");
+                String time = resultSet.getString("APTime");
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("aPId",ApostId);
+                jsonObject.put("caption",textmsg);
+                jsonObject.put("date",date);
+                jsonObject.put("time",time);
+
+                jsonArray.put(jsonObject);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+                ignore.printStackTrace();
+            }
+        }
+        return jsonArray;
+    }
+
 }
