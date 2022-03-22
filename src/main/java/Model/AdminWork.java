@@ -47,10 +47,11 @@ public class AdminWork extends Post{
 
     public AdminWork(){ }
 
-    public AdminWork(String textMsg , LocalDate date , LocalTime time ){
+    public AdminWork(String textMsg , LocalDate date , LocalTime time ,String photo){
         this.textMsg = textMsg;
         this.date = date;
         this.time = time;
+        this.photo= photo;
     }
 
     public AdminWork insertAdminPostWork(FileItem imageFile , String path ) throws Exception {
