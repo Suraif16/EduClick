@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.AdminPostDAO;
+import Model.AdminDatacheck;
 import Model.AdminPost;
 import Model.HandlingImages_Multipart.handleImageAndPostUploads;
 import Model.AdminWork;
@@ -22,37 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminPostServlet extends HttpServlet {
-    public String generatedUserID;
     @Override
-
-    /*public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        PrintWriter out = response.getWriter();
-        response.setContentType("text/html");
-
-        HttpSession session = request.getSession(false);
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put( "serverResponse" , "Allowed" );
-        String textMsg = request.getParameter("textMsg");
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
-
-        System.out.println(textMsg);
-        System.out.println(date);
-        System.out.println(time);
-        AdminPost adminpost = new AdminPost(generatedUserID,textMsg,date,time);
-        adminpost.adminPost();
-
-        out.write(jsonObject.toString());
-        out.close();
-    }*/
     public void doPost( HttpServletRequest request , HttpServletResponse response ) throws IOException {
 
         PrintWriter out = response.getWriter();
         response.setContentType( "text/html" );
         HttpSession session = request.getSession( false );
         //User user = (User) session.getAttribute("User");
-
-
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
@@ -64,7 +41,14 @@ public class AdminPostServlet extends HttpServlet {
         }
 
         JSONObject adminWorkJson = new JSONObject( adminWork );
-        jsonObject.put( "EPost" , adminWorkJson );
+
+        JSONArray jsonArray = new JSONArray();
+        AdminPost user = new AdminPost();
+        //ArrayList< AdminDatacheck > userList = new ArrayList<>();
+        //List< JSONObject > userList =  user.adminPostDetails( );
+        //jsonArray = new JSONArray( userList );
+
+        jsonObject.put( "adminPost" , jsonArray );
         out.write( jsonObject.toString() );
         out.close();
 
