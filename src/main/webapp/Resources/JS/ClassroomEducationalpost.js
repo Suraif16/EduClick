@@ -101,13 +101,16 @@ const postQuestionsMessages = function (){
             document.getElementById( "addNewsFeedFormTextArea" ).value = null;
             document.getElementById( "inputImage" ).value = null;
 
+            ePostLoadingActivityStatus( type );
             showAddEducationalPostForm();
 
             selectMoreStatus = true;
             setTimeout( function (){
 
-                    ePostGetAnswerList = [];
+                ePostGetAnswerList = [];
                 selectEPostFromServer( false );
+                ePostLoadedActivityStatus( type );
+
 
                 }
                 , 3000 );
