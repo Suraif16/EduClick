@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminPost1Servlet extends HttpServlet {
-    public String generatedUserID;
     @Override
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
