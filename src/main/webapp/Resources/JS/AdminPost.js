@@ -51,6 +51,11 @@ const getServerData = function (){
                     '</div>'+
                     '</div>'+
                     '</div>'+
+                    '<div class="postContentContainer">'+
+                    '<div class="postData">'+
+                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData()">'+
+                    '</div>'+
+                    '</div>'+
                     '</div>'+
                     '</div>';
                 postContents.innerHTML += htmlString;
@@ -73,10 +78,16 @@ const getServerData = function (){
                     jsonResponse.AdminPostDetails[i].caption+
                     '</div>'+
                     '</div>'+
+                    '<div class="postContentContainer">'+
+                    '<div class="postData">'+
+                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+1+')" >'+
+                    '</div>'+
+                    '</div>'+
                     '</div>'+
                     '</div>';
                 postContents.innerHTML += htmlString;
             }
         }
     }
+
 }
