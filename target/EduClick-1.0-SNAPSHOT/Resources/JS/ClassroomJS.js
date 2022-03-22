@@ -1,5 +1,6 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
+const confirmationBox = document.getElementById( "confirmationBox" );
 
 
 function showRightPanel(){
@@ -371,8 +372,16 @@ const displayCurrentClassroomDetails = function (){
                     '                Classroom : ' + jsonResponse.classroomDetails.classroomName + ' : ' + jsonResponse.classroomDetails.yearOfExamination + ' : ' + jsonResponse.classroomDetails.grade + ' : ' + jsonResponse.classroomDetails.subject +
                     '            </div>' +
                     '            <div class="rightPanelUnEnrollButton">' +
-                    '                <input type="button" value="Delete Classroom" onclick="deleteClassroom(' + getClassroomIdClientSide() + ')">' +
+                    '                <input type="button" value="Delete Classroom" onclick="showDeleteConfirmationsBox()">' +
                     '            </div>';
+                
+                confirmationBox.innerHTML = '<div class="confirmationBoxContent">' +
+                    '            Do you really wish to delete the classroom ' + ' : ' + jsonResponse.classroomDetails.classroomName + ' : ' + jsonResponse.classroomDetails.yearOfExamination + ' : ' + jsonResponse.classroomDetails.grade + ' : ' + jsonResponse.classroomDetails.subject +' ? <br/>By doing this you will loose all students and Contents in this classroom.' +
+                    '        </div>' +
+                    '        <div class="confirmationBoxYesNoButtons">' +
+                    '            <input class="yesButton" type="button" value="Yes" onclick="deleteClassroom(' + getClassroomIdClientSide() + ')">' +
+                    '            <input class="noButton" type="button" value="No" onclick="hideDeleteConfirmationsBox()">' +
+                    '        </div>'
 
             }else{
                 alert("something went wrong!!!");
@@ -403,6 +412,7 @@ const deleteClassroom = function ( id ){
             }else if(jsonResponse.serverResponse === "Allowed") {
                 /* This is where I need work everytime as per the authentication filter*/
 
+                hideDeleteConfirmationsBox();
                 window.location.replace("/EduClick_war_exploded/Teacher/Teacher.html");
 
             }else{
@@ -416,6 +426,18 @@ const deleteClassroom = function ( id ){
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/classroomDeleteServlet" , true );
     httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
     httpreq.send( "classroomId=" + id );
+
+}
+
+const showDeleteConfirmationsBox = function (){
+
+    confirmationBox.style.display = "flex";
+    
+}
+
+const hideDeleteConfirmationsBox = function (){
+
+    confirmationBox.style.display = "none";
 
 }
 
