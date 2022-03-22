@@ -40,29 +40,7 @@ public class TeacherClassroomListLoad extends HttpServlet {
         ArrayList<String> studentEnrollList = classroom.getEnrolledClassrooms(user1.getUserId());
         ArrayList<String> requestedClassroomList = classroom.getRequestedClassroomList(user1.getUserId());
 
-        ArrayList<String> compClassroomList = new ArrayList<String>();
-
-        /*for(int i=0;i< classroomList.size();i++){
-            for(int j=0;j<studentEnrollList.size();j++){
-                if(studentEnrollList.get(j).equals(classroomList.get(i).getClassroomID())){
-                    compClassroomList.add("Enrolled");
-
-                    break;
-                }
-
-                break;
-            }
-        }
-        for(int i=0;i< classroomList.size();i++){
-            for(int j=0;j<requestedClassroomList.size();j++){
-                if(requestedClassroomList.get(j).equals(classroomList.get(i).getClassroomID())){
-                    compClassroomList.add("Requested");
-                    break;
-                }
-
-                break;
-            }
-        }*/
+        
         JSONArray jsonArray = new JSONArray();
 
         for ( int i = 0 ; i < classroomList.size() ; i++ ){
@@ -105,16 +83,6 @@ public class TeacherClassroomListLoad extends HttpServlet {
         System.out.println(jsonArray);
         jsonObject.put( "classroomList" , jsonArray);
 
-        /*JSONArray jsonArray = new JSONArray( classroomList );
-        JSONArray jsonArray1 = new JSONArray(studentEnrollList);
-        JSONArray jsonArray2 = new JSONArray(requestedClassroomList);
-        JSONArray jsonArray3 = new JSONArray(compClassroomList);
-        jsonObject.put( "classroomList" , jsonArray);
-
-        System.out.println("Check ckjkhas"+jsonArray3);
-        *//*jsonObject.put( "EnrolledClassroomList" , jsonArray1);
-        jsonObject.put("RequestedClassroomList",jsonArray2);*//*
-        jsonObject.put("Eligibility",jsonArray3);*/
 
         out.write(jsonObject.toString());
         out.close();
