@@ -93,7 +93,7 @@ public class NewsFeeds extends Post{
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
         this.setPostID( newsFeedsDAO.insert( this) );
 
-        if ( this.getPostID() != null && imageStatus == "true"){
+        if ( this.getPostID() != null && this.getImageStatus() == "true"){
 
             NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
             this.setImagePath( newsFeedsImageDAO.insert(this) );
