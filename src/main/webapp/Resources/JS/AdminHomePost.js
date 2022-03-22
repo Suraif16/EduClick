@@ -1,4 +1,4 @@
-let addClassroomFormStatus = true; /*if it is false the addClassroomForm is hidden*/
+let addClassroomFormStatus = false; /*if it is false the addClassroomForm is hidden*/
 const addClassroomForm = document.getElementById("addNewsFeedForm");
 function showAddClassroomFrom(){
     if(addClassroomFormStatus){
@@ -11,11 +11,7 @@ function showAddClassroomFrom(){
 }
 
 
-/*const postQuestionsMessages = function (){
-    showAddClassroomFrom();
-    sendServerData();
 
-}*/
 
 const mimeTypeArray = [ "image/apng" , "image/avif" , "image/jpeg" , "image/png" , "image/webp" , "image/bmp" , "image/x-icon" , "image/tiff" , "image/heic" , "image/heif" ];
 
