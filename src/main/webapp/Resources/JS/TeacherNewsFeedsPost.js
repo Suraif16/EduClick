@@ -103,13 +103,12 @@ const postNewsFeeds = function () {
             while (new Date().getTime() < now + extraTime) {
             }
 
-            console.log(jsonResponse.NewsFeedsPost.imageStatus);
+         //   console.log(jsonResponse.NewsFeedsPost.imageStatus);
+         //   console.log(jsonResponse.NewsFeedsPost.caption  + "qqqq");
+            console.log(jsonResponse.jsonArray1[1]);
 
-            if(jsonResponse.NewsFeedsPost.imageStatus === 'true'){
 
-            }
-
-            if (jsonResponse.NewsFeedsPost.imageStatus === 'true') {
+            if (jsonResponse.NewsFeedsPost.imageStatus === 'true' && jsonResponse.NewsFeedsPost.caption !== '' ) {
 
                 let innerPreviouseHTML = postContents.innerHTML;
                 postContents.innerHTML = '        <div class="post">    ' +
@@ -168,7 +167,7 @@ const postNewsFeeds = function () {
                 postContents.innerHTML += innerPreviouseHTML;
 
 
-            }else if(jsonResponse.NewsFeedsPost.imageStatus === 'false'){
+            }else if(jsonResponse.NewsFeedsPost.imageStatus === 'false' && jsonResponse.NewsFeedsPost.caption !==''){
 
                 let innerPreviouseHTML = postContents.innerHTML;
                 postContents.innerHTML = '        <div class="post">    ' +
@@ -200,7 +199,7 @@ const postNewsFeeds = function () {
                     '                   <div class="postContentContainer">' +
                     '                       <div class="postLikeShareButtons">' +
                     '                           <div class="likeShareButtons" >' +
-                    '                               <input type="button" value="Like" class="like" onclick="leNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                               <input type="button" value="Like" class="like" onclick="lIKENewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
                     '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
@@ -223,7 +222,7 @@ const postNewsFeeds = function () {
                 postContents.innerHTML += innerPreviouseHTML;
                 return postContents;
 
-            }else if (jsonResponse.NewsFeedsPost.caption === '')
+            }else if (jsonResponse.NewsFeedsPost.imageStatus === 'true' && jsonResponse.NewsFeedsPost.caption === '')
             {
 
                 let innerPreviouseHTML = postContents.innerHTML;
@@ -245,7 +244,8 @@ const postNewsFeeds = function () {
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
-
+                    '               <div class="postContentContainer">' +
+                    '                   <div class="postData">' +
 
                     '                       <div class="postPicture">' +
                     '                           <div class="postPictureImageContainer">' +
@@ -279,9 +279,10 @@ const postNewsFeeds = function () {
 
                 postContents.innerHTML += innerPreviouseHTML;
 
+
             }
         } else {
-        alert("something went wrong!!!");
+            alert("something went wrong!!!");
         }
     }
 }
