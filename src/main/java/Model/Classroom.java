@@ -177,4 +177,8 @@ public class Classroom {
         classroomDAO.deleteClassroom( this.classroomID );
 
     }
+    public JSONObject getStudentClassroomDetails(String classroomId){
+        ClassroomDAO classroomDAO = new ClassroomDAO();
+        return classroomDAO.getStudentClassroomDetails(classroomId);
+    }
 }
