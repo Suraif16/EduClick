@@ -373,6 +373,7 @@ document.onreadystatechange = function (){
         checkEnableOrDisable();
         sendNameData();
         getClassroomList();
+        displayCurrentClassroomDetails();
 
 
     }
