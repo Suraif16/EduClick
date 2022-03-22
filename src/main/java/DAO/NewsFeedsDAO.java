@@ -70,13 +70,14 @@ public String insert(NewsFeeds newsFeeds){
 
 
         connection = dbConnectionPool.dataSource.getConnection();
-        String sql = "INSERT INTO NewsFeeds( DATE , TIME , Caption, LikeCount, ShareCount  ) VALUES( ? , ? , ? ,? , ? )";
+        String sql = "INSERT INTO NewsFeeds( DATE , TIME , Caption, LikeCount, ShareCount, ImageStatus  ) VALUES( ? , ? , ? ,? , ? , ? )";
         PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
         preparedStatement.setString( 1 , String.valueOf( newsFeeds.getDate() ) );
         preparedStatement.setString( 2 , String.valueOf( newsFeeds.getTime() ) );
         preparedStatement.setString( 3 , String.valueOf( newsFeeds.getCaption() ) );
         preparedStatement.setString( 4 , "0" );
         preparedStatement.setString( 5 , "0");
+        preparedStatement.setString( 6 , String.valueOf( newsFeeds.getImageStatus()) );
         preparedStatement.execute();
 
         ResultSet resultSet = preparedStatement.getGeneratedKeys();
