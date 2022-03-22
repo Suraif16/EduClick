@@ -86,6 +86,41 @@ const classroomSuccessfullyCreated = function ( classroomName , subject , grade 
     
 }
 
+const ePostLoadingActivityStatus = function ( type ){
+
+
+    activityStatus.innerHTML += '<div class="innerActivityStatus ">' +
+        '                <div class="ActivityStatusMessage">' +
+        '                    Please wait... while ' + type + ' is loading' +
+        '                </div>' +
+        '                <div class="ActivityStatusIcon">' +
+        '                    <img class="loadingGif" src="../Resources/Gifs/loading.gif" alt="">' +
+        '                </div>' +
+        '            </div>'
+
+    setTimeout(function() {
+        activityStatus.removeChild(activityStatus.children[0]);
+    }, 3000);
+
+}
+
+const ePostLoadedActivityStatus = function ( type ){
+
+    activityStatus.innerHTML += '<div class="innerActivityStatus ">' +
+        '                <div class="ActivityStatusMessage">' +
+        type + ' posting Completed' +
+        '                </div>' +
+        '                <div class="ActivityStatusIcon">' +
+        '                    <img class="greenColor" src="../Resources/Icons/done_white_24dp.svg" alt="">' +
+        '                </div>' +
+        '            </div>'
+
+    setTimeout(function() {
+        activityStatus.removeChild(activityStatus.children[0]);
+    }, 3000);
+
+}
+
 /*
 acceptEnrollRequestActivityStatus();
 acceptFriendRequestActivityStatus();
