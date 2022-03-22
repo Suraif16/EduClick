@@ -40,15 +40,81 @@ public class TeacherClassroomListLoad extends HttpServlet {
         ArrayList<String> studentEnrollList = classroom.getEnrolledClassrooms(user1.getUserId());
         ArrayList<String> requestedClassroomList = classroom.getRequestedClassroomList(user1.getUserId());
 
+        ArrayList<String> compClassroomList = new ArrayList<String>();
+
+        /*for(int i=0;i< classroomList.size();i++){
+            for(int j=0;j<studentEnrollList.size();j++){
+                if(studentEnrollList.get(j).equals(classroomList.get(i).getClassroomID())){
+                    compClassroomList.add("Enrolled");
+
+                    break;
+                }
+
+                break;
+            }
+        }
+        for(int i=0;i< classroomList.size();i++){
+            for(int j=0;j<requestedClassroomList.size();j++){
+                if(requestedClassroomList.get(j).equals(classroomList.get(i).getClassroomID())){
+                    compClassroomList.add("Requested");
+                    break;
+                }
+
+                break;
+            }
+        }*/
+        JSONArray jsonArray = new JSONArray();
+
+        for ( int i = 0 ; i < classroomList.size() ; i++ ){
+
+            JSONObject jsonObject1 = new JSONObject();
+            String x = classroomList.get( i ).getClassroomID();
+            boolean isInStudentEnrollList = studentEnrollList.contains( x );
+            boolean isInrequestedClassroomList = requestedClassroomList.contains( x );
+
+            jsonObject1.put( "classroomId" ,  classroomList.get( i ).getClassroomID() );
+            jsonObject1.put( "classroomName" ,  classroomList.get( i ).getClassroomName() );
+            jsonObject1.put( "classroomYear" ,  classroomList.get( i ).getYear() );
+            jsonObject1.put( "classroomGrade" ,  classroomList.get( i ).getGrade() );
+            jsonObject1.put( "classroomSubject" ,  classroomList.get( i ).getSubject() );
+
+            if ( isInStudentEnrollList ){
+
+                jsonObject1.put( "enrolledStatus" , true );
+                jsonObject1.put( "requestedStatus" , false );
+
+            }
+            else if(isInrequestedClassroomList){
+                jsonObject1.put( "enrolledStatus" , false );
+                jsonObject1.put( "requestedStatus" , true );
+            }
+            else{
+                jsonObject1.put( "enrolledStatus" , false );
+                jsonObject1.put( "requestedStatus" , false );
+            }
+            jsonArray.put(jsonObject1);
+
+            System.out.println( x + " : " + isInStudentEnrollList + " : " + isInrequestedClassroomList );
+
+
+        }
 
 
 
-        JSONArray jsonArray = new JSONArray( classroomList );
+
+        System.out.println(jsonArray);
+        jsonObject.put( "classroomList" , jsonArray);
+
+        /*JSONArray jsonArray = new JSONArray( classroomList );
         JSONArray jsonArray1 = new JSONArray(studentEnrollList);
         JSONArray jsonArray2 = new JSONArray(requestedClassroomList);
+        JSONArray jsonArray3 = new JSONArray(compClassroomList);
         jsonObject.put( "classroomList" , jsonArray);
-        jsonObject.put( "EnrolledClassroomList" , jsonArray1);
-        jsonObject.put("RequestedClassroomList",jsonArray2);
+
+        System.out.println("Check ckjkhas"+jsonArray3);
+        *//*jsonObject.put( "EnrolledClassroomList" , jsonArray1);
+        jsonObject.put("RequestedClassroomList",jsonArray2);*//*
+        jsonObject.put("Eligibility",jsonArray3);*/
 
         out.write(jsonObject.toString());
         out.close();
