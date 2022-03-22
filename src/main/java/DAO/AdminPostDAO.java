@@ -55,11 +55,13 @@ public class AdminPostDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Admin_Post_System_Updates (APTextMsg,APDate,APTime) VALUES (?,?,?)";
+            String sql = "INSERT INTO Admin_Post_System_Updates (APTextMsg,APDate,APTime,APPhoto) VALUES (?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, String.valueOf(adminWork.getTextMsg()));
             preparedStatement.setString(2, String.valueOf(adminWork.getDate()));
             preparedStatement.setString(3, String.valueOf(adminWork.getTime()));
+            preparedStatement.setString(4, String.valueOf(adminWork.getPhoto()));
+
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -89,7 +91,7 @@ public class AdminPostDAO {
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            String sql = "select  SysPostID,APTextMsg, APTime, APDate from Admin_Post_System_Updates";
+            String sql = "select  SysPostID,APTextMsg,APPhoto,APTime, APDate from Admin_Post_System_Updates";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -98,12 +100,14 @@ public class AdminPostDAO {
                 String textmsg = resultSet.getString("APTextMsg");
                 String date = resultSet.getString("APDate");
                 String time = resultSet.getString("APTime");
+                String status = resultSet.getString("APPhoto");
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("aPId",ApostId);
                 jsonObject.put("caption",textmsg);
                 jsonObject.put("date",date);
                 jsonObject.put("time",time);
+                jsonObject.put("status",status);
 
                 jsonArray.put(jsonObject);
             }
