@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Post {
 
@@ -148,7 +147,7 @@ public class Post {
         UserDAO userDAO = new UserDAO();
 
         JSONArray NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
-      //  System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
+        //  System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
 
         JSONArray array = new JSONArray();
 
@@ -165,7 +164,8 @@ public class Post {
 
             newsFeedDetails.put("ownerName",ownerName);
             newsFeedDetails.put("path", imagePath);
-           ;
+            newsFeedDetails.put("postId",NewsFeedUserIdList.get(i));
+            //  System.out.println(array);
             array.put(newsFeedDetails);
 
         }

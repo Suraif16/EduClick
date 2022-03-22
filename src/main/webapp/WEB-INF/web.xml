@@ -9,7 +9,7 @@
         <servlet-class>Controller.Login.LoginServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -35,7 +35,7 @@
         <filter-name>loginPasswordHashing</filter-name>
         <url-pattern>/Login</url-pattern>
     </filter-mapping>
-<!--End of login servlet and filter-->
+    <!--End of login servlet and filter-->
 
     <!--Start of registration servlet and filter-->
     <servlet>
@@ -246,18 +246,18 @@
     </servlet-mapping>
 
     <!-- end of the TeacherClassroomListServlet-->
-    
+
     <!-- beginning of OTPGenerateServlet-->
     <servlet>
         <servlet-name>OPTGenerate</servlet-name>
         <servlet-class>Controller.OTP.OTPGenerateServlet</servlet-class>
         <load-on-startup>10</load-on-startup>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>OPTGenerate</servlet-name>
         <url-pattern>/otpGenerate</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <!-- end of OTPValidateServlet-->
 
     <!-- beginning of OTPValidateServlet-->
@@ -266,7 +266,7 @@
         <servlet-class>Controller.OTP.OTPValidateServlet</servlet-class>
         <load-on-startup>11</load-on-startup>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>OTPValidate</servlet-name>
         <url-pattern>/otpValidate</url-pattern>
@@ -274,18 +274,18 @@
     <!-- end of OTPGenerateServlet-->
 
     <!-- beginning of DisplayRequestServlet-->
-        
+
     <servlet>
         <servlet-name>DisplayRequestStudent</servlet-name>
         <servlet-class>Controller.Requests.DisplayRequestServlet</servlet-class>
         <load-on-startup>12</load-on-startup>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>DisplayRequestStudent</servlet-name>
         <url-pattern>/displayRequest</url-pattern>
     </servlet-mapping>
-    
+
     <!-- end of DisplayRequestServlet-->
 
     <!-- beginning of DisplayRequestServlet-->
@@ -317,19 +317,19 @@
     </servlet-mapping>
 
     <!-- end of incorrectPassword -->
-    
+
     <!-- beginning of Search -->
-    
+
     <servlet>
         <servlet-name>Search</servlet-name>
         <servlet-class>Controller.Search.SearchServlet</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
     </servlet-mapping>
-    
+
     <!-- End of Search -->
 
     <!-- beginning of SearchPageOnLoad -->
@@ -482,7 +482,7 @@
 
     <servlet-mapping>
         <servlet-name>followTeacher</servlet-name>
-        <url-pattern>/student/followTeacher</url-pattern>
+        <url-pattern>/followTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- end of follow teachers -->
@@ -496,12 +496,12 @@
 
     <servlet-mapping>
         <servlet-name>unfollowTeacher</servlet-name>
-        <url-pattern>/student/unFollowTeacher</url-pattern>
+        <url-pattern>/unFollowTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- end of unfollow teachers -->
 
-    <!-- beginning of cancel Enroll request -->
+    <!-- beginning of cancel friend request -->
 
     <servlet>
         <servlet-name>cancelEnrollRequest</servlet-name>
@@ -513,7 +513,7 @@
         <url-pattern>/teacher/declineEnrollRequest</url-pattern>
     </servlet-mapping>
 
-    <!-- end of cancel Enroll request -->
+    <!-- end of cancel friend request -->
 
     <!-- beginning of accept friend request -->
 
@@ -529,33 +529,19 @@
 
     <!-- end of accept friend request -->
 
-    <!-- beginning of cancel friend request -->
+    <!-- beginning of cancel enroll request -->
 
     <servlet>
         <servlet-name>cancelFriendRequest</servlet-name>
-        <servlet-class>Controller.Requests.CancelFriendRequestServlet</servlet-class>
+        <servlet-class>Controller.Requests.cancelFriendRequestServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>cancelFriendRequest</servlet-name>
-        <url-pattern>/cancelFriendRequest</url-pattern>
+        <url-pattern>/user/cancelFriendRequest</url-pattern>
     </servlet-mapping>
 
-    <!-- end of cancel friend request -->
-
-    <!-- beginning of Decline friend request -->
-
-    <servlet>
-        <servlet-name>DeclineFriendRequest</servlet-name>
-        <servlet-class>Controller.Requests.DeclineFriendRequestServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>DeclineFriendRequest</servlet-name>
-        <url-pattern>/user/declineFriendRequest</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of Decline friend request -->
+    <!-- end of cancel enroll request -->
 
     <!-- beginning of teacher follow list load -->
 
@@ -635,10 +621,10 @@
         <servlet-class>Controller.UserLoad.StudentEntrancePageNewsFeedLoadServlet</servlet-class>
     </servlet>-->
 
-   <!-- <servlet-mapping>
-        <servlet-name>studentNewsFeedsLoad</servlet-name>
-        <url-pattern>/student/studentEntrancePageNewsFeedsLoad</url-pattern>
-    </servlet-mapping>-->
+    <!-- <servlet-mapping>
+         <servlet-name>studentNewsFeedsLoad</servlet-name>
+         <url-pattern>/student/studentEntrancePageNewsFeedsLoad</url-pattern>
+     </servlet-mapping>-->
 
     <!-- end of student entrance page news feed load -->
 
@@ -880,7 +866,7 @@
 
     <servlet-mapping>
         <servlet-name>ShareNewsFeedsServlet</servlet-name>
-        <url-pattern>/teacher/shareNewsFeedsServlet</url-pattern>
+        <url-pattern>/user/shareNewsFeedsServlet</url-pattern>
     </servlet-mapping>
 
     <!-- end of share newsfeeds servlet-->
@@ -908,7 +894,7 @@
 
     <servlet-mapping>
         <servlet-name>LikeNewsFeedsServlet</servlet-name>
-        <url-pattern>/teacher/likeNewsFeedsServlet</url-pattern>
+        <url-pattern>/user/likeNewsFeedsServlet</url-pattern>
     </servlet-mapping>
 
     <!-- end of like newsfeeds servlet-->
@@ -941,34 +927,6 @@
     </servlet-mapping>
 
     <!-- end of select mcq result servlet-->
-
-    <!-- beginning of Classroom Details servlet-->
-
-    <servlet>
-        <servlet-name>ClassroomDetailsServlet</servlet-name>
-        <servlet-class>Controller.Classroom.ClassroomDetailsServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ClassroomDetailsServlet</servlet-name>
-        <url-pattern>/user/classroomDetailsServlet</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of Classroom Details servlet-->
-
-    <!-- beginning of Classroom Delete servlet-->
-
-    <servlet>
-        <servlet-name>ClassroomDeleteServlet</servlet-name>
-        <servlet-class>Controller.Classroom.TeacherDeleteClassroomServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ClassroomDeleteServlet</servlet-name>
-        <url-pattern>/teacher/classroomDeleteServlet</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of Classroom Delete servlet-->
 
     <session-config>
 

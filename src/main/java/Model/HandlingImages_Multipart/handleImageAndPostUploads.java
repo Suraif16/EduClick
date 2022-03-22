@@ -239,6 +239,7 @@ public class handleImageAndPostUploads {
             }
 
             NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime,imageStatus);
+            newsFeeds.setImageStatus(imageStatus);
 
             /*HttpSession session = request.getSession( false );
             User user = (User) session.getAttribute("User");

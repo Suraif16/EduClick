@@ -23,9 +23,10 @@ const  LoadSelectedNewsFeeds = function (){
         } else if (jsonResponse.serverResponse === "Allowed") {
 
             console.log(jsonResponse.jsonArray1);
-            console.log(jsonResponse.jsonArray1[1].path);
 
             for( let i=0; i<jsonResponse.jsonArray1.length;i++){
+
+                //   console.log(jsonResponse.jsonArray1[i].postId);
 
                 if (jsonResponse.jsonArray1[i].path !== null) {
 
@@ -44,7 +45,7 @@ const  LoadSelectedNewsFeeds = function (){
                         jsonResponse.jsonArray1[i].Date +
                         '                            </div>' +
                         '                    <div class="userOptions">' +
-                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postID + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postID + ',\'educationalPostOPtion\')">' +
+                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
                         '                    </div>' +
                         '                   </div>' +
                         '               </div>' +
@@ -63,7 +64,7 @@ const  LoadSelectedNewsFeeds = function (){
                         '                   <div class="postContentContainer">' +
                         '                       <div class="postLikeShareButtons">' +
                         '                           <div class="likeShareButtons" >' +
-                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postID + ')">' +
+                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                           <div class="countOfLikeShare" >' +
                         '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
@@ -76,7 +77,7 @@ const  LoadSelectedNewsFeeds = function (){
                         '                               </div>' +
                         '                              </div>' +
                         '                           <div class="likeShareButtons" >' +
-                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postID + ')">' +
+                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                        </div>' +
                         '                       </div>' +
@@ -103,7 +104,7 @@ const  LoadSelectedNewsFeeds = function (){
                         jsonResponse.jsonArray1[i].Date +
                         '                            </div>' +
                         '                    <div class="userOptions">' +
-                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postID + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postID + ',\'educationalPostOPtion\')">' +
+                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
                         '                    </div>' +
                         '                   </div>' +
                         '               </div>' +
@@ -118,7 +119,7 @@ const  LoadSelectedNewsFeeds = function (){
                         '                   <div class="postContentContainer">' +
                         '                       <div class="postLikeShareButtons">' +
                         '                           <div class="likeShareButtons" >' +
-                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postID + ')">' +
+                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                           <div class="countOfLikeShare" >' +
                         '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
@@ -131,7 +132,7 @@ const  LoadSelectedNewsFeeds = function (){
                         '                               </div>' +
                         '                              </div>' +
                         '                           <div class="likeShareButtons" >' +
-                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postID + ')">' +
+                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                        </div>' +
                         '                       </div>' +
@@ -159,7 +160,7 @@ const  LoadSelectedNewsFeeds = function (){
                         jsonResponse.jsonArray1[i].Date +
                         '                            </div>' +
                         '                    <div class="userOptions">' +
-                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postID + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postID + ',\'educationalPostOPtion\')">' +
+                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
                         '                    </div>' +
                         '                   </div>' +
                         '               </div>' +
@@ -175,7 +176,7 @@ const  LoadSelectedNewsFeeds = function (){
                         '                   <div class="postContentContainer">' +
                         '                       <div class="postLikeShareButtons">' +
                         '                           <div class="likeShareButtons" >' +
-                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postID + ')">' +
+                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                           <div class="countOfLikeShare" >' +
                         '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
@@ -188,7 +189,7 @@ const  LoadSelectedNewsFeeds = function (){
                         '                               </div>' +
                         '                              </div>' +
                         '                           <div class="likeShareButtons" >' +
-                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postID + ')">' +
+                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                        </div>' +
                         '                       </div>' +
