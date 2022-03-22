@@ -11,37 +11,40 @@ import java.util.ArrayList;
 
 public class NewsFeedsDAO {
 
-    public JSONArray getNFDetails(ArrayList<String> newsFeedsIDList) {
+    public JSONArray getNFDetails(String SharedPostID) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
         JSONArray jsonArray = new JSONArray();
 
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            for (int i = 0; i < newsFeedsIDList.size(); i++) {
-                String sql = "SELECT Date, Time, Caption FROM NewsFeeds WHERE NFPostID = ?";
+
+                String sql = "SELECT Date, Time, Caption, LikeCount, ShareCount FROM NewsFeeds WHERE NFPostID = ?";
 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, newsFeedsIDList.get(i));
+                preparedStatement.setString(1,SharedPostID);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     String date = resultSet.getString("Date");
                     String time = resultSet.getString("Time");
                     String caption = resultSet.getString("Caption");
+                    String likeCount = resultSet.getString("LikeCount");
+                    String shareCount = resultSet.getString("ShareCount");
 
                     JSONObject jsonObject = new JSONObject();
 
                     jsonObject.put("Date",date);
                     jsonObject.put("Time",time);
                     jsonObject.put("Caption",caption);
+                    jsonObject.put("likeCount",likeCount);
+                    jsonObject.put("shareCount",shareCount);
                     jsonArray.put(jsonObject);
 
                 }
-            }
+
 
 
         } catch (SQLException e) {
@@ -65,12 +68,16 @@ public String insert(NewsFeeds newsFeeds){
 
     try{
 
+
         connection = dbConnectionPool.dataSource.getConnection();
-        String sql = "INSERT INTO NewsFeeds( DATE , TIME , Caption ) VALUES( ? , ? , ? )";
+        String sql = "INSERT INTO NewsFeeds( DATE , TIME , Caption, LikeCount, ShareCount, ImageStatus  ) VALUES( ? , ? , ? ,? , ? , ? )";
         PreparedStatement preparedStatement = connection.prepareStatement( sql , Statement.RETURN_GENERATED_KEYS );
         preparedStatement.setString( 1 , String.valueOf( newsFeeds.getDate() ) );
         preparedStatement.setString( 2 , String.valueOf( newsFeeds.getTime() ) );
         preparedStatement.setString( 3 , String.valueOf( newsFeeds.getCaption() ) );
+        preparedStatement.setString( 4 , "0" );
+        preparedStatement.setString( 5 , "0");
+        preparedStatement.setString( 6 , String.valueOf( newsFeeds.getImageStatus()) );
         preparedStatement.execute();
 
         ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -133,29 +140,33 @@ public String insert(NewsFeeds newsFeeds){
         return NewsFeedsTime;
     }
 
-    public JSONObject getNewsFeedsDetails(String SharedPostID) {
+    public JSONObject getNewsFeedsDetails(Object SharedPostID) {
+
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
         JSONObject jsonObject = new JSONObject();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-                String sql = "SELECT Date, Time, Caption FROM NewsFeeds WHERE NFPostID = ?";
+                String sql = "SELECT Date, Time, Caption, LikeCount, ShareCount FROM NewsFeeds WHERE NFPostID = ?";
 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setString(1, SharedPostID);
+                preparedStatement.setString(1, (String) SharedPostID);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     String date = resultSet.getString("Date");
                     String time = resultSet.getString("Time");
                     String caption = resultSet.getString("Caption");
+                    String likeCount = resultSet.getString("LikeCount");
+                    String shareCount = resultSet.getString("ShareCount");
 
                     jsonObject.put("Date",date);
                     jsonObject.put("Time",time);
                     jsonObject.put("Caption",caption);
+                    jsonObject.put("likeCount",likeCount);
+                    jsonObject.put("shareCount",shareCount);
 
 
                 }
@@ -171,6 +182,7 @@ public String insert(NewsFeeds newsFeeds){
             }
 
         }
+
         return jsonObject;
     }
 

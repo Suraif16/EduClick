@@ -23,7 +23,7 @@ public class StudentFriendListLoadServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("User");
 
-        String userId = user.getUserId();
+        String userId = request.getParameter("userId");
 
         System.out.println("Friends userID : "+userId);
 

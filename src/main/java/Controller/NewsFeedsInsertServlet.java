@@ -2,8 +2,10 @@ package Controller;
 
 import Model.HandlingImages_Multipart.handleImageAndPostUploads;
 import Model.NewsFeeds;
+import Model.Post;
 import Model.User;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
@@ -46,6 +48,7 @@ public class NewsFeedsInsertServlet extends HttpServlet {
         if ( isMultipart ){
 
             newsFeeds = handleImageAndPostUploads.uploadNewsFeedsImages( request , getServletContext().getRealPath( "" ) , LocalDate.now(), LocalTime.now() );
+            //  System.out.println(newsFeeds.getImageStatus() + "huu huu huu ");
 
         }
 
@@ -56,6 +59,7 @@ public class NewsFeedsInsertServlet extends HttpServlet {
 
         }
         String postId = newsFeeds.getPostID();
+        System.out.println(postId + " = news feeds id");
 
         String postedTime = newsfeeds.getPostedTime(postId);
 
@@ -64,6 +68,14 @@ public class NewsFeedsInsertServlet extends HttpServlet {
         jsonObject.put( "NewsFeedsPost" , newsFeedsJson );
         jsonObject.put("fullName",fullName);
         jsonObject.put("Time",postedTime);
+
+        Post post = new Post();
+
+        JSONArray NewsFeedsPost = new JSONArray();
+
+        NewsFeedsPost = (JSONArray) post.getLoadedInsertedNewsFeedsId(userId);
+
+        jsonObject.put("jsonArray1",NewsFeedsPost);
 
 
         out.write( jsonObject.toString() );

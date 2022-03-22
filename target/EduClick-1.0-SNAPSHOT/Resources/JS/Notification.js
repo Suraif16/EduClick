@@ -137,12 +137,66 @@ const displayRequest = function ( jsonResponse ){
 function FriendRequestAccept( fromId , toId ){
 
     console.log( "friend request accepted" , fromId , toId );
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status === 200){
+
+            let jsonResponse = JSON.parse( this.responseText );
+
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed") {
+                /* This is where I need work everytime as per the authentication filter*/
+                const singleNotificaiton = document.getElementById( "Friend" + fromId + "" + toId );
+
+                singleNotificaiton.style.display = "none";
+                acceptFriendRequestActivityStatus();
+
+            }else{
+                alert("something went wrong!!!");
+            }
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/AcceptFriendRequest" , true );
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send( "fromId=" + fromId + "&toId=" + toId );
 
 }
 
 function FriendRequestDecline(fromId , toId ){
 
     console.log( "friend request Decline" , fromId , toId );
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status === 200){
+
+            let jsonResponse = JSON.parse( this.responseText );
+
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed") {
+                /* This is where I need work everytime as per the authentication filter*/
+                const singleNotificaiton = document.getElementById( "Friend" + fromId + "" + toId );
+
+                singleNotificaiton.style.display = "none";
+                declineFriendRequestActivityStatus();
+
+            }else{
+                alert("something went wrong!!!");
+            }
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/declineFriendRequest" , true );
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send( "fromId=" + fromId + "&toId=" + toId );
 
 }
 
@@ -164,11 +218,6 @@ function EnrollRequestAccept( fromId , toId ){
                 const singleNotificaiton = document.getElementById( "Enroll" + fromId + "" + toId );
 
                 if ( jsonResponse.enrollStatus === true ){
-                    /*console.log( "buttonsEnroll" + fromId + "" + toId );console.log("please work");
-                    document.getElementById( "buttonsEnroll" + fromId + "" + toId ).style.backgroundColor = "red";
-                    let now = new Date().getTime();
-                    let extraTime = 2500;
-                    while(new Date().getTime() < now + extraTime ){}*/
 
                     singleNotificaiton.style.display = "none";
                     acceptEnrollRequestActivityStatus();
@@ -198,6 +247,34 @@ function EnrollRequestAccept( fromId , toId ){
 function EnrollRequestDecline(fromId , toId ){
 
     console.log( "Enroll request Decline" , fromId , toId );
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status === 200){
+
+            let jsonResponse = JSON.parse( this.responseText );
+
+            if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
+                window.location.replace("/EduClick_war_exploded/Login.html");
+            }else if(jsonResponse.serverResponse === "Allowed") {
+                /* This is where I need work everytime as per the authentication filter*/
+                console.log( "enroll status : " , jsonResponse.enrollStatus )
+                const singleNotificaiton = document.getElementById( "Enroll" + fromId + "" + toId );
+
+                singleNotificaiton.style.display = "none";
+                declineEnrollRequestActivityStatus();
+
+            }else{
+                alert("something went wrong!!!");
+            }
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/declineEnrollRequest" , true );
+    httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
+    httpreq.send( "fromId=" + fromId + "&toId=" + toId );
 
 }
 /*every function seconds the getRequestData function is called*/

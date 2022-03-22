@@ -1,3 +1,4 @@
+
 package Model;
 
 import DAO.*;
@@ -6,6 +7,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -15,14 +17,34 @@ public class NewsFeeds extends Post{
     private String imagePath;
     private int likeCount;
     private int likeShare;
-
-    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime) {
-        super( message , localDate , localTime );
-    }
+    private String imageStatus;
+    private LocalDate localDate;
+    private LocalTime localTime;
 
     public NewsFeeds() {
+        //  super(caption, localDate, localTime);
+        this.caption = caption;
+        this.localDate = localDate;
+        this.localTime = localTime;
+        this.imageStatus = imageStatus;
+    }
+
+    public String getImageStatus() {
+        return imageStatus;
+    }
+
+    public void setImageStatus(String imageStatus) {
+        this.imageStatus = imageStatus;
+    }
+
+    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime, String imageStatus) {
+        super( message , localDate , localTime );
+        this.imageStatus = imageStatus;
+    }
+    public NewsFeeds(String message, LocalDate localDate, LocalTime localTime) {
 
     }
+
 
 
 
@@ -53,32 +75,31 @@ public class NewsFeeds extends Post{
 
 
 
-    public JSONArray getNFDetails(ArrayList<String> newsFeedsIDList){
+    public JSONArray getNFDetails(Object SharedPostID){
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
-        JSONArray NFDetailList = newsFeedsDAO.getNFDetails(newsFeedsIDList);
+        JSONArray NFDetailList = newsFeedsDAO.getNFDetails((String) SharedPostID);
         return NFDetailList;
     }
 
-    public JSONArray getImagePath(ArrayList<String> newsFeedsIDList){
+    public String getImagePath(String newsFeedsIDList){
         NewsFeedsImageDAO newsFeedImageDAO = new NewsFeedsImageDAO();
-        JSONArray NFImageList = newsFeedImageDAO.getImagePath(newsFeedsIDList);
+        String NFImageList = newsFeedImageDAO.getImagePath(newsFeedsIDList);
         return NFImageList;
     }
 
 
-    public NewsFeeds insertNewsFeeds(FileItem imageFile , String path ) throws Exception {
+    public NewsFeeds insertNewsFeeds(FileItem imageFile, String path) throws Exception {
 
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
         this.setPostID( newsFeedsDAO.insert( this) );
 
-        if ( this.getPostID() != null ){
+        if ( this.getPostID() != null && this.getImageStatus() == "true"){
 
             NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
             this.setImagePath( newsFeedsImageDAO.insert(this) );
 
             Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( this.getImagePath() , path + "Resources\\Images\\NewsFeedImages\\" , imageFile );
             saveImage.start();
-
 
         }
 
@@ -96,6 +117,7 @@ public class NewsFeeds extends Post{
             postDAO.insert(newsFeeds,friendsIDList.get(i), userId );
         }
 
+
         FollowsDAO followsDAO = new FollowsDAO();
         ArrayList<String> followersIDList = followsDAO.getTeacherFollowersKeys(userId);
 
@@ -112,7 +134,7 @@ public class NewsFeeds extends Post{
 
             getTeacherFriendsFollowers(  newsFeeds, userId);
 
-          };
+        };
 
         return new Thread( runnable );
 
@@ -126,27 +148,18 @@ public class NewsFeeds extends Post{
 
     }
 
-    public JSONObject getNewsFeedsDetails(String SharedPostID){
-        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
-        JSONObject NewsFeedsDetailList = newsFeedsDAO.getNewsFeedsDetails(SharedPostID);
-        return NewsFeedsDetailList;
+    public JSONArray getNewsFeedsReceiver(String SharedPostID) throws SQLException {
+        ShareDAO shareDAO = new ShareDAO();
+        JSONArray NFReceiversList = shareDAO.getNewsFeedsReceiver(SharedPostID);
+        return NFReceiversList;
     }
 
-    public JSONObject getPathOfImage(String SharedPostID){
-        NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
-        JSONObject NewsFeedsImage = newsFeedsImageDAO.getNewsFeedsImageDetails(SharedPostID);
-        return NewsFeedsImage;
+    public JSONObject getNewsFeedsImageDetails(String SharedPostID) {
+        NewsFeedsImageDAO newsFeedImageDAO = new NewsFeedsImageDAO();
+        JSONObject NFImagePath = newsFeedImageDAO.getNewsFeedsImageDetails(SharedPostID);
+        return NFImagePath;
     }
-
 
 
 
 }
-
-
-
-
-
-
-
-

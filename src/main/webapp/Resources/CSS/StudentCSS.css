@@ -357,7 +357,7 @@ div#content > div#postContents {
 
     /*child of div#postContents*/
 
-    flex-basis: 60%;
+    flex-basis: 50%;
     box-sizing: border-box;
     justify-content: space-between;
     margin: 8.6% 0 0 30%;
@@ -374,7 +374,7 @@ div#content > div#postContents {
 
     /*child of postContents*/
     box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
-    width: 75%;
+    width: 85%;
     margin: 1% auto 1% auto;
 
     /*becomes a container for postProfileSection , postData , and postLikeShareButtons, where all these contain under postContentContainer*/
@@ -448,7 +448,6 @@ div#content > div#postContents {
     color: whitesmoke;
 
 }
-
 
 .postPicture{
 
@@ -593,7 +592,7 @@ div#content > div#notifications {
     padding: 1%;
     z-index: 1;
     background-color: white;
-    height: 80%;
+    height-max: 80%;
     display: none; /*becomes a container to the request*/
     flex-direction: column;
 
@@ -626,6 +625,7 @@ div#content > div#notifications > div#request > div.singleNotification > div{
     padding: 1%;
     margin: 1%;
     display: flex;
+    color: white;
 
 }
 
@@ -672,6 +672,7 @@ input.requestDecline{
     flex-basis: 25%;
     margin: auto;
     font-size: x-small;
+    color: white;
 
 }
 #userOptionMenu{

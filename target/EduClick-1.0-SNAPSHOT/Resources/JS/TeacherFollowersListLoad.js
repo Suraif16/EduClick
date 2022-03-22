@@ -15,7 +15,8 @@ const loadTeacherFollowersList = function (){
     }
 
     httpreq.open("POST", "/EduClick_war_exploded/teacher/teacherFollowerListLoad", true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLoad(httpreq){
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
@@ -88,6 +89,12 @@ const loadTeacherFollowersList = function (){
 
     }
 
+
+}
+const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
 
 }
 

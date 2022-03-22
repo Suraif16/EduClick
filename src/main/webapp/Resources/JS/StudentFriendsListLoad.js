@@ -5,6 +5,8 @@ const loadFriendsList = function (){
     btn.style.backgroundColor = "#157DEC";*/
     let httpreq = new XMLHttpRequest();
 
+    const postContents = document.getElementById("postContents");
+    postContents.innerHTML = "";
     httpreq.onreadystatechange = function () {
 
         if (this.readyState === 4 && this.status === 200) {
@@ -14,8 +16,9 @@ const loadFriendsList = function (){
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/student/studentFriendListLoad", true);
-    httpreq.send();
+    httpreq.open("POST", "/EduClick_war_exploded/studentFriendListLoad", true);
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function loadFriends(httpreq){
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
@@ -173,3 +176,10 @@ const cancelFriendRequestServer = function ( toUserId , addFriendButton , cancel
     httpreq.send( "toID=" + toUserId);
 
 }
+/*
+const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
+
+}*/

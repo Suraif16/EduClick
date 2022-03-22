@@ -23,17 +23,13 @@ public class TeacherProfileNameLoadServlet extends HttpServlet{
         jsonObject.put( "serverResponse" , "Allowed" );
 
         HttpSession session = request.getSession( false );
-        User user = ( User ) session.getAttribute( "User" );
-        String fID = user.getUserId();
+        User user = new User();
+        String fID = request.getParameter("userId");
         System.out.println(fID);
 
-        String firstName = user.getFirstName();
-        System.out.println(firstName);
 
-        String lastName = user.getLastName();
-        System.out.println(lastName);
 
-        String fullName = firstName + " " + lastName;
+        String fullName = user.getFullName(fID);
         System.out.println(fullName);
 
         jsonObject.put("FullName",fullName);

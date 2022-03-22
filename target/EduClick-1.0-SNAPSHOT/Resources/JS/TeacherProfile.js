@@ -21,7 +21,8 @@ const LoadUserName = function (){
     }
 
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherProfileNameLoad" , true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLogin( httpreq ){
 
@@ -31,7 +32,7 @@ const LoadUserName = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
-            const headerName = document.getElementById("teacherUserNameHeader");
+            const headerName = document.getElementById("profileUserName");
             headerName.innerHTML = jsonLoginResponse.FullName;
             console.log(headerName);
 

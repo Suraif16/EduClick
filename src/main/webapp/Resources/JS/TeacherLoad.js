@@ -1,12 +1,11 @@
 
-
 document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
         sendServerData();
         getClassroomList();
-      //  sendServerDataTeacher();
+        LoadSelectedNewsFeeds();
 
     }
 
@@ -107,5 +106,11 @@ const getClassroomList = function (){
 
     }
 
+
+}
+const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
 
 }

@@ -16,18 +16,17 @@ public class UserProfileRedirectServlet extends HttpServlet {
         HttpSession session = request.getSession( false );
         String userId = request.getParameter("userId");
         User profileUser = new User( userId );
-        session.setAttribute( "profileUserId" , userId );
         profileUser.getUser();
 
         if( session.getAttribute("User") == null ){
 
             if ( profileUser.getUserType().equals("Teacher") ){
 
-                response.sendRedirect("/EduClick_war_exploded/Teacher/Teacherpro.html");
+                response.sendRedirect("/EduClick_war_exploded/Teacher/Teacherpro.html?userId=" + userId);
 
             }else if ( profileUser.getUserType().equals("Student") ){
 
-                response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html");
+                response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html?userId=" + userId);
 
             }
 
@@ -39,11 +38,11 @@ public class UserProfileRedirectServlet extends HttpServlet {
 
                 if ( profileUser.getUserType().equals("Teacher") ){
 
-                    response.sendRedirect("/EduClick_war_exploded/Teacher/TeacherProfile.html");
+                    response.sendRedirect("/EduClick_war_exploded/Teacher/TeacherProfile.html?userId=" + userId);
 
                 }else if ( profileUser.getUserType().equals("Student") ){
 
-                    response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html");
+                    response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html?userId=" + userId);
 
                 }
 
@@ -51,11 +50,11 @@ public class UserProfileRedirectServlet extends HttpServlet {
 
                 if ( profileUser.getUserType().equals("Teacher") ){
 
-                    response.sendRedirect("/EduClick_war_exploded/Teacher/Teacherpro.html");
+                    response.sendRedirect("/EduClick_war_exploded/Teacher/Teacherpro.html?userId=" + userId);
 
                 }else if ( profileUser.getUserType().equals("Student") ){
 
-                    response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html");
+                    response.sendRedirect("/EduClick_war_exploded/Student/StudentProfile.html?userId=" + userId);
 
                 }
 

@@ -161,7 +161,7 @@ public class PostDAO {
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            String sql = "SELECT UserID FROM Posts WHERE T_UserID = ? LIMIT 15";
+            String sql = "SELECT NFPostID FROM Posts WHERE UserID = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, T_UserID);
@@ -189,6 +189,79 @@ public class PostDAO {
 
         }
         return jsonArray;
+    }
+
+    public JSONArray getLoadedNewsFeedsId(String AUserID) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONArray jsonArray = new JSONArray();
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT NFPostID FROM Posts WHERE UserID = ?;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, String.valueOf(AUserID));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String UserID = resultSet.getString("NFPostID");
+
+
+                jsonArray.put(UserID);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        return jsonArray;
+    }
+
+
+    public String getOwnerId(Object NewsFeedID) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        //  JSONObject jsonObject = new JSONObject();
+        String UserID = "";
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT T_UserID FROM Posts WHERE NFPostID = ?;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, (String) NewsFeedID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                UserID = resultSet.getString("T_UserID");
+
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        //System.out.println(jsonObject+"owners");
+        return UserID;
     }
 
 }

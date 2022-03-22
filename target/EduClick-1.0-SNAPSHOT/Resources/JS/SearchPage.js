@@ -160,6 +160,7 @@ function searchResult() {
 
 const displayTeacher = function ( jsonResponse ){
     const searchContent = document.getElementById( "rightPanelStudentList" );
+    console.log(jsonResponse);
     for ( i = 0 ; i < jsonResponse.searchResult.length ; i++ ){
 
         let htmlString = '<div class="rightPanelSingleStudent" >' +
@@ -415,7 +416,7 @@ const cancelFriendRequestServer = function ( toUserId , addFriendButton , cancel
     }
     httpreq.open( "POST" , "/EduClick_war_exploded/cancelFriendRequest" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
-    httpreq.send( "toID=" + toUserId);
+    httpreq.send( "toId=" + toUserId);
 
 }
 

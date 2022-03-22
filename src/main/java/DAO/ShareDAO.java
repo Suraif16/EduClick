@@ -88,46 +88,41 @@ public class ShareDAO {
         return jsonArray;
     }
 
-    //**********************
 
-
-    public JSONArray getSharedNFReceiver(String ReceiveUserID) {
+    public JSONArray getNewsFeedsReceiver(String SharedPostID) throws SQLException {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        ArrayList<User> NewsFeedsDetails = new ArrayList<>();
         JSONArray jsonArray = new JSONArray();
 
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            String sql = "SELECT UserID FROM Share WHERE ReceiveUserID = ? LIMIT 15";
+            String sql = "SELECT ReceiveUserID FROM Share WHERE NFPostID = ? ";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, ReceiveUserID);
-
+            preparedStatement.setString(1, SharedPostID);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String UserID = resultSet.getString("UserID");
 
+
+            while (resultSet.next()) {
+                String ReceiversUserID = resultSet.getString("ReceiveUserID");
                 JSONObject jsonObject = new JSONObject();
 
-                jsonObject.put("UserID", UserID);
+                jsonObject.put("ReceiveUserID", ReceiversUserID);
 
                 jsonArray.put(jsonObject);
 
-            }
 
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (connection != null) try {
-                connection.close();
-            } catch (Exception ignore) {
-            }
+            if (connection != null)connection.close();
 
         }
+
         return jsonArray;
     }
 

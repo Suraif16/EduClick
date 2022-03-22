@@ -11,10 +11,7 @@ import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class handleImageAndPostUploads {
 
@@ -198,6 +195,7 @@ public class handleImageAndPostUploads {
     public static NewsFeeds uploadNewsFeedsImages(HttpServletRequest request , String path , LocalDate localDate , LocalTime localTime ){
 
         String message = "";
+        String imageStatus = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
 
         try{
@@ -228,8 +226,20 @@ public class handleImageAndPostUploads {
                     imageFile = file;
 
                 }
+                if ( imageFile == null ){
+
+                    imageStatus = "false";
+
+                }else{
+
+                    imageStatus = "true";
+
+                }
 
             }
+
+            NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime,imageStatus);
+            newsFeeds.setImageStatus(imageStatus);
 
             /*HttpSession session = request.getSession( false );
             User user = (User) session.getAttribute("User");
@@ -250,13 +260,8 @@ public class handleImageAndPostUploads {
             Notifications notifications = new Notifications();
             notifications.insertEpostNotificationsFromTeacher(userId,notifyList,postId,param);*/
 
-
-
-
-            NewsFeeds newsFeeds = new NewsFeeds( message , localDate , localTime );
-
-
-            return newsFeeds.insertNewsFeeds( imageFile , path );
+            newsFeeds =  newsFeeds.insertNewsFeeds( imageFile , path );
+            return newsFeeds;
 
 
 

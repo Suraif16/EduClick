@@ -16,8 +16,9 @@ const loadFollowersList = function (){
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/student/studentFollowerListLoad", true);
-    httpreq.send();
+    httpreq.open("POST", "/EduClick_war_exploded/studentFollowerListLoad", true);
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId="+getUserIdClientSide());
 
     function completeLoad(httpreq){
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
@@ -156,7 +157,7 @@ const followTeacher = function( T_UserId , followButton , unFollowButton ){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/followTeacher" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/followTeacher" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send( "teacherId=" + T_UserId );
 
@@ -177,7 +178,7 @@ const unfollowTeacher = function( T_UserId , followButton , unFollowButton ){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/unFollowTeacher" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/unFollowTeacher" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send( "teacherId=" + T_UserId );
 
@@ -204,8 +205,9 @@ const sendServerData = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentProfileNameLoad" , true);
-    httpreq.send();
+    httpreq.open( "POST" , "/EduClick_war_exploded/studentProfileNameLoad" , true);
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLogin( httpreq ){
 
@@ -228,5 +230,12 @@ const sendServerData = function (){
 
     }
 
+
+}
+
+const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
 
 }

@@ -27,6 +27,7 @@
     flex-wrap: wrap;
     margin: auto 1% auto 2%;
     color: white;
+    padding: 1%;
 
 }
 
@@ -56,5 +57,11 @@
 .redColor{
 
     background-color: crimson;
+
+}
+
+.loadingGif{
+
+    width: 75%;
 
 }
