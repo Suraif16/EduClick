@@ -15,7 +15,8 @@ const loadTeacherFriendList = function (){
     }
 
     httpreq.open("POST", "/EduClick_war_exploded/teacher/teacherFriendsListLoad", true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function LoadFriends(httpreq){
         let jsonLoginResponse = JSON.parse(httpreq.responseText);

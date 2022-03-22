@@ -750,6 +750,59 @@ a.mcqProfile > div.mcqProfileImage{
 
 /*MCQ POST RELATED STYLES ENDS HERE*/
 
+div#content > div#confirmationBox {
+
+
+    margin: 20% auto auto 30%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: fixed;
+    width: 30%;
+    padding: 1%;
+    display: none;  /*making this a container to rightPanelTopic and rightPanelStudentList*/
+    flex-direction: column;
+    max-height: 76%;
+
+
+}
+
+div.confirmationBoxContent{
+
+    flex: 1;
+    background-color: #4775c4;
+    color: white;
+    padding: 1%;
+    font-weight: bold;
+
+}
+
+div.confirmationBoxYesNoButtons{
+
+    flex: 1;
+    background-color: #4775c4;
+    padding: 1%;
+    display: flex;
+
+}
+
+div.confirmationBoxYesNoButtons > input[ type = "button" ]{
+
+    flex: 1;
+    margin: auto 1%;
+
+}
+
+input.yesButton{
+
+    background-color: #4775c4;
+
+}
+
+input.noButton{
+
+    background-color: #403434;
+
+}
+
 /*right panel begins here*/
 
 div#content > div#rightPanel {
