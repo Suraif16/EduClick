@@ -15,7 +15,7 @@ function likeNewsFeeds(NewsFeedspostID){
 
         }
     }
-    httpreq.open("POST", "/EduClick_war_exploded/teacher/likeNewsFeedsServlet", true);
+    httpreq.open("POST", "/EduClick_war_exploded/user/likeNewsFeedsServlet", true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("id=" + id );
 
