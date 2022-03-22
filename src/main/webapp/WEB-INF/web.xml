@@ -914,6 +914,20 @@
 
     <!-- end of select mcq result servlet-->
 
+    <!-- beginning of select student classroom details servlet-->
+
+    <servlet>
+        <servlet-name>StudentClassroomDetailsSelectServlet</servlet-name>
+        <servlet-class>Controller.StudentClassroomDetailsSelectServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentClassroomDetailsSelectServlet</servlet-name>
+        <url-pattern>/user/StudentClassroomDetailsSelect</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select student classroom details servlet-->
+
     <!-- beginning of select mcq result servlet-->
 
     <servlet>
