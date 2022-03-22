@@ -173,5 +173,41 @@ public class Post {
         return array;
     }
 
+    public Object getLoadedInsertedNewsFeedsId(String userId) {
+
+        PostDAO postDAO = new PostDAO();
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
+        UserDAO userDAO = new UserDAO();
+
+        JSONArray NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
+        System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
+
+        JSONArray array = new JSONArray();
+
+        for (int i = 0; i < NewsFeedUserIdList.length(); i++) {
+
+            JSONObject newsFeedDetails = newsFeedsDAO.getNewsFeedsDetails(NewsFeedUserIdList.get(i));
+            System.out.println(newsFeedDetails);
+            String imagePath = newsFeedsImageDAO.getImagePath((String) NewsFeedUserIdList.get(i));
+            System.out.println(imagePath);
+         //   String ownerId = String.valueOf(postDAO.getOwnerId(NewsFeedUserIdList.get(i)));
+
+
+            String ownerName = userDAO.getOwnerName(userId);
+            System.out.println(ownerName);
+
+
+                newsFeedDetails.put("ownerName", ownerName);
+                newsFeedDetails.put("path", imagePath);
+                newsFeedDetails.put("postId", NewsFeedUserIdList.get(i));
+                //  System.out.println(array);
+                array.put(newsFeedDetails);
+
+            }
+        System.out.println(array);
+            return array;
+        }
+
 
 }
