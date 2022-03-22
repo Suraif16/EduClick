@@ -272,6 +272,7 @@ public class handleImageAndPostUploads {
 
     public static AdminWork uploadEPostImages(HttpServletRequest request, String path, LocalDate localDate, LocalTime localTime ) {
         String message = "";
+        String status = "0";
         ServletFileUpload servletFileUpload = new ServletFileUpload(new DiskFileItemFactory());
 
         try {
@@ -288,10 +289,11 @@ public class handleImageAndPostUploads {
                     inputStream.close();
                 } else {
                     imageFile = file;
+                    status = "1";
                 }
             }
 
-            AdminWork adminWork = new AdminWork( message ,  localDate , localTime );
+            AdminWork adminWork = new AdminWork ( message ,  localDate , localTime , status);
             return adminWork.insertAdminPostWork( imageFile , path );
 
         } catch (Exception e) {
