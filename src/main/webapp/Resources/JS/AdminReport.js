@@ -53,13 +53,13 @@ const getServerData = function (){
                     '</div>'+
                     '<div class="postContentContainer">'+
                     '<div class="postData">'+
-                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData()">'+
+                    '<input type="button" value="-Delete" class="share" onclick=" ">'+
                     '</div>'+
                     '</div>'+
                     '</div>'+
                     '</div>';
                 postContents.innerHTML += htmlString;
-            }else{
+            }else if(jsonResponse.AdminPostDetails[i].status === one/*check thi one*/){
                 let htmlString ='<div class="post">' +
                     '<div class="postContentContainer">'+
                     '<div class="postProfileSection">'+
@@ -73,17 +73,62 @@ const getServerData = function (){
                     '</div>'+
                     '</div>'+
                     '<div class="postContentContainer">'+
+                    '<div class="postLikeShareButtons">'+
+                    '<a href="#" class="postProfile">'+
+                    '<div className="postProfileName">'+
+                    Count_of_the_report_100+
+                    '</div>'+
+                    '</a>'+
+                    '</div>'+
+                    '<div class="emptySpaceLikeShare">'+
+                    '</div>'+
+                    '<div class="likeShareButtons">'+
+                    '<input type="button" value="Remove" class="share" onclick="" >'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>';
+                postContents.innerHTML += htmlString;
+            }else{
+                let htmlString ='<div class="post">' +
+
+                    '<div class="postContentContainer">'+
+                    '<div class="postProfileSection">'+
+                    '<a href="#" class="postProfile">'+
+                    '<div class="postProfileImage">'+
+                    '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
+                    '</div>'+
+                    '<div class="postProfileName" >'+
+                     Admin+
+                    '</div>'+
+                    '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+
+                    '</div>'+
+                    '</a>'+
+                    '</div>'+
+                    '</div>'+
+
+                    '<div class="postContentContainer">'+
                     '<div class="postData">'+
                     '<div class="postMessage">'+
                     jsonResponse.AdminPostDetails[i].caption+
                     '</div>'+
                     '</div>'+
-                    '<div class="postContentContainer">'+
-                    '<div class="postData">'+
-                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+1+')" >'+
+                    '</div>'+
+
+                    '<div class="postContentContainer">' +
+                    '<div class="postLikeShareButtons">' +
+                    '<a href="#" class="postProfile">'+
+                    '<div class="postProfileName" >'+
+                    'Count of the report : 100'+
+                    '</div>'+
+                    '</a>'+
+                    '<div class="emptySpaceLikeShare">'+
+                    '</div>'+
+                    '<div class="likeShareButtons">'+
+                    '<input type="button" value="-Remove" class="share" onclick=" ">'+
                     '</div>'+
                     '</div>'+
                     '</div>'+
+
                     '</div>';
                 postContents.innerHTML += htmlString;
             }
