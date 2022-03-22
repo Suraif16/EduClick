@@ -343,4 +343,44 @@ public class ClassroomDAO {
 
     }
 
+    public JSONObject getStudentClassroomDetails(String classroomId){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+
+        Connection connection = null;
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT CR_Name,YearOfExamination,Grade,Subject FROM Classroom WHERE ClassroomID = ?;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setString( 1 , classroomId );
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                jsonObject.put( "classroomName" , resultSet.getString( 1 ) );
+
+                jsonObject.put( "yearOfExamination" , resultSet.getString( 2 ) );
+
+                jsonObject.put( "grade" , resultSet.getString( 3 ) );
+
+                jsonObject.put( "subject" , resultSet.getString( 4 ) );
+
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        return jsonObject;
+    }
+
 }
