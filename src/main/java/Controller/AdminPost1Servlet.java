@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdminPost1Servlet extends HttpServlet {
     public String generatedUserID;
@@ -25,20 +26,13 @@ public class AdminPost1Servlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
-        //String userId = adminPost.getSysPostID();
-        //ArrayList<String> APostIDList = adminPost.getSysPostID(userId);
-
         AdminPost adminPost = new AdminPost();
         JSONArray APDetails = adminPost.getAPostDetails();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("AdminPostDetails" ,APDetails);
 
-        //jsonObject.put("AdminPostDetails" ,APostIDList);
-
         jsonObject.put("serverResponse" , "Allowed");
-
         out.write(jsonObject.toString());
         out.close();
     }
-
 }
