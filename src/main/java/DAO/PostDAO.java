@@ -203,7 +203,7 @@ public class PostDAO {
             String sql = "SELECT NFPostID FROM Posts WHERE UserID = ?;";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, AUserID);
+            preparedStatement.setString(1, String.valueOf(AUserID));
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -231,7 +231,7 @@ public class PostDAO {
     public String getOwnerId(Object NewsFeedID) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-      //  JSONObject jsonObject = new JSONObject();
+        //  JSONObject jsonObject = new JSONObject();
         String UserID = "";
 
 
