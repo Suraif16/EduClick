@@ -17,10 +17,7 @@ function showAddClassroomFrom(){
 
 }*/
 
-
-
 const mimeTypeArray = [ "image/apng" , "image/avif" , "image/jpeg" , "image/png" , "image/webp" , "image/bmp" , "image/x-icon" , "image/tiff" , "image/heic" , "image/heif" ];
-
 
 const postQuestionsMessages = function (){
     showAddClassroomFrom();
@@ -65,32 +62,13 @@ const postQuestionsMessages = function (){
         }else{
             console.log( "image type invalid" );
         }
-
     }
-
-    /*
-    const complete = function ( httpreq ){
-        let jsonResponse = JSON.parse( httpreq.responseText );
-        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonResponse.serverResponse === "Allowed") {
-            console.log( jsonResponse.EPost );
-            document.getElementById( "addNewsFeedFormTextArea" ).value = null;
-            document.getElementById( "inputImage" ).value = null;
-            showAddEducationalPostForm();
-            selectMoreStatus = true;
-            setTimeout( function (){
-                    ePostGetAnswerList = [];
-                    selectEPostFromServer( false );
-                }
-                , 3000 );
-        }else{
-            alert("something went wrong!!!");
-        }
-    }*/
 }
 
-const isImageAccepted = function ( type ){
+
+
+
+    const isImageAccepted = function ( type ){
     const arrayLength = mimeTypeArray.length;
     for ( let i = 0; i < arrayLength; i++ ) {
         if ( mimeTypeArray[i] === type ){
