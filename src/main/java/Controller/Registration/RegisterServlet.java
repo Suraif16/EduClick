@@ -69,6 +69,7 @@ public class RegisterServlet extends HttpServlet {
 
            User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
            user.userRegistered();
+           user.insertBellIcon(user.getUserId());
 
            if(userType.equals("Student")){
                System.out.println("I am a Student!!");
@@ -101,6 +102,7 @@ public class RegisterServlet extends HttpServlet {
            session.invalidate();
 
        }
+
 
 
 
