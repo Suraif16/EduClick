@@ -2,6 +2,8 @@ package Model;
 
 import DAO.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Requests {
@@ -107,8 +109,12 @@ public class Requests {
     }
 
     public void requestEnroll(String classroomId,String userId){
+
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+
         EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
-        enrollRequestDAO.insertRecord(classroomId,userId);
+        enrollRequestDAO.insertRecord(classroomId,userId , date , time );
     }
 
 
@@ -131,8 +137,10 @@ public class Requests {
 
     public void addRequest(){
 
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
         FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
-        friendRequestDAO.insert( this );
+        friendRequestDAO.insert( this , date , time );
 
 
     }
