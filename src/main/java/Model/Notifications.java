@@ -1,6 +1,7 @@
 package Model;
 
 import DAO.NotificationsDAO;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 
@@ -61,6 +62,11 @@ public class Notifications {
     public void insertEpostNotificationsFromTeacher(String teacherId, ArrayList<String> studentList,String ePostId,String param){
         NotificationsDAO notificationsDAO = new NotificationsDAO();
         notificationsDAO.insertNotificationsFromTeacher(teacherId,studentList,ePostId,param);
+    }
+
+    public JSONArray getNoitifications(String userId){
+        NotificationsDAO notificationsDAO = new NotificationsDAO();
+        return notificationsDAO.getNoitifications(userId);
     }
 
 
