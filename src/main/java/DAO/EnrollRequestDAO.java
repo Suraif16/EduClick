@@ -8,23 +8,27 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EnrollRequestDAO {
-    public void insertRecord(String classrooomId,String userId){
+    public void insertRecord(String classrooomId, String userId , LocalDate date , LocalTime time ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Enroll_Request (From_UserID,To_ClassroomID) VALUES (?,?)";
+            String sql = "INSERT INTO Enroll_Request (From_UserID,To_ClassroomID) VALUES (?,? , ? , ? )";
 
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
 
             preparedStatement.setString(1,userId);
             preparedStatement.setString(2,classrooomId);
+            preparedStatement.setString( 3 , time.toString() );
+            preparedStatement.setString( 4 , date.toString() );
 
             preparedStatement.executeUpdate();
             preparedStatement.close();

@@ -91,7 +91,7 @@ const sendD = function () {
 
 
         }
-        else if(enrolledStatus==false && requestedStatus==false){
+        else if(enrolledStatus==false && requestedStatus==true){
             classroomsListLinksSelect.innerHTML +=
                 '                <input style="display:none;" id="enable'+ classroomId +'" type="button" value="Enroll Request" onclick="enableDisableStatus('+classroomId+')">' +
                 '                    <input style="display:none;" id="disable'+ classroomId +'" type="button" value="Unenroll" class="studentDisable" onclick="enableDisableStatus('+classroomId+')">' +

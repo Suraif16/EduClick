@@ -22,13 +22,13 @@ const  LoadSelectedNewsFeeds = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         } else if (jsonResponse.serverResponse === "Allowed") {
 
-            console.log(jsonResponse.jsonArray1);
+          //  console.log(jsonResponse.jsonArray1[1].Caption);
 
             for( let i=0; i<jsonResponse.jsonArray1.length;i++){
 
-                //   console.log(jsonResponse.jsonArray1[i].postId);
+                   console.log(jsonResponse.jsonArray1[i].Caption);
 
-                if (jsonResponse.jsonArray1[i].path !== null) {
+                if (jsonResponse.jsonArray1[i].path !== "" && jsonResponse.jsonArray1[i].Caption !=="") {
 
                     let innerPreviouseHTML = postContents.innerHTML;
                     postContents.innerHTML = '        <div class="post">    ' +
@@ -87,7 +87,7 @@ const  LoadSelectedNewsFeeds = function (){
                     postContents.innerHTML += innerPreviouseHTML;
 
 
-                }else if(jsonResponse.jsonArray1[i].path ===''){
+                }else if(jsonResponse.jsonArray1[i].path === "" && jsonResponse.jsonArray1[i].Caption !==""){
 
                     let innerPreviouseHTML = postContents.innerHTML;
                     postContents.innerHTML = '        <div class="post">    ' +
@@ -140,11 +140,11 @@ const  LoadSelectedNewsFeeds = function (){
 
 
                     postContents.innerHTML += innerPreviouseHTML;
-                    return postContents;
 
-                }else if (jsonResponse.jsonArray1[i].Caption === '')
+
+                }else if (jsonResponse.jsonArray1[i].Caption === "" && jsonResponse.jsonArray1[i].path !== "")
                 {
-
+//**********
                     let innerPreviouseHTML = postContents.innerHTML;
                     postContents.innerHTML = '        <div class="post">    ' +
                         '              <div class="postContentContainer">' +
@@ -164,7 +164,8 @@ const  LoadSelectedNewsFeeds = function (){
                         '                    </div>' +
                         '                   </div>' +
                         '               </div>' +
-
+                        '               <div class="postContentContainer">' +
+                        '                   <div class="postData">' +
 
                         '                       <div class="postPicture">' +
                         '                           <div class="postPictureImageContainer">' +
@@ -197,6 +198,10 @@ const  LoadSelectedNewsFeeds = function (){
 
 
                     postContents.innerHTML += innerPreviouseHTML;
+
+
+
+
 
                 }
 
