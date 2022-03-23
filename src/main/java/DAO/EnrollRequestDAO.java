@@ -21,7 +21,7 @@ public class EnrollRequestDAO {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Enroll_Request (From_UserID,To_ClassroomID) VALUES (?,? , ? , ? )";
+            String sql = "INSERT INTO Enroll_Request VALUES (?,? , ? , ? )";
 
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
 

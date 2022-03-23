@@ -1,7 +1,9 @@
 let notificationStatus = false; /*if it is false the notification is hidden*/
 const notifications = document.getElementById("notifications");
 const notificationRequestButton = document.getElementById( "notificationRequest" );
-let initialRequestCount = 0;
+const request = document.getElementById( "request" );
+const notificationContent = document.getElementById( "notificationContent" );
+const newNotificationsStatus = false;
 
 function showNotification(){
     /* when clicked on the notification button this function will hide and show the notification pannel*/
@@ -19,6 +21,92 @@ function showNotification(){
 
 }
 
+const setBellIconDateAndTime = function (){
+    
+    let httpreq = new XMLHttpRequest();
+    
+    httpreq.onreadystatechange = function (){
+        
+        if ( this.readyState === 4 && this.status === 200 ){
+            
+            
+            
+        }
+        
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/???" , true);
+    httpreq.send();
+    
+}
+
+const getBellIconDateAndTime = function (){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            let jsonResponse = JSON.parse( this.responseText );
+            return jsonResponse;
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/???" , true);
+    httpreq.send();
+    
+}
+
+const getNotifications = function (){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            let jsonResponse = JSON.parse( this.responseText );
+            return displayNotifications( jsonResponse );
+
+        }
+
+    }
+
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/???" , true);
+    httpreq.send();
+    
+}
+
+const displayNotifications = function ( jsonResponse ){
+    
+    let notifications = "";
+    const count = jsonResponse.notificationList.length;
+    
+    if ( count > 0 ){
+
+        for (let i = 0; i < count; i++) {
+            
+            notifications += '<div class="singleNotificationMessage">' +
+                '                    <a href="#">' +
+                '                        <div class="notificationImage">' +
+                '                            <img src="../Resources/Icons/Logo.png">' +
+                '                        </div>' +
+                '                        <div class="notificationMessage">' +
+                '                            Welcome to EduClick!!!' +
+                '                        </div>' +
+                '                    </a>' +
+                '                </div>'
+            
+        }
+        
+    }
+    
+    return notifications;
+}
+
 const getRequestData = function(){
     /*Gets the set of requests from the server*/
     let httpreq = new XMLHttpRequest();
@@ -27,7 +115,8 @@ const getRequestData = function(){
 
         if( httpreq.readyState === 4 && httpreq.status === 200){
 
-            serverResponseComplete( this );
+            let jsonResponse = JSON.parse( this.responseText );
+            return displayRequest( jsonResponse );
         }
 
     }
@@ -35,103 +124,78 @@ const getRequestData = function(){
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/displayRequest" , true);
     httpreq.send();
 
-    const serverResponseComplete = function( httpreq ){
-
-
-        let jsonResponse = JSON.parse( httpreq.responseText);
-
-        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonResponse.serverResponse === "Allowed") {
-            /* This is where I need work everytime as per the authentication filter*/
-
-            displayRequest( jsonResponse );
-
-        }else{
-            alert("something went wrong!!!");
-        }
-
-
-
-
-    }
-
 
 }
 
 const displayRequest = function ( jsonResponse ){
 
-    const request = document.getElementById("request");
 
+    let requests = "";
     let count = jsonResponse.requestList.length;
     /* this checks are there any request?*/
     if( count > 0 ){
-        /* this checks are there any new requests? , if so prints*/
-        if( initialRequestCount < count ){
-            initialRequestCount = count;
-            notificationRequestButton.style.backgroundColor = "red";
-            console.log(jsonResponse.requestList)
-            for(i = 0 ; i < count ; i++ ){
 
-                let acceptFunction;
-                let declineFunction;
-                /* according to the type of the request when user clicks on accept or decline buttons the relavent function should run ,
-                * here this creates the acceptFucntion and decline function accrodingly*/
-                if(jsonResponse.requestList[i].type === "Enroll"){
+        for(i = 0 ; i < count ; i++ ){
 
-                    acceptFunction = "EnrollRequestAccept" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
-                    declineFunction = "EnrollRequestDecline" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
+            let acceptFunction;
+            let declineFunction;
+            /* according to the type of the request when user clicks on accept or decline buttons the relavent function should run ,
+            * here this creates the acceptFucntion and decline function accrodingly*/
+            if(jsonResponse.requestList[i].type === "Enroll"){
 
-                }else{
+                acceptFunction = "EnrollRequestAccept" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
+                declineFunction = "EnrollRequestDecline" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
 
-                    acceptFunction = "FriendRequestAccept" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
-                    declineFunction = "FriendRequestDecline" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
+            }else{
 
-                }
-
-                /* This is where the each request element is created*/
-
-                request.innerHTML += '<div class="singleNotification" id="'+ jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId +'">' +
-
-                    '<div>' +
-
-                    '<a href="TeacherProfile.html?id='+ jsonResponse.requestList[i].fromId +'"'+' class="profile">' +
-
-                    '<div class="profileImage requestProfilePicture">'+
-
-                    '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
-
-                    '</div>' +
-
-                    '<div class="requestProfileName">' + jsonResponse.requestList[i].userName + '</div>' +
-
-                    '</a>' +
-
-                    '</div>' +
-
-                    '<div>' +
-
-                    ' '+ jsonResponse.requestList[i].description +
-
-                    '</div>'+
-
-                    '<div id="buttons' + jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId + '">' +
-
-                    '<input type="button" value="Accept" onclick="' + acceptFunction + '"' +'>'+
-
-                    '<input type="button" value="Decline" class="requestDecline" onclick="' + declineFunction + '"' +'>'+
-
-                    '</div>' +
-
-                    '</div>';
-
+                acceptFunction = "FriendRequestAccept" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
+                declineFunction = "FriendRequestDecline" + "(" + jsonResponse.requestList[i].fromId + "," +jsonResponse.requestList[i].toId + ")" ;
 
             }
+
+            /* This is where the each request element is created*/
+
+            requests += '<div class="singleNotification" id="'+ jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId +'">' +
+
+                '<div>' +
+
+                '<a href="TeacherProfile.html?id='+ jsonResponse.requestList[i].fromId +'"'+' class="profile">' +
+
+                '<div class="profileImage requestProfilePicture">'+
+
+                '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+
+                '</div>' +
+
+                '<div class="requestProfileName">' + jsonResponse.requestList[i].userName + '</div>' +
+
+                '</a>' +
+
+                '</div>' +
+
+                '<div>' +
+
+                ' '+ jsonResponse.requestList[i].description +
+
+                '</div>'+
+
+                '<div id="buttons' + jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId + '">' +
+
+                '<input type="button" value="Accept" onclick="' + acceptFunction + '"' +'>'+
+
+                '<input type="button" value="Decline" class="requestDecline" onclick="' + declineFunction + '"' +'>'+
+
+                '</div>' +
+
+                '</div>';
+
 
         }
 
     }
-
+    
+    return requests;
+    
 }
 
 function FriendRequestAccept( fromId , toId ){
@@ -277,6 +341,20 @@ function EnrollRequestDecline(fromId , toId ){
     httpreq.send( "fromId=" + fromId + "&toId=" + toId );
 
 }
+
+const notificationComponent = function (){
+
+    notificationContent.innerHTML = getNotifications();
+    request.innerHTML = getRequestData();
+
+    if ( newNotificationsStatus ){
+
+        notificationRequestButton.style.backgroundColor = "#403434";
+
+    }
+
+}
+
 /*every function seconds the getRequestData function is called*/
-setInterval( getRequestData , 5000);
+setInterval( notificationComponent , 5000);
 
