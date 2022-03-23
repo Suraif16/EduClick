@@ -4,7 +4,7 @@ const notificationRequestButton = document.getElementById( "notificationRequest"
 const request = document.getElementById( "request" );
 const notificationContent = document.getElementById( "notificationContent" );
 const newNotificationsStatus = false;
-
+let bellIconDateTime;
 function showNotification(){
     /* when clicked on the notification button this function will hide and show the notification pannel*/
     if(notificationStatus){
@@ -13,6 +13,8 @@ function showNotification(){
         notificationStatus = false;
 
     }else{
+
+        setBellIconDateAndTime();
         notificationRequestButton.style.backgroundColor = "#4775c4";
         notifications.style.display = "flex";
         notificationStatus = true;
@@ -24,17 +26,6 @@ function showNotification(){
 const setBellIconDateAndTime = function (){
     
     let httpreq = new XMLHttpRequest();
-    
-    /*httpreq.onreadystatechange = function (){
-        
-        if ( this.readyState === 4 && this.status === 200 ){
-            
-            
-            
-        }
-        
-    }*/
-
     httpreq.open( "POST" , "/EduClick_war_exploded/user/bellIconUpdate" , true);
     httpreq.send();
     
@@ -50,7 +41,7 @@ const getBellIconDateAndTime = function (){
 
             let jsonResponse = JSON.parse( this.responseText );
             console.log("get bell Icon" , jsonResponse )
-            return jsonResponse;
+            bellIconDateTime = jsonResponse.bellIconDetails;
 
         }
 
@@ -346,9 +337,11 @@ function EnrollRequestDecline(fromId , toId ){
 
 const notificationComponent = function (){
 
-    //  = getNotifications();
-    //  = getRequestData();
-    console.log( "notification component" , getRequestData() );
+    getBellIconDateAndTime();
+
+    getRequestData();
+    getNotifications();
+
     if ( newNotificationsStatus ){
 
         notificationRequestButton.style.backgroundColor = "#403434";
