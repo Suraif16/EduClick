@@ -482,7 +482,7 @@
 
     <servlet-mapping>
         <servlet-name>followTeacher</servlet-name>
-        <url-pattern>/followTeacher</url-pattern>
+        <url-pattern>/student/followTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- end of follow teachers -->
@@ -496,7 +496,7 @@
 
     <servlet-mapping>
         <servlet-name>unfollowTeacher</servlet-name>
-        <url-pattern>/unFollowTeacher</url-pattern>
+        <url-pattern>/student/unFollowTeacher</url-pattern>
     </servlet-mapping>
 
     <!-- end of unfollow teachers -->
@@ -533,7 +533,7 @@
 
     <servlet>
         <servlet-name>cancelFriendRequest</servlet-name>
-        <servlet-class>Controller.Requests.cancelFriendRequestServlet</servlet-class>
+        <servlet-class>Controller.Requests.CancelFriendRequestServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
