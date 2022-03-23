@@ -17,7 +17,6 @@ public class Report {
     public int getCount() {
         return count;
     }
-
     public void setCount(Integer count) {
         this.count = count;
     }
@@ -25,7 +24,6 @@ public class Report {
     public String getReportFlag() {
         return reportFlag;
     }
-
     public void setReportFlag(String reportFlag) {
         this.reportFlag = reportFlag;
     }
@@ -33,7 +31,6 @@ public class Report {
     public String getReportID() {
         return reportID;
     }
-
     public void setReportID(String reportID) {
         this.reportID = reportID;
     }
@@ -41,7 +38,6 @@ public class Report {
     public String getContentID() {
         return contentID;
     }
-
     public void setContentID(String contentID) {
         this.contentID = contentID;
     }
@@ -49,43 +45,43 @@ public class Report {
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
 
     public String getUserID() {return UserID;}
-
     public void setUserID(String userID) { UserID = userID;}
 
     public String getAnswerID() {return AnswerID;}
-
     public void setAnswerID(String answerID) {AnswerID = answerID;}
 
     public String getNF_postID() {return NF_postID;}
-
     public void setNF_postID(String NF_postID) {this.NF_postID = NF_postID;}
 
     public String getEpostID() { return EpostID; }
-
     public void setEpostID(String epostID) {EpostID = epostID;}
 
     public Report(String contentID, String type) {
         this.contentID = contentID;
         this.type = type;
     }
-    public void report(){
-        ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
-        reportInsertDAO.insert(this);
-    }
-    public Report() {
 
-    }
+    public Report() { }
 
-    public Report search(){
+    public Report selectdao(){
         ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
         return reportInsertDAO.select(this);
     }
+    public Report updatedao(String ID,Integer count){
+        ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
+        return reportInsertDAO.update(ID,count);
+    }
+
+    public String reportinsert(String contentID, String type){
+        ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
+        return reportInsertDAO.insert(contentID,type);
+    }
+
 
 
 }
