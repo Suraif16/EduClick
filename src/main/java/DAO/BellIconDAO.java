@@ -77,16 +77,18 @@ public class BellIconDAO {
             String sql = "SELECT Click_Date,Click_Time FROM Bell_Icon WHERE UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString(1 , userId);
-            preparedStatement.close();
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()){
+            if( resultSet.next() ){
 
                 jsonObject.put("ClickDate",resultSet.getString("Click_Date"));
                 jsonObject.put("ClickTime",resultSet.getString("Click_Time"));
 
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
