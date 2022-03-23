@@ -5,9 +5,13 @@ import DAO.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.awt.image.AreaAveragingScaleFilter;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Post {
 
@@ -139,19 +143,32 @@ public class Post {
 
     }
 
-    public Object getLoadedNewsFeedsId(String userId) {
+    public Object getLoadedNewsFeedsId(String userId) throws SQLException {
 
         PostDAO postDAO = new PostDAO();
         NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        ShareDAO shareDAO = new ShareDAO();
         NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
         UserDAO userDAO = new UserDAO();
 
-        JSONArray NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
+        ArrayList<String> NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
         //  System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
+        ArrayList<String>SharedNewsFeedsIdList = shareDAO.getSharedIdList(userId);
+       // System.out.println(SharedNewsFeedsIdList);
 
-        JSONArray array = new JSONArray();
 
-        for (int i = 0; i < NewsFeedUserIdList.length(); i++) {
+
+        for(int i=0; i<SharedNewsFeedsIdList.size(); i++){
+            NewsFeedUserIdList.add(SharedNewsFeedsIdList.get(i));
+        }
+
+        Set<String> set = new HashSet<String>( NewsFeedUserIdList );
+
+        JSONArray array = new JSONArray( set );
+      //  System.out.println(array);
+
+      //  System.out.println(NewsFeedUserIdList);
+        for (int i = 0; i < NewsFeedUserIdList.size(); i++) {
 
             JSONObject newsFeedDetails = newsFeedsDAO.getNewsFeedsDetails(NewsFeedUserIdList.get(i));
 
@@ -160,7 +177,6 @@ public class Post {
             String ownerId = String.valueOf(postDAO.getOwnerId(NewsFeedUserIdList.get(i)));
 
             String ownerName = userDAO.getOwnerName(ownerId);
-
 
             newsFeedDetails.put("ownerName",ownerName);
             newsFeedDetails.put("path", imagePath);
@@ -180,12 +196,12 @@ public class Post {
         NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
         UserDAO userDAO = new UserDAO();
 
-        JSONArray NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
+        ArrayList<String> NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
         System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
 
         JSONArray array = new JSONArray();
 
-        for (int i = 0; i < NewsFeedUserIdList.length(); i++) {
+        for (int i = 0; i < NewsFeedUserIdList.size(); i++) {
 
             JSONObject newsFeedDetails = newsFeedsDAO.getNewsFeedsDetails(NewsFeedUserIdList.get(i));
             System.out.println(newsFeedDetails);
