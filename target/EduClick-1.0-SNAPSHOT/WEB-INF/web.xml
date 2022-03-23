@@ -970,6 +970,48 @@
 
     <!-- end of Delete Classroom servlet-->
 
+    <!-- beginning of updating bell icon date and time servlet-->
+
+    <servlet>
+        <servlet-name>BellIconUpdateServlet</servlet-name>
+        <servlet-class>Controller.BellIconUpdateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BellIconUpdateServlet</servlet-name>
+        <url-pattern>/user/bellIconUpdate</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of updating bell icon date and time servlet-->
+
+    <!-- beginning of getting bell icon date and time servlet-->
+
+    <servlet>
+        <servlet-name>BellIconSelectServlet</servlet-name>
+        <servlet-class>Controller.BellIconSelectServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BellIconSelectServlet</servlet-name>
+        <url-pattern>/user/bellIconSelect</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of getting bell icon date and time servlet-->
+
+    <!-- beginning of getting notification details servlet-->
+
+    <servlet>
+        <servlet-name>SelectNotificationServlet</servlet-name>
+        <servlet-class>Controller.SelectNotificationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectNotificationServlet</servlet-name>
+        <url-pattern>/user/selectNotifications</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of getting notification details servlet-->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
