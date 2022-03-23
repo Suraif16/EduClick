@@ -53,6 +53,7 @@ public class BellIconDAO {
             preparedStatement.setDate(1 , Date.valueOf(LocalDate.now()));
             preparedStatement.setTime(2 , Time.valueOf(LocalTime.now()));
             preparedStatement.setString(3 , userId);
+            preparedStatement.executeUpdate();
             preparedStatement.close();
 
 
