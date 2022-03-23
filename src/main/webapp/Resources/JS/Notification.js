@@ -35,7 +35,7 @@ const setBellIconDateAndTime = function (){
         
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/user/???" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/bellIconUpdate" , true);
     httpreq.send();
     
 }
@@ -55,7 +55,7 @@ const getBellIconDateAndTime = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/user/???" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/bellIconSelect" , true);
     httpreq.send();
     
 }
@@ -75,7 +75,7 @@ const getNotifications = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/user/???" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/selectNotifications" , true);
     httpreq.send();
     
 }
