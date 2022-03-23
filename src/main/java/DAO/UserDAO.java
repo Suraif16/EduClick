@@ -548,6 +548,46 @@ public class UserDAO<teacherArrayList> {
         return fullName;
     }
 
+    public JSONObject getFirstnameLastName(String userID) {
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT FirstName, LastName FROM Users WHERE UserID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String firstName = resultSet.getString("FirstName");
+
+                String lastName = resultSet.getString("LastName");
+
+                jsonObject.put("NotifierFirstName",firstName);
+
+                jsonObject.put("NotifierLastName",lastName);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+
+        return jsonObject;
+    }
+
 
 
 }

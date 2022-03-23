@@ -2,6 +2,8 @@ package DAO;
 
 import Database.DBConnectionPool;
 import Model.Classroom;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -60,6 +62,38 @@ public class BellIconDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
+
+    }
+
+    public JSONObject getBellIconDetails(String userId){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT Click_Date,Click_Time FROM Bell_Icon WHERE UserID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString(1 , userId);
+            preparedStatement.close();
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+
+                jsonObject.put("ClickDate",resultSet.getString("Click_Date"));
+                jsonObject.put("ClickTime",resultSet.getString("Click_Time"));
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+        return jsonObject;
 
     }
 

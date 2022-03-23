@@ -337,6 +337,16 @@ public class User {
         BellIconDAO bellIconDAO = new BellIconDAO();
         bellIconDAO.insertRecord(userId);
     }
+    public JSONObject getFirstnameLastName(String userId){
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getFirstnameLastName(userId);
+
+    }
+
+    public JSONObject getBellIconDetails(String userId){
+        BellIconDAO bellIconDAO = new BellIconDAO();
+        return bellIconDAO.getBellIconDetails(userId);
+    }
 
 
 }
