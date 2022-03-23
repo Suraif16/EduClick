@@ -25,7 +25,7 @@ const setBellIconDateAndTime = function (){
     
     let httpreq = new XMLHttpRequest();
     
-    httpreq.onreadystatechange = function (){
+    /*httpreq.onreadystatechange = function (){
         
         if ( this.readyState === 4 && this.status === 200 ){
             
@@ -33,7 +33,7 @@ const setBellIconDateAndTime = function (){
             
         }
         
-    }
+    }*/
 
     httpreq.open( "POST" , "/EduClick_war_exploded/user/bellIconUpdate" , true);
     httpreq.send();
@@ -71,7 +71,7 @@ const getNotifications = function (){
 
             let jsonResponse = JSON.parse( this.responseText );
             console.log( "get notification" , jsonResponse );
-            return displayNotifications( jsonResponse );
+            displayNotifications( jsonResponse );
 
         }
 
@@ -105,8 +105,8 @@ const displayNotifications = function ( jsonResponse ){
         }
         
     }
-    
-    return notifications;
+
+    notificationContent.innerHTML = notifications;
 }
 
 const getRequestData = function(){
@@ -118,7 +118,7 @@ const getRequestData = function(){
         if( httpreq.readyState === 4 && httpreq.status === 200){
 
             let jsonResponse = JSON.parse( this.responseText );
-            return displayRequest( jsonResponse );
+            displayRequest( jsonResponse );
         }
 
     }
@@ -131,7 +131,7 @@ const getRequestData = function(){
 
 const displayRequest = function ( jsonResponse ){
 
-
+    console.log( "display request" , jsonResponse )
     let requests = "";
     let count = jsonResponse.requestList.length;
     /* this checks are there any request?*/
@@ -195,8 +195,8 @@ const displayRequest = function ( jsonResponse ){
         }
 
     }
-    
-    return requests;
+
+    request.innerHTML = requests;
     
 }
 
@@ -346,9 +346,9 @@ function EnrollRequestDecline(fromId , toId ){
 
 const notificationComponent = function (){
 
-    notificationContent.innerHTML = getNotifications();
-    request.innerHTML = getRequestData();
-
+    //  = getNotifications();
+    //  = getRequestData();
+    console.log( "notification component" , getRequestData() );
     if ( newNotificationsStatus ){
 
         notificationRequestButton.style.backgroundColor = "#403434";
