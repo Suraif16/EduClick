@@ -72,9 +72,9 @@ public class Report {
         ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
         return reportInsertDAO.select(this);
     }
-    public Report updatedao(String ID,Integer count){
+    public void updatedao(String ID,Integer count){
         ReportInsertDAO reportInsertDAO = new ReportInsertDAO();
-        return reportInsertDAO.update(ID,count);
+         reportInsertDAO.update(ID,count);
     }
 
     public String reportinsert(String contentID, String type){
