@@ -49,6 +49,7 @@ const getBellIconDateAndTime = function (){
         if ( this.readyState === 4 && this.status === 200 ){
 
             let jsonResponse = JSON.parse( this.responseText );
+            console.log("get bell Icon" , jsonResponse )
             return jsonResponse;
 
         }
@@ -69,6 +70,7 @@ const getNotifications = function (){
         if ( this.readyState === 4 && this.status === 200 ){
 
             let jsonResponse = JSON.parse( this.responseText );
+            console.log( "get notification" , jsonResponse );
             return displayNotifications( jsonResponse );
 
         }
