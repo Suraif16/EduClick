@@ -220,4 +220,35 @@ public class LoginDAO {
 
     }
 
+    public void updateDateAndTimeOnNotificationCall(String userId){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "UPDATE Login SET LoginDate = ?,LoginTime = ? WHERE UserID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setDate(1 , Date.valueOf(LocalDate.now()));
+
+            preparedStatement.setTime(2 , Time.valueOf(LocalTime.now()));
+
+            preparedStatement.setString(3 , userId);
+
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+
+    }
+
 }

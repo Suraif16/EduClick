@@ -160,4 +160,10 @@ public class Login {
         loginDAO.update( this.email , this.loginDate , this.loginTime );
 
     }
+    public void updateDateAndTimeOnNotificationCall(){
+        LoginDAO loginDAO = new LoginDAO();
+        loginDAO.updateDateAndTimeOnNotificationCall(this.userID);
+
+    }
+
 }

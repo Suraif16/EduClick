@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Login;
 import Model.Notifications;
 import Model.User;
 import org.json.JSONArray;
@@ -75,6 +76,13 @@ public class SelectNotificationServlet extends HttpServlet {
             jsonObject.put( "newNotificationStatus" , false );
 
         }
+
+        //updating the login time and date of the login table
+
+        Login login = new Login(user.getUserId());
+
+        login.updateDateAndTimeOnNotificationCall();
+
 
         jsonObject.put("notificationList",jsonArray);
 
