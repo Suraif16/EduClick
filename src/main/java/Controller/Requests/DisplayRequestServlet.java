@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +55,51 @@ public class DisplayRequestServlet extends HttpServlet {
             requestList.get( i ).setUserProfile( user1.getUser().getProfilePicture() );
 
         }
+
+        JSONObject jsonObject1 = user.getBellIconDetails(user.getUserId());
+        LocalDate localDate = LocalDate.parse( jsonObject1.getString( "ClickDate" ) );
+        LocalTime localTime = LocalTime.parse( jsonObject1.getString( "ClickTime" ) );
+
         JSONArray jsonArray = new JSONArray( requestList );
+        Boolean newRequestStatus = false;
+
+        for ( int i = 0 ; i < requestList.size() ; i++ ) {
+
+
+            LocalDate localDate1 = LocalDate.parse( requestList.get( i ).getRequestDate().toString() );
+            LocalTime localTime1 = LocalTime.parse( requestList.get( i ).getRequestTime().toString() );
+
+            if ( localDate1.isAfter( localDate ) ){
+
+                newRequestStatus = true;
+                break;
+
+            }else{
+
+                if ( localTime1.isAfter( localTime ) ){
+
+                    newRequestStatus = true;
+                    break;
+
+                }else{
+
+                    newRequestStatus = false;
+
+                }
+
+            }
+
+        }
+
+        if ( newRequestStatus ){
+
+            jsonObject.put( "newRequestStatus" , true );
+
+        }else {
+
+            jsonObject.put( "newRequestStatus" , false );
+
+        }
 
         jsonObject.put("requestList" , jsonArray);
 

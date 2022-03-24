@@ -338,8 +338,6 @@ function EnrollRequestDecline(fromId , toId ){
 
 const notificationComponent = function (){
 
-    getBellIconDateAndTime();
-
     getRequestData();
     getNotifications();
 
