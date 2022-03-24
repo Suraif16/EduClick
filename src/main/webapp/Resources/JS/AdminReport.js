@@ -16,7 +16,7 @@ const getServerData = function (){
 
     }
 
-    httpreq.open( "GET" , "/EduClick_war_exploded/AdminPost1" , true);
+    httpreq.open( "GET" , "/EduClick_war_exploded/ReportDataselect" , true);
     httpreq.send();
 
     function complete( httpreq ) {
@@ -25,9 +25,9 @@ const getServerData = function (){
         const postContents = document.getElementById("request");
         postContents.innerHTML = "";
         const one = "1";
-        let count = jsonResponse.AdminPostDetails.length;
+        let count = jsonResponse.ReportPostDetails.length;
         for( i=0; i< count; i++ ){
-            if(jsonResponse.AdminPostDetails[i].status === one){
+            if(jsonResponse.ReportPostDetails[i].status === one){
                 let htmlString ='<div class="post">' +
                     '<div class="postContentContainer">'+
                     '<div class="postProfileSection">'+
@@ -36,18 +36,18 @@ const getServerData = function (){
                     '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
                     '<div class="postProfileName" >Admin</div>'+
-                    '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+'</div>'+
+                    '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
                     '</div>'+
                     '<div class="postContentContainer">'+
                     '<div class="postData">'+
                     '<div class="postMessage">'+
-                    jsonResponse.AdminPostDetails[i].caption+
+                    jsonResponse.ReportPostDetails[i].caption+
                     '</div>'+
                     '<div class="postPicture">' +
                     '<div class="postPictureImageContainer">' +
-                    '<img class="postPictureImage" src="../Resources/Images/AdminPostImages/' + jsonResponse.AdminPostDetails[i].aPId + '.jpeg">' +
+                    '<img class="postPictureImage" src="../Resources/Images/AdminPostImages/' + jsonResponse.ReportPostDetails[i].aPId + '.jpeg">' +
                     '</div>'+
                     '</div>'+
                     '</div>'+
@@ -59,7 +59,7 @@ const getServerData = function (){
                     '</div>'+
                     '</div>';
                 postContents.innerHTML += htmlString;
-            }else if(jsonResponse.AdminPostDetails[i].status === one/*check thi one*/){
+            }else if(jsonResponse.ReportPostDetails[i].status === one/*check thi one*/){
                 let htmlString ='<div class="post">' +
                     '<div class="postContentContainer">'+
                     '<div class="postProfileSection">'+
@@ -68,7 +68,7 @@ const getServerData = function (){
                     '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
                     '<div class="postProfileName" >Admin</div>'+
-                    '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+'</div>'+
+                    '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
                     '</div>'+
@@ -100,7 +100,7 @@ const getServerData = function (){
                     '<div class="postProfileName" >'+
                      Admin+
                     '</div>'+
-                    '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+
+                    '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+
                     '</div>'+
                     '</a>'+
                     '</div>'+
@@ -109,7 +109,7 @@ const getServerData = function (){
                     '<div class="postContentContainer">'+
                     '<div class="postData">'+
                     '<div class="postMessage">'+
-                    jsonResponse.AdminPostDetails[i].caption+
+                    jsonResponse.ReportPostDetails[i].caption+
                     '</div>'+
                     '</div>'+
                     '</div>'+
