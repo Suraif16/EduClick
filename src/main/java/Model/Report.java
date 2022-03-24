@@ -1,6 +1,9 @@
 package Model;
 
+import DAO.AdminPostDAO;
+import DAO.ReportDisplayDAO;
 import DAO.ReportInsertDAO;
+import org.json.JSONArray;
 
 public class Report {
     private int count;
@@ -82,6 +85,10 @@ public class Report {
         return reportInsertDAO.insert(contentID,type);
     }
 
-
+    public JSONArray ReportDisplayDAO(){
+        ReportDisplayDAO adminpostDAO =  new ReportDisplayDAO();
+        JSONArray APostDetails = adminpostDAO.getAdminPostDetails();
+        return APostDetails;
+    }
 
 }
