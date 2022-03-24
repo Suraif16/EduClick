@@ -12,38 +12,42 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
 public class ReportDisplayDAO {
 
 
     public JSONArray getAdminPostDetails() {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement1 = null;
         JSONArray jsonArray = new JSONArray();
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            String sql = "select ReportID,Count,Report_delete_flag,UserID,AnswerID,NF_postID,EpostID FROM Report";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            String sql = "select Count,EpostID FROM Report";
+            preparedStatement = connection.prepareStatement(sql);
+
+            String sql1 = "SELECT Date, Time, Caption, LikeCount, ShareCount FROM NewsFeeds ";
+            preparedStatement1 = connection.prepareStatement(sql1);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                String ReportID = resultSet.getString("ReportID");
                 String Count = resultSet.getString("Count");
-                String Report_delete_flag = resultSet.getString("Report_delete_flag");
-                String UserID = resultSet.getString("UserID");
-                String AnswerID = resultSet.getString("AnswerID");
-                String NF_postID = resultSet.getString("NF_postID");
+
                 String EpostID = resultSet.getString("EpostID");
 
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.put("aPId",ReportID);
-                jsonObject.put("caption",Count);
-                jsonObject.put("date",Report_delete_flag);
-                jsonObject.put("time",UserID);
-                jsonObject.put("status",AnswerID);
-                jsonObject.put("status",NF_postID);
-                jsonObject.put("status",EpostID);
+
+                jsonObject.put("count",Count);
+                jsonObject.put("epostID",EpostID);
 
                 jsonArray.put(jsonObject);
             }
