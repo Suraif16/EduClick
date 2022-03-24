@@ -99,6 +99,12 @@ const displayNotifications = function ( jsonResponse ){
     }
 
     notificationContent.innerHTML = notifications;
+
+    if ( jsonResponse.newNotificationStatus === true ){
+
+        notificationRequestButton.style.backgroundColor = "#403434";
+
+    }
 }
 
 const getRequestData = function(){
@@ -189,6 +195,12 @@ const displayRequest = function ( jsonResponse ){
     }
 
     request.innerHTML = requests;
+
+    if ( jsonResponse.newRequestStatus === true ){
+
+        notificationRequestButton.style.backgroundColor = "#403434";
+
+    }
     
 }
 
