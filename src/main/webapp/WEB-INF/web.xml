@@ -1012,6 +1012,20 @@
 
     <!-- end of getting notification details servlet-->
 
+    <!-- beginning of unenroll classroom servlet-->
+
+    <servlet>
+        <servlet-name>StudentUnenrollClassroomServlet</servlet-name>
+        <servlet-class>Controller.StudentClassroomUnenrollServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentUnenrollClassroomServlet</servlet-name>
+        <url-pattern>/student/classroomUnenrollServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of unenroll classroom servlet-->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes

@@ -31,7 +31,7 @@ const displayCurrentClassroomDetails = function (){
                     '            Do you really wish to delete the classroom ' + ' : ' + jsonResponse.classroomDetails.classroomName + ' : ' + jsonResponse.classroomDetails.yearOfExamination + ' : ' + jsonResponse.classroomDetails.grade + ' : ' + jsonResponse.classroomDetails.subject +' ? <br/>By doing this you will loose all students and Contents in this classroom.' +
                     '        </div>' +
                     '        <div class="confirmationBoxYesNoButtons">' +
-                    '            <input class="yesButton" type="button" value="Yes" onclick="deleteClassroom(' + getClassroomIdClientSide() + ')">' +
+                    '            <input class="yesButton" type="button" value="Yes" onclick="unenrollClassroom(' + getClassroomIdClientSide() + ')">' +
                     '            <input class="noButton" type="button" value="No" onclick="hideUnenrollConfirmationsBox()">' +
                     '        </div>'
 
@@ -49,7 +49,9 @@ const displayCurrentClassroomDetails = function (){
 
 }
 
-const deleteClassroom = function ( id ){
+const unenrollClassroom = function ( id ){
+
+    console.log("Classroom deleetd running!!!!!")
 
     let httpreq = new XMLHttpRequest();
 
@@ -75,7 +77,7 @@ const deleteClassroom = function ( id ){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/classroomDeleteServlet" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/classroomUnenrollServlet" , true );
     httpreq.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded" );
     httpreq.send( "classroomId=" + id );
 
