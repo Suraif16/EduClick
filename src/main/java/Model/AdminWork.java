@@ -64,5 +64,9 @@ public class AdminWork extends Post{
         }
         return this;
     }
+    public String adminDelete(String postID){
+        AdminPostDAO adminPostDAO = new AdminPostDAO();
+        return adminPostDAO.deleteRecord(postID);
+    }
 
 }
