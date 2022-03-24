@@ -53,7 +53,7 @@ const getServerData = function (){
                     '</div>'+
                     '<div class="postContentContainer">'+
                     '<div class="postData">'+
-                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData()">'+
+                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+jsonResponse.AdminPostDetails[i].aPId+')">'+
                     '</div>'+
                     '</div>'+
                     '</div>'+
@@ -80,7 +80,7 @@ const getServerData = function (){
                     '</div>'+
                     '<div class="postContentContainer">'+
                     '<div class="postData">'+
-                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+1+')" >'+
+                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+jsonResponse.AdminPostDetails[i].aPId+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>'+
