@@ -2,6 +2,7 @@ package Model;
 
 import DAO.AdminPostDAO;
 import DAO.ReportDisplayDAO;
+import DAO.NewsFeedsDAO;
 import DAO.ReportInsertDAO;
 import org.json.JSONArray;
 
@@ -86,8 +87,10 @@ public class Report {
     }
 
     public JSONArray ReportDisplayDAO(){
+
         ReportDisplayDAO adminpostDAO =  new ReportDisplayDAO();
         JSONArray APostDetails = adminpostDAO.getAdminPostDetails();
+
         return APostDetails;
     }
 
