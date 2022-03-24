@@ -76,7 +76,7 @@ public class DisplayRequestServlet extends HttpServlet {
 
             }else{
 
-                if ( localTime1.isAfter( localTime ) ){
+                if ( localDate1.isEqual( localDate ) && localTime1.isAfter( localTime ) ){
 
                     newRequestStatus = true;
                     break;
