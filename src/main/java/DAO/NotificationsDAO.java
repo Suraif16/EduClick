@@ -113,9 +113,18 @@ public class NotificationsDAO {
 
             }
 
+            preparedStatement.close();
+            resultSet.close();
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
         }
 
         return jsonArray;

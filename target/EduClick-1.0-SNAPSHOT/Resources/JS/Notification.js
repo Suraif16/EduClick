@@ -11,6 +11,7 @@ function showNotification(){
 
         notifications.style.display = "none";
         notificationStatus = false;
+        notificationRequestButton.style.backgroundColor = "#4775c4";
 
     }else{
 
