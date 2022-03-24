@@ -25,7 +25,7 @@ public class FriendRequestDAO {
         try{
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT From_UserID FROM Friend_Request WHERE To_UserID = ?";
+            String sql = "SELECT From_UserID , Req_Time , Req_Date FROM Friend_Request WHERE To_UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString( 1 , userId );
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -35,6 +35,8 @@ public class FriendRequestDAO {
                 String fromId = resultSet.getString( "From_UserID" );
                 String description = "want to be your friend";
                 Requests requests = new Requests( fromId , userId , "Friend" , description );
+                requests.setRequestTime( resultSet.getTime( 2 ) );
+                requests.setRequestDate( resultSet.getDate( 3 ) );
                 requestsList.add( requests );
             }
 

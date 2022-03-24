@@ -4,15 +4,18 @@ const notificationRequestButton = document.getElementById( "notificationRequest"
 const request = document.getElementById( "request" );
 const notificationContent = document.getElementById( "notificationContent" );
 const newNotificationsStatus = false;
-
+let bellIconDateTime;
 function showNotification(){
     /* when clicked on the notification button this function will hide and show the notification pannel*/
     if(notificationStatus){
 
         notifications.style.display = "none";
         notificationStatus = false;
+        notificationRequestButton.style.backgroundColor = "#4775c4";
 
     }else{
+
+        setBellIconDateAndTime();
         notificationRequestButton.style.backgroundColor = "#4775c4";
         notifications.style.display = "flex";
         notificationStatus = true;
@@ -24,17 +27,6 @@ function showNotification(){
 const setBellIconDateAndTime = function (){
     
     let httpreq = new XMLHttpRequest();
-    
-    httpreq.onreadystatechange = function (){
-        
-        if ( this.readyState === 4 && this.status === 200 ){
-            
-            
-            
-        }
-        
-    }
-
     httpreq.open( "POST" , "/EduClick_war_exploded/user/bellIconUpdate" , true);
     httpreq.send();
     
@@ -49,7 +41,8 @@ const getBellIconDateAndTime = function (){
         if ( this.readyState === 4 && this.status === 200 ){
 
             let jsonResponse = JSON.parse( this.responseText );
-            return jsonResponse;
+            console.log("get bell Icon" , jsonResponse )
+            bellIconDateTime = jsonResponse.bellIconDetails;
 
         }
 
@@ -69,7 +62,8 @@ const getNotifications = function (){
         if ( this.readyState === 4 && this.status === 200 ){
 
             let jsonResponse = JSON.parse( this.responseText );
-            return displayNotifications( jsonResponse );
+            console.log( "get notification" , jsonResponse );
+            displayNotifications( jsonResponse );
 
         }
 
@@ -103,8 +97,14 @@ const displayNotifications = function ( jsonResponse ){
         }
         
     }
-    
-    return notifications;
+
+    notificationContent.innerHTML = notifications;
+
+    if ( jsonResponse.newNotificationStatus === true ){
+
+        notificationRequestButton.style.backgroundColor = "#403434";
+
+    }
 }
 
 const getRequestData = function(){
@@ -116,7 +116,7 @@ const getRequestData = function(){
         if( httpreq.readyState === 4 && httpreq.status === 200){
 
             let jsonResponse = JSON.parse( this.responseText );
-            return displayRequest( jsonResponse );
+            displayRequest( jsonResponse );
         }
 
     }
@@ -129,7 +129,7 @@ const getRequestData = function(){
 
 const displayRequest = function ( jsonResponse ){
 
-
+    console.log( "display request" , jsonResponse )
     let requests = "";
     let count = jsonResponse.requestList.length;
     /* this checks are there any request?*/
@@ -193,8 +193,14 @@ const displayRequest = function ( jsonResponse ){
         }
 
     }
-    
-    return requests;
+
+    request.innerHTML = requests;
+
+    if ( jsonResponse.newRequestStatus === true ){
+
+        notificationRequestButton.style.backgroundColor = "#403434";
+
+    }
     
 }
 
@@ -344,8 +350,8 @@ function EnrollRequestDecline(fromId , toId ){
 
 const notificationComponent = function (){
 
-    notificationContent.innerHTML = getNotifications();
-    request.innerHTML = getRequestData();
+    getRequestData();
+    getNotifications();
 
     if ( newNotificationsStatus ){
 
