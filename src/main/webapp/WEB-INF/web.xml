@@ -969,7 +969,16 @@
     </servlet-mapping>
 
     <!-- end of Delete Classroom servlet-->
+    <servlet>
+        <servlet-name>adminpostdelete</servlet-name>
+        <servlet-class>Controller.AdminDataDeleteServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>adminpostdelete</servlet-name>
+        <url-pattern>/AdminDataDelete</url-pattern>
+    </servlet-mapping>
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
