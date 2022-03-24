@@ -2,6 +2,7 @@ package Controller;
 
 
 import Model.AdminDatacheck;
+import Model.AdminWork;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,21 +23,10 @@ public class AdminDataDeleteServlet extends HttpServlet {
         JSONObject jsonObject = new JSONObject();
         HttpSession session = request.getSession( false );
 
-        String searchValue = request.getParameter("userName");
-        String searchType = request.getParameter("searchType");
-        System.out.println("Search value " +  searchValue);
-        System.out.println("Search value " +  searchType);
-        JSONArray jsonArray = new JSONArray();
-
-
-
-            AdminDatacheck user = new AdminDatacheck();
-            //ArrayList< AdminDatacheck > userList = new ArrayList<>();
-            List< JSONObject > userList =  user.searchUser( searchValue , searchType );
-            jsonArray = new JSONArray( userList );
-
-
-        jsonObject.put( "searchResult" , jsonArray );
+        String id = request.getParameter("id");
+        System.out.println("delete value " + id);
+        AdminWork delete = new AdminWork();
+        delete.adminDelete(id);
         out.write(jsonObject.toString());
         out.close();
     }
