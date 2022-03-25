@@ -85,13 +85,22 @@ public class Report {
         return reportInsertDAO.insert(contentID,type);
     }
 
-    public JSONArray ReportDisplayDAO(){
+    public JSONArray ReportNewsfeedDisplayDAO(){
 
         ReportDisplayDAO adminpostDAO =  new ReportDisplayDAO();
-        JSONArray APostDetails = adminpostDAO.getAdminPostDetails();
+        JSONArray APostDetails = adminpostDAO.getAdminNewsfeedDetails();
 
         return APostDetails;
     }
+
+    public JSONArray ReportEducationalPostDisplayDAO(){
+
+        ReportDisplayDAO adminpostDAO =  new ReportDisplayDAO();
+        JSONArray AEPostDetails = adminpostDAO.getAdminEducationalPostDetails();
+
+        return AEPostDetails;
+    }
+
     public String adminDelete(String postID){
         AdminDeleteReportDAO adminDeleteReportDAO = new AdminDeleteReportDAO();
         return adminDeleteReportDAO.deleteRecord(postID);
