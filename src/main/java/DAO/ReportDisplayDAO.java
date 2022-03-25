@@ -143,10 +143,10 @@ public class ReportDisplayDAO {
             preparedStatement = connection.prepareStatement( sql );
 
 
-            String sql1 = "SELECT Date, Time FROM Educationalpost WHERE EPostID = ?";
+            String sql1 = "SELECT Date, Time FROM EducationalPost WHERE EPostID = ?";
             preparedStatement1 = connection.prepareStatement( sql1 );
 
-            String sql2 = "SELECT ImageStatus,Caption FROM Educationalwork WHERE EPostID = ?";
+            String sql2 = "SELECT ImageStatus,Caption FROM EducationalWork WHERE EPostID = ?";
             preparedStatement2 = connection.prepareStatement( sql2 );
 
             resultSet = preparedStatement.executeQuery();
@@ -177,9 +177,9 @@ public class ReportDisplayDAO {
                 }
 
                 if ( resultSet2.next() ){
-                    String Caption = resultSet1.getString("Caption");
-                    String ImageStatus = resultSet1.getString("ImageStatus");
-                    System.out.println("ImagePath "+ImageStatus);
+                    String Caption = resultSet2.getString("Caption");
+                    String ImageStatus = resultSet2.getString("ImageStatus");
+                    System.out.println("ImageStatus "+ImageStatus);
 
                     jsonObject.put("caption",Caption);
                     jsonObject.put("imageStatus",ImageStatus);
