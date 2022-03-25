@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class ReportSelectServlet extends HttpServlet {
+public class ReportNewsFeedSelectServlet extends HttpServlet {
     @Override
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -23,7 +23,7 @@ public class ReportSelectServlet extends HttpServlet {
 
         Report adminPost = new Report();
         System.out.println("servlet");
-        JSONArray reportDetails = adminPost.ReportDisplayDAO();
+        JSONArray reportDetails = adminPost.ReportNewsfeedDisplayDAO();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("ReportPostDetails" ,reportDetails);
 
