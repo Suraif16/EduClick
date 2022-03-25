@@ -22,6 +22,7 @@ public class ReportSelectServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         Report adminPost = new Report();
+        System.out.println("servlet");
         JSONArray reportDetails = adminPost.ReportDisplayDAO();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("ReportPostDetails" ,reportDetails);
