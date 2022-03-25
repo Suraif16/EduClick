@@ -1,6 +1,7 @@
 package Model;
 
 import DAO.AdminDeleteReportDAO;
+import DAO.AdminDeleteReportEducationalpostDAO;
 import DAO.ReportDisplayDAO;
 import DAO.ReportInsertDAO;
 import org.json.JSONArray;
@@ -104,6 +105,10 @@ public class Report {
     public String adminDelete(String postID){
         AdminDeleteReportDAO adminDeleteReportDAO = new AdminDeleteReportDAO();
         return adminDeleteReportDAO.deleteRecord(postID);
+    }
+    public String adminDeleteEducationalpost(String postID){
+        AdminDeleteReportEducationalpostDAO adminDeleteReportEducationalpostDAO = new AdminDeleteReportEducationalpostDAO();
+        return adminDeleteReportEducationalpostDAO.deleteeducationalpostRecord(postID);
     }
 
 }
