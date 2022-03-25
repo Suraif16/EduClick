@@ -1,10 +1,10 @@
-function deleteAdminPostData(id ){
-    console.log( id );
-    deletepost(id );
+function deleteAdminReportPostData(id ){
+    console.log( "report"+id );
+    deletereportpost(id );
 }
 
 
-const deletepost = function ( id ){
+const deletereportpost = function ( id ){
 
     console.log("delete" , id )
 
@@ -15,7 +15,7 @@ const deletepost = function ( id ){
         }
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/AdminDataDelete" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/AdminDeleteReportPost" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("id=" + id );
 
