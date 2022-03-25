@@ -21,7 +21,7 @@ public class AdminDeleteReportPostServlet extends HttpServlet {
         HttpSession session = request.getSession( false );
 
         String id = request.getParameter("id");
-        System.out.println("delete report value " + id);
+        System.out.println("delete report value in servlet" + id);
         Report delete = new Report();
         delete.adminDelete(id);
         out.write(jsonObject.toString());
