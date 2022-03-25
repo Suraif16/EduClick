@@ -16,7 +16,7 @@ const getServerData = function (){
 
     }
 
-    httpreq.open( "GET" , "/EduClick_war_exploded/ReportDataselect" , true);
+    httpreq.open( "GET" , "/EduClick_war_exploded/ReporteducationalDataselect" , true);
     console.log( "send signal" );
 
     httpreq.send();
