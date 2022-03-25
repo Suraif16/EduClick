@@ -49,7 +49,7 @@ const getServerData = function (){
                     '</div>'+
                     '<div class="postPicture">' +
                     '<div class="postPictureImageContainer">' +
-                    '<img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + jsonResponse.ReportPostDetails[i].imagePath + '.jpeg">' +
+                    '<img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + jsonResponse.ReportPostDetails[i].epostID + '.jpeg">' +
                     '</div>'+
                     '</div>'+
                     '</div>'+
