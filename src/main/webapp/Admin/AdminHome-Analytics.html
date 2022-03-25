@@ -58,13 +58,13 @@
                   <i class='bx bx-bell'></i>
                     Analytics
                 </a>
-            </div>-->
+            </div>
             <div class="classroomsListLinksItems">
                 <a href=""  class="classRooms">
                   <i class='bx bx-cog' ></i>
                     Settings
                 </a>
-            </div>
+            </div>-->
         </div>
     </div>
 
@@ -73,93 +73,9 @@
 
     <div id="postContents" >
 
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-<!-- 1--><div class="post">
-<!-- data-->
-            <div class="postContentContainer">
-                <div class="postData">
-                    <div class="postMessage">
-                        <!--<div>-->
-                        <h2>Total No of Teachers</h1>
-                        <!--</div>-->
-                    </div>
-<!-- picture-->
-                    <div class="postPicture">
-                        <div class="postPictureImageContainer">
-                            <!--To only present the message without the picture, keep this value as null / empty-->
-                            <img class="postPictureImage" src="../Resources/Images/line-graph.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-  <!-- search box-->
 
-        </div>
-
-<!-- 2--><div class="post">
-      <!-- data-->
-            <div class="postContentContainer">
-                <div class="postData">
-                    <div class="postMessage">
-                        <!--<div>-->
-                        <h2>Today Reg Teachers</h1>
-                        <!--</div>-->
-                    </div>
-      <!-- picture-->
-                    <div class="postPicture">
-                        <div class="postPictureImageContainer">
-                            <!--To only present the message without the picture, keep this value as null / empty-->
-                            <img class="postPictureImage" src="../Resources/Images/line-graph.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-      <!-- search box-->
-
-        </div>
-
-        <!-- 3--><div class="post">
-              <!-- data-->
-                    <div class="postContentContainer">
-                        <div class="postData">
-                            <div class="postMessage">
-                                <!--<div>-->
-                                <h2>Total No of Students</h1>
-                                <!--</div>-->
-                            </div>
-              <!-- picture-->
-                            <div class="postPicture">
-                                <div class="postPictureImageContainer">
-                                    <!--To only present the message without the picture, keep this value as null / empty-->
-                                    <img class="postPictureImage" src="../Resources/Images/line-graph.jpg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-              <!-- search box-->
-
-                </div>
-                <!-- 4--><div class="post">
-                      <!-- data-->
-                            <div class="postContentContainer">
-                                <div class="postData">
-                                    <div class="postMessage">
-                                        <!--<div>-->
-                                        <h2>Today Reg Students</h1>
-                                        <!--</div>-->
-                                    </div>
-                      <!-- picture-->
-                                    <div class="postPicture">
-                                        <div class="postPictureImageContainer">
-                                            <!--To only present the message without the picture, keep this value as null / empty-->
-                                            <img class="postPictureImage" src="../Resources/Images/line-graph.jpg">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                      <!-- search box-->
-
-                        </div>
     </div>
 </div>
 
@@ -171,9 +87,7 @@
             <img src="../Resources/Icons/Logo.png" class="logo">
         </a>
         <div id="headingSearch">
-            <div id="searchBar">
-                <input id="searchBarText" type="text" placeholder="Search">
-            </div>
+            <h1 id="headerHeading">EduClick</h1>
         </div>
         <a id="headerUserProfileId" href="TeacherProfile.html" class="profile">
             <div id="headerUserName">User Name</div>
@@ -181,10 +95,10 @@
                 <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
             </div>
         </a>
-        <div id="headerNotification" >
+        <!--<div id="headerNotification" >
             <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
             <input type="button" value="    "  id="notificationSettings">
-        </div>
+        </div>-->
         <div id="logout">
             <a href="/EduClick_war_exploded/Logout">
                 Logout
@@ -201,6 +115,8 @@
 </footer>-->
 
 <script src="../Resources/JS/Settings.js" defer></script>
+<script src="../Resources/JS/Chart.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 </body>
 
