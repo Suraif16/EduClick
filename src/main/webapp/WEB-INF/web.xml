@@ -979,17 +979,19 @@
         <servlet-name>adminpostdelete</servlet-name>
         <url-pattern>/AdminDataDelete</url-pattern>
     </servlet-mapping>
+    <!-- correct-->
 
     <servlet>
-        <servlet-name>adminpostselect</servlet-name>
-        <servlet-class>Controller.ReportSelectServlet</servlet-class>
+        <servlet-name>adminnewefeedselect</servlet-name>
+        <servlet-class>Controller.ReportNewsFeedSelectServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>adminpostselect</servlet-name>
-        <url-pattern>/ReportDataselect</url-pattern>
+        <servlet-name>adminnewefeedselect</servlet-name>
+        <url-pattern>/ReportnewsfeedDataselect</url-pattern>
     </servlet-mapping>
+    <!-- correct-->
 
 
     <servlet>
@@ -1002,6 +1004,20 @@
         <servlet-name>admindeletereport</servlet-name>
         <url-pattern>/AdminDeleteReportPost</url-pattern>
     </servlet-mapping>
+    <!-- correct-->
+
+    <servlet>
+        <servlet-name>adminnewsfeedselect</servlet-name>
+        <servlet-class>Controller.ReportEducationalSelectServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminnewsfeedselect</servlet-name>
+        <url-pattern>/ReporteducationalDataselect</url-pattern>
+    </servlet-mapping>
+
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
