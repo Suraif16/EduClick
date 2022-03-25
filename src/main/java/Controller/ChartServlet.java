@@ -25,7 +25,7 @@ public class ChartServlet extends HttpServlet {
         JSONArray chartDetails = chart.getChartDetails();
         JSONObject jsonObject = new JSONObject();
 
-        jsonObject.put("AdminPostDetails" ,chartDetails);
+        jsonObject.put("chartDetails" ,chartDetails);
         jsonObject.put("serverResponse" , "Allowed");
         out.write(jsonObject.toString());
         out.close();
