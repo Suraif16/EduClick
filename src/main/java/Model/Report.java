@@ -1,8 +1,7 @@
 package Model;
 
-import DAO.AdminPostDAO;
+import DAO.AdminDeleteReportDAO;
 import DAO.ReportDisplayDAO;
-import DAO.NewsFeedsDAO;
 import DAO.ReportInsertDAO;
 import org.json.JSONArray;
 
@@ -92,6 +91,10 @@ public class Report {
         JSONArray APostDetails = adminpostDAO.getAdminPostDetails();
 
         return APostDetails;
+    }
+    public String adminDelete(String postID){
+        AdminDeleteReportDAO adminDeleteReportDAO = new AdminDeleteReportDAO();
+        return adminDeleteReportDAO.deleteRecord(postID);
     }
 
 }
