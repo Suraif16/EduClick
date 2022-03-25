@@ -992,6 +992,18 @@
     </servlet-mapping>
     <session-config>
 
+    <servlet>
+        <servlet-name>admindeletereport</servlet-name>
+        <servlet-class>Controller.AdminDeleteReportPostServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admindeletereport</servlet-name>
+        <url-pattern>/AdminDeleteReportPost</url-pattern>
+    </servlet-mapping>
+    <session-config>
+
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
         if the user doesn't come back. if we set the value to zero then the session will not expire-->
 
