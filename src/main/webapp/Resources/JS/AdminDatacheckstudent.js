@@ -22,7 +22,7 @@ const searchFunction = function ( ) {
         let jsonLoginResponse = JSON.parse( httpreq.responseText );
         const postContents = document.getElementById( "postContents" );
         postContents.innerHTML = "";
-
+        if(jsonLoginResponse.searchResult.length>0){
         for ( i = 0 ; i < jsonLoginResponse.searchResult.length ; i++ ){
 
             let post = '<div class="post">'+
@@ -81,6 +81,11 @@ const searchFunction = function ( ) {
                 '</div>'+
                 '</div>';
             postContents.innerHTML += post;
+            }
+        }else{
+            postContents.innerHTML = '<div class="postMessage">'+
+                'No Details for Searching value'+
+                '</div>';
         }
     }
 
