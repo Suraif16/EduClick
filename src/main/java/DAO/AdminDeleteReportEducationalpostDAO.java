@@ -1,10 +1,11 @@
 package DAO;
 
 import Database.DBConnectionPool;
+import Model.Report;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class AdminDeleteReportEducationalpostDAO {
 
