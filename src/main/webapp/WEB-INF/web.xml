@@ -990,7 +990,7 @@
         <servlet-name>adminpostselect</servlet-name>
         <url-pattern>/ReportDataselect</url-pattern>
     </servlet-mapping>
-    <session-config>
+
 
     <servlet>
         <servlet-name>admindeletereport</servlet-name>
