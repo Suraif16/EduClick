@@ -125,7 +125,7 @@ const postNewsFeeds = function () {
                     jsonResponse.NewsFeedsPost.date +
                     '                            </div>' +
                     '                    <div class="userOptions">' +
-                    '<input class="userOptionsButton" type="button" value="    " id="newsfeedOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">' +
+                    '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">' +
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
@@ -184,7 +184,7 @@ const postNewsFeeds = function () {
                     jsonResponse.NewsFeedsPost.date +
                     '                            </div>' +
                     '                    <div class="userOptions">' +
-                    '<input class="userOptionsButton" type="button" value="    " id="newsfeedOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">' +
+                    '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">' +
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
@@ -240,7 +240,7 @@ const postNewsFeeds = function () {
                     jsonResponse.NewsFeedsPost.date +
                     '                            </div>' +
                     '                    <div class="userOptions">' +
-                    '<input class="userOptionsButton" type="button" value="    " id="newsfeedOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">' +
+                    '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'educationalPostOPtion\')">' +
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
