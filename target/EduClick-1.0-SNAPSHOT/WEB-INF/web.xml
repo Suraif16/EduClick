@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!--Start of login servlet and filter-->
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>Controller.Login.LoginServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>Controller.AdminServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/Admin</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>loginPasswordHashing</filter-name>
+        <filter-class>Controller.Login.LoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>loginPasswordHashing</filter-name>
+        <url-pattern>/Login</url-pattern>
+    </filter-mapping>
+    <!--End of login servlet and filter-->
+
+    <!--Start of registration servlet and filter-->
+    <servlet>
+        <servlet-name>registration</servlet-name>
+        <servlet-class>Controller.Registration.RegisterServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>registration</servlet-name>
+        <url-pattern>/Registration</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>registrationPasswordHashing</filter-name>
+        <filter-class>Controller.Registration.RegistrationSaltingKeyFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>registrationPasswordHashing</filter-name>
+        <url-pattern>/Registration</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>registrationFilter</filter-name>
+        <filter-class>Controller.Registration.RegisterFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>registrationFilter</filter-name>
+        <url-pattern>/Registration</url-pattern>
+    </filter-mapping>
+
+    <!--End of registration servlet and filter-->
+
+    <!--Beginning of teacher newsfeed loaded-->
+
+    <servlet>
+        <servlet-name>teacherLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.TeacherLoadServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherLoad</servlet-name>
+        <url-pattern>/teacher/teacherLoad</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>teacherAuthentication</filter-name>
+        <filter-class>Controller.Authentication.TeacherAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>teacherAuthentication</filter-name>
+        <url-pattern>/teacher/*</url-pattern>
+    </filter-mapping>
+    <!-- here the asterisk matches any characters, therefore any teacher page should link should start with /teacher -->
+
+    <!--End of teacher newsfeed loaded-->
+
+    <!--Beginning of student newsfeed loaded-->
+
+    <servlet>
+        <servlet-name>studentNewsFeedLoaded</servlet-name>
+        <servlet-class>Controller.ClassroomList.StudentNewsFeedLoadedServlet</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentNewsFeedLoaded</servlet-name>
+        <url-pattern>/student/studentNewsFeedLoaded</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>studentAuthentication</filter-name>
+        <filter-class>Controller.Authentication.StudentAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>studentAuthentication</filter-name>
+        <url-pattern>/student/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--End of student newsfeed loaded-->
+
+    <!--Start of student student enroll request-->
+
+    <servlet>
+        <servlet-name>enrollRequest</servlet-name>
+        <servlet-class>Controller.Requests.EnrollRequestServlet</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>enrollRequest</servlet-name>
+        <url-pattern>/enrollRequest</url-pattern>
+    </servlet-mapping>
+
+    <!--End of student student enroll request-->
+
+
+    <servlet>
+        <servlet-name>teacherClassroomList</servlet-name>
+        <servlet-class>Controller.ClassroomList.TeacherClassroomListLoad</servlet-class>
+        <load-on-startup>6</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherClassroomList</servlet-name>
+        <url-pattern>/teacherClassroomList</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!--Beginning of student username loaded-->
+
+    <servlet>
+        <servlet-name>studentLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.StudentLoadServlet</servlet-class>
+        <load-on-startup>6</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentLoad</servlet-name>
+        <url-pattern>/student/studentLoad</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>studentNameAuthentication</filter-name>
+        <filter-class>Controller.Authentication.StudentAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>studentNameAuthentication</filter-name>
+        <url-pattern>/student/*</url-pattern>
+    </filter-mapping>
+    <!-- here the asterisk matches any characters, therefore any teacher page should link should start with /teacher -->
+
+    <!--End of student username loaded-->
+
+    <!--Beginning of teacher create classroom-->
+
+    <servlet>
+        <servlet-name>teacherCreateClassroom</servlet-name>
+        <servlet-class>Controller.Classroom.TeacherCreateClassroomServlet</servlet-class>
+        <load-on-startup>7</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherCreateClassroom</servlet-name>
+        <url-pattern>/teacher/teacherCreateClassroom</url-pattern>
+    </servlet-mapping>
+
+    <!--end of teacher create classroom-->
+
+    <filter>
+        <filter-name>adminAuthentication</filter-name>
+        <filter-class>Controller.Authentication.AdminAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>adminAuthentication</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
+    <!-- beginning of logout-->
+
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.Login.LogoutServlet</servlet-class>
+        <load-on-startup>8</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of logout -->
+
+    <!-- beginning of SaveClassroomID-->
+
+    <servlet>
+        <servlet-name>SaveClassroomId</servlet-name>
+        <servlet-class>Controller.SaveClassroomIdServlet</servlet-class>
+        <load-on-startup>8</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SaveClassroomId</servlet-name>
+        <url-pattern>/SaveClassroomId</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of SaveClassroomID -->
+
+    <!-- beginning of the TeacherClassroomListServlet-->
+    <servlet>
+        <servlet-name>TeacherLoadClassroomList</servlet-name>
+        <servlet-class>Controller.ClassroomList.TeacherLoadClassroomListServlet</servlet-class>
+        <load-on-startup>9</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherLoadClassroomList</servlet-name>
+        <url-pattern>/teacher/teacherLoadClassroomList</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of the TeacherClassroomListServlet-->
+
+    <!-- beginning of OTPGenerateServlet-->
+    <servlet>
+        <servlet-name>OPTGenerate</servlet-name>
+        <servlet-class>Controller.OTP.OTPGenerateServlet</servlet-class>
+        <load-on-startup>10</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OPTGenerate</servlet-name>
+        <url-pattern>/otpGenerate</url-pattern>
+    </servlet-mapping>
+    <!-- end of OTPValidateServlet-->
+
+    <!-- beginning of OTPValidateServlet-->
+    <servlet>
+        <servlet-name>OTPValidate</servlet-name>
+        <servlet-class>Controller.OTP.OTPValidateServlet</servlet-class>
+        <load-on-startup>11</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OTPValidate</servlet-name>
+        <url-pattern>/otpValidate</url-pattern>
+    </servlet-mapping>
+    <!-- end of OTPGenerateServlet-->
+
+    <!-- beginning of DisplayRequestServlet-->
+
+    <servlet>
+        <servlet-name>DisplayRequestStudent</servlet-name>
+        <servlet-class>Controller.Requests.DisplayRequestServlet</servlet-class>
+        <load-on-startup>12</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DisplayRequestStudent</servlet-name>
+        <url-pattern>/displayRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of DisplayRequestServlet-->
+
+    <!-- beginning of DisplayRequestServlet-->
+
+    <servlet>
+        <servlet-name>DisplayRequest</servlet-name>
+        <servlet-class>Controller.Requests.DisplayRequestServlet</servlet-class>
+        <load-on-startup>12</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DisplayRequest</servlet-name>
+        <url-pattern>/teacher/displayRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of DisplayRequestServlet-->
+
+
+    <!-- beginning of incorrectPassword -->
+    <servlet>
+        <servlet-name>IncorrectPassword</servlet-name>
+        <servlet-class>Controller.Login.IncorrectPasswordServlet</servlet-class>
+        <load-on-startup>14</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>IncorrectPassword</servlet-name>
+        <url-pattern>/incorrectPassword</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of incorrectPassword -->
+
+    <!-- beginning of Search -->
+
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>Controller.Search.SearchServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of Search -->
+
+    <!-- beginning of SearchPageOnLoad -->
+
+    <servlet>
+        <servlet-name>SearchPageOnLoad</servlet-name>
+        <servlet-class>Controller.Search.SearchPageOnLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchPageOnLoad</servlet-name>
+        <url-pattern>/searchPageOnLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of SearchPageOnLoad -->
+
+    <!-- start search for teacher  -->
+
+    <servlet>
+        <servlet-name>SearchTeacher</servlet-name>
+        <servlet-class>Controller.Search.SearchResultServlet</servlet-class>
+        <load-on-startup>13</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchTeacher</servlet-name>
+        <url-pattern>/searchTeacher</url-pattern>
+    </servlet-mapping>
+
+    <!-- end search for teacher -->
+
+    <!-- beginning of UserProfile Redirect -->
+
+    <servlet>
+        <servlet-name>UserProfileRedirect</servlet-name>
+        <servlet-class>Controller.UserProfile.UserProfileRedirectServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserProfileRedirect</servlet-name>
+        <url-pattern>/userProfileRedirect</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of UserProfile Redirect -->
+
+    <!-- beginning of add friend request -->
+
+    <servlet>
+        <servlet-name>AddFriendRequest</servlet-name>
+        <servlet-class>Controller.Requests.AddFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddFriendRequest</servlet-name>
+        <url-pattern>/addFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of add friend request -->
+
+
+    <!-- beginning of adminpost -->
+    <servlet>
+        <servlet-name>adminpost</servlet-name>
+        <servlet-class>Controller.AdminPostServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminpost</servlet-name>
+        <url-pattern>/AdminPost</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>adminpost1</servlet-name>
+        <servlet-class>Controller.AdminPost1Servlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminpost1</servlet-name>
+        <url-pattern>/AdminPost1</url-pattern>
+    </servlet-mapping>
+
+    <!-- End of adminpost -->
+
+    <!-- beginning of teacher profile name load -->
+
+    <servlet>
+        <servlet-name>teacherProfileNameLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.TeacherSearchProfileNameLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherProfileNameLoad</servlet-name>
+        <url-pattern>/student/teacherProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teacher profile name load -->
+
+
+
+    <!-- beginning of student follow list load -->
+
+    <servlet>
+        <servlet-name>studentFollowerListLoad</servlet-name>
+        <servlet-class>Controller.StudentFollowerListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentFollowerListLoad</servlet-name>
+        <url-pattern>/studentFollowerListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
+    <!-- beginning of student full name load -->
+
+    <servlet>
+        <servlet-name>studentProfileNameLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.StudentProfileFullNameLoad</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentProfileNameLoad</servlet-name>
+        <url-pattern>/studentProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student full name load -->
+
+    <!-- beginning of teachers profile name load -->
+
+    <servlet>
+        <servlet-name>teacherLoadProfileName</servlet-name>
+        <servlet-class>Controller.UserLoad.TeacherProfileNameLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherLoadProfileName</servlet-name>
+        <url-pattern>/teacher/teacherProfileNameLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teachers profile name load -->
+
+
+    <!-- beginning of follow teachers -->
+
+    <servlet>
+        <servlet-name>followTeacher</servlet-name>
+        <servlet-class>Controller.Requests.followTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>followTeacher</servlet-name>
+        <url-pattern>/followTeacher</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of follow teachers -->
+
+    <!-- beginning of unfollow teachers -->
+
+    <servlet>
+        <servlet-name>unfollowTeacher</servlet-name>
+        <servlet-class>Controller.Requests.unFollowTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>unfollowTeacher</servlet-name>
+        <url-pattern>/unFollowTeacher</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of unfollow teachers -->
+
+    <!-- beginning of cancel friend request -->
+
+    <servlet>
+        <servlet-name>cancelEnrollRequest</servlet-name>
+        <servlet-class>Controller.Requests.DeclineEnrollRequestTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cancelEnrollRequest</servlet-name>
+        <url-pattern>/teacher/declineEnrollRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of cancel friend request -->
+
+    <!-- beginning of accept friend request -->
+
+    <servlet>
+        <servlet-name>acceptEnrollRequest</servlet-name>
+        <servlet-class>Controller.Requests.AcceptFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>acceptEnrollRequest</servlet-name>
+        <url-pattern>/user/AcceptFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of accept friend request -->
+
+    <!-- beginning of cancel enroll request -->
+
+    <servlet>
+        <servlet-name>cancelFriendRequest</servlet-name>
+        <servlet-class>Controller.Requests.cancelFriendRequestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cancelFriendRequest</servlet-name>
+        <url-pattern>/user/cancelFriendRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of cancel enroll request -->
+
+    <!-- beginning of teacher follow list load -->
+
+    <servlet>
+        <servlet-name>teacherFollowerListLoad</servlet-name>
+        <servlet-class>Controller.TeacherFollowersListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherFollowerListLoad</servlet-name>
+        <url-pattern>/teacher/teacherFollowerListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
+
+    <!-- beginning of teacher friend list load -->
+
+    <servlet>
+        <servlet-name>teacherFriendListLoad</servlet-name>
+        <servlet-class>Controller.TeacherFriendListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>teacherFriendListLoad</servlet-name>
+        <url-pattern>/teacher/teacherFriendsListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student friend list load -->
+
+    <!-- beginning of student follow list load -->
+
+    <servlet>
+        <servlet-name>studentFriendListLoad</servlet-name>
+        <servlet-class>Controller.StudentFriendListLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentFriendListLoad</servlet-name>
+        <url-pattern>/studentFriendListLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student follow list load -->
+
+    <!-- beginning of NewsFeeds post insert servlet-->
+
+    <servlet>
+        <servlet-name>NewsFeedsPostInsertServlet</servlet-name>
+        <servlet-class>Controller.NewsFeedsInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewsFeedsPostInsertServlet</servlet-name>
+        <url-pattern>/teacher/NewsFeedsInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of NewsFeeds post insert servlet-->
+
+    <!-- beginning of teacher entrance page news feed load -->
+
+    <servlet>
+        <servlet-name>SelectedNewsFeedsLoad</servlet-name>
+        <servlet-class>Controller.SelectedNewsFeedsLoadServelet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectedNewsFeedsLoad</servlet-name>
+        <url-pattern>/user/selectedNewsFeedsLoadServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teacher entrance page news feed load -->
+
+    <!-- beginning of student entrance page news feed load -->
+
+    <!--<servlet>
+        <servlet-name>studentNewsFeedsLoad</servlet-name>
+        <servlet-class>Controller.UserLoad.StudentEntrancePageNewsFeedLoadServlet</servlet-class>
+    </servlet>-->
+
+    <!-- <servlet-mapping>
+         <servlet-name>studentNewsFeedsLoad</servlet-name>
+         <url-pattern>/student/studentEntrancePageNewsFeedsLoad</url-pattern>
+     </servlet-mapping>-->
+
+    <!-- end of student entrance page news feed load -->
+
+
+    <!-- beginning of Educational post insert servlet-->
+
+    <servlet>
+        <servlet-name>EducationalPostInsertServlet</servlet-name>
+        <servlet-class>Controller.EducationalPostInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EducationalPostInsertServlet</servlet-name>
+        <url-pattern>/teacher/EducationalPostInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Educational post insert servlet-->
+
+    <!-- beginning of Student Educational post load servlet-->
+
+    <servlet>
+        <servlet-name>studentEducationalPostLoad</servlet-name>
+        <servlet-class>Controller.StudentEducationalPostLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentEducationalPostLoad</servlet-name>
+        <url-pattern>/student/studentEducationalPostLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Student Educational post load servlet-->
+
+    <!--Beginning of teacher Report-->
+
+    <servlet>
+        <servlet-name>report</servlet-name>
+        <servlet-class>Controller.ReportServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>report</servlet-name>
+        <url-pattern>/teacher/report</url-pattern>
+    </servlet-mapping>
+
+    <!--End of teacher Report-->
+
+    <!-- beginning of user filter -->
+
+    <filter>
+        <filter-name>userAuthentication</filter-name>
+        <filter-class>Controller.Authentication.UserAuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>userAuthentication</filter-name>
+        <url-pattern>/user/*</url-pattern>
+    </filter-mapping>
+
+    <!-- beginning of user filter -->
+
+    <!-- beginning of mcq post load servlet-->
+
+    <servlet>
+        <servlet-name>mcqPostInsert</servlet-name>
+        <servlet-class>Controller.mcqPostInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>mcqPostInsert</servlet-name>
+        <url-pattern>/teacher/mcqPostInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of mcq post load servlet-->
+
+    <!-- beginning of Educational post answers insert servlet-->
+
+    <servlet>
+        <servlet-name>EducationalPostAnswersInsertServlet</servlet-name>
+        <servlet-class>Controller.EducationalPostAnswersInsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EducationalPostAnswersInsertServlet</servlet-name>
+        <url-pattern>/student/EducationalPostAnswersInsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Educational post answers insert servlet-->
+
+    <!-- beginning of Educational post answer load servlet-->
+
+    <servlet>
+        <servlet-name>StudentEducationalPostAnswerLoadServlet</servlet-name>
+        <servlet-class>Controller.StudentEducationalPostAnswerLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentEducationalPostAnswerLoadServlet</servlet-name>
+        <url-pattern>/student/studentEducationalPostAnswerLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Educational post answer load servlet-->
+
+
+    <!-- beginning of select E post classroom servlet-->
+
+    <servlet>
+        <servlet-name>SelectEPostClassroom</servlet-name>
+        <servlet-class>Controller.SelectEPostClassroomServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectEPostClassroom</servlet-name>
+        <url-pattern>/teacher/selectEPostClassroom</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select E post classroom servlet-->
+
+    <!-- beginning of Student classroom enable/disable check servlet-->
+
+    <servlet>
+        <servlet-name>StudentEnableOrDisableCheckServlet</servlet-name>
+        <servlet-class>Controller.StudentEnableOrDisableCheckServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentEnableOrDisableCheckServlet</servlet-name>
+        <url-pattern>/student/checkStudentEnableOrDisable</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of EStudent classroom enable/disable check servlet-->
+
+
+    <!-- beginning of Student mcq result load servlet-->
+
+    <servlet>
+        <servlet-name>StudentMCQResultLoadServlet</servlet-name>
+        <servlet-class>Controller.StudentMCQResultLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentMCQResultLoadServlet</servlet-name>
+        <url-pattern>/student/mcqResultLoad</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Student mcq result load servlet-->
+
+
+    <!-- beginning of Student classroom enable/disable check servlet-->
+
+    <servlet>
+        <servlet-name>AcceptEnrollRequestTeacherServlet</servlet-name>
+        <servlet-class>Controller.Requests.AcceptEnrollRequestTeacherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AcceptEnrollRequestTeacherServlet</servlet-name>
+        <url-pattern>/teacher/AcceptEnrollRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of EStudent classroom enable/disable check servlet-->
+
+
+    <!-- beginning of get teacher classroom student enroll list servlet-->
+
+    <servlet>
+        <servlet-name>GetTeacherClassroomStudentEnrollList</servlet-name>
+        <servlet-class>Controller.GetTeacherClassroomStudentEnrollListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetTeacherClassroomStudentEnrollList</servlet-name>
+        <url-pattern>/teacher/getTeacherClassroomStudentEnrollList</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of get teacher classroom student enroll list servlet-->
+
+    <!-- beginning of enable disable student enroll status servlet-->
+
+    <servlet>
+        <servlet-name>ClassroomEnableDisableStudent</servlet-name>
+        <servlet-class>Controller.ClassroomEnableDisableStudents</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClassroomEnableDisableStudent</servlet-name>
+        <url-pattern>/teacher/classroomEnableDisableStudent</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of enable disable student enroll status servlet-->
+
+    <!-- beginning of enable disable student enroll status servlet-->
+
+    <servlet>
+        <servlet-name>TeacherClassroomSelectAnswersServlet</servlet-name>
+        <servlet-class>Controller.TeacherClassroomSelectAnswersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherClassroomSelectAnswersServlet</servlet-name>
+        <url-pattern>/teacher/teacherClassroomSelectAnswersServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of enable disable student enroll status servlet-->
+    <!-- beginning of enable disable student enroll status servlet-->
+
+    <servlet>
+        <servlet-name>AdminDatacheck</servlet-name>
+        <servlet-class>Controller.AdminDatacheckServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminDatacheck</servlet-name>
+        <url-pattern>/AdminDatacheckServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of enable disable student enroll status servlet-->
+
+
+    <!-- beginning of student MCQ result load on correct answers post servlet-->
+
+    <servlet>
+        <servlet-name>StudentMCQResultLoadOnClickServlet</servlet-name>
+        <servlet-class>Controller.StudentMCQResultLoadOnClickServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentMCQResultLoadOnClickServlet</servlet-name>
+        <url-pattern>/student/studentMCQResultLoadOnClick</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student MCQ result load on correct answers post servlet-->
+
+    <!-- beginning of share newsfeeds servlet(shared news feeds details insert)-->
+
+    <servlet>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.SharedNewsFeedsServletInsert</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShareNewsFeedsServlet</servlet-name>
+        <url-pattern>/user/shareNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of share newsfeeds servlet-->
+    <!--***********-->
+    <!-- beginning selected newsfeeds load servlet-->
+
+    <servlet>
+        <servlet-name>SelectedNewsFeedsLoadServlet</servlet-name>
+        <servlet-class>Controller.SelectedNewsFeedsLoadServelet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectedNewsFeedsLoadServlet</servlet-name>
+        <url-pattern>/teacher/selectedNewsFeedsLoadServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of share newsfeeds servlet-->
+
+    <!-- beginning of like newsfeeds servlet-->
+
+    <servlet>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <servlet-class>Controller.LikeNewsFeedsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LikeNewsFeedsServlet</servlet-name>
+        <url-pattern>/user/likeNewsFeedsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of like newsfeeds servlet-->
+
+
+    <!-- beginning of select mcq result servlet-->
+
+    <servlet>
+        <servlet-name>TeacherClassroomSelectMcqResultServlet</servlet-name>
+        <servlet-class>Controller.TeacherClassroomSelectMcqResultServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherClassroomSelectMcqResultServlet</servlet-name>
+        <url-pattern>/teacher/teacherClassroomSelectMcqResultServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select mcq result servlet-->
+
+    <!-- beginning of select student classroom details servlet-->
+
+    <servlet>
+        <servlet-name>StudentClassroomDetailsSelectServlet</servlet-name>
+        <servlet-class>Controller.StudentClassroomDetailsSelectServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentClassroomDetailsSelectServlet</servlet-name>
+        <url-pattern>/user/StudentClassroomDetailsSelect</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select student classroom details servlet-->
+
+    <!-- beginning of select mcq result servlet-->
+
+    <servlet>
+        <servlet-name>TeacherSetMarksForAnswersServlet</servlet-name>
+        <servlet-class>Controller.TeacherSetMarksForAnswersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherSetMarksForAnswersServlet</servlet-name>
+        <url-pattern>/teacher/teacherSetMarksForAnswersServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select mcq result servlet-->
+
+    <!-- beginning of Select Classroom Details servlet-->
+
+    <servlet>
+        <servlet-name>ClassroomDetailsServlet</servlet-name>
+        <servlet-class>Controller.Classroom.ClassroomDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClassroomDetailsServlet</servlet-name>
+        <url-pattern>/user/classroomDetailsServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Select Classroom Details servlet-->
+
+    <!-- beginning of Delete Classroom servlet-->
+
+    <servlet>
+        <servlet-name>ClassroomDeleteServlet</servlet-name>
+        <servlet-class>Controller.Classroom.TeacherDeleteClassroomServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClassroomDeleteServlet</servlet-name>
+        <url-pattern>/teacher/classroomDeleteServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of Delete Classroom servlet-->
+    <servlet>
+        <servlet-name>adminpostdelete</servlet-name>
+        <servlet-class>Controller.AdminDataDeleteServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminpostdelete</servlet-name>
+        <url-pattern>/AdminDataDelete</url-pattern>
+    </servlet-mapping>
+    <!-- correct-->
+
+    <servlet>
+        <servlet-name>adminnewefeedselect</servlet-name>
+        <servlet-class>Controller.ReportNewsFeedSelectServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminnewefeedselect</servlet-name>
+        <url-pattern>/ReportnewsfeedDataselect</url-pattern>
+    </servlet-mapping>
+    <!-- correct-->
+
+
+    <servlet>
+        <servlet-name>admindeletereport</servlet-name>
+        <servlet-class>Controller.AdminDeleteReportPostServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admindeletereport</servlet-name>
+        <url-pattern>/AdminDeleteReportPost</url-pattern>
+    </servlet-mapping>
+    <!-- correct-->
+
+    <servlet>
+        <servlet-name>adminnewsfeedselect</servlet-name>
+        <servlet-class>Controller.ReportEducationalSelectServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminnewsfeedselect</servlet-name>
+        <url-pattern>/ReporteducationalDataselect</url-pattern>
+    </servlet-mapping>
+    <!-- correct-->
+    <servlet>
+        <servlet-name>admindeletereporteducationalpost</servlet-name>
+        <servlet-class>Controller.AdminDeleteReportEducationalServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admindeletereporteducationalpost</servlet-name>
+        <url-pattern>/AdminDeleteReportEducationalpost</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>chart</servlet-name>
+        <servlet-class>Controller.ChartServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>chart</servlet-name>
+        <url-pattern>/Chart</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+
+        <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
+        if the user doesn't come back. if we set the value to zero then the session will not expire-->
+
+    </session-config>
+
+    <listener>
+        <listener-class>
+
+            Database.DBBackup
+
+        </listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>
+
+            SystemAvailableStatus.SignalAdminEmail
+
+        </listener-class>
+    </listener>
+
+</web-app>
