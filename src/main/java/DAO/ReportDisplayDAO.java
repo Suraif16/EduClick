@@ -42,7 +42,7 @@ public class ReportDisplayDAO {
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
 
-            String sql = "select Count,EpostID FROM Report";
+            String sql = "select Count,NF_postID FROM Report";
             preparedStatement = connection.prepareStatement( sql );
 
 
@@ -59,14 +59,14 @@ public class ReportDisplayDAO {
                 JSONObject jsonObject = new JSONObject();
 
                 String Count = resultSet.getString("Count");
-                String EpostID = resultSet.getString("EpostID");
+                String NF_postID = resultSet.getString("NF_postID");
                 jsonObject.put("count",Count);
-                jsonObject.put("nFPostID",EpostID);
+                jsonObject.put("nFPostID",NF_postID);
 
-                preparedStatement1.setString( 1 , EpostID );
+                preparedStatement1.setString( 1 , NF_postID );
                 resultSet1 = preparedStatement1.executeQuery();
 
-                preparedStatement2.setString( 1 , EpostID );
+                preparedStatement2.setString( 1 , NF_postID );
                 resultSet2 = preparedStatement2.executeQuery();
 
                 if ( resultSet1.next() ){
