@@ -46,63 +46,53 @@ public class ReportDisplayDAO {
             preparedStatement = connection.prepareStatement( sql );
 
 
-            String sql1 = "SELECT NFPostID,Date, Time, Caption,ImageStatus FROM NewsFeeds ";
+            String sql1 = "SELECT Date, Time, Caption,ImageStatus FROM NewsFeeds WHERE NFPostID = ?";
             preparedStatement1 = connection.prepareStatement( sql1 );
 
-            String sql2 = "SELECT ImagePath,NFPostID FROM News_Feed_Image ";
+            String sql2 = "SELECT ImagePath FROM News_Feed_Image WHERE NFPostID = ?";
             preparedStatement2 = connection.prepareStatement( sql2 );
 
             resultSet = preparedStatement.executeQuery();
             System.out.println("dao");
+
             while( resultSet.next() ){
+                JSONObject jsonObject = new JSONObject();
+
                 String Count = resultSet.getString("Count");
                 String EpostID = resultSet.getString("EpostID");
-                System.out.println("EpostID " +EpostID);
-                System.out.println("Count " +Count);
+                jsonObject.put("count",Count);
+                jsonObject.put("nFPostID",EpostID);
+
+                preparedStatement1.setString( 1 , EpostID );
                 resultSet1 = preparedStatement1.executeQuery();
-                while ( resultSet1.next() ){
-                    String NFPostID = resultSet1.getString("NFPostID");
-                    if(EpostID==NFPostID){
-                        System.out.println("NFPostID "+NFPostID);
-                        String Date = resultSet1.getString("Date");
-                        String Time = resultSet1.getString("Time");
-                        String Caption = resultSet1.getString("Caption");
-                        String ImageStatus = resultSet1.getString("ImageStatus");
-                        resultSet2 = preparedStatement2.executeQuery();
-                        while ( resultSet2.next() ){
-                            String ANFPostID = resultSet2.getString("NFPostID");
-                            if(ANFPostID==NFPostID){
-                                System.out.println("ANFPostID "+ANFPostID);
-                                String ImagePath = resultSet2.getString("ImagePath");
-                                System.out.println("ImagePath "+ImagePath);
-                                JSONObject jsonObject = new JSONObject();
-                                jsonObject.put("count",Count);
-                                jsonObject.put("nFPostID",NFPostID);
-                                jsonObject.put("date",Date);
-                                jsonObject.put("time",Time);
-                                jsonObject.put("caption",Caption);
-                                jsonObject.put("imageStatus",ImageStatus);
-                                System.out.println("ImageStatus "+ImageStatus);
-                                jsonObject.put("imagePath",ImagePath);
-                                jsonArray.put(jsonObject);
-                            }else{
-                                String ImagePath ="0";
-                                System.out.println(ImagePath);
-                                JSONObject jsonObject = new JSONObject();
-                                jsonObject.put("count",Count);
-                                jsonObject.put("nFPostID",NFPostID);
-                                jsonObject.put("date",Date);
-                                jsonObject.put("time",Time);
-                                jsonObject.put("caption",Caption);
-                                jsonObject.put("imageStatus",ImageStatus);
-                                System.out.println("ImageStatus "+ImageStatus);
-                                jsonObject.put("imagePath",ImagePath);
-                                jsonArray.put(jsonObject);
-                            }
-                        }
-                    }
+
+                preparedStatement2.setString( 1 , EpostID );
+                resultSet2 = preparedStatement2.executeQuery();
+
+                if ( resultSet1.next() ){
+                    String Date = resultSet1.getString("Date");
+                    String Time = resultSet1.getString("Time");
+                    String Caption = resultSet1.getString("Caption");
+                    String ImageStatus = resultSet1.getString("ImageStatus");
+                    System.out.println("ImagePath "+ImageStatus);
+
+                    jsonObject.put("date",Date);
+                    jsonObject.put("time",Time);
+                    jsonObject.put("caption",Caption);
+                    jsonObject.put("imageStatus",ImageStatus);
+                    System.out.println("ImageStatus "+ImageStatus);
                 }
+
+                if ( resultSet2.next() ){
+                    String ImagePath = resultSet2.getString("ImagePath");
+                    System.out.println("ImagePath "+ImagePath);
+
+                    jsonObject.put("imagePath",ImagePath);
+                }
+
+                jsonArray.put( jsonObject );
             }
+
             connection.commit();
         } catch (SQLException throwables) {
             try{
