@@ -35,7 +35,7 @@ public class ReportInsertDAO {
                  AnswerID = contentID;
                  NF_postID = "0";
                  EpostID = "0";
-            }else if(type.equals("postOPtion")){
+            }else if(type.equals("newsfeedOPtion")){
                  UserID = "0";
                  AnswerID = "0";
                  NF_postID = contentID;
