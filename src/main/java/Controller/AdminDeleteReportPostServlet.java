@@ -1,7 +1,7 @@
 package Controller;
 
 
-import Model.AdminWork;
+import Model.Report;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServlet;
@@ -21,8 +21,8 @@ public class AdminDeleteReportPostServlet extends HttpServlet {
         HttpSession session = request.getSession( false );
 
         String id = request.getParameter("id");
-        System.out.println("delete value " + id);
-        AdminWork delete = new AdminWork();
+        System.out.println("delete report value " + id);
+        Report delete = new Report();
         delete.adminDelete(id);
         out.write(jsonObject.toString());
         out.close();
