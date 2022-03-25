@@ -15,7 +15,7 @@ const deletereportpost = function ( id ){
         }
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/AdminDeleteReportPost" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/AdminDeleteReportEducationalpost" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("id=" + id );
 
