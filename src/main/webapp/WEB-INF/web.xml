@@ -1016,7 +1016,17 @@
         <servlet-name>adminnewsfeedselect</servlet-name>
         <url-pattern>/ReporteducationalDataselect</url-pattern>
     </servlet-mapping>
+    <!-- correct-->
+    <servlet>
+        <servlet-name>admindeletereporteducationalpost</servlet-name>
+        <servlet-class>Controller.AdminDeleteReportEducationalServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>admindeletereporteducationalpost</servlet-name>
+        <url-pattern>/AdminDeleteReportEducationalpost</url-pattern>
+    </servlet-mapping>
 
     <session-config>
 
