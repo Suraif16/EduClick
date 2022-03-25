@@ -1028,6 +1028,17 @@
         <url-pattern>/AdminDeleteReportEducationalpost</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>chart</servlet-name>
+        <servlet-class>Controller.ChartServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>chart</servlet-name>
+        <url-pattern>/Chart</url-pattern>
+    </servlet-mapping>
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
