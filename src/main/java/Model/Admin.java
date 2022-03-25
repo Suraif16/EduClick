@@ -1,6 +1,9 @@
 package Model;
 
+import DAO.AdminPostDAO;
 import DAO.UserDAO;
+import DAO.ChartDAO;
+import org.json.JSONArray;
 
 public class Admin {
     private String adminName;
@@ -74,12 +77,15 @@ public class Admin {
         this.adminName = adminName;
         this.email = this.email;
     }
-    public Admin() {
-
-    }
+    public Admin() { }
 
     public Admin getCount(){
         UserDAO admindao = new UserDAO();
         return admindao.count(this);
+    }
+    public JSONArray getChartDetails(){
+        ChartDAO chartDAO =  new ChartDAO();
+        JSONArray ChartDetails = chartDAO.getChartDetails();
+        return ChartDetails;
     }
 }
