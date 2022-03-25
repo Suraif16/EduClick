@@ -65,7 +65,7 @@ const getServerData = function (){
                     '<div class="emptySpaceLikeShare">'+
                     '</div>'+
                     '<div class="likeShareButtons">'+
-                    '<input type="button" value="Remove" class="share" onclick="" >'+
+                    '<input type="button" value="Remove" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].nFPostID+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>';
@@ -102,7 +102,7 @@ const getServerData = function (){
                     '<div class="emptySpaceLikeShare">'+
                     '</div>'+
                     '<div class="likeShareButtons">'+
-                    '<input type="button" value="Remove" class="share" onclick="" >'+
+                    '<input type="button" value="Remove" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].nFPostID+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>';
