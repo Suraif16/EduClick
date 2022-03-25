@@ -37,7 +37,7 @@ const getServerData = function (){
                     '<div class="postProfileImage">'+
                     '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
-                    '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].nFPostID+'</div>'+
+                    '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].epostID+'</div>'+
                     '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
@@ -49,7 +49,7 @@ const getServerData = function (){
                     '</div>'+
                     '<div class="postPicture">' +
                     '<div class="postPictureImageContainer">' +
-                    '<img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.ReportPostDetails[i].imagePath + '.jpeg">' +
+                    '<img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + jsonResponse.ReportPostDetails[i].imagePath + '.jpeg">' +
                     '</div>'+
                     '</div>'+
                     '</div>'+
@@ -65,7 +65,7 @@ const getServerData = function (){
                     '<div class="emptySpaceLikeShare">'+
                     '</div>'+
                     '<div class="likeShareButtons">'+
-                    '<input type="button" value="Remove" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].nFPostID+')" >'+
+                    '<input type="button" value="Remove" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].epostID+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>';
@@ -79,7 +79,7 @@ const getServerData = function (){
                     '<div class="postProfileImage">'+
                     '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
-                    '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].nFPostID+'</div>'+
+                    '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].epostID+'</div>'+
                     '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
@@ -102,7 +102,7 @@ const getServerData = function (){
                     '<div class="emptySpaceLikeShare">'+
                     '</div>'+
                     '<div class="likeShareButtons">'+
-                    '<input type="button" value="Remove" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].nFPostID+')" >'+
+                    '<input type="button" value="Remove" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].epostID+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>';
