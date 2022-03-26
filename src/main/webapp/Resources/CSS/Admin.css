@@ -35,6 +35,7 @@ header > div#headerMainBar {
 header > div#headerButtons {
     /*child of header*/
     /*Button that displays in smaller screen size to make the page mobile responsive*/
+    margin-left: 40%;
     flex: 1;
     display: none;
 
@@ -609,8 +610,8 @@ div#content > div#notifications {
 }
 
 div#content > div#notifications > div#request {
-   /*child of notification*/
-   /* flex-basis: 50%;*/ /* DON'T DELETE THIS... This is kept for future modifications*/
+    /*child of notification*/
+    /* flex-basis: 50%;*/ /* DON'T DELETE THIS... This is kept for future modifications*/
     flex: 1;
     display: flex; /* container of singleNotification*/
     flex-direction: column;
