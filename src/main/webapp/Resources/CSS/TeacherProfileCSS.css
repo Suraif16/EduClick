@@ -442,6 +442,7 @@ div#content{
 
     background-color: #4775c4;
     padding: 1%;
+    display: flex;
 
 
 }
@@ -640,10 +641,12 @@ input[type="button"]:active{
 }
 .postTimeAndDate{
 
-    flex-basis: 19.9%;
+    flex-basis: 30%;
     margin: auto;
     font-size: x-small;
     color: white;
+
+
 
 }
 
