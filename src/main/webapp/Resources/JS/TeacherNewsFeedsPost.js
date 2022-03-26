@@ -98,7 +98,6 @@ const postNewsFeeds = function () {
         } else if (jsonResponse.serverResponse === "Allowed") {
 
             const postContents = document.getElementById("postContents");
-            postContents.innerHTML='';
             let now = new Date().getTime();
             let extraTime = 3000;
             while (new Date().getTime() < now + extraTime) {
@@ -168,7 +167,7 @@ const postNewsFeeds = function () {
                 postContents.innerHTML += innerPreviouseHTML;
 
 
-            }else if(jsonResponse.NewsFeedsPost.imageStatus === 'false' && jsonResponse.NewsFeedsPost.caption !==''){
+            }else if(jsonResponse.NewsFeedsPost.caption !==''){
 
                 let innerPreviouseHTML = postContents.innerHTML;
                 postContents.innerHTML = '        <div class="post">    ' +
@@ -223,7 +222,7 @@ const postNewsFeeds = function () {
                 postContents.innerHTML += innerPreviouseHTML;
                 return postContents;
 
-            }else if (jsonResponse.NewsFeedsPost.imageStatus === 'true' && jsonResponse.NewsFeedsPost.caption === '')
+            }else if (jsonResponse.NewsFeedsPost.imageStatus === 'true')
             {
 
                 let innerPreviouseHTML = postContents.innerHTML;
