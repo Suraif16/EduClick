@@ -247,6 +247,19 @@
 
     <!-- end of the TeacherClassroomListServlet-->
 
+    <!-- beginning of OTPDisplayUserNameServlet-->
+    <servlet>
+        <servlet-name>OTPDisplayUserName</servlet-name>
+        <servlet-class>Controller.OTP.OTPDisplayUserNameServlet</servlet-class>
+        <load-on-startup>10</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OTPDisplayUserName</servlet-name>
+        <url-pattern>/otpDisplayUserName</url-pattern>
+    </servlet-mapping>
+    <!-- end of OTPDisplayUserNameServlet-->
+
     <!-- beginning of OTPGenerateServlet-->
     <servlet>
         <servlet-name>OPTGenerate</servlet-name>

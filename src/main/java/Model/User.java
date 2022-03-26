@@ -224,7 +224,8 @@ public class User {
                         jsonObject.put( "firstName" , userList.get(i).getFirstName() );
                         jsonObject.put( "lastName" , userList.get(i).getLastName() );
                         jsonObject.put( "friendStatus" , addFriendsDAO.checkIsFriend( user.getUserId() , userList.get(i).getUserId() ) );
-                        jsonObject.put( "friendRequestStatus" , friendRequestDAO.checkIsRequested( user.getUserId() , userList.get(i).getUserId() ));
+                        jsonObject.put( "friendRequestStatus" , friendRequestDAO.checkIsRequested( user.getUserId() , userList.get(i).getUserId() ) );
+                        jsonObject.put( "receivedFriendRequestStatus" , friendRequestDAO.checkIsRequested( userList.get(i).getUserId() , user.getUserId() ) );
                         jsonObject.put( "followStatus" , followsDAO.checkIsFollow( userList.get(i).getUserId() , user.getUserId() ) );
                         teacherJsonList.add( jsonObject );
 
@@ -240,6 +241,7 @@ public class User {
                         jsonObject.put( "lastName" , userList.get(i).getLastName() );
                         jsonObject.put( "friendStatus" , addFriendsDAO.checkIsFriend( user.getUserId() , userList.get(i).getUserId() ) );
                         jsonObject.put( "friendRequestStatus" , friendRequestDAO.checkIsRequested( user.getUserId() , userList.get(i).getUserId() ));
+                        jsonObject.put( "receivedFriendRequestStatus" , friendRequestDAO.checkIsRequested( userList.get(i).getUserId() , user.getUserId() ) );
                         jsonObject.put( "followStatus" , followsDAO.checkIsFollow( user.getUserId() , userList.get(i).getUserId() ) );
                         teacherJsonList.add( jsonObject );
 
