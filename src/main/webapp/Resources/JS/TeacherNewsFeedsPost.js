@@ -2,6 +2,10 @@ const mimeTypeArray = [ "image/apng" , "image/avif" , "image/jpeg" , "image/png"
 
 const showNewsFeedsPostForm = function (){
 
+   document.getElementById("addNewsFeedFormTextArea").value=null;
+    document.getElementById( "inputImage" ).value = null;
+
+
     const addEducationPostForm = document.getElementById( "addNewsFeedForm" );
 
     if ( addEducationPostForm.style.display === "flex" ){
@@ -20,8 +24,6 @@ const postNewsFeeds = function () {
 
     let message = document.getElementById("addNewsFeedFormTextArea").value;
     let images = document.getElementById("inputImage").files;
-
-    // console.log( message , images );
 
     if (message === "" && images.length === 0) {
 
