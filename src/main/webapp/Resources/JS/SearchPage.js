@@ -414,7 +414,7 @@ const cancelFriendRequestServer = function ( toUserId , addFriendButton , cancel
         }
 
     }
-    httpreq.open( "POST" , "/EduClick_war_exploded/cancelFriendRequest" , true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/cancelFriendRequest" , true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send( "toId=" + toUserId);
 
