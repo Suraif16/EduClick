@@ -32,10 +32,14 @@ public class ReportDisplayDAO {
         PreparedStatement preparedStatement = null;
         PreparedStatement preparedStatement1 = null;
         PreparedStatement preparedStatement2 = null;
+        PreparedStatement preparedStatement3 = null;
+        PreparedStatement preparedStatement4 = null;
 
         ResultSet resultSet = null;
         ResultSet resultSet1 = null;
         ResultSet resultSet2 = null;
+        ResultSet resultSet3 = null;
+        ResultSet resultSet4 = null;
 
         try{
 
@@ -51,6 +55,12 @@ public class ReportDisplayDAO {
 
             String sql2 = "SELECT ImagePath FROM News_Feed_Image WHERE NFPostID = ?";
             preparedStatement2 = connection.prepareStatement( sql2 );
+
+            String sql3 = "SELECT T_UserID FROM Posts WHERE NFPostID = ?";
+            preparedStatement3 = connection.prepareStatement( sql3);
+
+            String sql4 = "SELECT FirstName,LastName FROM Users WHERE UserID = ?";
+            preparedStatement4 = connection.prepareStatement( sql4 );
 
             resultSet = preparedStatement.executeQuery();
             System.out.println("dao");
@@ -90,6 +100,36 @@ public class ReportDisplayDAO {
                     jsonObject.put("imagePath",ImagePath);
                 }
 
+                preparedStatement3.setString(1, NF_postID);
+                resultSet3 = preparedStatement3.executeQuery();
+                String UserID = null;
+                if (resultSet3.next()) {
+                    UserID = resultSet3.getString("T_UserID");
+
+                    System.out.println("UserID " + UserID);
+                }
+
+                preparedStatement4.setString(1, UserID);
+                resultSet4 = preparedStatement4.executeQuery();
+                if (resultSet4.next()) {
+                    String FirstName = resultSet4.getString("FirstName");
+                    String LastName = resultSet4.getString("LastName");
+
+                    jsonObject.put("firstName", FirstName);
+                    jsonObject.put("lastName", LastName);
+
+                    System.out.println("FirstName " + FirstName);
+                    System.out.println("LastName " + LastName);
+
+                }
+
+
+
+
+
+
+
+
                 jsonArray.put( jsonObject );
             }
 
@@ -108,10 +148,14 @@ public class ReportDisplayDAO {
                 if ( resultSet != null )resultSet.close();
                 if ( resultSet1 != null )resultSet1.close();
                 if ( resultSet2 != null )resultSet2.close();
+                if ( resultSet3 != null )resultSet3.close();
+                if ( resultSet4 != null )resultSet4.close();
 
                 if ( preparedStatement != null )preparedStatement.close();
                 if ( preparedStatement1 != null )preparedStatement1.close();
                 if ( preparedStatement2 != null )preparedStatement2.close();
+                if ( preparedStatement3 != null )preparedStatement3.close();
+                if ( preparedStatement4 != null )preparedStatement4.close();
 
                 if ( connection != null )connection.close();
             }catch ( SQLException E ){ E.printStackTrace(); }
