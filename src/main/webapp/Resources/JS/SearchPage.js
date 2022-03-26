@@ -178,7 +178,13 @@ const displayTeacher = function ( jsonResponse ){
             if (userTypeValue === "Teacher"){ /* here this checks the user type the current logedin user (my). not the
                     user whose profile is checked...*/
 
-                if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === false ){
+                if ( jsonResponse.searchResult[i].receivedFriendRequestStatus === true ){
+
+                    htmlString += '                <div>' +
+                         jsonResponse.searchResult[i].firstName + " " +jsonResponse.searchResult[i].lastName + ' has sent you a friend Request ' +
+                        '                </div>';
+
+                }else if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === false ){
 
                     htmlString += '                <div>' +
                         '                    <input style="display:block;" id="addFriend'+ jsonResponse.searchResult[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
@@ -251,7 +257,13 @@ const displayStudent = function ( jsonResponse ){
             if (userTypeValue === "Student"){ /* here this checks the user type the current logedin user (my). not the
                     user whose profile is checked...*/
 
-                if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === false ){
+                if ( jsonResponse.searchResult[i].receivedFriendRequestStatus === true ){
+
+                    htmlString += '                <div>' +
+                        jsonResponse.searchResult[i].firstName + " " +jsonResponse.searchResult[i].lastName + ' has sent you a friend Request ' +
+                        '                </div>';
+
+                }else if ( jsonResponse.searchResult[i].friendStatus === false && jsonResponse.searchResult[i].friendRequestStatus === false ){
 
                     htmlString += '                <div>' +
                         '                    <input style="display:block;" id="addFriend'+ jsonResponse.searchResult[i].userID +'" type="button" value="Add Friend" onclick="addFriendCancel(' + jsonResponse.searchResult[i].userID +')">' +
