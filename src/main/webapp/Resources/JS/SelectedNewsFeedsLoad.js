@@ -1,7 +1,5 @@
 const  LoadSelectedNewsFeeds = function (){
 
-    console.log("bjxhsbaj");
-
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
@@ -26,7 +24,7 @@ const  LoadSelectedNewsFeeds = function (){
 
             for( let i=0; i<jsonResponse.jsonArray1.length;i++){
 
-                   console.log(jsonResponse.jsonArray1[i].Caption);
+                   console.log(jsonResponse.jsonArray1[i]);
 
                 if (jsonResponse.jsonArray1[i].path !== "" && jsonResponse.jsonArray1[i].Caption !=="") {
 
@@ -87,7 +85,7 @@ const  LoadSelectedNewsFeeds = function (){
                     postContents.innerHTML += innerPreviouseHTML;
 
 
-                }else if(jsonResponse.jsonArray1[i].path === "" && jsonResponse.jsonArray1[i].Caption !==""){
+                }else if(jsonResponse.jsonArray1[i].Caption !=="" && jsonResponse.jsonArray1[i].path === ""){
 
                     let innerPreviouseHTML = postContents.innerHTML;
                     postContents.innerHTML = '        <div class="post">    ' +
@@ -142,9 +140,9 @@ const  LoadSelectedNewsFeeds = function (){
                     postContents.innerHTML += innerPreviouseHTML;
 
 
-                }else if (jsonResponse.jsonArray1[i].Caption === "" && jsonResponse.jsonArray1[i].path !== "")
+                }else if (jsonResponse.jsonArray1[i].path !== "" && jsonResponse.jsonArray1[i].Caption ==="")
                 {
-//**********
+
                     let innerPreviouseHTML = postContents.innerHTML;
                     postContents.innerHTML = '        <div class="post">    ' +
                         '              <div class="postContentContainer">' +
@@ -198,9 +196,6 @@ const  LoadSelectedNewsFeeds = function (){
 
 
                     postContents.innerHTML += innerPreviouseHTML;
-
-
-
 
 
                 }
