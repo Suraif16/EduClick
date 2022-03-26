@@ -222,8 +222,6 @@ public class Post {
             return array;
         }
 
-        //***********
-
 
     public Object getProfilePageLoadedNewsFeedsId(String userId) throws SQLException {
 
@@ -266,7 +264,7 @@ public class Post {
             array.put(newsFeedDetails);
 
         }
-        System.out.println(array + "ttttt");
+
 
         return array;
     }
