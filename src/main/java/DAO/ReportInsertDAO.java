@@ -4,68 +4,71 @@ import Database.DBConnectionPool;
 import Model.Report;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ReportInsertDAO {
 
 
     private static String generatedReportId;
-    private static String UserID;
-    private static String AnswerID;
-    private static String NF_postID;
-    private static String EpostID;
 
-
-    public static String insert(Report report){
+    public static String insert(String contentID, String type){
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
+        String generatedKey = null;
 
         try {
+            String UserID = "";
+            String AnswerID = "";
+            String NF_postID = "";
+            String EpostID = "";
             connection = dbConnectionPool.dataSource.getConnection();
-            if(report.getType().equals("educationalPostOPtion")){
-                 UserID = report.getContentID();
-                 AnswerID = "";
-                 NF_postID = "";
-                 EpostID = "";
-            }else if(report.getType().equals("answerOPtion")){
-                 UserID = "";
-                 AnswerID = report.getContentID();
-                 NF_postID = "";
-                 EpostID = "";
-            }else if(report.getType().equals("postOPtion")){
-                 UserID = "";
-                 AnswerID = "";
-                 NF_postID = report.getContentID();
-                 EpostID = "";
-            }else if(report.getType().equals("userReportOPtion")){
-                 UserID = "";
-                 AnswerID = "";
-                 NF_postID = "";
-                 EpostID = report.getContentID();
+            if(type.equals("userReportOPtion")){
+                 UserID = contentID;
+                 AnswerID = "0";
+                 NF_postID = "0";
+                 EpostID = "0";
+            }else if(type.equals("answerOPtion")){
+                 UserID = "0";
+                 AnswerID = contentID;
+                 NF_postID = "0";
+                 EpostID = "0";
+            }else if(type.equals("postOPtion")){
+                 UserID = "0";
+                 AnswerID = "0";
+                 NF_postID = contentID;
+                 EpostID = "0";
+            }else if(type.equals("educationalPostOPtion")){
+                 UserID = "0";
+                 AnswerID = "0";
+                 NF_postID = "0";
+                 EpostID = contentID;
             }
-            System.out.println(UserID);
-            System.out.println(AnswerID);
-            System.out.println(NF_postID);
-            System.out.println(EpostID);
+            System.out.println(UserID+" DAO");
+            System.out.println(AnswerID+" DAO");
+            System.out.println(NF_postID+" DAO");
+            System.out.println(EpostID+" DAO");
             int Count = 1;
-            int i=Integer.parseInt(UserID);
-            String sql = "INSERT INTO Report (Count,UserID,AnswerID,NF_postID,EpostID) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO Report (Count,Report_delete_flag,UserID,AnswerID,NF_postID,EpostID) VALUES (?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1,Count );
-            preparedStatement.setString(2, UserID);//it didnt work
-            preparedStatement.setString(3, AnswerID);
-            preparedStatement.setString(4, NF_postID);
-            preparedStatement.setString(5, EpostID);
+            preparedStatement.setInt(1,Count);
+            preparedStatement.setBoolean(2,false);
+            preparedStatement.setString(3, String.valueOf(UserID));
+            preparedStatement.setString(4, String.valueOf(AnswerID));
+            preparedStatement.setString(5, String.valueOf(NF_postID));
+            preparedStatement.setString(6, String.valueOf(EpostID));
+            preparedStatement.executeUpdate();
 
-            preparedStatement.execute();
+
+
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
-            if (resultSet.next()){
-                generatedReportId = resultSet.getString(1);
-
+            if( resultSet.next() ){
+                generatedKey = resultSet.getString(1);
             }
-            //returns userID
+
             resultSet.close();
             preparedStatement.close();
 
@@ -75,7 +78,7 @@ public class ReportInsertDAO {
         finally {
             if (connection != null) try { connection.close(); }catch (Exception ignore) {}
         }
-        return generatedReportId;
+        return generatedKey;
     }
     public Report select(Report report) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -103,7 +106,6 @@ public class ReportInsertDAO {
                 report.setEpostID(EpostID);
             }
 
-
             resultSet.close();
             preparedStatement.close();
 
@@ -113,9 +115,38 @@ public class ReportInsertDAO {
             if (connection != null) try {
                 connection.close();
             } catch (Exception ignore) {
+                ignore.printStackTrace();
             }
         }
 
         return report;
     }
+
+    public void update(String ID, Integer count){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        System.out.println(ID+" update");
+        System.out.println(count+" update");
+        System.out.println(String.valueOf(count));
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "UPDATE Report SET Count = ? WHERE ReportID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString(1 , String.valueOf(count));
+            preparedStatement.setString(2 ,String.valueOf(ID));
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
+
+
+    }
+
 }

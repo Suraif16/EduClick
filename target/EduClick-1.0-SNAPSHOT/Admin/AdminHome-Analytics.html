@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Admin</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../Resources/CSS/Admin.css" type="text/css">
+    <link rel="stylesheet" href="../Resources/CSS/AdminHome-DashBoardCSS.css" type="text/css">
     <link rel="stylesheet" href="../Resources/CSS/Font.css" type="text/css">
 
 </head>
@@ -53,18 +53,18 @@
                     Student
                 </a>
             </div>
-            <!--<div class="classroomsListLinksItems">
+            <div class="classroomsListLinksItems">
                 <a href="../Admin/AdminHome-Analytics.html"  class="classRooms">
                   <i class='bx bx-bell'></i>
                     Analytics
                 </a>
-            </div>-->
-            <div class="classroomsListLinksItems">
+            </div>
+            <!--<div class="classroomsListLinksItems">
                 <a href=""  class="classRooms">
                   <i class='bx bx-cog' ></i>
                     Settings
                 </a>
-            </div>
+            </div>-->
         </div>
     </div>
 
@@ -72,94 +72,63 @@
 
 
     <div id="postContents" >
-
-
-<!-- 1--><div class="post">
-<!-- data-->
+        <div class="post">
+            <div class="postContentContainer">
+                <div class="postProfileSection">
+                    <a href="#" class="postProfile">
+                        <div class="postProfileName" >Teachers Increasing Chart</div>
+                    </a>
+                </div>
+            </div>
             <div class="postContentContainer">
                 <div class="postData">
-                    <div class="postMessage">
-                        <!--<div>-->
-                        <h2>Total No of Teachers</h1>
-                        <!--</div>-->
-                    </div>
-<!-- picture-->
                     <div class="postPicture">
                         <div class="postPictureImageContainer">
-                            <!--To only present the message without the picture, keep this value as null / empty-->
-                            <img class="postPictureImage" src="../Resources/Images/line-graph.jpg">
+                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-  <!-- search box-->
-
         </div>
 
-<!-- 2--><div class="post">
-      <!-- data-->
+        <div class="post">
+            <div class="postContentContainer">
+                <div class="postProfileSection">
+                    <a href="#" class="postProfile">
+                        <div class="postProfileName" >Students Increasing Chart</div>
+                    </a>
+                </div>
+            </div>
             <div class="postContentContainer">
                 <div class="postData">
-                    <div class="postMessage">
-                        <!--<div>-->
-                        <h2>Today Reg Teachers</h1>
-                        <!--</div>-->
-                    </div>
-      <!-- picture-->
                     <div class="postPicture">
                         <div class="postPictureImageContainer">
-                            <!--To only present the message without the picture, keep this value as null / empty-->
-                            <img class="postPictureImage" src="../Resources/Images/line-graph.jpg">
+                            <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-      <!-- search box-->
-
         </div>
 
-        <!-- 3--><div class="post">
-              <!-- data-->
-                    <div class="postContentContainer">
-                        <div class="postData">
-                            <div class="postMessage">
-                                <!--<div>-->
-                                <h2>Total No of Students</h1>
-                                <!--</div>-->
-                            </div>
-              <!-- picture-->
-                            <div class="postPicture">
-                                <div class="postPictureImageContainer">
-                                    <!--To only present the message without the picture, keep this value as null / empty-->
-                                    <img class="postPictureImage" src="../Resources/Images/line-graph.jpg">
-                                </div>
-                            </div>
+        <div class="post">
+            <div class="postContentContainer">
+                <div class="postProfileSection">
+                    <a href="#" class="postProfile">
+                        <div class="postProfileName" >Users Increasing Chart</div>
+                    </a>
+                </div>
+            </div>
+            <div class="postContentContainer">
+                <div class="postData">
+                    <div class="postPicture">
+                        <div class="postPictureImageContainer">
+                            <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
                         </div>
                     </div>
-              <!-- search box-->
-
                 </div>
-                <!-- 4--><div class="post">
-                      <!-- data-->
-                            <div class="postContentContainer">
-                                <div class="postData">
-                                    <div class="postMessage">
-                                        <!--<div>-->
-                                        <h2>Today Reg Students</h1>
-                                        <!--</div>-->
-                                    </div>
-                      <!-- picture-->
-                                    <div class="postPicture">
-                                        <div class="postPictureImageContainer">
-                                            <!--To only present the message without the picture, keep this value as null / empty-->
-                                            <img class="postPictureImage" src="../Resources/Images/line-graph.jpg">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                      <!-- search box-->
+            </div>
+        </div>
 
-                        </div>
     </div>
 </div>
 
@@ -171,20 +140,18 @@
             <img src="../Resources/Icons/Logo.png" class="logo">
         </a>
         <div id="headingSearch">
-            <div id="searchBar">
-                <input id="searchBarText" type="text" placeholder="Search">
-            </div>
+            <h1 id="headerHeading">EduClick</h1>
         </div>
         <a id="headerUserProfileId" href="TeacherProfile.html" class="profile">
-            <div id="headerUserName">User Name</div>
+            <div id="headerUserName">Admin</div>
             <div class="profileImage">
                 <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
             </div>
         </a>
-        <div id="headerNotification" >
+        <!--<div id="headerNotification" >
             <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
             <input type="button" value="    "  id="notificationSettings">
-        </div>
+        </div>-->
         <div id="logout">
             <a href="/EduClick_war_exploded/Logout">
                 Logout
@@ -201,6 +168,8 @@
 </footer>-->
 
 <script src="../Resources/JS/Settings.js" defer></script>
+<script src="../Resources/JS/Chart.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 </body>
 

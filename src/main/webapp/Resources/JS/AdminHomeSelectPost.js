@@ -1,3 +1,10 @@
+document.onreadystatechange = function (){
+    if ( document.readyState === 'complete' ){
+        /* when the document is loaded and complete this function will run*/
+        postAutoprint ();
+    }
+}
+
 function postAutoprint (){
     getServerData();
     console.log( "send signal" );
@@ -35,7 +42,7 @@ const getServerData = function (){
                     '<div class="postProfileImage">'+
                     '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
-                    '<div class="postProfileName" >Admin</div>'+
+                    '<div class="postProfileName" >EduClick</div>'+
                     '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
@@ -53,7 +60,7 @@ const getServerData = function (){
                     '</div>'+
                     '<div class="postContentContainer">'+
                     '<div class="postData">'+
-                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData()">'+
+                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+jsonResponse.AdminPostDetails[i].aPId+')">'+
                     '</div>'+
                     '</div>'+
                     '</div>'+
@@ -67,7 +74,7 @@ const getServerData = function (){
                     '<div class="postProfileImage">'+
                     '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
-                    '<div class="postProfileName" >Admin</div>'+
+                    '<div class="postProfileName" >EduClick</div>'+
                     '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
@@ -80,7 +87,7 @@ const getServerData = function (){
                     '</div>'+
                     '<div class="postContentContainer">'+
                     '<div class="postData">'+
-                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+1+')" >'+
+                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+jsonResponse.AdminPostDetails[i].aPId+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>'+

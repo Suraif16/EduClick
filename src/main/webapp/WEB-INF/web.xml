@@ -247,6 +247,19 @@
 
     <!-- end of the TeacherClassroomListServlet-->
 
+    <!-- beginning of OTPDisplayUserNameServlet-->
+    <servlet>
+        <servlet-name>OTPDisplayUserName</servlet-name>
+        <servlet-class>Controller.OTP.OTPDisplayUserNameServlet</servlet-class>
+        <load-on-startup>10</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OTPDisplayUserName</servlet-name>
+        <url-pattern>/otpDisplayUserName</url-pattern>
+    </servlet-mapping>
+    <!-- end of OTPDisplayUserNameServlet-->
+
     <!-- beginning of OTPGenerateServlet-->
     <servlet>
         <servlet-name>OPTGenerate</servlet-name>
@@ -983,6 +996,75 @@
     </servlet-mapping>
 
     <!-- end of Delete Classroom servlet-->
+    <servlet>
+        <servlet-name>adminpostdelete</servlet-name>
+        <servlet-class>Controller.AdminDataDeleteServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminpostdelete</servlet-name>
+        <url-pattern>/AdminDataDelete</url-pattern>
+    </servlet-mapping>
+    <!-- correct-->
+
+    <servlet>
+        <servlet-name>adminnewefeedselect</servlet-name>
+        <servlet-class>Controller.ReportNewsFeedSelectServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminnewefeedselect</servlet-name>
+        <url-pattern>/ReportnewsfeedDataselect</url-pattern>
+    </servlet-mapping>
+    <!-- correct-->
+
+
+    <servlet>
+        <servlet-name>admindeletereport</servlet-name>
+        <servlet-class>Controller.AdminDeleteReportPostServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admindeletereport</servlet-name>
+        <url-pattern>/AdminDeleteReportPost</url-pattern>
+    </servlet-mapping>
+    <!-- correct-->
+
+    <servlet>
+        <servlet-name>adminnewsfeedselect</servlet-name>
+        <servlet-class>Controller.ReportEducationalSelectServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminnewsfeedselect</servlet-name>
+        <url-pattern>/ReporteducationalDataselect</url-pattern>
+    </servlet-mapping>
+    <!-- correct-->
+    <servlet>
+        <servlet-name>admindeletereporteducationalpost</servlet-name>
+        <servlet-class>Controller.AdminDeleteReportEducationalServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admindeletereporteducationalpost</servlet-name>
+        <url-pattern>/AdminDeleteReportEducationalpost</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>chart</servlet-name>
+        <servlet-class>Controller.ChartServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>chart</servlet-name>
+        <url-pattern>/Chart</url-pattern>
+    </servlet-mapping>
 
     <!-- beginning of updating bell icon date and time servlet-->
 
@@ -1039,6 +1121,20 @@
     </servlet-mapping>
 
     <!-- end of unenroll classroom servlet-->
+
+    <!-- beginning of load news feeds in teacher profile page-->
+
+    <servlet>
+        <servlet-name>TeacherProfilePageNewsFeedsloadServlet</servlet-name>
+        <servlet-class>Controller.TeacherProfilePageNewsFeedsLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherProfilePageNewsFeedsloadServlet</servlet-name>
+        <url-pattern>/teacher/TeacherProfilePageNewsFeedsLoadServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of load news feeds in teacher profile page -->
 
     <session-config>
 

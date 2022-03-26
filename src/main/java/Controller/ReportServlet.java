@@ -25,16 +25,16 @@ public class ReportServlet extends HttpServlet {
 
         String id = request.getParameter("id");
         String type = request.getParameter("type");
-        System.out.println(id);
-        System.out.println(type);
+        System.out.println(id+"servlet");
+        System.out.println(type+"servlet");
         Report report1 = new Report();
-        report1 = report1.search();
+        report1 = report1.selectdao();
 
         if (id.equals(report1.getUserID()) || id.equals(report1.getAnswerID()) || id.equals(report1.getNF_postID()) || id.equals(report1.getEpostID())){
-
+            report1.updatedao(report1.getReportID(),report1.getCount()+1);
         }else {
-            Report report = new Report(id,type);
-            report.report();
+            Report report = new Report();
+            report.reportinsert(id,type);
         }
 
         out.write(jsonObject.toString());

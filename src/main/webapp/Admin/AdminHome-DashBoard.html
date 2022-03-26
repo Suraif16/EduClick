@@ -29,7 +29,7 @@
                 </a>
             </div>-->
             <div class="classroomsListLinksItems"> <!--this where the classroom link begins-->
-                <a href="AdminHome-Report-Comment.html" class="classRooms">
+                <a href="AdminHome-Report-Post.html" class="classRooms">
                   <i class='bx bx-comment' ></i>
                     Report
                 </a>
@@ -53,17 +53,11 @@
                 </a>
             </div>
             <!--<div class="classroomsListLinksItems">
-                <a href="../Admin/AdminHome-Analytics.html"  class="classRooms">
-                  <i class='bx bx-bell'></i>
-                    Analytics
-                </a>
-            </div>-->
-            <div class="classroomsListLinksItems">
                 <a href=""  class="classRooms">
                   <i class='bx bx-cog' ></i>
                     Settings
                 </a>
-            </div>
+            </div>-->
         </div>
     </div>
 
@@ -150,8 +144,66 @@
               </div>
           </div>
       </div>
+    </div>
 
+        <div id="postContents1" >
+        <div class="post">
+            <div class="postContentContainer">
+                <div class="postProfileSection">
+                    <a href="#" class="postProfile">
+                        <div class="postProfileName" >Teachers Increasing Chart</div>
+                    </a>
+                </div>
+            </div>
+            <div class="postContentContainer">
+                <div class="postData">
+                    <div class="postPicture">
+                        <div class="postPictureImageContainer">
+                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="post">
+            <div class="postContentContainer">
+                <div class="postProfileSection">
+                    <a href="#" class="postProfile">
+                        <div class="postProfileName" >Students Increasing Chart</div>
+                    </a>
+                </div>
+            </div>
+            <div class="postContentContainer">
+                <div class="postData">
+                    <div class="postPicture">
+                        <div class="postPictureImageContainer">
+                            <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="postContentContainer">
+                <div class="postProfileSection">
+                    <a href="#" class="postProfile">
+                        <div class="postProfileName" >Users Increasing Chart</div>
+                    </a>
+                </div>
+            </div>
+            <div class="postContentContainer">
+                <div class="postData">
+                    <div class="postPicture">
+                        <div class="postPictureImageContainer">
+                            <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
 
     </div>
 </div>
@@ -164,20 +216,18 @@
             <img src="../Resources/Icons/Logo.png" class="logo">
         </a>
         <div id="headingSearch">
-            <div id="searchBar">
-                <input id="searchBarText" type="text" placeholder="Search">
-            </div>
+            <h1 id="headerHeading">EduClick</h1>
         </div>
         <a id="headerUserProfileId" href="TeacherProfile.html" class="profile">
-            <div id="headerUserName">User Name</div>
+            <div id="headerUserName">Admin</div>
             <div class="profileImage">
                 <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
             </div>
         </a>
-        <div id="headerNotification" >
+        <!--<div id="headerNotification" >
             <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
             <input type="button" value="    "  id="notificationSettings">
-        </div>
+        </div>-->
         <div id="logout">
             <a href="/EduClick_war_exploded/Logout">
                 Logout
@@ -195,6 +245,8 @@
 
 <script src="../Resources/JS/Admin.js"></script>
 <script src="../Resources/JS/Settings.js" defer></script>
+<script src="../Resources/JS/Chart.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 </body>
 

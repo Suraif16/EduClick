@@ -386,7 +386,7 @@ div#content > div#postContents {
 
     /* child of postProfile*/
     margin: auto auto auto 3px;
-    flex-basis: 90%;
+    flex-basis: 80%;
 
 
 }
@@ -1387,7 +1387,7 @@ div#content > div#rightPanel > div#rightPanelClassroom{
 
 .postTimeAndDate{
 
-    flex-basis: 25%;
+    flex-basis: 19.9%;
     margin: auto;
     font-size: x-small;
     color: white;
@@ -1457,7 +1457,8 @@ div#content > div#rightPanel > div#rightPanelClassroom{
 
     #userOptionMenu{
 
-        width: 15%;
+        flex-basis: 0.1%;
+        margin: auto;
 
     }
 

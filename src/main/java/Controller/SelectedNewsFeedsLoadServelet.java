@@ -34,7 +34,6 @@ public class SelectedNewsFeedsLoadServelet extends HttpServlet {
         String userId = user.getUserId();
         System.out.println("user id = " + userId);
 
-
         Post post = new Post();
 
         JSONArray jsonArray1 = new JSONArray();
@@ -44,7 +43,6 @@ public class SelectedNewsFeedsLoadServelet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         jsonObject.put("jsonArray1",jsonArray1);
 
 
