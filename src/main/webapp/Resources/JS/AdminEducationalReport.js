@@ -1,3 +1,10 @@
+document.onreadystatechange = function (){
+    if ( document.readyState === 'complete' ){
+        /* when the document is loaded and complete this function will run*/
+        postAutoprint ();
+    }
+}
+
 function postAutoprint (){
     getServerData();
     console.log( "send report signal" );
