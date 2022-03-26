@@ -606,10 +606,10 @@ div.mcqSingleAnswer{
     /*child of mcqAnswerContainer*/
     background-color: #4775c4;
     margin: 1%;
-    padding: 4%;
+    padding: 1%;
     text-align: center;
     flex-grow:1;
-    justify-content: center;
+
 
 
 }
@@ -641,14 +641,14 @@ input[type="radio"]{
 div.correctMcqSingleAnswer{
     /*additional class to distinquish  correct answers*/
 
-    background-color: #EE3818;
-    padding: 4%;
+    background-color: crimson;
+    padding: 1%;
 
 }
 
 div.choiceMcqSingleAnswer{
-    background-color: #6BDD29;
-    padding: 4%;
+    background-color: #27ae60;
+    padding: 1%;
 
 }
 
@@ -867,6 +867,32 @@ input.studentDisable{
 
 
 /*right panel ends here*/
+
+div#content > div#classroomDisabledMessage {
+    margin: 10% auto auto 23.2%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: fixed;
+    width: 45%;
+    height: 15%;
+    padding: 1%;
+    z-index: 1;
+    background-color: white;
+    height-max: 80%;
+    display: none; /*becomes a container to the request*/
+    flex-direction: column;
+
+}
+
+div#content > div#classroomDisabledMessage > div#disableText{
+    color: crimson;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    flex-grow: 1;
+    margin: 5% auto auto 15.5%;
+    font-family: 'Strait', sans-serif;
+
+}
 
 
 div#content > div#notifications {
