@@ -101,7 +101,7 @@ function completeNFLoad(httpreq) {
                 postContents.innerHTML += innerPreviouseHTML;
 
 
-            }else if(jsonResponse.jsonArray1[i].path === "" && jsonResponse.jsonArray1[i].Caption !==""){
+            }else if(jsonResponse.jsonArray1[i].Caption !==""){
 
                 let innerPreviouseHTML = postContents.innerHTML;
                 postContents.innerHTML = '        <div class="post">    ' +
@@ -156,9 +156,9 @@ function completeNFLoad(httpreq) {
                 postContents.innerHTML += innerPreviouseHTML;
 
 
-            }else if (jsonResponse.jsonArray1[i].Caption === "" && jsonResponse.jsonArray1[i].path !== "")
+            }else if (jsonResponse.jsonArray1[i].path !== "")
             {
-//**********
+
                 let innerPreviouseHTML = postContents.innerHTML;
                 postContents.innerHTML = '        <div class="post">    ' +
                     '              <div class="postContentContainer">' +
