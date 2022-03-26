@@ -37,7 +37,7 @@ const getServerData = function (){
                     '<div class="postProfileImage">'+
                     '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
-                    '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].nFPostID+'</div>'+
+                    '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].firstName+' '+jsonResponse.ReportPostDetails[i].lastName+'</div>'+
                     '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
@@ -79,7 +79,7 @@ const getServerData = function (){
                     '<div class="postProfileImage">'+
                     '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
-                    '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].nFPostID+'</div>'+
+                    '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].firstName+' '+jsonResponse.ReportPostDetails[i].lastName+'</div>'+
                     '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
