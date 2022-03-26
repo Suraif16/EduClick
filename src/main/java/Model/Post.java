@@ -162,9 +162,9 @@ public class Post {
             NewsFeedUserIdList.add(SharedNewsFeedsIdList.get(i));
         }
 
-        Set<String> set = new HashSet<String>( NewsFeedUserIdList );
+       /* Set<String> set = new HashSet<String>( NewsFeedUserIdList );*/
 
-        JSONArray array = new JSONArray( set );
+        JSONArray array = new JSONArray(  );
       //  System.out.println(array);
 
       //  System.out.println(NewsFeedUserIdList);
