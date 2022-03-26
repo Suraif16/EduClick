@@ -605,8 +605,11 @@ div.mcqAnswerContainer{
 div.mcqSingleAnswer{
     /*child of mcqAnswerContainer*/
     background-color: #4775c4;
-    margin: 1.2%;
-    padding: 2%;
+    margin: 1%;
+    padding: 4%;
+    text-align: center;
+    flex-grow:1;
+    justify-content: center;
 
 
 }
