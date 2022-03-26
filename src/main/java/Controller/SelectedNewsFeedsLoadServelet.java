@@ -44,7 +44,6 @@ public class SelectedNewsFeedsLoadServelet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         jsonObject.put("jsonArray1",jsonArray1);
 
 
