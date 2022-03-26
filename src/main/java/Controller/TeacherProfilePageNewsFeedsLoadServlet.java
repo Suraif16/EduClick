@@ -35,8 +35,6 @@ public class TeacherProfilePageNewsFeedsLoadServlet extends HttpServlet  {
         String fullName = user.getFullName(userId);
         System.out.println(fullName);
 
-        System.out.println(userId+"   YYYYYYYYYYYYYYYYY");
-
         Post post = new Post();
         JSONArray jsonArray1 = new JSONArray();
 
@@ -46,7 +44,6 @@ public class TeacherProfilePageNewsFeedsLoadServlet extends HttpServlet  {
             throwables.printStackTrace();
         }
 
-        System.out.println(jsonArray1 +"hhhh");
 
         jsonObject.put("fullName",fullName);
         jsonObject.put("jsonArray1",jsonArray1);
