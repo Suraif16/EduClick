@@ -1040,6 +1040,20 @@
 
     <!-- end of unenroll classroom servlet-->
 
+    <!-- beginning of load news feeds in teacher profile page-->
+
+    <servlet>
+        <servlet-name>TeacherProfilePageNewsFeedsloadServlet</servlet-name>
+        <servlet-class>Controller.TeacherProfilePageNewsFeedsLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherProfilePageNewsFeedsloadServlet</servlet-name>
+        <url-pattern>/teacher/TeacherProfilePageNewsFeedsLoadServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of load news feeds in teacher profile page -->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
