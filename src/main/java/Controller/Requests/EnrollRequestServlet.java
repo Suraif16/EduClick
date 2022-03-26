@@ -33,11 +33,7 @@ public class EnrollRequestServlet extends HttpServlet {
         System.out.println(action);
 
         Classroom classroom = new Classroom();
-        String teacherId = classroom.getClassroomOwnerId(ClassroomId);
-        String param = "Classroom Request";
 
-        Notifications notifications = new Notifications();
-        notifications.insertNotifications(user.getUserId(),teacherId,"0",param);
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse" , "Allowed" );
