@@ -363,6 +363,22 @@ div#content > div#postContents {
 
 
 }
+div#content > div#postContents1 {
+
+    /*child of div#postContents*/
+
+    flex-basis: 50%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 1% 0 0 30%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;
+    padding: 1%;
+    /*making this a container for post class*/
+    display: flex;
+    flex-direction: column;
+
+
+}
 
 .post{
 
