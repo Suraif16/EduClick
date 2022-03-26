@@ -77,49 +77,50 @@
 
 
     <div id="postContents" >
-        <!--<div class="post">
-              <div class="postContentContainer">
-                  <div class="postProfileSection">
-                      <a href="#" class="postProfile">
-                          <div class="postProfileImage">
-                              <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
-                          </div>
 
-                          <div class="postProfileName" >User Name</div>
-                          <div class="postTimeAndDate">18:32:26 | 03/25/2015</div>
-                      </a>
-                  </div>
-              </div>
+        <!--'<div class="post">'+
+              '<div class="postContentContainer">'+
+                  '<div class="postProfileSection">'+
+                      '<a href="#" class="postProfile">'+
+                          '<div class="postProfileImage">'+
+                             ' <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
+                          '</div>'+
 
-              <div class="postContentContainer">
-                  <div class="postData">
-                      <div class="postMessage">
+                          '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].firstName+' '+jsonResponse.ReportPostDetails[i].lastName+'</div>'+
+                          '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
+                      '</a>'+
+                  '</div>'+
+              '</div>'+
 
-                          Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
+              '<div class="postContentContainer">'+
+                  '<div class="postData">'+
+                      '<div class="postMessage">'+
 
-                      </div>
+                    jsonResponse.ReportPostDetails[i].caption+
 
-                      <div class="postPicture">
-                          <div class="postPictureImageContainer">
-                              <img class="postPictureImage" src="../Resources/Images/Finding-the-Correct-Question-Words3.jpg">
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                      '</div>'+
 
-              <div class="postContentContainer">
-                  <div class="postLikeShareButtons">
-                    <a href="#" class="postProfile">
-                        <div class="postProfileName" >Count of the report : 100</div>
-                    </a>
-                      <div class="emptySpaceLikeShare" ></div>
-                      <div class="likeShareButtons" >
-                          <input type="button" value="Remove" class="share">
-                      </div>
-                  </div>
-              </div>
+                      '<div class="postPicture">'+
+                          '<div class="postPictureImageContainer">+
+                              '<img class="postPictureImage" src="../Resources/Images/EducationalPostImages/' + jsonResponse.ReportPostDetails[i].epostID + '.jpeg">'+
+                          '</div>'+
+                      '</div>'+
+                  '</div>'+
+              '</div>'+
 
-          </div>-->
+              '<div class="postContentContainer">'+
+                  '<div class="postLikeShareButtons">'+
+                    '<a href="#" class="postProfile">'+
+                        '<div class="postProfileName" >'+'Count of the report :'+jsonResponse.ReportPostDetails[i].count+'</div>'+
+                    '</a>'+
+                      '<div class="emptySpaceLikeShare" ></div>'+
+                      '<div class="likeShareButtons" >'+
+                         '<input type="button" value="Remove" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].epostID+')" >'+
+                      '</div>'+
+                  '</div>'+
+              '</div>'+
+
+          '</div>';-->
 
     </div>
 </div>
