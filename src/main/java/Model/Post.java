@@ -197,22 +197,19 @@ public class Post {
         UserDAO userDAO = new UserDAO();
 
         ArrayList<String> NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
-        System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
+      //  System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
 
         JSONArray array = new JSONArray();
 
         for (int i = 0; i < NewsFeedUserIdList.size(); i++) {
 
             JSONObject newsFeedDetails = newsFeedsDAO.getNewsFeedsDetails(NewsFeedUserIdList.get(i));
-            System.out.println(newsFeedDetails);
+         //   System.out.println(newsFeedDetails);
             String imagePath = newsFeedsImageDAO.getImagePath((String) NewsFeedUserIdList.get(i));
-            System.out.println(imagePath);
          //   String ownerId = String.valueOf(postDAO.getOwnerId(NewsFeedUserIdList.get(i)));
 
 
             String ownerName = userDAO.getOwnerName(userId);
-            System.out.println(ownerName);
-
 
                 newsFeedDetails.put("ownerName", ownerName);
                 newsFeedDetails.put("path", imagePath);
@@ -224,6 +221,55 @@ public class Post {
         System.out.println(array);
             return array;
         }
+
+        //***********
+
+
+    public Object getProfilePageLoadedNewsFeedsId(String userId) throws SQLException {
+
+        PostDAO postDAO = new PostDAO();
+        NewsFeedsDAO newsFeedsDAO = new NewsFeedsDAO();
+        ShareDAO shareDAO = new ShareDAO();
+        NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
+        UserDAO userDAO = new UserDAO();
+
+        ArrayList<String> NewsFeedUserIdList = postDAO.getInsertedNewsFeedsId(userId);
+        //  System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
+        ArrayList<String>SharedNewsFeedsIdList = shareDAO.getSharedIdList(userId);
+        // System.out.println(SharedNewsFeedsIdList);
+
+
+
+        for(int i=0; i<SharedNewsFeedsIdList.size(); i++){
+            NewsFeedUserIdList.add(SharedNewsFeedsIdList.get(i));
+        }
+
+       // Set<String> set = new HashSet<String>( NewsFeedUserIdList );
+
+        JSONArray array = new JSONArray( );
+        //  System.out.println(array);
+
+        //  System.out.println(NewsFeedUserIdList);
+        for (int i = 0; i < NewsFeedUserIdList.size(); i++) {
+
+            JSONObject newsFeedDetails = newsFeedsDAO.getNewsFeedsDetails(NewsFeedUserIdList.get(i));
+
+            String imagePath = newsFeedsImageDAO.getImagePath((String) NewsFeedUserIdList.get(i));
+
+            String ownerId = String.valueOf(postDAO.getOwnerId(NewsFeedUserIdList.get(i)));
+
+            String ownerName = userDAO.getOwnerName(ownerId);
+
+            newsFeedDetails.put("ownerName",ownerName);
+            newsFeedDetails.put("path", imagePath);
+            newsFeedDetails.put("postId",NewsFeedUserIdList.get(i));
+            array.put(newsFeedDetails);
+
+        }
+        System.out.println(array + "ttttt");
+
+        return array;
+    }
 
 
 }
