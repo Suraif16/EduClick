@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.ShareDAO;
+import Model.Notifications;
 import Model.Requests;
 import Model.User;
 import org.json.JSONArray;
@@ -66,6 +67,14 @@ public class SharedNewsFeedsServletInsert extends HttpServlet {
         for(int i=0; i < friendList.size(); i++){
             shareDAO.insert(time, date, userId, friendList.get(i), SharedPostID);
         }
+
+        String param = "Shared";
+        ArrayList<String> notifieeList = new ArrayList<>();
+        notifieeList.addAll(followersList);
+        notifieeList.addAll(friendList);
+
+        Notifications notifications = new Notifications();
+        notifications.insertEpostNotificationsFromTeacher(userId,notifieeList,SharedPostID,param);
 
         out.write( jsonObject.toString() );
         out.close();

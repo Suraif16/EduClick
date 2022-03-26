@@ -1,9 +1,7 @@
 package Controller;
 
+import Model.*;
 import Model.HandlingImages_Multipart.handleImageAndPostUploads;
-import Model.NewsFeeds;
-import Model.Post;
-import Model.User;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import static java.time.LocalDate.now;
 
@@ -74,6 +73,17 @@ public class NewsFeedsInsertServlet extends HttpServlet {
         JSONArray NewsFeedsPost = new JSONArray();
 
         NewsFeedsPost = (JSONArray) post.getLoadedInsertedNewsFeedsId(userId);
+
+        Requests requests = new Requests();
+        ArrayList<String> followersList = requests.getTeacherFollowers(userId);
+        ArrayList<String> friendlist = requests.getTeacherFriends(userId);
+        ArrayList<String> notifieeList =  new ArrayList<>();
+        notifieeList.addAll(followersList);
+        notifieeList.addAll(friendlist);
+        String param = "Posted";
+
+        Notifications notifications = new Notifications();
+        notifications.insertEpostNotificationsFromTeacher(userId,notifieeList,postId,param);
 
         jsonObject.put("jsonArray1",NewsFeedsPost);
 
