@@ -98,8 +98,9 @@ const postNewsFeeds = function () {
         } else if (jsonResponse.serverResponse === "Allowed") {
 
             const postContents = document.getElementById("postContents");
+            postContents.innerHTML='';
             let now = new Date().getTime();
-            let extraTime = 1000;
+            let extraTime = 3000;
             while (new Date().getTime() < now + extraTime) {
             }
 
