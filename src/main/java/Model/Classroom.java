@@ -181,4 +181,9 @@ public class Classroom {
         ClassroomDAO classroomDAO = new ClassroomDAO();
         return classroomDAO.getStudentClassroomDetails(classroomId);
     }
+
+    public void unenrollFromClassroom(String userId,String classroomId){
+        EnrollDAO enrollDAO = new EnrollDAO();
+        enrollDAO.unenrollFromClassroom(userId,classroomId);
+    }
 }

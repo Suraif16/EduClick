@@ -222,12 +222,16 @@ CREATE TABLE Admin_Post_System_Updates(
 CREATE TABLE Friend_Request(
     From_UserID BIGINT NOT NULL,
     To_UserID BIGINT NOT NULL,
+    Req_Time TIME NOT NULL,
+    Req_Date DATE NOT NULL,
     PRIMARY KEY(From_UserID,To_UserID)
     )ENGINE = INNODB;
 
 CREATE TABLE Enroll_Request(
     From_UserID BIGINT NOT NULL,
     To_ClassroomID BIGINT NOT NULL,
+    Req_Time TIME NOT NULL,
+    Req_Date DATE NOT NULL,
     PRIMARY KEY(From_UserID,To_ClassroomID)
     )ENGINE = INNODB;
 

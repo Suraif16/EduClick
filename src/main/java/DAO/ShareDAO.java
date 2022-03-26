@@ -127,5 +127,39 @@ public class ShareDAO {
     }
 
 
+    public ArrayList<String> getSharedIdList(String userId) throws SQLException {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        ArrayList<String> NewsFeedsIdList = new ArrayList<>();
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT NFPostID FROM Share WHERE ReceiveUserID = ? ";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            while (resultSet.next()) {
+
+                NewsFeedsIdList.add(resultSet.getString("NFPostID"));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null)connection.close();
+
+        }
+
+        return NewsFeedsIdList;
+    }
+
+
+
 
 }

@@ -88,7 +88,7 @@ const getAllInputs = function (){
 
     console.log( Question , answer1 , answer2 , answer3 , answer4 , correctAnswer );
     /* checks if the user has inserted all required values, if yes returns the data in an json object literal, else returns false */
-    if ( Question === undefined || answer1 === undefined || answer2 === undefined || answer3 === undefined || answer4 === undefined || correctAnswer === undefined ){
+    if ( Question === undefined || answer1 === undefined || answer2 === undefined || answer3 === undefined || answer4 === undefined || correctAnswer === undefined || Question === "" || answer1 === "" || answer2 === "" || answer3 === "" || answer4 === "" || correctAnswer === "" ){
 
         return false
 

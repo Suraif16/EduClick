@@ -8,23 +8,27 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EnrollRequestDAO {
-    public void insertRecord(String classrooomId,String userId){
+    public void insertRecord(String classrooomId, String userId , LocalDate date , LocalTime time ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Enroll_Request (From_UserID,To_ClassroomID) VALUES (?,?)";
+            String sql = "INSERT INTO Enroll_Request VALUES (?,? , ? , ? )";
 
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
 
             preparedStatement.setString(1,userId);
             preparedStatement.setString(2,classrooomId);
+            preparedStatement.setString( 3 , time.toString() );
+            preparedStatement.setString( 4 , date.toString() );
 
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -69,18 +73,20 @@ public class EnrollRequestDAO {
         try{
 
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT From_UserID FROM Enroll_Request WHERE To_ClassroomID = ?";
+            String sql = "SELECT From_UserID , Req_Time , Req_Date FROM Enroll_Request WHERE To_ClassroomID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement( sql );
             preparedStatement.setString( 1 , classroom.getClassroomID() );
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while ( resultSet.next() ){
 
-                String fromId = resultSet.getString( "From_UserID" );
+                String fromId = resultSet.getString( 1 );
                 String classroomDescription = "wants to join to " + classroom.getClassroomName() +
                         " : " + classroom.getSubject() + " : grade " + classroom.getGrade() + " : " +
                         classroom.getYear();
                 Requests requests = new Requests( fromId , classroom.getClassroomID() , "Enroll" , classroomDescription );
+                requests.setRequestTime( resultSet.getTime( 2 ) );
+                requests.setRequestDate( resultSet.getDate( 3 ) );
                 requestsList.add( requests );
             }
 

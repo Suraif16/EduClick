@@ -191,10 +191,10 @@ public class PostDAO {
         return jsonArray;
     }
 
-    public JSONArray getLoadedNewsFeedsId(String AUserID) {
+    public ArrayList<String> getLoadedNewsFeedsId(String AUserID) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
         Connection connection = null;
-        JSONArray jsonArray = new JSONArray();
+        ArrayList<String> NewsFeedsIdList = new ArrayList<>();
 
 
         try {
@@ -207,10 +207,8 @@ public class PostDAO {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                String UserID = resultSet.getString("NFPostID");
+                NewsFeedsIdList.add(resultSet.getString("NFPostID"));
 
-
-                jsonArray.put(UserID);
 
             }
 
@@ -224,7 +222,7 @@ public class PostDAO {
             }
 
         }
-        return jsonArray;
+        return NewsFeedsIdList;
     }
 
 

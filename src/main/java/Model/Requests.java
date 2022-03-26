@@ -2,7 +2,11 @@ package Model;
 
 import DAO.*;
 
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Requests {
 
@@ -12,6 +16,8 @@ public class Requests {
     private String description;
     private String userName;
     private String userProfile;
+    private Date requestDate;
+    private Time requestTime;
 
     /* Here fromId is always a userId , toId will depend on the type of the request,
     * if the request is a friend request they toId is a userId , else if the request is a
@@ -90,6 +96,22 @@ public class Requests {
         this.userProfile = userProfile;
     }
 
+    public Date getRequestDate() {
+        return requestDate;
+    }
+
+    public void setRequestDate(Date requestDate) {
+        this.requestDate = requestDate;
+    }
+
+    public Time getRequestTime() {
+        return requestTime;
+    }
+
+    public void setRequestTime(Time requestTime) {
+        this.requestTime = requestTime;
+    }
+
     public ArrayList< Requests > selectRequests(Classroom classroom ){
 
             EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
@@ -107,8 +129,12 @@ public class Requests {
     }
 
     public void requestEnroll(String classroomId,String userId){
+
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+
         EnrollRequestDAO enrollRequestDAO = new EnrollRequestDAO();
-        enrollRequestDAO.insertRecord(classroomId,userId);
+        enrollRequestDAO.insertRecord(classroomId,userId , date , time );
     }
 
 
@@ -131,8 +157,10 @@ public class Requests {
 
     public void addRequest(){
 
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
         FriendRequestDAO friendRequestDAO = new FriendRequestDAO();
-        friendRequestDAO.insert( this );
+        friendRequestDAO.insert( this , date , time );
 
 
     }
