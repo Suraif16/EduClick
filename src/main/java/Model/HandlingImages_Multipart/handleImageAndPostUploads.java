@@ -316,10 +316,11 @@ public class handleImageAndPostUploads {
         return null;
     }
 
-    public static void uploadProfileImage(HttpServletRequest request, String path, String userId , User user1 ) {
+    public static void uploadProfileImage(HttpServletRequest request, String path, String userId ) {
 
         User user = new User( userId );
         String workPlace = null;
+        String userProfilePictureStatus = null;
         ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
 
         try {
@@ -356,6 +357,10 @@ public class handleImageAndPostUploads {
 
                         workPlace = new String(bytes);
 
+                    }else if ( file.getFieldName().equals( "userProfilePictureStatus" ) ){
+
+                        userProfilePictureStatus = new String(bytes);
+
                     }
 
                     inputStream.close();
@@ -373,20 +378,21 @@ public class handleImageAndPostUploads {
 
                 File file = new File( path + "Resources\\Images\\UserProfileImages\\profilePicture" + userId + ".jpeg" );
                 System.out.println(file.delete());
+                user.setProfilePicture( userId );
 
                 Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( "profilePicture" + userId , path + "Resources\\Images\\UserProfileImages\\" , imageFile );
                 saveImage.start();
-                user.setProfilePicture( user.getUserId() );
+
 
             }else{
 
-                if ( user1.getProfilePicture() == null ){
+                if ( userProfilePictureStatus.equals( "true" ) ){
 
                     user.setProfilePicture( null );
 
                 }else{
 
-                    user.setProfilePicture( user1.getProfilePicture() );
+                    user.setProfilePicture( userId );
 
                 }
 

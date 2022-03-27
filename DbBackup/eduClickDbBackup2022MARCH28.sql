@@ -492,7 +492,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('farzanBlaze123@gmail.com','21e6c3ef5fe7dcaaff33914b41659c0e704cf0a5f15f4523c08948eed216a5dc','qZmt0B2nk1cdDk','2022-03-26','15:33:46',8,'True','False'),('farzanroxz123@gmail.com','0c768e7653dfd0535678f02152268334040326f40d8e68763438e22151bd36ef','saBpX49o1/Mt=vt','2022-03-27','23:57:42',1,'True','False'),('jeewa@gmail.com','75bfa87b09ecfebc8d94eb4f74fd1346ea3666d8e9b6107648d7fb14e8b36854','mg5iQBRK92qqQh*E!o5','2022-03-27','22:08:39',3,'True','False'),('m.farzan.rizwan@gmail.com','47e868523aa780b3f876e62cb9e197b7b7cc341247aeb930ffda200f5d47214f','WbMmN>s2lHkLtUy/x7','2022-03-25','23:34:26',4,'True','False'),('primethinker123@gmail.com','874b3cd942c4f3e898760b33e499b0981bdc7462f037b9cfc863676084d5ca90','!gw8fTcB2r0a$_Q&%','2022-03-26','11:48:24',7,'True','False'),('rahuram123@gmail.com','0e17d9d6bf85b9f687f6ebc226a785905319304b28df26cfd65666d86d8f7644','t5.y+W#zXz<ABS+GB%3','2022-03-26','08:48:22',5,'True','False'),('shawnfrost123@gmail.com','e55cfca32433cffbe275c2c9e948da094d6e44aec00bfb82257ca6043db679b8','7dVk@+qK=sE6TRX88g.','2022-03-27','10:45:09',9,'True','False'),('venushka123@gmail.com','7a722d2ebbe46d392fa8efdc73580e0d4151444721bcdc9a57c3a11888df0a73','qMdng@xAW6G','2022-03-26','07:55:57',2,'True','False'),('zahul123@gmail.com','5ca41585dba53ce37ecbe3430e31b567ccc4db1018e3a595f76fe505a70e1c0b','J/NDC_E*vv8>C7gau>','2022-03-26','11:32:52',6,'True','False');
+INSERT INTO `login` VALUES ('farzanBlaze123@gmail.com','21e6c3ef5fe7dcaaff33914b41659c0e704cf0a5f15f4523c08948eed216a5dc','qZmt0B2nk1cdDk','2022-03-26','15:33:46',8,'True','False'),('farzanroxz123@gmail.com','0c768e7653dfd0535678f02152268334040326f40d8e68763438e22151bd36ef','saBpX49o1/Mt=vt','2022-03-28','01:39:04',1,'True','False'),('jeewa@gmail.com','75bfa87b09ecfebc8d94eb4f74fd1346ea3666d8e9b6107648d7fb14e8b36854','mg5iQBRK92qqQh*E!o5','2022-03-27','22:08:39',3,'True','False'),('m.farzan.rizwan@gmail.com','47e868523aa780b3f876e62cb9e197b7b7cc341247aeb930ffda200f5d47214f','WbMmN>s2lHkLtUy/x7','2022-03-25','23:34:26',4,'True','False'),('primethinker123@gmail.com','874b3cd942c4f3e898760b33e499b0981bdc7462f037b9cfc863676084d5ca90','!gw8fTcB2r0a$_Q&%','2022-03-26','11:48:24',7,'True','False'),('rahuram123@gmail.com','0e17d9d6bf85b9f687f6ebc226a785905319304b28df26cfd65666d86d8f7644','t5.y+W#zXz<ABS+GB%3','2022-03-26','08:48:22',5,'True','False'),('shawnfrost123@gmail.com','e55cfca32433cffbe275c2c9e948da094d6e44aec00bfb82257ca6043db679b8','7dVk@+qK=sE6TRX88g.','2022-03-27','10:45:09',9,'True','False'),('venushka123@gmail.com','7a722d2ebbe46d392fa8efdc73580e0d4151444721bcdc9a57c3a11888df0a73','qMdng@xAW6G','2022-03-26','07:55:57',2,'True','False'),('zahul123@gmail.com','5ca41585dba53ce37ecbe3430e31b567ccc4db1018e3a595f76fe505a70e1c0b','J/NDC_E*vv8>C7gau>','2022-03-26','11:32:52',6,'True','False');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -851,7 +851,7 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'Readway Collage'),(2,NULL),(4,NULL),(6,NULL),(7,NULL),(8,NULL),(9,NULL);
+INSERT INTO `teacher` VALUES (1,'null'),(2,NULL),(4,NULL),(6,NULL),(7,NULL),(8,NULL),(9,NULL);
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -909,7 +909,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Farzan','Rizwan',1,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-25','23:01:24'),(2,'venushka','chandraraththna',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-25','23:04:13'),(3,'jeewa','chamalka',NULL,'1998-01-18','940752569360','Student','Male','Sri Lanka','Negombo','2022-03-25','23:08:04'),(4,'Farzan','Rizwan',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-25','23:34:26'),(5,'rahuram','srimohan',NULL,'1998-01-18','940752569360','Student','Male','Sri Lanka','negombo','2022-03-26','07:43:37'),(6,'zahul','hameed',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','negombo','2022-03-26','11:32:52'),(7,'Prime','Thinker',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-26','11:48:24'),(8,'Axcel','Blaze',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-26','12:13:48'),(9,'shawn','frost',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','negombo','2022-03-27','10:45:09');
+INSERT INTO `users` VALUES (1,'Farzan','frosty',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Colombo','2022-03-25','23:01:24'),(2,'venushka','chandraraththna',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-25','23:04:13'),(3,'jeewa','chamalka',NULL,'1998-01-18','940752569360','Student','Male','Sri Lanka','Negombo','2022-03-25','23:08:04'),(4,'Farzan','Rizwan',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-25','23:34:26'),(5,'rahuram','srimohan',NULL,'1998-01-18','940752569360','Student','Male','Sri Lanka','negombo','2022-03-26','07:43:37'),(6,'zahul','hameed',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','negombo','2022-03-26','11:32:52'),(7,'Prime','Thinker',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-26','11:48:24'),(8,'Axcel','Blaze',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-26','12:13:48'),(9,'shawn','frost',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','negombo','2022-03-27','10:45:09');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -922,4 +922,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-28  0:09:59
+-- Dump completed on 2022-03-28  1:42:32

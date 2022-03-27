@@ -26,7 +26,7 @@ public class SaveEditProfileDetailsServlet extends HttpServlet {
 
         if ( isMultipart ){
 
-            handleImageAndPostUploads.uploadProfileImage( request , getServletContext().getRealPath( "" ) , user.getUserId() , user );
+            handleImageAndPostUploads.uploadProfileImage( request , getServletContext().getRealPath( "" ) , user.getUserId() );
 
         }
 

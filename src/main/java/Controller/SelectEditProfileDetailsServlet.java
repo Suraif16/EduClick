@@ -30,17 +30,20 @@ public class SelectEditProfileDetailsServlet extends HttpServlet {
 
             jsonObject.put( "serverResponse" , "Allowed" );
 
-            jsonObject.put( "firstName" , user.getFirstName() );
-            jsonObject.put( "lastName" , user.getLastName() );
-            jsonObject.put( "country" , user.getCountry() );
-            jsonObject.put( "city" , user.getCity() );
-            jsonObject.put( "mobileNumber" , user.getMobileNumber() );
-            jsonObject.put( "profilePicture" , user.getProfilePicture() );
+            User user1 = new User( user.getUserId() );
+            user1 = user1.getUserDetails();
+
+            jsonObject.put( "firstName" , user1.getFirstName() );
+            jsonObject.put( "lastName" , user1.getLastName() );
+            jsonObject.put( "country" , user1.getCountry() );
+            jsonObject.put( "city" , user1.getCity() );
+            jsonObject.put( "mobileNumber" , user1.getMobileNumber() );
+            jsonObject.put( "profilePicture" , user1.getProfilePicture() );
             jsonObject.put( "userType" , user.getUserType() );
 
             if ( user.getUserType().equals( "Teacher" ) ){
 
-                jsonObject.put( "workPlace" , user.getWorkPlace() );
+                jsonObject.put( "workPlace" , user1.getWorkPlace() );
 
             }/* else for Student*/
             System.out.println( user.getFirstName() + " : " + user.getLastName() + " : " + user.getUserType() + " : " + user.getCountry() + " : " + user.getCity()  + " : " + user.getMobileNumber() + " : " + user.getProfilePicture() + " : " + user.getWorkPlace());

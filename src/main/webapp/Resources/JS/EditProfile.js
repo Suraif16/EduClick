@@ -6,6 +6,7 @@ const cityElement = document.getElementById( "city" );
 const userProfileImage = document.getElementById( "userProfileEditFormRowProfileImage" );
 const imageInsertIcon = document.getElementById( "inputImage" );
 
+let userProfilePictureStatus;
 let userProfileType;
 const showHideUserProfileEditForm = function (){
 
@@ -61,10 +62,12 @@ const displayUserProfileDetails = function ( jsonResponse ){
 
         if ( image !== undefined ){
 
+            userProfilePictureStatus = true;
             userProfileImage.innerHTML = '<img src="../Resources/Images/UserProfileImages/profilePicture' + image + '.jpeg" alt="">';
 
         }else{
 
+            userProfilePictureStatus = false;
             userProfileImage.innerHTML = '<img src="../Resources/Icons/account_circle_white_24dp.svg" alt="">';
 
         }
@@ -73,7 +76,7 @@ const displayUserProfileDetails = function ( jsonResponse ){
 
             let workplace = jsonResponse.workPlace;
 
-            if ( workplace !== undefined ){
+            if ( workplace !== "null" ){
 
                 document.getElementById( "workPlace" ).value = workplace;
 
@@ -125,18 +128,23 @@ const saveProfileEditForm = function (){
         if ( this.readyState === 4 && this.status === 200 ){
 
         showHideUserProfileEditForm();
-        location.reload();
+        // location.reload();
 
         }
 
     }
 
-    formData.append( "profileImage" , imageInsertIcon.files[0] );
+    if ( imageInsertIcon.files[0] !== undefined ){
+
+        formData.append( "profileImage" , imageInsertIcon.files[0] );
+
+    }
     formData.append( "firstName" , firstNameElement.value );
     formData.append( "lastName" , lastNameElement.value );
     formData.append( "country" , countryElement.value );
     formData.append( "city" , cityElement.value );
     formData.append( "workPlace" , workPlace );
+    formData.append( "userProfilePictureStatus" , userProfilePictureStatus );
 
     httpreq.open("POST","/EduClick_war_exploded/user/saveEditProfileDetails" , true );
     httpreq.send( formData );
