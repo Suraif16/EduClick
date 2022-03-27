@@ -646,6 +646,7 @@ public class UserDAO<teacherArrayList> {
             }
 
         }
+        System.out.println("In DAO"+jsonObject);
 
         return jsonObject;
     }
