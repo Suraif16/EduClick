@@ -37,8 +37,6 @@ public class TeacherProfilePageNewsFeedsLoadServlet extends HttpServlet  {
 
         String userId = request.getParameter("userId");
 
-        System.out.println(userId+"uuuuuu");
-
         User profileUser = new User( userId );
         profileUser.getUser();
 
