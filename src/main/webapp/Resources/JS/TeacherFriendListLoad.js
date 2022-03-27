@@ -1,5 +1,5 @@
 const loadTeacherFriendList = function (){
-
+console.log("1233444");
     const rightPanel = document.getElementById("rightPanel");
     rightPanel.innerHTML="";
 
@@ -14,7 +14,7 @@ const loadTeacherFriendList = function (){
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/teacher/teacherFriendsListLoad", true);
+    httpreq.open("POST", "/EduClick_war_exploded/user/teacherFriendsListLoad", true);
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send("userId=" + getUserIdClientSide());
 
