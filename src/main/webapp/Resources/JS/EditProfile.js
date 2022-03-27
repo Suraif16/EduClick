@@ -61,7 +61,7 @@ const displayUserProfileDetails = function ( jsonResponse ){
 
         if ( image !== undefined ){
 
-            userProfileImage.innerHTML = '<img src="../Resources/Images/answers2.jpg/profilePicture' + image + '.jpeg" alt="">';
+            userProfileImage.innerHTML = '<img src="../Resources/Images/UserProfileImages/profilePicture' + image + '.jpeg" alt="">';
 
         }else{
 
@@ -117,7 +117,7 @@ const saveProfileEditForm = function (){
 
     console.log( firstNameElement.value , lastNameElement.value , countryElement.value , cityElement.value , workPlace , imageInsertIcon.files[0] );
 
-    /*let httpreq = new XMLHttpRequest();
+    let httpreq = new XMLHttpRequest();
     let formData = new FormData();
 
     httpreq.onreadystatechange = function(){
@@ -132,11 +132,13 @@ const saveProfileEditForm = function (){
     }
 
     formData.append( "profileImage" , imageInsertIcon.files[0] );
-    formData.append( "firstName" ,  );
-    formData.append( "lastName" ,  );
-    formData.append( "lastName" ,  );
+    formData.append( "firstName" , firstNameElement.value );
+    formData.append( "lastName" , lastNameElement.value );
+    formData.append( "country" , countryElement.value );
+    formData.append( "city" , cityElement.value );
+    formData.append( "workPlace" , workPlace );
 
-    httpreq.open("POST","/EduClick_war_exploded/teacher/EducationalPostInsert" , true );
-    httpreq.send( formData );*/
+    httpreq.open("POST","/EduClick_war_exploded/user/saveEditProfileDetails" , true );
+    httpreq.send( formData );
 
 }

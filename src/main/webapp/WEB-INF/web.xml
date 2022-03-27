@@ -1152,6 +1152,20 @@
 
     <!-- end of select edit profile details in teacher profile page -->
 
+    <!-- beginning of save edit profile details in teacher profile page-->
+
+    <servlet>
+        <servlet-name>SaveEditProfileDetails</servlet-name>
+        <servlet-class>Controller.SaveEditProfileDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SaveEditProfileDetails</servlet-name>
+        <url-pattern>/user/saveEditProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select save profile details in teacher profile page -->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes

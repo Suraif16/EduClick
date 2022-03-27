@@ -357,6 +357,13 @@ public class User {
 
     }
 
+    public void updateUserDetails( String workPlace ){
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.updateUserDetails( this , workPlace );
+
+    }
+
 
 }
 

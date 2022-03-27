@@ -315,5 +315,82 @@ public class handleImageAndPostUploads {
         return null;
     }
 
+    public static void uploadProfileImage(HttpServletRequest request, String path, String userId ) {
+
+        User user = new User( userId );
+        String workPlace = null;
+        ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
+
+        try {
+
+            List<FileItem> files = servletFileUpload.parseRequest( request );
+
+            FileItem imageFile = null;
+
+            for (FileItem file : files) {
+
+                if ( file.isFormField() ) {
+
+                    InputStream inputStream = file.getInputStream();
+                    byte[] bytes = new byte[ inputStream.available() ];
+                    inputStream.read(bytes);
+
+                    if ( file.getFieldName().equals("firstName") ) {
+
+                        user.setFirstName( new String(bytes) );
+
+                    } else if ( file.getFieldName().equals("lastName") ) {
+
+                        user.setLastName( new String(bytes) );
+
+                    }else if ( file.getFieldName().equals( "country" ) ){
+
+                        user.setCountry( new String(bytes) );
+
+                    }else if ( file.getFieldName().equals( "city" ) ){
+
+                        user.setCity( new String(bytes) );
+
+                    }else if ( file.getFieldName().equals( "workPlace" ) ){
+
+                        workPlace = new String(bytes);
+
+                    }
+
+                    inputStream.close();
+
+
+                } else {
+
+                    imageFile = file;
+
+                }
+
+            }
+
+            if ( imageFile != null ){
+
+                Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( "profilePicture" + userId , path + "Resources\\Images\\UserProfileImages\\" , imageFile );
+                saveImage.start();
+                user.setProfilePicture( user.getUserId() );
+
+            }else{
+
+                user.setProfilePicture( null );
+
+            }
+
+            user.updateUserDetails( workPlace );
+
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
 
 }

@@ -657,7 +657,95 @@ public class UserDAO<teacherArrayList> {
         return workPlace;
     }
 
+    public void updateUserDetails( User user , String workPlace ){
 
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        PreparedStatement preparedStatement1 = null;
+
+        try {
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "UPDATE Users SET FirstName = ? , LastName = ? , ProfilePic = ? , Country = ? , City = ? WHERE UserID = ?;";
+            preparedStatement = connection.prepareStatement( sql );
+
+            String sql1 = "UPDATE Teacher SET CurrentWorkingPlace = ? WHERE UserID = ?;";
+            preparedStatement1 = connection.prepareStatement( sql1 );
+
+            preparedStatement.setString( 1 , user.getFirstName() );
+            preparedStatement.setString( 2 , user.getLastName() );
+            preparedStatement.setString( 3 , user.getProfilePicture() );
+            preparedStatement.setString( 4 , user.getCountry() );
+            preparedStatement.setString( 5 , user.getCity() );
+            preparedStatement.setString( 6 , user.getUserId() );
+
+            preparedStatement1.setString( 1 , workPlace );
+            preparedStatement1.setString( 2 , user.getUserId() );
+
+            int x = preparedStatement.executeUpdate();
+
+            if ( x == 0 ){
+
+                connection.rollback();
+
+            }else{
+
+                int y = preparedStatement1.executeUpdate();
+
+                if ( y == 0 ){
+
+                    connection.rollback();
+
+                }else{
+
+                    connection.commit();
+
+                }
+
+            }
+
+
+
+        }catch ( SQLException E ){
+
+            E.printStackTrace();
+
+            try {
+
+                if ( connection != null ){ connection.rollback(); }
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }finally {
+
+            try {
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+                if ( preparedStatement1 != null )preparedStatement1.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException exception ){
+
+                exception.printStackTrace();
+
+            }
+
+        }
+
+    }
 
 }
 
