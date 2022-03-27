@@ -1,116 +1,48 @@
-const mimeTypeArray = [ "image/apng" , "image/avif" , "image/jpeg" , "image/png" , "image/webp" , "image/bmp" , "image/x-icon" , "image/tiff" , "image/heic" , "image/heif" ];
+document.onreadystatechange = function (){
 
-const showNewsFeedsPostForm = function (){
+    if ( document.readyState === 'complete' ){
 
-   document.getElementById("addNewsFeedFormTextArea").value=null;
-    document.getElementById( "inputImage" ).value = null;
-
-
-    const addEducationPostForm = document.getElementById( "addNewsFeedForm" );
-
-    if ( addEducationPostForm.style.display === "flex" ){
-
-        addEducationPostForm.style.display = "none";
-
-    }else{
-
-        addEducationPostForm.style.display = "flex";
+        LoadNewsFeedsInTeacherProfilePage();
 
     }
 
 }
 
-const postNewsFeeds = function () {
 
-    let message = document.getElementById("addNewsFeedFormTextArea").value;
-    let images = document.getElementById("inputImage").files;
+const LoadNewsFeedsInTeacherProfilePage = function (){
 
-    if (message === "" && images.length === 0) {
+    console.log("eekath hariiii");
 
-        console.log("empty")
+    let httpreq = new XMLHttpRequest();
+    httpreq.onreadystatechange = function (){
 
-
-    } else {
-
-        let isAllImageValid = false;
-
-        if (images.length === 0) {
-
-            isAllImageValid = true;
-
-        }
-
-        for (let i = 0; i < images.length; i++) {
-
-            isAllImageValid = isImageAccepted(images[i].type)
-            if (!isAllImageValid) {
-                console.log("break");
-                break;
-
-            }
-
-        }
-
-        if (isAllImageValid) {
-
-            let httpreq = new XMLHttpRequest();
-            let formData = new FormData();
-            httpreq.onreadystatechange = function () {
-
-                if (this.readyState === 4 && this.status === 200) {
-
-                    complete(this);
-
-
-                }
-
-            }
-
-            for (let i = 0; i < images.length; i++) {
-
-                let x = "photo" + [i];
-                formData.append(x, images[i]);
-                console.log(i);
-
-            }
-
-            formData.append("message", message);
-
-            httpreq.open("POST", "/EduClick_war_exploded/teacher/NewsFeedsInsert", true);
-            httpreq.send(formData);
-
-
-        } else {
-
-            console.log("image type invalid");
-
-
+        if (this.readyState === 4 && this.status === 200){
+            completeNFLoad( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
         }
 
     }
 
+    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/TeacherProfilePageNewsFeedsLoadServlet" , true);
+    httpreq.send();
+}
 
-    const complete = function (httpreq) {
+function completeNFLoad(httpreq) {
 
-        let jsonResponse = JSON.parse(httpreq.responseText);
-        showNewsFeedsPostForm();
+    let jsonResponse = JSON.parse(httpreq.responseText);
 
-        if (jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed") {
-            window.location.replace("/EduClick_war_exploded/Login.html");
-        } else if (jsonResponse.serverResponse === "Allowed") {
+    if (jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed") {
+        window.location.replace("/EduClick_war_exploded/Login.html");
+    } else if (jsonResponse.serverResponse === "Allowed") {
 
-            const postContents = document.getElementById("postContents");
-            let now = new Date().getTime();
-            let extraTime = 3000;
-            while (new Date().getTime() < now + extraTime) {
-            }
+        const name = document.getElementById("profileUserName");
+        name.innerHTML = jsonResponse.fullName;
+      //  let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
 
-         //   console.log(jsonResponse.NewsFeedsPost.imageStatus);
-         //   console.log(jsonResponse.NewsFeedsPost.caption  + "qqqq");
-            console.log(jsonResponse.jsonArray1[1]);
+        for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
 
+            console.log(jsonResponse.jsonArray1[i].Caption);
 
-            if (jsonResponse.NewsFeedsPost.imageStatus === 'true' && jsonResponse.NewsFeedsPost.caption !== '' ) {
+            if (jsonResponse.jsonArray1[i].path !== "" && jsonResponse.jsonArray1[i].Caption !=="") {
 
                 let innerPreviouseHTML = postContents.innerHTML;
                 postContents.innerHTML = '        <div class="post">    ' +
@@ -120,25 +52,25 @@ const postNewsFeeds = function () {
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
-                    '                           <div class="postProfileName" >' + jsonResponse.fullName +
+                    '                           <div class="postProfileName" >' + jsonResponse.jsonArray1[i].ownerName +
                     '</div>' + ' </a>' +
                     '                           <div class="postTimeAndDate" >' +
-                    jsonResponse.Time + ' | ' +
-                    jsonResponse.NewsFeedsPost.date +
+                    jsonResponse.jsonArray1[i].Time + ' | ' +
+                    jsonResponse.jsonArray1[i].Date +
                     '                            </div>' +
                     '                    <div class="userOptions">' +
-                    '<input class="userOptionsButton" type="button" value="    " id="postOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'postOPtion\')">' +
+                    '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
                     '               <div class="postContentContainer">' +
                     '                   <div class="postData">' +
-                    '                       <div class="postMessage">' + jsonResponse.NewsFeedsPost.caption +
+                    '                       <div class="postMessage">' + jsonResponse.jsonArray1[i].Caption +
 
                     '                       </div>' +
                     '                       <div class="postPicture">' +
                     '                           <div class="postPictureImageContainer">' +
-                    '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.NewsFeedsPost.imagePath + '.jpeg">' +
+                    '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.jsonArray1[i].path + '.jpeg">' +
                     '                           </div>' +
                     '                       </div>' +
                     '                     </div>' +
@@ -146,20 +78,20 @@ const postNewsFeeds = function () {
                     '                   <div class="postContentContainer">' +
                     '                       <div class="postLikeShareButtons">' +
                     '                           <div class="likeShareButtons" >' +
-                    '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
                     '                           <div class="likeShareButtons" >' +
-                    '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                        </div>' +
                     '                       </div>' +
@@ -169,7 +101,7 @@ const postNewsFeeds = function () {
                 postContents.innerHTML += innerPreviouseHTML;
 
 
-            }else if(jsonResponse.NewsFeedsPost.caption !==''){
+            }else if(jsonResponse.jsonArray1[i].Caption !==""){
 
                 let innerPreviouseHTML = postContents.innerHTML;
                 postContents.innerHTML = '        <div class="post">    ' +
@@ -179,20 +111,20 @@ const postNewsFeeds = function () {
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
-                    '                           <div class="postProfileName" >' + jsonResponse.fullName +
+                    '                           <div class="postProfileName" >' + jsonResponse.jsonArray1[i].ownerName +
                     '</div>' + ' </a>' +
                     '                           <div class="postTimeAndDate" >' +
-                    jsonResponse.Time + ' | ' +
-                    jsonResponse.NewsFeedsPost.date +
+                    jsonResponse.jsonArray1[i].Time + ' | ' +
+                    jsonResponse.jsonArray1[i].Date +
                     '                            </div>' +
                     '                    <div class="userOptions">' +
-                    '<input class="userOptionsButton" type="button" value="    " id="postOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'postOPtion\')">' +
+                    '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
                     '               <div class="postContentContainer">' +
                     '                   <div class="postData">' +
-                    '                       <div class="postMessage">' + jsonResponse.NewsFeedsPost.caption +
+                    '                       <div class="postMessage">' + jsonResponse.jsonArray1[i].Caption +
 
                     '                       </div>' +
 
@@ -201,20 +133,20 @@ const postNewsFeeds = function () {
                     '                   <div class="postContentContainer">' +
                     '                       <div class="postLikeShareButtons">' +
                     '                           <div class="likeShareButtons" >' +
-                    '                               <input type="button" value="Like" class="like" onclick="lIKENewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
                     '                           <div class="likeShareButtons" >' +
-                    '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                        </div>' +
                     '                       </div>' +
@@ -222,9 +154,9 @@ const postNewsFeeds = function () {
 
 
                 postContents.innerHTML += innerPreviouseHTML;
-                return postContents;
 
-            }else if (jsonResponse.NewsFeedsPost.imageStatus === 'true')
+
+            }else if (jsonResponse.jsonArray1[i].path !== "")
             {
 
                 let innerPreviouseHTML = postContents.innerHTML;
@@ -235,14 +167,14 @@ const postNewsFeeds = function () {
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
-                    '                           <div class="postProfileName" >' + jsonResponse.fullName +
+                    '                           <div class="postProfileName" >' + jsonResponse.jsonArray1[i].ownerName +
                     '</div>' + ' </a>' +
                     '                           <div class="postTimeAndDate" >' +
-                    jsonResponse.Time + ' | ' +
-                    jsonResponse.NewsFeedsPost.date +
+                    jsonResponse.jsonArray1[i].Time + ' | ' +
+                    jsonResponse.jsonArray1[i].Date +
                     '                            </div>' +
                     '                    <div class="userOptions">' +
-                    '<input class="userOptionsButton" type="button" value="    " id="postOPtion' + jsonResponse.NewsFeedsPost.postID + '" onclick="showOptionMenu(' + jsonResponse.NewsFeedsPost.postID + ',\'postOPtion\')">' +
+                    '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
                     '                    </div>' +
                     '                   </div>' +
                     '               </div>' +
@@ -251,7 +183,7 @@ const postNewsFeeds = function () {
 
                     '                       <div class="postPicture">' +
                     '                           <div class="postPictureImageContainer">' +
-                    '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.NewsFeedsPost.imagePath + '.jpeg">' +
+                    '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.jsonArray1[i].path + '.jpeg">' +
                     '                           </div>' +
                     '                       </div>' +
                     '                     </div>' +
@@ -259,20 +191,20 @@ const postNewsFeeds = function () {
                     '                   <div class="postContentContainer">' +
                     '                       <div class="postLikeShareButtons">' +
                     '                           <div class="likeShareButtons" >' +
-                    '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
                     '                           <div class="likeShareButtons" >' +
-                    '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
+                    '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                        </div>' +
                     '                       </div>' +
@@ -282,27 +214,19 @@ const postNewsFeeds = function () {
                 postContents.innerHTML += innerPreviouseHTML;
 
 
+
+
+
             }
-        } else {
-            alert("something went wrong!!!");
-        }
-    }
-}
 
-const isImageAccepted = function ( type ){
-
-    const arrayLength = mimeTypeArray.length;
-
-    for ( let i = 0; i < arrayLength; i++ ) {
-
-        if ( mimeTypeArray[i] === type ){
-
-            return true;
 
         }
 
+
     }
 
-    return false;
-
+    else
+    {
+        alert("something went wrong!!!");
+    }
 }

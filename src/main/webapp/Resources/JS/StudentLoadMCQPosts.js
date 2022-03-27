@@ -336,6 +336,7 @@ const showMcqResultOnLoad = function (id){
 
 
         }
+        document.getElementById("post").contentWindow.location.reload(true);
 
 
 

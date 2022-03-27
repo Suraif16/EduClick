@@ -1,9 +1,14 @@
 const verifyOTPButton = document.getElementById("verifyOTP");
 const resendOTPButton = document.getElementById("resendOTP");
+const userName = document.getElementById( "userName" );
+
 document.onreadystatechange = function (){
     /* runs when the DOM is laoded */
     if (document.readyState === 'complete'){
+
+        displayUserName();
         generateOTP();
+
     }
 }
 
@@ -68,4 +73,25 @@ resendOTPButton.onclick = function (){
     /* to regenerate a new OTP */
     generateOTP();
     timer(300);
+}
+
+const displayUserName = function (){
+
+    let httpreq = new XMLHttpRequest();
+
+    httpreq.onreadystatechange = function (){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+            let jsonResponse = JSON.parse( this.responseText );
+            userName.innerHTML = jsonResponse.userName;
+
+        }
+
+    }
+
+    httpreq.open("POST" ,"/EduClick_war_exploded/otpDisplayUserName" , true);
+    httpreq.send()
+
+
 }

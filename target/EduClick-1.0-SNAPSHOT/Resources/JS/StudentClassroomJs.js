@@ -1,6 +1,7 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
-let status ;
+let status;
+let classroomDisabledMessage = document.getElementById("classroomDisabledMessage");
 
 
 function showRightPanel(){
@@ -347,6 +348,9 @@ const checkEnableOrDisable = function (){
                 let postContents = document.getElementById("postContents");
                 postContents.innerHTML = ""
                 console.log("Case case case disabled")
+                classroomDisabledMessage.style.display = "flex";
+
+
 
             }/*else if(jsonStatusResponse.Status==="Enable"){
                 console.log("Case case case disabled")
@@ -357,6 +361,7 @@ const checkEnableOrDisable = function (){
             status = jsonStatusResponse.Status;
         }else{
             alert("something went wrong!!!");
+            loadStudentEducationalPosts(false);
         }
 
     }
@@ -369,8 +374,8 @@ document.onreadystatechange = function (){
     if ( document.readyState === 'complete' ){
 
         /* when the document is loaded and complete this function will run*/
-        loadStudentEducationalPosts(false);
         checkEnableOrDisable();
+        loadStudentEducationalPosts(false);
         sendNameData();
         getClassroomList();
         displayCurrentClassroomDetails();

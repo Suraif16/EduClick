@@ -1,5 +1,6 @@
 package Controller.Requests;
 
+import Model.Notifications;
 import Model.Requests;
 import org.json.JSONObject;
 
@@ -25,6 +26,11 @@ public class AcceptFriendRequestServlet extends HttpServlet {
 
         Requests requests = new Requests( fromId , toId );
         requests.acceptFriendRequest();
+
+        String param = "Friend Request";
+
+        Notifications notifications = new Notifications();
+        notifications.insertNotifications(toId,fromId,"0",param);
 
         out.write( jsonObject.toString() );
         out.close();

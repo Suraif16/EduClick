@@ -1,5 +1,6 @@
 package Controller.Requests;
 
+import Model.Notifications;
 import Model.Requests;
 import org.json.JSONObject;
 
@@ -22,6 +23,11 @@ public class AcceptEnrollRequestTeacherServlet extends HttpServlet{
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put( "serverResponse"  , "Allowed" );
+
+        String param = "Classroom Request";
+
+        Notifications notifications = new Notifications();
+        notifications.insertNotifications(toId,fromId,"0",param);
 
         /* toId is the classroom id here*/
 

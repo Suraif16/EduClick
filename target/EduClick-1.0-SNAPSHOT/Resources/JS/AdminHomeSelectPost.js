@@ -42,7 +42,9 @@ const getServerData = function (){
                     '<div class="postProfileImage">'+
                     ' <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
+
                     '<div class="postProfileName" >'+'EduClick'+'</div>'+
+
                     '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
@@ -77,7 +79,9 @@ const getServerData = function (){
                     '<div class="postProfileImage">'+
                     ' <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
+
                     '<div class="postProfileName" >'+'EduClick'+'</div>'+
+
                     '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
