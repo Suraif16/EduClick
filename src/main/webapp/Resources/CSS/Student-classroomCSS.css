@@ -363,6 +363,7 @@ div#content > div#postContents {
 
     background-color: #4775c4;
     padding: 1%;
+    display: flex;
 
 
 }
