@@ -43,10 +43,6 @@ console.log("1233444");
 
     function classroomHtmlOutput( userID , firstName , lastName){
 
-        console.log(firstName+"888");
-        console.log(lastName+"777");
-        console.log(userID+"555");
-
         const postContents = document.getElementById("postContents");
         postContents.innerHTML = "";
 
@@ -83,9 +79,6 @@ console.log("1233444");
         rightPanel.innerHTML +=htmlString;
 
 
-        console.log(firstName+"  tttt");
-        console.log(lastName+"  ggg");
-        console.log(userID+"   ddd");
 
 
 
@@ -93,9 +86,9 @@ console.log("1233444");
 
 
 }
-const getUserIdClientSideA = function (){
+/*const getUserIdClientSideA = function (){
 
     let currentClassUrl = new URL( window.location.href );
     return currentClassUrl.searchParams.get( "userId" );
 
-}
+}*/
