@@ -4,6 +4,8 @@ const lastNameElement  = document.getElementById( "lastName" );
 const countryElement = document.getElementById( "country" );
 const cityElement = document.getElementById( "city" );
 const userProfileImage = document.getElementById( "userProfileEditFormRowProfileImage" );
+const imageInsertIcon = document.getElementById( "inputImage" );
+
 let userProfileType;
 const showHideUserProfileEditForm = function (){
 
@@ -85,3 +87,15 @@ const displayUserProfileDetails = function ( jsonResponse ){
 
 
 }
+
+
+
+imageInsertIcon.addEventListener( "change" , function (){
+
+    let imageFile = document.createElement( "IMG" );
+    imageFile.src = URL.createObjectURL( imageInsertIcon.files[0] );
+
+    userProfileImage.innerHTML = "";
+    userProfileImage.appendChild( imageFile );
+
+});
