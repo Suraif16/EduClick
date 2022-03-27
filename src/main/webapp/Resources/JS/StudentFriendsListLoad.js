@@ -152,10 +152,4 @@ const cancelFriendRequestServer = function ( toUserId , addFriendButton , cancel
     httpreq.send( "toID=" + toUserId);
 
 }
-/*
-const getUserIdClientSide = function (){
 
-    let currentClassUrl = new URL( window.location.href );
-    return currentClassUrl.searchParams.get( "userId" );
-
-}*/
