@@ -244,7 +244,7 @@ img#profilepic1{
     display: flex;
     justify-content: center;
     flex-basis: 90%;
-    color: whitesmoke;
+    color: white;
     flex-wrap: wrap;
 
 }
@@ -373,7 +373,7 @@ div#content > div#postContents {
     width: 75%;
     margin: 1% auto 1% auto;
 
-    /*becomes a container for postProfileSection , postData , and postAnswerButton, where all these contain under postContentContainer*/
+    /*becomes a container for post , postData , and postAnswerButton, where all these contain under postContentContainer*/
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -415,6 +415,7 @@ div#content > div#postContents {
     /* child of postProfile*/
     margin: auto auto auto 3px;
     flex-basis: 90%;
+    color: whitesmoke;
 
 
 }
@@ -1052,17 +1053,19 @@ input[type="button"]:active{
 }
 .postTimeAndDate{
 
-    flex-basis: 25%;
+    flex-basis: 20%;
     margin: auto;
     font-size: x-small;
     color: white;
+    display: flex;
 
 }
 
+/*
 
 .userOptions{
 
-    flex-basis: 5%;
+    flex-basis: 1%;
     margin: auto;
 
 }
@@ -1075,6 +1078,47 @@ input[type="button"]:active{
     background-position: center;
     alignment: center;
 
+}
+*/
+
+#userOptionMenu{
+
+    display: none;
+    margin: 8% auto auto 30%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+    position: absolute;
+    flex-direction: column;
+    padding: 0.5%;
+    background-color: white;
+    width: 10%;
+
+
+}
+
+.userOptionMenuInput{
+
+    flex: 1;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userOptionMenuInput > input[type = "button"]{
+
+    flex: 1;
+
+}
+
+.userOptions{
+    flex-basis: 1%;
+    margin: auto;
+}
+.userOptionsButton{
+    background-image: url("../Icons/more_vert_white_24dp.svg");
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-position: center;
+    alignment: center;
 }
 
 
