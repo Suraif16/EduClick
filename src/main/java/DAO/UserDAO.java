@@ -42,7 +42,7 @@ public class UserDAO<teacherArrayList> {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Gender,Country,City,RegistrationDate,RegistrationTime) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Gender,Country,City,RegistrationDate,RegistrationTime,CountryCode) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
@@ -54,6 +54,7 @@ public class UserDAO<teacherArrayList> {
             preparedStatement.setString(8, user.getCity());
             preparedStatement.setString(9, String.valueOf(user.getRegistrationDate()));
             preparedStatement.setString(10, String.valueOf(user.getRegistrationTime()));
+            preparedStatement.setString(11, String.valueOf(user.getCountryCode()));
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -85,7 +86,7 @@ public class UserDAO<teacherArrayList> {
         String userType = "";
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City from Users where UserID = ?";
+            String sql = "select FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City, CountryCode from Users where UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user.getUserId());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -99,6 +100,7 @@ public class UserDAO<teacherArrayList> {
                 String city = resultSet.getString("City");
                 String gender = resultSet.getString("Gender");
                 userType = resultSet.getString("UserType");
+                String countryCode = resultSet.getString("CountryCode");
 
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
@@ -109,6 +111,7 @@ public class UserDAO<teacherArrayList> {
                 user.setCity(city);
                 user.setGender(gender);
                 user.setUserType(userType);
+                user.setCountryCode(countryCode);
 
             }
             resultSet.close();
