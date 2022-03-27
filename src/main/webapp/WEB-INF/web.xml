@@ -1136,19 +1136,6 @@
 
     <!-- end of load news feeds in teacher profile page -->
 
-    <!-- beginning of load  teacher pro page-->
-
-    <servlet>
-        <servlet-name>TeacherProPageNewsFeedsloadServlet</servlet-name>
-        <servlet-class>Controller.TeacherProPageNewsFeedsLoadServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>TeacherProPageNewsFeedsloadServlet</servlet-name>
-        <url-pattern>/teacher/TeacherProPageNewsFeedsLoadServlet</url-pattern>
-    </servlet-mapping>
-
-    <!-- end of load teacher pro page -->
 
 
 
