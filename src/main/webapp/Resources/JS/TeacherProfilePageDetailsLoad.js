@@ -26,6 +26,11 @@ const loadTeacherProfileDetailsList = function (){
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
             console.log("Profiule teacher details load runningg!!!!!!")
+
+            document.getElementById("country").innerHTML = "Country : "+jsonLoginResponse.teacherDetails.Country
+            document.getElementById("city").innerHTML = "City : "+jsonLoginResponse.teacherDetails.City
+            document.getElementById("mobile").innerHTML = "Mobile Number : "+jsonLoginResponse.teacherDetails.MobileNum
+            document.getElementById("workingPlace").innerHTML = "Working Place : "+jsonLoginResponse.teacherDetails.WorkingPlace.CurrentWorkingPlace
         }else{
             alert("something went wrong!!!");
         }
