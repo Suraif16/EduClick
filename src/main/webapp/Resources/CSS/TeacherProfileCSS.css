@@ -952,6 +952,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 div.userProfileEditForm{
 
     background-color: white;
+    position: absolute;
+    left: 25%;
     margin: -15% auto auto auto;
     z-index: 5;
     display: flex;
