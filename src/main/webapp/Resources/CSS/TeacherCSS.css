@@ -424,14 +424,6 @@ div#content > div#postContents {
 
 }
 
-.postTimeAndDate{
-
-    flex-basis: 25%;
-    margin: auto;
-    font-size: x-small;
-    color: white;
-
-}
 
 .postProfileSection > a{
 
