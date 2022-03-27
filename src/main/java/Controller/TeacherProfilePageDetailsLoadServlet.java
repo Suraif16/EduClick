@@ -32,6 +32,8 @@ public class TeacherProfilePageDetaisLoadServlet extends HttpServlet {
 
         jsonObject.put("teacherDetails",teacherDetails);
 
+        System.out.println("kajshgjhasdhgdkafkas ashjdgas dasjhgdas gdkajsdg ka djashg");
+
         out.write(jsonObject.toString());
         out.close();
 
