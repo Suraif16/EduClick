@@ -15,15 +15,6 @@ public class User {
     private String lastName;
     private LocalDate dateOfBirth;
     private String mobileNumber;
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
-
     private String countryCode;
     private String profilePicture;
     private String country;
@@ -195,6 +186,14 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     /*Getters and setters ends here*/
