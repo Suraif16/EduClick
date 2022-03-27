@@ -31,7 +31,7 @@ const getUserProfileDetails = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/user/???" ,true );
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/selectEditProfileDetails" ,true );
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send( "userId=" + getUserIdClientSide() );
 

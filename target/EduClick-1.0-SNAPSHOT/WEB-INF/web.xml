@@ -1136,6 +1136,22 @@
 
     <!-- end of load news feeds in teacher profile page -->
 
+    <!-- end of unenroll classroom servlet-->
+
+    <!-- beginning of select edit profile details in teacher profile page-->
+
+    <servlet>
+        <servlet-name>SelectEditProfileDetails</servlet-name>
+        <servlet-class>Controller.SelectEditProfileDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectEditProfileDetails</servlet-name>
+        <url-pattern>/user/selectEditProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select edit profile details in teacher profile page -->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes

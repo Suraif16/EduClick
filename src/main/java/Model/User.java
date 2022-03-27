@@ -350,6 +350,13 @@ public class User {
         return bellIconDAO.getBellIconDetails(userId);
     }
 
+    public String getWorkPlace(){
+
+        UserDAO userDAO = new UserDAO();
+        return  userDAO.getWorkPlace( this.getUserId() );
+
+    }
+
 
 }
 

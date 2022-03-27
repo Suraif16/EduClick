@@ -588,6 +588,75 @@ public class UserDAO<teacherArrayList> {
         return jsonObject;
     }
 
+    public String getWorkPlace( String userId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        ResultSet resultSet = null;
+
+        String workPlace = null;
+
+        try{
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "SELECT CurrentWorkingPlace FROM Teacher WHERE UserID = ?";
+            preparedStatement = connection.prepareStatement( sql );
+            preparedStatement.setString( 1 , userId );
+
+            resultSet = preparedStatement.executeQuery();
+
+            if ( resultSet.next() ){
+
+                workPlace = resultSet.getString( 1 );
+
+            }
+
+            connection.commit();
+
+        }catch ( SQLException E ){
+
+            E.printStackTrace();
+
+            try {
+
+                if( connection != null )connection.rollback();
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }finally {
+
+            try {
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+
+                if ( resultSet != null )resultSet.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException E ){
+
+                E.printStackTrace();
+
+            }
+
+        }
+
+
+        return workPlace;
+    }
+
 
 
 }
