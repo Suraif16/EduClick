@@ -40,7 +40,7 @@ const getServerData = function (){
                     '<div class="postProfileSection">'+
                     '<a href="#" class="postProfile">'+
                     '<div class="postProfileImage">'+
-                    ' <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
+                    ' <img class="postProfileIcon" src="../Resources/Icons/Logo.png">'+
                     '</div>'+
 
                     '<div class="postProfileName" >'+'EduClick'+'</div>'+
@@ -77,7 +77,7 @@ const getServerData = function (){
                     '<div class="postProfileSection">'+
                     '<a href="#" class="postProfile">'+
                     '<div class="postProfileImage">'+
-                    ' <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
+                    ' <img class="postProfileIcon" src="../Resources/Icons/Logo.png">'+
                     '</div>'+
 
                     '<div class="postProfileName" >'+'EduClick'+'</div>'+
