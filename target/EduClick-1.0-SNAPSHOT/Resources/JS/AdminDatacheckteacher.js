@@ -1,5 +1,13 @@
 function checkdata(){
+
     searchFunction();
+}
+
+document.onreadystatechange = function (){
+    if ( document.readyState === 'complete' ){
+        /* when the document is loaded and complete this function will run*/
+        searchFunction();
+    }
 }
 
 const searchFunction = function ( ) {
