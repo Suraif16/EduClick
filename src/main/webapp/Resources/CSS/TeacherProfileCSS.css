@@ -649,6 +649,17 @@ input[type="button"]:active{
 
 
 }
+/*
+
+div#settingsForm{
+    margin-left: 30%;
+    margin-top: 30px;
+    background-color: yellow;
+    height: 500px;
+    width: 500px;
+    padding-top: 30px;
+}
+*/
 
 @media(max-width: 1100px) {
 
