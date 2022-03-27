@@ -1136,6 +1136,20 @@
 
     <!-- end of load news feeds in teacher profile page -->
 
+    <!-- beginning of load Admin post-->
+
+    <servlet>
+        <servlet-name>AdimnPostloadServlet</servlet-name>
+        <servlet-class>Controller.AdminPostLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdimnPostloadServlet</servlet-name>
+        <url-pattern>/user/EntrancePageAdminPostLoadServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of load Admin post -->
+
 
 
 
