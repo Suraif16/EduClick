@@ -3,8 +3,9 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
-        sendServerDataa();
         LoadNewsFeedsInTeacherProfilePage();
+        sendServerDataa();
+
         getClassroomListA();
         LoadSelectedNewsFeeds();
         LoadAdminPost();
