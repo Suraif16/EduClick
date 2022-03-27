@@ -198,8 +198,6 @@ const sendNameData = function (){
         }else if(jsonResponse.serverResponse === "Allowed") {
 
             console.log(jsonResponse);
-         /*  *************************/
-
 
             for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
 
