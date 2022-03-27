@@ -579,7 +579,7 @@
 
     <servlet-mapping>
         <servlet-name>teacherFollowerListLoad</servlet-name>
-        <url-pattern>/teacher/teacherFollowerListLoad</url-pattern>
+        <url-pattern>/user/teacherFollowerListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student follow list load -->
@@ -594,7 +594,7 @@
 
     <servlet-mapping>
         <servlet-name>teacherFriendListLoad</servlet-name>
-        <url-pattern>/teacher/teacherFriendsListLoad</url-pattern>
+        <url-pattern>/user/teacherFriendsListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student friend list load -->
