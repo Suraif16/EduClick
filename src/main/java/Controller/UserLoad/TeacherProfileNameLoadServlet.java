@@ -25,9 +25,6 @@ public class TeacherProfileNameLoadServlet extends HttpServlet{
         HttpSession session = request.getSession( false );
         User user = new User();
         String fID = request.getParameter("userId");
-        System.out.println(fID);
-
-
 
         String fullName = user.getFullName(fID);
         System.out.println(fullName);

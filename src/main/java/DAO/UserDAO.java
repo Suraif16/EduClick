@@ -5,7 +5,6 @@ import Database.DBConnectionPool;
 import Model.Admin;
 import Model.User;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -226,40 +225,6 @@ public class UserDAO<teacherArrayList> {
         return teacherArrayList;
 
     }
-
-    public String getTeacherFullName(String userId) {
-        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
-        Connection connection = null;
-        String fullName = "";
-
-        try {
-            connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT FirstName, LastName FROM Users WHERE UserID = ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, userId);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String firstName = resultSet.getString("FirstName");
-                String lastName = resultSet.getString("LastName");
-                fullName = firstName + " " + lastName;
-            }
-
-            resultSet.close();
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (connection != null) try {
-                connection.close();
-            } catch (Exception ignore) {
-            }
-        }
-        return fullName;
-    }
-
 
     public JSONArray getTeacherFollowersList(ArrayList<String> followsList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -586,6 +551,41 @@ public class UserDAO<teacherArrayList> {
         }
 
         return jsonObject;
+    }
+
+    public String getTeacherFullName(String userId) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String fullName = "";
+
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT FirstName, LastName FROM Users WHERE UserID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                fullName = firstName + " " + lastName;
+
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+        return fullName;
     }
 
 
