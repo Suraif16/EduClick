@@ -12,6 +12,8 @@
 
 const LoadNewsFeedsInTeacherProfilePage = function (){
 
+    console.log("ggg");
+
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
@@ -36,8 +38,9 @@ function completeNFLoad(httpreq) {
 
         const name = document.getElementById("profileUserName");
         name.innerHTML = jsonResponse.fullName;
-       /* let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
-        headerUserProfileIdAchorElement.setAttribute("href" , url);*/
+        console.log("amoo");
+       // let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
+
 
         for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
 
@@ -82,12 +85,12 @@ function completeNFLoad(httpreq) {
                     '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
@@ -137,12 +140,12 @@ function completeNFLoad(httpreq) {
                     '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
@@ -195,12 +198,12 @@ function completeNFLoad(httpreq) {
                     '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
@@ -213,10 +216,6 @@ function completeNFLoad(httpreq) {
 
 
                 postContents.innerHTML += innerPreviouseHTML;
-
-
-
-
 
             }
 
@@ -231,11 +230,9 @@ function completeNFLoad(httpreq) {
         alert("something went wrong!!!");
     }
 }
-/*
-const getUserIdClientSide = function (){
+/*const getUserIdClientSide = function (){
 
     let currentClassUrl = new URL( window.location.href );
-    console.log(currentClassUrl+"***********");
     return currentClassUrl.searchParams.get( "userId" );
 
 }*/
