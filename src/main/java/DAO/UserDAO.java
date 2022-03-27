@@ -533,6 +533,8 @@ public class UserDAO<teacherArrayList> {
                 fullName = firstName + " " + lastName;
 
             }
+            resultSet.close();
+            preparedStatement.close();
 
 
         } catch (SQLException e) {
@@ -575,6 +577,9 @@ public class UserDAO<teacherArrayList> {
             }
 
 
+
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
