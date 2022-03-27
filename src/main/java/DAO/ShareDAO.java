@@ -115,6 +115,8 @@ public class ShareDAO {
 
 
             }
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -148,6 +150,9 @@ public class ShareDAO {
                 NewsFeedsIdList.add(resultSet.getString("NFPostID"));
 
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

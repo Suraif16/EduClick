@@ -183,24 +183,208 @@ const sendNameData = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/student/studentLoad" , true);
-    httpreq.send();
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/teacherProfileNameLoad" , true);
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLogin( httpreq ){
 
-        let jsonLoginResponse = JSON.parse(httpreq.responseText);
+        let jsonResponse = JSON.parse(httpreq.responseText);
 
 
 
-        if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
+        if( jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
-        }else if(jsonLoginResponse.serverResponse === "Allowed") {
+        }else if(jsonResponse.serverResponse === "Allowed") {
 
-            console.log(jsonLoginResponse);
-            /* This is where I need work everytime as per the authentication filter*/
-            console.log(jsonLoginResponse.firstName);
-            const name = document.getElementById("headerUserName");
-            name.innerHTML = jsonLoginResponse.firstName;
+            console.log(jsonResponse);
+
+            for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
+
+                console.log(jsonResponse.jsonArray1[i].ownerId);
+
+                if (jsonResponse.jsonArray1[i].path !== "" && jsonResponse.jsonArray1[i].Caption !=="") {
+
+                    let innerPreviouseHTML = postContents.innerHTML;
+                    postContents.innerHTML = '        <div class="post">    ' +
+                        '              <div class="postContentContainer">' +
+                        '                   <div class="postProfileSection">' +
+                        '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ jsonResponse.jsonArray1[i].ownerId  +'" class="postProfile">' +
+                        '                           <div class="postProfileImage">' +
+                        '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
+                        '                           </div>' +
+                        '                           <div class="postProfileName" >' + jsonResponse.jsonArray1[i].ownerName +
+                        '</div>' + ' </a>' +
+                        '                           <div class="postTimeAndDate" >' +
+                        jsonResponse.jsonArray1[i].Time + ' | ' +
+                        jsonResponse.jsonArray1[i].Date +
+                        '                            </div>' +
+                        '                    <div class="userOptions">' +
+                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
+                        '                    </div>' +
+                        '                   </div>' +
+                        '               </div>' +
+                        '               <div class="postContentContainer">' +
+                        '                   <div class="postData">' +
+                        '                       <div class="postMessage">' + jsonResponse.jsonArray1[i].Caption +
+
+                        '                       </div>' +
+                        '                       <div class="postPicture">' +
+                        '                           <div class="postPictureImageContainer">' +
+                        '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.jsonArray1[i].path + '.jpeg">' +
+                        '                           </div>' +
+                        '                       </div>' +
+                        '                     </div>' +
+                        '                  </div>' +
+                        '                   <div class="postContentContainer">' +
+                        '                       <div class="postLikeShareButtons">' +
+                        '                           <div class="likeShareButtons" >' +
+                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
+                        '                           </div>' +
+                        '                           <div class="countOfLikeShare" >' +
+                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                        '                                   Likes' +
+                        '                               </div >' +
+                        '                               <div class="emptySpaceLikeShare">' +
+                        '                               </div>' +
+                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                        '                                    Shares' +
+                        '                               </div>' +
+                        '                              </div>' +
+                        '                           <div class="likeShareButtons" >' +
+                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
+                        '                           </div>' +
+                        '                        </div>' +
+                        '                       </div>' +
+                        '                   </div>'
+
+
+                    postContents.innerHTML += innerPreviouseHTML;
+
+
+                }else if(jsonResponse.jsonArray1[i].Caption !==""){
+
+                    let innerPreviouseHTML = postContents.innerHTML;
+                    postContents.innerHTML = '        <div class="post">    ' +
+                        '              <div class="postContentContainer">' +
+                        '                   <div class="postProfileSection">' +
+                        '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ jsonResponse.jsonArray1[i].ownerId  +'" class="postProfile">' +
+                        '                           <div class="postProfileImage">' +
+                        '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
+                        '                           </div>' +
+                        '                           <div class="postProfileName" >' + jsonResponse.jsonArray1[i].ownerName +
+                        '</div>' + ' </a>' +
+                        '                           <div class="postTimeAndDate" >' +
+                        jsonResponse.jsonArray1[i].Time + ' | ' +
+                        jsonResponse.jsonArray1[i].Date +
+                        '                            </div>' +
+                        '                    <div class="userOptions">' +
+                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
+                        '                    </div>' +
+                        '                   </div>' +
+                        '               </div>' +
+                        '               <div class="postContentContainer">' +
+                        '                   <div class="postData">' +
+                        '                       <div class="postMessage">' + jsonResponse.jsonArray1[i].Caption +
+
+                        '                       </div>' +
+
+                        '                     </div>' +
+                        '                  </div>' +
+                        '                   <div class="postContentContainer">' +
+                        '                       <div class="postLikeShareButtons">' +
+                        '                           <div class="likeShareButtons" >' +
+                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
+                        '                           </div>' +
+                        '                           <div class="countOfLikeShare" >' +
+                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                        '                                   Likes' +
+                        '                               </div >' +
+                        '                               <div class="emptySpaceLikeShare">' +
+                        '                               </div>' +
+                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                        '                                    Shares' +
+                        '                               </div>' +
+                        '                              </div>' +
+                        '                           <div class="likeShareButtons" >' +
+                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
+                        '                           </div>' +
+                        '                        </div>' +
+                        '                       </div>' +
+                        '                   </div>'
+
+
+                    postContents.innerHTML += innerPreviouseHTML;
+
+
+                }else if (jsonResponse.jsonArray1[i].path !== "")
+                {
+
+                    let innerPreviouseHTML = postContents.innerHTML;
+                    postContents.innerHTML = '        <div class="post">    ' +
+                        '              <div class="postContentContainer">' +
+                        '                   <div class="postProfileSection">' +
+                        '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId='+ jsonResponse.jsonArray1[i].ownerId  +'" class="postProfile">' +
+                        '                           <div class="postProfileImage">' +
+                        '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
+                        '                           </div>' +
+                        '                           <div class="postProfileName" >' + jsonResponse.jsonArray1[i].ownerName +
+                        '</div>' + ' </a>' +
+                        '                           <div class="postTimeAndDate" >' +
+                        jsonResponse.jsonArray1[i].Time + ' | ' +
+                        jsonResponse.jsonArray1[i].Date +
+                        '                            </div>' +
+                        '                    <div class="userOptions">' +
+                        '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].postId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].postId + ',\'educationalPostOPtion\')">' +
+                        '                    </div>' +
+                        '                   </div>' +
+                        '               </div>' +
+                        '               <div class="postContentContainer">' +
+                        '                   <div class="postData">' +
+
+                        '                       <div class="postPicture">' +
+                        '                           <div class="postPictureImageContainer">' +
+                        '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.jsonArray1[i].path + '.jpeg">' +
+                        '                           </div>' +
+                        '                       </div>' +
+                        '                     </div>' +
+                        '                  </div>' +
+                        '                   <div class="postContentContainer">' +
+                        '                       <div class="postLikeShareButtons">' +
+                        '                           <div class="likeShareButtons" >' +
+                        '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
+                        '                           </div>' +
+                        '                           <div class="countOfLikeShare" >' +
+                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                        '                                   Likes' +
+                        '                               </div >' +
+                        '                               <div class="emptySpaceLikeShare">' +
+                        '                               </div>' +
+                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                        '                                    Shares' +
+                        '                               </div>' +
+                        '                              </div>' +
+                        '                           <div class="likeShareButtons" >' +
+                        '                               <input type="button" value="Share" class="share" onclick="shareNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
+                        '                           </div>' +
+                        '                        </div>' +
+                        '                       </div>' +
+                        '                   </div>'
+
+
+                    postContents.innerHTML += innerPreviouseHTML;
+
+
+
+
+
+                }
+
+
+            }
+
+            console.log("hhhh");
+
         }else{
             alert("something went wrong!!!");
         }
@@ -226,7 +410,7 @@ const LoadTeacherProName = function (){
 
     httpreq.open( "POST" , "/EduClick_war_exploded/student/teacherProfileNameLoad" , true);
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
-    httpreq.send("userId=" + id);
+    httpreq.send("userId=" + getUserIdClientSide());
 
 
     function completeLogin( httpreq ){
@@ -235,13 +419,11 @@ const LoadTeacherProName = function (){
         console.log("teacher pro name find loaded");
 
 
-
-
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
-            const name = document.getElementById("teacherUserName");
+            const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.FullName;
             console.log(name);
 
@@ -255,10 +437,10 @@ const LoadTeacherProName = function (){
 }
 
 
-
+/*
 const getUserIdClientSide = function (){
 
     let currentClassUrl = new URL( window.location.href );
     return currentClassUrl.searchParams.get( "userId" );
 
-}
+}*/

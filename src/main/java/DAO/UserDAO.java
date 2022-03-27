@@ -3,9 +3,10 @@ package DAO;
 import Database.DBConnectionPool;
 
 import Model.Admin;
+import Model.Student;
+import Model.Teacher;
 import Model.User;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -18,7 +19,6 @@ import java.util.ArrayList;
 public class UserDAO<teacherArrayList> {
 
     /*ArrayList<String> arrayList = new ArrayList<String>();
-
     public ArrayList<String> getArrayList() {
         return arrayList;
     }*/
@@ -40,7 +40,7 @@ public class UserDAO<teacherArrayList> {
 
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Gender,Country,City,RegistrationDate,RegistrationTime) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Users (FirstName,Lastname,DOB,MobileNum,UserType,Gender,Country,City,RegistrationDate,RegistrationTime,CountryCode) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
@@ -52,6 +52,7 @@ public class UserDAO<teacherArrayList> {
             preparedStatement.setString(8, user.getCity());
             preparedStatement.setString(9, String.valueOf(user.getRegistrationDate()));
             preparedStatement.setString(10, String.valueOf(user.getRegistrationTime()));
+            preparedStatement.setString(11, String.valueOf(user.getCountryCode()));
 
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -83,7 +84,7 @@ public class UserDAO<teacherArrayList> {
         String userType = "";
         try {
             connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "select FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City from Users where UserID = ?";
+            String sql = "select FirstName, LastName, ProfilePic, DOB, MobileNum, UserType, Gender, Country, City, CountryCode from Users where UserID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user.getUserId());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -97,6 +98,7 @@ public class UserDAO<teacherArrayList> {
                 String city = resultSet.getString("City");
                 String gender = resultSet.getString("Gender");
                 userType = resultSet.getString("UserType");
+                String countryCode = resultSet.getString("CountryCode");
 
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
@@ -107,6 +109,7 @@ public class UserDAO<teacherArrayList> {
                 user.setCity(city);
                 user.setGender(gender);
                 user.setUserType(userType);
+                user.setCountryCode(countryCode);
 
             }
             resultSet.close();
@@ -226,40 +229,6 @@ public class UserDAO<teacherArrayList> {
         return teacherArrayList;
 
     }
-
-    public String getTeacherFullName(String userId) {
-        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
-        Connection connection = null;
-        String fullName = "";
-
-        try {
-            connection = dbConnectionPool.dataSource.getConnection();
-            String sql = "SELECT FirstName, LastName FROM Users WHERE UserID = ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, userId);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                String firstName = resultSet.getString("FirstName");
-                String lastName = resultSet.getString("LastName");
-                fullName = firstName + " " + lastName;
-            }
-
-            resultSet.close();
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (connection != null) try {
-                connection.close();
-            } catch (Exception ignore) {
-            }
-        }
-        return fullName;
-    }
-
 
     public JSONArray getTeacherFollowersList(ArrayList<String> followsList) {
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
@@ -533,6 +502,8 @@ public class UserDAO<teacherArrayList> {
                 fullName = firstName + " " + lastName;
 
             }
+            resultSet.close();
+            preparedStatement.close();
 
 
         } catch (SQLException e) {
@@ -575,6 +546,9 @@ public class UserDAO<teacherArrayList> {
             }
 
 
+
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -586,6 +560,148 @@ public class UserDAO<teacherArrayList> {
         }
 
         return jsonObject;
+    }
+
+    public JSONObject getStudentDetails(String userId) {
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT FirstName, LastName, ProfilePic, DOB, MobileNum, Country, City  FROM Users WHERE UserID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Student student = new Student();
+
+                String firstName = resultSet.getString("FirstName");
+
+                String lastName = resultSet.getString("LastName");
+
+                jsonObject.put("FirstName",firstName);
+
+                jsonObject.put("LastName",lastName);
+
+                jsonObject.put("DOB",resultSet.getString("DOB"));
+
+                jsonObject.put("MobileNum",resultSet.getString("MobileNum"));
+
+                jsonObject.put("Country", resultSet.getString("Country"));
+
+                jsonObject.put("City",resultSet.getString("City"));
+
+                jsonObject.put("SchoolAndGrade",student.getSchoolAndGrade(userId));
+
+            }
+
+
+
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+        System.out.println("In DAO"+jsonObject);
+
+        return jsonObject;
+    }
+
+    public JSONObject getTeacherDetails(String userId) {
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+
+            String sql = "SELECT FirstName, LastName, ProfilePic, Country, City, MobileNum  FROM Users WHERE UserID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                TeacherDAO teacherDAO = new TeacherDAO();
+
+                String firstName = resultSet.getString("FirstName");
+
+                String lastName = resultSet.getString("LastName");
+
+                jsonObject.put("FirstName",firstName);
+
+                jsonObject.put("LastName",lastName);
+
+                jsonObject.put("Country", resultSet.getString("Country"));
+
+                jsonObject.put("City",resultSet.getString("City"));
+
+                jsonObject.put("MobileNum",resultSet.getString("MobileNum"));
+
+                jsonObject.put("WorkingPlace",teacherDAO.getTeacherWorkingPlace(userId));
+
+            }
+
+
+
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+
+        }
+
+        return jsonObject;
+    }
+
+    public String getTeacherFullName(String userId) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String fullName = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT FirstName, LastName FROM Users WHERE UserID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                fullName = firstName + " " + lastName;
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+        return fullName;
     }
 
     public String getWorkPlace( String userId ){
@@ -693,23 +809,14 @@ public class UserDAO<teacherArrayList> {
             connection.commit();
 
             /*if ( x != 0 ){
-
                 connection.rollback();
-
             }else{
-
                 int y = preparedStatement1.executeUpdate();
-
                 if ( y == 0 ){
-
                     connection.rollback();
-
                 }else{
-
                     connection.commit();
-
                 }
-
             }*/
 
 
@@ -822,5 +929,3 @@ public class UserDAO<teacherArrayList> {
     }
 
 }
-
-

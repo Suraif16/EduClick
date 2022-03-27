@@ -1,5 +1,7 @@
 package Controller;
 
+import DAO.AddFriendsDAO;
+import DAO.UserDAO;
 import Model.Requests;
 import Model.User;
 import org.json.JSONArray;
@@ -32,21 +34,26 @@ public class StudentFriendListLoadServlet extends HttpServlet {
         jsonObject.put("serverResponse" , "Allowed");
 
         Requests requests = new Requests();
+        AddFriendsDAO addFriendsDAO = new AddFriendsDAO();
 
         ArrayList<String> friendList = requests.getStudentFriends(userId);
         System.out.println("In servlet : "+friendList);
 
-        JSONArray studentFriendDetails = user.getStudentFriendsDetails(friendList);
+        ArrayList<String> friendList2 = addFriendsDAO.getTeacherFriendKeys(userId);
+        JSONArray details = user.getStudentFollowersDetails(friendList2);
+
+
+        /*JSONArray studentFriendDetails = user.getStudentFriendsDetails(friendList);*/
 
         /*for(int i=0;i< studentFriendDetails.size();i++){
             System.out.println("Servlet"+studentFriendDetails.get(i).getUserId());
             System.out.println("Servlet"+studentFriendDetails.get(i).getFirstName());
             System.out.println("Servlet"+studentFriendDetails.get(i).getLastName());
         }*/
-        System.out.println(studentFriendDetails);
 
 
-        jsonObject.put("List",studentFriendDetails);
+
+        jsonObject.put("List",details);
 
         out.write(jsonObject.toString());
         out.close();

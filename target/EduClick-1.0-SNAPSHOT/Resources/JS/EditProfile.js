@@ -1,8 +1,8 @@
 const userProfileEditForm = document.getElementById( "userProfileEditForm" );
 const firstNameElement = document.getElementById( "firstName" );
 const lastNameElement  = document.getElementById( "lastName" );
-const countryElement = document.getElementById( "country" );
-const cityElement = document.getElementById( "city" );
+const countryElement = document.getElementById( "countryElement" );
+const cityElement = document.getElementById( "cityElement" );
 const userProfileImage = document.getElementById( "userProfileEditFormRowProfileImage" );
 const imageInsertIcon = document.getElementById( "inputImage" );
 
@@ -76,7 +76,7 @@ const displayUserProfileDetails = function ( jsonResponse ){
 
             let workplace = jsonResponse.workPlace;
 
-            if ( workplace !== "null" ){
+            if ( workplace !== undefined ){
 
                 document.getElementById( "workPlace" ).value = workplace;
 

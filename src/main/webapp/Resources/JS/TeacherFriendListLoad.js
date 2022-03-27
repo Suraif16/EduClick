@@ -1,5 +1,5 @@
 const loadTeacherFriendList = function (){
-
+console.log("1233444");
     const rightPanel = document.getElementById("rightPanel");
     rightPanel.innerHTML="";
 
@@ -14,7 +14,7 @@ const loadTeacherFriendList = function (){
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/teacher/teacherFriendsListLoad", true);
+    httpreq.open("POST", "/EduClick_war_exploded/user/teacherFriendsListLoad", true);
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send("userId=" + getUserIdClientSide());
 
@@ -31,6 +31,8 @@ const loadTeacherFriendList = function (){
             let count = jsonLoginResponse.List.length - 1;
             for (i = 0 ; i <= count ; i++){
 
+                console.log(jsonLoginResponse.List[i].firstName+"999");
+
                 classroomHtmlOutput(jsonLoginResponse.List[i].UserID,jsonLoginResponse.List[i].firstName,jsonLoginResponse.List[i].lastName);
 
             }
@@ -41,9 +43,12 @@ const loadTeacherFriendList = function (){
 
     function classroomHtmlOutput( userID , firstName , lastName){
 
-        console.log(firstName);
-        console.log(lastName);
-        console.log(userID);
+        console.log(firstName+"888");
+        console.log(lastName+"777");
+        console.log(userID+"555");
+
+        const postContents = document.getElementById("postContents");
+        postContents.innerHTML = "";
 
 
         const searchContent = document.getElementById( "rightPanelStudentList" );
@@ -78,13 +83,19 @@ const loadTeacherFriendList = function (){
         rightPanel.innerHTML +=htmlString;
 
 
-        console.log(firstName);
-        console.log(lastName);
-        console.log(userID);
+        console.log(firstName+"  tttt");
+        console.log(lastName+"  ggg");
+        console.log(userID+"   ddd");
 
 
 
     }
 
+
+}
+const getUserIdClientSideA = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
 
 }

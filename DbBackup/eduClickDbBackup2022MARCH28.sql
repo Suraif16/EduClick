@@ -38,7 +38,6 @@ CREATE TABLE `add_friends` (
 
 LOCK TABLES `add_friends` WRITE;
 /*!40000 ALTER TABLE `add_friends` DISABLE KEYS */;
-INSERT INTO `add_friends` VALUES (2,1),(4,1),(6,1),(1,2),(1,4),(1,6);
 /*!40000 ALTER TABLE `add_friends` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +105,7 @@ CREATE TABLE `answer` (
   `Time` time NOT NULL,
   `Marks` int DEFAULT NULL,
   PRIMARY KEY (`AnswerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +114,6 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-INSERT INTO `answer` VALUES (1,'2022-03-25','23:50:05',90),(2,'2022-03-25','23:51:16',100),(3,'2022-03-25','23:51:44',84),(4,'2022-03-26','08:42:29',90),(5,'2022-03-26','08:44:21',NULL),(6,'2022-03-26','08:44:38',NULL),(7,'2022-03-26','08:49:00',NULL),(8,'2022-03-26','08:49:26',NULL),(9,'2022-03-26','12:39:21',100);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +143,6 @@ CREATE TABLE `answer_student_post_relationship` (
 
 LOCK TABLES `answer_student_post_relationship` WRITE;
 /*!40000 ALTER TABLE `answer_student_post_relationship` DISABLE KEYS */;
-INSERT INTO `answer_student_post_relationship` VALUES (3,9,8);
 /*!40000 ALTER TABLE `answer_student_post_relationship` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +168,6 @@ CREATE TABLE `bell_icon` (
 
 LOCK TABLES `bell_icon` WRITE;
 /*!40000 ALTER TABLE `bell_icon` DISABLE KEYS */;
-INSERT INTO `bell_icon` VALUES (1,'2022-03-27','12:59:16'),(2,'2022-03-25','23:04:13'),(3,'2022-03-25','23:08:05'),(4,'2022-03-25','23:34:26'),(5,'2022-03-26','07:43:41'),(6,'2022-03-26','11:32:52'),(7,'2022-03-26','11:48:24'),(8,'2022-03-26','15:34:04'),(9,'2022-03-27','10:45:13');
 /*!40000 ALTER TABLE `bell_icon` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +188,7 @@ CREATE TABLE `classroom` (
   PRIMARY KEY (`ClassroomID`),
   KEY `UserID` (`UserID`),
   CONSTRAINT `classroom_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `teacher` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +197,6 @@ CREATE TABLE `classroom` (
 
 LOCK TABLES `classroom` WRITE;
 /*!40000 ALTER TABLE `classroom` DISABLE KEYS */;
-INSERT INTO `classroom` VALUES (2,'Headway Institute','2024','12','Physics',2),(4,'Headway','2025','12','ICT',1),(5,'Alpha','2023','11','maths',1);
 /*!40000 ALTER TABLE `classroom` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +217,7 @@ CREATE TABLE `educationalpost` (
   PRIMARY KEY (`EPostID`),
   KEY `ClassroomID` (`ClassroomID`),
   CONSTRAINT `educationalpost_ibfk_1` FOREIGN KEY (`ClassroomID`) REFERENCES `classroom` (`ClassroomID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +226,6 @@ CREATE TABLE `educationalpost` (
 
 LOCK TABLES `educationalpost` WRITE;
 /*!40000 ALTER TABLE `educationalpost` DISABLE KEYS */;
-INSERT INTO `educationalpost` VALUES (8,'2022-03-26','12:22:41','MCQ','Question',4),(9,'2022-03-27','11:43:27','EducationalWork','Question',4),(10,'2022-03-27','12:15:06','EducationalWork','Question',4);
 /*!40000 ALTER TABLE `educationalpost` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +251,6 @@ CREATE TABLE `educationalwork` (
 
 LOCK TABLES `educationalwork` WRITE;
 /*!40000 ALTER TABLE `educationalwork` DISABLE KEYS */;
-INSERT INTO `educationalwork` VALUES (9,'true',''),(10,'true','');
 /*!40000 ALTER TABLE `educationalwork` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,7 +276,6 @@ CREATE TABLE `edw_answers` (
 
 LOCK TABLES `edw_answers` WRITE;
 /*!40000 ALTER TABLE `edw_answers` DISABLE KEYS */;
-INSERT INTO `edw_answers` VALUES (2,'The teacher in this picture is hot...','false'),(3,'5','false'),(5,'root 5','false'),(6,'','true'),(7,'root 7','false'),(8,'','true');
 /*!40000 ALTER TABLE `edw_answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,7 +303,6 @@ CREATE TABLE `enroll` (
 
 LOCK TABLES `enroll` WRITE;
 /*!40000 ALTER TABLE `enroll` DISABLE KEYS */;
-INSERT INTO `enroll` VALUES (3,4,'Enable');
 /*!40000 ALTER TABLE `enroll` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,7 +357,6 @@ CREATE TABLE `follows` (
 
 LOCK TABLES `follows` WRITE;
 /*!40000 ALTER TABLE `follows` DISABLE KEYS */;
-INSERT INTO `follows` VALUES (3,1),(5,1),(5,2),(3,4),(5,4);
 /*!40000 ALTER TABLE `follows` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,7 +385,6 @@ CREATE TABLE `friend_request` (
 
 LOCK TABLES `friend_request` WRITE;
 /*!40000 ALTER TABLE `friend_request` DISABLE KEYS */;
-INSERT INTO `friend_request` VALUES (1,8,'15:33:56','2022-03-26'),(5,3,'07:45:30','2022-03-26');
 /*!40000 ALTER TABLE `friend_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +411,6 @@ CREATE TABLE `likes` (
 
 LOCK TABLES `likes` WRITE;
 /*!40000 ALTER TABLE `likes` DISABLE KEYS */;
-INSERT INTO `likes` VALUES (1,6),(3,6);
 /*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -492,7 +480,6 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('farzanBlaze123@gmail.com','21e6c3ef5fe7dcaaff33914b41659c0e704cf0a5f15f4523c08948eed216a5dc','qZmt0B2nk1cdDk','2022-03-26','15:33:46',8,'True','False'),('farzanroxz123@gmail.com','0c768e7653dfd0535678f02152268334040326f40d8e68763438e22151bd36ef','saBpX49o1/Mt=vt','2022-03-28','01:39:04',1,'True','False'),('jeewa@gmail.com','75bfa87b09ecfebc8d94eb4f74fd1346ea3666d8e9b6107648d7fb14e8b36854','mg5iQBRK92qqQh*E!o5','2022-03-27','22:08:39',3,'True','False'),('m.farzan.rizwan@gmail.com','47e868523aa780b3f876e62cb9e197b7b7cc341247aeb930ffda200f5d47214f','WbMmN>s2lHkLtUy/x7','2022-03-25','23:34:26',4,'True','False'),('primethinker123@gmail.com','874b3cd942c4f3e898760b33e499b0981bdc7462f037b9cfc863676084d5ca90','!gw8fTcB2r0a$_Q&%','2022-03-26','11:48:24',7,'True','False'),('rahuram123@gmail.com','0e17d9d6bf85b9f687f6ebc226a785905319304b28df26cfd65666d86d8f7644','t5.y+W#zXz<ABS+GB%3','2022-03-26','08:48:22',5,'True','False'),('shawnfrost123@gmail.com','e55cfca32433cffbe275c2c9e948da094d6e44aec00bfb82257ca6043db679b8','7dVk@+qK=sE6TRX88g.','2022-03-27','10:45:09',9,'True','False'),('venushka123@gmail.com','7a722d2ebbe46d392fa8efdc73580e0d4151444721bcdc9a57c3a11888df0a73','qMdng@xAW6G','2022-03-26','07:55:57',2,'True','False'),('zahul123@gmail.com','5ca41585dba53ce37ecbe3430e31b567ccc4db1018e3a595f76fe505a70e1c0b','J/NDC_E*vv8>C7gau>','2022-03-26','11:32:52',6,'True','False');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -520,7 +507,6 @@ CREATE TABLE `mcq_answers` (
 
 LOCK TABLES `mcq_answers` WRITE;
 /*!40000 ALTER TABLE `mcq_answers` DISABLE KEYS */;
-INSERT INTO `mcq_answers` VALUES (9,'1',21),(9,'2',22),(9,'3',23),(9,'4',24),(9,'1',25),(9,'2',26),(9,'3',27),(9,'4',28),(9,'1',29),(9,'2',30);
 /*!40000 ALTER TABLE `mcq_answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -537,7 +523,7 @@ CREATE TABLE `news_feed_image` (
   PRIMARY KEY (`ImagePath`),
   KEY `NFPostID` (`NFPostID`),
   CONSTRAINT `news_feed_image_ibfk_1` FOREIGN KEY (`NFPostID`) REFERENCES `newsfeeds` (`NFPostID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -546,7 +532,6 @@ CREATE TABLE `news_feed_image` (
 
 LOCK TABLES `news_feed_image` WRITE;
 /*!40000 ALTER TABLE `news_feed_image` DISABLE KEYS */;
-INSERT INTO `news_feed_image` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17);
 /*!40000 ALTER TABLE `news_feed_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -566,7 +551,7 @@ CREATE TABLE `newsfeeds` (
   `ShareCount` bigint DEFAULT NULL,
   `ImageStatus` enum('true','false') DEFAULT NULL,
   PRIMARY KEY (`NFPostID`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -575,7 +560,6 @@ CREATE TABLE `newsfeeds` (
 
 LOCK TABLES `newsfeeds` WRITE;
 /*!40000 ALTER TABLE `newsfeeds` DISABLE KEYS */;
-INSERT INTO `newsfeeds` VALUES (1,'2022-03-25','23:14:28','We would like if everyone would join this seminar...',0,0,'true'),(2,'2022-03-25','23:14:52','We would like it if everyone would join this seminar...',0,0,'true'),(3,'2022-03-25','23:16:43','hope this works',0,0,'true'),(4,'2022-03-25','23:17:03','hope this works 1234',0,0,'true'),(5,'2022-03-25','23:18:36','Just having fun...',0,0,'true'),(6,'2022-03-26','00:05:16','Everyone let\'s join this seminar to improve our knowledge...',2,0,'true'),(7,'2022-03-26','07:48:32','',0,0,'true'),(8,'2022-03-26','07:50:55','',0,0,'true'),(9,'2022-03-26','07:51:49','',0,0,'true'),(10,'2022-03-26','07:52:00','',0,0,'true'),(11,'2022-03-26','07:52:20','',0,0,'true'),(12,'2022-03-26','07:52:49','',0,0,'true'),(13,'2022-03-26','07:53:12','',0,0,'true'),(14,'2022-03-26','07:53:39','Consider this...',0,0,'true'),(15,'2022-03-26','07:53:47','Consider this...',0,0,'true'),(16,'2022-03-26','07:56:25','Nothing...',0,0,'true'),(17,'2022-03-26','07:57:35','I don\'t wanna talk about it...',0,0,'true');
 /*!40000 ALTER TABLE `newsfeeds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -606,7 +590,6 @@ CREATE TABLE `notifications` (
 
 LOCK TABLES `notifications` WRITE;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
-INSERT INTO `notifications` VALUES (2,1,0,'Friend Request','2022-03-25','23:05:10'),(3,1,0,'Classroom Request','2022-03-25','23:10:32'),(4,1,0,'Friend Request','2022-03-25','23:37:28'),(3,1,0,'Classroom Request','2022-03-25','23:39:58'),(1,3,1,'Educational Post','2022-03-25','23:43:28'),(1,3,2,'Educational Post','2022-03-25','23:44:00'),(1,3,3,'Educational Post','2022-03-25','23:44:42'),(1,3,4,'Educational Post','2022-03-25','23:47:19'),(3,1,3,'Answer','2022-03-25','23:51:16'),(3,1,2,'Answer','2022-03-25','23:51:44'),(5,3,0,'Friend Request','2022-03-26','07:45:29'),(5,1,0,'Classroom Request','2022-03-26','07:47:29'),(1,3,5,'Educational Post','2022-03-26','07:59:41'),(1,5,5,'Educational Post','2022-03-26','07:59:41'),(1,3,6,'Educational Post','2022-03-26','07:59:56'),(1,5,6,'Educational Post','2022-03-26','07:59:56'),(1,3,7,'Educational Post','2022-03-26','08:40:51'),(1,5,7,'Educational Post','2022-03-26','08:40:51'),(3,1,6,'Answer','2022-03-26','08:44:21'),(3,1,5,'Answer','2022-03-26','08:44:38'),(5,1,6,'Answer','2022-03-26','08:49:00'),(5,1,5,'Answer','2022-03-26','08:49:26'),(3,1,0,'Classroom Request','2022-03-26','11:29:25'),(3,1,0,'Classroom Request','2022-03-26','11:29:26'),(6,1,0,'Friend Request','2022-03-26','11:33:16'),(6,4,0,'Friend Request','2022-03-26','11:33:18'),(6,4,0,'Friend Request','2022-03-26','11:40:59'),(1,3,8,'Educational Post','2022-03-26','12:22:42'),(1,8,0,'Friend Request','2022-03-26','15:33:55'),(1,3,9,'Educational Post','2022-03-27','11:43:28'),(1,3,10,'Educational Post','2022-03-27','12:15:07');
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -636,7 +619,6 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (2,1,5),(2,1,16),(2,1,17),(1,2,1),(1,2,2),(1,2,3),(1,2,4),(1,2,6),(1,2,7),(1,2,8),(1,2,9),(1,2,10),(1,2,11),(1,2,12),(1,2,13),(1,2,14),(1,2,15),(1,3,1),(1,3,2),(1,3,3),(1,3,4),(1,3,6),(1,3,7),(1,3,8),(1,3,9),(1,3,10),(1,3,11),(1,3,12),(1,3,13),(1,3,14),(1,3,15),(1,4,6),(1,4,7),(1,4,8),(1,4,9),(1,4,10),(1,4,11),(1,4,12),(1,4,13),(1,4,14),(1,4,15),(1,5,7),(1,5,8),(1,5,9),(1,5,10),(1,5,11),(1,5,12),(1,5,13),(1,5,14),(1,5,15),(2,5,16),(2,5,17);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -679,7 +661,7 @@ CREATE TABLE `question` (
   PRIMARY KEY (`QuestionID`),
   KEY `EPostID` (`EPostID`),
   CONSTRAINT `question_ibfk_1` FOREIGN KEY (`EPostID`) REFERENCES `educationalpost` (`EPostID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -688,7 +670,6 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (21,'answer answer answer answer','1',8),(22,'answer answer answer answer','2',8),(23,'answer answer','3',8),(24,'answer answer answer answer answer answer','4',8),(25,'answer answer answer answer answer answer answer answer','1',8),(26,'answer answer answer answer answer answer','2',8),(27,'answer answer answer answer answer answer answer answer answer answer','3',8),(28,'answer answer','4',8),(29,'answer answer','1',8),(30,'answer answer answer answer','2',8);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -714,7 +695,6 @@ CREATE TABLE `question_answer_value` (
 
 LOCK TABLES `question_answer_value` WRITE;
 /*!40000 ALTER TABLE `question_answer_value` DISABLE KEYS */;
-INSERT INTO `question_answer_value` VALUES (21,'1','answer answer'),(21,'2','answer answer'),(21,'3','answer answer'),(21,'4','answer answer'),(22,'1','answer answer'),(22,'2','answer answer answer answer'),(22,'3','answer answer'),(22,'4','answer answer'),(23,'1','answer answer answer answer answer answer'),(23,'2','answer answer'),(23,'3','answer answer'),(23,'4','answer answer'),(24,'1','answer answer'),(24,'2','answer answer'),(24,'3','answer'),(24,'4','answer answer'),(25,'1','answer answer'),(25,'2','answer answer'),(25,'3','answer answer'),(25,'4','answer answer'),(26,'1','answer answer'),(26,'2','answer answer'),(26,'3','answer answer'),(26,'4','answer answer'),(27,'1','answer answer'),(27,'2','answer answer'),(27,'3','answer answer'),(27,'4','answer answer'),(28,'1','answer answer'),(28,'2','answer answer'),(28,'3','answer answer'),(28,'4','answer answer'),(29,'1','answer answer'),(29,'2','answer answer'),(29,'3','answer answer'),(29,'4','answer answer'),(30,'1','answer answer answer answer answer answer answer answer answer answer'),(30,'2','answer answer'),(30,'3','answer answer'),(30,'4','answer answer answer answer answer answer');
 /*!40000 ALTER TABLE `question_answer_value` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -767,7 +747,7 @@ CREATE TABLE `share` (
   CONSTRAINT `share_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `share_ibfk_2` FOREIGN KEY (`ReceiveUserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `share_ibfk_3` FOREIGN KEY (`NFPostID`) REFERENCES `newsfeeds` (`NFPostID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -776,7 +756,6 @@ CREATE TABLE `share` (
 
 LOCK TABLES `share` WRITE;
 /*!40000 ALTER TABLE `share` DISABLE KEYS */;
-INSERT INTO `share` VALUES (1,'02:46:40','2022-03-26',1,3,6),(2,'02:46:40','2022-03-26',1,2,6),(3,'02:46:40','2022-03-26',1,4,6);
 /*!40000 ALTER TABLE `share` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -802,7 +781,6 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (3,NULL,NULL),(5,NULL,NULL);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -851,7 +829,6 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'null'),(2,NULL),(4,NULL),(6,NULL),(7,NULL),(8,NULL),(9,NULL);
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -893,6 +870,7 @@ CREATE TABLE `users` (
   `ProfilePic` bigint DEFAULT NULL,
   `DOB` date NOT NULL,
   `MobileNum` varchar(20) DEFAULT NULL,
+  `CountryCode` varchar(10) DEFAULT NULL,
   `UserType` enum('Student','Teacher') NOT NULL,
   `Gender` enum('Male','Female') NOT NULL,
   `Country` varchar(50) DEFAULT NULL,
@@ -900,7 +878,7 @@ CREATE TABLE `users` (
   `RegistrationDate` date NOT NULL,
   `RegistrationTime` time NOT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -909,7 +887,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Farzan','frosty',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Colombo','2022-03-25','23:01:24'),(2,'venushka','chandraraththna',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-25','23:04:13'),(3,'jeewa','chamalka',NULL,'1998-01-18','940752569360','Student','Male','Sri Lanka','Negombo','2022-03-25','23:08:04'),(4,'Farzan','Rizwan',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-25','23:34:26'),(5,'rahuram','srimohan',NULL,'1998-01-18','940752569360','Student','Male','Sri Lanka','negombo','2022-03-26','07:43:37'),(6,'zahul','hameed',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','negombo','2022-03-26','11:32:52'),(7,'Prime','Thinker',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-26','11:48:24'),(8,'Axcel','Blaze',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','Negombo','2022-03-26','12:13:48'),(9,'shawn','frost',NULL,'1998-01-18','940752569360','Teacher','Male','Sri Lanka','negombo','2022-03-27','10:45:09');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -922,4 +899,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-28  1:42:32
+-- Dump completed on 2022-03-28  2:21:32

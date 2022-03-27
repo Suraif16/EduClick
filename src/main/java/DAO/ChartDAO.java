@@ -69,7 +69,13 @@ public class ChartDAO<teacherArrayList> {
 
                 jsonArray.put(jsonObject);
             }
+
+            resultSet.close();
+            preparedStatement.close();
+
+
             connection.commit();
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

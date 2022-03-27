@@ -72,9 +72,11 @@
         <div id="profileInfo">
             <div id="profileInfoContainer">
                 <div id="detailsContainer">
-                    <p>Qualifications : BSc(Hons) Chemistry University of Colombo</p>
-                    <p>Country : Sri Lanka</p>
-                    <p>City : Colombo</p>
+                    <p id="workingPlace">Working Place : University of Colombo</p>
+                    <p id="country">Country : Sri Lanka</p>
+                    <p id="city">City : Colombo</p>
+                    <p id="mobile">Mobile Number : </p>
+
 
                 </div>
                 <div id="buttonContainer">
@@ -99,8 +101,9 @@
 
 
 
-
         <div id="postContents" >
+
+
 
 <!--
             <div class="post">
@@ -767,8 +770,8 @@
 
             <div class="userProfileEditFormRow">
 
-                <label for="country">Country : </label>
-                <select id="country">
+                <label for="countryElement">Country : </label>
+                <select id="countryElement">
                     <option value="Afganistan">Afghanistan</option>
                     <option value="Albania">Albania</option>
                     <option value="Algeria">Algeria</option>
@@ -1021,9 +1024,9 @@
 
             <div class="userProfileEditFormRow inputField">
 
-                <input id="city" type="text" name="city" required>
+                <input id="cityElement" type="text" name="cityElement" required>
                 <div class="bottomLine"></div>
-                <label for="city">City</label>
+                <label for="cityElement">City</label>
 
             </div>
 
@@ -1069,6 +1072,9 @@
 
         </div>
     </div>
+        <!--<div id="settingsForm">
+
+        </div>-->
 
 </div>
 <footer>
@@ -1081,8 +1087,11 @@
 <script src="../Resources/JS/ShareNewsFeeds.js" defer></script>
 <script src="../Resources/JS/TeacherProfilePageNewsfeedsLoad.js" defer></script>
 <script src="../Resources/JS/UserOptionAndReport.js" defer></script>
+<script src="../Resources/JS/TeacherLoad.js" defer></script>
 <!--<script src="../Resources/JS/Notification.js" defer></script>-->
 <script src="../Resources/JS/EditProfile.js" defer></script>
+<script src="../Resources/JS/TeacherProfilePageDetailsLoad.js" defer></script>
+<script src="../Resources/JS/StudentLoad.js"></script>
 
 
 </body>
