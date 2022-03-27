@@ -25,15 +25,13 @@ public class AdminPostLoadServlet extends HttpServlet {
 
         String userId = request.getParameter("userId");
 
-        System.out.println("Friends userID : " + userId);
-
         JSONObject jsonObject = new JSONObject();
 
         jsonObject.put("serverResponse" , "Allowed");
 
         AdminPostDAO adminPostDAO = new AdminPostDAO();
         JSONArray post = adminPostDAO.getAPostDetails();
-        System.out.println(post);
+
 
         jsonObject.put("jsonArray1",post);
 
