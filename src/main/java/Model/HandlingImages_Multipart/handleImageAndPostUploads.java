@@ -80,7 +80,7 @@ public class handleImageAndPostUploads {
             ArrayList<String> studentList = classroom.getStudentListInClass( classroomId );
 
             Notifications notifications = new Notifications();
-            notifications.insertEpostNotificationsFromTeacher( userId , studentList , educationalWork.getPostID() , "Educational Post" );
+            notifications.insertEpostNotificationsFromTeacher( userId , studentList , classroomId , "Educational Post" );
 
             return educationalWork;
 
@@ -100,6 +100,7 @@ public class handleImageAndPostUploads {
         String answer = "";
         String epostId = "";
         String imageStatus = "";
+        String classroomId = "";
         ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
 
         try{
@@ -120,7 +121,13 @@ public class handleImageAndPostUploads {
 
                         answer = new String( bytes );
 
-                    }else if ( file.getFieldName().equals( "ePostId" ) ){
+                    }else if(file.getFieldName().equals( "classroomId" )){
+
+                        classroomId = new String(bytes);
+
+                    }
+
+                    else if ( file.getFieldName().equals( "ePostId" ) ){
 
                         epostId = new String( bytes );
                         System.out.println("Notification check in File upload file :"+epostId);
@@ -146,7 +153,7 @@ public class handleImageAndPostUploads {
                         System.out.println("The stundet not notification : "+studentId);
 
                         Notifications notifications = new Notifications();
-                        notifications.insertNotifications(studentId,teacherID,epostId,param);
+                        notifications.insertNotifications(studentId,teacherID,classroomId,param);
 
                     }
 
@@ -172,6 +179,7 @@ public class handleImageAndPostUploads {
             System.out.println("Answer is : "+answer);
             System.out.println("EPostID is : "+epostId);
             System.out.println("ImageStatus is : "+imageStatus);
+            System.out.println("ClassroomId in notification insert : "+classroomId);
 
             Answers answers = new Answers( answer , epostId , localDate , localTime , userId ,imageStatus);
 
