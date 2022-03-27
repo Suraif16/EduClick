@@ -7,6 +7,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -315,7 +316,7 @@ public class handleImageAndPostUploads {
         return null;
     }
 
-    public static void uploadProfileImage(HttpServletRequest request, String path, String userId ) {
+    public static void uploadProfileImage(HttpServletRequest request, String path, String userId , User user1 ) {
 
         User user = new User( userId );
         String workPlace = null;
@@ -370,13 +371,25 @@ public class handleImageAndPostUploads {
 
             if ( imageFile != null ){
 
+                File file = new File( path + "Resources\\Images\\UserProfileImages\\profilePicture" + userId + ".jpeg" );
+                System.out.println(file.delete());
+
                 Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( "profilePicture" + userId , path + "Resources\\Images\\UserProfileImages\\" , imageFile );
                 saveImage.start();
                 user.setProfilePicture( user.getUserId() );
 
             }else{
 
-                user.setProfilePicture( null );
+                if ( user1.getProfilePicture() == null ){
+
+                    user.setProfilePicture( null );
+
+                }else{
+
+                    user.setProfilePicture( user1.getProfilePicture() );
+
+                }
+
 
             }
 
