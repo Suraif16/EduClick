@@ -660,7 +660,7 @@ public class UserDAO<teacherArrayList> {
         try {
             connection = dbConnectionPool.dataSource.getConnection();
 
-            String sql = "SELECT FirstName, LastName, ProfilePic, Country, City  FROM Users WHERE UserID = ?";
+            String sql = "SELECT FirstName, LastName, ProfilePic, Country, City, MobileNum  FROM Users WHERE UserID = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, userId);
@@ -680,6 +680,8 @@ public class UserDAO<teacherArrayList> {
                 jsonObject.put("Country", resultSet.getString("Country"));
 
                 jsonObject.put("City",resultSet.getString("City"));
+
+                jsonObject.put("MobileNum",resultSet.getString("MobileNum"));
 
                 jsonObject.put("WorkingPlace",teacherDAO.getTeacherWorkingPlace(userId));
 
