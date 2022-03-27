@@ -946,3 +946,13 @@ input[type=range]::-webkit-slider-thumb {
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #2497E3;
 }
+
+/* Edit profile css */
+
+div.userProfileEditForm{
+
+    background-color: crimson;
+    margin: -15% auto auto auto;
+    z-index: 5;
+
+}
