@@ -1136,6 +1136,34 @@
 
     <!-- end of load news feeds in teacher profile page -->
 
+    <!-- beginning of student profile page details load -->
+
+    <servlet>
+        <servlet-name>StudentProfilePageDetailsLoad</servlet-name>
+        <servlet-class>Controller.StudentProfilePageDetailsLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentProfilePageDetailsLoad</servlet-name>
+        <url-pattern>/studentProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student profile page details load  -->
+
+    <!-- beginning of teacher profile page details load -->
+
+    <servlet>
+        <servlet-name>TeacherProfilePageDetailsLoad</servlet-name>
+        <servlet-class>Controller.TeacherProfilePageDetailsLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherProfilePageDetailsLoad</servlet-name>
+        <url-pattern>/teacherProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teacher profile page details load  -->
+
     <session-config>
 
         <session-timeout>20</session-timeout> <!-- here the sessions will be expired after 20 minutes
