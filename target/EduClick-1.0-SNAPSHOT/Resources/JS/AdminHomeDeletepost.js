@@ -19,10 +19,18 @@ const deletepost = function ( id ){
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("id=" + id );
 
+
+    let now = new Date().getTime();
+    let extraTime = 2000;
+    while(new Date().getTime() < now + extraTime ){}
+    postAutoprint ();
+
+
     document.onreadystatechange = function (){
         if ( document.readyState === 'complete' ){
             /* when the document is loaded and complete this function will run*/
             postAutoprint ();
         }
     }
+
 }

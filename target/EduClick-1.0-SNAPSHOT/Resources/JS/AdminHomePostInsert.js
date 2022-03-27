@@ -55,6 +55,10 @@ const postQuestionsMessages = function (){
             httpreq.open("POST","/EduClick_war_exploded/AdminPost" , true );
             httpreq.send( formData );
 
+            let now = new Date().getTime();
+            let extraTime = 3000;
+            while(new Date().getTime() < now + extraTime ){}
+            postAutoprint ();
         }else{
             console.log( "image type invalid" );
         }

@@ -35,14 +35,16 @@ const getServerData = function (){
         let count = jsonResponse.AdminPostDetails.length;
         for( i=0; i< count; i++ ){
             if(jsonResponse.AdminPostDetails[i].status === one){
-                let htmlString ='<div class="post">' +
+                let htmlString ='<div class="post">'+
                     '<div class="postContentContainer">'+
                     '<div class="postProfileSection">'+
                     '<a href="#" class="postProfile">'+
                     '<div class="postProfileImage">'+
-                    '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
+                    ' <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
-                    '<div class="postProfileName" >EduClick</div>'+
+
+                    '<div class="postProfileName" >'+'EduClick'+'</div>'+
+
                     '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
@@ -52,29 +54,34 @@ const getServerData = function (){
                     '<div class="postMessage">'+
                     jsonResponse.AdminPostDetails[i].caption+
                     '</div>'+
-                    '<div class="postPicture">' +
-                    '<div class="postPictureImageContainer">' +
-                    '<img class="postPictureImage" src="../Resources/Images/AdminPostImages/' + jsonResponse.AdminPostDetails[i].aPId + '.jpeg">' +
+                    '<div class="postPicture">'+
+                    '<div class="postPictureImageContainer">'+
+                    '<img class="postPictureImage" src="../Resources/Images/AdminPostImages/' + jsonResponse.AdminPostDetails[i].aPId + '.jpeg">'+
                     '</div>'+
                     '</div>'+
                     '</div>'+
+                    '</div>'+
+
                     '<div class="postContentContainer">'+
-                    '<div class="postData">'+
-                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+jsonResponse.AdminPostDetails[i].aPId+')">'+
+                    '<div class="postLikeShareButtons">'+
+                    '<div class="likeShareButtons" >'+
+                    '<input type="button" value="Delete" class="share" onclick="deleteAdminPostData('+jsonResponse.AdminPostDetails[i].aPId+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>'+
                     '</div>';
                 postContents.innerHTML += htmlString;
             }else{
-                let htmlString ='<div class="post">' +
+                let htmlString ='<div class="post">'+
                     '<div class="postContentContainer">'+
                     '<div class="postProfileSection">'+
                     '<a href="#" class="postProfile">'+
                     '<div class="postProfileImage">'+
-                    '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
+                    ' <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'+
                     '</div>'+
-                    '<div class="postProfileName" >EduClick</div>'+
+
+                    '<div class="postProfileName" >'+'EduClick'+'</div>'+
+
                     '<div class="postTimeAndDate">'+jsonResponse.AdminPostDetails[i].date+'|'+ jsonResponse.AdminPostDetails[i].time+'</div>'+
                     '</a>'+
                     '</div>'+
@@ -85,9 +92,12 @@ const getServerData = function (){
                     jsonResponse.AdminPostDetails[i].caption+
                     '</div>'+
                     '</div>'+
+                    '</div>'+
+
                     '<div class="postContentContainer">'+
-                    '<div class="postData">'+
-                    '<input type="button" value="-Delete" class="share" onclick="deleteAdminPostData('+jsonResponse.AdminPostDetails[i].aPId+')" >'+
+                    '<div class="postLikeShareButtons">'+
+                    '<div class="likeShareButtons" >'+
+                    '<input type="button" value="Delete" class="share" onclick="deleteAdminPostData('+jsonResponse.AdminPostDetails[i].aPId+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>'+

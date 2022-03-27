@@ -610,8 +610,8 @@ div#content > div#notifications {
 }
 
 div#content > div#notifications > div#request {
-   /*child of notification*/
-   /* flex-basis: 50%;*/ /* DON'T DELETE THIS... This is kept for future modifications*/
+    /*child of notification*/
+    /* flex-basis: 50%;*/ /* DON'T DELETE THIS... This is kept for future modifications*/
     flex: 1;
     display: flex; /* container of singleNotification*/
     flex-direction: column;
