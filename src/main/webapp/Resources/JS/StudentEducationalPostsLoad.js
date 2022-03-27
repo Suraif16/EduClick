@@ -582,6 +582,7 @@ const submitAnswers = function(EPostId){
 
             formData.append( "answers" , answers );
             formData.append("ePostId",EPostId);
+            formData.append("classroomId",getClassroomIdClientSide());
             httpreq.open("POST","/EduClick_war_exploded/student/EducationalPostAnswersInsert" , true );
             httpreq.send( formData );
 
@@ -604,10 +605,12 @@ const submitAnswers = function(EPostId){
             let answer = document.getElementById(answersInPost);
             let postTextBox = "ans"+EPostId;
             let textBoxId = document.getElementById(postTextBox);
-            let now = new Date().getTime();
-            let extraTime = 7000;
-            while(new Date().getTime() < now + extraTime ){}
+
+
+
+            ePostAnswerLoadingActivityStatus();
             if(images.length>0){
+
                 let htmlString =
                     '<div class="singleAnswer">' +
                     '                                    <div class="textAnswers" id="myComment">' +
@@ -627,7 +630,16 @@ const submitAnswers = function(EPostId){
                 textBoxId.innerHTML="You successfully answered to this question!";
                 textBoxId.style.color = "white";
                 textBoxId.style.backgroundColor = "#6BDD29";
+
+                setTimeout( function (){
+
+                        ePostAnswerLoadedActivityStatus();
+
+
+                    }
+                    , 3000 );
             }else if(images.length === 0){
+
                 let htmlString =
                     '<div class="singleAnswer">' +
                     '                                    <div class="textAnswers" id="myComment">' +
@@ -642,6 +654,13 @@ const submitAnswers = function(EPostId){
                 textBoxId.innerHTML="You successfully answered to this question!";
                 textBoxId.style.color = "white";
                 textBoxId.style.backgroundColor = "#6BDD29";
+                setTimeout( function (){
+
+                        ePostAnswerLoadedActivityStatus();
+
+
+                    }
+                    , 3000 );
             }
 
 
