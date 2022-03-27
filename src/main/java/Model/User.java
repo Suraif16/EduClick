@@ -352,6 +352,8 @@ public class User {
 
     public JSONObject getStudentDetails(String userId){
 
+        System.out.println("I am running in model student");
+
         UserDAO userDAO = new UserDAO();
         return userDAO.getStudentDetails(userId);
 
