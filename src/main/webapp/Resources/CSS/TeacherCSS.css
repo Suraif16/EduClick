@@ -699,6 +699,7 @@ div#content > div#notifications > div.notificationShowRequest > div.singleNotifi
     width: 100%;
     background-color: #4775c4;
     color: white;
+    margin: 1%  auto;
 }
 
 div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a{

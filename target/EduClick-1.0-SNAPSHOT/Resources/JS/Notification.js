@@ -80,16 +80,55 @@ const displayNotifications = function ( jsonResponse ){
     const count = jsonResponse.notificationList.length;
     
     if ( count > 0 ){
+        let notificationMessage;
 
         for (let i = 0; i < count; i++) {
+
+            if ( jsonResponse.notificationList[ i ].PostedType === "Shared" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.NotifierFirstName
+                + " " + jsonResponse.notificationList[ i ].NotifierDetails.NotifierLastName
+                + " has shared a new Post";
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Posted" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.NotifierFirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.NotifierLastName
+                    + " has posted a new Post";
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Educational Post" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.NotifierFirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.NotifierLastName
+                    + " has posted a new Eduducational post";
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Answer" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.NotifierFirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.NotifierLastName
+                    + " has Added an answer to a Eduducational post";
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Friend Request" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.NotifierFirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.NotifierLastName
+                    + " has Accepted your friend request";
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Classroom Request" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.NotifierFirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.NotifierLastName
+                    + " has accepted your enroll request";
+
+            }
             
             notifications += '<div class="singleNotificationMessage">' +
                 '                    <a href="#">' +
                 '                        <div class="notificationImage">' +
-                '                            <img src="../Resources/Icons/Logo.png">' +
+                '                            <img src="../Resources/Icons/account_circle_white_24dp.svg">' +
                 '                        </div>' +
                 '                        <div class="notificationMessage">' +
-                '                            Welcome to EduClick!!!' +
+                notificationMessage +
                 '                        </div>' +
                 '                    </a>' +
                 '                </div>'
@@ -97,6 +136,17 @@ const displayNotifications = function ( jsonResponse ){
         }
         
     }
+
+    notifications += '<div class="singleNotificationMessage">' +
+        '                    <a href="#">' +
+        '                        <div class="notificationImage">' +
+        '                            <img src="../Resources/Icons/Logo.png">' +
+        '                        </div>' +
+        '                        <div class="notificationMessage">' +
+        '                            Welcome to EduClick!!!' +
+        '                        </div>' +
+        '                    </a>' +
+        '                </div>'
 
     notificationContent.innerHTML = notifications;
 
