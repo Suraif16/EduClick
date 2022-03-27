@@ -20,6 +20,8 @@ public class StudentProfilePageDetailsLoadServlet extends HttpServlet {
 
         JSONObject jsonObject = new JSONObject();
 
+        System.out.println("lskahkhjgsdkjgsKD");
+
         jsonObject.put( "serverResponse" , "Allowed" );
 
         HttpSession session = request.getSession( false );
@@ -28,7 +30,11 @@ public class StudentProfilePageDetailsLoadServlet extends HttpServlet {
 
         String userId = user.getUserId();
 
+
+
         JSONObject studentDetails = user.getStudentDetails(userId);
+
+        System.out.println(studentDetails);
 
         jsonObject.put("studentDetails",studentDetails);
 
