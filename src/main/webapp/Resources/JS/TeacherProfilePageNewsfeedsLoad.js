@@ -11,8 +11,6 @@ document.onreadystatechange = function (){
 
 const LoadNewsFeedsInTeacherProfilePage = function (){
 
-    console.log("eekath hariiii");
-
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
