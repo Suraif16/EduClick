@@ -31,6 +31,8 @@ public class EducationalPostDAO {
                 jsonObject.put("EPType",resultSet.getString("EPType"));
                 jsonObject.put("Type",resultSet.getString("Type"));
             }
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -676,6 +678,8 @@ public class EducationalPostDAO {
 
                 classroomId = resultSet.getString("ClassroomID");
             }
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
