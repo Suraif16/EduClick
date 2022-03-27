@@ -24,6 +24,11 @@ const loadStudentsProfileDetailsList = function (){
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
             /* This is where I need work everytime as per the authentication filter*/
             console.log("Profiule student details load runningg!!!!!!")
+            document.getElementById("country").innerHTML = "Country : "+jsonLoginResponse.studentDetails.Country
+            document.getElementById("city").innerHTML = "City : "+jsonLoginResponse.studentDetails.City
+            document.getElementById("mobile").innerHTML = "Mobile Number : "+jsonLoginResponse.studentDetails.MobileNum
+            document.getElementById("school").innerHTML = "School : "+jsonLoginResponse.studentDetails.SchoolAndGrade.School
+            document.getElementById("grade").innerHTML = "Grade : "+jsonLoginResponse.studentDetails.SchoolAndGrade.Grade
         }else{
             alert("something went wrong!!!");
         }
