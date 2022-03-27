@@ -1014,8 +1014,54 @@ div.userProfileEditFormRowChild > input {
 
 }
 
+div.userProfileEditFormAttachment{
+
+    background-color: #4775c4;
+    margin-bottom: 1%;
+    display: flex;
+
+}
+
+div.userProfileEditFormAttachment > div.userProfileEditFormAttachmentLabel{
+
+    flex-basis: 22%;
+    padding: 1%;
+    color: white;
+
+}
+
+div.userProfileEditFormAttachment > div.userProfileEditFormAttachmentInputFile{
+
+    flex-basis: 78%;
+    padding: 1%;
+
+}
+
 select{
 
     background-color: #4775c4;
+    color: white;
+    font-weight: bold;
+
+}
+
+input[type="file"]{
+
+
+    display: none;
+
+}
+
+.attachment{
+
+    width: fit-content;
+    padding: 0.5%;
+
+}
+
+
+.attachmentLabel{
+
+    cursor: pointer;
 
 }
