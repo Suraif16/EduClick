@@ -50,32 +50,36 @@ const displayUserProfileDetails = function ( jsonResponse ){
 
     if ( jsonResponse.serverResponse === "Allowed" ){
 
+        userProfileType = jsonResponse.userType;
+
         firstNameElement.value = jsonResponse.firstName;
         lastNameElement.value = jsonResponse.lastName;
         countryElement.value = jsonResponse.country;
         cityElement.value = jsonResponse.city;
 
-        if ( jsonResponse.userType === "Teacher"){
+        let image = jsonResponse.profilePicture;
+
+        if ( image !== undefined ){
+
+            userProfileImage.innerHTML = '<img src="../Resources/Images/answers2.jpg/profilePicture' + image + '.jpeg" alt="">';
+
+        }else{
+
+            userProfileImage.innerHTML = '<img src="../Resources/Icons/account_circle_white_24dp.svg" alt="">';
+
+        }
+
+        if ( userProfileType === "Teacher"){
 
             let workplace = jsonResponse.workPlace;
 
             if ( workplace !== undefined ){
 
-                document.getElementById( "" ).value = workplace;
+                document.getElementById( "workPlace" ).value = workplace;
 
             }
 
-            let image = jsonResponse.profilePicture;
 
-            if ( image !== undefined ){
-
-                userProfileImage.innerHTML = '<img src="../Resources/Images/answers2.jpg/profilePicture' + image + '.jpeg" alt="">';
-
-            }else{
-
-                userProfileImage.innerHTML = '<img src="../Resources/Icons/account_circle_white_24dp.svg" alt="">';
-
-            }
 
         }/*else for Student*/
 
@@ -99,3 +103,18 @@ imageInsertIcon.addEventListener( "change" , function (){
     userProfileImage.appendChild( imageFile );
 
 });
+
+const saveProfileEditForm = function (){
+
+    let workPlace = null;
+
+    if ( userProfileType === "Teacher"){
+
+        workPlace = document.getElementById( "workPlace" ).value;
+
+
+    }/*else for Student*/
+
+    console.log( firstNameElement.value , lastNameElement.value , countryElement.value , cityElement.value , workPlace , imageInsertIcon.files[0] );
+
+}
