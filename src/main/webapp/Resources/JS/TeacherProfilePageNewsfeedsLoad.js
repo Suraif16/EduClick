@@ -1,12 +1,13 @@
-document.onreadystatechange = function (){
+/*document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
 
         LoadNewsFeedsInTeacherProfilePage();
 
+
     }
 
-}
+}*/
 
 
 const LoadNewsFeedsInTeacherProfilePage = function (){
@@ -35,11 +36,12 @@ function completeNFLoad(httpreq) {
 
         const name = document.getElementById("profileUserName");
         name.innerHTML = jsonResponse.fullName;
-        let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
+       /* let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
+        headerUserProfileIdAchorElement.setAttribute("href" , url);*/
 
         for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
 
-            console.log(jsonResponse.jsonArray1[i].Caption);
+            console.log(jsonResponse.jsonArray1[i]);
 
             if (jsonResponse.jsonArray1[i].path !== "" && jsonResponse.jsonArray1[i].Caption !=="") {
 
@@ -47,7 +49,7 @@ function completeNFLoad(httpreq) {
                 postContents.innerHTML = '        <div class="post">    ' +
                     '              <div class="postContentContainer">' +
                     '                   <div class="postProfileSection">' +
-                    '                        <a href="TeacherProfile.html" class="postProfile">' +
+                    '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + jsonResponse.jsonArray1[i].ownerId + '" class="postProfile">' +
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
@@ -106,7 +108,7 @@ function completeNFLoad(httpreq) {
                 postContents.innerHTML = '        <div class="post">    ' +
                     '              <div class="postContentContainer">' +
                     '                   <div class="postProfileSection">' +
-                    '                        <a href="TeacherProfile.html" class="postProfile">' +
+                    '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + jsonResponse.jsonArray1[i].ownerId + '" class="postProfile">' +
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
@@ -162,7 +164,7 @@ function completeNFLoad(httpreq) {
                 postContents.innerHTML = '        <div class="post">    ' +
                     '              <div class="postContentContainer">' +
                     '                   <div class="postProfileSection">' +
-                    '                        <a href="TeacherProfile.html" class="postProfile">' +
+                    '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + jsonResponse.jsonArray1[i].ownerId + '" class="postProfile">' +
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
