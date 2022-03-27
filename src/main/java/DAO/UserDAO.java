@@ -413,6 +413,7 @@ public class UserDAO<teacherArrayList> {
             }
 
         }
+        System.out.println(jsonArray+"JJJJ");
         return jsonArray;
     }
 
