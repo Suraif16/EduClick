@@ -15,6 +15,16 @@ public class User {
     private String lastName;
     private LocalDate dateOfBirth;
     private String mobileNumber;
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    private String countryCode;
     private String profilePicture;
     private String country;
     private String city;
@@ -26,7 +36,7 @@ public class User {
 
     ArrayList<String> arrayList = new ArrayList<String>();
 
-    public User(String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber,  String country, String city, LocalTime registrationTime, LocalDate registrationDate, String gender, String userType) {
+    public User(String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber,String countryCode,  String country, String city, LocalTime registrationTime, LocalDate registrationDate, String gender, String userType) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,6 +48,7 @@ public class User {
         this.registrationDate = registrationDate;
         this.gender = gender;
         this.userType = userType;
+        this.countryCode = countryCode;
     }
 
     public User(String userId, String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber, String profilePicture, String country, String city, String gender, String userType) {
