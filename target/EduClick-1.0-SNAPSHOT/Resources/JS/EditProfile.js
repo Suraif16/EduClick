@@ -1,5 +1,10 @@
 const userProfileEditForm = document.getElementById( "userProfileEditForm" );
-
+const firstNameElement = document.getElementById( "firstName" );
+const lastNameElement  = document.getElementById( "lastName" );
+const countryElement = document.getElementById( "country" );
+const cityElement = document.getElementById( "city" );
+const userProfileImage = document.getElementById( "userProfileEditFormRowProfileImage" );
+let userProfileType;
 const showHideUserProfileEditForm = function (){
 
     if ( userProfileEditForm.style.display === "flex" ){
@@ -40,5 +45,32 @@ const getUserProfileDetails = function (){
 const displayUserProfileDetails = function ( jsonResponse ){
 
     console.log( jsonResponse );
+
+    if ( jsonResponse.serverResponse === "Allowed" ){
+
+        firstNameElement.value = jsonResponse.firstName;
+        lastNameElement.value = jsonResponse.lastName;
+        countryElement.value = jsonResponse.country;
+        cityElement.value = jsonResponse.city;
+
+        if ( jsonResponse.userType === "Teacher"){
+
+            let workplace = jsonResponse.workPlace;
+
+            if ( workplace !== undefined ){
+
+                document.getElementById( "" ).value = workplace;
+
+            }
+
+
+        }/*else for Student*/
+
+    }else{
+
+        alert( "This operation is not allowed" );
+
+    }
+
 
 }
