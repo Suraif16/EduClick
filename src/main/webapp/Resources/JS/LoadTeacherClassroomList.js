@@ -383,7 +383,7 @@ const sendNameData = function (){
 
             }
 
-            console.log("hhhh");
+
 
         }else{
             alert("something went wrong!!!");
