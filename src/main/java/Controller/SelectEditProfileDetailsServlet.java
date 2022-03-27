@@ -35,7 +35,7 @@ public class SelectEditProfileDetailsServlet extends HttpServlet {
             jsonObject.put( "country" , user.getCountry() );
             jsonObject.put( "city" , user.getCity() );
             jsonObject.put( "mobileNumber" , user.getMobileNumber() );
-            jsonObject.put( "profilePicture" , user.getFirstName() );
+            jsonObject.put( "profilePicture" , user.getProfilePicture() );
             jsonObject.put( "userType" , user.getUserType() );
 
             if ( user.getUserType().equals( "Teacher" ) ){

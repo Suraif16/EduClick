@@ -63,6 +63,17 @@ const displayUserProfileDetails = function ( jsonResponse ){
 
             }
 
+            let image = jsonResponse.profilePicture;
+
+            if ( image !== undefined ){
+
+                userProfileImage.innerHTML = '<img src="../Resources/Images/answers2.jpg/profilePicture' + image + '.jpeg" alt="">';
+
+            }else{
+
+                userProfileImage.innerHTML = '<img src="../Resources/Icons/account_circle_white_24dp.svg" alt="">';
+
+            }
 
         }/*else for Student*/
 
