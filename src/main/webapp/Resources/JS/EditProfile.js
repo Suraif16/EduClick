@@ -117,4 +117,26 @@ const saveProfileEditForm = function (){
 
     console.log( firstNameElement.value , lastNameElement.value , countryElement.value , cityElement.value , workPlace , imageInsertIcon.files[0] );
 
+    /*let httpreq = new XMLHttpRequest();
+    let formData = new FormData();
+
+    httpreq.onreadystatechange = function(){
+
+        if ( this.readyState === 4 && this.status === 200 ){
+
+        //
+
+
+        }
+
+    }
+
+    formData.append( "profileImage" , imageInsertIcon.files[0] );
+    formData.append( "firstName" ,  );
+    formData.append( "lastName" ,  );
+    formData.append( "lastName" ,  );
+
+    httpreq.open("POST","/EduClick_war_exploded/teacher/EducationalPostInsert" , true );
+    httpreq.send( formData );*/
+
 }
