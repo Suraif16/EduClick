@@ -350,6 +350,19 @@ public class User {
         return bellIconDAO.getBellIconDetails(userId);
     }
 
+    public JSONObject getStudentDetails(String userId){
+
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getStudentDetails(userId);
+
+    }
+
+    public JSONObject getTeacherDetails(String userId){
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getTeacherDetails(userId);
+
+    }
+
 
 }
 
