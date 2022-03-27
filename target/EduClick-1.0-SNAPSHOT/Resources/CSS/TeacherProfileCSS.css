@@ -967,20 +967,49 @@ div.userProfileEditFormRow{
 
 }
 
+div.userProfileEditFormRowImage{
+
+    background-color: #4775c4 !important;
+
+
+}
+
+div.userProfileEditFormRowImage > div.userProfileImage{
+
+    width: 200px;
+    height: 200px;
+    margin: 1% auto;
+    border-radius: 50%;
+    display: flex;
+    overflow: hidden;
+
+}
+
+div.userProfileEditFormRowImage > div.userProfileImage > img{
+
+    flex: 1;
+    width: auto;
+    height: 100%;
+    margin: auto;
+
+}
+
 div.userProfileEditFormRowChild{
 
     display: flex;
 
 }
 
-/*div.userProfileEditFormRowChild > div {
-
-    margin: unset;
-
-}*/
 
 div.userProfileEditFormRowChild > div {
 
+    margin: auto 1%;
+
+}
+
+div.userProfileEditFormRowChild > input {
+
+    flex: 1;
     margin: auto 1%;
 
 }
