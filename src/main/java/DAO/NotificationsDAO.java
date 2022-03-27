@@ -1,6 +1,7 @@
 package DAO;
 
 import Database.DBConnectionPool;
+import Model.Classroom;
 import Model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -99,6 +100,8 @@ public class NotificationsDAO {
 
                 jsonObject.put("NotifierID",resultSet.getString("NotifierID"));
 
+                jsonObject.put("NotifieeDetails",user.getFirstnameLastName(userId));
+
                 jsonObject.put("NotifierDetails",user.getFirstnameLastName(resultSet.getString("NotifierID")));
 
                 jsonObject.put("ContentID",resultSet.getString("ContentID"));
@@ -108,6 +111,14 @@ public class NotificationsDAO {
                 jsonObject.put("Notification_Date",resultSet.getString("Notification_Date"));
 
                 jsonObject.put("Notification_Time",resultSet.getString("Notification_Time"));
+
+                if(resultSet.getString("PostedType").equals("Educational Post") || resultSet.getString("PostedType").equals("Answer")){
+
+                    Classroom classroom = new Classroom();
+
+                    jsonObject.put("classroomDetails",classroom.getStudentClassroomDetails(resultSet.getString("ContentID")));
+
+                }
 
                 jsonArray.put(jsonObject);
 
