@@ -168,6 +168,7 @@ CREATE TABLE `bell_icon` (
 
 LOCK TABLES `bell_icon` WRITE;
 /*!40000 ALTER TABLE `bell_icon` DISABLE KEYS */;
+INSERT INTO `bell_icon` VALUES (1,'2022-03-28','02:22:44');
 /*!40000 ALTER TABLE `bell_icon` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,6 +481,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES ('farzanroxz123@gmail.com','22d34692a14ce4c1cef3f21bceafb6a1903be49e634513a9afc30f1d3b87cb04','LwNsXjgQ+/Y6/zkQU$M','2022-03-28','03:04:30',1,'True','False');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -829,6 +831,7 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
+INSERT INTO `teacher` VALUES (1,'Readway Collage');
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -878,7 +881,7 @@ CREATE TABLE `users` (
   `RegistrationDate` date NOT NULL,
   `RegistrationTime` time NOT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -887,6 +890,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Farzan','Pheonix',NULL,'1998-01-18','0752569360','94','Teacher','Male','Sri Lanka','Colombo','2022-03-28','02:22:43');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -899,4 +903,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-28  2:21:32
+-- Dump completed on 2022-03-28  3:08:39

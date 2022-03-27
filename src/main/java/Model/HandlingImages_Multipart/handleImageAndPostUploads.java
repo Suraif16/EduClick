@@ -361,6 +361,14 @@ public class handleImageAndPostUploads {
 
                         userProfilePictureStatus = new String(bytes);
 
+                    }else if ( file.getFieldName().equals( "mobileNumber" ) ){
+
+                        user.setMobileNumber( new String(bytes) );
+
+                    }else if ( file.getFieldName().equals( "countryCode" ) ){
+
+                        user.setCountryCode( new String(bytes) );
+
                     }
 
                     inputStream.close();

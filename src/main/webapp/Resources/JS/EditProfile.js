@@ -5,6 +5,8 @@ const countryElement = document.getElementById( "countryElement" );
 const cityElement = document.getElementById( "cityElement" );
 const userProfileImage = document.getElementById( "userProfileEditFormRowProfileImage" );
 const imageInsertIcon = document.getElementById( "inputImage" );
+const countryCode = document.getElementById( "countryCode" );
+const mobileNumber = document.getElementById( "mobileNo" );
 
 let userProfilePictureStatus;
 let userProfileType;
@@ -57,6 +59,8 @@ const displayUserProfileDetails = function ( jsonResponse ){
         lastNameElement.value = jsonResponse.lastName;
         countryElement.value = jsonResponse.country;
         cityElement.value = jsonResponse.city;
+        mobileNumber.value = jsonResponse.mobileNumber;
+        countryCode.value = jsonResponse.countryCode;
 
         let image = jsonResponse.profilePicture;
 
@@ -118,7 +122,7 @@ const saveProfileEditForm = function (){
 
     }/*else for Student*/
 
-    console.log( firstNameElement.value , lastNameElement.value , countryElement.value , cityElement.value , workPlace , imageInsertIcon.files[0] );
+    console.log( firstNameElement.value , lastNameElement.value , countryElement.value , cityElement.value , workPlace , imageInsertIcon.files[0] , countryCode.value );
 
     let httpreq = new XMLHttpRequest();
     let formData = new FormData();
@@ -128,7 +132,7 @@ const saveProfileEditForm = function (){
         if ( this.readyState === 4 && this.status === 200 ){
 
         showHideUserProfileEditForm();
-        // location.reload();
+        location.reload();
 
         }
 
@@ -145,6 +149,8 @@ const saveProfileEditForm = function (){
     formData.append( "city" , cityElement.value );
     formData.append( "workPlace" , workPlace );
     formData.append( "userProfilePictureStatus" , userProfilePictureStatus );
+    formData.append( "mobileNumber" , mobileNumber.value );
+    formData.append( "countryCode" , countryCode.value );
 
     httpreq.open("POST","/EduClick_war_exploded/user/saveEditProfileDetails" , true );
     httpreq.send( formData );

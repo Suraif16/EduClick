@@ -788,7 +788,7 @@ public class UserDAO<teacherArrayList> {
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
 
-            String sql = "UPDATE Users SET FirstName = ? , LastName = ? , ProfilePic = ? , Country = ? , City = ? WHERE UserID = ?;";
+            String sql = "UPDATE Users SET FirstName = ? , LastName = ? , ProfilePic = ? , Country = ? , City = ? , MobileNum = ? , CountryCode = ? WHERE UserID = ?;";
             preparedStatement = connection.prepareStatement( sql );
 
             String sql1 = "UPDATE Teacher SET CurrentWorkingPlace = ? WHERE UserID = ?;";
@@ -799,25 +799,34 @@ public class UserDAO<teacherArrayList> {
             preparedStatement.setString( 3 , user.getProfilePicture() );
             preparedStatement.setString( 4 , user.getCountry() );
             preparedStatement.setString( 5 , user.getCity() );
-            preparedStatement.setString( 6 , user.getUserId() );
+            preparedStatement.setString( 6 , user.getMobileNumber() );
+            preparedStatement.setString( 7 , user.getCountryCode() );
+            preparedStatement.setString( 8 , user.getUserId() );
 
             preparedStatement1.setString( 1 , workPlace );
             preparedStatement1.setString( 2 , user.getUserId() );
 
-            /*int x =*/ preparedStatement.executeUpdate();preparedStatement1.executeUpdate();
+            int x = preparedStatement.executeUpdate();
 
-            connection.commit();
 
-            /*if ( x != 0 ){
+            if ( x == 0 ){
+
                 connection.rollback();
+
             }else{
+
                 int y = preparedStatement1.executeUpdate();
+
                 if ( y == 0 ){
+
                     connection.rollback();
+
                 }else{
+
                     connection.commit();
+
                 }
-            }*/
+            }
 
 
 
@@ -871,7 +880,7 @@ public class UserDAO<teacherArrayList> {
             connection = dbConnectionPool.dataSource.getConnection();
             connection.setAutoCommit( false );
 
-            String sql = "SELECT FirstName , LastName , ProfilePic , Country , City FROM Users WHERE UserID = ?;";
+            String sql = "SELECT FirstName , LastName , ProfilePic , Country , City , MobileNum , CountryCode FROM Users WHERE UserID = ?;";
             preparedStatement = connection.prepareStatement( sql );
 
 
@@ -887,6 +896,8 @@ public class UserDAO<teacherArrayList> {
                 user.setProfilePicture( resultSet.getString( 3 ) );
                 user.setCountry( resultSet.getString( 4 ) );
                 user.setCity( resultSet.getString( 5 ) );
+                user.setMobileNumber( resultSet.getString( 6 ) );
+                user.setCountryCode( resultSet.getString( 7 ) );
 
             }
 

@@ -40,13 +40,13 @@ public class SelectEditProfileDetailsServlet extends HttpServlet {
             jsonObject.put( "mobileNumber" , user1.getMobileNumber() );
             jsonObject.put( "profilePicture" , user1.getProfilePicture() );
             jsonObject.put( "userType" , user.getUserType() );
+            jsonObject.put( "countryCode" , user1.getCountryCode() );
 
             if ( user.getUserType().equals( "Teacher" ) ){
 
                 jsonObject.put( "workPlace" , user1.getWorkPlace() );
 
             }/* else for Student*/
-            System.out.println( user.getFirstName() + " : " + user.getLastName() + " : " + user.getUserType() + " : " + user.getCountry() + " : " + user.getCity()  + " : " + user.getMobileNumber() + " : " + user.getProfilePicture() + " : " + user.getWorkPlace());
 
         }else{
 
