@@ -47,7 +47,7 @@
             options: {
                 legend: {display: false},
                 scales: {
-                    yAxes: [{ticks: {min: 0, max:jsonResponse.chartDetails.length}}],
+                    yAxes: [{ticks: {min: 0, max:10}}],
                 }
             }
         });
@@ -67,7 +67,7 @@
             options: {
                 legend: {display: false},
                 scales: {
-                    yAxes: [{ticks: {min: 0, max:jsonResponse.chartDetails.length}}],
+                    yAxes: [{ticks: {min: 0, max:10}}],
                 }
             }
         });
@@ -87,7 +87,7 @@
             options: {
                 legend: {display: false},
                 scales: {
-                    yAxes: [{ticks: {min: 0, max:jsonResponse.chartDetails.length}}],
+                    yAxes: [{ticks: {min: 0, max:10}}],
                 }
             }
         });

@@ -69,7 +69,7 @@ const getServerData = function (){
                     '</a>'+
                     '<div class="emptySpaceLikeShare" ></div>'+
                     '<div class="likeShareButtons" >'+
-                    '<input type="button" value="Remove" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].nFPostID+')" >'+
+                    '<input type="button" value="Delete" class="share" onclick="deleteAdminReportPostData('+jsonResponse.ReportPostDetails[i].nFPostID+')" >'+
                     '</div>'+
                     '</div>'+
                     '</div>'+
