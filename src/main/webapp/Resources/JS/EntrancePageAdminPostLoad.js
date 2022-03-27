@@ -1,7 +1,5 @@
 const LoadAdminPost = function (){
 
-     console.log("aweee");
-
      let httpreq = new XMLHttpRequest();
      httpreq.onreadystatechange = function (){
 
@@ -24,7 +22,7 @@ const LoadAdminPost = function (){
 
                for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
 
-                    console.log(jsonResponse.jsonArray1[i]);
+                   /* console.log(jsonResponse.jsonArray1[i]);*/
 
                     if (jsonResponse.jsonArray1[i].status=1 && jsonResponse.jsonArray1[i].Caption !=="") {
 
