@@ -65,6 +65,10 @@ public class AnswerDAO {
                 jsonObject.put("Time",resultSet.getString("Time"));
                 jsonObject.put("Marks",resultSet.getString("Marks"));
             }
+
+            resultSet.close();
+            preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

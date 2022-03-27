@@ -4,6 +4,7 @@ import DAO.EnrollDAO;
 import DAO.EnrollRequestDAO;
 import DAO.FollowsDAO;
 import DAO.StudentDAO;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,10 @@ public class Student extends User{
 
     private String school;
     private String grade;
+
+    public Student() {
+
+    }
 
 
     /*Getters and setters begins here*/
@@ -65,6 +70,11 @@ public class Student extends User{
         FollowsDAO followsDAO = new FollowsDAO();
         followsDAO.delete( this.getUserId() , T_UserId );
 
+    }
+
+    public JSONObject getSchoolAndGrade(String userId){
+        StudentDAO studentDAO = new StudentDAO();
+        return studentDAO.getSchoolAndGrade(userId);
     }
 
 

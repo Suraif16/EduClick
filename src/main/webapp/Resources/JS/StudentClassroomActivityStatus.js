@@ -16,10 +16,7 @@ const ePostAnswerLoadingActivityStatus = function (){
 
     setTimeout(function() {
         activityStatus.removeChild(activityStatus.children[0]);
-    }, 3500);
-    let now = new Date().getTime();
-    let extraTime = 3000;
-    while(new Date().getTime() < now + extraTime ){}
+    }, 3000);
 
 }
 

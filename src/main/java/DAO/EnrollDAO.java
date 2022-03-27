@@ -60,6 +60,8 @@ public class EnrollDAO {
             while(resultSet.next()){
                 userID =  resultSet.getString("UserID");
             }
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,6 +89,9 @@ public class EnrollDAO {
             while(resultSet.next()){
                 status =  resultSet.getString("Status");
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
 
         } catch (SQLException e) {
@@ -369,6 +374,9 @@ public class EnrollDAO {
             while(resultSet.next()){
                 studentList.add(resultSet.getString("UserID"));
             }
+
+            resultSet.close();
+            preparedStatement.close();
 
 
         } catch (SQLException e) {

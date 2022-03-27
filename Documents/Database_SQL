@@ -9,6 +9,7 @@ CREATE TABLE Users(
     ProfilePic BIGINT,
     DOB DATE NOT NULL,
     MobileNum VARCHAR(20),
+    CountryCode VARCHAR(10),
     UserType ENUM('Student','Teacher') NOT NULL,
     Gender ENUM('Male','Female') NOT NULL,
     Country VARCHAR(50),

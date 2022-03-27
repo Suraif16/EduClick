@@ -34,7 +34,7 @@ public class RegisterFilter implements Filter {
         String userTypeSelect = servletRequest.getParameter("userTypeSelect");
         String country= servletRequest.getParameter("country");
         String city= servletRequest.getParameter("city");
-        String newNumber= servletRequest.getParameter("newNumber");
+        /*String newNumber= servletRequest.getParameter("newNumber");*/
         String genderSelect= servletRequest.getParameter("genderSelect");
 
 
@@ -50,7 +50,7 @@ public class RegisterFilter implements Filter {
 
         JSONObject jsonObject = new JSONObject();
 
-        if((firstName!=null && firstName.length()<20 && isValidName(firstName)) && (lastName!=null && lastName.length()<20 && isValidName(lastName)) && (email!=null && isValid(email)==true && email.length()<320) && (dateOfBirth!=null && checkAge(dateOfBirth)) && (userTypeSelect!=null) && (country!=null) &&(city!=null) && (newNumber!=null && isValidMobileNo(newNumber)==true  && newNumber.length()<=15) && (genderSelect!=null)){
+        if((firstName!=null && firstName.length()<20 && isValidName(firstName)) && (lastName!=null && lastName.length()<20 && isValidName(lastName)) && (email!=null && isValid(email)==true && email.length()<320) && (dateOfBirth!=null && checkAge(dateOfBirth)) && (userTypeSelect!=null) && (country!=null) &&(city!=null) /*&& (newNumber!=null && isValidMobileNo(newNumber)==true  && newNumber.length()<=15)*/ && (genderSelect!=null)){
             System.out.println("Everything is good kid!!! :)");
             filterChain.doFilter(servletRequest,servletResponse);
             jsonObject.put("Filter","Success");
@@ -93,10 +93,10 @@ public class RegisterFilter implements Filter {
                 String s = "City is not entered.";
                 str = str + s;
             }
-            if(newNumber==null || isValidMobileNo(newNumber)!=true  || newNumber.length()>15){
+            /*if(newNumber==null || isValidMobileNo(newNumber)!=true  || newNumber.length()>15){
                 String s = "Number field is empty or number is not valid or length exceeded.";
                 str = str + s;
-            }
+            }*/
             if(genderSelect==null){
                 String s = "Gender is not selected.";
                 str = str + s;
