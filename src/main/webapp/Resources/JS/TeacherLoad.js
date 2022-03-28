@@ -5,7 +5,6 @@ document.onreadystatechange = function (){
         /* when the document is loaded and complete this function will run*/
         LoadNewsFeedsInTeacherProfilePage();
         sendServerDataa();
-
         getClassroomListA();
         LoadSelectedNewsFeeds();
         LoadAdminPost();
