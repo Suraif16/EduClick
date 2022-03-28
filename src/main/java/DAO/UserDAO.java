@@ -539,9 +539,9 @@ public class UserDAO<teacherArrayList> {
 
                 String lastName = resultSet.getString("LastName");
 
-                jsonObject.put("NotifierFirstName",firstName);
+                jsonObject.put("FirstName",firstName);
 
-                jsonObject.put("NotifierLastName",lastName);
+                jsonObject.put("LastName",lastName);
 
             }
 
