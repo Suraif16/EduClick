@@ -36,13 +36,13 @@ public class TeacherProfilePageNewsFeedsLoadServlet extends HttpServlet  {
         User user = new User();
 
         String userId = request.getParameter("userId");
-        System.out.println(userId+"  lll");
+      //  System.out.println(userId);
 
         User profileUser = new User( userId );
         profileUser.getUser();
 
         String fullName = user.getFullName(userId);
-        System.out.println(fullName+" pppp");
+      //  System.out.println(fullName);
 
         Post post = new Post();
         JSONArray jsonArray1 = new JSONArray();
