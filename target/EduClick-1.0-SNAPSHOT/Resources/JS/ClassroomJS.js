@@ -208,6 +208,18 @@ const selectStudentEnrollList = function (){
         let nowDateTime = new Date();
         for (let i = 0; i < studentEnrollList.length; i++) {
 
+            let singleStudentProfileImage = "";
+
+            if ( jsonResponse.profilePicture === undefined ){
+
+                singleStudentProfileImage = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                singleStudentProfileImage = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + studentEnrollList[i].profilePicture + '.jpeg">'
+
+            }
+
 
             let loginDateTime  = new Date( studentEnrollList[i].loginDate + " " + studentEnrollList[i].loginTime );
 
@@ -217,7 +229,7 @@ const selectStudentEnrollList = function (){
                 '<div>' +
                 '<a href="/EduClick_war_exploded/userProfileRedirect?userId=' + studentEnrollList[i].userId + '" class="profile">' +
                 '<div class="profileImage classroomStudentProfilePicture">' +
-                '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                singleStudentProfileImage +
                 '</div>' +
                 '<div class="classroomStudentProfileName">' + studentEnrollList[i].studentName + '</div>' +
                 '</a>' +
