@@ -26,7 +26,8 @@ public class EducationalWorkDAO {
                 jsonObject.put("ImagePath",resultSet.getString("ImagePath"));
                 jsonObject.put("Caption",resultSet.getString("Caption"));
             }
-
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
