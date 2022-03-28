@@ -1,15 +1,14 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
 
-document.onreadystatechange = function (){
+/*document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
-
         LoadName();
 
     }
 
-}
+}*/
 
 function showRightPanel(){
 
@@ -331,6 +330,7 @@ search.addEventListener( "keyup" , function ( event ){
 
 const LoadName = function (){
 
+    console.log("gggg");
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -341,7 +341,7 @@ const LoadName = function (){
 
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/teacherProNameLoad" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/student/teacherProfileNameLoad" , true);
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send("userId=" + getUserIdClientSide());
 
@@ -353,8 +353,10 @@ const LoadName = function (){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
-            const headerName = document.getElementById("profileUserName");
-            headerName.innerHTML = jsonLoginResponse.FullName;
+            console.log(jsonLoginResponse.FullName+"KKK");
+
+            const headerUserName = document.getElementById("headerUserName");
+            headerUserName.innerHTML = jsonLoginResponse.FullName;
 
 
         }else{
