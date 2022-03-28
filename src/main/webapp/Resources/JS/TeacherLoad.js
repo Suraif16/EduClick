@@ -7,7 +7,7 @@ document.onreadystatechange = function (){
         sendServerDataa();
         getClassroomListA();
         LoadSelectedNewsFeeds();
-        LoadAdminPost();
+        TeacherLoadAdminPost();
 
 
     }
