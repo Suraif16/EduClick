@@ -193,7 +193,8 @@ public class ClassroomDAO {
             while (resultSet.next()){
                 id = resultSet.getString("UserID");
             }
-
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -374,11 +375,14 @@ public class ClassroomDAO {
 
             }
 
-
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
+        finally {
+            if (connection != null) try { connection.close(); }catch (Exception ignore) {}
+        }
 
         return jsonObject;
     }
