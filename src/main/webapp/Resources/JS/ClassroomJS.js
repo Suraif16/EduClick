@@ -210,7 +210,7 @@ const selectStudentEnrollList = function (){
 
             let singleStudentProfileImage = "";
 
-            if ( jsonResponse.profilePicture === undefined ){
+            if ( studentEnrollList[i].profilePicture === undefined ){
 
                 singleStudentProfileImage = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
 
