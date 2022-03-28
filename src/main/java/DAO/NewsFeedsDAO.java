@@ -172,7 +172,8 @@ public String insert(NewsFeeds newsFeeds){
 
 
                 }
-
+            resultSet.close();
+            preparedStatement.close();
 
 
         } catch (SQLException e) {

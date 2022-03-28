@@ -183,7 +183,8 @@ public class PostDAO {
                 jsonArray.put(jsonObject);
 
             }
-
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

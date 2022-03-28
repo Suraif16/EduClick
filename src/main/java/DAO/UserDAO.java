@@ -416,6 +416,8 @@ public class UserDAO<teacherArrayList> {
                     jsonArray.put(jsonObject);
 
                 }
+                resultSet.close();
+                preparedStatement.close();
             }
 
 
