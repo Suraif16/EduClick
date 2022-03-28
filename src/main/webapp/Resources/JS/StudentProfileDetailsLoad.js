@@ -57,6 +57,10 @@ const loadStudentsProfileDetailsList = function (){
             }else{
                 document.getElementById("grade").innerHTML = "Grade : "+jsonLoginResponse.studentDetails.SchoolAndGrade.Grade
             }
+
+            if(jsonLoginResponse.userStatus == "otherUser"){
+                document.getElementById("buttonContainer").style.display = "none";
+            }
         }else{
             alert("something went wrong!!!");
         }
