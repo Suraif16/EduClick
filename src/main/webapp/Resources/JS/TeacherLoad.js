@@ -9,7 +9,7 @@ document.onreadystatechange = function (){
         getClassroomListA();
         LoadSelectedNewsFeeds();
         TeacherLoadAdminPost();
-        LoadName();
+        // LoadName();
 
 
     }
