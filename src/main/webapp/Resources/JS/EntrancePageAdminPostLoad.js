@@ -22,7 +22,7 @@ const LoadAdminPost = function (){
 
                for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
 
-                   /* console.log(jsonResponse.jsonArray1[i]);*/
+                    console.log(jsonResponse.jsonArray1[i]);
 
                     if (jsonResponse.jsonArray1[i].status=1 && jsonResponse.jsonArray1[i].Caption !=="") {
 
@@ -51,7 +51,7 @@ const LoadAdminPost = function (){
                              '                       </div>' +
                              '                       <div class="postPicture">' +
                              '                           <div class="postPictureImageContainer">' +
-                             '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.jsonArray1[i].aPid + '.jpeg">' +
+                             '                              <img class="postPictureImage" src="../Resources/Images/AdminPostImages/' + jsonResponse.jsonArray1[i].aPId + '.jpeg">' +
                              '                           </div>' +
                              '                       </div>' +
                              '                     </div>' +
@@ -168,7 +168,7 @@ const LoadAdminPost = function (){
                              '                       </div>' +
                              '                       <div class="postPicture">' +
                              '                           <div class="postPictureImageContainer">' +
-                             '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.jsonArray1[i].aPid + '.jpeg">' +
+                             '                              <img class="postPictureImage" src="../Resources/Images/NewsFeedImages/' + jsonResponse.jsonArray1[i].aPId + '.jpeg">' +
                              '                           </div>' +
                              '                       </div>' +
                              '                     </div>' +
