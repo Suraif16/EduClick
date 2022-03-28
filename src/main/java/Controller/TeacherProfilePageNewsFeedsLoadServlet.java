@@ -42,7 +42,7 @@ public class TeacherProfilePageNewsFeedsLoadServlet extends HttpServlet  {
         profileUser.getUser();
 
         String fullName = user.getFullName(userId);
-        System.out.println(fullName+"pppp");
+        System.out.println(fullName+" pppp");
 
         Post post = new Post();
         JSONArray jsonArray1 = new JSONArray();
