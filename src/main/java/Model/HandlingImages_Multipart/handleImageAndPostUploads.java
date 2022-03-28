@@ -7,6 +7,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -313,6 +314,109 @@ public class handleImageAndPostUploads {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void uploadProfileImage(HttpServletRequest request, String path, String userId ) {
+
+        User user = new User( userId );
+        String workPlace = null;
+        String userProfilePictureStatus = null;
+        ServletFileUpload servletFileUpload = new ServletFileUpload( new DiskFileItemFactory() );
+
+        try {
+
+            List<FileItem> files = servletFileUpload.parseRequest( request );
+
+            FileItem imageFile = null;
+
+            for (FileItem file : files) {
+
+                if ( file.isFormField() ) {
+
+                    InputStream inputStream = file.getInputStream();
+                    byte[] bytes = new byte[ inputStream.available() ];
+                    inputStream.read(bytes);
+
+                    if ( file.getFieldName().equals("firstName") ) {
+
+                        user.setFirstName( new String(bytes) );
+
+                    } else if ( file.getFieldName().equals("lastName") ) {
+
+                        user.setLastName( new String(bytes) );
+
+                    }else if ( file.getFieldName().equals( "country" ) ){
+
+                        user.setCountry( new String(bytes) );
+
+                    }else if ( file.getFieldName().equals( "city" ) ){
+
+                        user.setCity( new String(bytes) );
+
+                    }else if ( file.getFieldName().equals( "workPlace" ) ){
+
+                        workPlace = new String(bytes);
+
+                    }else if ( file.getFieldName().equals( "userProfilePictureStatus" ) ){
+
+                        userProfilePictureStatus = new String(bytes);
+
+                    }else if ( file.getFieldName().equals( "mobileNumber" ) ){
+
+                        user.setMobileNumber( new String(bytes) );
+
+                    }else if ( file.getFieldName().equals( "countryCode" ) ){
+
+                        user.setCountryCode( new String(bytes) );
+
+                    }
+
+                    inputStream.close();
+
+
+                } else {
+
+                    imageFile = file;
+
+                }
+
+            }
+
+            if ( imageFile != null ){
+
+                File file = new File( path + "Resources\\Images\\UserProfileImages\\profilePicture" + userId + ".jpeg" );
+                System.out.println(file.delete());
+                user.setProfilePicture( userId );
+
+                Thread saveImage = ImageJPEGConverterAndCompressor.convertCompressJPEG( "profilePicture" + userId , path + "Resources\\Images\\UserProfileImages\\" , imageFile );
+                saveImage.start();
+
+
+            }else{
+
+                if ( userProfilePictureStatus.equals( "true" ) ){
+
+                    user.setProfilePicture( null );
+
+                }else{
+
+                    user.setProfilePicture( userId );
+
+                }
+
+
+            }
+
+            user.updateUserDetails( workPlace );
+
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
     }
 
 

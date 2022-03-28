@@ -50,6 +50,7 @@ public class EDWAnswersDAO {
                 jsonObject.put("ImageStatus",resultSet.getString("ImageStatus"));
 
             }
+
             resultSet.close();
             preparedStatement.close();
         } catch (SQLException e) {

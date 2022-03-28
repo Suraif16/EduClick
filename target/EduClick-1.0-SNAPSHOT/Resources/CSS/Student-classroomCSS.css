@@ -7,6 +7,112 @@ body{
     flex-direction: column;
 }
 
+div#content > div#notifications > div.notificationShowRequest {
+    /*child of notification*/
+    /* flex-basis: 50%;*/ /* DON'T DELETE THIS... This is kept for future modifications*/
+    flex: 1;
+    display: flex; /* container of singleNotification*/
+    flex-direction: column;
+    overflow-y: auto;
+
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification{
+    /*child of request*/
+    flex-basis: 15%;
+    margin: 1% auto;
+    display: flex;
+    flex-direction: column;
+    /*box-shadow:  inset 1px 1px 0 #4775c4 , inset -1px -1px 0 #4775c4;*/
+    width: 100%;
+    background-color: #4775c4;
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div{
+
+    padding: 1%;
+    margin: 1%;
+    display: flex;
+    color: white;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > input{
+
+    flex: 1;
+    margin: 1%;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > a {
+
+    flex: 1;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > a > div{
+
+    margin: 1%;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > a > div.requestProfilePicture{
+
+    flex: 1;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotification > div > a > div.requestProfileName{
+
+    flex: 5;
+    margin: auto;
+
+}
+
+input.requestDecline{
+
+    background-color: #403434;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage{
+    /*child of request*/
+    display: flex;
+    width: 100%;
+    background-color: #4775c4;
+    color: white;
+    margin: 1%  auto;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a{
+
+    display: flex;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationImage{
+
+    flex: 1;
+    margin: auto;
+    border-right: white solid 2px;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationImage > img{
+
+    width: 100%;
+
+}
+
+div#content > div#notifications > div.notificationShowRequest > div.singleNotificationMessage > a > div.notificationMessage{
+
+    flex: 4;
+    margin: auto 1%;
+
+}
+
 header{
 
     /*child of the body*/
@@ -363,6 +469,7 @@ div#content > div#postContents {
 
     background-color: #4775c4;
     padding: 1%;
+    display: flex;
 
 
 }

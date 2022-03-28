@@ -1,17 +1,19 @@
-document.onreadystatechange = function (){
+/*document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
 
         LoadNewsFeedsInTeacherProfilePage();
+        loadTeacherProfileDetailsList();
+        LoadUserName();
+
 
     }
 
-}
+}*/
 
 
 const LoadNewsFeedsInTeacherProfilePage = function (){
 
-    console.log("eekath hariiii");
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -23,7 +25,8 @@ const LoadNewsFeedsInTeacherProfilePage = function (){
     }
 
     httpreq.open( "POST" , "/EduClick_war_exploded/teacher/TeacherProfilePageNewsFeedsLoadServlet" , true);
-    httpreq.send();
+    httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
+    httpreq.send("userId=" + getUserIdClientSide());
 }
 
 function completeNFLoad(httpreq) {
@@ -36,11 +39,13 @@ function completeNFLoad(httpreq) {
 
         const name = document.getElementById("profileUserName");
         name.innerHTML = jsonResponse.fullName;
-      //  let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
+
+        //let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
+
 
         for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
 
-            console.log(jsonResponse.jsonArray1[i].Caption);
+            console.log(jsonResponse.jsonArray1[i]);
 
             if (jsonResponse.jsonArray1[i].path !== "" && jsonResponse.jsonArray1[i].Caption !=="") {
 
@@ -48,7 +53,7 @@ function completeNFLoad(httpreq) {
                 postContents.innerHTML = '        <div class="post">    ' +
                     '              <div class="postContentContainer">' +
                     '                   <div class="postProfileSection">' +
-                    '                        <a href="TeacherProfile.html" class="postProfile">' +
+                    '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + jsonResponse.jsonArray1[i].ownerId + '" class="postProfile">' +
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
@@ -81,12 +86,12 @@ function completeNFLoad(httpreq) {
                     '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
@@ -107,7 +112,7 @@ function completeNFLoad(httpreq) {
                 postContents.innerHTML = '        <div class="post">    ' +
                     '              <div class="postContentContainer">' +
                     '                   <div class="postProfileSection">' +
-                    '                        <a href="TeacherProfile.html" class="postProfile">' +
+                    '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + jsonResponse.jsonArray1[i].ownerId + '" class="postProfile">' +
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
@@ -136,12 +141,12 @@ function completeNFLoad(httpreq) {
                     '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
@@ -163,7 +168,7 @@ function completeNFLoad(httpreq) {
                 postContents.innerHTML = '        <div class="post">    ' +
                     '              <div class="postContentContainer">' +
                     '                   <div class="postProfileSection">' +
-                    '                        <a href="TeacherProfile.html" class="postProfile">' +
+                    '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + jsonResponse.jsonArray1[i].ownerId + '" class="postProfile">' +
                     '                           <div class="postProfileImage">' +
                     '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +
                     '                           </div>' +
@@ -194,12 +199,12 @@ function completeNFLoad(httpreq) {
                     '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                    '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
@@ -212,10 +217,6 @@ function completeNFLoad(httpreq) {
 
 
                 postContents.innerHTML += innerPreviouseHTML;
-
-
-
-
 
             }
 
@@ -230,3 +231,9 @@ function completeNFLoad(httpreq) {
         alert("something went wrong!!!");
     }
 }
+/*const getUserIdClientSide = function (){
+
+    let currentClassUrl = new URL( window.location.href );
+    return currentClassUrl.searchParams.get( "userId" );
+
+}*/

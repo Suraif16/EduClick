@@ -31,7 +31,8 @@ public class RegisterServlet extends HttpServlet {
         String firstname = request.getParameter("firstName");
         String lastname = request.getParameter("lastName");
         LocalDate dateofBirth = LocalDate.parse(request.getParameter("dateOfBirth"));
-        String mobileNum = request.getParameter("newNumber");
+        String mobileNum = request.getParameter("mobileNumber");
+        String countryCode = request.getParameter("countryCode");
         String country = request.getParameter("country");
         String city = request.getParameter("city");
         LocalDate registrationDate = LocalDate.now();
@@ -49,6 +50,7 @@ public class RegisterServlet extends HttpServlet {
         System.out.println(lastname);
         System.out.println(dateofBirth);
         System.out.println(mobileNum);
+        System.out.println(countryCode);
         System.out.println(country);
         System.out.println(city);
         System.out.println(registrationDate);
@@ -67,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
        String emailStatus = loginemail.checkEmail();
        if(emailStatus.equals("")){
 
-           User user = new User( firstname,lastname,dateofBirth,mobileNum,country,city,registrationTime,registrationDate,gender,userType);
+           User user = new User( firstname,lastname,dateofBirth,mobileNum,countryCode,country,city,registrationTime,registrationDate,gender,userType);
            user.userRegistered();
            user.insertBellIcon(user.getUserId());
 

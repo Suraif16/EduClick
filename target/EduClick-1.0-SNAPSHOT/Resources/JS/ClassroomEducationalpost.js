@@ -6,6 +6,8 @@ const showAddEducationalPostForm = function (){
 
     if ( addEducationPostForm.style.display === "flex" ){
 
+        selectedImageForEpost.innerHTML = "";
+        selectedImageForEpost.style.display = "none";
         addEducationPostForm.style.display = "none";
 
     }else{
@@ -140,3 +142,19 @@ const isImageAccepted = function ( type ){
     return false;
 
 }
+
+/* display image on post form when selected */
+const selectedImageForEpost = document.getElementById( "selectedImageForEpost" );
+const imageInsertIcon = document.getElementById( "inputImage" );
+
+imageInsertIcon.addEventListener( "change" , function (){
+
+    selectedImageForEpost.style.display = "flex";
+    let imageFile = document.createElement( "IMG" );
+    console.log( imageInsertIcon.files[0].name );
+    imageFile.src = URL.createObjectURL( imageInsertIcon.files[0] );
+
+    selectedImageForEpost.innerHTML = "";
+    selectedImageForEpost.appendChild( imageFile );
+
+});

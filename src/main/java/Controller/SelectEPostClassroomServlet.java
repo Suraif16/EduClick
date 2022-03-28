@@ -30,6 +30,7 @@ public class SelectEPostClassroomServlet extends HttpServlet {
 
         jsonObject.put( "userName" , user.getFirstName() );
         jsonObject.put( "userId" , user.getUserId() );
+        jsonObject.put( "profilePicture" , user.getUserProfileImage() );
 
         String minPostId = request.getParameter( "id" );
         String classroomId = request.getParameter( "classroomId" );

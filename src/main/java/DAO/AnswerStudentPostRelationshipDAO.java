@@ -60,6 +60,7 @@ public class AnswerStudentPostRelationshipDAO {
             }
             resultSet.close();
             preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -161,7 +162,7 @@ public class AnswerStudentPostRelationshipDAO {
 
                     singleMcqResult.put( "firstName" , resultSet2.getString( 1 ) );
                     singleMcqResult.put( "lastName" , resultSet2.getString( 2 ) );
-                    singleMcqResult.put( "profilePic" , resultSet2.getString( 3 ) );
+                    singleMcqResult.put( "profilePicture" , resultSet2.getString( 3 ) );
 
                 }
 

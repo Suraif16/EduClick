@@ -14,7 +14,7 @@ const loadTeacherFollowersList = function (){
         }
     }
 
-    httpreq.open("POST", "/EduClick_war_exploded/teacher/teacherFollowerListLoad", true);
+    httpreq.open("POST", "/EduClick_war_exploded/user/teacherFollowerListLoad", true);
     httpreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded" );
     httpreq.send("userId=" + getUserIdClientSide());
 
@@ -91,10 +91,10 @@ const loadTeacherFollowersList = function (){
 
 
 }
-const getUserIdClientSide = function (){
+/*const getUserIdClientSide = function (){
 
     let currentClassUrl = new URL( window.location.href );
     return currentClassUrl.searchParams.get( "userId" );
 
-}
+}*/
 

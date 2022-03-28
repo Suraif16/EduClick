@@ -9,7 +9,7 @@ function showNotification(){
     /* when clicked on the notification button this function will hide and show the notification pannel*/
     if(notificationStatusStudent){
 
-        notifications.style.display = "none";
+        notificationsStudent.style.display = "none";
         notificationStatusStudent = false;
         notificationRequestButton.style.backgroundColor = "#4775c4";
 
@@ -17,7 +17,7 @@ function showNotification(){
 
         setBellIconDateAndTime();
         notificationRequestButton.style.backgroundColor = "#4775c4";
-        notifications.style.display = "flex";
+        notificationsStudent.style.display = "flex";
         notificationStatusStudent = true;
 
     }
@@ -78,19 +78,61 @@ const displayNotifications = function ( jsonResponse ){
 
     let notifications = "";
     const count = jsonResponse.notificationList.length;
-    console.log("The count is : "+count)
 
     if ( count > 0 ){
+        let notificationMessage;
 
         for (let i = 0; i < count; i++) {
+
+            if ( jsonResponse.notificationList[ i ].PostedType === "Shared" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.FirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.LastName
+                    + " has shared a new Post";
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Posted" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.FirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.LastName
+                    + " has posted a new Post";
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Educational Post" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.FirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.LastName
+                    + " has posted a new Eduducational post in " + jsonResponse.notificationList[ i ].classroomDetails.classroomName + " " +
+                    jsonResponse.notificationList[ i ].classroomDetails.yearOfExamination + " " + jsonResponse.notificationList[ i ].classroomDetails.grade + " " +
+                    jsonResponse.notificationList[ i ].classroomDetails.subject;
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Answer" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.FirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.LastName
+                    + " has Added an answer to a Eduducational post in " + jsonResponse.notificationList[ i ].classroomDetails.classroomName + " " +
+                    jsonResponse.notificationList[ i ].classroomDetails.yearOfExamination + " " + jsonResponse.notificationList[ i ].classroomDetails.grade + " " +
+                    jsonResponse.notificationList[ i ].classroomDetails.subject;
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Friend Request" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.FirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.LastName
+                    + " has Accepted your friend request";
+
+            }else if ( jsonResponse.notificationList[ i ].PostedType === "Classroom Request" ){
+
+                notificationMessage = jsonResponse.notificationList[ i ].NotifierDetails.FirstName
+                    + " " + jsonResponse.notificationList[ i ].NotifierDetails.LastName
+                    + " has accepted your enroll request";
+
+            }
 
             notifications += '<div class="singleNotificationMessage">' +
                 '                    <a href="#">' +
                 '                        <div class="notificationImage">' +
-                '                            <img src="../Resources/Icons/Logo.png">' +
+                '                            <img src="../Resources/Icons/account_circle_white_24dp.svg">' +
                 '                        </div>' +
                 '                        <div class="notificationMessage">' +
-                '                            Welcome to EduClick!!!' +
+                notificationMessage +
                 '                        </div>' +
                 '                    </a>' +
                 '                </div>'
@@ -98,6 +140,17 @@ const displayNotifications = function ( jsonResponse ){
         }
 
     }
+
+    notifications += '<div class="singleNotificationMessage">' +
+        '                    <a href="#">' +
+        '                        <div class="notificationImage">' +
+        '                            <img src="../Resources/Icons/Logo.png">' +
+        '                        </div>' +
+        '                        <div class="notificationMessage">' +
+        '                            Welcome to EduClick!!!' +
+        '                        </div>' +
+        '                    </a>' +
+        '                </div>'
 
     notificationContent.innerHTML = notifications;
 
@@ -271,8 +324,7 @@ function FriendRequestDecline(fromId , toId ){
 
 }
 
-/*
-function EnrollRequestAccept( fromId , toId ){
+/*function EnrollRequestAccept( fromId , toId ){
 
     console.log( "Enroll request accepted" , fromId , toId );
     let httpreq = new XMLHttpRequest();
@@ -315,9 +367,8 @@ function EnrollRequestAccept( fromId , toId ){
     httpreq.send( "fromId=" + fromId + "&toId=" + toId );
 
 }
-*/
 
-/*function EnrollRequestDecline(fromId , toId ){
+function EnrollRequestDecline(fromId , toId ){
 
     console.log( "Enroll request Decline" , fromId , toId );
     let httpreq = new XMLHttpRequest();

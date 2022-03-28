@@ -29,11 +29,20 @@ public class TeacherProfilePageNewsFeedsLoadServlet extends HttpServlet  {
 
         jsonObject.put("serverResponse" , "Allowed");
 
-        User user = (User) session.getAttribute("User");
+       /* User user = (User) session.getAttribute("User");
 
-        String userId = user.getUserId();
+        String userId = user.getUserId();*/
+
+        User user = new User();
+
+        String userId = request.getParameter("userId");
+      //  System.out.println(userId);
+
+        User profileUser = new User( userId );
+        profileUser.getUser();
+
         String fullName = user.getFullName(userId);
-        System.out.println(fullName);
+      //  System.out.println(fullName);
 
         Post post = new Post();
         JSONArray jsonArray1 = new JSONArray();

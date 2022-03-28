@@ -3,9 +3,14 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
+
+        LoadNewsFeedsInTeacherProfilePage();
         sendServerData();
-        getClassroomList();
+        getClassroomListA();
         LoadSelectedNewsFeeds();
+        TeacherLoadAdminPost();
+        LoadName();
+
 
     }
 
@@ -30,7 +35,7 @@ const sendServerData = function (){
         const headerUserProfileIdAchorElement = document.getElementById("headerUserProfileId");
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
+        console.log( "farzan" , jsonLoginResponse );
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
@@ -40,6 +45,17 @@ const sendServerData = function (){
             let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
 
             headerUserProfileIdAchorElement.setAttribute("href" , url);
+
+            if ( jsonLoginResponse.profilePicture === undefined ){
+
+                document.getElementById( "headerProfilePicture" ).innerHTML = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                document.getElementById( "headerProfilePicture" ).innerHTML = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonLoginResponse.profilePicture + '.jpeg">'
+
+            }
+
         }else{
             alert("something went wrong!!!");
         }
@@ -49,7 +65,7 @@ const sendServerData = function (){
 
 }
 
-const getClassroomList = function (){
+const getClassroomListA = function (){
     /* This function gets the Lists of classrooms from the server*/
     const classroomsListLinksSelect = document.getElementById("classroomsListLinks");
     let httpreq = new XMLHttpRequest();

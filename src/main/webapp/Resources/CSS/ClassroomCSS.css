@@ -1176,6 +1176,20 @@ div#content > div#addNewsFeedForm > div.addNewsFeedFormRows{
 
 }
 
+div#selectedImageForEpost > img{
+
+    width: 25%;
+    height: 25%;
+
+}
+
+div#selectedImageForEpost{
+
+    background-color: #4775c4;
+    display: none;
+
+}
+
 div#content > div#addNewsFeedForm > div#addNewsFeedFormTopic{
 
     background-color: #4775c4;

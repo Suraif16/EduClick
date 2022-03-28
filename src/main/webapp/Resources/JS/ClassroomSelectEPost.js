@@ -4,6 +4,7 @@ let minEPostId = Infinity;
 let selectMoreStatus = true;
 let userName = "";
 let userId = "";
+let imagePathForUserProfile = "";
 
 window.onscroll = function (){
 
@@ -26,7 +27,7 @@ const displayEducationalPost = function ( postData ){
         '<a href="/EduClick_war_exploded/userProfileRedirect?userId=' + userId + '" class="postProfile">' +
 
         '<div class="postProfileImage">' +
-        '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+        imagePathForUserProfile +
         '</div>' +
         '<div class="postProfileName" >' + userName + '</div>' +
         '</a>' +
@@ -80,7 +81,7 @@ const displayMessage = function ( postData ){
         '<div class="postProfileSection">' +
         '<a href="/EduClick_war_exploded/userProfileRedirect?userId=' + userId + '" class="postProfile">' +
         '<div class="postProfileImage">' +
-        '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+        imagePathForUserProfile +
         '</div>' +
         '<div class="postProfileName" >' + userName + '</div>' +
         '</a>' +
@@ -123,7 +124,7 @@ const displayMcqPost = function ( postData ){
         '<div class="postProfileSection">' +
         '<a href="/EduClick_war_exploded/userProfileRedirect?userId=' + userId + '" class="postProfile">' +
         '<div class="postProfileImage">' +
-        '<img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+        imagePathForUserProfile +
         '</div>' +
         '<div class="postProfileName" >' + userName + '</div>' +
         '</a>' +
@@ -241,6 +242,16 @@ const selectEPostFromServer = function ( scrollStatus ){
 
             userName = jsonResponse.userName;
             userId = jsonResponse.userId;
+
+            if ( jsonResponse.profilePicture === undefined ){
+
+                imagePathForUserProfile = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                imagePathForUserProfile = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonResponse.profilePicture + '.jpeg">'
+
+            }
 
             const ePostsLIst = jsonResponse.ePosts;
 

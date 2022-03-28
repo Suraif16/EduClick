@@ -26,6 +26,8 @@ public class PostDAO {
                 NFKeyList.add(resultSet.getString("NFPostID"));
             }
 
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -56,6 +58,8 @@ public class PostDAO {
                 NFKeyList.add(resultSet.getString("T_UserID"));
             }
 
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -98,6 +102,8 @@ public class PostDAO {
             }
 
 
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -211,6 +217,8 @@ public class PostDAO {
 
 
             }
+            resultSet.close();
+            preparedStatement.close();
 
 
         } catch (SQLException e) {
@@ -247,6 +255,8 @@ public class PostDAO {
 
 
             }
+            resultSet.close();
+            preparedStatement.close();
 
 
         } catch (SQLException e) {
@@ -282,6 +292,8 @@ public class PostDAO {
 
 
             }
+            resultSet.close();
+            preparedStatement.close();
 
 
         } catch (SQLException e) {

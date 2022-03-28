@@ -150,6 +150,7 @@ public class Post {
         ShareDAO shareDAO = new ShareDAO();
         NewsFeedsImageDAO newsFeedsImageDAO = new NewsFeedsImageDAO();
         UserDAO userDAO = new UserDAO();
+        System.out.println(userId+"  aaaaaqqqqq");
 
         ArrayList<String> NewsFeedUserIdList = postDAO.getLoadedNewsFeedsId(userId);
         //  System.out.println(NewsFeedUserIdList  + "This is news feeds id list");
@@ -181,6 +182,7 @@ public class Post {
             newsFeedDetails.put("ownerName",ownerName);
             newsFeedDetails.put("path", imagePath);
             newsFeedDetails.put("postId",NewsFeedUserIdList.get(i));
+            newsFeedDetails.put("ownerId",ownerId);
             //  System.out.println(array);
             array.put(newsFeedDetails);
 
@@ -206,7 +208,7 @@ public class Post {
             JSONObject newsFeedDetails = newsFeedsDAO.getNewsFeedsDetails(NewsFeedUserIdList.get(i));
          //   System.out.println(newsFeedDetails);
             String imagePath = newsFeedsImageDAO.getImagePath((String) NewsFeedUserIdList.get(i));
-         //   String ownerId = String.valueOf(postDAO.getOwnerId(NewsFeedUserIdList.get(i)));
+            String ownerId = String.valueOf(postDAO.getOwnerId(NewsFeedUserIdList.get(i)));
 
 
             String ownerName = userDAO.getOwnerName(userId);
@@ -214,6 +216,7 @@ public class Post {
                 newsFeedDetails.put("ownerName", ownerName);
                 newsFeedDetails.put("path", imagePath);
                 newsFeedDetails.put("postId", NewsFeedUserIdList.get(i));
+                newsFeedDetails.put("ownerId",ownerId);
                 //  System.out.println(array);
                 array.put(newsFeedDetails);
 
@@ -261,6 +264,7 @@ public class Post {
             newsFeedDetails.put("ownerName",ownerName);
             newsFeedDetails.put("path", imagePath);
             newsFeedDetails.put("postId",NewsFeedUserIdList.get(i));
+            newsFeedDetails.put("ownerId",ownerId);
             array.put(newsFeedDetails);
 
         }

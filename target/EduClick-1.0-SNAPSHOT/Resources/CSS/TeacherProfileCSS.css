@@ -649,6 +649,17 @@ input[type="button"]:active{
 
 
 }
+/*
+
+div#settingsForm{
+    margin-left: 30%;
+    margin-top: 30px;
+    background-color: yellow;
+    height: 500px;
+    width: 500px;
+    padding-top: 30px;
+}
+*/
 
 @media(max-width: 1100px) {
 
@@ -945,4 +956,125 @@ input[type=range]::-webkit-slider-thumb {
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #2497E3;
+}
+
+/* Edit profile css */
+
+div.userProfileEditForm{
+
+    background-color: white;
+    position: absolute;
+    left: 25%;
+    margin: -15% auto auto auto;
+    z-index: 5;
+    display: none;
+    flex-direction: column;
+    padding: 1%;
+    width: 50%;
+    box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 ;
+}
+
+div.userProfileEditFormRow{
+
+    flex: 1;
+
+}
+
+div.userProfileEditFormRowImage{
+
+    background-color: #4775c4 !important;
+
+
+}
+
+div.userProfileEditFormRowImage > div.userProfileImage{
+
+    width: 200px;
+    height: 200px;
+    margin: 1% auto;
+    border-radius: 50%;
+    display: flex;
+    overflow: hidden;
+
+}
+
+div.userProfileEditFormRowImage > div.userProfileImage > img{
+
+    flex: 1;
+    width: auto;
+    height: 100%;
+    margin: auto;
+
+}
+
+div.userProfileEditFormRowChild{
+
+    display: flex;
+
+}
+
+
+div.userProfileEditFormRowChild > div {
+
+    margin: auto 1%;
+
+}
+
+div.userProfileEditFormRowChild > input {
+
+    flex: 1;
+    margin: auto 1%;
+
+}
+
+div.userProfileEditFormAttachment{
+
+    background-color: #4775c4;
+    margin-bottom: 1%;
+    display: flex;
+
+}
+
+div.userProfileEditFormAttachment > div.userProfileEditFormAttachmentLabel{
+
+    flex-basis: 22%;
+    padding: 1%;
+    color: white;
+
+}
+
+div.userProfileEditFormAttachment > div.userProfileEditFormAttachmentInputFile{
+
+    flex-basis: 78%;
+    padding: 1%;
+
+}
+
+select{
+
+    background-color: #4775c4;
+    color: white;
+    font-weight: bold;
+
+}
+
+input[type="file"]{
+
+
+    display: none;
+
+}
+
+.attachment{
+
+    width: fit-content;
+    padding: 0.5%;
+
+}
+
+
+.attachmentLabel{
+
+    cursor: pointer;
+
 }

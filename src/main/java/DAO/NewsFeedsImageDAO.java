@@ -32,6 +32,8 @@ public class NewsFeedsImageDAO extends Post {
                 }
 
 
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -52,11 +52,23 @@ const getAnswersServer = function ( id ){
 
         for ( let i = 0 ; i < answerList.length ; i++ ) {
 
+            let singleAnswerUserProfileImage = "";
+
+            if ( jsonResponse.profilePicture === undefined ){
+
+                singleAnswerUserProfileImage = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                singleAnswerUserProfileImage = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + answerList[i].profilePicture + '.jpeg">'
+
+            }
+
             let singleAnswer = '<div class="singleAnswer">' +
                 '<div class="answerUser">' +
                 '    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + answerList[i].userId + '" class="answerProfile">' +
                 '        <div class="answerProfileImage">' +
-                '            <img class="answerProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                singleAnswerUserProfileImage +
                 '        </div>' +
                 '        <div class="answerProfileName" >' + answerList[i].studentName + '</div>' +
                 '    </a>' +
@@ -175,10 +187,22 @@ const getMcqResult = function ( elementId , id ){
 
             for ( mcqResultListElement of mcqResultList ) {
 
+                let singleMcqAnswerUserProfileImage = "";
+
+                if ( jsonResponse.profilePicture === undefined ){
+
+                    singleMcqAnswerUserProfileImage = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+                }else{
+
+                    singleMcqAnswerUserProfileImage = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + mcqResultListElement.profilePicture + '.jpeg">'
+
+                }
+
                 elementId.innerHTML += '<div class="mcqSingleStudentResult">' +
                     '                        <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + mcqResultListElement.userId + '" class="mcqProfile">' +
                     '                            <div class="mcqProfileImage">' +
-                    '                                <img class="mcqProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                    singleMcqAnswerUserProfileImage +
                     '                            </div>' +
                     '                            <div>' + mcqResultListElement.firstName + " " + mcqResultListElement.lastName + '</div>' +
                     '                        </a>' +

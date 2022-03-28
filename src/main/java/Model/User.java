@@ -15,6 +15,7 @@ public class User {
     private String lastName;
     private LocalDate dateOfBirth;
     private String mobileNumber;
+    private String countryCode;
     private String profilePicture;
     private String country;
     private String city;
@@ -26,7 +27,7 @@ public class User {
 
     ArrayList<String> arrayList = new ArrayList<String>();
 
-    public User(String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber,  String country, String city, LocalTime registrationTime, LocalDate registrationDate, String gender, String userType) {
+    public User(String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber,String countryCode,  String country, String city, LocalTime registrationTime, LocalDate registrationDate, String gender, String userType) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,6 +39,7 @@ public class User {
         this.registrationDate = registrationDate;
         this.gender = gender;
         this.userType = userType;
+        this.countryCode = countryCode;
     }
 
     public User(String userId, String firstName, String lastName, LocalDate dateOfBirth, String mobileNumber, String profilePicture, String country, String city, String gender, String userType) {
@@ -186,6 +188,14 @@ public class User {
         this.gender = gender;
     }
 
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
     /*Getters and setters ends here*/
 
     public void userRegistered(){
@@ -282,6 +292,11 @@ public class User {
         String fullName = userDAO.getTeacherFullName(userId);
         return fullName;
     }
+    public String getFirstName(String userId){
+        UserDAO userDAO = new UserDAO();
+        String firstName = userDAO.getTeacherFirstName(userId);
+        return firstName;
+    }
 
     public JSONArray getStudentFriendsDetails(ArrayList<String> friendList){
         UserDAO userDAO = new UserDAO();
@@ -348,6 +363,51 @@ public class User {
     public JSONObject getBellIconDetails(String userId){
         BellIconDAO bellIconDAO = new BellIconDAO();
         return bellIconDAO.getBellIconDetails(userId);
+    }
+
+
+    public String getWorkPlace(){
+
+        UserDAO userDAO = new UserDAO();
+        return  userDAO.getWorkPlace( this.getUserId() );
+
+    }
+
+    public User getUserDetails(){
+
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getUserDetails( this );
+
+    }
+
+    public void updateUserDetails( String workPlace ){
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.updateUserDetails( this , workPlace );
+
+    }
+
+    public JSONObject getStudentDetails(String userId){
+
+        System.out.println("I am running in model student");
+
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getStudentDetails(userId);
+
+    }
+
+    public JSONObject getTeacherDetails(String userId){
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getTeacherDetails(userId);
+
+
+    }
+
+    public String getUserProfileImage(){
+
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getUserProfileImage( this.userId );
+
     }
 
 

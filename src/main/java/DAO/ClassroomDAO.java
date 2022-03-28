@@ -377,6 +377,7 @@ public class ClassroomDAO {
 
             resultSet.close();
             preparedStatement.close();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

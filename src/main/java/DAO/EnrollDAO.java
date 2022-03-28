@@ -62,6 +62,7 @@ public class EnrollDAO {
             }
             resultSet.close();
             preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -88,6 +89,7 @@ public class EnrollDAO {
             while(resultSet.next()){
                 status =  resultSet.getString("Status");
             }
+
             resultSet.close();
             preparedStatement.close();
 
@@ -374,6 +376,7 @@ public class EnrollDAO {
 
             resultSet.close();
             preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

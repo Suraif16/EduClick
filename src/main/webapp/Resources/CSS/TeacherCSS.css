@@ -400,6 +400,9 @@ div#content > div#postContents {
 
 
 }
+.name{
+    color: white;
+}
 
 .postProfile{
 
@@ -424,14 +427,6 @@ div#content > div#postContents {
 
 }
 
-.postTimeAndDate{
-
-    flex-basis: 25%;
-    margin: auto;
-    font-size: x-small;
-    color: white;
-
-}
 
 .postProfileSection > a{
 
@@ -899,7 +894,29 @@ input[type="file"]{
 
 }
 
+div#selectedImageForEpost > img{
 
+    width: 25%;
+    height: 25%;
+
+}
+
+div#selectedImageForEpost{
+
+    background-color: #4775c4;
+    display: none;
+
+}
+.postTimeAndDate{
+
+    flex-basis: 30%;
+    margin: auto;
+    font-size: x-small;
+    color: white;
+
+
+
+}
 
 @media(max-width: 1100px) {
 

@@ -1,4 +1,4 @@
-document.onreadystatechange = function (){
+/*document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
 
@@ -6,7 +6,7 @@ document.onreadystatechange = function (){
 
     }
 
-}
+}*/
 
 
 const LoadUserName = function (){
@@ -34,7 +34,7 @@ const LoadUserName = function (){
 
             const headerName = document.getElementById("profileUserName");
             headerName.innerHTML = jsonLoginResponse.FullName;
-            console.log(headerName);
+
 
         }else{
             alert("something went wrong!!!");
