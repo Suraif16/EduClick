@@ -22,6 +22,7 @@ public class EDWAnswersDAO {
 
             preparedStatement.execute();
 
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -49,7 +50,8 @@ public class EDWAnswersDAO {
                 jsonObject.put("ImageStatus",resultSet.getString("ImageStatus"));
 
             }
-
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
