@@ -30,6 +30,12 @@ public class TeacherProfilePageDetailsLoadServlet extends HttpServlet {
 
         JSONObject teacherDetails = user.getTeacherDetails(userId);
 
+        if(request.getParameter("userId").equals(userId)){
+            jsonObject.put("userStatus","currentUser");
+        }else{
+            jsonObject.put("userStatus","otherUser");
+        }
+
         jsonObject.put("teacherDetails",teacherDetails);
 
         System.out.println("kajshgjhasdhgdkafkas ashjdgas dasjhgdas gdkajsdg ka djashg");

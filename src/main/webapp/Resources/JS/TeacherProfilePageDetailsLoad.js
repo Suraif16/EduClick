@@ -27,10 +27,35 @@ const loadTeacherProfileDetailsList = function (){
             /* This is where I need work everytime as per the authentication filter*/
             console.log("Profiule teacher details load runningg!!!!!!")
 
-            document.getElementById("country").innerHTML = "Country : "+jsonLoginResponse.teacherDetails.Country
+            /*document.getElementById("country").innerHTML = "Country : "+jsonLoginResponse.teacherDetails.Country
             document.getElementById("city").innerHTML = "City : "+jsonLoginResponse.teacherDetails.City
             document.getElementById("mobile").innerHTML = "Mobile Number : "+jsonLoginResponse.teacherDetails.MobileNum
-            document.getElementById("workingPlace").innerHTML = "Working Place : "+jsonLoginResponse.teacherDetails.WorkingPlace.CurrentWorkingPlace
+            document.getElementById("workingPlace").innerHTML = "Working Place : "+jsonLoginResponse.teacherDetails.WorkingPlace.CurrentWorkingPlace*/
+
+            if(jsonLoginResponse.teacherDetails.Country==undefined){
+                document.getElementById("country").innerHTML = "Country : Not Entered"
+            }else{
+                document.getElementById("country").innerHTML = "Country : "+jsonLoginResponse.teacherDetails.Country
+            }
+            if(jsonLoginResponse.teacherDetails.City==undefined){
+                document.getElementById("city").innerHTML = "City : Not Entered"
+            }else{
+                document.getElementById("city").innerHTML = "City : "+jsonLoginResponse.teacherDetails.City
+            }
+            if(jsonLoginResponse.teacherDetails.MobileNum==undefined){
+                document.getElementById("mobile").innerHTML = "Mobile Number : Not Entered"
+            }else{
+                document.getElementById("mobile").innerHTML = "Mobile Number : "+jsonLoginResponse.teacherDetails.MobileNum
+            }
+            if(jsonLoginResponse.teacherDetails.WorkingPlace.CurrentWorkingPlace==undefined){
+                document.getElementById("workingPlace").innerHTML = "Working Place : Not Entered"
+            }else{
+                document.getElementById("workingPlace").innerHTML = "Working Place : "+jsonLoginResponse.teacherDetails.WorkingPlace.CurrentWorkingPlace
+            }
+
+            if(jsonLoginResponse.userStatus == "otherUser"){
+                document.getElementById("buttonContainer").style.display = "none";
+            }
         }else{
             alert("something went wrong!!!");
         }

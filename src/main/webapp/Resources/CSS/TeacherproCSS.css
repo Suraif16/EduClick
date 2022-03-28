@@ -846,7 +846,7 @@ div#content > div#rightPanel > div#rightPanelStudentList > div.rightPanelSingleS
 
 input.studentDisable{
 
-    background-color: #403434;
+    background-color: #403434 !important;
 
 }
 
