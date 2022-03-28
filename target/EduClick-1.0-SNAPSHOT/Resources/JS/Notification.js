@@ -125,11 +125,23 @@ const displayNotifications = function ( jsonResponse ){
                     + " has accepted your enroll request";
 
             }
+
+            let singleProfileImage = "";
+
+            if ( jsonResponse.notificationList[ i ].profilePicture === undefined ){
+
+                singleProfileImage = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                singleProfileImage = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonResponse.notificationList[ i ].profilePicture + '.jpeg">'
+
+            }
             
             notifications += '<div class="singleNotificationMessage">' +
                 '                    <a href="#">' +
                 '                        <div class="notificationImage">' +
-                '                            <img src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                singleProfileImage +
                 '                        </div>' +
                 '                        <div class="notificationMessage">' +
                 notificationMessage +
