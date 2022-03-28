@@ -59,7 +59,7 @@ public class ReportDisplayDAO {
             String sql3 = "SELECT T_UserID FROM Posts WHERE NFPostID = ?";
             preparedStatement3 = connection.prepareStatement( sql3);
 
-            String sql4 = "SELECT FirstName,LastName FROM Users WHERE UserID = ?";
+            String sql4 = "SELECT FirstName,LastName,ProfilePic FROM Users WHERE UserID = ?";
             preparedStatement4 = connection.prepareStatement( sql4 );
 
             resultSet = preparedStatement.executeQuery();
@@ -114,10 +114,11 @@ public class ReportDisplayDAO {
                 if (resultSet4.next()) {
                     String FirstName = resultSet4.getString("FirstName");
                     String LastName = resultSet4.getString("LastName");
-
+                    String ProfilePic = resultSet4.getString("ProfilePic");
                     jsonObject.put("firstName", FirstName);
                     jsonObject.put("lastName", LastName);
-
+                    jsonObject.put("profilePic", ProfilePic);
+                    System.out.println("ProfilePic "+ ProfilePic);
                     System.out.println("FirstName " + FirstName);
                     System.out.println("LastName " + LastName);
 
@@ -200,7 +201,7 @@ public class ReportDisplayDAO {
             String sql3 = "SELECT UserID FROM Classroom WHERE ClassroomID = ?";
             preparedStatement3 = connection.prepareStatement( sql3 );
 
-            String sql4 = "SELECT FirstName,LastName FROM Users WHERE UserID = ?";
+            String sql4 = "SELECT FirstName,LastName,ProfilePic FROM Users WHERE UserID = ?";
             preparedStatement4 = connection.prepareStatement( sql4 );
 
             resultSet = preparedStatement.executeQuery();
@@ -255,12 +256,14 @@ public class ReportDisplayDAO {
                 if (resultSet4.next()) {
                     String FirstName = resultSet4.getString("FirstName");
                     String LastName = resultSet4.getString("LastName");
-
+                    String ProfilePic = resultSet4.getString("ProfilePic");
                     jsonObject.put("firstName", FirstName);
                     jsonObject.put("lastName", LastName);
+                    jsonObject.put("profilePic", ProfilePic);
 
                     System.out.println("FirstName " + FirstName);
                     System.out.println("LastName " + LastName);
+                    System.out.println("ProfilePic "+ ProfilePic);
 
                 }
                 jsonArray.put(jsonObject);
