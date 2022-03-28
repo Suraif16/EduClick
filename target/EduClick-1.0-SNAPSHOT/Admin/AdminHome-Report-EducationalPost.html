@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Admin</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../Resources/CSS/Admin.css" type="text/css">
+    <link rel="stylesheet" href="../Resources/CSS/Font.css" type="text/css">
+
+</head>
+
+<body>
+
+<div id="content">
+    <div id="classroomsList" >
+        <div id="options">
+            <div id="classroomAddButton" class="optionButtonContainers">
+                <a href="../Admin/AdminHome-DashBoard.html"><input  id="classroomAddButtonInput" type="button" value="DashBoard"></a>
+            </div>
+        </div>
+
+        <div id="classroomsListLinks">
+
+            <!--<div class="classroomsListLinksItems">
+                <a href=""  class="classRooms">
+                  <i class='bx bx-user-circle' ></i>
+                    User
+                </a>
+            </div>-->
+            <div class="classroomsListLinksItems"> <!--this where the classroom link begins-->
+                <a href="AdminHome-Report-NewsFeed.html" class="classRooms">
+                    <i class='bx bx-comment' ></i>
+                    Report
+                </a>
+            </div>
+            <div class="classroomsListLinksItems">
+                <a href="../Admin/AdminHome-Post.html"  class="classRooms">
+                    <i class='bx bx-mail-send'></i>
+                    Post
+                </a>
+            </div>
+            <div class="classroomsListLinksItems">
+                <a href="../Admin/AdminHome-Teacher.html"  class="classRooms">
+                    <i class='bx bxs-pencil' ></i>
+                    Teacher
+                </a>
+            </div>
+            <div class="classroomsListLinksItems">
+                <a href="../Admin/AdminHome-Student.html"  class="classRooms">
+                    <i class='bx bx-pencil' ></i>
+                    Student
+                </a>
+            </div>
+
+            <!--<div class="classroomsListLinksItems">
+                <a href=""  class="classRooms">
+                  <i class='bx bx-cog' ></i>
+                    Settings
+                </a>
+            </div>-->
+        </div>
+    </div>
+
+    <div id="postContents1" >
+        <div class="postContentContainer">
+            <div class="postLikeShareButtons">
+                <!--<a href="../Admin/AdminHome-Report-Account.html"><input type="button" value="Account" class="share"  ></a>
+                <div class="emptySpaceLikeShare" ></div>-->
+                <a href="AdminHome-Report-NewsFeed.html"><input type="button" value="NewsFeed" class="share" ></a>
+                <div class="emptySpaceLikeShare" ></div>
+                <a href="../Admin/AdminHome-Report-EducationalPost.html"><input type="button" value="EducationalPost" class="share"></a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="postContents" >
+        <!--<div class="post">
+              <div class="postContentContainer">
+                  <div class="postProfileSection">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileImage">
+                              <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                          </div>
+
+                          <div class="postProfileName" >User Name</div>
+                          <div class="postTimeAndDate">18:32:26 | 03/25/2015</div>
+                      </a>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postData">
+                      <div class="postMessage">
+
+                          Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postLikeShareButtons">
+                    <a href="#" class="postProfile">
+                        <div class="postProfileName" >Count of the report : 100</div>
+                    </a>
+                      <div class="emptySpaceLikeShare" ></div>
+                      <div class="likeShareButtons" >
+                          <input type="button" value="Remove" class="share">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="post">
+              <div class="postContentContainer">
+                  <div class="postProfileSection">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileImage">
+                              <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                          </div>
+
+                          <div class="postProfileName" >User Name</div>
+                          <div class="postTimeAndDate">18:32:26 | 03/25/2015</div>
+                      </a>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postData">
+                      <div class="postMessage">
+
+                          Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postLikeShareButtons">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileName" >Count of the report : 100</div>
+                      </a>
+                      <div class="emptySpaceLikeShare" ></div>
+                      <div class="likeShareButtons" >
+                          <input type="button" value="Remove" class="share">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="post">
+              <div class="postContentContainer">
+                  <div class="postProfileSection">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileImage">
+                              <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                          </div>
+
+                          <div class="postProfileName" >User Name</div>
+                          <div class="postTimeAndDate">18:32:26 | 03/25/2015</div>
+                      </a>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postData">
+                      <div class="postMessage">
+
+                          Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postLikeShareButtons">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileName" >Count of the report : 100</div>
+                      </a>
+                      <div class="emptySpaceLikeShare" ></div>
+                      <div class="likeShareButtons" >
+                          <input type="button" value="Remove" class="share">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="post">
+              <div class="postContentContainer">
+                  <div class="postProfileSection">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileImage">
+                              <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                          </div>
+
+                          <div class="postProfileName" >User Name</div>
+                          <div class="postTimeAndDate">18:32:26 | 03/25/2015</div>
+                      </a>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postData">
+                      <div class="postMessage">
+
+                          Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postLikeShareButtons">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileName" >Count of the report : 100</div>
+                      </a>
+                      <div class="emptySpaceLikeShare" ></div>
+                      <div class="likeShareButtons" >
+                          <input type="button" value="Remove" class="share">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="post">
+              <div class="postContentContainer">
+                  <div class="postProfileSection">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileImage">
+                              <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+                          </div>
+
+                          <div class="postProfileName" >User Name</div>
+                          <div class="postTimeAndDate">18:32:26 | 03/25/2015</div>
+                      </a>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postData">
+                      <div class="postMessage">
+
+                          Dear Students, Answer the questions and comment them here, and I'll allocate marks laters.
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="postContentContainer">
+                  <div class="postLikeShareButtons">
+                      <a href="#" class="postProfile">
+                          <div class="postProfileName" >Count of the report : 100</div>
+                      </a>
+                      <div class="emptySpaceLikeShare" ></div>
+                      <div class="likeShareButtons" >
+                          <input type="button" value="Remove" class="share">
+                      </div>
+                  </div>
+              </div>
+          </div>-->
+    </div>
+</div>
+
+<header >
+
+    <div id="headerMainBar">
+        <a id="linkLogo" href="../Teacher/Teacher.html"> <!--act as the container for the img tag for using flexbox -->
+            <img src="../Resources/Icons/Logo.png" class="logo">
+        </a>
+        <div id="headingSearch">
+            <h1 id="headerHeading">EduClick</h1>
+        </div>
+        <a id="headerUserProfileId" href="TeacherProfile.html" class="profile">
+            <div id="headerUserName">Admin</div>
+            <div class="profileImage">
+                <img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">
+            </div>
+        </a>
+        <!--<div id="headerNotification" >
+            <input type="button" value="    " onclick="showNotification()" id="notificationRequest">
+            <input type="button" value="    "  id="notificationSettings">
+        </div>-->
+        <div id="logout">
+            <a href="/EduClick_war_exploded/Logout">
+                Logout
+            </a>
+        </div>
+    </div>
+    <div id="headerButtons">
+        <input id="classroomListHideButton" type="button" value="menu" onclick="showClassroomList()">
+    </div>
+
+</header>
+
+<!--<footer>
+    &nbsp;
+</footer>-->
+<script src="../Resources/JS/AdminEducationalReport.js" defer></script>
+<script src="../Resources/JS/AdminHomeEducationalReportDeletepost.js" defer></script>
+<script src="../Resources/JS/Settings.js" defer></script>
+
+</body>
+
+</html>
