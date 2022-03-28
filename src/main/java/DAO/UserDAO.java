@@ -704,6 +704,38 @@ public class UserDAO<teacherArrayList> {
         return fullName;
     }
 
+    public String getTeacherFirstName(String userId) {
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+        Connection connection = null;
+        String firstName = "";
+
+        try {
+            connection = dbConnectionPool.dataSource.getConnection();
+            String sql = "SELECT FirstName FROM Users WHERE UserID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userId);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String fName = resultSet.getString("FirstName");
+                firstName = fName;
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception ignore) {
+            }
+        }
+        return firstName;
+    }
+
     public String getWorkPlace( String userId ){
 
         DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
