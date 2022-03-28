@@ -34,7 +34,7 @@ const LoadUserName = function (){
 
             const headerName = document.getElementById("profileUserName");
             headerName.innerHTML = jsonLoginResponse.FullName;
-            console.log(headerName);
+
 
         }else{
             alert("something went wrong!!!");
