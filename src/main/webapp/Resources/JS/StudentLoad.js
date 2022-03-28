@@ -8,6 +8,7 @@ document.onreadystatechange = function (){
         getClassroomList();
       //  sendServerDataStudent();
         LoadSelectedNewsFeeds();
+        StudentLoadAdminPost();
 
     }
 

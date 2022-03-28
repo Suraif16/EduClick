@@ -169,12 +169,12 @@ const postNewsFeeds = function () {
                     '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
+                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
@@ -224,12 +224,12 @@ const postNewsFeeds = function () {
                     '                               <input type="button" value="Like" class="like" onclick="lIKENewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
+                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +
@@ -282,12 +282,12 @@ const postNewsFeeds = function () {
                     '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.NewsFeedsPost.postID + ')">' +
                     '                           </div>' +
                     '                           <div class="countOfLikeShare" >' +
-                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount +
+                    '                               <div class="likeCount">' + jsonResponse.NewsFeedsPost.likeCount+1 +
                     '                                   Likes' +
                     '                               </div >' +
                     '                               <div class="emptySpaceLikeShare">' +
                     '                               </div>' +
-                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare +
+                    '                               <div class="shareCount">' + jsonResponse.NewsFeedsPost.likeShare+1 +
                     '                                    Shares' +
                     '                               </div>' +
                     '                              </div>' +

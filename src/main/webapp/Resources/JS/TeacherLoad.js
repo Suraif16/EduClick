@@ -3,15 +3,18 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
-        sendServerData();
-        getClassroomList();
+        LoadNewsFeedsInTeacherProfilePage();
+        sendServerDataa();
+        getClassroomListA();
         LoadSelectedNewsFeeds();
+        TeacherLoadAdminPost();
+
 
     }
 
 }
 
-const sendServerData = function (){
+const sendServerDataa = function (){
     /* This function gets the username from the server*/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -49,7 +52,7 @@ const sendServerData = function (){
 
 }
 
-const getClassroomList = function (){
+const getClassroomListA = function (){
     /* This function gets the Lists of classrooms from the server*/
     const classroomsListLinksSelect = document.getElementById("classroomsListLinks");
     let httpreq = new XMLHttpRequest();

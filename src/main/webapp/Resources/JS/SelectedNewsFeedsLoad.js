@@ -65,12 +65,12 @@ const  LoadSelectedNewsFeeds = function (){
                         '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                           <div class="countOfLikeShare" >' +
-                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                         '                                   Likes' +
                         '                               </div >' +
                         '                               <div class="emptySpaceLikeShare">' +
                         '                               </div>' +
-                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                         '                                    Shares' +
                         '                               </div>' +
                         '                              </div>' +
@@ -120,12 +120,12 @@ const  LoadSelectedNewsFeeds = function (){
                         '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                           <div class="countOfLikeShare" >' +
-                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                         '                                   Likes' +
                         '                               </div >' +
                         '                               <div class="emptySpaceLikeShare">' +
                         '                               </div>' +
-                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                         '                                    Shares' +
                         '                               </div>' +
                         '                              </div>' +
@@ -178,12 +178,12 @@ const  LoadSelectedNewsFeeds = function (){
                         '                               <input type="button" value="Like" class="like" onclick="likeNewsFeeds(' + jsonResponse.jsonArray1[i].postId + ')">' +
                         '                           </div>' +
                         '                           <div class="countOfLikeShare" >' +
-                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount +
+                        '                               <div class="likeCount">' + jsonResponse.jsonArray1[i].likeCount+1 +
                         '                                   Likes' +
                         '                               </div >' +
                         '                               <div class="emptySpaceLikeShare">' +
                         '                               </div>' +
-                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount +
+                        '                               <div class="shareCount">' + jsonResponse.jsonArray1[i].shareCount+1 +
                         '                                    Shares' +
                         '                               </div>' +
                         '                              </div>' +
