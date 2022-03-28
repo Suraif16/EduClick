@@ -52,6 +52,10 @@ const loadTeacherProfileDetailsList = function (){
             }else{
                 document.getElementById("workingPlace").innerHTML = "Working Place : "+jsonLoginResponse.teacherDetails.WorkingPlace.CurrentWorkingPlace
             }
+
+            if(jsonLoginResponse.userStatus == "otherUser"){
+                document.getElementById("buttonContainer").style.display = "none";
+            }
         }else{
             alert("something went wrong!!!");
         }
