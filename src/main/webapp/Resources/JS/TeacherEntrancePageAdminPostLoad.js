@@ -1,4 +1,4 @@
-const LoadAdminPost = function (){
+const TeacherLoadAdminPost = function (){
 
      let httpreq = new XMLHttpRequest();
      httpreq.onreadystatechange = function (){
