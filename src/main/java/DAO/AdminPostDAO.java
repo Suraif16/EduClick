@@ -111,7 +111,8 @@ public class AdminPostDAO {
 
                 jsonArray.put(jsonObject);
             }
-
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
