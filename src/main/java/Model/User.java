@@ -292,6 +292,11 @@ public class User {
         String fullName = userDAO.getTeacherFullName(userId);
         return fullName;
     }
+    public String getFirstName(String userId){
+        UserDAO userDAO = new UserDAO();
+        String firstName = userDAO.getTeacherFirstName(userId);
+        return firstName;
+    }
 
     public JSONArray getStudentFriendsDetails(ArrayList<String> friendList){
         UserDAO userDAO = new UserDAO();
