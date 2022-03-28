@@ -579,7 +579,7 @@
 
     <servlet-mapping>
         <servlet-name>teacherFollowerListLoad</servlet-name>
-        <url-pattern>/teacher/teacherFollowerListLoad</url-pattern>
+        <url-pattern>/user/teacherFollowerListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student follow list load -->
@@ -594,7 +594,7 @@
 
     <servlet-mapping>
         <servlet-name>teacherFriendListLoad</servlet-name>
-        <url-pattern>/teacher/teacherFriendsListLoad</url-pattern>
+        <url-pattern>/user/teacherFriendsListLoad</url-pattern>
     </servlet-mapping>
 
     <!-- end of student friend list load -->
@@ -1135,6 +1135,62 @@
     </servlet-mapping>
 
     <!-- end of load news feeds in teacher profile page -->
+
+    <!-- beginning of select edit profile details in teacher profile page-->
+
+    <servlet>
+        <servlet-name>SelectEditProfileDetails</servlet-name>
+        <servlet-class>Controller.SelectEditProfileDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectEditProfileDetails</servlet-name>
+        <url-pattern>/user/selectEditProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select edit profile details in teacher profile page -->
+
+    <!-- beginning of save edit profile details in teacher profile page-->
+
+    <servlet>
+        <servlet-name>SaveEditProfileDetails</servlet-name>
+        <servlet-class>Controller.SaveEditProfileDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SaveEditProfileDetails</servlet-name>
+        <url-pattern>/user/saveEditProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of select save profile details in teacher profile page -->
+
+    <!-- beginning of student profile page details load -->
+
+    <servlet>
+        <servlet-name>StudentProfilePageDetailsLoad</servlet-name>
+        <servlet-class>Controller.StudentProfilePageDetailsLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentProfilePageDetailsLoad</servlet-name>
+        <url-pattern>/studentProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of student profile page details load  -->
+
+    <!-- beginning of teacher profile page details load -->
+
+    <servlet>
+        <servlet-name>TeacherProfilePageDetailsLoad</servlet-name>
+        <servlet-class>Controller.TeacherProfilePageDetailsLoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherProfilePageDetailsLoad</servlet-name>
+        <url-pattern>/teacherProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <!-- end of teacher profile page details load  -->
 
     <session-config>
 

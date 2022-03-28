@@ -58,6 +58,8 @@ public class AnswerStudentPostRelationshipDAO {
                 answerId = resultSet.getString("AnswerID");
 
             }
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

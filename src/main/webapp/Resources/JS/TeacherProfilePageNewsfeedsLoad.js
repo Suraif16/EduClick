@@ -3,6 +3,8 @@
     if ( document.readyState === 'complete' ){
 
         LoadNewsFeedsInTeacherProfilePage();
+        loadTeacherProfileDetailsList();
+        LoadUserName();
 
 
     }

@@ -1,4 +1,4 @@
-document.onreadystatechange = function (){
+/*document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
 
@@ -6,7 +6,7 @@ document.onreadystatechange = function (){
 
     }
 
-}
+}*/
 
 
 const LoadUserName = function (){

@@ -66,7 +66,7 @@ const sendServerData = function () {
 
     let confirmPassword = document.getElementById("confirmPassword").value;
 
-    let newNumber = countryCode.concat(mobileNumber);
+    /*let newNumber = countryCode.concat(mobileNumber);*/
 
     let httpReq = new XMLHttpRequest();
     httpReq.onreadystatechange = function () {
@@ -79,7 +79,7 @@ const sendServerData = function () {
 
     httpReq.open("POST", "/EduClick_war_exploded/Registration", true);
     httpReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&newNumber=" + newNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
+    httpReq.send("firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&userTypeSelect=" + userTypeSelect + "&country=" + country + "&city=" + city + "&countryCode=" + countryCode +"&mobileNumber=" + mobileNumber + "&genderSelect=" + genderSelect + "&Password=" + password + "&confirmPassword=" + confirmPassword);
 
 
     function completeRegistration(httpreq) {
