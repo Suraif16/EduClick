@@ -219,6 +219,18 @@ const displayRequest = function ( jsonResponse ){
 
             }
 
+            let singleProfileImage = "";
+
+            if ( jsonResponse.requestList[i].userProfile === undefined ){
+
+                singleProfileImage = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                singleProfileImage = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonResponse.requestList[i].userProfile + '.jpeg">'
+
+            }
+
             /* This is where the each request element is created*/
 
             requests += '<div class="singleNotification" id="'+ jsonResponse.requestList[i].type + jsonResponse.requestList[i].fromId + "" + jsonResponse.requestList[i].toId +'">' +
@@ -229,7 +241,7 @@ const displayRequest = function ( jsonResponse ){
 
                 '<div class="profileImage requestProfilePicture">'+
 
-                '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+                singleProfileImage +
 
                 '</div>' +
 
