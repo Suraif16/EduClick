@@ -939,4 +939,75 @@ public class UserDAO<teacherArrayList> {
         return user;
     }
 
+    public String getUserProfileImage( String userId ){
+
+        DBConnectionPool dbConnectionPool = DBConnectionPool.getInstance();
+
+        Connection connection = null;
+
+        PreparedStatement preparedStatement = null;
+
+        ResultSet resultSet = null;
+
+        String profilePicture = "";
+
+        try {
+
+            connection = dbConnectionPool.dataSource.getConnection();
+            connection.setAutoCommit( false );
+
+            String sql = "SELECT ProfilePic FROM Users WHERE UserID = ?;";
+            preparedStatement = connection.prepareStatement( sql );
+
+
+            preparedStatement.setString( 1 , userId );
+
+
+            resultSet = preparedStatement.executeQuery();
+
+            if ( resultSet.next() ){
+
+                profilePicture = resultSet.getString( 1 );
+
+            }
+
+            connection.commit();
+
+        }catch ( SQLException E ){
+
+            E.printStackTrace();
+
+            try {
+
+                if ( connection != null ){ connection.rollback(); }
+
+            }catch ( SQLException e ){
+
+                e.printStackTrace();
+
+            }
+
+        }finally {
+
+            try {
+
+                if ( connection != null )connection.setAutoCommit( true );
+
+                if ( preparedStatement != null )preparedStatement.close();
+                if ( resultSet != null )resultSet.close();
+
+                if ( connection != null )connection.close();
+
+            }catch ( SQLException exception ){
+
+                exception.printStackTrace();
+
+            }
+
+        }
+
+        return profilePicture;
+
+    }
+
 }

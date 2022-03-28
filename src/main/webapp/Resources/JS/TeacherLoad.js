@@ -33,7 +33,7 @@ const sendServerDataa = function (){
         const headerUserProfileIdAchorElement = document.getElementById("headerUserProfileId");
 
         let jsonLoginResponse = JSON.parse(httpreq.responseText);
-
+        console.log( "farzan" , jsonLoginResponse );
         if( jsonLoginResponse.serverResponse === "null Session" || jsonLoginResponse.serverResponse === "Not Allowed"){
             window.location.replace("/EduClick_war_exploded/Login.html");
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
@@ -43,6 +43,17 @@ const sendServerDataa = function (){
             let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
 
             headerUserProfileIdAchorElement.setAttribute("href" , url);
+
+            if ( jsonLoginResponse.profilePicture === undefined ){
+
+                document.getElementById( "headerProfilePicture" ).innerHTML = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                document.getElementById( "headerProfilePicture" ).innerHTML = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonLoginResponse.profilePicture + '.jpeg">'
+
+            }
+
         }else{
             alert("something went wrong!!!");
         }
