@@ -12,7 +12,6 @@
 
 const LoadNewsFeedsInTeacherProfilePage = function (){
 
-    console.log("ggg");
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -29,7 +28,7 @@ const LoadNewsFeedsInTeacherProfilePage = function (){
 }
 
 function completeNFLoad(httpreq) {
-    console.log("amoo");
+
     let jsonResponse = JSON.parse(httpreq.responseText);
 
     if (jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed") {
