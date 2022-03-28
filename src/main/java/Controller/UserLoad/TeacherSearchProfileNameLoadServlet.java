@@ -34,9 +34,11 @@ public class TeacherSearchProfileNameLoadServlet extends HttpServlet {
 
         User user = new User();
 
-        String fullName=user.getFirstName(userId);
+        String fullName=user.getFullName(userId);
 
         System.out.println("In Servlet = "+fullName);
+
+
 
         jsonObject.put("FullName",fullName);
 
