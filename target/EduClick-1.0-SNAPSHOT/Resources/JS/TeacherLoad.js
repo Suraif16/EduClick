@@ -5,7 +5,7 @@ document.onreadystatechange = function (){
         /* when the document is loaded and complete this function will run*/
 
         LoadNewsFeedsInTeacherProfilePage();
-        sendServerData();
+        sendServerDataa();
         getClassroomListA();
         LoadSelectedNewsFeeds();
         TeacherLoadAdminPost();
@@ -16,7 +16,7 @@ document.onreadystatechange = function (){
 
 }
 
-const sendServerData = function (){
+const sendServerDataa = function (){
     /* This function gets the username from the server*/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
