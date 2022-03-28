@@ -4,6 +4,7 @@ let reloadStatus = true;
 const postDataContent = document.getElementById( "postContents" );
 let minEPostId = Infinity;
 let selectMoreStatus = true;
+let imagePathForUserProfile = "";
 
 window.onscroll = function (){
 
@@ -79,6 +80,17 @@ const loadStudentEducationalPosts = function ( scrollStatus ){
 
                 console.log(ePostsLIst)
 
+                if ( jsonResponse.profilePicture === undefined ){
+
+                    imagePathForUserProfile = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+                }else{
+
+                    imagePathForUserProfile = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonResponse.profilePicture + '.jpeg">'
+
+                }
+
+
                 if ( ePostsLIst.length === 0 ){
 
                     selectMoreStatus = false;
@@ -144,7 +156,7 @@ const displayMessage = function (postData,TeacherFullName,TeaherId){
             '                <div class="postProfileSection">' +
             '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + TeaherId + '" class="postProfile">' +
             '                        <div class="postProfileImage">' +
-            '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+            imagePathForUserProfile +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
             '                    </a>' +
@@ -183,7 +195,7 @@ const displayMessage = function (postData,TeacherFullName,TeaherId){
             '                <div class="postProfileSection">' +
             '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' + TeaherId + '" class="postProfile">' +
             '                        <div class="postProfileImage">' +
-            '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+            imagePathForUserProfile +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
             '                    </a>' +
@@ -221,7 +233,7 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                <div class="postProfileSection">' +
             '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' +TeaherId + '" class="postProfile">' +
             '                        <div class="postProfileImage">' +
-            '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+            imagePathForUserProfile +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
             '                    </a>' +
@@ -279,7 +291,7 @@ const displayEducationalPost = function (postData,TeacherFullName,TeaherId){
             '                <div class="postProfileSection">' +
             '                    <a href="/EduClick_war_exploded/userProfileRedirect?userId=' +TeaherId + '" class="postProfile">' +
             '                        <div class="postProfileImage">' +
-            '                            <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">' +
+            imagePathForUserProfile +
             '                        </div>' +
             '                        <div class="postProfileName" >' + TeacherFullName + '</div>' +
             '                    </a>' +
