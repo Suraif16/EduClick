@@ -64,6 +64,10 @@ public class StudentEducationalPostLoadServlet extends HttpServlet {
 
             jsonObject.put("TeacherId",classroom.getClassroomOwnerId(classroomId));
 
+            User user1 = new User(classroom.getClassroomOwnerId(classroomId));
+
+            jsonObject.put( "profilePicture" , user1.getUserProfileImage() );
+
             jsonObject.put("Status","Enable");
 
 
