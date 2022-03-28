@@ -1,16 +1,8 @@
 let rightPanelStatus = false; /*if it is false the list is hidden, if it is true the list it visible*/
 const rightPanel = document.getElementById("rightPanel");
 
-/*document.onreadystatechange = function (){
-
-    if ( document.readyState === 'complete' ){
-        LoadName();
-
-    }
-
-}*/
-
 function showRightPanel(){
+    console.log("showrightpanel");
 
     if(rightPanelStatus){
 
@@ -28,6 +20,7 @@ function showRightPanel(){
 
 
 function enableDisableStatus( id ){
+    console.log("enableDisableStatus");
 
     let enableStringValue = "enable" + id;
 
@@ -43,7 +36,7 @@ function enableDisableStatus( id ){
 
 
 
-    if (disableButton.style.display === "none" && requestedButton.style.display == "none"){
+    if (disableButton.style.display === "none" && requestedButton.style.display === "none"){
 
         /*defaultView.getComputedStyle(enableButton)*/
 
@@ -58,7 +51,7 @@ function enableDisableStatus( id ){
 
 
 
-    }else if(enableButton.style.display == "none" && requestedButton.style.display == "none"){
+    }else if(enableButton.style.display === "none" && requestedButton.style.display === "none"){
 
 
 
@@ -74,7 +67,7 @@ function enableDisableStatus( id ){
 
         console.log("Deleting!!!!")
     }
-    else if(disableButton.style.display === "none" && enableButton.style.display == "none"){
+    else if(disableButton.style.display === "none" && enableButton.style.display === "none"){
 
        sendRequestData(id);
 
@@ -98,6 +91,7 @@ let sendDeleteData = function (id){
 }*/
 
 let sendDeleteData = function (id){
+    console.log("senddeletedata");
     let action = "delete"
     sendData(id,action);
     console.log("Action is : "+action);
@@ -106,6 +100,7 @@ let sendDeleteData = function (id){
 }
 
 let sendInsertData = function (id){
+    console.log("sendinsertdata");
     let action = "request"
     sendData(id,action);
     console.log(id);
@@ -113,12 +108,15 @@ let sendInsertData = function (id){
 }
 
 let sendRequestData = function (id){
+    console.log("sendrequestdata");
     let action = "apply"
     sendData(id,action);
     console.log(id);
 }
 
 let sendData = function (id,action){
+
+    console.log("send data");
 
     let enableStringValue = "enable" + id;
 
@@ -261,15 +259,15 @@ let sendData = function (id,action){
 
     }
 
-}
+}*/
 
 const sendServerData = function (){
-    /!* This function gets the username from the server*!/
+    /* This function gets the username from the server*/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /!*This is where we get the response when the request was successfully sent and a successfully response is received *!/
+            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
         }
 
     }
@@ -288,7 +286,7 @@ const sendServerData = function (){
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
             console.log(jsonLoginResponse);
-            /!* This is where I need work everytime as per the authentication filter*!/
+            /* This is where I need work everytime as per the authentication filter*/
             console.log(jsonLoginResponse.firstName);
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
@@ -299,7 +297,7 @@ const sendServerData = function (){
     }
 
 
-}*/
+}
 
 const search1 = document.getElementById( "searchBarText" );
 
@@ -330,7 +328,7 @@ search.addEventListener( "keyup" , function ( event ){
 
 const LoadName = function (){
 
-    console.log("gggg");
+    console.log("loadName");
 
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -355,7 +353,7 @@ const LoadName = function (){
 
             console.log(jsonLoginResponse.FullName+"KKK");
 
-            const headerUserName = document.getElementById("headerUserName");
+            const headerUserName = document.getElementById("teacherUserName");
             headerUserName.innerHTML = jsonLoginResponse.FullName;
 
 

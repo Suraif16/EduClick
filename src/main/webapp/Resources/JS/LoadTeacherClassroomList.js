@@ -3,6 +3,8 @@ document.onreadystatechange = function (){
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
         sendD();
+        LoadName();
+        sendServerData();
         console.log("I'm loaded js");
 
     }
@@ -10,6 +12,8 @@ document.onreadystatechange = function (){
 }
 
 const sendD = function () {
+
+    console.log("send");
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function () {
 
@@ -25,6 +29,7 @@ const sendD = function () {
     httpreq.send("userId=" + getUserIdClientSide());
 
     function completeLoad(httpreq) {
+        console.log("complete load");
 
         let jsonResponse = JSON.parse(httpreq.responseText);
         let count = jsonResponse.classroomList.length - 1;
@@ -172,7 +177,7 @@ const sendD = function () {
 }
 
 const sendNameData = function (){
-    console.log("Firstname loaded!!")
+    console.log("sendNameData");
     /* This function gets the username from the server*/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
@@ -393,14 +398,14 @@ const sendNameData = function (){
 
 
 }
-const LoadTeacherProName = function (){
-    console.log("Firstname loaded!!")
-    /* This function gets the username from the server*/
+/*const LoadTeacherProName = function (){
+    console.log("load teacher pro name");
+
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
+            completeLogin( this ); /!*This is where we get the response when the request was successfully sent and a successfully response is received *!/
         }
 
     }
@@ -434,13 +439,12 @@ const LoadTeacherProName = function (){
     }
 
 
-}
+}*/
 
 
-/*
 const getUserIdClientSide = function (){
 
     let currentClassUrl = new URL( window.location.href );
     return currentClassUrl.searchParams.get( "userId" );
 
-}*/
+}
