@@ -119,7 +119,7 @@ const getServerData = function (){
                         '<div class="postProfileSection">'+
                         '<a href="#" class="postProfile">'+
                         '<div class="postProfileImage">'+
-                        ' <img class="postProfileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonLoginResponse.ReportPostDetails[i].profilePic + '.jpeg">'+
+                        ' <img class="postProfileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonResponse.ReportPostDetails[i].profilePic + '.jpeg">'+
                         '</div>'+
                         '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].firstName+' '+jsonResponse.ReportPostDetails[i].lastName+'</div>'+
                         '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
@@ -159,7 +159,7 @@ const getServerData = function (){
                         '<div class="postProfileSection">'+
                         '<a href="#" class="postProfile">'+
                         '<div class="postProfileImage">'+
-                        ' <img class="postProfileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonLoginResponse.ReportPostDetails[i].profilePic + '.jpeg">'+
+                        ' <img class="postProfileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonResponse.ReportPostDetails[i].profilePic + '.jpeg">'+
                         '</div>'+
                         '<div class="postProfileName" >'+jsonResponse.ReportPostDetails[i].firstName+' '+jsonResponse.ReportPostDetails[i].lastName+'</div>'+
                         '<div class="postTimeAndDate">'+jsonResponse.ReportPostDetails[i].date+'|'+ jsonResponse.ReportPostDetails[i].time+'</div>'+
