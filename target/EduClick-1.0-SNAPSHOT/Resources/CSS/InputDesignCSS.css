@@ -1,0 +1,243 @@
+.inputField{
+
+    height: 40px;
+    position: relative;
+    margin: 3% 0;
+
+}
+
+.inputField input{
+
+    height: 100%;
+    border: none;
+    /*border-bottom:  1px solid silver;*/
+    font-size: 17px;
+    width: 100%;
+
+}
+
+input {
+
+    outline: none;
+}
+
+.inputField input:focus ~ label , .inputField input:valid ~ label{
+
+    transform: translateY( -20px );
+    font-size: 15px;
+    color: black;
+    background-color: white;
+
+}
+
+.inputField label{
+
+    position: absolute;
+    bottom: 7px;
+    left: 7px;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+
+}
+
+.inputField .bottomLine {
+
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #4775c4;
+    width: 98%;
+}
+
+.inputField .bottomLine:before {
+
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    background-color: black;
+
+}
+
+.inputField input:focus ~ .bottomLine:before , .inputField input:valid ~ .bottomLine:before{
+
+    transform: scaleX(1);
+
+}
+
+input[type = "button"]{
+
+    cursor: pointer;
+
+}
+
+.systemButtons{
+
+    align-content: center;
+    text-align: center;
+    border: 2px solid white;
+    cursor: pointer;
+    background-color: #4775c4;
+    padding: 1%;
+    border-radius: 10px;
+    color: white;
+    vertical-align: middle;
+
+    /*box-shadow:  inset -1px -1px 5px #4775c4 , inset 1px 1px 5px #4775c4 , 10px 10px 10px #d2d2d2;*/
+    /*box-shadow:  inset -4px -4px 4px white ;*/
+}
+
+.systemButtons:hover{
+
+    /*background-color: #89a4db;*/
+    background-color: #7c9ee8;
+    /*background-color: #6c8dd9;*/
+
+}
+
+.systemButtons:active{
+
+    background-color: #c9d6f5;
+    /*box-shadow: 4px 4px 4px #403434 , inset -4px -4px 4px #3a526a;*/
+
+}
+
+.inputFieldForms{
+
+    height: 40px;
+    position: relative;
+    margin: 3% 0;
+
+}
+
+.inputFieldForms input{
+
+    height: 100%;
+    border: none;
+    /*border-bottom:  1px solid silver;*/
+    font-size: 17px;
+    width: 100%;
+
+}
+
+input {
+
+    outline: none;
+}
+
+.inputFieldForms input:focus ~ label , .inputFieldForms input:valid ~ label{
+
+    visibility: hidden;
+
+}
+
+.inputFieldForms label{
+
+    position: absolute;
+    bottom: 7px;
+    left: 7px;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+
+}
+
+.inputFieldForms .bottomLine {
+
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #4775c4;
+    width: 98%;
+}
+
+.inputFieldForms .bottomLine:before {
+
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transition: transform 0.1s ease;
+    background-color: black;
+
+}
+
+.inputFieldForms input:focus ~ .bottomLine:before , .inputFieldForms input:valid ~ .bottomLine:before{
+
+    transform: scaleX(1);
+
+}
+
+/* text area*/
+.inputFieldFormsTextArea{
+
+    height: 40px;
+    position: relative;
+    margin: 3% 0;
+
+}
+
+.inputFieldFormsTextArea textarea{
+
+    height: 100%;
+    border: none ;
+    border-left: solid 2px silver;
+    border-right: solid 2px silver;
+    border-top: solid 2px silver;
+    font-size: 17px;
+    width: 100%;
+
+}
+
+textarea {
+
+    outline: none;
+}
+
+.inputFieldFormsTextArea textarea:focus ~ label , .inputFieldFormsTextArea textarea:valid ~ label{
+
+    visibility: hidden;
+
+}
+
+.inputFieldFormsTextArea label{
+
+    position: absolute;
+    bottom: 89%;
+    left: 7px;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+
+}
+
+.inputFieldFormsTextArea .bottomLine {
+
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #4775c4;
+    width: 98%;
+}
+
+.inputFieldFormsTextArea .bottomLine:before {
+
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transition: transform 0.1s ease;
+    background-color: black;
+
+}
+
+.inputFieldFormsTextArea textarea:focus ~ .bottomLine:before , .inputFieldFormsTextArea textarea:valid ~ .bottomLine:before{
+
+    transform: scaleX(1);
+
+}
