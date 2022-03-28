@@ -259,15 +259,15 @@ let sendData = function (id,action){
 
     }
 
-}
+}*/
 
 const sendServerData = function (){
-    /!* This function gets the username from the server*!/
+    /* This function gets the username from the server*/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
 
         if (this.readyState === 4 && this.status === 200){
-            completeLogin( this ); /!*This is where we get the response when the request was successfully sent and a successfully response is received *!/
+            completeLogin( this ); /*This is where we get the response when the request was successfully sent and a successfully response is received */
         }
 
     }
@@ -286,7 +286,7 @@ const sendServerData = function (){
         }else if(jsonLoginResponse.serverResponse === "Allowed") {
 
             console.log(jsonLoginResponse);
-            /!* This is where I need work everytime as per the authentication filter*!/
+            /* This is where I need work everytime as per the authentication filter*/
             console.log(jsonLoginResponse.firstName);
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
@@ -297,7 +297,7 @@ const sendServerData = function (){
     }
 
 
-}*/
+}
 
 const search1 = document.getElementById( "searchBarText" );
 
@@ -353,7 +353,7 @@ const LoadName = function (){
 
             console.log(jsonLoginResponse.FullName+"KKK");
 
-            const headerUserName = document.getElementById("headerUserName");
+            const headerUserName = document.getElementById("teacherUserName");
             headerUserName.innerHTML = jsonLoginResponse.FullName;
 
 
