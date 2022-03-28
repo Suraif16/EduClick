@@ -29,7 +29,7 @@ const LoadNewsFeedsInTeacherProfilePage = function (){
 }
 
 function completeNFLoad(httpreq) {
-
+    console.log("amoo");
     let jsonResponse = JSON.parse(httpreq.responseText);
 
     if (jsonResponse.serverResponse === "null Session" || jsonResponse.serverResponse === "Not Allowed") {
@@ -38,8 +38,8 @@ function completeNFLoad(httpreq) {
 
         const name = document.getElementById("profileUserName");
         name.innerHTML = jsonResponse.fullName;
-        console.log("amoo");
-       // let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
+
+        //let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
 
 
         for( let i=0; i<jsonResponse.jsonArray1.length;i++) {
