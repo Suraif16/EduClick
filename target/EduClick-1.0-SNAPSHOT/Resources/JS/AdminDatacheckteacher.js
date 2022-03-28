@@ -33,7 +33,7 @@ const searchFunction = function ( ) {
         console.log(jsonLoginResponse.searchResult.length);
         if(jsonLoginResponse.searchResult.length>0){
             for ( i = 0 ; i < jsonLoginResponse.searchResult.length ; i++ ){
-                if(jsonResponse.searchResult[i].profilePic === undefined){
+                if(jsonLoginResponse.searchResult[i].profilePic === undefined){
                     let post = '<div class="post">'+
                         '<div class="postContentContainer">'+
                         '<div class="postProfileSection">'+
