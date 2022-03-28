@@ -112,6 +112,10 @@ public class NotificationsDAO {
 
                 jsonObject.put("Notification_Time",resultSet.getString("Notification_Time"));
 
+                user.setUserId( resultSet.getString("NotifierID") );
+
+                jsonObject.put( "profilePicture" , user.getUserProfileImage() );
+
                 if(resultSet.getString("PostedType").equals("Educational Post") || resultSet.getString("PostedType").equals("Answer")){
 
                     Classroom classroom = new Classroom();

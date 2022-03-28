@@ -28,7 +28,7 @@ public class SelectEPostClassroomServlet extends HttpServlet {
 
         User user = ( User ) session.getAttribute( "User" );
 
-        jsonObject.put( "userName" , user.getFirstName() );
+        jsonObject.put( "userName" , user.getFirstName( user.getUserId() ) );
         jsonObject.put( "userId" , user.getUserId() );
         jsonObject.put( "profilePicture" , user.getUserProfileImage() );
 

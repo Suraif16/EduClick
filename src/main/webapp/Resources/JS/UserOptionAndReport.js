@@ -24,10 +24,10 @@ const showOptionMenu = function ( id , type ){
 
         let optionMenuInnerHtmlValue = '<div class="userOptionMenuInput">'+
             '                <input type="button" value="report" onclick="report('+ id + ',\'' + type +'\')">' +
-            '            </div>' +
+            '            </div>'; /*+
             '            <div class="userOptionMenuInput">' +
             '                <input type="button" value="delete">' +
-            '            </div>';
+            '            </div>';*/
 
         optionMenu.innerHTML = optionMenuInnerHtmlValue;
         optionMenu.style.margin = topValue +"px" + " auto auto "+ leftValue +"px";
