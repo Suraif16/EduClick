@@ -3,18 +3,20 @@ document.onreadystatechange = function (){
 
     if ( document.readyState === 'complete' ){
         /* when the document is loaded and complete this function will run*/
+
         LoadNewsFeedsInTeacherProfilePage();
-        sendServerDataa();
+        sendServerData();
         getClassroomListA();
         LoadSelectedNewsFeeds();
         TeacherLoadAdminPost();
+        LoadName();
 
 
     }
 
 }
 
-const sendServerDataa = function (){
+const sendServerData = function (){
     /* This function gets the username from the server*/
     let httpreq = new XMLHttpRequest();
     httpreq.onreadystatechange = function (){
