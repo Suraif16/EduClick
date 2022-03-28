@@ -30,11 +30,15 @@ public class StudentProfilePageDetailsLoadServlet extends HttpServlet {
 
         String userId = user.getUserId();
 
-
-
         JSONObject studentDetails = user.getStudentDetails(userId);
 
         System.out.println(studentDetails);
+
+        if(request.getParameter("userId").equals(userId)){
+            jsonObject.put("userStatus","currentUser");
+        }else{
+            jsonObject.put("userStatus","otherUser");
+        }
 
         jsonObject.put("studentDetails",studentDetails);
 
