@@ -453,6 +453,15 @@ const sendNameData = function (){
             console.log(jsonLoginResponse.firstName);
             const name = document.getElementById("headerUserName");
             name.innerHTML = jsonLoginResponse.firstName;
+            if ( jsonLoginResponse.profilePicture === undefined ){
+
+                document.getElementById( "headerProfilePicture" ).innerHTML = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                document.getElementById( "headerProfilePicture" ).innerHTML = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonLoginResponse.profilePicture + '.jpeg">'
+
+            }
         }else{
             alert("something went wrong!!!");
         }

@@ -1,6 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-Built-By: Jeewanthi Gamage
-Build-Jdk: Azul Zulu Community™ version 15.0.5
-
+Built-By: acer
+Build-Jdk: Amazon Corretto version 15.0.2
 
