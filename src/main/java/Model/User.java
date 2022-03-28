@@ -398,6 +398,13 @@ public class User {
 
     }
 
+    public String getUserProfileImage(){
+
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getUserProfileImage( this.userId );
+
+    }
+
 
 }
 
