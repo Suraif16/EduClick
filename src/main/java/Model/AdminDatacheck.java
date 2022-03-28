@@ -162,7 +162,7 @@ public class AdminDatacheck {
                         jsonObject.put( "lastName" , userList.get(i).getLastName());
                         jsonObject.put( "dataOfBirth" , userList.get(i).getDateOfBirth() );
                         jsonObject.put( "mobileNumber" , userList.get(i).getMobileNumber());
-                        jsonObject.put( "profilePicture" , userList.get(i).getProfilePicture());
+                        jsonObject.put( "profilePic" , userList.get(i).getProfilePicture());
                         jsonObject.put( "country" , userList.get(i).getCountry());
                         jsonObject.put( "city" , userList.get(i).getCity());
                         jsonObject.put( "gender" , userList.get(i).getGender() );
