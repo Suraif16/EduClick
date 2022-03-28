@@ -49,6 +49,15 @@ const sendServerData = function (){
             let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
             console.log(url);
             headerUserProfileIdAchorElement.setAttribute("href" , url);
+            if ( jsonLoginResponse.profilePicture === undefined ){
+
+                document.getElementById( "headerProfilePicture" ).innerHTML = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
+
+            }else{
+
+                document.getElementById( "headerProfilePicture" ).innerHTML = '<img class="profileIcon" src="../Resources/Images/UserProfileImages/profilePicture' + jsonLoginResponse.profilePicture + '.jpeg">'
+
+            }
         }else{
             alert("something went wrong!!!");
         }
