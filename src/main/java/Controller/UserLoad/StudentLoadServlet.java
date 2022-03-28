@@ -27,6 +27,7 @@ public class StudentLoadServlet extends HttpServlet {
 
         jsonObject.put( "firstName" , user.getFirstName() );
         jsonObject.put("userId",user.getUserId());
+        jsonObject.put( "profilePicture" , user.getUserProfileImage() );
 
         out.write(jsonObject.toString());
         out.close();

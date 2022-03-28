@@ -107,7 +107,8 @@ public class NewsFeedsImageDAO extends Post {
                 jsonObject.put("ImagePath",imagePath);
 
             }
-
+            resultSet.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
