@@ -48,7 +48,7 @@ const report = function ( id , type ){
         }
     }
 
-    httpreq.open( "POST" , "/EduClick_war_exploded/teacher/report" , true);
+    httpreq.open( "POST" , "/EduClick_war_exploded/user/report" , true);
     httpreq.setRequestHeader("Content-type" , "application/x-www-form-urlencoded");
     httpreq.send("id=" + id +"&type=" + type);
 

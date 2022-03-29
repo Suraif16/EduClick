@@ -54,7 +54,7 @@ const getAnswersServer = function ( id ){
 
             let singleAnswerUserProfileImage = "";
 
-            if ( jsonResponse.profilePicture === undefined ){
+            if ( answerList[i].profilePicture === undefined ){
 
                 singleAnswerUserProfileImage = '<img class="profileIcon" src="../Resources/Icons/account_circle_white_24dp.svg">'
 

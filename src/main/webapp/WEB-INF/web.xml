@@ -693,7 +693,7 @@
 
     <servlet-mapping>
         <servlet-name>report</servlet-name>
-        <url-pattern>/teacher/report</url-pattern>
+        <url-pattern>/user/report</url-pattern>
     </servlet-mapping>
 
     <!--End of teacher Report-->
