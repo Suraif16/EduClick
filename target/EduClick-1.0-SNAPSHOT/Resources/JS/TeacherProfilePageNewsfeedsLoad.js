@@ -37,8 +37,8 @@ function completeNFLoad(httpreq) {
         window.location.replace("/EduClick_war_exploded/Login.html");
     } else if (jsonResponse.serverResponse === "Allowed") {
 
-        /*const name = document.getElementById("profileUserName");
-        name.innerHTML = jsonResponse.fullName;*/
+        const name = document.getElementById("profileUserName");
+        name.innerHTML = jsonResponse.fullName;
 
         //let url = '/EduClick_war_exploded/userProfileRedirect?userId=' + jsonLoginResponse.userId;
 
