@@ -29,17 +29,18 @@ const TeacherLoadAdminPost = function (){
                          let innerPreviouseHTML = postContents.innerHTML;
                          postContents.innerHTML = '        <div class="post">    ' +
                              '              <div class="postContentContainer">' +
-                             '                   <div class="postProfileSection">' + '<div class="name">EduClick</div>' +
+                             '                   <div class="postProfileSection">' /*+ '<div class="name">EduClick</div>'*/ +
                              '                           <div class="postProfileImage">' +
-                            /* '                               <img class="postProfileIcon" src="../Resources/Icons/account_circle_white_24dp.svg"> ' +*/
+                             '                               <img class="postProfileIcon" src="../Resources/Icons/Logo.png"> ' +
                              '                           </div>' +
                              '                           <div class="postProfileName " >' +
+                             '<div class="name">EduClick</div>' +
                              '</div>' +
                              '                           <div class="postTimeAndDate" >' +
                              jsonResponse.jsonArray1[i].time + ' | ' +
                              jsonResponse.jsonArray1[i].date +
                              '                            </div>' +
-                             '                    <div class="userOptions">' +
+                             '                    <div class="userOptions" style="visibility: hidden">' +
                              '<input class="userOptionsButton" type="button" value="    " id="educationalPostOPtion' + jsonResponse.jsonArray1[i].aPId + '" onclick="showOptionMenu(' + jsonResponse.jsonArray1[i].aPId + ',\'educationalPostOPtion\')">' +
                              '                    </div>' +
                              '                   </div>' +
