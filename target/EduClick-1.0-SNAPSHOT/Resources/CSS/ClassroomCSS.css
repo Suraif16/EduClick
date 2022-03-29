@@ -761,6 +761,7 @@ div#content > div#confirmationBox {
     display: none;  /*making this a container to rightPanelTopic and rightPanelStudentList*/
     flex-direction: column;
     max-height: 76%;
+    background-color: white;
 
 
 }
@@ -768,7 +769,7 @@ div#content > div#confirmationBox {
 div.confirmationBoxContent{
 
     flex: 1;
-    background-color: #4775c4;
+    background-color: crimson;
     color: white;
     padding: 1%;
     font-weight: bold;
@@ -778,7 +779,7 @@ div.confirmationBoxContent{
 div.confirmationBoxYesNoButtons{
 
     flex: 1;
-    background-color: #4775c4;
+    background-color: crimson;
     padding: 1%;
     display: flex;
 
